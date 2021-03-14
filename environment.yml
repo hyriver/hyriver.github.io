@@ -1,4 +1,4 @@
-name: pygeohydro-tests
+name: binder
 channels:
   - conda-forge
   - nodefaults
@@ -35,8 +35,20 @@ dependencies:
   - matplotlib-base
   - openpyxl
 
-  - pip
-  - pip:
-    - git+https://github.com/cheginit/pygeoogc.git
-    - git+https://github.com/cheginit/pygeoutils.git
-    - git+https://github.com/cheginit/pynhd.git
+  # hyriver stack
+  - pygeoogc
+  - pygeoutils
+  - pynhd
+  - py3dep
+  - pygeohydro
+  - pydaymet
+
+  # other third-party deps for running example notebooks
+  - pygeos
+  - bottleneck
+  - osmnx
+  - descartes
+  - cartopy
+  - cmocean
+  - mapclassify
+
