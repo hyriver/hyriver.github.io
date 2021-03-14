@@ -1,0 +1,74 @@
+:mod:`pygeohydro.exceptions`
+============================
+
+.. py:module:: pygeohydro.exceptions
+
+.. autoapi-nested-parse::
+
+   Customized PyGeoHydro exceptions.
+
+
+
+Module Contents
+---------------
+
+.. py:exception:: InvalidInputValue(inp: str, valid_inputs: Union[List[str], Generator[str, None, None]])
+
+   Bases: :class:`Exception`
+
+   Exception raised for invalid input.
+
+   :param inp: Name of the input parameter
+   :type inp: str
+   :param valid_inputs: List of valid inputs
+   :type valid_inputs: tuple
+
+   .. py:class:: args
+
+
+   .. method:: with_traceback()
+
+      Exception.with_traceback(tb) --
+      set self.__traceback__ to tb and return self.
+
+
+
+.. py:exception:: InvalidInputRange
+
+   Bases: :class:`ValueError`
+
+   Exception raised when a function argument is not in the valid range.
+
+   .. py:class:: args
+
+
+   .. method:: with_traceback()
+
+      Exception.with_traceback(tb) --
+      set self.__traceback__ to tb and return self.
+
+
+
+.. py:exception:: InvalidInputType(arg: str, valid_type: str, example: Optional[str] = None)
+
+   Bases: :class:`Exception`
+
+   Exception raised when a function argument type is invalid.
+
+   :param arg: Name of the function argument
+   :type arg: str
+   :param valid_type: The valid type of the argument
+   :type valid_type: str
+   :param example: An example of a valid form of the argument, defaults to None.
+   :type example: str, optional
+
+   .. py:class:: args
+
+
+   .. method:: with_traceback()
+
+      Exception.with_traceback(tb) --
+      set self.__traceback__ to tb and return self.
+
+
+

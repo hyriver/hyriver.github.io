@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg4542"
+   viewBox="0 0 92.524456 92.524439"
+   version="1.1"
+   sodipodi:docname="hydriver_logo_text.svg"
+   width="92.524452"
+   height="92.524452"
+   inkscape:version="1.0.2 (1.0.2+r75+1)"
+   inkscape:export-filename="/home/taher/repos/stack/geohydrohub-examples/notebooks/_static/hydriver_logo.png"
+   inkscape:export-xdpi="128.16"
+   inkscape:export-ydpi="128.16">
+  <defs
+     id="defs3773">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5591">
+      <rect
+         style="opacity:0.412;fill:#e2ddfb;fill-opacity:1;stroke-width:0.228837"
+         id="rect5593"
+         width="25.730032"
+         height="60.141014"
+         x="-588.9776"
+         y="-44.976849" />
+    </clipPath>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter6688"
+       x="-0.102"
+       width="1.204"
+       y="-0.102"
+       height="1.204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.9676752"
+         id="feGaussianBlur6690" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1226"
+       x="-0.031546503"
+       width="1.0630929"
+       y="-0.023598909"
+       height="1.0471978">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.1815565"
+         id="feGaussianBlur1228" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     id="namedview3771"
+     showgrid="false"
+     inkscape:zoom="2.1931875"
+     inkscape:cx="121.16698"
+     inkscape:cy="68.908544"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g4417"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:document-rotation="0"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true" />
+  <g
+     id="layer1"
+     transform="translate(-113.16375,-328.24575)">
+    <g
+       id="g4417"
+       transform="matrix(4.0034,0,0,4.0034,2687.6,451.03)">
+      <circle
+         style="fill:#62a2fb;fill-opacity:1;stroke-width:0.103564"
+         id="circle5788"
+         cx="-631.50671"
+         cy="-19.114222"
+         r="10.53815" />
+      <circle
+         style="fill:#b7e092;fill-opacity:1;stroke-width:0.0389326"
+         id="circle1230"
+         cx="-631.50671"
+         cy="-19.114222"
+         r="3.9615872" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4588"
+         d="m -588.6646,-35.435617 a 23.149198,23.149198 0 0 0 -23.14934,23.149341 23.149198,23.149198 0 0 0 23.14934,23.148899 23.149198,23.149198 0 0 0 23.1489,-23.148899 23.149198,23.149198 0 0 0 -23.1489,-23.149341 z m 0,2.849068 a 20.300067,20.300067 0 0 1 20.29983,20.300273 20.300067,20.300067 0 0 1 -20.29983,20.2998303 20.300067,20.300067 0 0 1 -20.30028,-20.2998303 20.300067,20.300067 0 0 1 20.30028,-20.300273 z"
+         style="fill:#f4f8ff;fill-opacity:1;stroke-width:0.227499;filter:url(#filter6688)"
+         transform="matrix(0.41460695,0,0,0.41460695,-387.4422,-14.020191)" />
+      <path
+         id="path1224"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.88475px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:none;fill-opacity:1;stroke:#b8e092;stroke-width:0.749363;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter1226)"
+         d="m -637.33876,-28.345945 c -0.75948,-0.02237 -1.29646,0.803056 -0.98346,2.14345 0.35753,1.53188 2.04155,4.362358 2.04155,7.088073 0,2.725715 -1.68402,5.556194 -2.04155,7.088074 -0.35771,1.53188 0.39465,2.3915173 1.3207,2.081264 0.92598,-0.310236 1.01318,-2.060048 1.41589,-3.739678 0.40253,-1.679628 2.17229,-4.185014 4.07882,-4.185014 1.90653,0 3.67629,2.505382 4.07882,4.185014 0.4027,1.67963 0.48989,3.429442 1.4159,3.739678 0.92602,0.3102533 1.67839,-0.549389 1.3207,-2.081264 -0.35756,-1.53188 -2.04108,-4.362359 -2.04108,-7.088074 0,-2.725715 1.68352,-5.556193 2.04108,-7.088073 0.35769,-1.53188 -0.39468,-2.391042 -1.3207,-2.080787 -0.92601,0.310237 -1.0132,2.060049 -1.4159,3.739678 -0.40253,1.67963 -2.23161,4.191385 -4.07882,4.185014 -1.84721,-0.0064 -3.67629,-2.505384 -4.07882,-4.185014 -0.40271,-1.679629 -0.48991,-3.429438 -1.41589,-3.739678 -0.11576,-0.03878 -0.22874,-0.05947 -0.33724,-0.06266 z"
+         sodipodi:nodetypes="ccscsczcccsccczcsc" />
+      <path
+         id="path877"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.88475px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4747a0;fill-opacity:1;stroke-width:0.249788;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m -637.33876,-28.345945 c -0.75948,-0.02237 -1.29646,0.803056 -0.98346,2.14345 0.35753,1.53188 2.04155,4.362358 2.04155,7.088073 0,2.725715 -1.68402,5.556194 -2.04155,7.088074 -0.35771,1.53188 0.39465,2.3915173 1.3207,2.081264 0.92598,-0.310236 1.01318,-2.060048 1.41589,-3.739678 0.40253,-1.679628 2.17229,-4.185014 4.07882,-4.185014 1.90653,0 3.67629,2.505382 4.07882,4.185014 0.4027,1.67963 0.48989,3.429442 1.4159,3.739678 0.92602,0.3102533 1.67839,-0.549389 1.3207,-2.081264 -0.35756,-1.53188 -2.04108,-4.362359 -2.04108,-7.088074 0,-2.725715 1.68352,-5.556193 2.04108,-7.088073 0.35769,-1.53188 -0.39468,-2.391042 -1.3207,-2.080787 -0.92601,0.310237 -1.0132,2.060049 -1.4159,3.739678 -0.40253,1.67963 -2.23161,4.191385 -4.07882,4.185014 -1.84721,-0.0064 -3.67629,-2.505384 -4.07882,-4.185014 -0.40271,-1.679629 -0.48991,-3.429438 -1.41589,-3.739678 -0.11576,-0.03878 -0.22874,-0.05947 -0.33724,-0.06266 z"
+         sodipodi:nodetypes="ccscsczcccsccczcsc" />
+    </g>
+  </g>
+  <metadata
+     id="metadata3768">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title></dc:title>
+        <dc:date>2013-10-06T13:49:20</dc:date>
+        <dc:description>umbrella pictogram</dc:description>
+        <dc:source>https://openclipart.org/detail/184614/umbrella-by-harini-184614</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>harini</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Umbrella</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

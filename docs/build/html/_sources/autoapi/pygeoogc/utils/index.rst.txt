@@ -1,0 +1,232 @@
+:mod:`pygeoogc.utils`
+=====================
+
+.. py:module:: pygeoogc.utils
+
+.. autoapi-nested-parse::
+
+   Some utilities for PyGeoOGC.
+
+
+
+Module Contents
+---------------
+
+.. data:: DEF_CRS
+   :annotation: = epsg:4326
+
+   
+
+.. data:: BOX_ORD
+   :annotation: = (west, south, east, north)
+
+   
+
+.. py:class:: RetrySession(retries: int = 3, backoff_factor: float = 0.3, status_to_retry: Tuple[int, ...] = (500, 502, 504), prefixes: Tuple[str, ...] = ('https://', ))
+
+   Configures the passed-in session to retry on failed requests.
+
+   The fails can be due to connection errors, specific HTTP response
+   codes and 30X redirections. The code is based on:
+   https://github.com/bustawin/retry-requests
+
+   :param retries: The number of maximum retries before raising an exception, defaults to 5.
+   :type retries: int, optional
+   :param backoff_factor: A factor used to compute the waiting time between retries, defaults to 0.5.
+   :type backoff_factor: float, optional
+   :param status_to_retry: A tuple of status codes that trigger the reply behaviour, defaults to (500, 502, 504).
+   :type status_to_retry: tuple, optional
+   :param prefixes: The prefixes to consider, defaults to ("http://", "https://")
+   :type prefixes: tuple, optional
+
+   .. method:: get(self, url: str, payload: Optional[Mapping[str, Any]] = None, headers: Optional[MutableMapping[str, Any]] = None) -> Response
+
+      Retrieve data from a url by GET and return the Response.
+
+
+   .. method:: post(self, url: str, payload: Optional[MutableMapping[str, Any]] = None, headers: Optional[MutableMapping[str, Any]] = None) -> Response
+
+      Retrieve data from a url by POST and return the Response.
+
+
+   .. method:: onlyipv4() -> _patch
+      :staticmethod:
+
+      Disable IPv6 and only use IPv4.
+
+
+
+.. function:: async_requests(url_payload: List[Tuple[str, Optional[MutableMapping[str, Any]]]], read: str, request: str = 'GET', max_workers: int = 8) -> List[Union[str, MutableMapping[str, Any], bytes]]
+
+   Send async requests.
+
+   This function is based on
+   `this <https://github.com/HydrologicEngineeringCenter/data-retrieval-scripts/blob/master/qpe_async_download.py>`__
+   script.
+
+   :param url_payload: A list of URLs and payloads as a tuple.
+   :type url_payload: list of tuples
+   :param read: The method for returning the request; binary, json, and text.
+   :type read: str
+   :param request: The request type; GET or POST, defaults to GET.
+   :type request: str, optional
+   :param max_workers: The maximum number of async processes, defaults to 8.
+   :type max_workers: int, optional
+
+   :returns: A list of responses
+   :rtype: list
+
+
+.. function:: threading(func: Callable, iter_list: Iterable, param_list: Optional[List[Any]] = None, max_workers: int = 8) -> List[Any]
+
+   Run a function in parallel with threading.
+
+   .. rubric:: Notes
+
+   This function is suitable for IO intensive functions.
+
+   :param func: The function to be ran in threads
+   :type func: function
+   :param iter_list: The iterable for the function
+   :type iter_list: list
+   :param param_list: List of other parameters, defaults to an empty list
+   :type param_list: list, optional
+   :param max_workers: Maximum number of threads, defaults to 8
+   :type max_workers: int, optional
+
+   :returns: A list of function returns for each iterable. The list is not ordered.
+   :rtype: list
+
+
+.. function:: traverse_json(obj: Union[Dict[str, Any], List[Dict[str, Any]]], path: Union[str, List[str]]) -> List[Any]
+
+   Extract an element from a JSON file along a specified path.
+
+   This function is based on `bcmullins <https://bcmullins.github.io/parsing-json-python/>`__.
+
+   :param obj: The input json dictionary
+   :type obj: dict
+   :param path: The path to the requested element
+   :type path: list
+
+   :returns: The items founds in the JSON
+   :rtype: list
+
+
+.. py:class:: ESRIGeomQuery(geometry: Union[Tuple[float, float], List[Tuple[float, float]], Tuple[float, float, float, float], Polygon], wkid: int)
+
+   Generate input geometry query for ArcGIS RESTful services.
+
+   :param geometry: The input geometry which can be a point (x, y), a list of points [(x, y), ...],
+                    bbox (xmin, ymin, xmax, ymax), or a Shapely's Polygon.
+   :type geometry: tuple or Polygon
+   :param wkid: The Well-known ID (WKID) of the geometry's spatial reference e.g., for EPSG:4326,
+                4326 should be passed. Check
+                `ArcGIS <https://developers.arcgis.com/rest/services-reference/geographic-coordinate-systems.htm>`__
+                for reference.
+   :type wkid: int
+
+   .. method:: point(self) -> Dict[str, Union[str, bytes]]
+
+      Query for a point.
+
+
+   .. method:: multipoint(self) -> Dict[str, Union[str, bytes]]
+
+      Query for a multi-point.
+
+
+   .. method:: bbox(self) -> Dict[str, Union[str, bytes]]
+
+      Query for a bbox.
+
+
+   .. method:: polygon(self) -> Dict[str, Union[str, bytes]]
+
+      Query for a polygon.
+
+
+   .. method:: get_payload(self, geo_type: str, geo_json: Dict[str, Any]) -> Dict[str, Union[str, bytes]]
+
+      Generate a request payload based on ESRI template.
+
+      :param geo_type: Type of the input geometry
+      :type geo_type: str
+      :param geo_json: Geometry in GeoJson format.
+      :type geo_json: dict
+
+
+
+.. py:class:: MatchCRS
+
+   Match CRS of a input geometry (Polygon, bbox, coord) with the output CRS.
+
+   :param geometry: The input geometry (Polygon, bbox, coord)
+   :type geometry: tuple or Polygon
+   :param in_crs: The spatial reference of the input geometry
+   :type in_crs: str
+   :param out_crs: The target spatial reference
+   :type out_crs: str
+
+   .. method:: geometry(geom: Union[Polygon, MultiPolygon, Point, MultiPoint], in_crs: str, out_crs: str) -> Union[Polygon, MultiPolygon, Point, MultiPoint]
+      :staticmethod:
+
+      Reproject a geometry to the specified output CRS.
+
+
+   .. method:: bounds(geom: Tuple[float, float, float, float], in_crs: str, out_crs: str) -> Tuple[float, float, float, float]
+      :staticmethod:
+
+      Reproject a bounding box to the specified output CRS.
+
+
+   .. method:: coords(geom: Tuple[Tuple[float, ...], Tuple[float, ...]], in_crs: str, out_crs: str) -> Tuple[Any, ...]
+      :staticmethod:
+
+      Reproject a list of coordinates to the specified output CRS.
+
+
+
+.. function:: check_bbox(bbox: Tuple[float, float, float, float]) -> None
+
+   Check if an input inbox is a tuple of length 4.
+
+
+.. function:: bbox_resolution(bbox: Tuple[float, float, float, float], resolution: float, bbox_crs: str = DEF_CRS) -> Tuple[int, int]
+
+   Image size of a bounding box WGS84 for a given resolution in meters.
+
+   :param bbox: A bounding box in WGS84 (west, south, east, north)
+   :type bbox: tuple
+   :param resolution: The resolution in meters
+   :type resolution: float
+   :param bbox_crs: The spatial reference of the input bbox, default to EPSG:4326.
+   :type bbox_crs: str, optional
+
+   :returns: The width and height of the image
+   :rtype: tuple
+
+
+.. function:: bbox_decompose(bbox: Tuple[float, float, float, float], resolution: float, box_crs: str = DEF_CRS, max_px: int = 8000000) -> List[Tuple[Tuple[float, float, float, float], str, int, int]]
+
+   Split the bounding box vertically for WMS requests.
+
+   :param bbox: A bounding box; (west, south, east, north)
+   :type bbox: tuple
+   :param resolution: The target resolution for a WMS request in meters.
+   :type resolution: float
+   :param box_crs: The spatial reference of the input bbox, default to EPSG:4326.
+   :type box_crs: str, optional
+   :param max_px: The maximum allowable number of pixels (width x height) for a WMS requests,
+                  defaults to 8 million based on some trial-and-error.
+   :type max_px: int, opitonal
+
+   :returns: The first element is a list of bboxes and the second one is width of the last bbox
+   :rtype: tuple
+
+
+.. function:: check_response(resp: Response) -> None
+
+   Check if a ``requests.Resonse`` returned an error message.
+
+

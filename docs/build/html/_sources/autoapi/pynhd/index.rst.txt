@@ -1,0 +1,23 @@
+:mod:`pynhd`
+============
+
+.. py:module:: pynhd
+
+.. autoapi-nested-parse::
+
+   Top-level package for PyNHD.
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   exceptions/index.rst
+   network_tools/index.rst
+   print_versions/index.rst
+   pynhd/index.rst
+
+

@@ -1,0 +1,15 @@
+version: 2
+
+build:
+    image: latest
+
+conda:
+    environment: ci/requirements/doc.yml
+
+submodules:
+  include: all
+
+python:
+  install:
+    - method: pip
+      path: .
