@@ -105,9 +105,9 @@ nbsphinx_prolog = """
 
         This page was generated from `{{ docname }}`__.
         Interactive online version:
-        :raw-html:`<a href="https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?filepath=notebooks/{{ docname }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a>`
+        :raw-html:`<a href="https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?filepath={{ docname }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a>`
 
-    __ https://github.com/cheginit/HyRiver-examples/tree/main/notebooks/{{ docname }}
+    __ https://github.com/cheginit/HyRiver-examples/tree/main/{{ docname }}
 """
 
 # -- Options for HTML output -------------------------------------------------
