@@ -110,8 +110,8 @@ of packages.
     :target: https://github.com/cheginit/HyRiver-examples
 
 
- Installation
- ------------
+Installation
+------------
 
 You can install all the packages using ``pip``:
 
