@@ -54,11 +54,11 @@ HyRiver: Hydroclimate Data Retriever
     :alt: Downloads
 
 .. image:: https://mybinder.org/badge_logo.svg
-    :target: https://mybinder.org/v2/gh/cheginit/pygeohydro/main?urlpath=lab/tree/docs/examples
+    :target: https://mybinder.org/v2/gh/cheginit/HyRiver-exampls/main?urlpath=lab/tree/notebooks
     :alt: Binder
 
-.. image:: https://readthedocs.org/projects/pygeohydro/badge/?version=latest
-    :target: https://pygeohydro.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/HyRiver/badge/?version=latest
+    :target: https://hyriver.readthedocs.io/en/latest/?badge=latest
     :alt: ReadTheDocs
 
 .. image:: https://zenodo.org/badge/237573928.svg

@@ -12,7 +12,6 @@
 #
 import datetime
 import os
-
 import sys
 
 sys.path.insert(0, os.path.abspath("../.."))
@@ -25,11 +24,13 @@ author = "Taher Chegini"
 copyright = f"2019-{datetime.datetime.now().year}, {author}"
 
 # The full version, including alpha/beta/rc tags
-import pygeoogc
+from github import Github
 
-version = f"{pygeoogc.__version__.split('.')[:2]}.x"
+g = Github()
+repo = g.get_repo("cheginit/pygeohydro")
+tags = repo.get_tags()
+version = f"{'.'.join(tags[0].name[1:].split('.')[:2])}.x"
 release = version
-
 
 # -- General configuration ---------------------------------------------------
 
