@@ -146,8 +146,8 @@ html_theme_options = {
     "color_primary": "indigo",
     "color_accent": "deep-purple",
     # Set the repo location to get a badge with stats
-    "repo_url": "https://github.com/cheginit/HyRiver",
-    "repo_name": project,
+    "repo_url": "https://github.com/cheginit/pygeohydro",
+    "repo_name": "PyGeoHydro",
     # Visible levels of the global TOC; -1 means unlimited
     "globaltoc_depth": 3,
     # If False, expand all TOC entries
