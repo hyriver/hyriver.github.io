@@ -58,6 +58,18 @@
 .. _Py3DEP: https://github.com/cheginit/py3dep
 .. _PyDaymet: https://github.com/cheginit/pydaymet
 
+.. image:: https://mybinder.org/badge_logo.svg
+    :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
+    :alt: Binder
+
+.. image:: https://readthedocs.org/projects/hyriver/badge/?version=latest
+    :target: https://hyriver.readthedocs.io/en/latest/?badge=latest
+    :alt: ReadTheDocs
+
+.. image:: https://zenodo.org/badge/237573928.svg
+    :target: https://zenodo.org/badge/latestdoi/237573928
+    :alt: Zenodo
+
 =========== ==================================================================== =================
 Package     Description                                                          Status
 =========== ==================================================================== =================
@@ -78,18 +90,6 @@ PyGeoOGC     PyGeoUtils   PyNHD        PyGeoHydro   Py3DEP       PyDaymet
 ============ ============ ============ ============ ============ ============
 |pygeoogc|   |pygeoutils| |pynhd|      |pygeohydro| |py3dep|     |pydaymet|
 ============ ============ ============ ============ ============ ============
-
-.. image:: https://mybinder.org/badge_logo.svg
-    :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
-    :alt: Binder
-
-.. image:: https://readthedocs.org/projects/hyriver/badge/?version=latest
-    :target: https://hyriver.readthedocs.io/en/latest/?badge=latest
-    :alt: ReadTheDocs
-
-.. image:: https://zenodo.org/badge/237573928.svg
-    :target: https://zenodo.org/badge/latestdoi/237573928
-    :alt: Zenodo
 
 .. note::
 
