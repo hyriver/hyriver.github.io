@@ -116,6 +116,7 @@ T. Chegini was supported by the University of Houston’s internal funds and the
 Foundation (EAR #1804560). H.-Y. Li and L. R. Leung were supported by the U.S. Department of
 Energy Office of Science Biological and Environmental Research as part of the Earth System Model
 Development and Regional and Global Model Analysis program areas through the collaborative,
-multi-program Integrated Coastal Modeling (ICoM) project.
+multi-program Integrated Coastal Modeling (ICoM) project. PNNL is operated for the Department of
+Energy by Battelle Memorial Institute under contract DE-AC05-76RL01830.
 
 # References
