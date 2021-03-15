@@ -24,7 +24,6 @@ export PRINT_HELP_PYSCRIPT
 
 
 define generate_footer
-\n
 \n.. toctree::
 \n\t:maxdepth: 1
 \n\t:caption: Getting Started
@@ -73,4 +72,3 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/build/html/index.html
-

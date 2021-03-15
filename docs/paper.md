@@ -108,7 +108,7 @@ the USGS (United States Geological Survey) databases and has two versions in
 Another R Package called [HydroData](https://github.com/mikejohnson51/HydroData), provides access
 to 15 earth system datasets. Although there are overlaps between `HyRiver` and these packages,
 to the best of our knowledge, none of them offer access to such diverse data sources and types
-that this software stack provides. 
+that this software stack provides.
 
 # Acknowledgements
 

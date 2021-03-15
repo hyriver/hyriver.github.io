@@ -22,4 +22,3 @@ The following notebooks demonstrate capabilities of the HyRiver software stack.
     :reversed:
 
     notebooks/*
-
