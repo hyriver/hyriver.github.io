@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+    - id: trailing-whitespace
+    - id: check-executables-have-shebangs
+    - id: requirements-txt-fixer
+    - id: check-added-large-files
+      args: ['--maxkb=50000']
+    - id: end-of-file-fixer
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.8.0
+    hooks:
+    - id: rst-backticks
+    - id: rst-directive-colons
+
+  - repo: https://github.com/PyCQA/doc8
+    rev: 0.9.0a1
+    hooks:
+    - id: doc8
+      name: Check documentation formats with doc8
+      args: [--max-line-length, "100"]
