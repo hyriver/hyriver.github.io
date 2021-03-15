@@ -27,16 +27,29 @@
     :target: https://github.com/cheginit/pydaymet/actions?query=workflow%3Apytest
     :alt: Github Actions
 
-=========== ==================================================================== ============
-Package     Description                                                          Status
-=========== ==================================================================== ============
-PyGeoHydro_ Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro|
-PyGeoOGC_   Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
-PyGeoUtils_ Convert responses from PyGeoOGC's supported web services to datasets |pygeoutils|
-PyNHD_      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
-Py3DEP_     Access topographic data through National Map's 3DEP web service      |py3dep|
-PyDaymet_   Access Daymet for daily climate data both single pixel and gridded   |pydaymet|
-=========== ==================================================================== ============
+.. |pygeohydro_stat| image:: https://pepy.tech/badge/hydrodata
+    :target: https://pepy.tech/project/hydrodata
+    :alt: Download Stat
+
+.. |pygeoogc_stat| image:: https://pepy.tech/badge/pygeoogc
+    :target: https://pepy.tech/project/pygeoogc
+    :alt: Download Stat
+
+.. |pygeoutils_stat| image:: https://pepy.tech/badge/pygeoutils
+    :target: https://pepy.tech/project/pygeoutils
+    :alt: Download Stat
+
+.. |pynhd_stat| image:: https://pepy.tech/badge/pynhd
+    :target: https://pepy.tech/project/pynhd
+    :alt: Download Stat
+
+.. |py3dep_stat| image:: https://pepy.tech/badge/py3dep
+    :target: https://pepy.tech/project/py3dep
+    :alt: Download Stat
+
+.. |pydaymet_stat| image:: https://pepy.tech/badge/pydaymet
+    :target: https://pepy.tech/project/pydaymet
+    :alt: Download Stat
 
 .. _PyGeoHydro: https://github.com/cheginit/pygeohydro
 .. _PyGeoOGC: https://github.com/cheginit/pygeoogc
@@ -45,13 +58,26 @@ PyDaymet_   Access Daymet for daily climate data both single pixel and gridded  
 .. _Py3DEP: https://github.com/cheginit/py3dep
 .. _PyDaymet: https://github.com/cheginit/pydaymet
 
+=========== ==================================================================== =================
+Package     Description                                                          Status
+=========== ==================================================================== =================
+PyGeoHydro_ Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro_stat|
+PyGeoOGC_   Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc_stat|
+PyGeoUtils_ Convert responses from PyGeoOGC's supported web services to datasets |pygeoutils_stat|
+PyNHD_      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd_stat|
+Py3DEP_     Access topographic data through National Map's 3DEP web service      |py3dep_stat|
+PyDaymet_   Access Daymet for daily climate data both single pixel and gridded   |pydaymet_stat|
+=========== ==================================================================== =================
+
 
 HyRiver: Hydroclimate Data Retriever
 =====================================
 
-.. image:: https://pepy.tech/badge/hydrodata
-    :target: https://pepy.tech/project/hydrodata
-    :alt: Downloads
+============ ============ ============ ============ ============ ============
+PyGeoOGC     PyGeoUtils   PyNHD        PyGeoHydro   Py3DEP       PyDaymet
+============ ============ ============ ============ ============ ============
+|pygeoogc|   |pygeoutils| |pynhd|      |pygeohydro| |py3dep|     |pydaymet|
+============ ============ ============ ============ ============ ============
 
 .. image:: https://mybinder.org/badge_logo.svg
     :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
@@ -65,14 +91,12 @@ HyRiver: Hydroclimate Data Retriever
     :target: https://zenodo.org/badge/latestdoi/237573928
     :alt: Zenodo
 
-|
+.. note::
 
-**NOTE**
-
-This software stack was formerly named `hydrodata <https://pypi.org/project/hydrodata>`__.
-Since a `R <https://github.com/mikejohnson51/HydroData>`__ package with the same name
-already exists, we decided to renamed our project to
-`HyRiver <https://pypi.org/project/HyRiver>`__.
+    This software stack was formerly named `hydrodata <https://pypi.org/project/hydrodata>`__.
+    Since a `R <https://github.com/mikejohnson51/HydroData>`__ package with the same name
+    already exists, we decided to renamed our project to
+    `HyRiver <https://pypi.org/project/HyRiver>`__.
 
 Features
 --------
