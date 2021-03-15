@@ -42,15 +42,15 @@ REpresentational State Transfer (RESTful), Web Feature Services (WFS), and Web M
   NLCD (National Land Cover Database), and SSEBop (operational Simplified Surface Energy Balance)
   databases. Moreover, it can generate an interactive map for exploring NWIS stations within a
   bounding box, compute categorical statistics of land use/land cover data, and plot five
-  hydrologic signature graphs. There is also helper functions which returns a roughness
-  coefficients lookup table for each NLCD land cover type. These coefficients can be
+  hydrologic signature graphs. There is also a helper function which returns a roughness
+  coefficients lookup table for NLCD's land cover types. These coefficients can be
   useful for overland flow routing among other applications.
 * [PyGeoOGC](https://github.com/cheginit/pygeoogc): Generates valid queries for retrieving data
   from supported RESTful-, WMS-, and WFS-based services. Although these web services limit
   the number of features in a single query, under-the-hood, `PyGeoOGC` takes care of breaking down
-  a large query into smaller queries according to the service specifications. Additionally, this
-  package offers several notable utilities: data re-projection, asynchronous data retrieval,
-  and traversing a JSON (JavaScript Object Notation) object.
+  a large query into smaller queries according to specifications of the services. Additionally,
+  this package offers several notable utilities, such as data re-projection and asynchronous data
+  retrieval for speeding up sending/receiving queries.
 * [PyGeoUtils](https://github.com/cheginit/pygeoutils): Converts responses from PyGeoOGC's
   supported web services to geo-dataframes (vector data type) or datasets (raster data type).
   Moreover, for gridded data, it can mask the output dataset based on any given geometry.
