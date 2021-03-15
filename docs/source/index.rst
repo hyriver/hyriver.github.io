@@ -117,7 +117,7 @@ within the US. Some of the major capabilities of HyRiver are as follows:
 * A URL inventory for some of the popular (and tested) web services.
 * Some utilities for manipulating the obtained data and their visualization.
 
-Please visit `examples <https://pygeohydro.readthedocs.io/en/main/examples.html>`__
+Please visit `examples <https://hyriver.readthedocs.io/en/latest/examples.html>`__
 webpage to see some example notebooks. You can also try this project without installing
 it on you system by clicking on the binder badge below the PyGeoHydro banner. A Jupyter notebook
 instance with the PyGeoHydro software stack pre-installed will be launched in your web browser
@@ -135,19 +135,18 @@ of packages.
 
 
 
- 
-.. toctree:: 
-    :maxdepth: 1 
-    :caption: Getting Started 
- 
-    installation 
-    examples 
- 
-.. toctree:: 
-    :maxdepth: 1 
-    :caption: Help & Reference 
- 
-    history 
-    contributing 
-    authors 
+.. toctree::
+    :maxdepth: 1
+    :caption: Getting Started
+
+    installation
+    examples
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Help & Reference
+
+    history
+    contributing
+    authors
     license
