@@ -96,7 +96,7 @@ PyGeoOGC     PyGeoUtils   PyNHD        PyGeoHydro   Py3DEP       PyDaymet
     This software stack was formerly named `hydrodata <https://pypi.org/project/hydrodata>`__.
     Since an `R <https://github.com/mikejohnson51/HydroData>`__ package with the same name
     already exists, we decided to renamed our project to
-    `HyRiver <https://pypi.org/project/HyRiver>`__.
+    HyRiver.
 
 Features
 --------
@@ -133,7 +133,7 @@ of packages.
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
     :target: https://github.com/cheginit/HyRiver-examples
 
-
+<!-- index ends -->
 Installation
 ------------
 
