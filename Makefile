@@ -66,9 +66,9 @@ lint: ## check style with flake8
 	pre-commit run --all-files
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	sed '/Installation/IQ' README.rst > docs/source/index.rst
+	sed -n '1,/<!-- index ends -->/p' README.rst > docs/source/index.rst
 	echo $$INDEX_FOOTER >> docs/source/index.rst
-	sed -i 's/\t/    /g' docs/source/index.rst
+	sed -i  '' -e 's/\t/    /g' docs/source/index.rst
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/build/html/index.html
