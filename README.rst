@@ -133,8 +133,6 @@ of packages.
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
     :target: https://github.com/cheginit/HyRiver-examples
 
-<!-- index ends -->
-
 Installation
 ------------
 

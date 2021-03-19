@@ -66,7 +66,7 @@ lint: ## check style with flake8
 	pre-commit run --all-files
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	sed -n '1,/<!-- index ends -->/p' README.rst > docs/source/index.rst
+	sed -n '1,/Installation/{/Installation/!p;}' README.rst > docs/source/index.rst
 	echo $$INDEX_FOOTER >> docs/source/index.rst
 	sed -i  '' -e 's/\t/    /g' docs/source/index.rst
 	$(MAKE) -C docs clean
