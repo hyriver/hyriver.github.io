@@ -134,18 +134,18 @@ of packages.
     :target: https://github.com/cheginit/HyRiver-examples
 
 
-.. toctree:: 
-    :maxdepth: 1 
-    :caption: Getting Started 
- 
-    installation 
-    examples 
- 
-.. toctree:: 
-    :maxdepth: 1 
-    :caption: Help & Reference 
- 
-    history 
-    contributing 
-    authors 
+.. toctree::
+    :maxdepth: 1
+    :caption: Getting Started
+
+    installation
+    examples
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Help & Reference
+
+    history
+    contributing
+    authors
     license
