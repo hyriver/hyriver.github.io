@@ -1,5 +1,5 @@
 ---
-title: 'HyRiver: Hydrocliamte Data Retriever'
+title: 'HyRiver: Hydroclimate Data Retriever'
 tags:
   - Python
   - hydrology
@@ -26,11 +26,11 @@ bibliography: paper.bib
 
 # Summary
 
-Over the last decade, the increasing availability of web services that offer hydrology and
-climatology data has facilitated publication of reproducible scientific researches in these fields.
-Such web services allow researchers to subset big databases and perform some common data
-processing operations on the server-side. However, implementing such services increases the
-technical complexity of code development as it requires sufficient understanding of their
+Over the last decade, increasing availability of web services for hydrology and
+climatology data has facilitated publication of reproducible scientific researches in hydrological
+and climate studies. Such web services allow researchers to subset big databases and perform some
+common data processing operations on the server-side. However, implementing such services increases
+the technical complexity of code development as it requires sufficient understanding of their
 underlying protocols to generate valid queries and filters. `HyRiver` bridges this gap
 by providing a unified and simple Application Programming Interface (API) to web services that are
 based on three of the most commonly used protocols for geo-spatial/temporal data publication:
@@ -62,7 +62,7 @@ REpresentational State Transfer (RESTful), Web Feature Services (WFS), and Web M
   that are linked to the NHDPlus database via Common Identifiers (ComIDs). `PyNHD` has some
   additional river network tools that use NHDPlus data for routing through a river network.
   This flow routing module is general and accepts any user-defined transport equation for
-  computing flow accumulation through a given river network. First, it sorts the river network
+  computing flow accumulation through a given river network. It sorts the river network
   topologically from upstream to downstream, then accumulates a given attribute based on the
   user-defined transport equation.
 * [Py3DEP](https://github.com/cheginit/py3dep): Gives access to topographic data through the
@@ -83,19 +83,20 @@ connecting and sending queries to any other web services that are based on the p
 # Statement of need
 
 Preparing input data for conducting studies, is often one of the most time-consuming steps. The
-difficulties for processing such input data stem from diverse data sources and types as well as
+difficulties of processing such input data stem from the diverse data sources and types as well as
 sizes. For example, hydrological modeling of watersheds might require climate data such as
 precipitation and temperature, topology data such as Digital Elevation Model, and a river network.
 Climate and topology data are available in raster format, and river network could be from a vector
 data type. Additionally, these datasets often have large sizes and subsetting operations can be
 computationally demanding. Geospatial web services can carry out subsetting and some common
 geographic information system (GIS) operations on server-side. However, these services usually have
-different specifications, thus implementation them can be technically challanging. Moreover,
-continuous and active development of the underlying protocols of these web services, brings
-another level of complexity to the fore. `HyRiver` removes these barriers by providing a
+different specifications, thus implementing them can be technically challanging. Moreover,
+since the underlying protocols of these web services are under active development by organizations
+such as [Open Geospatial Consortium](https://www.ogc.org), keeping track of the latest developments
+adds another level of complexity. `HyRiver` removes these barriers by providing
 consistent and simple, yet configurable, interfaces to these web services. Since these
 interfaces are web protocol-specific, not web service-specific, researchers can utilize `HyRiver`
-to access plethora of databases that are offered through RESTFul-, WFS-, and WMS-based services.
+to access a plethora of databases that are offered through RESTFul-, WFS-, and WMS-based services.
 
 There are several open-source packages that offer similar functionalities. For example,
 [hydrofunctions](https://github.com/mroberge/hydrofunctions) is a Python package that retrieves
@@ -107,7 +108,7 @@ the USGS (United States Geological Survey) databases and has two versions in
 [R](https://github.com/USGS-R/dataRetrieval) and [Python](https://github.com/USGS-python/dataretrieval).
 Another R Package called [HydroData](https://github.com/mikejohnson51/HydroData), provides access
 to 15 earth system datasets. Although there are overlaps between `HyRiver` and these packages,
-to the best of our knowledge, none of them offer access to such diverse data sources and types
+to the best of our knowledge, none of them offer access to the diverse data sources and types
 that this software stack provides.
 
 # Acknowledgements
