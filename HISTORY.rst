@@ -2,6 +2,16 @@
 History
 =======
 
+0.10.2 (2021-03-27)
+-------------------
+
+- Add annoucement regarding the new name for the softwate stack, HyRiver.
+- Improve ``pip`` installation and release workflow.
+
+PyGeoUtils
+~~~~~~~~~~
+- Setting transform of the merged dataset explicitly to address cheginit/py3dep#3
+
 0.10.1 (2021-03-06)
 -------------------
 
