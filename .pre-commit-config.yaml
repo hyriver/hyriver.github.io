@@ -8,13 +8,9 @@ repos:
     - id: check-added-large-files
       args: ['--maxkb=50000']
     - id: end-of-file-fixer
-    - id: check-ast
-    - id: check-json
     - id: check-merge-conflict
-    - id: check-xml
     - id: check-yaml
     - id: debug-statements
-    - id: end-of-file-fixer
     - id: mixed-line-ending
       args: ['--fix=lf']
 
