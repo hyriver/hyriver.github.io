@@ -8,23 +8,23 @@
     :alt: Github Actions
 
 .. |pygeoogc| image:: https://github.com/cheginit/pygeoogc/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeoogc/actions?query=workflow%3Apytest
+    :target: https://github.com/cheginit/pygeoogc/actions/workflows/test.yml
     :alt: Github Actions
 
 .. |pygeoutils| image:: https://github.com/cheginit/pygeoutils/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeoutils/actions?query=workflow%3Apytest
+    :target: https://github.com/cheginit/pygeoutils/actions/workflows/test.yml
     :alt: Github Actions
 
 .. |pynhd| image:: https://github.com/cheginit/pynhd/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pynhd/actions?query=workflow%3Apytest
+    :target: https://github.com/cheginit/pynhd/actions/workflows/test.yml
     :alt: Github Actions
 
 .. |py3dep| image:: https://github.com/cheginit/py3dep/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/py3dep/actions?query=workflow%3Apytest
+    :target: https://github.com/cheginit/py3dep/actions/workflows/test.yml
     :alt: Github Actions
 
 .. |pydaymet| image:: https://github.com/cheginit/pydaymet/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pydaymet/actions?query=workflow%3Apytest
+    :target: https://github.com/cheginit/pydaymet/actions/workflows/test.yml
     :alt: Github Actions
 
 .. |pygeohydro_stat| image:: https://pepy.tech/badge/hydrodata
