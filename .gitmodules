@@ -22,3 +22,7 @@
 	path = pydaymet
 	url = https://github.com/cheginit/pydaymet.git
 	branch = main
+[submodule "HyRiver-Examples"]
+	path = HyRiver-Examples
+	url = https://github.com/cheginit/HyRiver-Examples
+	branch = main
