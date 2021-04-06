@@ -44,6 +44,13 @@ export INDEX_FOOTER=$(value generate_footer)
 
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	SED := sed -i '' -e
+else
+	SED := sed -i -e
+endif
+
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
@@ -68,7 +75,7 @@ lint: ## check style with flake8
 docs: ## generate Sphinx HTML documentation, including API docs
 	sed -n '1,/Installation/{/Installation/!p;}' README.rst > docs/source/index.rst
 	echo $$INDEX_FOOTER >> docs/source/index.rst
-	sed -i  '' -e 's/\t/    /g' docs/source/index.rst
+	$(SED) 's/\t/    /g' docs/source/index.rst
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/build/html/index.html
