@@ -1,18 +1,24 @@
 [submodule "pygeoogc"]
 	path = pygeoogc
 	url = https://github.com/cheginit/pygeoogc.git
+	branch = main
 [submodule "pygeoutils"]
 	path = pygeoutils
 	url = https://github.com/cheginit/pygeoutils.git
+	branch = main
 [submodule "pynhd"]
 	path = pynhd
 	url = https://github.com/cheginit/pynhd.git
+	branch = main
 [submodule "py3dep"]
 	path = py3dep
 	url = https://github.com/cheginit/py3dep.git
+	branch = main
 [submodule "pygeohydro"]
 	path = pygeohydro
 	url = https://github.com/cheginit/pygeohydro.git
+	branch = main
 [submodule "pydaymet"]
 	path = pydaymet
 	url = https://github.com/cheginit/pydaymet.git
+	branch = main
