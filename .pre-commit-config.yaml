@@ -1,13 +1,12 @@
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.0
     hooks:
     - id: trailing-whitespace
     - id: check-executables-have-shebangs
     - id: requirements-txt-fixer
     - id: check-added-large-files
       args: ['--maxkb=50000']
-    - id: end-of-file-fixer
     - id: check-merge-conflict
     - id: check-yaml
     - id: debug-statements
