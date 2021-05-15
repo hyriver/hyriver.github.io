@@ -66,9 +66,9 @@
     :target: https://hyriver.readthedocs.io/en/latest/?badge=latest
     :alt: ReadTheDocs
 
-.. image:: https://zenodo.org/badge/237573928.svg
-    :target: https://zenodo.org/badge/latestdoi/237573928
-    :alt: Zenodo
+.. image:: https://joss.theoj.org/papers/b0df2f6192f0a18b9e622a3edff52e77/status.svg
+    :target: https://joss.theoj.org/papers/b0df2f6192f0a18b9e622a3edff52e77
+    :alt: JOSS
 
 =========== ==================================================================== =================
 Package     Description                                                          Status
@@ -84,12 +84,6 @@ PyDaymet_   Access Daymet for daily climate data both single pixel and gridded  
 
 HyRiver: Hydroclimate Data Retriever
 =====================================
-
-============ ============ ============ ============ ============ ============
-PyGeoOGC     PyGeoUtils   PyNHD        PyGeoHydro   Py3DEP       PyDaymet
-============ ============ ============ ============ ============ ============
-|pygeoogc|   |pygeoutils| |pynhd|      |pygeohydro| |py3dep|     |pydaymet|
-============ ============ ============ ============ ============ ============
 
 .. note::
 

@@ -1,31 +1,33 @@
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/hyriver_logo_text.png
-    :target: https://github.com/cheginit/HyRiver-examples
+.. |async| image:: https://img.shields.io/pypi/v/async_retriever?label=AsyncRetriever&color=green
+    :target: https://github.com/cheginit/async_retriever
+    :alt: PyPi Version
 
-|
+.. |pygeohydro| image:: https://img.shields.io/pypi/v/pygeohydro?label=PyGeoHydro&color=green
+    :target: https://github.com/cheginit/pygeohydro
+    :alt: PyPi Version
 
-.. |pygeohydro| image:: https://github.com/cheginit/pygeohydro/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeohydro/actions/workflows/test.yml
-    :alt: Github Actions
+.. |pygeoogc| image:: https://img.shields.io/pypi/v/pygeoogc?label=PyGeoOGC&color=green
+    :target: https://github.com/cheginit/pygeoogc
+    :alt: PyPi Version
 
-.. |pygeoogc| image:: https://github.com/cheginit/pygeoogc/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeoogc/actions/workflows/test.yml
-    :alt: Github Actions
+.. |pygeoutils| image:: https://img.shields.io/pypi/v/pygeoutils?label=PyGeoUtils&color=green
+    :target: https://github.com/cheginit/pygeoutils
+    :alt: PyPi Version
 
-.. |pygeoutils| image:: https://github.com/cheginit/pygeoutils/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeoutils/actions/workflows/test.yml
-    :alt: Github Actions
+.. |pynhd| image:: https://img.shields.io/pypi/v/pynhd?label=PyNHD&color=green
+    :target: https://github.com/cheginit/pynhd
+    :alt: PyPi Version
 
-.. |pynhd| image:: https://github.com/cheginit/pynhd/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pynhd/actions/workflows/test.yml
-    :alt: Github Actions
+.. |py3dep| image:: https://img.shields.io/pypi/v/py3dep?label=Py3DEP&color=green
+    :target: https://github.com/cheginit/py3dep
+    :alt: PyPi Version
 
-.. |py3dep| image:: https://github.com/cheginit/py3dep/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/py3dep/actions/workflows/test.yml
-    :alt: Github Actions
+.. |pydaymet| image:: https://img.shields.io/pypi/v/pydaymet?label=PyDaymet&color=green
+    :target: https://github.com/cheginit/pydaymet
+    :alt: PyPi Version
 
-.. |pydaymet| image:: https://github.com/cheginit/pydaymet/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pydaymet/actions/workflows/test.yml
-    :alt: Github Actions
+.. |async_stat| image:: https://pepy.tech/badge/async_retriever
+    :target: https://pepy.tech/project/async_retriever
 
 .. |pygeohydro_stat| image:: https://pepy.tech/badge/hydrodata
     :target: https://pepy.tech/project/hydrodata
@@ -51,12 +53,9 @@
     :target: https://pepy.tech/project/pydaymet
     :alt: Download Stat
 
-.. _PyGeoHydro: https://github.com/cheginit/pygeohydro
-.. _PyGeoOGC: https://github.com/cheginit/pygeoogc
-.. _PyGeoUtils: https://github.com/cheginit/pygeoutils
-.. _PyNHD: https://github.com/cheginit/pynhd
-.. _Py3DEP: https://github.com/cheginit/py3dep
-.. _PyDaymet: https://github.com/cheginit/pydaymet
+
+Hydroclimate Data Retriever
+===========================
 
 .. image:: https://mybinder.org/badge_logo.svg
     :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
@@ -66,86 +65,89 @@
     :target: https://hyriver.readthedocs.io/en/latest/?badge=latest
     :alt: ReadTheDocs
 
-.. image:: https://zenodo.org/badge/237573928.svg
-    :target: https://zenodo.org/badge/latestdoi/237573928
-    :alt: Zenodo
+.. image:: https://joss.theoj.org/papers/b0df2f6192f0a18b9e622a3edff52e77/status.svg
+    :target: https://joss.theoj.org/papers/b0df2f6192f0a18b9e622a3edff52e77
+    :alt: JOSS
 
-=========== ==================================================================== =================
-Package     Description                                                          Status
-=========== ==================================================================== =================
-PyGeoHydro_ Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro_stat|
-PyGeoOGC_   Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc_stat|
-PyGeoUtils_ Convert responses from PyGeoOGC's supported web services to datasets |pygeoutils_stat|
-PyNHD_      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd_stat|
-Py3DEP_     Access topographic data through National Map's 3DEP web service      |py3dep_stat|
-PyDaymet_   Access Daymet for daily climate data both single pixel and gridded   |pydaymet_stat|
-=========== ==================================================================== =================
+|
 
-
-HyRiver: Hydroclimate Data Retriever
-=====================================
-
-============ ============ ============ ============ ============ ============
-PyGeoOGC     PyGeoUtils   PyNHD        PyGeoHydro   Py3DEP       PyDaymet
-============ ============ ============ ============ ============ ============
-|pygeoogc|   |pygeoutils| |pynhd|      |pygeohydro| |py3dep|     |pydaymet|
-============ ============ ============ ============ ============ ============
-
-.. note::
-
-    This software stack was formerly named `hydrodata <https://pypi.org/project/hydrodata>`__.
-    Since an `R <https://github.com/mikejohnson51/HydroData>`__ package with the same name
-    already exists, we decided to renamed our project to
-    HyRiver.
-
-Features
---------
-
-`HyRiver <https://hyriver.readthedocs.io>`__ is a software stack consisting of six
+`HyRiver <https://hyriver.readthedocs.io>`__ (formerly named
+`hydrodata <https://pypi.org/project/hydrodata>`__) is a software stack consisting of six
 Python libraries that are designed to aid in watershed analysis through web services.
-Currently, this project only includes hydrology and climatology data
-within the US. Some of the major capabilities of HyRiver are as follows:
+Currently, this project only includes hydrology and climatology data within the US.
 
-* Easy access to many web services for subsetting data on server-side and returning the requests
-  as masked Datasets or GeoDataFrames.
-* Splitting large requests into smaller chunks, under-the-hood, since web services often limit
-  the number of features per request. So the only bottleneck for subsetting the data
-  is your local machine memory.
-* Navigating and subsetting NHDPlus database (both medium- and high-resolution) using web services.
-* Cleaning up the vector NHDPlus data, fixing some common issues, and computing vector-based
-  accumulation through a river network.
-* A URL inventory for some of the popular (and tested) web services.
-* Some utilities for manipulating the obtained data and their visualization.
+.. toctree::
+    :maxdepth: 1
+    :hidden:
 
-Please visit `examples <https://hyriver.readthedocs.io/en/latest/examples.html>`__
-webpage to see some example notebooks. You can also try this project without installing
-it on you system by clicking on the binder badge below the PyGeoHydro banner. A Jupyter notebook
-instance with the PyGeoHydro software stack pre-installed will be launched in your web browser
-and you can start coding!
+    getting_started
+    examples
 
-Please note that this project is in early development stages, while the provided
-functionalities should be stable, changes in APIs are possible in new releases. But we
-appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
+.. toctree::
+    :maxdepth: 1
+    :hidden:
 
-Moreover, requests for additional databases and functionalities can be submitted via issue trackers
-of packages.
-
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
-    :target: https://github.com/cheginit/HyRiver-examples
-
-
-.. toctree:: 
-    :maxdepth: 1 
-    :caption: Getting Started 
- 
-    installation 
-    examples 
- 
-.. toctree:: 
-    :maxdepth: 1 
-    :caption: Help & Reference 
- 
-    history 
-    contributing 
-    authors 
+    autoapi/index
+    history
+    contributing
+    authors
     license
+
+
+.. panels::
+    :column: col-lg-12 p-2
+
+    **High-level APIs for accessing some pre-configured web services**
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. tabbed:: PyNHD
+
+        Navigate and subset mid- and high-res NHD, NHDPlus, and NHDPlus VAA
+        using WaterData, NLDI, ScienceBase, and The National Map web services.
+
+        |pynhd| |pynhd_stat|
+
+    .. tabbed:: PyGeoHydro
+
+        Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases.
+
+        |pygeohydro| |pygeohydro_stat|
+
+    .. tabbed:: Py3DEP
+
+        Access topographic data through The National Map's 3DEP web service.
+
+        |py3dep| |py3dep_stat|
+
+    .. tabbed:: PyDaymet
+
+        Access Daymet for daily, monthly and annual summaries of climate data
+        at 1-km scale for both single pixels and gridded.
+
+        |pydaymet| |pydaymet_stat|
+
+.. panels::
+    :column: col-lg-12 p-2
+
+    **Low-level APIs for connecting to supported web service protocols**
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. tabbed:: PyGeoOGC
+
+        Send queries to and recieve responses from any ArcGIS RESTful-, WMS-,
+        and WFS-based services.
+
+        |pygeoogc| |pygeoogc_stat|
+
+    .. tabbed:: PyGeoUtils
+
+        Convert responses from PyGeoOGC's supported web services protocols into
+        geospatial and raster datasets.
+
+        |pygeoutils| |pygeoutils_stat|
+
+    .. tabbed:: AsyncRetriever
+
+        Asynchronous send/receive requests with persistent caching.
+
+        |async| |async_stat|

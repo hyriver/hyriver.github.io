@@ -4,27 +4,20 @@ channels:
   - nodefaults
 dependencies:
   - python=3.8
-  - pip
-  - setuptools
-  - pre-commit
-  - pygithub
-
-  # doc deps
   - ipykernel
   - ipython
   - jupyter_client
   - recommonmark
   - nbsphinx
+  - pygithub
   - sphinx
   - sphinx-copybutton
   - sphinx-gallery
   - sphinx-autoapi
+  - sphinx-panels
+  - sphinx-book-theme
 
-  # sphinx-material deps
-  - beautifulsoup4
-  - python-slugify
-  - css-html-js-minify
-  - unidecode
+  - pip
   - pip:
     - nbsphinx_link
-    - git+https://github.com/bashtage/sphinx-material.git
+    - sphinxext-opengraph
