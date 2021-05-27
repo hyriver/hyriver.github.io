@@ -73,12 +73,12 @@
 =========== ==================================================================== =================
 Package     Description                                                          Status
 =========== ==================================================================== =================
-PyGeoHydro_ Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro_stat|
-PyGeoOGC_   Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc_stat|
-PyGeoUtils_ Convert responses from PyGeoOGC's supported web services to datasets |pygeoutils_stat|
-PyNHD_      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd_stat|
-Py3DEP_     Access topographic data through National Map's 3DEP web service      |py3dep_stat|
-PyDaymet_   Access Daymet for daily climate data both single pixel and gridded   |pydaymet_stat|
+PyNHD_      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
+Py3DEP_     Access topographic data through National Map's 3DEP web service      |py3dep|
+PyGeoHydro_ Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro|
+PyDaymet_   Access Daymet for daily climate data both single pixel and gridded   |pydaymet|
+PyGeoOGC_   Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
+PyGeoUtils_ Convert responses from PyGeoOGC's supported web services to datasets |pygeoutils|
 =========== ==================================================================== =================
 
 
