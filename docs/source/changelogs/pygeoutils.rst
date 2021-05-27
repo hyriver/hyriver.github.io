@@ -1,0 +1,1 @@
+.. include:: ../../../pygeoutils/HISTORY.rst

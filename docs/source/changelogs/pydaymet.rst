@@ -1,0 +1,1 @@
+.. include:: ../../../pydaymet/HISTORY.rst
