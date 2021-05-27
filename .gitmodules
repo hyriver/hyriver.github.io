@@ -26,3 +26,7 @@
 	path = HyRiver-Examples
 	url = https://github.com/cheginit/HyRiver-Examples
 	branch = main
+[submodule "async_retriever"]
+	path = async_retriever
+	url = https://github.com/cheginit/async_retriever.git
+	branch = main
