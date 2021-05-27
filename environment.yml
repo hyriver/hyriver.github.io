@@ -3,30 +3,46 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  # pygeoogc deps
+  - python>=3.8
+
+  # async_retriever
   - aiodns
   - aiohttp
+  - aiohttp-client-cache
+  - aiosqlite
   - brotlipy
-  - chardet
+  - cchardet
   - cytoolz
-  - defusedxml
   - nest-asyncio
   - orjson
+
+  # pygeoogc deps
+  - defusedxml
   - owslib
+  - pyyaml
   - pyproj
   - requests
+  - requests-cache
   - setuptools
   - shapely
   - simplejson
+  - urllib3
 
   # pygeoutils deps
+  - affine
   - geopandas
-  - netCDF4
+  - numpy
+  - netcdf4
+  - orjson
   - rasterio
   - xarray
 
+  # py3dep
+  - click
+
   # pynhd deps
   - networkx
+  - pandas
   - pyarrow
 
   # pygeohydro deps
@@ -35,19 +51,36 @@ dependencies:
   - matplotlib-base
   - openpyxl
 
-  # hyriver stack
-  - pygeoogc
-  - pygeoutils
-  - pynhd
-  - py3dep
-  - pygeohydro
-  - pydaymet
+  # pydaymet deps
+  - dask-core
+  - scipy
 
-  # other third-party deps for running example notebooks
-  - pygeos
+  # optional deps to speed up xarray and geopandas
   - bottleneck
-  - osmnx
-  - descartes
+  - rtree
+  - pygeos
+
+  # Other third-party deps
   - cartopy
   - cmocean
   - mapclassify
+  - contextily
+  - colorcet
+  - geoviews
+  - hvplot
+  - osmnx
+  - tqdm
+  - pytables
+  - ffmpeg
+  - jupyterlab_widgets
+  - ipywidgets
+
+  - pip
+  - pip:
+    - git+https://github.com/cheginit/async_retriever.git
+    - git+https://github.com/cheginit/pygeoogc.git
+    - git+https://github.com/cheginit/pygeoutils.git
+    - git+https://github.com/cheginit/pynhd.git
+    - git+https://github.com/cheginit/py3dep.git
+    - git+https://github.com/cheginit/pydaymet.git
+    - git+https://github.com/cheginit/pygeohydro.git
