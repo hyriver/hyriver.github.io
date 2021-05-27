@@ -8,7 +8,7 @@ Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 
 You can contribute in many ways to any of the packages that are included in HyRiver
-project. The workflow is the same for all packages. In this page, a contribution worflow
+project. The workflow is the same for all packages. In this page, a contribution workflow
 for `PyGeoHydro <https://github.com/cheginit/pygeohydro>`__ is explained.
 
 Types of Contributions
@@ -80,11 +80,10 @@ Ready to contribute? Here's how to set up PyGeoHydro for local development.
     $ conda activate pygeohydro-dev
     $ python -m pip install . --no-deps
 
-4. Check out the ``develop`` branch and create a branch for local development:
+4. Create a branch for local development:
 
 .. code-block:: console
 
-    $ git checkout develop
     $ git checkout -b bugfix-or-feature/name-of-your-bugfix-or-feature
     $ git push
 
@@ -105,14 +104,13 @@ Ready to contribute? Here's how to set up PyGeoHydro for local development.
 .. code-block:: console
 
     $ git fetch upstream
-    $ git merge upstream/develop
+    $ git merge upstream/name-of-your-branch
 
 7. Then lint and test the code:
 
 .. code-block:: console
 
     $ make lint
-    $ make coverage
 
 8. If you are making breaking changes make sure to reflect them in
    the documentation, ``README.rst``, and tests if necessary.
