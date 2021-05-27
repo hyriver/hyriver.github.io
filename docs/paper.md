@@ -27,7 +27,7 @@ bibliography: paper.bib
 # Summary
 
 Over the last decade, increasing availability of web services for hydrology and
-climatology data has facilitated publication of reproducible scientific researches in hydrological
+climatology data has facilitated publication of reproducible scientific research in hydrological
 and climate studies. Such web services allow researchers to subset big databases and perform some
 common data processing operations on the server-side. However, implementing such services increases
 the technical complexity of code development as it requires sufficient understanding of their
@@ -35,7 +35,7 @@ underlying protocols to generate valid queries and filters. `HyRiver` bridges th
 by providing a unified and simple Application Programming Interface (API) to web services that are
 based on three of the most commonly used protocols for geo-spatial/temporal data publication:
 REpresentational State Transfer (RESTful), Web Feature Services (WFS), and Web Map Services (WMS).
-`HyRiver` is a software stack consisting of the following Python packages:
+`HyRiver` is a software stack consisting of the following seven Python packages:
 
 * [PyGeoHydro](https://github.com/cheginit/pygeohydro): Provides access to NWIS (National Water
   Information System), NID (National Inventory of Dams), HCDN-2009 (Hydro-Climatic Data Network),
@@ -45,20 +45,12 @@ REpresentational State Transfer (RESTful), Web Feature Services (WFS), and Web M
   hydrologic signature graphs. There is also a helper function which returns a roughness
   coefficients lookup table for NLCD's land cover types. These coefficients can be
   useful for overland flow routing among other applications.
-* [PyGeoOGC](https://github.com/cheginit/pygeoogc): Generates valid queries for retrieving data
-  from supported RESTful-, WMS-, and WFS-based services. Although these web services limit
-  the number of features in a single query, under-the-hood, `PyGeoOGC` takes care of breaking down
-  a large query into smaller queries according to specifications of the services. Additionally,
-  this package offers several notable utilities, such as data re-projection and asynchronous data
-  retrieval for speeding up sending/receiving queries.
-* [PyGeoUtils](https://github.com/cheginit/pygeoutils): Converts responses from PyGeoOGC's
-  supported web services to geo-dataframes (vector data type) or datasets (raster data type).
-  Moreover, for gridded data, it can mask the output dataset based on any given geometry.
 * [PyNHD](https://github.com/cheginit/pynhd): Provides the ability to navigate and subset
   National Hydrography Database [@Buto_2020], at medium- and high-resolution, using NLDI (Hydro
   Network-Linked Data Index), WaterData, and TNM (The National Map) web services. Additionally,
   it can retrieve over 30 catchment-scale attributes from
   [ScienceBase](https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47)
+  and [NHDPlus Value Added Attributes](https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726)
   that are linked to the NHDPlus database via Common Identifiers (ComIDs). `PyNHD` has some
   additional river network tools that use NHDPlus data for routing through a river network.
   This flow routing module is general and accepts any user-defined transport equation for
@@ -73,12 +65,26 @@ REpresentational State Transfer (RESTful), Web Feature Services (WFS), and Web M
   their monthly and annual summaries from the Daymet dataset [@Thornton_2020]. It is possible to
   request data for a single location as well as a grid (any valid geometrical shape) at 1-km
   spatial resolution.
+* [PyGeoOGC](https://github.com/cheginit/pygeoogc): Generates valid queries for retrieving data
+  from supported RESTful-, WMS-, and WFS-based services. Although these web services limit
+  the number of features in a single query, under-the-hood, `PyGeoOGC` takes care of breaking down
+  a large query into smaller queries according to specifications of the services. Additionally,
+  this package offers several notable utilities, such as data re-projection and asynchronous data
+  retrieval for speeding up sending/receiving queries.
+* [PyGeoUtils](https://github.com/cheginit/pygeoutils): Converts responses from PyGeoOGC's
+  supported web services to geo-dataframes (vector data type) or datasets (raster data type).
+  Moreover, for gridded data, it can mask the output dataset based on any given geometry.
+* [AsyncRetriever](https://github.com/cheginit/async_retriever): `AsyncRetriever` has only one
+  purpose; asynchronously sending requests and retrieving responses as `text`, `binary`,
+  or `json` objects. It uses persistent caching to speedup the retrieval even further.
 
-Furthermore, `PyGeoOGC` and `PyGeoUtils` are low-level engines of this software stack that the
-other four packages utilize for providing access to some of the most popular databases in the
-hydrology community. These two low-level packages are generic and developers can use them for
-connecting and sending queries to any other web services that are based on the protocols that
-`HyRiver` supports.
+These packages are standalone and users can install and work with them independently.
+Furthermore, `PyGeoOGC`, `PyGeoUtils`, and `AsyncRetriever` are low-level engines of this software
+stack that the other four packages utilize for providing access to some of the most popular
+databases in the hydrology community. These two low-level packages are generic and developers can
+use them for connecting and sending queries to any other web services that are based on the
+protocols that `HyRiver` supports. Currently, `HyRiver` only supports hydrology and climatology
+datasets within the US.
 
 # Statement of need
 
