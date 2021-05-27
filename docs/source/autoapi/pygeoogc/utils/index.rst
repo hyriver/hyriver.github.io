@@ -81,7 +81,7 @@ Module Contents
 
 
 
-.. py:class:: RetrySession(retries: int = 3, backoff_factor: float = 0.3, status_to_retry: Tuple[int, ...] = (500, 502, 504), prefixes: Tuple[str, ...] = ('https://', ))
+.. py:class:: RetrySession(retries: int = 3, backoff_factor: float = 0.3, status_to_retry: Tuple[int, ...] = (500, 502, 504), prefixes: Tuple[str, ...] = ('https://', ), cache_name: Optional[Union[str, Path]] = None)
 
    Configures the passed-in session to retry on failed requests.
 
@@ -93,6 +93,8 @@ Module Contents
                 * **backoff_factor** (:class:`float`, *optional*) -- A factor used to compute the waiting time between retries, defaults to 0.5.
                 * **status_to_retry** (:class:`tuple`, *optional*) -- A tuple of status codes that trigger the reply behaviour, defaults to (500, 502, 504).
                 * **prefixes** (:class:`tuple`, *optional*) -- The prefixes to consider, defaults to ("http://", "https://")
+                * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, default to None (no caching).
+                  It is recommended to use caching as it can significantly speed up the function.
 
    .. method:: get(self, url: str, payload: Optional[Mapping[str, Any]] = None, headers: Optional[MutableMapping[str, Any]] = None) -> Response
 
@@ -109,22 +111,6 @@ Module Contents
 
       Retrieve data from a url by POST and return the Response.
 
-
-
-.. function:: async_requests(url_payload: List[Tuple[str, Optional[MutableMapping[str, Any]]]], read: str, request: str = 'GET', max_workers: int = 8) -> List[Union[str, MutableMapping[str, Any], bytes]]
-
-   Send async requests.
-
-   This function is based on
-   `this <https://github.com/HydrologicEngineeringCenter/data-retrieval-scripts/blob/master/qpe_async_download.py>`__
-   script.
-
-   :Parameters: * **url_payload** (:class:`list` of :class:`tuples`) -- A list of URLs and payloads as a tuple.
-                * **read** (:class:`str`) -- The method for returning the request; binary, json, and text.
-                * **request** (:class:`str`, *optional*) -- The request type; GET or POST, defaults to GET.
-                * **max_workers** (:class:`int`, *optional*) -- The maximum number of async processes, defaults to 8.
-
-   :returns: :class:`list` -- A list of responses
 
 
 .. function:: bbox_decompose(bbox: Tuple[float, float, float, float], resolution: float, box_crs: str = DEF_CRS, max_px: int = 8000000) -> List[Tuple[Tuple[float, float, float, float], str, int, int]]
@@ -159,6 +145,11 @@ Module Contents
 .. function:: check_response(resp: Response) -> None
 
    Check if a ``requests.Resonse`` returned an error message.
+
+
+.. function:: create_cachefile(db_name: str = 'http_cache') -> Optional[Path]
+
+   Create a cache file if dependencies are met.
 
 
 .. function:: threading(func: Callable, iter_list: Iterable, param_list: Optional[List[Any]] = None, max_workers: int = 8) -> List[Any]

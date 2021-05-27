@@ -81,6 +81,7 @@ Module Contents
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
                 * **service** (:class:`str`, *optional*) -- Name of the web service to use, defaults to hydro. Supported web services are:
+
                   * hydro: https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer
                   * edits: https://edits.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/NHDPlus_HR/MapServer
                 * **auto_switch** (:class:`bool`, *optional*) -- Automatically switch to other services' URL if the first one doesn't work, default to False.
@@ -98,7 +99,7 @@ Module Contents
                    * **loc_crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed ComID(s) in EPSG:4326. If some coords don't return any ComID
-                a list of missing coords are returnd as well.
+                a list of missing coords are returned as well.
 
 
    .. method:: get_basins(self, station_ids: Union[str, List[str]]) -> Union[gpd.GeoDataFrame, Tuple[gpd.GeoDataFrame, List[str]]]
@@ -108,12 +109,12 @@ Module Contents
       :Parameters: **station_ids** (:class:`str` or :class:`list`) -- USGS station ID(s).
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed basins in EPSG:4326. If some IDs don't return any features
-                a list of missing ID(s) are returnd as well.
+                a list of missing ID(s) are returned as well.
 
 
    .. method:: get_validchars(self, char_type: str) -> pd.DataFrame
 
-      Get all the avialable characteristics IDs for a give characteristics type.
+      Get all the available characteristics IDs for a give characteristics type.
 
 
    .. method:: getcharacteristic_byid(self, comids: Union[List[str], str], char_type: str, char_ids: Union[str, List[str]] = 'all', values_only: bool = True) -> Union[pd.DataFrame, Tuple[pd.DataFrame, pd.DataFrame]]
@@ -142,29 +143,30 @@ Module Contents
                    * **fid** (:class:`str` or :class:`list`) -- Feature ID(s).
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed features in EPSG:4326. If some IDs don't return any features
-                a list of missing ID(s) are returnd as well.
+                a list of missing ID(s) are returned as well.
 
 
    .. method:: navigate_byid(self, fsource: str, fid: str, navigation: str, source: str, distance: int = 500) -> gpd.GeoDataFrame
 
-      Navigate the NHDPlus databse from a single feature id up to a distance.
+      Navigate the NHDPlus database from a single feature id up to a distance.
 
       :Parameters: * **fsource** (:class:`str`) -- The name of feature source. The valid sources are:
-                     comid, huc12pp, nwissite, wade, WQP.
+                     ``comid``, ``huc12pp``, ``nwissite``, ``wade``, ``WQP``.
                    * **fid** (:class:`str`) -- The ID of the feature.
                    * **navigation** (:class:`str`) -- The navigation method.
                    * **source** (:class:`str`, *optional*) -- Return the data from another source after navigating
                      the features using fsource, defaults to None.
                    * **distance** (:class:`int`, *optional*) -- Limit the search for navigation up to a distance in km,
                      defaults is 500 km. Note that this is an expensive request so you
-                     have be mindful of the value that you provide.
+                     have be mindful of the value that you provide. The value must be
+                     between 1 to 9999 km.
 
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
 
    .. method:: navigate_byloc(self, coords: Tuple[float, float], navigation: Optional[str] = None, source: Optional[str] = None, loc_crs: str = DEF_CRS, distance: int = 500) -> gpd.GeoDataFrame
 
-      Navigate the NHDPlus databse from a coordinate.
+      Navigate the NHDPlus database from a coordinate.
 
       :Parameters: * **coords** (:class:`tuple`) -- A tuple of length two (x, y).
                    * **navigation** (:class:`str`, *optional*) -- The navigation method, defaults to None which throws an exception
@@ -194,7 +196,7 @@ Module Contents
 
    .. method:: get_children(self, item: str) -> Dict[str, Any]
 
-      Get childern items of an item.
+      Get children items of an item.
 
 
    .. method:: get_files(self, item: str) -> Dict[str, Tuple[str, str]]
@@ -243,8 +245,8 @@ Module Contents
                    * **xy** (:class:`bool`, *optional*) -- Whether axis order of the input geometry is xy or yx.
                    * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to
                      INTERSECTS. Valid predicates are:
-                     EQUALS, DISJOINT, INTERSECTS, TOUCHES, CROSSES, WITHIN, CONTAINS,
-                     OVERLAPS, RELATE, BEYOND
+                     ``EQUALS``, ``DISJOINT``, ``INTERSECTS``, ``TOUCHES``, ``CROSSES``, ``WITHIN``
+                     ``CONTAINS``, ``OVERLAPS``, ``RELATE``, ``BEYOND``
 
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features in the given geometry.
 
@@ -268,5 +270,30 @@ Module Contents
                   file, nhdplus_attrs.feather, in save_dir that can be loaded with Pandas.
 
    :returns: :class:`pandas.DataFrame` -- Either a dataframe containing the database metadata or the requested attribute over CONUS.
+
+
+.. function:: nhdplus_vaa(parquet_name: Optional[Union[Path, str]] = None) -> pd.DataFrame
+
+   Get NHDPlus Value Added Attributes with ComID-level roughness and slope values.
+
+   .. rubric:: Notes
+
+   This downloads a 200 MB ``parquet`` file from
+   `here <https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726>`__ .
+   Although this dataframe does not include geometry, it can be linked to other geospatial
+   NHDPlus dataframes through ComIDs.
+
+   :Parameters: **parquet_name** (:class:`str` or :class:`~~pathlib.Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
+                later use.
+
+   :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million NHDPlus flowlines.
+
+   .. rubric:: Examples
+
+   >>> import tempfile
+   >>> from pathlib import Path
+   >>> vaa = nhdplus_vaa(Path(tempfile.gettempdir(), "nhdplus_vaa.parquet"))
+   >>> print(vaa.slope.max())
+   4.6
 
 

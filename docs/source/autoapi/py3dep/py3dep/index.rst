@@ -14,7 +14,7 @@ Module Contents
 
 .. function:: deg2mpm(da: xr.DataArray) -> xr.DataArray
 
-   Convert ``xarray.Data[Array,set]`` from degree to meter/meter.
+   Convert slope from degree to meter/meter.
 
 
 .. function:: elevation_bycoords(coords: List[Tuple[float, float]], crs: str = DEF_CRS) -> List[int]
@@ -42,12 +42,13 @@ Module Contents
                 * **dim_names** (:class:`tuple`) -- A tuple of length two containing the coordinate names, defaults to ["x", "y"]
                 * **resampling** (:class:`rasterio.warp.Resampling`) -- The reasmpling method to use if the input crs is not in the supported
                   3DEP's CRS list which are epsg:4326 and epsg:3857. It defaults to bilinear.
-                  The available methods can be found `here <https://rasterio.readthedocs.io/en/latest/api/rasterio.enums.html#rasterio.enums.Resampling>`__
+                  The available methods can be found
+                  `here <https://rasterio.readthedocs.io/en/latest/api/rasterio.enums.html#rasterio.enums.Resampling>`__
 
    :returns: :class:`xarray.DataArray` -- An data array with name elevation and the given dim names.
 
 
-.. function:: get_map(layers: Union[str, List[str]], geometry: Union[Polygon, Tuple[float, float, float, float]], resolution: float, geo_crs: str = DEF_CRS, crs: str = DEF_CRS, output_dir: Optional[Union[str, Path]] = None) -> Dict[str, bytes]
+.. function:: get_map(layers: Union[str, List[str]], geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], resolution: float, geo_crs: str = DEF_CRS, crs: str = DEF_CRS) -> Union[xr.DataArray, xr.Dataset]
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
 
@@ -75,7 +76,6 @@ Module Contents
                   epsg:4326.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
-                * **output_dir** (:class:`str` or :class:`~~pathlib.Path`, *optional*) -- The output directory to also save the map as GTiff file(s), defaults to None.
 
    :returns: :class:`dict` -- A dict where the keys are the layer name and values are the returned response
              from the WMS service as bytes. You can use ``utils.create_dataset`` function

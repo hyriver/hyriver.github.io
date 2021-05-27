@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTful
+.. py:class:: ArcGISRESTful(base_url: str, outformat: str = 'geojson', outfields: Union[List[str], str] = '*', spatial_relation: str = 'esriSpatialRelIntersects', crs: str = DEF_CRS, n_threads: int = 1)
 
 
 

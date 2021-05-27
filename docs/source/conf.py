@@ -26,7 +26,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.intersphinx",
     "sphinx.ext.extlinks",
-    "sphinx.ext.viewcode",
+    "sphinx.ext.linkcode",
     "sphinx.ext.mathjax",
     "IPython.sphinxext.ipython_directive",
     "IPython.sphinxext.ipython_console_highlighting",
@@ -56,6 +56,7 @@ intersphinx_mapping = {
 autoapi_dirs = [
     "../../pygeoogc",
     "../../pygeoutils",
+    "../../async_retriever",
     "../../pynhd",
     "../../pygeohydro",
     "../../py3dep",
@@ -84,6 +85,7 @@ modindex_common_prefix = [
 
 # typehints configurations
 autodoc_typehints = "description"
+autodoc_typehints_description_target = "documented"
 
 # nbsphinx configurations
 nbsphinx_timeout = 600
@@ -249,3 +251,57 @@ def setup(app):
         True,
     )
     app.add_transform(AutoStructify)
+
+# -- link to source ----------------------------------------------------------
+
+# based on numpy doc/source/conf.py
+def linkcode_resolve(domain, info):
+    """
+    Determine the URL corresponding to Python object
+    """
+    if domain != "py":
+        return None
+
+    p_name = info["module"].split(".")[0]
+    p_obj = sys.modules.get(p_name)
+
+    modname = info["module"]
+    fullname = info["fullname"]
+
+    submod = sys.modules.get(modname)
+    if submod is None:
+        return None
+
+    obj = submod
+    for part in fullname.split("."):
+        try:
+            obj = getattr(obj, part)
+        except AttributeError:
+            return None
+
+    try:
+        fn = inspect.getsourcefile(inspect.unwrap(obj))
+    except TypeError:
+        fn = None
+    if not fn:
+        return None
+
+    try:
+        source, lineno = inspect.getsourcelines(obj)
+    except OSError:
+        lineno = None
+
+    if lineno:
+        linespec = f"#L{lineno}-L{lineno + len(source) - 1}"
+    else:
+        linespec = ""
+
+    fn = os.path.relpath(fn, start=os.path.dirname(p_obj.__file__))
+
+    if "+" in p_obj.__version__:
+        return f"https://github.com/cheginit/{p_name}/blob/main/{p_name}/{fn}{linespec}"
+    else:
+        return (
+            f"https://github.com/cheginit/{p_name}/blob/"
+            f"v{p_obj.__version__}/{p_name}/{fn}{linespec}"
+        )

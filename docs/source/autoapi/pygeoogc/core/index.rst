@@ -131,7 +131,7 @@ Module Contents
 
    .. method:: get_validlayers(self) -> Dict[str, str]
 
-      Get the layers supportted by the WMS service.
+      Get the layers supported by the WMS service.
 
 
    .. method:: validate_wms(self) -> None

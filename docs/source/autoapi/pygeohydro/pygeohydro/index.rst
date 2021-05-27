@@ -28,7 +28,7 @@ Module Contents
 
    .. method:: get_xlsx(self) -> io.BytesIO
 
-      Get the excel file that containes the dam data.
+      Get the excel file that contains the dam data.
 
 
 
@@ -36,58 +36,26 @@ Module Contents
 
    Access NWIS web service.
 
-   .. method:: get_info(self, query: Dict[str, str], expanded: bool = False) -> pd.DataFrame
+   .. method:: get_info(self, queries: Union[Dict[str, str], List[Dict[str, str]]], expanded: bool = False) -> pd.DataFrame
 
-      Get NWIS stations by a list of IDs or within a bounding box.
+      Send multiple queries to USGS Site Web Service.
 
-      Only stations that record(ed) daily streamflow data are returned.
-      The following columns are included in the dataframe with expanded
-      set to False:
+      :Parameters: * **queries** (:class:`dict` or :class:`list` of :class:`dict`) -- A single or a list of valid queries.
+                   * **expanded** (:class:`bool`, *optional*) -- Whether to get expanded sit information for example drainage area, default to False.
 
-      ==================  ==================================
-      Name                Description
-      ==================  ==================================
-      site_no             Site identification number
-      station_nm          Site name
-      site_tp_cd          Site type
-      dec_lat_va          Decimal latitude
-      dec_long_va         Decimal longitude
-      coord_acy_cd        Latitude-longitude accuracy
-      dec_coord_datum_cd  Decimal Latitude-longitude datum
-      alt_va              Altitude of Gage/land surface
-      alt_acy_va          Altitude accuracy
-      alt_datum_cd        Altitude datum
-      huc_cd              Hydrologic unit code
-      parm_cd             Parameter code
-      stat_cd             Statistical code
-      ts_id               Internal timeseries ID
-      loc_web_ds          Additional measurement description
-      medium_grp_cd       Medium group code
-      parm_grp_cd         Parameter group code
-      srs_id              SRS ID
-      access_cd           Access code
-      begin_date          Begin date
-      end_date            End date
-      count_nu            Record count
-      hcdn_2009           Whether is in HCDN-2009 stations
-      ==================  ==================================
-
-      :Parameters: * **query** (:class:`dict`) -- A dictionary containing query by IDs or BBOX. Use ``query_byid`` or ``query_bbox``
-                     class methods to generate the queries.
-                   * **expanded** (:class:`bool`, *optional*) -- Whether to get expanded sit information for example drainage area.
-
-      :returns: :class:`pandas.DataFrame` -- NWIS stations
+      :returns: :class:`pandas.DataFrame` -- A typed dataframe containing the site information.
 
 
-   .. method:: get_streamflow(self, station_ids: Union[List[str], str], dates: Tuple[str, str], mmd: bool = False) -> pd.DataFrame
+   .. method:: get_streamflow(self, station_ids: Union[Sequence[str], str], dates: Tuple[str, str], mmd: bool = False) -> pd.DataFrame
 
-      Get daily streamflow observations from USGS.
+      Get mean daily streamflow observations from USGS.
 
       :Parameters: * **station_ids** (:class:`str`, :class:`list`) -- The gage ID(s)  of the USGS station.
                    * **dates** (:class:`tuple`) -- Start and end dates as a tuple (start, end).
                    * **mmd** (:class:`bool`) -- Convert cms to mm/day based on the contributing drainage area of the stations.
 
-      :returns: :class:`pandas.DataFrame` -- Streamflow data observations in cubic meter per second (cms)
+      :returns: :class:`pandas.DataFrame` -- Streamflow data observations in cubic meter per second (cms). The stations that
+                don't provide mean daily discharge in the target period will be dropped.
 
 
    .. method:: query_bybox(bbox: Tuple[float, float, float, float]) -> Dict[str, str]
@@ -96,7 +64,7 @@ Module Contents
       Generate the geometry keys and values of an ArcGISRESTful query.
 
 
-   .. method:: query_byid(ids: Union[str, List[str]]) -> Dict[str, str]
+   .. method:: query_byid(ids: Iterable[str]) -> Dict[str, str]
       :staticmethod:
 
       Generate the geometry keys and values of an ArcGISRESTful query.
@@ -107,7 +75,7 @@ Module Contents
 
    Percentages of the categorical NLCD cover data.
 
-   :Parameters: **ds** (:class:`xarray.Dataset`) -- Cover dataarray of a LULC dataset from the `nlcd` function.
+   :Parameters: **ds** (:class:`xarray.Dataset`) -- Cover DataArray from a LULC Dataset from the ``nlcd`` function.
 
    :returns: :class:`dict` -- Statistics of NLCD cover data
 
@@ -118,7 +86,7 @@ Module Contents
 
    .. rubric:: Notes
 
-   This function downloads a 25 MB `xlsx` file and convert it into a
+   This function downloads a 25 MB excel file and convert it into a
    GeoDataFrame. So, your net speed might be a bottleneck. Another
    bottleneck is data loading since the dataset has more than 91K rows,
    it might take sometime for Pandas to load the data into memory.
@@ -138,17 +106,27 @@ Module Contents
              letter codes. For example, ``tables.loc[('Core Type',  'A')]`` returns Bituminous Concrete.
 
 
-.. function:: interactive_map(bbox: Tuple[float, float, float, float]) -> folium.Map
+.. function:: interactive_map(bbox: Tuple[float, float, float, float], crs: str = DEF_CRS, dv: bool = False, iv: bool = False, param_cd: Optional[str] = None) -> folium.Map
 
    Generate an interactive map including all USGS stations within a bounding box.
 
-   .. rubric:: Notes
-
-   Only stations that record(ed) daily streamflow data are included.
-
-   :Parameters: **bbox** (:class:`tuple`) -- List of corners in this order (west, south, east, north)
+   :Parameters: * **bbox** (:class:`tuple`) -- List of corners in this order (west, south, east, north)
+                * **crs** (:class:`str`, *optional*) -- CRS of the input bounding box, defaults to EPSG:4326.
+                * **dv** (:class:`bool`, *optional*) -- Only include stations that record daily values, default to False.
+                * **iv** (:class:`bool`, *optional*) -- Only include stations that record instantaneous/real-time values, default to False.
+                * **param_cd** (:class:`str`, *optional*) -- Parameter code for further filtering the stations, defaults to None.
+                  A list of parameter codes can be found
+                  `here <https://help.waterdata.usgs.gov/codes-and-parameters/parameters>`__.
 
    :returns: :class:`folium.Map` -- Interactive map within a bounding box.
+
+   .. rubric:: Examples
+
+   >>> import pygeohydro as gh
+   >>> m = gh.interactive_map((-69.77, 45.07, -69.31, 45.45), dv=True, iv=True)
+   >>> n_stations = len(m.to_dict()["children"]) - 1
+   >>> n_stations
+   10
 
 
 .. function:: nlcd(geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], resolution: float, years: Optional[Dict[str, Optional[int]]] = None, geo_crs: str = DEF_CRS, crs: str = DEF_CRS) -> xr.Dataset

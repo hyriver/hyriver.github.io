@@ -27,7 +27,7 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install pygeoogc pygeoutils py3dep pynhd pygeohydro pydaymet
+    $ pip install py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 Please note that installation with ``pip`` fails if ``libgdal`` is not installed on your system.
 You should install this package manually beforehand. For example, on Ubuntu-based distros
@@ -39,50 +39,79 @@ the ``conda-forge`` repository:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge pygeoogc pygeoutils py3de pynhd pygeohydro pydaymet
+    $ conda install -c conda-forge py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 or:
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority pygeoogc pygeoutils py3de pynhd pygeohydro pydaymet
+    $ mamba install -c conda-forge --strict-channel-priority py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 Dependencies
 ------------
 
 .. panels::
-    :column: col-lg-12 p-2
+    :column: col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2
 
     .. tabbed:: PyNHD
 
-        - ``pygeoutils``
+        - ``cytoolz``
+        - ``geopandas``
         - ``networkx``
+        - ``numpy``
+        - ``pandas``
         - ``pyarrow``
+        - ``pygeoogc``
+        - ``pygeoutils``
+        - ``requests``
+        - ``shapely``
+        - ``simplejson``
 
     .. tabbed:: PyGeoHydro
 
-        - ``pynhd``
+        - ``defusedxml``
         - ``folium``
+        - ``geopandas``
         - ``lxml``
         - ``matplotlib``
+        - ``numpy``
         - ``openpyxl``
+        - ``pandas``
+        - ``pygeoogc``
+        - ``pygeoutils``
+        - ``pynhd``
+        - ``rasterio``
+        - ``shapely``
 
     .. tabbed:: Py3DEP
 
+        - ``click``
+        - ``cytoolz``
+        - ``numpy``
+        - ``pygeoogc``
         - ``pygeoutils``
+        - ``rasterio``
+        - ``shapely``
+        - ``xarray``
 
     .. tabbed:: PyDaymet
 
-        - ``py3dep``
-        - ``aiohttp-client-cache`` (optional)
-        - ``aiosqlite`` (optional)
         - ``async_retriever``
-        - ``dask``
+        - ``click``
+        - ``dask[complete]``
         - ``lxml``
+        - ``numpy``
+        - ``pandas``
+        - ``py3dep``
+        - ``pygeoogc``
+        - ``pygeoutils``
+        - ``rasterio``
         - ``scipy``
+        - ``shapely``
+        - ``xarray``
 
 .. panels::
-    :column: col-lg-12 p-2
+    :column: col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2
 
     .. tabbed:: PyGeoOGC
 
@@ -90,31 +119,33 @@ Dependencies
         - ``defusedxml``
         - ``owslib``
         - ``pyproj``
+        - ``pyyaml``
         - ``requests``
-        - ``requests_cache`` (optional)
-        - ``setuptools``
+        - ``shapely``
+        - ``simplejson``
+        - ``urllib3``
 
     .. tabbed:: PyGeoUtils
 
-        - ``pygeoogc``
+        - ``affine``
         - ``geopandas``
         - ``netcdf4``
+        - ``numpy``
+        - ``orjson``
+        - ``pygeoogc``
+        - ``pyproj``
         - ``rasterio``
+        - ``shapely``
         - ``xarray``
 
     .. tabbed:: AsyncRetriever
 
-        - ``aiodns``
-        - ``aiohttp``
-        - ``aiohttp-client-cache`` (optional)
-        - ``aiosqlite`` (optional)
-        - ``brotlipy``
-        - ``chardet``
+        - ``aiohttp-client-cache``
+        - ``aiohttp[speedups]``
+        - ``aiosqlite``
         - ``cytoolz``
         - ``nest-asyncio``
         - ``orjson``
-        - ``setuptools``
-
 
 Additionally, you can also install ``bottleneck``, ``pygeos``, and ``rtree`` to improve
 performance of ``xarray`` and ``geopandas``. For handling vector and

@@ -72,7 +72,7 @@ Hydroclimate Data Retriever
 |
 
 `HyRiver <https://hyriver.readthedocs.io>`__ (formerly named
-`hydrodata <https://pypi.org/project/hydrodata>`__) is a software stack consisting of six
+`hydrodata <https://pypi.org/project/hydrodata>`__) is a software stack consisting of seven
 Python libraries that are designed to aid in watershed analysis through web services.
 Currently, this project only includes hydrology and climatology data within the US.
 
@@ -134,7 +134,7 @@ Currently, this project only includes hydrology and climatology data within the 
 
     .. tabbed:: PyGeoOGC
 
-        Send queries to and recieve responses from any ArcGIS RESTful-, WMS-,
+        Send queries to and receive responses from any ArcGIS RESTful-, WMS-,
         and WFS-based services.
 
         |pygeoogc| |pygeoogc_stat|
