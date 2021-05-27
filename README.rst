@@ -95,7 +95,7 @@ HyRiver: Hydroclimate Data Retriever
 Features
 --------
 
-`HyRiver <https://hyriver.readthedocs.io>`__ is a software stack consisting of six
+`HyRiver <https://hyriver.readthedocs.io>`__ is a software stack consisting of seven
 Python libraries that are designed to aid in watershed analysis through web services.
 Currently, this project only includes hydrology and climatology data
 within the US. Some of the major capabilities of HyRiver are as follows:
@@ -113,8 +113,8 @@ within the US. Some of the major capabilities of HyRiver are as follows:
 
 Please visit `examples <https://hyriver.readthedocs.io/en/latest/examples.html>`__
 webpage to see some example notebooks. You can also try this project without installing
-it on you system by clicking on the binder badge below the PyGeoHydro banner. A Jupyter notebook
-instance with the PyGeoHydro software stack pre-installed will be launched in your web browser
+it on you system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver software stack pre-installed will be launched in your web browser
 and you can start coding!
 
 Please note that this project is in early development stages, while the provided
@@ -134,16 +134,16 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install pygeoogc pygeoutils py3dep pynhd pygeohydro pydaymet
+    $ pip install py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 or ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge pygeoogc pygeoutils py3de pynhd pygeohydro pydaymet
+    $ conda install -c conda-forge py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 or ``mamba`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority pygeoogc pygeoutils py3de pynhd pygeohydro pydaymet
+    $ mamba install -c conda-forge --strict-channel-priority py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
