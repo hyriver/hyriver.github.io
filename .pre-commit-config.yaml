@@ -14,7 +14,7 @@ repos:
       args: ['--fix=lf']
 
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.8.0
+    rev: v1.9.0
     hooks:
     - id: rst-backticks
     - id: rst-directive-colons
@@ -28,7 +28,7 @@ repos:
       args: [-t, py38, -l, "100"]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.0.0
+    rev: v2.1.0
     hooks:
     - id: codespell
       name: Checks for common misspellings in text files.
