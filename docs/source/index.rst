@@ -77,9 +77,10 @@ consisting of seven Python libraries that are designed to aid in watershed
 analysis through web services. Currently, this project only includes hydrology
 and climatology data within the US.
 
-You can watch this videos for a quick overview of ``HyRiver``:
+You can watch these videos for a quick overview of ``HyRiver``:
 
 * `Pangeo Showcase <https://discourse.pangeo.io/t/may-26-2021-accessing-hydrology-and-climatology-database-using-web-services-through-python/1521>`__
+* `ESIP IT&I <https://youtu.be/Wz8Y5G9oy-M?t=1838>`__
 
 .. toctree::
     :maxdepth: 1
