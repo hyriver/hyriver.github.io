@@ -70,6 +70,18 @@ Module Contents
       Generate the geometry keys and values of an ArcGISRESTful query.
 
 
+   .. method:: retrieve_rdb(self, service: str, payloads: List[Dict[str, str]]) -> pd.DataFrame
+
+      Retrieve and process requests with RDB format.
+
+      :Parameters: * **service** (:class:`str`) -- Name of USGS REST service, valid values are ``site``, ``dv``, ``iv``,
+                     ``gwlevels``, and ``stat``. Please consult USGS documentation
+                     `here <https://waterservices.usgs.gov/rest>`__ for more information.
+                   * **payloads** (:class:`list` of :class:`dict`) -- List of target payloads.
+
+      :returns: :class:`pandas.DataFrame` -- Requested features as a pandas's DataFrame.
+
+
 
 .. function:: cover_statistics(ds: xr.Dataset) -> Dict[str, Union[np.ndarray, Dict[str, float]]]
 

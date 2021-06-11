@@ -21,11 +21,12 @@ Module Contents
                   Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.
                   Defaults to None i.e., all the variables are downloaded.
                 * **pet** (:class:`bool`, *optional*) -- Whether to compute evapotranspiration based on
-                  `UN-FAO 56 paper <http://www.fao.org/3/X0490E/x0490e06.htm#equation>`__.
+                  `UN-FAO 56 paper <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
                   The default is False
                 * **time_scale** (:class:`str`, *optional*) -- Data time scale which can be daily, monthly (monthly summaries),
                   or annual (annual summaries). Defaults to daily.
                 * **region** (:class:`str`, *optional*) -- Region in the US, defaults to na. Acceptable values are:
+
                   * na: Continental North America
                   * hi: Hawaii
                   * pr: Puerto Rico
@@ -42,8 +43,7 @@ Module Contents
       Check the validity of input based on a list of valid options.
 
 
-   .. method:: dates_todict(dates: Tuple[str, str]) -> Dict[str, str]
-      :staticmethod:
+   .. method:: dates_todict(self, dates: Tuple[str, str]) -> Dict[str, str]
 
       Set dates by start and end dates as a tuple, (start, end).
 
@@ -68,14 +68,14 @@ Module Contents
       .. rubric:: Notes
 
       The method is based on
-      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm#equation>`__.
+      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
       Moreover, we assume that soil heat flux density is zero and wind speed at 2 m height
       is 2 m/s. The following variables are required:
       tmin (deg c), tmax (deg c), lat, lon, vp (Pa), srad (W/m2), dayl (s/day)
       The computed PET's unit is mm/day.
 
       :Parameters: * **clm_df** (:class:`~pandas.DataFrame`) -- A dataframe with columns named as follows:
-                     ``tmin (deg c)``, ``tmax (deg c)``, ``vp (Pa)``, ``srad (W/m^2)``, ``dayl (s)``
+                     ``tmin (deg c)``, ``tmax (deg c)``, ``vp (Pa)``, ``srad (W/m^2)``, and ``dayl (s)``.
                    * **coords** (:class:`tuple` of :class:`floats`) -- Coordinates of the daymet data location as a tuple, (x, y).
                    * **crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to epsg:4326
                    * **alt_unit** (:class:`str`, *optional*) -- Whether to use alternative units rather than the official ones, defaults to False.
@@ -89,7 +89,7 @@ Module Contents
       Compute Potential EvapoTranspiration using Daymet dataset.
 
       The method is based on
-      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm#equation>`__.
+      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
       Moreover, we assume that soil heat flux density is zero and wind speed at 2 m height
       is 2 m/s. The following variables are required:
       tmin (deg c), tmax (deg c), lat, lon, vp (Pa), srad (W/m2), dayl (s/day)
@@ -101,8 +101,7 @@ Module Contents
       :returns: :class:`xarray.DataArray` -- The input dataset with an additional variable called ``pet``.
 
 
-   .. method:: years_todict(years: Union[List[int], int]) -> Dict[str, str]
-      :staticmethod:
+   .. method:: years_todict(self, years: Union[List[int], int]) -> Dict[str, str]
 
       Set date by list of year(s).
 

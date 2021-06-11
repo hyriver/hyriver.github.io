@@ -12,30 +12,60 @@
 Module Contents
 ---------------
 
-.. py:class:: MatchCRS
+.. py:class:: MatchCRS(in_crs: str, out_crs: str)
 
-   Match CRS of an input geometry (Polygon, bbox, coord) with the output CRS.
+   Reproject a geometry to another CRS.
 
-   :Parameters: * **geometry** (:class:`tuple` or :class:`Polygon`) -- The input geometry (Polygon, bbox, coord)
-                * **in_crs** (:class:`str`) -- The spatial reference of the input geometry
-                * **out_crs** (:class:`str`) -- The target spatial reference
+   :Parameters: * **in_crs** (:class:`str`) -- Spatial reference of the input geometry
+                * **out_crs** (:class:`str`) -- Target spatial reference
 
-   .. method:: bounds(geom: Tuple[float, float, float, float], in_crs: str, out_crs: str) -> Tuple[float, float, float, float]
-      :staticmethod:
+   .. method:: bounds(self, geom: Tuple[float, float, float, float]) -> Tuple[float, float, float, float]
 
-      Transform a bounding box ``(west, south, east, north)``.
+      Reproject a bounding box to the specified output CRS.
+
+      :Parameters: **geometry** (:class:`tuple`) -- Input bounding box (xmin, ymin, xmax, ymax).
+
+      :returns: :class:`tuple` -- Input bounding box in the specified CRS.
+
+      .. rubric:: Examples
+
+      >>> from pygeoutils import MatchCRS
+      >>> bbox = (-7766049.665, 5691929.739, -7763049.665, 5696929.739)
+      >>> MatchCRS("epsg:3857", "epsg:4326").bounds(bbox)
+      (-69.7636111130079, 45.44549114818127, -69.73666165448431, 45.47699468552394)
 
 
-   .. method:: coords(geom: Tuple[Tuple[float, ...], Tuple[float, ...]], in_crs: str, out_crs: str) -> Tuple[Any, ...]
-      :staticmethod:
+   .. method:: coords(self, geom: List[Tuple[float, float]]) -> List[Tuple[Any, ...]]
 
-      Transform a set of coordinates in form of ((xs), (ys)).
+      Reproject a list of coordinates to the specified output CRS.
+
+      :Parameters: **geometry** (:class:`list` of :class:`tuple`) -- Input coords [(x1, y1), ...].
+
+      :returns: :class:`tuple` -- Input list of coords in the specified CRS.
+
+      .. rubric:: Examples
+
+      >>> from pygeoutils import MatchCRS
+      >>> coords = [(-7766049.665, 5691929.739)]
+      >>> MatchCRS("epsg:3857", "epsg:4326").coords(coords)
+      [(-69.7636111130079, 45.44549114818127)]
 
 
-   .. method:: geometry(geom: Polygon, in_crs: str, out_crs: str) -> Polygon
-      :staticmethod:
+   .. method:: geometry(self, geom: Union[Polygon, MultiPolygon, Point, MultiPoint]) -> Union[Polygon, MultiPolygon, Point, MultiPoint]
 
-      Transform a Polygon.
+      Reproject a geometry to the specified output CRS.
+
+      :Parameters: **geometry** (:class:`Polygon`, :class:`MultiPolygon`, :class:`Point`, or :class:`MultiPoint`) -- Input geometry.
+
+      :returns: :class:`Polygon`, :class:`MultiPolygon`, :class:`Point`, or :class:`MultiPoint` -- Input geometry in the specified CRS.
+
+      .. rubric:: Examples
+
+      >>> from pygeoutils import MatchCRS
+      >>> from shapely.geometry import Point
+      >>> point = Point(-7766049.665, 5691929.739)
+      >>> MatchCRS("epsg:3857", "epsg:4326").geometry(point).xy
+      (array('d', [-69.7636111130079]), array('d', [45.44549114818127]))
 
 
 
@@ -53,18 +83,13 @@ Module Contents
    :returns: :class:`dict` -- A GeoJSON file readable by GeoPandas
 
 
-.. function:: check_bbox(bbox: Tuple[float, float, float, float]) -> None
-
-   Check if an input inbox is a tuple of length 4.
-
-
 .. function:: geo2polygon(geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], geo_crs: str, crs: str) -> Polygon
 
    Convert a geometry to a Shapely's Polygon and transform to any CRS.
 
-   :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple` of :class:`length 4`) -- A Polygon or bounding box (west, south, east, north).
-                * **geo_crs** (:class:`str`) -- THe spatial reference of the input geometry
-                * **crs** (:class:`str`) -- The target spatial reference.
+   :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple` of :class:`length 4`) -- Polygon or bounding box (west, south, east, north).
+                * **geo_crs** (:class:`str`) -- Spatial reference of the input geometry
+                * **crs** (:class:`str`) -- Target spatial reference.
 
    :returns: :class:`Polygon` -- A Polygon in the target CRS.
 

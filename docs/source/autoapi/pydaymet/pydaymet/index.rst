@@ -27,7 +27,7 @@ Module Contents
                   ``tmin``, ``tmax``, ``prcp``, ``srad``, ``vp``, ``swe``, ``dayl``
                   Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.
                 * **pet** (:class:`bool`) -- Whether to compute evapotranspiration based on
-                  `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm#equation>`__.
+                  `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
                   The default is False
                 * **region** (:class:`str`, *optional*) -- Target region in the US, defaults to ``na``. Acceptable values are:
 
@@ -60,7 +60,7 @@ Module Contents
                   ``tmin``, ``tmax``, ``prcp``, ``srad``, ``vp``, ``swe``, ``dayl``
                   Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.
                 * **pet** (:class:`bool`) -- Whether to compute evapotranspiration based on
-                  `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm#equation>`__.
+                  `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
                   The default is False
                 * **region** (:class:`str`, *optional*) -- Region in the US, defaults to na. Acceptable values are:
                   * na: Continental North America
@@ -98,7 +98,7 @@ Module Contents
                   Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.
                   Defaults to None i.e., all the variables are downloaded.
                 * **pet** (:class:`bool`, *optional*) -- Whether to compute evapotranspiration based on
-                  `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm#equation>`__.
+                  `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
                   The default is False
 
    :returns: :class:`pandas.DataFrame` -- Daily climate data for a location.

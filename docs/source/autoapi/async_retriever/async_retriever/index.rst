@@ -12,34 +12,61 @@
 Module Contents
 ---------------
 
-.. function:: retrieve(urls: List[str], read: str, request_kwds: Optional[List[Dict[str, Any]]] = None, request: str = 'GET', max_workers: int = 8, cache_name: Optional[Union[Path, str]] = None) -> List[Union[str, Dict[str, Any], bytes]]
+.. py:class:: AsyncRequest
+
+   Async send/request.
+
+   :Parameters: * **url** (:class:`str`) -- URL to be retrieved
+                * **session_req** (:class:`ClientSession`) -- A ClientSession for sending the request
+                * **kwds** (:class:`dict`) -- Arguments to be passed to requests
+
+   .. method:: binary(self) -> bytes
+      :async:
+
+      Create an async request and return the response as binary.
+
+      :returns: :class:`bytes` -- The retrieved response as binary.
+
+
+   .. method:: json(self) -> Dict[str, Any]
+      :async:
+
+      Create an async request and return the response as json.
+
+      :returns: :class:`dict` -- The retrieved response as json.
+
+
+   .. method:: text(self) -> str
+      :async:
+
+      Create an async request and return the response as a string.
+
+      :returns: :class:`str` -- The retrieved response as string.
+
+
+
+.. function:: retrieve(urls: List[str], read: str, request_kwds: Optional[List[Dict[str, Any]]] = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Optional[Union[Path, str]] = None) -> List[Union[str, Dict[str, Any], bytes]]
 
    Send async requests.
 
-   This function is based on
-   `this <https://github.com/HydrologicEngineeringCenter/data-retrieval-scripts/blob/master/qpe_async_download.py>`__
-   script.
+   :Parameters: * **urls** (:class:`list` of :class:`str`) -- List of URLs.
+                * **read** (:class:`str`) -- Method for returning the request; ``binary``, ``json``, and ``text``.
+                * **request_kwds** (:class:`list` of :class:`dict`, *optional*) -- List of requests keywords corresponding to input URLs (1 on 1 mapping), defaults to None.
+                  For example, ``[{"params": {...}, "headers": {...}}, ...]``.
+                * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` or ``POST``. Defaults to ``GET``.
+                * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
+                * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, defaults to ``cache/aiohttp_cache.sqlite``.
 
-   :Parameters: * **urls** (:class:`list` of :class:`str`) -- A list of URLs.
-                * **read** (:class:`str`) -- The method for returning the request; binary, json, and text.
-                * **request_kwds** (:class:`list` of :class:`dict`, *optional*) -- A list of requests kwds corresponding to input URLs (1 on 1 mapping), defaults to None.
-                  For example, [{"params": {...}, "headers": {...}}, ...].
-                * **request** (:class:`str`, *optional*) -- The request type; GET or POST, defaults to GET.
-                * **max_workers** (:class:`int`, *optional*) -- The maximum number of async processes, defaults to 8.
-                * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, default to None which uses a file
-                  called aiohttp_cache.sqlite under the systems' cache directory: ~/.cache
-                  for Linux and MacOS, and %Temp% for Windows.
-
-   :returns: :class:`list` -- A list of responses which are not in the order of input requests.
+   :returns: :class:`list` -- List of responses which are not necessarily in the order of input requests.
 
    .. rubric:: Examples
 
    >>> import async_retriever as ar
    >>> stations = ["01646500", "08072300", "11073495"]
-   >>> base = "https://waterservices.usgs.gov/nwis/site"
+   >>> url = "https://waterservices.usgs.gov/nwis/site"
    >>> urls, kwds = zip(
    ...     *[
-   ...         (base, {"params": {"format": "rdb", "sites": s, "siteStatus": "all"}})
+   ...         (url, {"params": {"format": "rdb", "sites": s, "siteStatus": "all"}})
    ...         for s in stations
    ...     ]
    ... )

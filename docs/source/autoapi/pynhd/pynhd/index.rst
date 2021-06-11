@@ -114,7 +114,7 @@ Module Contents
 
    .. method:: get_validchars(self, char_type: str) -> pd.DataFrame
 
-      Get all the available characteristics IDs for a give characteristics type.
+      Get all the available characteristics IDs for a given characteristics type.
 
 
    .. method:: getcharacteristic_byid(self, comids: Union[List[str], str], char_type: str, char_ids: Union[str, List[str]] = 'all', values_only: bool = True) -> Union[pd.DataFrame, Tuple[pd.DataFrame, pd.DataFrame]]

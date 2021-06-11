@@ -16,7 +16,7 @@ Module Contents
 
    Generate input geometry query for ArcGIS RESTful services.
 
-   :Parameters: * **geometry** (:class:`tuple` or :class:`Polygon`) -- The input geometry which can be a point (x, y), a list of points [(x, y), ...],
+   :Parameters: * **geometry** (:class:`tuple` or :class:`Polygon` or :class:`Point` or :class:`LineString`) -- The input geometry which can be a point (x, y), a list of points [(x, y), ...],
                   bbox (xmin, ymin, xmax, ymax), or a Shapely's Polygon.
                 * **wkid** (:class:`int`) -- The Well-known ID (WKID) of the geometry's spatial reference e.g., for EPSG:4326,
                   4326 should be passed. Check
@@ -53,31 +53,66 @@ Module Contents
       Query for a polygon.
 
 
+   .. method:: polyline(self) -> Dict[str, Union[str, bytes]]
 
-.. py:class:: MatchCRS
+      Query for a polyline.
 
-   Match CRS of a input geometry (Polygon, bbox, coord) with the output CRS.
 
-   :Parameters: * **geometry** (:class:`tuple` or :class:`Polygon`) -- The input geometry (Polygon, bbox, coord)
-                * **in_crs** (:class:`str`) -- The spatial reference of the input geometry
-                * **out_crs** (:class:`str`) -- The target spatial reference
 
-   .. method:: bounds(geom: Tuple[float, float, float, float], in_crs: str, out_crs: str) -> Tuple[float, float, float, float]
-      :staticmethod:
+.. py:class:: MatchCRS(in_crs: str, out_crs: str)
+
+   Reproject a geometry to another CRS.
+
+   :Parameters: * **in_crs** (:class:`str`) -- Spatial reference of the input geometry
+                * **out_crs** (:class:`str`) -- Target spatial reference
+
+   .. method:: bounds(self, geom: Tuple[float, float, float, float]) -> Tuple[float, float, float, float]
 
       Reproject a bounding box to the specified output CRS.
 
+      :Parameters: **geometry** (:class:`tuple`) -- Input bounding box (xmin, ymin, xmax, ymax).
 
-   .. method:: coords(geom: Tuple[Tuple[float, ...], Tuple[float, ...]], in_crs: str, out_crs: str) -> Tuple[Any, ...]
-      :staticmethod:
+      :returns: :class:`tuple` -- Input bounding box in the specified CRS.
+
+      .. rubric:: Examples
+
+      >>> from pygeoogc import MatchCRS
+      >>> bbox = (-7766049.665, 5691929.739, -7763049.665, 5696929.739)
+      >>> MatchCRS("epsg:3857", "epsg:4326").bounds(bbox)
+      (-69.7636111130079, 45.44549114818127, -69.73666165448431, 45.47699468552394)
+
+
+   .. method:: coords(self, geom: List[Tuple[float, float]]) -> List[Tuple[Any, ...]]
 
       Reproject a list of coordinates to the specified output CRS.
 
+      :Parameters: **geometry** (:class:`list` of :class:`tuple`) -- Input coords [(x1, y1), ...].
 
-   .. method:: geometry(geom: Union[Polygon, MultiPolygon, Point, MultiPoint], in_crs: str, out_crs: str) -> Union[Polygon, MultiPolygon, Point, MultiPoint]
-      :staticmethod:
+      :returns: :class:`tuple` -- Input list of coords in the specified CRS.
+
+      .. rubric:: Examples
+
+      >>> from pygeoogc import MatchCRS
+      >>> coords = [(-7766049.665, 5691929.739)]
+      >>> MatchCRS("epsg:3857", "epsg:4326").coords(coords)
+      [(-69.7636111130079, 45.44549114818127)]
+
+
+   .. method:: geometry(self, geom: Union[Polygon, LineString, MultiLineString, MultiPolygon, Point, MultiPoint]) -> Union[Polygon, LineString, MultiLineString, MultiPolygon, Point, MultiPoint]
 
       Reproject a geometry to the specified output CRS.
+
+      :Parameters: **geometry** (:class:`LineString`, :class:`MultiLineString`, :class:`Polygon`, :class:`MultiPolygon`, :class:`Point`, or :class:`MultiPoint`) -- Input geometry.
+
+      :returns: :class:`LineString`, :class:`MultiLineString`, :class:`Polygon`, :class:`MultiPolygon`, :class:`Point`, or :class:`MultiPoint` -- Input geometry in the specified CRS.
+
+      .. rubric:: Examples
+
+      >>> from pygeoogc import MatchCRS
+      >>> from shapely.geometry import Point
+      >>> point = Point(-7766049.665, 5691929.739)
+      >>> MatchCRS("epsg:3857", "epsg:4326").geometry(point).xy
+      (array('d', [-69.7636111130079]), array('d', [45.44549114818127]))
 
 
 
@@ -93,10 +128,10 @@ Module Contents
                 * **backoff_factor** (:class:`float`, *optional*) -- A factor used to compute the waiting time between retries, defaults to 0.5.
                 * **status_to_retry** (:class:`tuple`, *optional*) -- A tuple of status codes that trigger the reply behaviour, defaults to (500, 502, 504).
                 * **prefixes** (:class:`tuple`, *optional*) -- The prefixes to consider, defaults to ("http://", "https://")
-                * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, default to None (no caching).
-                  It is recommended to use caching as it can significantly speed up the function.
+                * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, default to None which uses
+                  system's temp directory.
 
-   .. method:: get(self, url: str, payload: Optional[Mapping[str, Any]] = None, headers: Optional[MutableMapping[str, Any]] = None) -> Response
+   .. method:: get(self, url: str, payload: Optional[Mapping[str, Any]] = None, headers: Optional[Mapping[str, Any]] = None) -> Response
 
       Retrieve data from a url by GET and return the Response.
 
@@ -107,7 +142,7 @@ Module Contents
       Disable IPv6 and only use IPv4.
 
 
-   .. method:: post(self, url: str, payload: Optional[MutableMapping[str, Any]] = None, headers: Optional[MutableMapping[str, Any]] = None) -> Response
+   .. method:: post(self, url: str, payload: Optional[Mapping[str, Any]] = None, headers: Optional[Mapping[str, Any]] = None) -> Response
 
       Retrieve data from a url by POST and return the Response.
 
@@ -145,11 +180,6 @@ Module Contents
 .. function:: check_response(resp: Response) -> None
 
    Check if a ``requests.Resonse`` returned an error message.
-
-
-.. function:: create_cachefile(db_name: str = 'http_cache') -> Optional[Path]
-
-   Create a cache file if dependencies are met.
 
 
 .. function:: threading(func: Callable, iter_list: Iterable, param_list: Optional[List[Any]] = None, max_workers: int = 8) -> List[Any]

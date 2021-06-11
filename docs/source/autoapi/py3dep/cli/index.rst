@@ -26,7 +26,7 @@ Module Contents
 
    Check if all required columns exists in the dataframe.
 
-   It also re-orders the columns based on req_cols order.
+   It also re-orders the columns based on ``req_cols`` order.
 
 
 .. function:: main(target: Path, target_type: str, crs: str, layer: Optional[str] = None, save_dir: Union[str, Path] = 'topo_3dep')

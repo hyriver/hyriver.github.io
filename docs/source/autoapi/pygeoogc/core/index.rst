@@ -27,7 +27,7 @@ Module Contents
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
                 * **n_threads** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1 i.e., no threading. Note
                   that some services might face issues when several requests are sent
-                  simultaniously and will return the requests partially. It's recommended
+                  simultaneously and will return the requests partially. It's recommended
                   to avoid performing threading unless you are certain the web service can handle it.
 
    .. method:: featureids(self) -> List[Tuple[str, ...]]
@@ -88,7 +88,7 @@ Module Contents
 
 
 
-.. py:class:: WFSBase(url: str, layer: Optional[str] = None, outformat: Optional[str] = None, version: str = '2.0.0', crs: str = DEF_CRS)
+.. py:class:: WFSBase
 
    Base class for WFS service.
 
@@ -116,7 +116,7 @@ Module Contents
 
 
 
-.. py:class:: WMSBase(url: str, layers: Union[str, List[str]], outformat: str, version: str = '1.3.0', crs: str = DEF_CRS)
+.. py:class:: WMSBase
 
    Base class for accessing a WMS service.
 

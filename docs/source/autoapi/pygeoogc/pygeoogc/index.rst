@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTful(base_url: str, outformat: str = 'geojson', outfields: Union[List[str], str] = '*', spatial_relation: str = 'esriSpatialRelIntersects', crs: str = DEF_CRS, n_threads: int = 1)
+.. py:class:: ArcGISRESTful
 
 
 
@@ -29,7 +29,7 @@ Module Contents
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
                 * **n_threads** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1 i.e., no threading. Note
                   that some services might face issues when several requests are sent
-                  simultaniously and will return the requests partially. It's recommended
+                  simultaneously and will return the requests partially. It's recommended
                   to avoid performing threading unless you are certain the web service can handle it.
 
    .. method:: get_features(self, return_m: bool = False) -> List[Dict[str, Any]]
@@ -49,12 +49,15 @@ Module Contents
                    * **ids** (:class:`str` or :class:`list`) -- A list of target ID(s).
 
 
-   .. method:: oids_bygeom(self, geom: Union[Polygon, Point, MultiPoint, Tuple[float, float], List[Tuple[float, float]], Tuple[float, float, float, float]], geo_crs: str = DEF_CRS, sql_clause: Optional[str] = None, distance: Optional[int] = None) -> None
+   .. method:: oids_bygeom(self, geom: Union[LineString, Polygon, Point, MultiPoint, Tuple[float, float], List[Tuple[float, float]], Tuple[float, float, float, float]], geo_crs: str = DEF_CRS, sql_clause: Optional[str] = None, distance: Optional[int] = None) -> None
 
       Get feature IDs within a geometry that can be combined with a SQL where clause.
 
-      :Parameters: * **geom** (:class:`Polygon`, :class:`Point`, :class:`MultiPoint`, :class:`tuple`, or :class:`list` of :class:`tuples`) -- A geometry (Polygon, Point, MultiPoint), tuple of length 2 (x, y),
-                     a list of tuples of length 2 [(x, y), ...], or bounding box (tuple of length 4).
+      :Parameters: * **geom** (:class:`LineString`, :class:`Polygon`, :class:`Point`, :class:`MultiPoint`, :class:`tuple`, or :class:`list` of :class:`tuples`) --
+
+                     A geometry (LineString, Polygon, Point, MultiPoint), tuple of length
+                      2 (``(x, y)``), a list of tuples of length 2 (``[(x, y), ...]``), or bounding box
+                      (tuple of length 4 (``(xmin, ymin, xmax, ymax)``)).
                    * **geo_crs** (:class:`str`) -- The spatial reference of the input geometry, defaults to EPSG:4326.
                    * **sql_clause** (:class:`str`, *optional*) -- A valid SQL 92 WHERE clause, default to None.
                    * **distance** (:class:`int`, *optional*) -- The buffer distance for the input geometries in meters, default to None.
