@@ -27,7 +27,7 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 Please note that installation with ``pip`` fails if ``libgdal`` is not installed on your system.
 You should install this package manually beforehand. For example, on Ubuntu-based distros
@@ -39,13 +39,13 @@ the ``conda-forge`` repository:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 or:
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 Dependencies
 ------------
