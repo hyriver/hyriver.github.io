@@ -168,6 +168,7 @@ napoleon_type_aliases = {
 
 extlinks = {
     "issue": ("https://github.com/cheginit/HyRiver/issues/%s", "GH"),
+    "issue_async": ("https://github.com/cheginit/async_retriever/issues/%s", "GH"),
     "issue_ogc": ("https://github.com/cheginit/pygeoogc/issues/%s", "GH"),
     "issue_utils": ("https://github.com/cheginit/pygeoutils/issues/%s", "GH"),
     "issue_hub": ("https://github.com/cheginit/pygeohub/issues/%s", "GH"),
@@ -175,6 +176,7 @@ extlinks = {
     "issue_3dep": ("https://github.com/cheginit/py3dep/issues/%s", "GH"),
     "issue_day": ("https://github.com/cheginit/pydaymet/issues/%s", "GH"),
     "pull": ("https://github.com/cheginit/HyRiver/pull/%s", "PR"),
+    "pull_async": ("https://github.com/cheginit/async_retriever/pull/%s", "PR"),
     "pull_ogc": ("https://github.com/cheginit/pygeoogc/pull/%s", "PR"),
     "pull_utils": ("https://github.com/cheginit/pygeoutils/pull/%s", "PR"),
     "pull_hub": ("https://github.com/cheginit/pygeohub/pull/%s", "PR"),
