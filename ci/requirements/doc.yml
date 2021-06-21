@@ -6,6 +6,7 @@ dependencies:
   - python=3.8
   - ipykernel
   - ipython
+  - ipywidgets
   - jupyter_client
   - recommonmark
   - nbsphinx
