@@ -12,80 +12,56 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTfulBase(base_url: str, outformat: str = 'geojson', outfields: Union[List[str], str] = '*', spatial_relation: str = 'esriSpatialRelIntersects', crs: str = DEF_CRS, n_threads: int = 1)
+.. py:class:: ArcGISRESTfulBase(base_url: str, layer: Optional[int] = None, outformat: str = 'geojson', outfields: Union[List[str], str] = '*', crs: Union[str, pyproj.CRS] = DEF_CRS, max_workers: int = 1)
 
    Access to an ArcGIS REST service.
 
-   :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url.
+   :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
+                  after the last ``/`` in the url or the target layer must be passed as an argument.
+                * **layer** (:class:`int`, *optional*) -- Target layer number, defaults to None. If None layer number must be included as after
+                  the last ``/`` in ``base_url``.
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``geojson``.
-                * **spatial_relation** (:class:`str`, *optional*) -- The spatial relationship to be applied on the input geometry
-                  while performing the query. If not correct a list of available options is shown.
                   It defaults to ``esriSpatialRelIntersects``.
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
                   all the available fields which is the default behaviour.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
-                * **n_threads** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1 i.e., no threading. Note
+                * **max_workers** (:class:`int`, *optional*) -- Max number of simultaneous requests, default to 2. Note
                   that some services might face issues when several requests are sent
                   simultaneously and will return the requests partially. It's recommended
-                  to avoid performing threading unless you are certain the web service can handle it.
+                  to avoid using too many workers unless you are certain the web service can handle it.
 
-   .. method:: featureids(self) -> List[Tuple[str, ...]]
-      :property:
+   .. method:: initialize_service(self) -> None
 
-      Set feature ID(s).
-
-
-   .. method:: get_validfields(self) -> Dict[str, str]
-
-      Get all the valid service output fields.
+      Initialize the RESTFul service.
 
 
-   .. method:: get_validlayers(self) -> Dict[str, str]
+   .. method:: partition_oids(self, oids: Union[List[int], int, None]) -> List[Tuple[str, ...]]
 
-      Get all the valid service layer.
-
-
-   .. method:: layer(self) -> int
-      :property:
-
-      Set service layer.
+      Partition feature IDs based on service's max record number.
 
 
-   .. method:: max_nrecords(self) -> int
-      :property:
 
-      Set maximum number of features per request.
+.. py:class:: RESTValidator
 
 
-   .. method:: n_threads(self) -> int
-      :property:
 
-      Set number of threads.
+   Validate ArcGISRESTful inputs.
 
-
-   .. method:: outfields(self) -> List[str]
-      :property:
-
-      Set service output field(s).
-
-
-   .. method:: outformat(self) -> str
-      :property:
-
-      Set service output format.
-
-
-   .. method:: spatial_relation(self) -> str
-      :property:
-
-      Set spatial relationship of the input geometry with the source data.
-
-
-   .. method:: test_url(self) -> None
-
-      Test the generated url and get the required parameters from the service.
-
+   :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
+                  after the last ``/`` in the url or the target layer must be passed as an argument.
+                * **layer** (:class:`int`, *optional*) -- Target layer number, defaults to None. If None layer number must be included as after
+                  the last ``/`` in ``base_url``.
+                * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
+                  a list of available formats is shown, defaults to ``geojson``.
+                  It defaults to ``esriSpatialRelIntersects``.
+                * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
+                  all the available fields which is the default behaviour.
+                * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
+                * **max_workers** (:class:`int`, *optional*) -- Max number of simultaneous requests, default to 2. Note
+                  that some services might face issues when several requests are sent
+                  simultaneously and will return the requests partially. It's recommended
+                  to avoid using too many workers unless you are certain the web service can handle it.
 
 
 .. py:class:: WFSBase

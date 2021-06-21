@@ -14,22 +14,9 @@ Module Contents
 
 .. py:class:: NID
 
-   Retrieve data from the National Inventory of Dams.
-
-   .. method:: get_attrs(self, variables: List[str]) -> Dict[str, str]
-
-      Get descriptions of the NID variables.
 
 
-   .. method:: get_codes(self) -> str
-
-      Get the definitions of letter codes in NID database.
-
-
-   .. method:: get_xlsx(self) -> io.BytesIO
-
-      Get the excel file that contains the dam data.
-
+   Retrieve data from the National Inventory of Dams web service.
 
 
 .. py:class:: NWIS
@@ -90,32 +77,6 @@ Module Contents
    :Parameters: **ds** (:class:`xarray.Dataset`) -- Cover DataArray from a LULC Dataset from the ``nlcd`` function.
 
    :returns: :class:`dict` -- Statistics of NLCD cover data
-
-
-.. function:: get_nid() -> gpd.GeoDataFrame
-
-   Get all dams in the US (over 91K) from National Inventory of Dams 2019.
-
-   .. rubric:: Notes
-
-   This function downloads a 25 MB excel file and convert it into a
-   GeoDataFrame. So, your net speed might be a bottleneck. Another
-   bottleneck is data loading since the dataset has more than 91K rows,
-   it might take sometime for Pandas to load the data into memory.
-
-   :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing all the available dams in the database. This dataframe
-             has an ``attrs`` property that contains definitions of all the NID variables including
-             their units. You can access this dictionary by, for example, ``nid.attrs`` assuming
-             that ``nid`` is the dataframe. For example, ``nli.attrs["VOLUME"]`` returns the definition
-             of the ``VOLUME`` column in NID.
-
-
-.. function:: get_nid_codes() -> pd.DataFrame
-
-   Get the definitions of letter codes in NID database.
-
-   :returns: :class:`pandas.DataFrame` -- A multi-index dataframe where the first index is code categories and the second one is
-             letter codes. For example, ``tables.loc[('Core Type',  'A')]`` returns Bituminous Concrete.
 
 
 .. function:: interactive_map(bbox: Tuple[float, float, float, float], crs: str = DEF_CRS, dv: bool = False, iv: bool = False, param_cd: Optional[str] = None) -> folium.Map

@@ -53,7 +53,7 @@ Module Contents
                 * **read** (:class:`str`) -- Method for returning the request; ``binary``, ``json``, and ``text``.
                 * **request_kwds** (:class:`list` of :class:`dict`, *optional*) -- List of requests keywords corresponding to input URLs (1 on 1 mapping), defaults to None.
                   For example, ``[{"params": {...}, "headers": {...}}, ...]``.
-                * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` or ``POST``. Defaults to ``GET``.
+                * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, defaults to ``cache/aiohttp_cache.sqlite``.
 

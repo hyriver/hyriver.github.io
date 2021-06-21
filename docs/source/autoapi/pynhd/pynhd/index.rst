@@ -12,12 +12,12 @@
 Module Contents
 ---------------
 
-.. py:class:: AGRBase(layer: str, outfields: Union[str, List[str]] = '*', crs: str = DEF_CRS, service: Optional[ArcGISRESTful] = None)
+.. py:class:: AGRBase
 
    Base class for accessing NHD(Plus) HR database through the National Map ArcGISRESTful.
 
-   :Parameters: * **layer** (:class:`str`) -- A valid service layer. For a list of available layers pass an empty string to
-                  the class.
+   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. To see a list of available layers instantiate the class
+                  without passing any argument.
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
 
@@ -64,20 +64,26 @@ Module Contents
 
       Connect to a web service.
 
-      :Parameters: * **service** (:class:`str`, *optional*) -- Name of the preferred web service to connect to from the list provided in service_list.
+      :Parameters: * **service** (:class:`str`) -- Name of the preferred web service to connect to from the list provided in service_list.
                    * **service_list** (:class:`dict`) -- A dict where keys are names of the web services and values are their URLs.
                    * **auto_switch** (:class:`bool`, *optional*) -- Automatically switch to other services' URL if the first one doesn't work, default to False.
 
 
+   .. method:: get_validlayers(url)
+      :staticmethod:
 
-.. py:class:: NHDPlusHR(layer: str, outfields: Union[str, List[str]] = '*', crs: str = DEF_CRS, service: str = 'hydro', auto_switch: bool = False)
+      Get valid layer for a ArcGISREST service.
+
+
+
+.. py:class:: NHDPlusHR(layer: Optional[str] = None, outfields: Union[str, List[str]] = '*', crs: str = DEF_CRS, service: str = 'hydro', auto_switch: bool = False)
 
 
 
    Access NHDPlus HR database through the National Map ArcGISRESTful.
 
-   :Parameters: * **layer** (:class:`str`) -- A valid service layer. For a list of available layers pass an empty string to
-                  the class.
+   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. To see a list of available layers instantiate the class
+                  without passing any argument like so ``NHDPlusHR()``.
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
                 * **service** (:class:`str`, *optional*) -- Name of the web service to use, defaults to hydro. Supported web services are:

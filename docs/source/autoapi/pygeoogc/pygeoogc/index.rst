@@ -18,16 +18,16 @@ Module Contents
 
    Access to an ArcGIS REST service.
 
-   :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url.
+   :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
+                  after the last ``/`` in the url or the target layer must be passed as an argument.
+                * **layer** (:class:`int`, *optional*) -- Target layer number, defaults to None. If None layer number must be included as after
+                  the last ``/`` in ``base_url``.
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``geojson``.
-                * **spatial_relation** (:class:`str`, *optional*) -- The spatial relationship to be applied on the input geometry
-                  while performing the query. If not correct a list of available options is shown.
-                  It defaults to ``esriSpatialRelIntersects``.
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
                   all the available fields which is the default behaviour.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
-                * **n_threads** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1 i.e., no threading. Note
+                * **max_workers** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1, i.e., no threading. Note
                   that some services might face issues when several requests are sent
                   simultaneously and will return the requests partially. It's recommended
                   to avoid performing threading unless you are certain the web service can handle it.
@@ -49,7 +49,7 @@ Module Contents
                    * **ids** (:class:`str` or :class:`list`) -- A list of target ID(s).
 
 
-   .. method:: oids_bygeom(self, geom: Union[LineString, Polygon, Point, MultiPoint, Tuple[float, float], List[Tuple[float, float]], Tuple[float, float, float, float]], geo_crs: str = DEF_CRS, sql_clause: Optional[str] = None, distance: Optional[int] = None) -> None
+   .. method:: oids_bygeom(self, geom: Union[LineString, Polygon, Point, MultiPoint, Tuple[float, float], List[Tuple[float, float]], Tuple[float, float, float, float]], geo_crs: str = DEF_CRS, spatial_relation: str = 'esriSpatialRelIntersects', sql_clause: Optional[str] = None, distance: Optional[int] = None) -> None
 
       Get feature IDs within a geometry that can be combined with a SQL where clause.
 
@@ -59,8 +59,21 @@ Module Contents
                       2 (``(x, y)``), a list of tuples of length 2 (``[(x, y), ...]``), or bounding box
                       (tuple of length 4 (``(xmin, ymin, xmax, ymax)``)).
                    * **geo_crs** (:class:`str`) -- The spatial reference of the input geometry, defaults to EPSG:4326.
+                   * **spatial_relation** (:class:`str`, *optional*) -- The spatial relationship to be applied on the input geometry
+                     while performing the query. If not correct a list of available options is shown.
+                     It defaults to ``esriSpatialRelIntersects``. Valid predicates are:
+
+                     * ``esriSpatialRelIntersects``
+                     * ``esriSpatialRelContains``
+                     * ``esriSpatialRelCrosses``
+                     * ``esriSpatialRelEnvelopeIntersects``
+                     * ``esriSpatialRelIndexIntersects``
+                     * ``esriSpatialRelOverlaps``
+                     * ``esriSpatialRelTouches``
+                     * ``esriSpatialRelWithin``
+                     * ``esriSpatialRelRelation``
                    * **sql_clause** (:class:`str`, *optional*) -- A valid SQL 92 WHERE clause, default to None.
-                   * **distance** (:class:`int`, *optional*) -- The buffer distance for the input geometries in meters, default to None.
+                   * **distance** (:class:`int`, *optional*) -- The buffer distance in meters for the input geometries in meters, default to None.
 
 
    .. method:: oids_bysql(self, sql_clause: str) -> None
@@ -70,7 +83,7 @@ Module Contents
       .. rubric:: Notes
 
       Not all web services support this type of query. For more details look
-      `here <https://developers.arcgis.com/rest/services-reference/query-feature-service-.htm#ESRI_SECTION2_07DD2C5127674F6A814CE6C07D39AD46>`__
+      `here <https://developers.arcgis.com/rest/services-reference/query-feature-service-.htm#ESRI_SECTION2_07DD2C5127674F6A814CE6C07D39AD46>`__.
 
       :Parameters: **sql_clause** (:class:`str`) -- A valid SQL 92 WHERE clause.
 
@@ -168,10 +181,19 @@ Module Contents
                      order from xy to yx, following the latest WFS version specifications but some don't.
                      If the returned value does not have any geometry, it indicates that most probably the
                      axis order does not match. You can set this to True in that case.
-                   * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to
-                     INTERSECTS. Valid predicates are:
-                     EQUALS, DISJOINT, INTERSECTS, TOUCHES, CROSSES, WITHIN, CONTAINS,
-                     OVERLAPS, RELATE, BEYOND
+                   * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to ``INTERSECTS``.
+                     Valid predicates are:
+
+                     * ``EQUALS``
+                     * ``DISJOINT``
+                     * ``INTERSECTS``
+                     * ``TOUCHES``
+                     * ``CROSSES``
+                     * ``WITHIN``
+                     * ``CONTAINS``
+                     * ``OVERLAPS``
+                     * ``RELATE``
+                     * ``BEYOND``
 
       :returns: :class:`Response` -- WFS query response based on the given geometry.
 
@@ -180,10 +202,10 @@ Module Contents
 
       Get features based on feature IDs.
 
-      :Parameters: * **featurename** (:class:`str`) -- The name of the column for searching for feature IDs
-                   * **featureids** (:class:`str` or :class:`list`) -- The feature ID(s)
+      :Parameters: * **featurename** (:class:`str`) -- The name of the column for searching for feature IDs.
+                   * **featureids** (:class:`str` or :class:`list`) -- The feature ID(s).
 
-      :returns: :class:`Response` -- WMS query response
+      :returns: :class:`Response` -- WMS query response.
 
 
 
@@ -222,8 +244,7 @@ Module Contents
                      defaults to 8 million based on some trial-and-error.
 
       :returns: :class:`dict` -- A dict where the keys are the layer name and values are the returned response
-                from the WMS service as bytes. You can use ``utils.create_dataset`` function
-                to convert the responses to ``xarray.Dataset``.
+                from the WMS service as bytes.
 
 
 

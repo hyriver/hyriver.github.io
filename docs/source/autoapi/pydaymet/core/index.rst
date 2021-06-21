@@ -37,12 +37,6 @@ Module Contents
       Check if input dates are in correct format and valid.
 
 
-   .. method:: check_input_validity(inp: str, valid_list: Iterable[str]) -> str
-      :staticmethod:
-
-      Check the validity of input based on a list of valid options.
-
-
    .. method:: dates_todict(self, dates: Tuple[str, str]) -> Dict[str, str]
 
       Set dates by start and end dates as a tuple, (start, end).
@@ -68,16 +62,17 @@ Module Contents
       .. rubric:: Notes
 
       The method is based on
-      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
-      Moreover, we assume that soil heat flux density is zero and wind speed at 2 m height
-      is 2 m/s. The following variables are required:
-      tmin (deg c), tmax (deg c), lat, lon, vp (Pa), srad (W/m2), dayl (s/day)
-      The computed PET's unit is mm/day.
+      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__
+      assuming that soil heat flux density is zero.
 
-      :Parameters: * **clm_df** (:class:`~pandas.DataFrame`) -- A dataframe with columns named as follows:
-                     ``tmin (deg c)``, ``tmax (deg c)``, ``vp (Pa)``, ``srad (W/m^2)``, and ``dayl (s)``.
+      :Parameters: * **clm_df** (:class:`~pandas.DataFrame`) -- The dataset must include at least the following variables:
+                     ``tmin (deg c)``, ``tmax (deg c)``, ``srad (W/m^2)``, and ``dayl (s)``.
+                     Also, if ``rh (-)`` (relative humidity) and ``u2 (m/s)`` (wind at 2 m level)
+                     are available, they are used. Otherwise, actual vapour pressure is assumed
+                     to be saturation vapour pressure at daily minimum temperature and 2-m wind
+                     speed is considered to be 2 m/s.
                    * **coords** (:class:`tuple` of :class:`floats`) -- Coordinates of the daymet data location as a tuple, (x, y).
-                   * **crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to epsg:4326
+                   * **crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to epsg:4326.
                    * **alt_unit** (:class:`str`, *optional*) -- Whether to use alternative units rather than the official ones, defaults to False.
 
       :returns: :class:`pandas.DataFrame` -- The input DataFrame with an additional column named ``pet (mm/day)``
@@ -88,17 +83,20 @@ Module Contents
 
       Compute Potential EvapoTranspiration using Daymet dataset.
 
+      .. rubric:: Notes
+
       The method is based on
-      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
-      Moreover, we assume that soil heat flux density is zero and wind speed at 2 m height
-      is 2 m/s. The following variables are required:
-      tmin (deg c), tmax (deg c), lat, lon, vp (Pa), srad (W/m2), dayl (s/day)
-      The computed PET's unit is mm/day.
+      `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__
+      assuming that soil heat flux density is zero.
 
-      :Parameters: **clm_ds** (:class:`xarray.DataArray`) -- The dataset should include the following variables:
-                   ``tmin``, ``tmax``, ``lat``, ``lon``, ``vp``, ``srad``, ``dayl``
+      :Parameters: **clm_ds** (:class:`xarray.DataArray`) -- The dataset must include at least the following variables:
+                   ``tmin``, ``tmax``, ``lat``, ``lon``, ``srad``, ``dayl``. Also, if
+                   ``rh`` (relative humidity) and ``u2`` (wind at 2 m level)
+                   are available, they are used. Otherwise, actual vapour pressure is assumed
+                   to be saturation vapour pressure at daily minimum temperature and 2-m wind
+                   speed is considered to be 2 m/s.
 
-      :returns: :class:`xarray.DataArray` -- The input dataset with an additional variable called ``pet``.
+      :returns: :class:`xarray.DataArray` -- The input dataset with an additional variable called ``pet`` in mm/day.
 
 
    .. method:: years_todict(self, years: Union[List[int], int]) -> Dict[str, str]
@@ -117,5 +115,27 @@ Module Contents
 
       :returns: :class:`list` -- All the dates in the Daymet database within the provided date range.
 
+
+
+.. py:class:: DaymetBase
+
+
+
+   Base class for validating Daymet requests.
+
+   :Parameters: * **pet** (:class:`bool`, *optional*) -- Whether to compute evapotranspiration based on
+                  `UN-FAO 56 paper <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
+                  The default is False
+                * **time_scale** (:class:`str`, *optional*) -- Data time scale which can be daily, monthly (monthly summaries),
+                  or annual (annual summaries). Defaults to daily.
+                * **variables** (:class:`list`, *optional*) -- List of variables to be downloaded. The acceptable variables are:
+                  ``tmin``, ``tmax``, ``prcp``, ``srad``, ``vp``, ``swe``, ``dayl``
+                  Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.
+                  Defaults to None i.e., all the variables are downloaded.
+                * **region** (:class:`str`, *optional*) -- Region in the US, defaults to na. Acceptable values are:
+
+                  * na: Continental North America
+                  * hi: Hawaii
+                  * pr: Puerto Rico
 
 

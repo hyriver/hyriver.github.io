@@ -46,7 +46,7 @@ Module Contents
    >>> dates = ("2000-01-01", "2000-12-31")
    >>> clm = daymet.get_bycoords(coords, dates, crs="epsg:3542", pet=True)
    >>> clm["pet (mm/day)"].mean()
-   4.076187138002121
+   3.472
 
 
 .. function:: get_bygeom(geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], dates: Union[Tuple[str, str], Union[int, List[int]]], crs: str = DEF_CRS, variables: Optional[Union[Iterable[str], str]] = None, pet: bool = False, region: str = 'na', time_scale: str = 'daily') -> xr.Dataset
@@ -63,6 +63,7 @@ Module Contents
                   `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
                   The default is False
                 * **region** (:class:`str`, *optional*) -- Region in the US, defaults to na. Acceptable values are:
+
                   * na: Continental North America
                   * hi: Hawaii
                   * pr: Puerto Rico
@@ -79,8 +80,8 @@ Module Contents
    ...     [[-69.77, 45.07], [-69.31, 45.07], [-69.31, 45.45], [-69.77, 45.45], [-69.77, 45.07]]
    ... )
    >>> clm = daymet.get_bygeom(geometry, 2010, variables="tmin", time_scale="annual")
-   >>> clm["tmin"].mean().values
-   array(1.3613942, dtype=float32)
+   >>> clm["tmin"].mean().compute().item()
+   1.361
 
 
 .. function:: get_byloc(coords: Tuple[float, float], dates: Union[Tuple[str, str], Union[int, List[int]]], crs: str = DEF_CRS, variables: Optional[Union[Iterable[str], str]] = None, pet: bool = False) -> pd.DataFrame

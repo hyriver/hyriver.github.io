@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ESRIGeomQuery(geometry: Union[Tuple[float, float], List[Tuple[float, float]], Tuple[float, float, float, float], Polygon], wkid: int)
+.. py:class:: ESRIGeomQuery
 
    Generate input geometry query for ArcGIS RESTful services.
 
@@ -70,7 +70,7 @@ Module Contents
 
       Reproject a bounding box to the specified output CRS.
 
-      :Parameters: **geometry** (:class:`tuple`) -- Input bounding box (xmin, ymin, xmax, ymax).
+      :Parameters: **geom** (:class:`tuple`) -- Input bounding box (xmin, ymin, xmax, ymax).
 
       :returns: :class:`tuple` -- Input bounding box in the specified CRS.
 
@@ -86,7 +86,7 @@ Module Contents
 
       Reproject a list of coordinates to the specified output CRS.
 
-      :Parameters: **geometry** (:class:`list` of :class:`tuple`) -- Input coords [(x1, y1), ...].
+      :Parameters: **geom** (:class:`list` of :class:`tuple`) -- Input coords [(x1, y1), ...].
 
       :returns: :class:`tuple` -- Input list of coords in the specified CRS.
 
@@ -102,7 +102,7 @@ Module Contents
 
       Reproject a geometry to the specified output CRS.
 
-      :Parameters: **geometry** (:class:`LineString`, :class:`MultiLineString`, :class:`Polygon`, :class:`MultiPolygon`, :class:`Point`, or :class:`MultiPoint`) -- Input geometry.
+      :Parameters: **geom** (:class:`LineString`, :class:`MultiLineString`, :class:`Polygon`, :class:`MultiPolygon`, :class:`Point`, or :class:`MultiPoint`) -- Input geometry.
 
       :returns: :class:`LineString`, :class:`MultiLineString`, :class:`Polygon`, :class:`MultiPolygon`, :class:`Point`, or :class:`MultiPoint` -- Input geometry in the specified CRS.
 
