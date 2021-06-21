@@ -134,16 +134,16 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 or ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
 
 or ``mamba`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority py3de pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
