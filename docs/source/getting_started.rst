@@ -55,6 +55,7 @@ Dependencies
 
     .. tabbed:: PyNHD
 
+        - ``async_retriever``
         - ``cytoolz``
         - ``geopandas``
         - ``networkx``
@@ -69,6 +70,7 @@ Dependencies
 
     .. tabbed:: PyGeoHydro
 
+        - ``async_retriever``
         - ``defusedxml``
         - ``folium``
         - ``geopandas``
@@ -85,12 +87,15 @@ Dependencies
 
     .. tabbed:: Py3DEP
 
+        - ``async_retriever``
         - ``click``
         - ``cytoolz``
         - ``numpy``
+        - ``pydantic``
         - ``pygeoogc``
         - ``pygeoutils``
         - ``rasterio``
+        - ``scipy``
         - ``shapely``
         - ``xarray``
 
@@ -98,7 +103,7 @@ Dependencies
 
         - ``async_retriever``
         - ``click``
-        - ``dask[complete]``
+        - ``dask``
         - ``lxml``
         - ``numpy``
         - ``pandas``
@@ -115,9 +120,11 @@ Dependencies
 
     .. tabbed:: PyGeoOGC
 
+        - ``async_retriever``
         - ``cytoolz``
         - ``defusedxml``
         - ``owslib``
+        - ``pydantic``
         - ``pyproj``
         - ``pyyaml``
         - ``requests``
@@ -128,6 +135,7 @@ Dependencies
     .. tabbed:: PyGeoUtils
 
         - ``affine``
+        - ``dask``
         - ``geopandas``
         - ``netcdf4``
         - ``numpy``
