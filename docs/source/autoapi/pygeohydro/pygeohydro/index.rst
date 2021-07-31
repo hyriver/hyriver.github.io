@@ -90,7 +90,7 @@ Module Contents
 
    Percentages of the categorical NLCD cover data.
 
-   :Parameters: **ds** (:class:`xarray.Dataset`) -- Cover DataArray from a LULC Dataset from the ``nlcd`` function.
+   :Parameters: **ds** (:class:`xarray.DataArray`) -- Cover DataArray from a LULC Dataset from the ``nlcd`` function.
 
    :returns: :class:`dict` -- Statistics of NLCD cover data
 
