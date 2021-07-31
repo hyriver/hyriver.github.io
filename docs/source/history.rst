@@ -34,6 +34,13 @@ Changelogs
 
     ---
 
+    .. link-button:: changelogs/async_retriever
+        :type: ref
+        :text: AsyncRetriever
+        :classes: stretched-link
+
+    ---
+
     .. link-button:: changelogs/pygeoogc
         :type: ref
         :text: PyGeoOGC
@@ -50,9 +57,10 @@ Changelogs
     :maxdepth: 1
     :hidden:
 
+    PyNHD <changelogs/pynhd>
+    PyGeoHydro <changelogs/pygeohydro>
+    Py3DEP <changelogs/py3dep>
+    PyDaymet <changelogs/pydaymet>
+    AsyncRetriever<changelogs/async_retriever>
     PyGeoOGC <changelogs/pygeoogc>
     PyGeoUtils <changelogs/pygeoutils>
-    PyNHD <changelogs/pynhd>
-    Py3DEP <changelogs/py3dep>
-    PyGeoHydro <changelogs/pygeohydro>
-    PyDaymet <changelogs/pydaymet>
