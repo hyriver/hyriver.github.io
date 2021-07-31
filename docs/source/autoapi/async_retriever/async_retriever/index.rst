@@ -12,40 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: AsyncRequest
-
-   Async send/request.
-
-   :Parameters: * **url** (:class:`str`) -- URL to be retrieved
-                * **session_req** (:class:`ClientSession`) -- A ClientSession for sending the request
-                * **kwds** (:class:`dict`) -- Arguments to be passed to requests
-
-   .. method:: binary(self) -> bytes
-      :async:
-
-      Create an async request and return the response as binary.
-
-      :returns: :class:`bytes` -- The retrieved response as binary.
-
-
-   .. method:: json(self) -> Dict[str, Any]
-      :async:
-
-      Create an async request and return the response as json.
-
-      :returns: :class:`dict` -- The retrieved response as json.
-
-
-   .. method:: text(self) -> str
-      :async:
-
-      Create an async request and return the response as a string.
-
-      :returns: :class:`str` -- The retrieved response as string.
-
-
-
-.. function:: retrieve(urls: List[str], read: str, request_kwds: Optional[List[Dict[str, Any]]] = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Optional[Union[Path, str]] = None) -> List[Union[str, Dict[str, Any], bytes]]
+.. function:: retrieve(urls: Union[StrOrURL, List[StrOrURL], Tuple[StrOrURL, ...]], read: str, request_kwds: Optional[List[Dict[str, Any]]] = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Optional[Union[Path, str]] = None, family: str = 'both') -> List[Union[str, Dict[str, Any], bytes]]
 
    Send async requests.
 
@@ -55,9 +22,11 @@ Module Contents
                   For example, ``[{"params": {...}, "headers": {...}}, ...]``.
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
-                * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, defaults to ``cache/aiohttp_cache.sqlite``.
+                * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
+                * **family** (:class:`str`, *optional*) -- TCP socket family, defaults to both, i.e., IPv4 and IPv6. For IPv4
+                  or IPv6 only pass ``ipv4`` or ``ipv6``, respectively.
 
-   :returns: :class:`list` -- List of responses which are not necessarily in the order of input requests.
+   :returns: :class:`list` -- List of responses in the order of input URLs.
 
    .. rubric:: Examples
 

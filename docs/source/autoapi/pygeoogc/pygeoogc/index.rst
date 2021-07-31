@@ -32,15 +32,6 @@ Module Contents
                   simultaneously and will return the requests partially. It's recommended
                   to avoid performing threading unless you are certain the web service can handle it.
 
-   .. method:: get_features(self, return_m: bool = False) -> List[Dict[str, Any]]
-
-      Get features based on the feature IDs.
-
-      :Parameters: **return_m** (:class:`bool`) -- Whether to activate the Return M (measure) in the request, defaults to False.
-
-      :returns: :class:`dict` -- (Geo)json response from the web service.
-
-
    .. method:: oids_byfield(self, field: str, ids: Union[str, List[str]]) -> None
 
       Get Object IDs based on a list of field IDs.
@@ -53,11 +44,9 @@ Module Contents
 
       Get feature IDs within a geometry that can be combined with a SQL where clause.
 
-      :Parameters: * **geom** (:class:`LineString`, :class:`Polygon`, :class:`Point`, :class:`MultiPoint`, :class:`tuple`, or :class:`list` of :class:`tuples`) --
-
-                     A geometry (LineString, Polygon, Point, MultiPoint), tuple of length
-                      2 (``(x, y)``), a list of tuples of length 2 (``[(x, y), ...]``), or bounding box
-                      (tuple of length 4 (``(xmin, ymin, xmax, ymax)``)).
+      :Parameters: * **geom** (:class:`LineString`, :class:`Polygon`, :class:`Point`, :class:`MultiPoint`, :class:`tuple`, or :class:`list` of :class:`tuples`) -- A geometry (LineString, Polygon, Point, MultiPoint), tuple of length two
+                     (``(x, y)``), a list of tuples of length 2 (``[(x, y), ...]``), or bounding box
+                     (tuple of length 4 (``(xmin, ymin, xmax, ymax)``)).
                    * **geo_crs** (:class:`str`) -- The spatial reference of the input geometry, defaults to EPSG:4326.
                    * **spatial_relation** (:class:`str`, *optional*) -- The spatial relationship to be applied on the input geometry
                      while performing the query. If not correct a list of available options is shown.
@@ -72,8 +61,8 @@ Module Contents
                      * ``esriSpatialRelTouches``
                      * ``esriSpatialRelWithin``
                      * ``esriSpatialRelRelation``
-                   * **sql_clause** (:class:`str`, *optional*) -- A valid SQL 92 WHERE clause, default to None.
-                   * **distance** (:class:`int`, *optional*) -- The buffer distance in meters for the input geometries in meters, default to None.
+                   * **sql_clause** (:class:`str`, *optional*) -- Valid SQL 92 WHERE clause, default to None.
+                   * **distance** (:class:`int`, *optional*) -- Buffer distance in meters for the input geometries, default to None.
 
 
    .. method:: oids_bysql(self, sql_clause: str) -> None
@@ -132,7 +121,7 @@ Module Contents
 
                   The data format to request for data from the service, defaults to None which
                    throws an error and includes all the available format offered by the service.
-                * **version** (:class:`str`, *optional*) -- The WFS service version which should be either 1.1.1, 1.3.0, or 2.0.0.
+                * **version** (:class:`str`, *optional*) -- The WFS service version which should be either 1.0.0, 1.1.0, or 2.0.0.
                   Defaults to 2.0.0.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
@@ -140,7 +129,7 @@ Module Contents
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
-   .. method:: getfeature_bybox(self, bbox: Tuple[float, float, float, float], box_crs: str = DEF_CRS, always_xy: bool = False) -> Response
+   .. method:: getfeature_bybox(self, bbox: Tuple[float, float, float, float], box_crs: str = DEF_CRS, always_xy: bool = False) -> Union[str, bytes, Dict[str, Any]]
 
       Get data from a WFS service within a bounding box.
 
@@ -152,10 +141,10 @@ Module Contents
                      If the returned value does not have any geometry, it indicates that most probably the
                      axis order does not match. You can set this to True in that case.
 
-      :returns: :class:`Response` -- WFS query response within a bounding box.
+      :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response within a bounding box.
 
 
-   .. method:: getfeature_byfilter(self, cql_filter: str, method: str = 'GET') -> Response
+   .. method:: getfeature_byfilter(self, cql_filter: str, method: str = 'GET') -> Union[str, bytes, Dict[str, Any]]
 
       Get features based on a valid CQL filter.
 
@@ -168,10 +157,10 @@ Module Contents
       :Parameters: * **cql_filter** (:class:`str`) -- A valid CQL filter expression.
                    * **method** (:class:`str`) -- The request method, could be GET or POST (for long filters).
 
-      :returns: :class:`Response` -- WFS query response
+      :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response
 
 
-   .. method:: getfeature_bygeom(self, geometry: Union[Polygon, MultiPolygon], geo_crs: str = DEF_CRS, always_xy: bool = False, predicate: str = 'INTERSECTS') -> Response
+   .. method:: getfeature_bygeom(self, geometry: Union[Polygon, MultiPolygon], geo_crs: str = DEF_CRS, always_xy: bool = False, predicate: str = 'INTERSECTS') -> Union[str, bytes, Dict[str, Any]]
 
       Get features based on a geometry.
 
@@ -195,17 +184,17 @@ Module Contents
                      * ``RELATE``
                      * ``BEYOND``
 
-      :returns: :class:`Response` -- WFS query response based on the given geometry.
+      :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response based on the given geometry.
 
 
-   .. method:: getfeature_byid(self, featurename: str, featureids: Union[List[str], str]) -> Response
+   .. method:: getfeature_byid(self, featurename: str, featureids: Union[List[str], str]) -> Union[str, bytes, Dict[str, Any]]
 
       Get features based on feature IDs.
 
       :Parameters: * **featurename** (:class:`str`) -- The name of the column for searching for feature IDs.
                    * **featureids** (:class:`str` or :class:`list`) -- The feature ID(s).
 
-      :returns: :class:`Response` -- WMS query response.
+      :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WMS query response.
 
 
 
@@ -227,7 +216,7 @@ Module Contents
                   to False if you are sure all the WMS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
-   .. method:: getmap_bybox(self, bbox: Tuple[float, float, float, float], resolution: float, box_crs: str = DEF_CRS, always_xy: bool = False, max_px: int = 8000000) -> Dict[str, bytes]
+   .. method:: getmap_bybox(self, bbox: Tuple[float, float, float, float], resolution: float, box_crs: str = DEF_CRS, always_xy: bool = False, max_px: int = 8000000, kwargs: Optional[Dict[str, Any]] = None) -> Dict[str, bytes]
 
       Get data from a WMS service within a geometry or bounding box.
 
@@ -242,6 +231,8 @@ Module Contents
                      axis order does not match. You can set this to True in that case.
                    * **max_px** (:class:`int`, :class:`opitonal`) -- The maximum allowable number of pixels (width x height) for a WMS requests,
                      defaults to 8 million based on some trial-and-error.
+                   * **kwargs** (:class:`dict`, *optional*) -- Optional additional keywords passed as payload, defaults to None.
+                     For example, ``{"styles": "default"}``.
 
       :returns: :class:`dict` -- A dict where the keys are the layer name and values are the returned response
                 from the WMS service as bytes.

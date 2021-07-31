@@ -75,6 +75,12 @@ Module Contents
       Get valid layer for a ArcGISREST service.
 
 
+   .. method:: service(self) -> ArcGISRESTful
+      :property:
+
+      Connect to a RESTFul service.
+
+
 
 .. py:class:: NHDPlusHR(layer: Optional[str] = None, outfields: Union[str, List[str]] = '*', crs: str = DEF_CRS, service: str = 'hydro', auto_switch: bool = False)
 
@@ -200,12 +206,14 @@ Module Contents
                 defaults to system's temp directory. The metadata dataframe is saved as a feather
                 file, nhdplus_attrs.feather, in save_dir that can be loaded with Pandas.
 
-   .. method:: get_children(self, item: str) -> Dict[str, Any]
+   .. method:: get_children(item: str) -> Dict[str, Any]
+      :staticmethod:
 
       Get children items of an item.
 
 
-   .. method:: get_files(self, item: str) -> Dict[str, Tuple[str, str]]
+   .. method:: get_files(item: str) -> Dict[str, Tuple[str, str]]
+      :staticmethod:
 
       Get all the available zip files in an item.
 
@@ -263,6 +271,11 @@ Module Contents
 
 
 
+.. function:: nhd_fcode() -> pd.DataFrame
+
+   Get all the NHDPlus FCodes.
+
+
 .. function:: nhdplus_attrs(name: Optional[str] = None, save_dir: Optional[str] = None) -> pd.DataFrame
 
    Access NHDPlus V2.1 Attributes from ScienceBase over CONUS.
@@ -296,9 +309,7 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> import tempfile
-   >>> from pathlib import Path
-   >>> vaa = nhdplus_vaa(Path(tempfile.gettempdir(), "nhdplus_vaa.parquet"))
+   >>> vaa = nhdplus_vaa()
    >>> print(vaa.slope.max())
    4.6
 

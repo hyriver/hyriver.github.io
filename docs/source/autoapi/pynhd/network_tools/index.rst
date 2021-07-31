@@ -12,24 +12,16 @@
 Module Contents
 ---------------
 
-.. function:: check_requirements(reqs: Iterable, cols: List[str]) -> None
-
-   Check for all the required data.
-
-   :Parameters: * **reqs** (:term:`iterable`) -- A list of required data names (str)
-                * **cols** (:class:`list`) -- A list of variable names (str)
-
-
-.. function:: prepare_nhdplus(flw: gpd.GeoDataFrame, min_network_size: float, min_path_length: float, min_path_size: float = 0, purge_non_dendritic: bool = False, verbose: bool = False) -> gpd.GeoDataFrame
+.. function:: prepare_nhdplus(flowlines: gpd.GeoDataFrame, min_network_size: float, min_path_length: float, min_path_size: float = 0, purge_non_dendritic: bool = False, verbose: bool = False) -> gpd.GeoDataFrame
 
    Clean up and fix common issues of NHDPlus flowline database.
 
-   Ported from `nhdplusTools <https://github.com/USGS-R/nhdplusTools>`__
+   Ported from `nhdplusTools <https://github.com/USGS-R/nhdplusTools>`__.
 
-   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- NHDPlus flowlines with at least the following columns:
-                  COMID, LENGTHKM, FTYPE, TerminalFl, FromNode, ToNode, TotDASqKM,
-                  StartFlag, StreamOrde, StreamCalc, TerminalPa, Pathlength,
-                  Divergence, Hydroseq, LevelPathI
+   :Parameters: * **flowlines** (:class:`geopandas.GeoDataFrame`) -- NHDPlus flowlines with at least the following columns:
+                  ``comid``, ``lengthkm``, ``ftype``, ``terminalfl``, ``fromnode``, ``tonode``,
+                  ``totdasqkm``, ``startflag``, ``streamorde``, ``streamcalc``, ``terminalpa``,
+                  ``pathlength``, ``divergence``, ``hydroseq``, ``levelpathi``.
                 * **min_network_size** (:class:`float`) -- Minimum size of drainage network in sqkm
                 * **min_path_length** (:class:`float`) -- Minimum length of terminal level path of a network in km.
                 * **min_path_size** (:class:`float`, *optional*) -- Minimum size of outlet level path of a drainage basin in km.

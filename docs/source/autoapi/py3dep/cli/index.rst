@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. function:: from_coords(coords: List[Tuple[float, float]], crs: str, csv_path: Union[str, Path]) -> None
+.. function:: from_coords(coords: List[Tuple[float, float]], crs: str, query_source: str, csv_path: Union[str, Path]) -> None
 
    Get elevations of a set of coordinates in meter from airmap.
 
@@ -29,7 +29,7 @@ Module Contents
    It also re-orders the columns based on ``req_cols`` order.
 
 
-.. function:: main(target: Path, target_type: str, crs: str, layer: Optional[str] = None, save_dir: Union[str, Path] = 'topo_3dep')
+.. function:: main(target: Path, target_type: str, crs: str, query_source: str = 'airmap', layer: Optional[str] = None, save_dir: Union[str, Path] = 'topo_3dep')
 
    Retrieve topographic data within geometries or elevations for a list of coordinates.
 

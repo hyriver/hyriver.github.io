@@ -31,6 +31,15 @@ Module Contents
                   simultaneously and will return the requests partially. It's recommended
                   to avoid using too many workers unless you are certain the web service can handle it.
 
+   .. method:: get_features(self, return_m: bool = False) -> List[Dict[str, Any]]
+
+      Get features based on the feature IDs.
+
+      :Parameters: **return_m** (:class:`bool`) -- Whether to activate the Return M (measure) in the request, defaults to False.
+
+      :returns: :class:`dict` -- (Geo)json response from the web service.
+
+
    .. method:: initialize_service(self) -> None
 
       Initialize the RESTFul service.
@@ -76,10 +85,12 @@ Module Contents
 
                   The data format to request for data from the service, defaults to None which
                    throws an error and includes all the available format offered by the service.
-                * **version** (:class:`str`, *optional*) -- The WFS service version which should be either 1.1.1, 1.3.0, or 2.0.0.
+                * **version** (:class:`str`, *optional*) -- The WFS service version which should be either 1.0.0, 1.1.0, or 2.0.0.
                   Defaults to 2.0.0.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
+                * **read_method** (:class:`str`, *optional*) -- Method for reading the retrieved data, defaults to ``json``. Valid options are
+                  ``json``, ``binary``, and ``text``.
 
    .. method:: get_validnames(self) -> List[str]
 

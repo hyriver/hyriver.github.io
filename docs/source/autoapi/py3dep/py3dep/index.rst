@@ -17,17 +17,21 @@ Module Contents
    Convert slope from degree to meter/meter.
 
 
-.. function:: elevation_bycoords(coords: List[Tuple[float, float]], crs: str = DEF_CRS) -> List[int]
+.. function:: elevation_bycoords(coords: List[Tuple[float, float]], crs: str = DEF_CRS, source: str = 'tnm') -> List[float]
 
    Get elevation from Airmap at 1-arc resolution (~30 m) for a list of coordinates.
 
    :Parameters: * **coords** (:class:`list` of :class:`tuples`) -- Coordinates of target location as list of tuples ``[(x, y), ...]``.
                 * **crs** (:class:`str`, *optional*) -- Spatial reference (CRS) of coords, defaults to ``EPSG:4326``.
+                * **source** (:class:`str`, *optional*) -- Data source to be used, default to ``tnm``. Supported sources are
+                  ``airmap`` (30 m resolution) and ``tnm`` (using The National Map's Bulk Point
+                  Query Service). The ``tnm`` source is more accurate since it uses the highest
+                  available resolution DEM automatically but it is limited to the US.
 
-   :returns: :class:`list` of :class:`int` -- Elevation in meter.
+   :returns: :class:`list` of :class:`float` -- Elevation in meter.
 
 
-.. function:: elevation_bygrid(xcoords: List[float], ycoords: List[float], crs: str, resolution: float, dim_names: Optional[Tuple[str, str]] = None, resampling: rio_warp.Resampling = rio_warp.Resampling.bilinear) -> xr.DataArray
+.. function:: elevation_bygrid(xcoords: List[float], ycoords: List[float], crs: str, resolution: float, depression_filling: bool = False) -> xr.DataArray
 
    Get elevation from DEM data for a grid.
 
@@ -39,11 +43,8 @@ Module Contents
                 * **resolution** (:class:`float`) -- The accuracy of the output, defaults to 10 m which is the highest
                   available resolution that covers CONUS. Note that higher resolution
                   increases computation time so chose this value with caution.
-                * **dim_names** (:class:`tuple`) -- A tuple of length two containing the coordinate names, defaults to ``("x", "y")``.
-                * **resampling** (:class:`rasterio.warp.Resampling`) -- The reasmpling method to use if the input crs is not in the supported
-                  3DEP's CRS list which are ``EPSG:4326`` and ``EPSG:3857``.
-                  It defaults to bilinear. The available methods can be found
-                  `here <https://rasterio.readthedocs.io/en/latest/api/rasterio.enums.html#rasterio.enums.Resampling>`__
+                * **depression_filling** (:class:`bool`, *optional*) -- Fill depressions before sampling using
+                  `RichDEM <https://richdem.readthedocs.io/en/latest/>`__ package, defaults to False.
 
    :returns: :class:`xarray.DataArray` -- An data array with name elevation and the given dim names.
 
@@ -77,7 +78,9 @@ Module Contents
                 * **geo_crs** (:class:`str`, *optional*) -- The spatial reference system of the input geometry, defaults to
                   ``EPSG:4326``.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
-                  ``EPSG:4326``.
+                  ``EPSG:4326``. Valis values are ``epsg:4326``, ``epsg:3576``, ``epsg:3571``,
+                  ``epsg:3575``, ``epsg:3857``, ``epsg:3572``, ``crs:84``, ``epsg:3573``,
+                  and ``epsg:3574``.
 
    :returns: :class:`dict` -- A dict where the keys are the layer name and values are the returned response
              from the WMS service as bytes. You can use ``utils.create_dataset`` function

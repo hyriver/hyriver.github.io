@@ -22,7 +22,12 @@ Module Contents
    Data structure for plotting hydrologic signatures.
 
 
-.. function:: cover_legends() -> Tuple[ListedColormap, BoundaryNorm, List[float]]
+.. function:: cover_legends() -> Tuple[ListedColormap, BoundaryNorm, List[int]]
+
+   Colormap (cmap) and their respective values (norm) for land cover data legends.
+
+
+.. function:: descriptor_legends(cmap_name: str = 'tab20') -> Tuple[ListedColormap, BoundaryNorm, List[int]]
 
    Colormap (cmap) and their respective values (norm) for land cover data legends.
 

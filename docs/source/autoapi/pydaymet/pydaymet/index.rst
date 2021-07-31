@@ -46,7 +46,7 @@ Module Contents
    >>> dates = ("2000-01-01", "2000-12-31")
    >>> clm = daymet.get_bycoords(coords, dates, crs="epsg:3542", pet=True)
    >>> clm["pet (mm/day)"].mean()
-   3.472
+   3.497
 
 
 .. function:: get_bygeom(geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], dates: Union[Tuple[str, str], Union[int, List[int]]], crs: str = DEF_CRS, variables: Optional[Union[Iterable[str], str]] = None, pet: bool = False, region: str = 'na', time_scale: str = 'daily') -> xr.Dataset

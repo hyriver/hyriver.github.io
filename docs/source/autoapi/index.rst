@@ -75,9 +75,9 @@ API References
    PyGeoHydro </autoapi/pygeohydro/index>
    Py3DEP </autoapi/py3dep/index>
    PyDaymet </autoapi/pydaymet/index>
+   AsyncRetriever </autoapi/async_retriever/index>
    PyGeoOGC </autoapi/pygeoogc/index>
    PyGeoUtils </autoapi/pygeoutils/index>
-   AsyncRetriever </autoapi/async_retriever/index>
 
 .. |pygeohydro| image:: https://img.shields.io/pypi/v/pygeohydro?label=%20&color=blue
     :target: https://github.com/cheginit/pygeohydro
