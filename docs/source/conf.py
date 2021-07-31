@@ -69,6 +69,7 @@ autoapi_ignore = [
     "**conf**",
     "**exceptions**",
     "**print_versions**",
+    "**noxfile**",
 ]
 autoapi_options = ["members"]
 autoapi_member_order = "groupwise"
