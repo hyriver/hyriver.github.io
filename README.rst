@@ -31,6 +31,10 @@
     :target: https://github.com/cheginit/async_retriever/actions/workflows/test.yml
     :alt: Github Actions
 
+.. |hydro_stat| image:: https://static.pepy.tech/personalized-badge/hydrodata?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
+    :target: https://pepy.tech/project/hydrodata
+    :alt: Download Stat
+
 .. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
     :target: https://pepy.tech/project/hydrodata
     :alt: Download Stat
@@ -83,7 +87,7 @@ Package         Description                                                     
 =============== ==================================================================== ============
 |nhd_stat|      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
-|geoh_stat|     Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro|
+|hydro_stat|    Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro|
 |day_stat|      Access Daymet for daily climate data both single pixel and gridded   |pydaymet|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
