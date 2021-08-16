@@ -31,35 +31,35 @@
     :target: https://github.com/cheginit/async_retriever/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |pygeohydro_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=green&right_color=yellow&left_text=PyGeoHydro
+.. |goh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
     :target: https://pepy.tech/project/hydrodata
     :alt: Download Stat
 
-.. |pygeoogc_stat| image:: https://static.pepy.tech/personalized-badge/pygeoogc?period=total&left_color=green&right_color=yellow&left_text=PyGeoOGC
+.. |ogc_stat| image:: https://static.pepy.tech/personalized-badge/pygeoogc?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoOGC
     :target: https://pepy.tech/project/pygeoogc
     :alt: Download Stat
 
-.. |pygeoutils_stat| image:: https://static.pepy.tech/personalized-badge/pygeoutils?period=total&left_color=green&right_color=yellow&left_text=PyGeoUtils
+.. |utils_stat| image:: https://static.pepy.tech/personalized-badge/pygeoutils?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoUtils
     :target: https://pepy.tech/project/pygeoutils
     :alt: Download Stat
 
-.. |pynhd_stat| image:: https://static.pepy.tech/personalized-badge/pynhd?period=total&left_color=green&right_color=yellow&left_text=PyNHD
+.. |nhd_stat| image:: https://static.pepy.tech/personalized-badge/pynhd?period=total&left_color=blue&right_color=yellowgreen&left_text=PyNHD
     :target: https://pepy.tech/project/pynhd
     :alt: Download Stat
 
-.. |py3dep_stat| image:: https://static.pepy.tech/personalized-badge/py3dep?period=total&left_color=green&right_color=yellow&left_text=Py3DEP
+.. |3dep_stat| image:: https://static.pepy.tech/personalized-badge/py3dep?period=total&left_color=blue&right_color=yellowgreen&left_text=Py3DEP
     :target: https://pepy.tech/project/py3dep
     :alt: Download Stat
 
-.. |pydaymet_stat| image:: https://static.pepy.tech/personalized-badge/pydaymet?period=total&left_color=green&right_color=yellow&left_text=PyDaymet
+.. |day_stat| image:: https://static.pepy.tech/personalized-badge/pydaymet?period=total&left_color=blue&right_color=yellowgreen&left_text=PyDaymet
     :target: https://pepy.tech/project/pydaymet
     :alt: Download Stat
 
-.. |async_stat| image:: https://static.pepy.tech/personalized-badge/async_retriever?period=total&left_color=green&right_color=yellow&left_text=AsyncRetriever
+.. |async_stat| image:: https://static.pepy.tech/personalized-badge/async_retriever?period=total&left_color=blue&right_color=yellowgreen&left_text=AsyncRetriever
     :target: https://pepy.tech/project/async_retriever
     :alt: Download Stat
 
-.. image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=green&right_color=yellow&left_text=PyGeoHydro
+.. image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
  :target: https://pepy.tech/project/pygeohydro
 
 
@@ -91,7 +91,7 @@ Package         Description                                                     
 |day_stat|      Access Daymet for daily climate data both single pixel and gridded   |pydaymet|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
-|util_stat|     Convert responses from PyGeoOGC's supported web services to datasets |pygeoutils|
+|utils_stat|    Convert responses from PyGeoOGC's supported web services to datasets |pygeoutils|
 =============== ==================================================================== ============
 
 
