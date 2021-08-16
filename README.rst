@@ -31,7 +31,7 @@
     :target: https://github.com/cheginit/async_retriever/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |goh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
+.. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
     :target: https://pepy.tech/project/hydrodata
     :alt: Download Stat
 
@@ -58,10 +58,6 @@
 .. |async_stat| image:: https://static.pepy.tech/personalized-badge/async_retriever?period=total&left_color=blue&right_color=yellowgreen&left_text=AsyncRetriever
     :target: https://pepy.tech/project/async_retriever
     :alt: Download Stat
-
-.. image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
- :target: https://pepy.tech/project/pygeohydro
-
 
 .. _PyGeoHydro: https://github.com/cheginit/pygeohydro
 .. _PyGeoOGC: https://github.com/cheginit/pygeoogc
