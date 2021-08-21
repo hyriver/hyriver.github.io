@@ -98,13 +98,6 @@ Package         Description                                                     
 HyRiver: Hydroclimate Data Retriever
 =====================================
 
-.. note::
-
-    This software stack was formerly named `hydrodata <https://pypi.org/project/hydrodata>`__.
-    Since an `R <https://github.com/mikejohnson51/HydroData>`__ package with the same name
-    already exists, we decided to renamed our project to
-    HyRiver.
-
 Features
 --------
 
