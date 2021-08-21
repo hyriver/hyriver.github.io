@@ -57,6 +57,10 @@
 Hydroclimate Data Retriever
 ===========================
 
+.. image:: https://img.shields.io/pypi/pyversions/pygeoogc.svg
+    :target: https://pypi.python.org/pypi/pygeoogc
+    :alt: Python Versions
+
 .. image:: https://mybinder.org/badge_logo.svg
     :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
     :alt: Binder
