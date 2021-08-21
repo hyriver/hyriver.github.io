@@ -170,7 +170,7 @@ Module Contents
                      order from xy to yx, following the latest WFS version specifications but some don't.
                      If the returned value does not have any geometry, it indicates that most probably the
                      axis order does not match. You can set this to True in that case.
-                   * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to ``INTERSECTS``.
+                   * **predicate** (:class:`str`, *optional*) -- The geometric predicate to use for requesting the data, defaults to ``INTERSECTS``.
                      Valid predicates are:
 
                      * ``EQUALS``
@@ -187,7 +187,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response based on the given geometry.
 
 
-   .. method:: getfeature_byid(self, featurename: str, featureids: Union[List[str], str]) -> Union[str, bytes, Dict[str, Any]]
+   .. method:: getfeature_byid(self, featurename: str, featureids: Union[List[str], str]) -> List[Union[str, bytes, Dict[str, Any]]]
 
       Get features based on feature IDs.
 

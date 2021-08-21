@@ -91,6 +91,9 @@ Module Contents
                   epsg:4326.
                 * **read_method** (:class:`str`, *optional*) -- Method for reading the retrieved data, defaults to ``json``. Valid options are
                   ``json``, ``binary``, and ``text``.
+                * **max_nrecords** (:class:`int`, *optional*) -- The maximum number of records in a single request to be retrieved from the service,
+                  defaults to 1000. If the number of records requested is greater than this value,
+                  it will be split into multiple requests.
 
    .. method:: get_validnames(self) -> List[str]
 
