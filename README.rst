@@ -31,36 +31,32 @@
     :target: https://github.com/cheginit/async_retriever/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |hydro_stat| image:: https://static.pepy.tech/personalized-badge/hydrodata?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
-    :target: https://pepy.tech/project/hydrodata
-    :alt: Download Stat
-
-.. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
-    :target: https://pepy.tech/project/hydrodata
+.. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/hydrodata?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
+    :target: https://github.com/cheginit/pygeohydro
     :alt: Download Stat
 
 .. |ogc_stat| image:: https://static.pepy.tech/personalized-badge/pygeoogc?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoOGC
-    :target: https://pepy.tech/project/pygeoogc
+    :target: https://github.com/cheginit/pygeoogc
     :alt: Download Stat
 
 .. |utils_stat| image:: https://static.pepy.tech/personalized-badge/pygeoutils?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoUtils
-    :target: https://pepy.tech/project/pygeoutils
+    :target: https://github.com/cheginit/pygeoutils
     :alt: Download Stat
 
 .. |nhd_stat| image:: https://static.pepy.tech/personalized-badge/pynhd?period=total&left_color=blue&right_color=yellowgreen&left_text=PyNHD
-    :target: https://pepy.tech/project/pynhd
+    :target: https://github.com/cheginit/pynhd
     :alt: Download Stat
 
 .. |3dep_stat| image:: https://static.pepy.tech/personalized-badge/py3dep?period=total&left_color=blue&right_color=yellowgreen&left_text=Py3DEP
-    :target: https://pepy.tech/project/py3dep
+    :target: https://github.com/cheginit/py3dep
     :alt: Download Stat
 
 .. |day_stat| image:: https://static.pepy.tech/personalized-badge/pydaymet?period=total&left_color=blue&right_color=yellowgreen&left_text=PyDaymet
-    :target: https://pepy.tech/project/pydaymet
+    :target: https://github.com/cheginit/pydaymet
     :alt: Download Stat
 
 .. |async_stat| image:: https://static.pepy.tech/personalized-badge/async_retriever?period=total&left_color=blue&right_color=yellowgreen&left_text=AsyncRetriever
-    :target: https://pepy.tech/project/async_retriever
+    :target: https://github.com/cheginit/async_retriever
     :alt: Download Stat
 
 .. _PyGeoHydro: https://github.com/cheginit/pygeohydro
@@ -87,7 +83,7 @@ Package         Description                                                     
 =============== ==================================================================== ============
 |nhd_stat|      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
-|hydro_stat|    Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro|
+|geoh_stat|     Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro|
 |day_stat|      Access Daymet for daily climate data both single pixel and gridded   |pydaymet|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
