@@ -107,7 +107,7 @@ Module Contents
 
 
 
-.. py:class:: WFS(url: str, layer: Optional[str] = None, outformat: Optional[str] = None, version: str = '2.0.0', crs: str = DEF_CRS, validation: bool = True)
+.. py:class:: WFS(url: str, layer: Optional[str] = None, outformat: Optional[str] = None, version: str = '2.0.0', crs: str = DEF_CRS, read_method: str = 'json', max_nrecords: int = 1000, validation: bool = True)
 
 
 
@@ -125,6 +125,11 @@ Module Contents
                   Defaults to 2.0.0.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
+                * **read_method** (:class:`str`, *optional*) -- Method for reading the retrieved data, defaults to ``json``. Valid options are
+                  ``json``, ``binary``, and ``text``.
+                * **max_nrecords** (:class:`int`, *optional*) -- The maximum number of records in a single request to be retrieved from the service,
+                  defaults to 1000. If the number of records requested is greater than this value,
+                  it will be split into multiple requests.
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WFS service, defaults to True. Set this
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
