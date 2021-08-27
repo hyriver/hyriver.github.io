@@ -196,6 +196,96 @@ Module Contents
 
 
 
+.. py:class:: PyGeoAPI
+
+   Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
+
+   .. method:: cross_section(self, coord: Tuple[float, float], width: float, numpts: int, crs: str = DEF_CRS) -> gpd.GeoDataFrame
+
+      Return a GeoDataFrame from the xsatpoint service.
+
+      :Parameters: * **coord** (:class:`tuple`) -- The coordinate of the point to extract the cross-section as a tuple,e.g., (lon, lat).
+                   * **width** (:class:`float`) -- The width of the cross-section in meters.
+                   * **numpts** (:class:`int`) -- The number of points to extract the cross-section from the DEM.
+                   * **crs** (:class:`str`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the cross-section at the requested point.
+
+      .. rubric:: Examples
+
+      >>> from pynhd import PyGeoAPI
+      >>> pygeoapi = PyGeoAPI()
+      >>> gdf = pygeoapi.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs=DEF_CRS)
+      >>> print(gdf.iloc[-1, 1])
+      1000.0
+
+
+   .. method:: elevation_profile(self, coords: List[Tuple[float, float]], numpts: int, dem_res: int, crs: str = DEF_CRS) -> gpd.GeoDataFrame
+
+      Return a GeoDataFrame from the xsatendpts service.
+
+      :Parameters: * **coords** (:class:`list`) -- A list of two coordinates to trace as a list of tuples,e.g., [(lon, lat), (lon, lat)].
+                   * **numpts** (:class:`int`) -- The number of points to extract the elevation profile from the DEM.
+                   * **dem_res** (:class:`int`) -- The target resolution for requesting the DEM from 3DEP service.
+                   * **crs** (:class:`str`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the elevation profile along the requested endpoints.
+
+      .. rubric:: Examples
+
+      >>> from pynhd import PyGeoAPI
+      >>> pygeoapi = PyGeoAPI()
+      >>> gdf = pygeoapi.elevation_profile(
+      ...     [(-103.801086, 40.26772), (-103.80097, 40.270568)], numpts=101, dem_res=1, crs=DEF_CRS
+      ... )
+      >>> print(gdf.iloc[-1, 1])
+      411.5906
+
+
+   .. method:: flow_trace(self, coord: Tuple[float, float], crs: str = DEF_CRS, raindrop: bool = False, direction: str = 'down') -> gpd.GeoDataFrame
+
+      Return a GeoDataFrame from the flowtrace service.
+
+      :Parameters: * **coord** (:class:`tuple`) -- The coordinate of the point to trace as a tuple,e.g., (lon, lat).
+                   * **crs** (:class:`str`) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+                   * **raindrop** (:class:`bool`, *optional*) -- If True, use raindrop-based flowpaths, i.e. use raindrop trace web service
+                     with direction set to "none", defaults to False.
+                   * **direction** (:class:`str`, *optional*) -- The direction of flowpaths, either "down", "up", or "none". Defaults to "down".
+
+      :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the traced flowline.
+
+      .. rubric:: Examples
+
+      >>> from pynhd import PyGeoAPI
+      >>> pygeoapi = PyGeoAPI()
+      >>> gdf = pygeoapi.flow_trace(
+      ...     (1774209.63, 856381.68), crs="ESRI:102003", raindrop=False, direction="none"
+      ... )
+      >>> print(gdf.comid.iloc[0])
+      22294818
+
+
+   .. method:: split_catchment(self, coord: Tuple[float, float], crs: str = DEF_CRS, upstream: bool = False) -> gpd.GeoDataFrame
+
+      Return a GeoDataFrame from the splitcatchment service.
+
+      :Parameters: * **coord** (:class:`tuple`) -- The coordinate of the point to trace as a tuple,e.g., (lon, lat).
+                   * **crs** (:class:`str`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+                   * **upstream** (:class:`bool`, *optional*) -- If True, return all upstream catchments rather than just the local catchment,
+                     defaults to False.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the local catchment or the entire upstream catchments.
+
+      .. rubric:: Examples
+
+      >>> from pynhd import PyGeoAPI
+      >>> pygeoapi = PyGeoAPI()
+      >>> gdf = pygeoapi.split_catchment((-73.82705, 43.29139), crs=DEF_CRS, upstream=False)
+      >>> print(gdf.catchmentID.iloc[0])
+      22294818
+
+
+
 .. py:class:: ScienceBase(save_dir: Optional[str] = None)
 
    Access NHDPlus V2.1 Attributes from ScienceBase over CONUS.
