@@ -91,6 +91,7 @@ You can watch these videos for a quick overview of ``HyRiver``:
     :hidden:
 
     getting_started
+    readmes
     examples
 
 .. toctree::
