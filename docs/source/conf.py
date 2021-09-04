@@ -235,15 +235,24 @@ html_logo = "_static/hyriver_logo_text.svg"
 html_favicon = "_static/favicon.ico"
 htmlhelp_basename = "HyRiverdoc"
 
-# configuration for sphinxext.opengraph
+# configuration for opengraph
+description = " ".join(
+    [
+        "HyRiver is a software stack consisting of seven Python libraries",
+        "that are designed to aid in watershed analysis through web services."
+    ]
+)
 ogp_site_url = "https://hyriver.readthedocs.io/en/latest"
-ogp_image = "https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.svg"
+ogp_image = "https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.png"
 ogp_custom_meta_tags = [
     '<meta name="twitter:card" content="summary_large_image" />',
-    '<meta property="twitter:site" content="@_taher_" />',
-    '<meta name="image" property="og:image" content="https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.svg" />',
+    '<meta name="twitter:site" content="@_taher_" />',
+    '<meta name="twitter:creator" content="@_taher_" />',
+    f'<meta name="twitter:description" content="{description}" />',
+    f'<meta name="twitter:image" content="{ogp_image}" />',
 ]
 
+# fix an issue with ipython where it doesn't create the missing dirs
 ipython_savefig_dir = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "_build", "html", "_static"
 )
