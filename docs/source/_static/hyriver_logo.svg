@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg4542"
    viewBox="0 0 92.524456 92.524439"
    version="1.1"
-   sodipodi:docname="hydriver_logo_text.svg"
+   sodipodi:docname="hyriver_logo.svg"
    width="92.524452"
    height="92.524452"
-   inkscape:version="1.0.2 (1.0.2+r75+1)"
-   inkscape:export-filename="/home/taher/repos/stack/geohydrohub-examples/notebooks/_static/hydriver_logo.png"
-   inkscape:export-xdpi="128.16"
-   inkscape:export-ydpi="128.16">
+   inkscape:version="1.1 (1:1.1+202105261518+ce6663b3b7)"
+   inkscape:export-filename="/home/taher/repos/stack/HyRiver/docs/source/_static/hydriver_logo.png"
+   inkscape:export-xdpi="299.85587"
+   inkscape:export-ydpi="299.85587"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs3773">
     <clipPath
@@ -47,10 +47,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter1226"
-       x="-0.031546503"
-       width="1.0630929"
-       y="-0.023598909"
-       height="1.0471978">
+       x="-0.058764231"
+       width="1.1175285"
+       y="-0.043888148"
+       height="1.087419">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="0.1815565"
@@ -70,9 +70,9 @@
      inkscape:window-height="1056"
      id="namedview3771"
      showgrid="false"
-     inkscape:zoom="2.1931875"
-     inkscape:cx="121.16698"
-     inkscape:cy="68.908544"
+     inkscape:zoom="2.3048829"
+     inkscape:cx="-27.116345"
+     inkscape:cy="33.624268"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="0"
@@ -81,7 +81,8 @@
      inkscape:guide-bbox="true"
      inkscape:document-rotation="0"
      inkscape:snap-object-midpoints="true"
-     inkscape:snap-center="true" />
+     inkscape:snap-center="true"
+     inkscape:pagecheckerboard="0" />
   <g
      id="layer1"
      transform="translate(-113.16375,-328.24575)">
@@ -133,7 +134,7 @@
             <dc:title>Openclipart</dc:title>
           </cc:Agent>
         </dc:publisher>
-        <dc:title></dc:title>
+        <dc:title />
         <dc:date>2013-10-06T13:49:20</dc:date>
         <dc:description>umbrella pictogram</dc:description>
         <dc:source>https://openclipart.org/detail/184614/umbrella-by-harini-184614</dc:source>

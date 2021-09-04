@@ -243,9 +243,9 @@ description = " ".join(
     ]
 )
 ogp_site_url = "https://hyriver.readthedocs.io/en/latest"
-ogp_image = "https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.png"
+ogp_image = "https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo.png"
 ogp_custom_meta_tags = [
-    '<meta name="twitter:card" content="summary_large_image" />',
+    '<meta name="twitter:card" content="summary" />',
     '<meta name="twitter:site" content="@_taher_" />',
     '<meta name="twitter:creator" content="@_taher_" />',
     f'<meta name="twitter:description" content="{description}" />',
