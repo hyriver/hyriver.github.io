@@ -46,6 +46,7 @@ lint: ## check style with flake8
 	pre-commit run --all-files
 
 docs: ## generate Sphinx HTML documentation, including API docs
+	for f in $(ls HyRiver-Examples/notebooks/*.ipynb);do echo \{\"path\": \"../../../$f\"\} > docs/source/notebooks/$(basename $f .ipynb).nblink;done
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/build/html/index.html
