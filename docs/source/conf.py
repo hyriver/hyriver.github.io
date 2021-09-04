@@ -47,6 +47,7 @@ intersphinx_mapping = {
     "geopandas": ("https://geopandas.org/", None),
     "pandas": ("https://pandas.pydata.org/pandas-docs/stable/", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
+    "scipy": ("https://docs.scipy.org/doc/scipy", None),
     "networkx": ("https://networkx.org/documentation/stable/", None),
     "matplotlib": ("https://matplotlib.org/", None),
     "folium": ("https://python-visualization.github.io/folium/", None),
@@ -76,6 +77,7 @@ autoapi_member_order = "groupwise"
 autoapi_keep_files = True
 autoapi_add_toctree_entry = False
 modindex_common_prefix = [
+    "async_retriever.",
     "pygeoogc.",
     "pygeoutils.",
     "pynhd.",
@@ -111,6 +113,8 @@ nbsphinx_prolog = """
 # sphinx-copybutton configurations
 copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
 copybutton_prompt_is_regexp = True
+
+autodoc_typehints = "none"
 
 # Napoleon configurations
 napoleon_google_docstring = False
@@ -231,6 +235,15 @@ html_logo = "_static/hyriver_logo_text.svg"
 html_favicon = "_static/favicon.ico"
 htmlhelp_basename = "HyRiverdoc"
 
+# configuration for sphinxext.opengraph
+ogp_site_url = "https://hyriver.readthedocs.io/en/latest"
+ogp_image = "https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.svg"
+ogp_custom_meta_tags = [
+    '<meta name="twitter:card" content="summary_large_image" />',
+    '<meta property="twitter:site" content="@_taher_ />',
+    '<meta name="image" property="og:image" content="https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.svg">',
+]
+
 ipython_savefig_dir = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "_build", "html", "_static"
 )
@@ -239,6 +252,7 @@ if not os.path.exists(ipython_savefig_dir):
 
 # -- markdown configurations -------------------------------------------------
 import recommonmark
+import inspect
 from recommonmark.transform import AutoStructify
 
 github_doc_root = "https://github.com/rtfd/recommonmark/tree/master/doc/"
@@ -308,3 +322,12 @@ def linkcode_resolve(domain, info):
             f"https://github.com/cheginit/{p_name}/blob/"
             f"v{p_obj.__version__}/{p_name}/{fn}{linespec}"
         )
+
+def html_page_context(app, pagename, templatename, context, doctree):
+    # Disable edit button for docstring generated pages
+    if "generated" in pagename:
+        context["theme_use_edit_page_button"] = False
+
+
+def setup(app):
+    app.connect("html-page-context", html_page_context)
