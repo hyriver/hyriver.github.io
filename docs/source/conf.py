@@ -243,7 +243,7 @@ description = " ".join(
     ]
 )
 ogp_site_url = "https://hyriver.readthedocs.io/en/latest"
-ogp_image = "https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo.png"
+ogp_image = "https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png"
 ogp_custom_meta_tags = [
     '<meta name="twitter:card" content="summary" />',
     '<meta name="twitter:site" content="@_taher_" />',
