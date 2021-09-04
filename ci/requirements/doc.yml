@@ -9,17 +9,17 @@ dependencies:
   - ipywidgets
   - jupyter_client
   - recommonmark
-  - nbsphinx
   - pygithub
-  - sphinx
-  - sphinx-copybutton
-  - sphinx-gallery
-  - sphinx-autoapi
-  - sphinx-panels
-  - sphinx-book-theme
 
   - pip
   - pip:
-    - sphinx-book-theme
+    - nbsphinx
     - nbsphinx_link
+    - sphinx
+    - sphinx-copybutton
+    - sphinx-gallery
+    - sphinx-autoapi
+    - sphinx-panels
+    - sphinx-book-theme
+    - sphinx-book-theme
     - sphinxext-opengraph
