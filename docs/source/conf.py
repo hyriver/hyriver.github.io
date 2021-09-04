@@ -240,8 +240,8 @@ ogp_site_url = "https://hyriver.readthedocs.io/en/latest"
 ogp_image = "https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.svg"
 ogp_custom_meta_tags = [
     '<meta name="twitter:card" content="summary_large_image" />',
-    '<meta property="twitter:site" content="@_taher_ />',
-    '<meta name="image" property="og:image" content="https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.svg">',
+    '<meta property="twitter:site" content="@_taher_" />',
+    '<meta name="image" property="og:image" content="https://hyriver.readthedocs.io/en/latest/_static/hyriver_logo_text.svg" />',
 ]
 
 ipython_savefig_dir = os.path.join(
