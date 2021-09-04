@@ -250,6 +250,7 @@ ogp_custom_meta_tags = [
     '<meta name="twitter:creator" content="@_taher_" />',
     f'<meta name="twitter:description" content="{description}" />',
     f'<meta name="twitter:image" content="{ogp_image}" />',
+    f'<meta name="twitter:image:alt" content="{description}" />',
 ]
 
 # fix an issue with ipython where it doesn't create the missing dirs
