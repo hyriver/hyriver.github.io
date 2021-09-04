@@ -20,5 +20,6 @@ dependencies:
 
   - pip
   - pip:
+    - sphinx-book-theme
     - nbsphinx_link
     - sphinxext-opengraph
