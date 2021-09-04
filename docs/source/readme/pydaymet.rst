@@ -176,7 +176,6 @@ by default is set to daily.
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/daymet_grid.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/daymet.ipynb
-    :width: 400
 
 If the input geometry (or coordinate) is in a CRS other than EPSG:4326, we should pass
 it to the functions.
@@ -190,7 +189,6 @@ it to the functions.
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/daymet_loc.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/daymet.ipynb
-    :width: 400
 
 Next, let's get annual total precipitation for Hawaii and Puerto Rico for 2010.
 
@@ -205,8 +203,6 @@ Some example plots are shown below:
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/hi.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/daymet.ipynb
-    :width: 400
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/pr.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/daymet.ipynb
-    :width: 400

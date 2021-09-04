@@ -132,7 +132,6 @@ important properties of stations are shown.
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/interactive_map.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nwis.ipynb
-    :width: 400
     :alt: Interactive Map
 
 We can select all the stations within this boundary box that have daily mean streamflow data from
@@ -177,12 +176,10 @@ land cover types using ``cover_statistics``, and actual ET with ``ssebopeta_byge
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/lulc.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nlcd.ipynb
-    :width: 200
     :alt: Land Use/Land Cover
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/eta.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/ssebop.ipynb
-    :width: 200
     :alt: Actual ET
 
 Additionally, we can pull all the US dams data using ``NID``. Let's get dams that are within this
@@ -194,6 +191,7 @@ bounding box and have a maximum storage larger than 200 acre-feet.
     dams = nid.bygeom(bbox, "epsg:4326", sql_clause="MAX_STORAGE > 200")
 
 We can get all the dams within CONUS using ``NID`` and plot them:
+
 .. code-block:: python
 
     import geopandas as gpd
@@ -202,8 +200,6 @@ We can get all the dams within CONUS using ``NID`` and plot them:
     conus = world[world.name == "United States of America"].geometry.iloc[0][0]
     conus_dams = nid.bygeom(conus, "epsg:4326")
 
-
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/dams.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nid.ipynb
-    :width: 400
     :alt: Dams

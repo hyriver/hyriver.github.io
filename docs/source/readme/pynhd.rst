@@ -198,7 +198,6 @@ Now, let’s get the
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/nhdplus_navigation.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nhdplus.ipynb
-    :width: 300
     :align: center
 
 Also, we can get the slope data for each river segment from NHDPlus VAA database:
@@ -234,7 +233,6 @@ Now, let's explore the PyGeoAPI capabilities:
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/split_catchment.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/pygeoapi.ipynb
-    :width: 280
     :align: center
 
 Next, we retrieve the medium- and high-resolution flowlines within the bounding box of our
@@ -252,7 +250,6 @@ switching between services.
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/hr_mr.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nhdplus.ipynb
-    :width: 300
     :align: center
 
 Moreover, ``WaterData`` can find features within a given radius (in meters) of a point:
@@ -276,7 +273,6 @@ flowline using NLDI:
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/nhdplus_radius.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nhdplus.ipynb
-    :width: 300
     :align: center
 
 Since NHDPlus HR is still at the pre-release stage let's use the MR flowlines to
@@ -345,7 +341,6 @@ results.
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nhdplus.ipynb
-    :width: 600
     :align: center
 
 More examples can be found `here <https://pygeohydro.readthedocs.io/en/latest/examples.html>`__.
