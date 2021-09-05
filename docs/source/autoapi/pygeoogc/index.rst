@@ -1,5 +1,5 @@
-:mod:`pygeoogc`
-===============
+:py:mod:`pygeoogc`
+==================
 
 .. py:module:: pygeoogc
 

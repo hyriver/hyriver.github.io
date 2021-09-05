@@ -1,5 +1,5 @@
-:mod:`pygeoogc.core`
-====================
+:py:mod:`pygeoogc.core`
+=======================
 
 .. py:module:: pygeoogc.core
 
@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTfulBase(base_url: str, layer: Optional[int] = None, outformat: str = 'geojson', outfields: Union[List[str], str] = '*', crs: Union[str, pyproj.CRS] = DEF_CRS, max_workers: int = 1)
+.. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1)
 
    Access to an ArcGIS REST service.
 
@@ -31,7 +31,7 @@ Module Contents
                   simultaneously and will return the requests partially. It's recommended
                   to avoid using too many workers unless you are certain the web service can handle it.
 
-   .. method:: get_features(self, return_m: bool = False) -> List[Dict[str, Any]]
+   .. py:method:: get_features(self, return_m = False)
 
       Get features based on the feature IDs.
 
@@ -40,12 +40,12 @@ Module Contents
       :returns: :class:`dict` -- (Geo)json response from the web service.
 
 
-   .. method:: initialize_service(self) -> None
+   .. py:method:: initialize_service(self)
 
       Initialize the RESTFul service.
 
 
-   .. method:: partition_oids(self, oids: Union[List[int], int, None]) -> List[Tuple[str, ...]]
+   .. py:method:: partition_oids(self, oids)
 
       Partition feature IDs based on service's max record number.
 
@@ -95,12 +95,12 @@ Module Contents
                   defaults to 1000. If the number of records requested is greater than this value,
                   it will be split into multiple requests.
 
-   .. method:: get_validnames(self) -> List[str]
+   .. py:method:: get_validnames(self)
 
       Get valid column names for a layer.
 
 
-   .. method:: validate_wfs(self) -> None
+   .. py:method:: validate_wfs(self)
 
       Validate input arguments with the WFS service.
 
@@ -119,12 +119,12 @@ Module Contents
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
 
-   .. method:: get_validlayers(self) -> Dict[str, str]
+   .. py:method:: get_validlayers(self)
 
       Get the layers supported by the WMS service.
 
 
-   .. method:: validate_wms(self) -> None
+   .. py:method:: validate_wms(self)
 
       Validate input arguments with the WMS service.
 

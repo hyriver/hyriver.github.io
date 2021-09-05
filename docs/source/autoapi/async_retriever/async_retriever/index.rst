@@ -1,5 +1,5 @@
-:mod:`async_retriever.async_retriever`
-======================================
+:py:mod:`async_retriever.async_retriever`
+=========================================
 
 .. py:module:: async_retriever.async_retriever
 
@@ -12,12 +12,12 @@
 Module Contents
 ---------------
 
-.. function:: clean_cache(cache_name: Union[Path, str]) -> None
+.. py:function:: clean_cache(cache_name)
 
    Remove expired responses from the cache file.
 
 
-.. function:: retrieve(urls: Union[StrOrURL, List[StrOrURL], Tuple[StrOrURL, ...]], read: str, request_kwds: Optional[List[Dict[str, Any]]] = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Optional[Union[Path, str]] = None, family: str = 'both') -> List[Union[str, Dict[str, Any], bytes]]
+.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both')
 
    Send async requests.
 

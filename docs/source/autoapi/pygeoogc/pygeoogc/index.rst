@@ -1,5 +1,5 @@
-:mod:`pygeoogc.pygeoogc`
-========================
+:py:mod:`pygeoogc.pygeoogc`
+===========================
 
 .. py:module:: pygeoogc.pygeoogc
 
@@ -32,7 +32,7 @@ Module Contents
                   simultaneously and will return the requests partially. It's recommended
                   to avoid performing threading unless you are certain the web service can handle it.
 
-   .. method:: oids_byfield(self, field: str, ids: Union[str, List[str]]) -> None
+   .. py:method:: oids_byfield(self, field, ids)
 
       Get Object IDs based on a list of field IDs.
 
@@ -40,7 +40,7 @@ Module Contents
                    * **ids** (:class:`str` or :class:`list`) -- A list of target ID(s).
 
 
-   .. method:: oids_bygeom(self, geom: Union[LineString, Polygon, Point, MultiPoint, Tuple[float, float], List[Tuple[float, float]], Tuple[float, float, float, float]], geo_crs: str = DEF_CRS, spatial_relation: str = 'esriSpatialRelIntersects', sql_clause: Optional[str] = None, distance: Optional[int] = None) -> None
+   .. py:method:: oids_bygeom(self, geom, geo_crs = DEF_CRS, spatial_relation = 'esriSpatialRelIntersects', sql_clause = None, distance = None)
 
       Get feature IDs within a geometry that can be combined with a SQL where clause.
 
@@ -65,7 +65,7 @@ Module Contents
                    * **distance** (:class:`int`, *optional*) -- Buffer distance in meters for the input geometries, default to None.
 
 
-   .. method:: oids_bysql(self, sql_clause: str) -> None
+   .. py:method:: oids_bysql(self, sql_clause)
 
       Get feature IDs using a valid SQL 92 WHERE clause.
 
@@ -82,32 +82,32 @@ Module Contents
 
    Base URLs of the supported services.
 
-   .. method:: http(self) -> SimpleNamespace
+   .. py:method:: http(self)
       :property:
 
       Read HTTP URLs from the source yml file.
 
 
-   .. method:: restful(self) -> SimpleNamespace
+   .. py:method:: restful(self)
       :property:
 
       Read RESTful URLs from the source yml file.
 
 
-   .. method:: wfs(self) -> SimpleNamespace
+   .. py:method:: wfs(self)
       :property:
 
       Read WFS URLs from the source yml file.
 
 
-   .. method:: wms(self) -> SimpleNamespace
+   .. py:method:: wms(self)
       :property:
 
       Read WMS URLs from the source yml file.
 
 
 
-.. py:class:: WFS(url: str, layer: Optional[str] = None, outformat: Optional[str] = None, version: str = '2.0.0', crs: str = DEF_CRS, read_method: str = 'json', max_nrecords: int = 1000, validation: bool = True)
+.. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = DEF_CRS, read_method = 'json', max_nrecords = 1000, validation = True)
 
 
 
@@ -134,7 +134,7 @@ Module Contents
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
-   .. method:: getfeature_bybox(self, bbox: Tuple[float, float, float, float], box_crs: str = DEF_CRS, always_xy: bool = False) -> Union[str, bytes, Dict[str, Any]]
+   .. py:method:: getfeature_bybox(self, bbox, box_crs = DEF_CRS, always_xy = False)
 
       Get data from a WFS service within a bounding box.
 
@@ -149,7 +149,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response within a bounding box.
 
 
-   .. method:: getfeature_byfilter(self, cql_filter: str, method: str = 'GET') -> Union[str, bytes, Dict[str, Any]]
+   .. py:method:: getfeature_byfilter(self, cql_filter, method = 'GET')
 
       Get features based on a valid CQL filter.
 
@@ -165,7 +165,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response
 
 
-   .. method:: getfeature_bygeom(self, geometry: Union[Polygon, MultiPolygon], geo_crs: str = DEF_CRS, always_xy: bool = False, predicate: str = 'INTERSECTS') -> Union[str, bytes, Dict[str, Any]]
+   .. py:method:: getfeature_bygeom(self, geometry, geo_crs = DEF_CRS, always_xy = False, predicate = 'INTERSECTS')
 
       Get features based on a geometry.
 
@@ -192,7 +192,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response based on the given geometry.
 
 
-   .. method:: getfeature_byid(self, featurename: str, featureids: Union[List[str], str]) -> List[Union[str, bytes, Dict[str, Any]]]
+   .. py:method:: getfeature_byid(self, featurename, featureids)
 
       Get features based on feature IDs.
 
@@ -203,7 +203,7 @@ Module Contents
 
 
 
-.. py:class:: WMS(url: str, layers: Union[str, List[str]], outformat: str, version: str = '1.3.0', crs: str = DEF_CRS, validation: bool = True)
+.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = DEF_CRS, validation = True)
 
 
 
@@ -221,7 +221,7 @@ Module Contents
                   to False if you are sure all the WMS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
-   .. method:: getmap_bybox(self, bbox: Tuple[float, float, float, float], resolution: float, box_crs: str = DEF_CRS, always_xy: bool = False, max_px: int = 8000000, kwargs: Optional[Dict[str, Any]] = None) -> Dict[str, bytes]
+   .. py:method:: getmap_bybox(self, bbox, resolution, box_crs = DEF_CRS, always_xy = False, max_px = 8000000, kwargs = None)
 
       Get data from a WMS service within a geometry or bounding box.
 

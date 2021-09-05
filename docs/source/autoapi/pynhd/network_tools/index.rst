@@ -1,5 +1,5 @@
-:mod:`pynhd.network_tools`
-==========================
+:py:mod:`pynhd.network_tools`
+=============================
 
 .. py:module:: pynhd.network_tools
 
@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. function:: prepare_nhdplus(flowlines: gpd.GeoDataFrame, min_network_size: float, min_path_length: float, min_path_size: float = 0, purge_non_dendritic: bool = False, verbose: bool = False) -> gpd.GeoDataFrame
+.. py:function:: prepare_nhdplus(flowlines, min_network_size, min_path_length, min_path_size = 0, purge_non_dendritic = False, verbose = False)
 
    Clean up and fix common issues of NHDPlus flowline database.
 
@@ -33,7 +33,7 @@ Module Contents
    :returns: :class:`geopandas.GeoDataFrame` -- Cleaned up flowlines. Note that all column names are converted to lower case.
 
 
-.. function:: topoogical_sort(flowlines: pd.DataFrame, edge_attr: Optional[Union[str, List[str]]] = None) -> Tuple[List[Union[str, NAType]], Dict[Union[str, NAType], List[str]], nx.DiGraph]
+.. py:function:: topoogical_sort(flowlines, edge_attr = None)
 
    Topological sorting of a river network.
 
@@ -46,7 +46,7 @@ Module Contents
              terminal node ID is set to pd.NA.
 
 
-.. function:: vector_accumulation(flowlines: pd.DataFrame, func: Callable, attr_col: str, arg_cols: List[str], id_col: str = 'comid', toid_col: str = 'tocomid') -> pd.Series
+.. py:function:: vector_accumulation(flowlines, func, attr_col, arg_cols, id_col = 'comid', toid_col = 'tocomid')
 
    Flow accumulation using vector river network data.
 

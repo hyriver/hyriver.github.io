@@ -1,5 +1,5 @@
-:mod:`py3dep.py3dep`
-====================
+:py:mod:`py3dep.py3dep`
+=======================
 
 .. py:module:: py3dep.py3dep
 
@@ -12,12 +12,12 @@
 Module Contents
 ---------------
 
-.. function:: deg2mpm(da: xr.DataArray) -> xr.DataArray
+.. py:function:: deg2mpm(da)
 
    Convert slope from degree to meter/meter.
 
 
-.. function:: elevation_bycoords(coords: List[Tuple[float, float]], crs: str = DEF_CRS, source: str = 'tnm') -> List[float]
+.. py:function:: elevation_bycoords(coords, crs = DEF_CRS, source = 'tnm')
 
    Get elevation from Airmap at 1-arc resolution (~30 m) for a list of coordinates.
 
@@ -31,7 +31,7 @@ Module Contents
    :returns: :class:`list` of :class:`float` -- Elevation in meter.
 
 
-.. function:: elevation_bygrid(xcoords: List[float], ycoords: List[float], crs: str, resolution: float, depression_filling: bool = False) -> xr.DataArray
+.. py:function:: elevation_bygrid(xcoords, ycoords, crs, resolution, depression_filling = False)
 
    Get elevation from DEM data for a grid.
 
@@ -49,7 +49,7 @@ Module Contents
    :returns: :class:`xarray.DataArray` -- An data array with name elevation and the given dim names.
 
 
-.. function:: get_map(layers: Union[str, List[str]], geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], resolution: float, geo_crs: str = DEF_CRS, crs: str = DEF_CRS) -> Union[xr.DataArray, xr.Dataset]
+.. py:function:: get_map(layers, geometry, resolution, geo_crs = DEF_CRS, crs = DEF_CRS)
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
 

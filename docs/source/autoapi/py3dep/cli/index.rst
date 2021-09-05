@@ -1,5 +1,5 @@
-:mod:`py3dep.cli`
-=================
+:py:mod:`py3dep.cli`
+====================
 
 .. py:module:: py3dep.cli
 
@@ -12,24 +12,24 @@
 Module Contents
 ---------------
 
-.. function:: from_coords(coords: List[Tuple[float, float]], crs: str, query_source: str, csv_path: Union[str, Path]) -> None
+.. py:function:: from_coords(coords, crs, query_source, csv_path)
 
    Get elevations of a set of coordinates in meter from airmap.
 
 
-.. function:: from_geometry(layer: str, geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], res: float, crs: str, nc_path: Union[str, Path]) -> None
+.. py:function:: from_geometry(layer, geometry, res, crs, nc_path)
 
    Get topographic data from 3DEP for a geometry.
 
 
-.. function:: get_target_df(tdf: Union[pd.DataFrame, gpd.GeoDataFrame], req_cols: List[str]) -> Union[pd.DataFrame, gpd.GeoDataFrame]
+.. py:function:: get_target_df(tdf, req_cols)
 
    Check if all required columns exists in the dataframe.
 
    It also re-orders the columns based on ``req_cols`` order.
 
 
-.. function:: main(target: Path, target_type: str, crs: str, query_source: str = 'airmap', layer: Optional[str] = None, save_dir: Union[str, Path] = 'topo_3dep')
+.. py:function:: main(target, target_type, crs, query_source = 'airmap', layer = None, save_dir = 'topo_3dep')
 
    Retrieve topographic data within geometries or elevations for a list of coordinates.
 

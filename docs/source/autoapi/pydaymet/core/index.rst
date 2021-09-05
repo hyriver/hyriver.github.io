@@ -1,5 +1,5 @@
-:mod:`pydaymet.core`
-====================
+:py:mod:`pydaymet.core`
+=======================
 
 .. py:module:: pydaymet.core
 
@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: Daymet(variables: Optional[Union[Iterable[str], str]] = None, pet: bool = False, time_scale: str = 'daily', region: str = 'na')
+.. py:class:: Daymet(variables = None, pet = False, time_scale = 'daily', region = 'na')
 
    Base class for Daymet requests.
 
@@ -31,18 +31,18 @@ Module Contents
                   * hi: Hawaii
                   * pr: Puerto Rico
 
-   .. method:: check_dates(dates: Union[Tuple[str, str], Union[int, List[int]]]) -> None
+   .. py:method:: check_dates(dates)
       :staticmethod:
 
       Check if input dates are in correct format and valid.
 
 
-   .. method:: dates_todict(self, dates: Tuple[str, str]) -> Dict[str, str]
+   .. py:method:: dates_todict(self, dates)
 
       Set dates by start and end dates as a tuple, (start, end).
 
 
-   .. method:: dates_tolist(self, dates: Tuple[str, str]) -> List[Tuple[pd.DatetimeIndex, pd.DatetimeIndex]]
+   .. py:method:: dates_tolist(self, dates)
 
       Correct dates for Daymet accounting for leap years.
 
@@ -54,12 +54,12 @@ Module Contents
       :returns: :class:`list` -- All the dates in the Daymet database within the provided date range.
 
 
-   .. method:: years_todict(self, years: Union[List[int], int]) -> Dict[str, str]
+   .. py:method:: years_todict(self, years)
 
       Set date by list of year(s).
 
 
-   .. method:: years_tolist(self, years: Union[List[int], int]) -> List[Tuple[pd.DatetimeIndex, pd.DatetimeIndex]]
+   .. py:method:: years_tolist(self, years)
 
       Correct dates for Daymet accounting for leap years.
 

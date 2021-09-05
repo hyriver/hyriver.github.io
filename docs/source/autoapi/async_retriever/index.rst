@@ -1,5 +1,5 @@
-:mod:`async_retriever`
-======================
+:py:mod:`async_retriever`
+=========================
 
 .. py:module:: async_retriever
 

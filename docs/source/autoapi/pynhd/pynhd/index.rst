@@ -1,5 +1,5 @@
-:mod:`pynhd.pynhd`
-==================
+:py:mod:`pynhd.pynhd`
+=====================
 
 .. py:module:: pynhd.pynhd
 
@@ -21,7 +21,7 @@ Module Contents
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
 
-   .. method:: bygeom(self, geom: Union[Polygon, List[Tuple[float, float]], Tuple[float, float, float, float]], geo_crs: str = DEF_CRS, sql_clause: str = '', distance: Optional[int] = None, return_m: bool = False) -> gpd.GeoDataFrame
+   .. py:method:: bygeom(self, geom, geo_crs = DEF_CRS, sql_clause = '', distance = None, return_m = False)
 
       Get feature within a geometry that can be combined with a SQL where clause.
 
@@ -34,7 +34,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
-   .. method:: byids(self, field: str, fids: Union[str, List[str]], return_m: bool = False) -> gpd.GeoDataFrame
+   .. py:method:: byids(self, field, fids, return_m = False)
 
       Get features based on a list of field IDs.
 
@@ -45,7 +45,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
-   .. method:: bysql(self, sql_clause: str, return_m: bool = False) -> gpd.GeoDataFrame
+   .. py:method:: bysql(self, sql_clause, return_m = False)
 
       Get feature IDs using a valid SQL 92 WHERE clause.
 
@@ -60,7 +60,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
-   .. method:: connect_to(self, service: str, service_list: Dict[str, str], auto_switch: bool) -> None
+   .. py:method:: connect_to(self, service, service_list, auto_switch)
 
       Connect to a web service.
 
@@ -69,20 +69,20 @@ Module Contents
                    * **auto_switch** (:class:`bool`, *optional*) -- Automatically switch to other services' URL if the first one doesn't work, default to False.
 
 
-   .. method:: get_validlayers(url)
+   .. py:method:: get_validlayers(url)
       :staticmethod:
 
       Get valid layer for a ArcGISREST service.
 
 
-   .. method:: service(self) -> ArcGISRESTful
+   .. py:method:: service(self)
       :property:
 
       Connect to a RESTFul service.
 
 
 
-.. py:class:: NHDPlusHR(layer: Optional[str] = None, outfields: Union[str, List[str]] = '*', crs: str = DEF_CRS, service: str = 'hydro', auto_switch: bool = False)
+.. py:class:: NHDPlusHR(layer = None, outfields = '*', crs = DEF_CRS, service = 'hydro', auto_switch = False)
 
 
 
@@ -103,7 +103,7 @@ Module Contents
 
    Access the Hydro Network-Linked Data Index (NLDI) service.
 
-   .. method:: comid_byloc(self, coords: Union[Tuple[float, float], List[Tuple[float, float]]], loc_crs: str = DEF_CRS) -> Union[gpd.GeoDataFrame, Tuple[gpd.GeoDataFrame, List[Tuple[float, float]]]]
+   .. py:method:: comid_byloc(self, coords, loc_crs = DEF_CRS)
 
       Get the closest ComID(s) based on coordinates.
 
@@ -114,7 +114,7 @@ Module Contents
                 a list of missing coords are returned as well.
 
 
-   .. method:: get_basins(self, station_ids: Union[str, List[str]]) -> Union[gpd.GeoDataFrame, Tuple[gpd.GeoDataFrame, List[str]]]
+   .. py:method:: get_basins(self, station_ids)
 
       Get basins for a list of station IDs.
 
@@ -124,12 +124,12 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. method:: get_validchars(self, char_type: str) -> pd.DataFrame
+   .. py:method:: get_validchars(self, char_type)
 
       Get all the available characteristics IDs for a given characteristics type.
 
 
-   .. method:: getcharacteristic_byid(self, comids: Union[List[str], str], char_type: str, char_ids: Union[str, List[str]] = 'all', values_only: bool = True) -> Union[pd.DataFrame, Tuple[pd.DataFrame, pd.DataFrame]]
+   .. py:method:: getcharacteristic_byid(self, comids, char_type, char_ids = 'all', values_only = True)
 
       Get characteristics using a list ComIDs.
 
@@ -146,7 +146,7 @@ Module Contents
                 or if ``values_only`` is Fale return ``percent_nodata`` as well.
 
 
-   .. method:: getfeature_byid(self, fsource: str, fid: Union[str, List[str]]) -> Union[gpd.GeoDataFrame, Tuple[gpd.GeoDataFrame, List[str]]]
+   .. py:method:: getfeature_byid(self, fsource, fid)
 
       Get feature(s) based ID(s).
 
@@ -158,7 +158,7 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. method:: navigate_byid(self, fsource: str, fid: str, navigation: str, source: str, distance: int = 500) -> gpd.GeoDataFrame
+   .. py:method:: navigate_byid(self, fsource, fid, navigation, source, distance = 500)
 
       Navigate the NHDPlus database from a single feature id up to a distance.
 
@@ -176,7 +176,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
 
-   .. method:: navigate_byloc(self, coords: Tuple[float, float], navigation: Optional[str] = None, source: Optional[str] = None, loc_crs: str = DEF_CRS, distance: int = 500) -> gpd.GeoDataFrame
+   .. py:method:: navigate_byloc(self, coords, navigation = None, source = None, loc_crs = DEF_CRS, distance = 500)
 
       Navigate the NHDPlus database from a coordinate.
 
@@ -200,7 +200,7 @@ Module Contents
 
    Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
 
-   .. method:: cross_section(self, coord: Tuple[float, float], width: float, numpts: int, crs: str = DEF_CRS) -> gpd.GeoDataFrame
+   .. py:method:: cross_section(self, coord, width, numpts, crs = DEF_CRS)
 
       Return a GeoDataFrame from the xsatpoint service.
 
@@ -220,7 +220,7 @@ Module Contents
       1000.0
 
 
-   .. method:: elevation_profile(self, coords: List[Tuple[float, float]], numpts: int, dem_res: int, crs: str = DEF_CRS) -> gpd.GeoDataFrame
+   .. py:method:: elevation_profile(self, coords, numpts, dem_res, crs = DEF_CRS)
 
       Return a GeoDataFrame from the xsatendpts service.
 
@@ -242,7 +242,7 @@ Module Contents
       411.5906
 
 
-   .. method:: flow_trace(self, coord: Tuple[float, float], crs: str = DEF_CRS, raindrop: bool = False, direction: str = 'down') -> gpd.GeoDataFrame
+   .. py:method:: flow_trace(self, coord, crs = DEF_CRS, raindrop = False, direction = 'down')
 
       Return a GeoDataFrame from the flowtrace service.
 
@@ -265,7 +265,7 @@ Module Contents
       22294818
 
 
-   .. method:: split_catchment(self, coord: Tuple[float, float], crs: str = DEF_CRS, upstream: bool = False) -> gpd.GeoDataFrame
+   .. py:method:: split_catchment(self, coord, crs = DEF_CRS, upstream = False)
 
       Return a GeoDataFrame from the splitcatchment service.
 
@@ -286,7 +286,7 @@ Module Contents
 
 
 
-.. py:class:: ScienceBase(save_dir: Optional[str] = None)
+.. py:class:: ScienceBase(save_dir = None)
 
    Access NHDPlus V2.1 Attributes from ScienceBase over CONUS.
 
@@ -296,25 +296,25 @@ Module Contents
                 defaults to system's temp directory. The metadata dataframe is saved as a feather
                 file, nhdplus_attrs.feather, in save_dir that can be loaded with Pandas.
 
-   .. method:: get_children(item: str) -> Dict[str, Any]
+   .. py:method:: get_children(item)
       :staticmethod:
 
       Get children items of an item.
 
 
-   .. method:: get_files(item: str) -> Dict[str, Tuple[str, str]]
+   .. py:method:: get_files(item)
       :staticmethod:
 
       Get all the available zip files in an item.
 
 
-   .. method:: stage_data(self) -> pd.DataFrame
+   .. py:method:: stage_data(self)
 
       Stage the NHDPlus Attributes database and save to nhdplus_attrs.feather.
 
 
 
-.. py:class:: WaterData(layer: str, crs: str = DEF_CRS)
+.. py:class:: WaterData(layer, crs = DEF_CRS)
 
    Access to `Water Data <https://labs.waterdata.usgs.gov/geoserver>`__ service.
 
@@ -325,22 +325,22 @@ Module Contents
                   be added to the given ``layer`` argument if it is not provided.
                 * **crs** (:class:`str`, *optional*) -- The target spatial reference system, defaults to ``epsg:4326``.
 
-   .. method:: bybox(self, bbox: Tuple[float, float, float, float], box_crs: str = DEF_CRS) -> gpd.GeoDataFrame
+   .. py:method:: bybox(self, bbox, box_crs = DEF_CRS)
 
       Get features within a bounding box.
 
 
-   .. method:: bydistance(self, coords: Tuple[float, float], distance: int, loc_crs: str = DEF_CRS) -> gpd.GeoDataFrame
+   .. py:method:: bydistance(self, coords, distance, loc_crs = DEF_CRS)
 
       Get features within a radius (in meters) of a point.
 
 
-   .. method:: byfilter(self, cql_filter: str, method: str = 'GET') -> gpd.GeoDataFrame
+   .. py:method:: byfilter(self, cql_filter, method = 'GET')
 
       Get features based on a CQL filter.
 
 
-   .. method:: bygeom(self, geometry: Union[Polygon, MultiPolygon], geo_crs: str = DEF_CRS, xy: bool = True, predicate: str = 'INTERSECTS') -> gpd.GeoDataFrame
+   .. py:method:: bygeom(self, geometry, geo_crs = DEF_CRS, xy = True, predicate = 'INTERSECTS')
 
       Get features within a geometry.
 
@@ -355,18 +355,18 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features in the given geometry.
 
 
-   .. method:: byid(self, featurename: str, featureids: Union[List[str], str]) -> gpd.GeoDataFrame
+   .. py:method:: byid(self, featurename, featureids)
 
       Get features based on IDs.
 
 
 
-.. function:: nhd_fcode() -> pd.DataFrame
+.. py:function:: nhd_fcode()
 
    Get all the NHDPlus FCodes.
 
 
-.. function:: nhdplus_attrs(name: Optional[str] = None, save_dir: Optional[str] = None) -> pd.DataFrame
+.. py:function:: nhdplus_attrs(name = None, save_dir = None)
 
    Access NHDPlus V2.1 Attributes from ScienceBase over CONUS.
 
@@ -381,7 +381,7 @@ Module Contents
    :returns: :class:`pandas.DataFrame` -- Either a dataframe containing the database metadata or the requested attribute over CONUS.
 
 
-.. function:: nhdplus_vaa(parquet_name: Optional[Union[Path, str]] = None) -> pd.DataFrame
+.. py:function:: nhdplus_vaa(parquet_name = None)
 
    Get NHDPlus Value Added Attributes with ComID-level roughness and slope values.
 

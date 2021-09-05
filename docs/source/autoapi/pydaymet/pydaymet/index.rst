@@ -1,5 +1,5 @@
-:mod:`pydaymet.pydaymet`
-========================
+:py:mod:`pydaymet.pydaymet`
+===========================
 
 .. py:module:: pydaymet.pydaymet
 
@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. function:: get_bycoords(coords: Tuple[float, float], dates: Union[Tuple[str, str], Union[int, List[int]]], crs: str = DEF_CRS, variables: Optional[Union[Iterable[str], str]] = None, pet: bool = False, region: str = 'na', time_scale: str = 'daily') -> xr.Dataset
+.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, pet = False, region = 'na', time_scale = 'daily')
 
    Get point-data from the Daymet database at 1-km resolution.
 
@@ -49,7 +49,7 @@ Module Contents
    3.497
 
 
-.. function:: get_bygeom(geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], dates: Union[Tuple[str, str], Union[int, List[int]]], crs: str = DEF_CRS, variables: Optional[Union[Iterable[str], str]] = None, pet: bool = False, region: str = 'na', time_scale: str = 'daily') -> xr.Dataset
+.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, pet = False, region = 'na', time_scale = 'daily')
 
    Get gridded data from the Daymet database at 1-km resolution.
 
@@ -84,7 +84,7 @@ Module Contents
    1.361
 
 
-.. function:: get_byloc(coords: Tuple[float, float], dates: Union[Tuple[str, str], Union[int, List[int]]], crs: str = DEF_CRS, variables: Optional[Union[Iterable[str], str]] = None, pet: bool = False) -> pd.DataFrame
+.. py:function:: get_byloc(coords, dates, crs = DEF_CRS, variables = None, pet = False)
 
    Get daily climate data from Daymet for a single point.
 

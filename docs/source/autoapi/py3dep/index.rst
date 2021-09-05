@@ -1,5 +1,5 @@
-:mod:`py3dep`
-=============
+:py:mod:`py3dep`
+================
 
 .. py:module:: py3dep
 

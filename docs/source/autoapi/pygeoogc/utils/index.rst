@@ -1,5 +1,5 @@
-:mod:`pygeoogc.utils`
-=====================
+:py:mod:`pygeoogc.utils`
+========================
 
 .. py:module:: pygeoogc.utils
 
@@ -23,33 +23,33 @@ Module Contents
                   `ArcGIS <https://developers.arcgis.com/rest/services-reference/geographic-coordinate-systems.htm>`__
                   for reference.
 
-   .. method:: bbox(self) -> Dict[str, Union[str, bytes]]
+   .. py:method:: bbox(self)
 
       Query for a bbox.
 
 
-   .. method:: multipoint(self) -> Dict[str, Union[str, bytes]]
+   .. py:method:: multipoint(self)
 
       Query for a multi-point.
 
 
-   .. method:: point(self) -> Dict[str, Union[str, bytes]]
+   .. py:method:: point(self)
 
       Query for a point.
 
 
-   .. method:: polygon(self) -> Dict[str, Union[str, bytes]]
+   .. py:method:: polygon(self)
 
       Query for a polygon.
 
 
-   .. method:: polyline(self) -> Dict[str, Union[str, bytes]]
+   .. py:method:: polyline(self)
 
       Query for a polyline.
 
 
 
-.. py:class:: RetrySession(retries: int = 3, backoff_factor: float = 0.3, status_to_retry: Tuple[int, ...] = (500, 502, 504), prefixes: Tuple[str, ...] = ('https://', ), cache_name: Optional[Union[str, Path]] = None)
+.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None)
 
    Configures the passed-in session to retry on failed requests.
 
@@ -64,24 +64,24 @@ Module Contents
                 * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, default to None which uses
                   system's temp directory.
 
-   .. method:: get(self, url: str, payload: Optional[Mapping[str, Any]] = None, headers: Optional[Mapping[str, Any]] = None) -> Response
+   .. py:method:: get(self, url, payload = None, headers = None)
 
       Retrieve data from a url by GET and return the Response.
 
 
-   .. method:: onlyipv4() -> _patch
+   .. py:method:: onlyipv4()
       :staticmethod:
 
       Disable IPv6 and only use IPv4.
 
 
-   .. method:: post(self, url: str, payload: Optional[Mapping[str, Any]] = None, headers: Optional[Mapping[str, Any]] = None) -> Response
+   .. py:method:: post(self, url, payload = None, headers = None)
 
       Retrieve data from a url by POST and return the Response.
 
 
 
-.. function:: bbox_decompose(bbox: Tuple[float, float, float, float], resolution: float, box_crs: str = DEF_CRS, max_px: int = 8000000) -> List[Tuple[Tuple[float, float, float, float], str, int, int]]
+.. py:function:: bbox_decompose(bbox, resolution, box_crs = DEF_CRS, max_px = 8000000)
 
    Split the bounding box vertically for WMS requests.
 
@@ -111,7 +111,7 @@ Module Contents
              * Raster height of a cell.
 
 
-.. function:: bbox_resolution(bbox: Tuple[float, float, float, float], resolution: float, bbox_crs: str = DEF_CRS) -> Tuple[int, int]
+.. py:function:: bbox_resolution(bbox, resolution, bbox_crs = DEF_CRS)
 
    Image size of a bounding box WGS84 for a given resolution in meters.
 
@@ -122,17 +122,17 @@ Module Contents
    :returns: :class:`tuple` -- The width and height of the image
 
 
-.. function:: check_bbox(bbox: Tuple[float, float, float, float]) -> None
+.. py:function:: check_bbox(bbox)
 
    Check if an input inbox is a tuple of length 4.
 
 
-.. function:: check_response(resp: str) -> str
+.. py:function:: check_response(resp)
 
    Extract error message from a response, if any.
 
 
-.. function:: match_crs(geom: G, in_crs: str, out_crs: str) -> G
+.. py:function:: match_crs(geom, in_crs, out_crs)
 
    Reproject a geometry to another CRS.
 
@@ -159,7 +159,7 @@ Module Contents
    [(-69.7636111130079, 45.44549114818127)]
 
 
-.. function:: traverse_json(obj: Union[Dict[str, Any], List[Dict[str, Any]]], path: Union[str, List[str]]) -> List[Any]
+.. py:function:: traverse_json(obj, path)
 
    Extract an element from a JSON file along a specified path.
 

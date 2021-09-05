@@ -1,7 +1,7 @@
 :orphan:
 
-:mod:`pygeohydro`
-=================
+:py:mod:`pygeohydro`
+====================
 
 .. py:module:: pygeohydro
 

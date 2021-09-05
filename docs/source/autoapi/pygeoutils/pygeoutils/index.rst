@@ -1,5 +1,5 @@
-:mod:`pygeoutils.pygeoutils`
-============================
+:py:mod:`pygeoutils.pygeoutils`
+===============================
 
 .. py:module:: pygeoutils.pygeoutils
 
@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. function:: arcgis2geojson(arcgis: Union[str, Dict[str, Any]], id_attr: Optional[str] = None) -> Dict[str, Any]
+.. py:function:: arcgis2geojson(arcgis, id_attr = None)
 
    Convert ESRIGeoJSON format to GeoJSON.
 
@@ -26,7 +26,7 @@ Module Contents
    :returns: :class:`dict` -- A GeoJSON file readable by GeoPandas.
 
 
-.. function:: geo2polygon(geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], geo_crs: str, crs: str) -> Polygon
+.. py:function:: geo2polygon(geometry, geo_crs, crs)
 
    Convert a geometry to a Shapely's Polygon and transform to any CRS.
 
@@ -37,7 +37,7 @@ Module Contents
    :returns: :class:`Polygon` -- A Polygon in the target CRS.
 
 
-.. function:: get_transform(ds: Union[xr.Dataset, xr.DataArray], ds_dims: Tuple[str, str] = ('y', 'x')) -> Tuple[affine.Affine, int, int]
+.. py:function:: get_transform(ds, ds_dims = ('y', 'x'))
 
    Get transform of a ``xarray.Dataset`` or ``xarray.DataArray``.
 
@@ -47,7 +47,7 @@ Module Contents
    :returns: :class:`affine.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
 
 
-.. function:: gtiff2xarray(r_dict: Dict[str, bytes], geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], geo_crs: str, ds_dims: Optional[Tuple[str, str]] = None, driver: Optional[str] = None, all_touched: bool = False) -> Union[xr.DataArray, xr.Dataset]
+.. py:function:: gtiff2xarray(r_dict, geometry, geo_crs, ds_dims = None, driver = None, all_touched = False)
 
    Convert (Geo)Tiff byte responses to ``xarray.Dataset``.
 
@@ -67,7 +67,7 @@ Module Contents
    :returns: :class:`xarray.Dataset` or :class:`xarray.DataAraay` -- Parallel (with dask) dataset or dataarray.
 
 
-.. function:: json2geodf(content: Union[List[Dict[str, Any]], Dict[str, Any]], in_crs: str = DEF_CRS, crs: str = DEF_CRS) -> gpd.GeoDataFrame
+.. py:function:: json2geodf(content, in_crs = DEF_CRS, crs = DEF_CRS)
 
    Create GeoDataFrame from (Geo)JSON.
 
@@ -78,7 +78,7 @@ Module Contents
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON
 
 
-.. function:: xarray_geomask(ds: Union[xr.Dataset, xr.DataArray], geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], geo_crs: str, ds_dims: Optional[Tuple[str, str]] = None, all_touched: bool = False) -> Union[xr.Dataset, xr.DataArray]
+.. py:function:: xarray_geomask(ds, geometry, geo_crs, ds_dims = None, all_touched = False)
 
    Mask a ``xarray.Dataset`` based on a geometry.
 

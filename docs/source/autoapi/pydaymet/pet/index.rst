@@ -1,5 +1,5 @@
-:mod:`pydaymet.pet`
-===================
+:py:mod:`pydaymet.pet`
+======================
 
 .. py:module:: pydaymet.pet
 
@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. function:: potential_et(clm: Union[pd.DataFrame, xr.Dataset], coords: Optional[Tuple[float, float]] = None, crs: str = 'epsg:4326', alt_unit: bool = False, method: str = 'fao56') -> Union[pd.DataFrame, xr.Dataset]
+.. py:function:: potential_et(clm, coords = None, crs = 'epsg:4326', alt_unit = False, method = 'fao56')
 
    Compute Potential EvapoTranspiration for both gridded and a single location.
 

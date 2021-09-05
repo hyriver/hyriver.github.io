@@ -1,5 +1,5 @@
-:mod:`pynhd`
-============
+:py:mod:`pynhd`
+===============
 
 .. py:module:: pynhd
 

@@ -1,5 +1,5 @@
-:mod:`pydaymet.cli`
-===================
+:py:mod:`pydaymet.cli`
+======================
 
 .. py:module:: pydaymet.cli
 
@@ -12,14 +12,14 @@
 Module Contents
 ---------------
 
-.. function:: get_target_df(tdf: Union[pd.DataFrame, gpd.GeoDataFrame], req_cols: List[str]) -> Union[pd.DataFrame, gpd.GeoDataFrame]
+.. py:function:: get_target_df(tdf, req_cols)
 
    Check if all required columns exists in the dataframe.
 
    It also re-orders the columns based on req_cols order.
 
 
-.. function:: main(target: Path, target_type: str, crs: str, variables: Optional[Union[List[str], str]] = None, time_scale: str = 'daily', pet: bool = False, save_dir: Union[str, Path] = 'clm_daymet')
+.. py:function:: main(target, target_type, crs, variables = None, time_scale = 'daily', pet = False, save_dir = 'clm_daymet')
 
    Retrieve cliamte data within geometries or elevations for a list of coordinates.
 

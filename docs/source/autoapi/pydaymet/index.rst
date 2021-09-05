@@ -1,5 +1,5 @@
-:mod:`pydaymet`
-===============
+:py:mod:`pydaymet`
+==================
 
 .. py:module:: pydaymet
 

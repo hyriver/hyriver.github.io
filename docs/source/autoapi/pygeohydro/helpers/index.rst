@@ -1,5 +1,5 @@
-:mod:`pygeohydro.helpers`
-=========================
+:py:mod:`pygeohydro.helpers`
+============================
 
 .. py:module:: pygeohydro.helpers
 
@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. function:: nlcd_helper() -> Dict[str, Any]
+.. py:function:: nlcd_helper()
 
    Get legends and properties of the NLCD cover dataset.
 
@@ -26,7 +26,7 @@ Module Contents
    :returns: :class:`dict` -- Years where data is available and cover classes and categories, and roughness estimations.
 
 
-.. function:: nwis_errors() -> pd.DataFrame
+.. py:function:: nwis_errors()
 
    Get error code lookup table for USGS sites that have daily values.
 

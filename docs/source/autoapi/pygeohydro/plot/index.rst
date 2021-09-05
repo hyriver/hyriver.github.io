@@ -1,5 +1,5 @@
-:mod:`pygeohydro.plot`
-======================
+:py:mod:`pygeohydro.plot`
+=========================
 
 .. py:module:: pygeohydro.plot
 
@@ -22,22 +22,22 @@ Module Contents
    Data structure for plotting hydrologic signatures.
 
 
-.. function:: cover_legends() -> Tuple[ListedColormap, BoundaryNorm, List[int]]
+.. py:function:: cover_legends()
 
    Colormap (cmap) and their respective values (norm) for land cover data legends.
 
 
-.. function:: descriptor_legends(cmap_name: str = 'tab20') -> Tuple[ListedColormap, BoundaryNorm, List[int]]
+.. py:function:: descriptor_legends(cmap_name = 'tab20')
 
    Colormap (cmap) and their respective values (norm) for land cover data legends.
 
 
-.. function:: exceedance(daily: Union[pd.DataFrame, pd.Series]) -> Union[pd.DataFrame, pd.Series]
+.. py:function:: exceedance(daily)
 
    Compute Flow duration (rank, sorted obs).
 
 
-.. function:: prepare_plot_data(daily: Union[pd.DataFrame, pd.Series]) -> PlotDataType
+.. py:function:: prepare_plot_data(daily)
 
    Generae a structured data for plotting hydrologic signatures.
 
@@ -46,7 +46,7 @@ Module Contents
    :returns: :class:`PlotDataType` -- Containing ``daily, ``monthly``, ``annual``, ``mean_monthly``, ``ranked`` fields.
 
 
-.. function:: signatures(daily: Union[pd.DataFrame, pd.Series], precipitation: Optional[pd.Series] = None, title: Optional[str] = None, title_ypos: float = 1.02, figsize: Tuple[int, int] = (14, 13), threshold: float = 0.001, output: Optional[Union[str, Path]] = None) -> None
+.. py:function:: signatures(daily, precipitation = None, title = None, title_ypos = 1.02, figsize = (14, 13), threshold = 0.001, output = None)
 
    Plot hydrological signatures with w/ or w/o precipitation.
 

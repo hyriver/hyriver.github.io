@@ -1,5 +1,5 @@
-:mod:`pygeoutils`
-=================
+:py:mod:`pygeoutils`
+====================
 
 .. py:module:: pygeoutils
 

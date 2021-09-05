@@ -1,5 +1,5 @@
-:mod:`pygeohydro.pygeohydro`
-============================
+:py:mod:`pygeohydro.pygeohydro`
+===============================
 
 .. py:module:: pygeohydro.pygeohydro
 
@@ -23,7 +23,7 @@ Module Contents
 
    Access NWIS web service.
 
-   .. method:: get_info(self, queries: Union[Dict[str, str], List[Dict[str, str]]], expanded: bool = False) -> pd.DataFrame
+   .. py:method:: get_info(self, queries, expanded = False)
 
       Send multiple queries to USGS Site Web Service.
 
@@ -33,7 +33,7 @@ Module Contents
       :returns: :class:`pandas.DataFrame` -- A typed dataframe containing the site information.
 
 
-   .. method:: get_parameter_codes(self, keyword: str) -> pd.DataFrame
+   .. py:method:: get_parameter_codes(self, keyword)
 
       Search for parameter codes by name or number.
 
@@ -60,7 +60,7 @@ Module Contents
       'Discharge, cubic feet per second'
 
 
-   .. method:: get_streamflow(self, station_ids: Union[Sequence[str], str], dates: Tuple[str, str], mmd: bool = False) -> pd.DataFrame
+   .. py:method:: get_streamflow(self, station_ids, dates, mmd = False)
 
       Get mean daily streamflow observations from USGS.
 
@@ -72,7 +72,7 @@ Module Contents
                 don't provide mean daily discharge in the target period will be dropped.
 
 
-   .. method:: retrieve_rdb(url: str, payloads: List[Dict[str, str]]) -> pd.DataFrame
+   .. py:method:: retrieve_rdb(url, payloads)
       :staticmethod:
 
       Retrieve and process requests with RDB format.
@@ -86,7 +86,7 @@ Module Contents
 
 
 
-.. function:: cover_statistics(ds: xr.Dataset) -> Dict[str, Union[np.ndarray, Dict[str, float]]]
+.. py:function:: cover_statistics(ds)
 
    Percentages of the categorical NLCD cover data.
 
@@ -95,7 +95,7 @@ Module Contents
    :returns: :class:`dict` -- Statistics of NLCD cover data
 
 
-.. function:: interactive_map(bbox: Tuple[float, float, float, float], crs: str = DEF_CRS, nwis_kwds: Optional[Dict[str, Any]] = None) -> folium.Map
+.. py:function:: interactive_map(bbox, crs = DEF_CRS, nwis_kwds = None)
 
    Generate an interactive map including all USGS stations within a bounding box.
 
@@ -117,7 +117,7 @@ Module Contents
    10
 
 
-.. function:: nlcd(geometry: Union[Polygon, MultiPolygon, Tuple[float, float, float, float]], resolution: float, years: Optional[Mapping[str, Union[int, List[int]]]] = None, region: str = 'L48', geo_crs: str = DEF_CRS, crs: str = DEF_CRS) -> xr.Dataset
+.. py:function:: nlcd(geometry, resolution, years = None, region = 'L48', geo_crs = DEF_CRS, crs = DEF_CRS)
 
    Get data from NLCD database (2016).
 
@@ -140,7 +140,7 @@ Module Contents
    :returns: :class:`xarray.DataArray` -- NLCD within a geometry
 
 
-.. function:: ssebopeta_bygeom(geometry: Union[Polygon, Tuple[float, float, float, float]], dates: Union[Tuple[str, str], Union[int, List[int]]], geo_crs: str = DEF_CRS) -> xr.DataArray
+.. py:function:: ssebopeta_bygeom(geometry, dates, geo_crs = DEF_CRS)
 
    Get daily actual ET for a region from SSEBop database.
 
@@ -159,7 +159,7 @@ Module Contents
    :returns: :class:`xarray.DataArray` -- Daily actual ET within a geometry in mm/day at 1 km resolution
 
 
-.. function:: ssebopeta_byloc(coords: Tuple[float, float], dates: Union[Tuple[str, str], Union[int, List[int]]]) -> pd.DataFrame
+.. py:function:: ssebopeta_byloc(coords, dates)
 
    Daily actual ET for a location from SSEBop database in mm/day.
 
