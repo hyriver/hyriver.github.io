@@ -76,10 +76,15 @@ Hydroclimate Data Retriever
 |
 
 `HyRiver <https://hyriver.readthedocs.io>`__ (formerly named
-`hydrodata <https://pypi.org/project/hydrodata>`__) is a software stack
-consisting of seven Python libraries that are designed to aid in watershed
-analysis through web services. Currently, this project only includes hydrology
-and climatology data within the US.
+`hydrodata <https://pypi.org/project/hydrodata>`__) is a suite of Python packages
+that provide a unified API for retrieving geospatial/temporal data from various
+web services. HyRiver includes two categories of packages:
+
+- Low-level APIs for accesing any of the supported web services, i.e., ArcGIS RESTful,
+  WMS ,and WFS.
+- High-level APIs for accessing some of the most commonly used datasets
+  in hyrdology and climatology studies. Currently, this project only includes hydrology
+  and climatology data within the US.
 
 You can watch these videos for a quick overview of ``HyRiver``:
 
