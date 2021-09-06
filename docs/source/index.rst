@@ -80,7 +80,7 @@ Hydroclimate Data Retriever
 that provide a unified API for retrieving geospatial/temporal data from various
 web services. HyRiver includes two categories of packages:
 
-- Low-level APIs for accesing any of the supported web services, i.e., ArcGIS RESTful,
+- Low-level APIs for accessing any of the supported web services, i.e., ArcGIS RESTful,
   WMS ,and WFS.
 - High-level APIs for accessing some of the most commonly used datasets
   in hyrdology and climatology studies. Currently, this project only includes hydrology
