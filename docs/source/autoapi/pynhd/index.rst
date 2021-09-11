@@ -15,7 +15,9 @@ Submodules
    :titlesonly:
    :maxdepth: 1
 
+   core/index.rst
    network_tools/index.rst
+   nhdplus_dervived/index.rst
    pynhd/index.rst
 
 
