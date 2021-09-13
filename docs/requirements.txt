@@ -13,4 +13,5 @@ sphinx-book-theme
 sphinx-copybutton
 sphinx-gallery
 sphinx-panels
+sphinxcontrib-bibtex
 sphinxext-opengraph

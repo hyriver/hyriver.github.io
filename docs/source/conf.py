@@ -37,7 +37,10 @@ extensions = [
     "sphinx_panels",
     "sphinxext.opengraph",
     "sphinx_copybutton",
+    "sphinxcontrib.bibtex"
 ]
+
+bibtex_bibfiles = ['refs.bib']
 
 # intersphinx configurations
 intersphinx_mapping = {
