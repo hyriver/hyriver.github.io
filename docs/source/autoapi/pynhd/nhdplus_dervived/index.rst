@@ -50,8 +50,8 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> vaa = nhdplus_vaa()
-   >>> print(vaa.slope.max())
+   >>> vaa = nhdplus_vaa() # doctest: +SKIP
+   >>> print(vaa.slope.max()) # doctest: +SKIP
    4.6
 
 

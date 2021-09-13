@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: Daymet(variables = None, pet = False, time_scale = 'daily', region = 'na')
+.. py:class:: Daymet(variables = None, pet = None, time_scale = 'daily', region = 'na')
 
    Base class for Daymet requests.
 
@@ -20,9 +20,14 @@ Module Contents
                   ``tmin``, ``tmax``, ``prcp``, ``srad``, ``vp``, ``swe``, ``dayl``
                   Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.
                   Defaults to None i.e., all the variables are downloaded.
-                * **pet** (:class:`bool`, *optional*) -- Whether to compute evapotranspiration based on
-                  `UN-FAO 56 paper <http://www.fao.org/3/X0490E/x0490e06.htm>`__.
-                  The default is False
+                * **pet** (:class:`str`, *optional*) -- Method for computing PET. Supported methods are
+                  ``penman_monteith``, ``priestley_taylor``, ``hargreaves_samani``, and
+                  None (don't compute PET). The ``penman_monteith`` method is based on
+                  :footcite:t:`Allen_1998` assuming that soil heat flux density is zero.
+                  The ``priestley_taylor`` method is based on
+                  :footcite:t:`Priestley_1972` assuming that soil heat flux density is zero.
+                  The ``hargreaves_samani`` method is based on :footcite:t:`Hargreaves_1982`.
+                  Defaults to ``None``.
                 * **time_scale** (:class:`str`, *optional*) -- Data time scale which can be daily, monthly (monthly summaries),
                   or annual (annual summaries). Defaults to daily.
                 * **region** (:class:`str`, *optional*) -- Region in the US, defaults to na. Acceptable values are:
@@ -30,6 +35,10 @@ Module Contents
                   * na: Continental North America
                   * hi: Hawaii
                   * pr: Puerto Rico
+
+   .. rubric:: References
+
+   .. footbibliography::
 
    .. py:method:: check_dates(dates)
       :staticmethod:

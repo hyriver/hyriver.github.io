@@ -12,15 +12,9 @@
 Module Contents
 ---------------
 
-.. py:function:: potential_et(clm, coords = None, crs = 'epsg:4326', alt_unit = False, method = 'fao56')
+.. py:function:: potential_et(clm, coords = None, crs = 'epsg:4326', alt_unit = False, method = 'hargreaves_samani')
 
    Compute Potential EvapoTranspiration for both gridded and a single location.
-
-   .. rubric:: Notes
-
-   The method is based on
-   `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__
-   assuming that soil heat flux density is zero.
 
    :Parameters: * **clm** (:class:`pandas.DataFrame` or :class:`xarray.Dataset`) -- The dataset must include at least the following variables:
 
@@ -52,11 +46,20 @@ Module Contents
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to ``epsg:4326``. This is only used
                   when ``clm`` is a ``DataFrame``.
                 * **alt_unit** (:class:`str`, *optional*) -- Whether to use alternative units rather than the official ones, defaults to False.
-                * **method** (:class:`str`, *optional*) -- Method for computing PET. At the moment only ``fao56`` is supported which is based on
-                  `FAO Penman-Monteith equation <http://www.fao.org/3/X0490E/x0490e06.htm>`__ assuming that
-                  soil heat flux density is zero.
+                * **method** (:class:`str`, *optional*) -- Method for computing PET. Supported methods are
+                  ``penman_monteith``, ``priestley_taylor``, ``hargreaves_samani``, and
+                  None (don't compute PET). The ``penman_monteith`` method is based on
+                  :footcite:t:`Allen_1998` assuming that soil heat flux density is zero.
+                  The ``priestley_taylor`` method is based on
+                  :footcite:t:`Priestley_1972` assuming that soil heat flux density is zero.
+                  The ``hargreaves_samani`` method is based on :footcite:t:`Hargreaves_1982`.
+                  Defaults to ``hargreaves_samani``.
 
    :returns: :class:`pandas.DataFrame` or :class:`xarray.Dataset` -- The input DataFrame/Dataset with an additional variable named ``pet (mm/day)`` for
              DataFrame and ``pet`` for Dataset.
+
+   .. rubric:: References
+
+   .. footbibliography::
 
 

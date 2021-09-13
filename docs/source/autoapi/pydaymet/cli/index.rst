@@ -19,7 +19,7 @@ Module Contents
    It also re-orders the columns based on req_cols order.
 
 
-.. py:function:: main(target, target_type, crs, variables = None, time_scale = 'daily', pet = False, save_dir = 'clm_daymet')
+.. py:function:: main(target, target_type, crs, variables = None, time_scale = 'daily', pet = 'none', save_dir = 'clm_daymet')
 
    Retrieve cliamte data within geometries or elevations for a list of coordinates.
 
