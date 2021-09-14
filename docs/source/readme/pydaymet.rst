@@ -53,7 +53,7 @@ Subset Service (NCSS). Both single pixel (using ``get_bycoords`` function) and g
 ``pandas.DataFrame`` and ``xarray.Dataset``, respectively. Climate data is available for North
 America, Hawaii from 1980, and Puerto Rico from 1950 at three time scales: daily, monthly,
 and annual. Additionally, PyDaymet can compute Potential EvapoTranspiration (PET)
-using `FAO Penman-Monteith equation <http://www.fao.org/docrep/X0490E/X0490E00.htm>`__ for
+using three methods: ``penman_monteith``, ``priestley_taylor``, and ``hargreaves_samani`` for
 both single pixel and gridded data.
 
 To fully utilize the capabilities of the NCSS, under-the-hood, PyDaymet uses
@@ -171,7 +171,7 @@ by default is set to daily.
     var = ["prcp", "tmin"]
     dates = ("2000-01-01", "2000-06-30")
 
-    daily = daymet.get_bygeom(geometry, dates, variables=var, pet=True)
+    daily = daymet.get_bygeom(geometry, dates, variables=var, pet="priestley_taylor")
     monthly = daymet.get_bygeom(geometry, dates, variables=var, time_scale="monthly")
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/daymet_grid.png
@@ -189,6 +189,17 @@ it to the functions.
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/daymet_loc.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/daymet.ipynb
+
+Also, we can use the ``potential_et`` function to compute PET by passing the daily climate data.
+We can either pass a ``pandas.DataFrame`` or a ``xarray.Dataset``. Note that, ``penman_monteith``
+and ``priestley_taylor`` methods have parameters that can be passed via the ``params`` argument,
+if any value other than the default values are needed. For example, default value of ``alpha``
+for ``priestley_taylor`` method is 1.26 (humid regions), we can set it to 1.74 (arid regions)
+as follows:
+
+.. code-block:: python
+
+    pet_hs = daymet.potential_et(daily, methods="priestley_taylor", params={"alpha": 1.74})
 
 Next, let's get annual total precipitation for Hawaii and Puerto Rico for 2010.
 
