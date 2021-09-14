@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: potential_et(clm, coords = None, crs = 'epsg:4326', alt_unit = False, method = 'hargreaves_samani')
+.. py:function:: potential_et(clm, coords = None, crs = 'epsg:4326', method = 'hargreaves_samani', params = None)
 
    Compute Potential EvapoTranspiration for both gridded and a single location.
 
@@ -20,23 +20,23 @@ Module Contents
 
                   * Minimum temperature in degree celsius
                   * Maximum temperature in degree celsius
-                  * Solar radiation in in W/m^2
+                  * Solar radiation in in W/m2
                   * Daylight duration in seconds
 
                   Optionally, relative humidity and wind speed at 2-m level will be used if available.
 
                   Table below shows the variable names that the function looks for in the input data.
 
-                  ================ ========
-                  DataFrame        Dataset
-                  ================ ========
-                  ``tmin (deg c)`` ``tmin``
-                  ``tmax (deg c)`` ``tmax``
-                  ``srad (W/m^2)`` ``srad``
-                  ``dayl (s)``     ``dayl``
-                  ``rh (-)``       ``rh``
-                  ``u2 (m/s)``     ``u2``
-                  ================ ========
+                  ==================== ========
+                  DataFrame            Dataset
+                  ==================== ========
+                  ``tmin (degrees C)`` ``tmin``
+                  ``tmax (degrees C)`` ``tmax``
+                  ``srad (W/m2)``      ``srad``
+                  ``dayl (s)``         ``dayl``
+                  ``rh (-)``           ``rh``
+                  ``u2 (m/s)``         ``u2``
+                  ==================== ========
 
                   If relative humidity and wind speed at 2-m level are not available,
                   actual vapour pressure is assumed to be saturation vapour pressure at daily minimum
@@ -45,7 +45,6 @@ Module Contents
                   is a ``DataFrame``.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to ``epsg:4326``. This is only used
                   when ``clm`` is a ``DataFrame``.
-                * **alt_unit** (:class:`str`, *optional*) -- Whether to use alternative units rather than the official ones, defaults to False.
                 * **method** (:class:`str`, *optional*) -- Method for computing PET. Supported methods are
                   ``penman_monteith``, ``priestley_taylor``, ``hargreaves_samani``, and
                   None (don't compute PET). The ``penman_monteith`` method is based on
@@ -54,6 +53,7 @@ Module Contents
                   :footcite:t:`Priestley_1972` assuming that soil heat flux density is zero.
                   The ``hargreaves_samani`` method is based on :footcite:t:`Hargreaves_1982`.
                   Defaults to ``hargreaves_samani``.
+                * **params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary, defaults to ``None``.
 
    :returns: :class:`pandas.DataFrame` or :class:`xarray.Dataset` -- The input DataFrame/Dataset with an additional variable named ``pet (mm/day)`` for
              DataFrame and ``pet`` for Dataset.

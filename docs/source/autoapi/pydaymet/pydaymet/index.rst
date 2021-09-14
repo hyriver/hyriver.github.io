@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None)
+.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None)
 
    Get point-data from the Daymet database at 1-km resolution.
 
@@ -41,6 +41,8 @@ Module Contents
                   :footcite:t:`Priestley_1972` assuming that soil heat flux density is zero.
                   The ``hargreaves_samani`` method is based on :footcite:t:`Hargreaves_1982`.
                   Defaults to ``None``.
+                * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
+                  Defaults to ``None``.
 
    :returns: :class:`pandas.DataFrame` -- Daily climate data for a location.
 
@@ -58,7 +60,7 @@ Module Contents
    .. footbibliography::
 
 
-.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None)
+.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None)
 
    Get gridded data from the Daymet database at 1-km resolution.
 
@@ -82,6 +84,8 @@ Module Contents
                   The ``priestley_taylor`` method is based on
                   :footcite:t:`Priestley_1972` assuming that soil heat flux density is zero.
                   The ``hargreaves_samani`` method is based on :footcite:t:`Hargreaves_1982`.
+                  Defaults to ``None``.
+                * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
                   Defaults to ``None``.
 
    :returns: :class:`xarray.Dataset` -- Daily climate data within the target geometry.
