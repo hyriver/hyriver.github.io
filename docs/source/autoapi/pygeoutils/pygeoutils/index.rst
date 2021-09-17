@@ -44,7 +44,7 @@ Module Contents
    :Parameters: * **ds** (:class:`xarray.Dataset` or :class:`xarray.DataArray`) -- The dataset(array) to be masked
                 * **ds_dims** (:class:`tuple`, *optional*) -- Names of the coordinames in the dataset, defaults to ``("y", "x")``.
 
-   :returns: :class:`affine.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
+   :returns: :class:`rio.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
 
 
 .. py:function:: gtiff2xarray(r_dict, geometry, geo_crs, ds_dims = None, driver = None, all_touched = False)

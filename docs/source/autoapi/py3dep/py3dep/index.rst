@@ -22,7 +22,7 @@ Module Contents
    Get elevation from Airmap at 1-arc resolution (~30 m) for a list of coordinates.
 
    :Parameters: * **coords** (:class:`list` of :class:`tuples`) -- Coordinates of target location as list of tuples ``[(x, y), ...]``.
-                * **crs** (:class:`str`, *optional*) -- Spatial reference (CRS) of coords, defaults to ``EPSG:4326``.
+                * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of coords, defaults to ``EPSG:4326``.
                 * **source** (:class:`str`, *optional*) -- Data source to be used, default to ``tnm``. Supported sources are
                   ``airmap`` (30 m resolution) and ``tnm`` (using The National Map's Bulk Point
                   Query Service). The ``tnm`` source is more accurate since it uses the highest
