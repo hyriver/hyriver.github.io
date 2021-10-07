@@ -10,7 +10,6 @@ project = "HyRiver"
 author = "Taher Chegini"
 copyright = f"2019-{datetime.datetime.now().year}, {author}"
 
-# The full version, including alpha/beta/rc tags
 from github import Github
 
 g = Github()
@@ -69,11 +68,13 @@ autoapi_dirs = [
 autoapi_ignore = [
     "**ipynb_checkpoints**",
     "**tests**",
-    "**setup**",
-    "**conf**",
-    "**exceptions**",
-    "**print_versions**",
-    "**noxfile**",
+    "**setup.py",
+    "**conf.py",
+    "**conftest.py",
+    "**noxfile.py",
+    "**exceptions.py",
+    "**print_versions.py",
+    "**cli.py",
 ]
 autoapi_options = ["members"]
 autoapi_member_order = "groupwise"
@@ -241,8 +242,8 @@ htmlhelp_basename = "HyRiverdoc"
 # configuration for opengraph
 description = " ".join(
     [
-        "HyRiver is a software stack consisting of seven Python libraries",
-        "that are designed to aid in watershed analysis through web services."
+        "HyRiver is a suite of Python packages that provides a",
+        "unified API for retrieving geospatial/temporal data from various web services."
     ]
 )
 ogp_site_url = "https://hyriver.readthedocs.io/en/latest"
