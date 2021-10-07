@@ -15,7 +15,6 @@ Submodules
    :titlesonly:
    :maxdepth: 1
 
-   cli/index.rst
    core/index.rst
    pet/index.rst
    pydaymet/index.rst

@@ -15,12 +15,13 @@ Submodules
    :titlesonly:
    :maxdepth: 1
 
-   cli/index.rst
    py3dep/index.rst
+   utils/index.rst
 
 
 Package Contents
 ----------------
+
 
 
 

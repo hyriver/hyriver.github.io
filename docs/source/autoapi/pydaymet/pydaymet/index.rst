@@ -31,8 +31,8 @@ Module Contents
                   * ``na``: Continental North America
                   * ``hi``: Hawaii
                   * ``pr``: Puerto Rico
-                * **time_scale** (:class:`str`, *optional*) -- Data time scale which can be daily, monthly (monthly summaries),
-                  or annual (annual summaries). Defaults to daily.
+                * **time_scale** (:class:`str`, *optional*) -- Data time scale which can be ``daily``, ``monthly`` (monthly summaries),
+                  or ``annual`` (annual summaries). Defaults to ``daily``.
                 * **pet** (:class:`str`, *optional*) -- Method for computing PET. Supported methods are
                   ``penman_monteith``, ``priestley_taylor``, ``hargreaves_samani``, and
                   None (don't compute PET). The ``penman_monteith`` method is based on

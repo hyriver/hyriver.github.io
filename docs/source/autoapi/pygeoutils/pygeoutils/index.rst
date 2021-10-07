@@ -44,7 +44,7 @@ Module Contents
    :Parameters: * **ds** (:class:`xarray.Dataset` or :class:`xarray.DataArray`) -- The dataset(array) to be masked
                 * **ds_dims** (:class:`tuple`, *optional*) -- Names of the coordinames in the dataset, defaults to ``("y", "x")``.
 
-   :returns: :class:`rio.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
+   :returns: :class:`rasterio.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
 
 
 .. py:function:: gtiff2xarray(r_dict, geometry, geo_crs, ds_dims = None, driver = None, all_touched = False)
@@ -71,11 +71,23 @@ Module Contents
 
    Create GeoDataFrame from (Geo)JSON.
 
-   :Parameters: * **content** (:class:`dict` or :class:`list` of :class:`dict`) -- A (Geo)JSON dictionary e.g., r.json() or a list of them.
+   :Parameters: * **content** (:class:`dict` or :class:`list` of :class:`dict`) -- A (Geo)JSON dictionary e.g., response.json() or a list of them.
                 * **in_crs** (:class:`str`) -- CRS of the content, defaults to ``epsg:4326``.
                 * **crs** (:class:`str`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON
+
+
+.. py:function:: xarray2geodf(da, dtype, mask_da = None)
+
+   Vectorize a ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``.
+
+   :Parameters: * **da** (:class:`xarray.DataArray`) -- The dataarray to vectorize.
+                * **dtype** (:class:`type`) -- The data type of the dataarray. Valid types are ``int16``, ``int32``,
+                  ``uint8``, ``uint16``, and ``float32``.
+                * **mask_da** (:class:`xarray.DataArray`, *optional*) -- The dataarray to use as a mask, defaults to ``None``.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- The vectorized dataarray.
 
 
 .. py:function:: xarray_geomask(ds, geometry, geo_crs, ds_dims = None, all_touched = False)

@@ -17,7 +17,7 @@ Module Contents
    Remove expired responses from the cache file.
 
 
-.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both')
+.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both', timeout = 5.0, expire_after = _EXPIRE)
 
    Send async requests.
 
@@ -30,6 +30,8 @@ Module Contents
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
                 * **family** (:class:`str`, *optional*) -- TCP socket family, defaults to both, i.e., IPv4 and IPv6. For IPv4
                   or IPv6 only pass ``ipv4`` or ``ipv6``, respectively.
+                * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for the cache in seconds, defaults to 24 hours.
 
    :returns: :class:`list` -- List of responses in the order of input URLs.
 
