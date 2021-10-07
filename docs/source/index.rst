@@ -53,7 +53,6 @@
     :target: https://pepy.tech/project/pydaymet
     :alt: Download Stat
 
-
 Hydroclimate Data Retriever
 ===========================
 
@@ -77,14 +76,14 @@ Hydroclimate Data Retriever
 
 `HyRiver <https://hyriver.readthedocs.io>`__ (formerly named
 `hydrodata <https://pypi.org/project/hydrodata>`__) is a suite of Python packages
-that provide a unified API for retrieving geospatial/temporal data from various
+that provides a unified API for retrieving geospatial/temporal data from various
 web services. HyRiver includes two categories of packages:
 
 - Low-level APIs for accessing any of the supported web services, i.e., ArcGIS RESTful,
-  WMS ,and WFS.
-- High-level APIs for accessing some of the most commonly used datasets
-  in hyrdology and climatology studies. Currently, this project only includes hydrology
-  and climatology data within the US.
+  WMS, and WFS.
+- High-level APIs for accessing some of the most commonly used datasets in hyrdology and
+  climatology studies. Currently, this project only includes hydrology and climatology data
+  within the US.
 
 You can watch these videos for a quick overview of ``HyRiver``:
 
@@ -108,7 +107,6 @@ You can watch these videos for a quick overview of ``HyRiver``:
     contributing
     authors
     license
-
 
 .. panels::
     :column: col-lg-12 p-2

@@ -96,59 +96,101 @@ You can use PyDaymet using command-line or as a Python library. The commanda-lin
 provides access to two functionality:
 
 - Getting gridded climate data: You must create a ``geopandas.GeoDataFrame`` that contains
-  the geometries of the target locations. This dataframe must have at least five columns:
-  ``id``, ``start``, ``end``, ``region``, and ``geometry``. The ``id`` column is used as
+  the geometries of the target locations. This dataframe must have four columns:
+  ``id``, ``start``, ``end``, ``geometry``. The ``id`` column is used as
   filenames for saving the obtained climate data to a NetCDF (``.nc``) file. The ``start``
-  and ``end`` columns are starting and ending dates of the target period. The ``region``
-  columns determines the geometry's region of each row (``na``, ``hi``, or ``pr``). Then,
-  you must save the dataframe to a file with extensions such as ``.shp`` or ``.gpkg``
-  (whatever that ``geopandas.read_file`` can read).
-- Getting single pixel climate data: You must create a ``pandas.DataFrame`` that
-  contains coordinates of the target locations. This dataframe must have at least five columns:
-  ``id``, ``start``, ``end``, ``region``, ``x``, and ``y``. The ``id`` column is used as filenames
-  for saving the obtained climate data to a CSV (``.csv``) file. The ``start``, ``end``, and
-  ``region`` columns the same as the before. The ``x`` and ``y`` columns are coordinates
-  of the target locations.
-
-``pydaymet`` has three required arguments and four optional:
+  and ``end`` columns are starting and ending dates of the target period. Then,
+  you must save the dataframe as a shapefile (``.shp``) or geopackage (``.gpkg``) with
+  CRS attribute.
+- Getting single pixel climate data: You must create a CSV file that
+  contains coordinates of the target locations. This file must have at four columns:
+  ``id``, ``start``, ``end``, ``lon``, and ``lat``. The ``id`` column is used as filenames
+  for saving the obtained climate data to a CSV (``.csv``) file. The ``start`` and ``end``
+  columns are the same as the ``geometry`` command. The ``lon`` and ``lat`` columns are
+  the longitude and latitude coordinates of the target locations.
 
 .. code-block:: console
 
-    pydaymet --help
-    Usage: pydaymet [OPTIONS] TARGET TARGET_TYPE CRS
+    $ pydaymet -h
+    Usage: pydaymet [OPTIONS] COMMAND [ARGS]...
 
-      Retrieve cliamte data within geometries or elevations for a list of coordinates.
-
-      TARGET: Path to a geospatial file (any file that geopandas.read_file can open) or a csv file.
-
-      The input files should have three columns:
-
-          - id: Feature identifiers that daymet uses as the output netcdf/csv filenames.
-          - start: Starting time.
-          - end: Ending time.
-          - region: Target region (na for CONUS, hi for Hawaii, and pr for Puerto Rico.
-
-      If target_type is geometry, an additional geometry column is required.
-      If it is coords, two additional columns are need: x and y.
-
-      TARGET_TYPE: Type of input file: "coords" for csv and "geometry" for geospatial.
-
-      CRS: CRS of the input data.
-
-      Examples:
-
-          $ pydaymet ny_coords.csv coords epsg:4326 -v prcp -v tmin -p -t monthly
-          $ pydaymet ny_geom.gpkg geometry epsg:3857 -v prcp
+    Command-line interface for PyDaymet.
 
     Options:
-      -v, --variables TEXT            Target variables. You can pass this flag
-                                      multiple times for multiple variables.
-      -t, --time_scale [daily|monthly|annual]
-                                      Target time scale.
-      -p, --pet                       Compute PET.
-      -s, --save_dir PATH             Path to a directory to save the requested files. Extension
-                                      for the outputs is .nc for geometry and .csv for coords.
-      -h, --help                      Show this message and exit.
+    -h, --help  Show this message and exit.
+
+    Commands:
+    coords    Retrieve climate data for a list of coordinates.
+    geometry  Retrieve climate data for a dataframe of geometries.
+
+The ``coords`` sub-command is as follows:
+
+.. code-block:: console
+
+    $ pydaymet coords -h
+    Usage: pydaymet coords [OPTIONS] FPATH
+
+    Retrieve climate data for a list of coordinates.
+
+    FPATH: Path to a csv file with four columns:
+        - ``id``: Feature identifiers that daymet uses as the output netcdf filenames.
+        - ``start``: Start time.
+        - ``end``: End time.
+        - ``lon``: Longitude of the points of interest.
+        - ``lat``: Latitude of the points of interest.
+        - ``time_scale``: (optional) Time scale, either ``daily`` (default), ``monthly`` or ``annual``.
+        - ``pet``: (optional) Method to compute PET. Suppoerted methods are:
+                   ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
+        - ``alpha``: (optional) Alpha parameter for Priestley-Taylor method for computing PET. Defaults to 1.26.
+
+    Examples:
+        $ cat coords.csv
+        id,lon,lat,start,end,pet
+        california,-122.2493328,37.8122894,2012-01-01,2014-12-31,hargreaves_samani
+        $ pydaymet coords coords.csv -v prcp -v tmin
+
+    Options:
+    -v, --variables TEXT  Target variables. You can pass this flag multiple
+                            times for multiple variables.
+
+    -s, --save_dir PATH   Path to a directory to save the requested files.
+                            Extension for the outputs is .nc for geometry and .csv
+                            for coords.
+
+    -h, --help            Show this message and exit.
+
+And, the ``geometry`` sub-command is as follows:
+
+.. code-block:: console
+
+    $ pydaymet geometry -h
+    Usage: pydaymet geometry [OPTIONS] FPATH
+
+    Retrieve climate data for a dataframe of geometries.
+
+    FPATH: Path to a shapefile (.shp) or geopackage (.gpkg) file.
+    This file must have four columns and contain a ``crs`` attribute:
+        - ``id``: Feature identifiers that daymet uses as the output netcdf filenames.
+        - ``start``: Start time.
+        - ``end``: End time.
+        - ``geometry``: Target geometries.
+        - ``time_scale``: (optional) Time scale, either ``daily`` (default), ``monthly`` or ``annual``.
+        - ``pet``: (optional) Method to compute PET. Suppoerted methods are:
+                   ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
+        - ``alpha``: (optional) Alpha parameter for Priestley-Taylor method for computing PET. Defaults to 1.26.
+
+    Examples:
+        $ pydaymet geometry geo.gpkg -v prcp -v tmin
+
+    Options:
+    -v, --variables TEXT  Target variables. You can pass this flag multiple
+                            times for multiple variables.
+
+    -s, --save_dir PATH   Path to a directory to save the requested files.
+                            Extension for the outputs is .nc for geometry and .csv
+                            for coords.
+
+    -h, --help            Show this message and exit.
 
 Now, let's see how we can use PyDaymet as a library.
 

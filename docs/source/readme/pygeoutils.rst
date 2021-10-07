@@ -53,6 +53,8 @@ These utilities are:
 - ``arcgis2geojson``: For converting ESRIGeoJSON to the standard GeoJSON format.
 - ``gtiff2xarray``: For converting (Geo)TIFF objects to `xarray <https://xarray.pydata.org/>`__.
   datasets.
+- ``xarray2geodf``: For converting ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``, i.e.,
+  vectorization.
 - ``xarray_geomask``: For masking a ``xarray.Dataset`` or ``xarray.DataArray`` using a polygon.
 
 All these functions handle all necessary CRS transformations.
@@ -99,7 +101,7 @@ via WFS, then convert the output to ``xarray.Dataset`` and ``GeoDataFrame``, res
 .. code-block:: python
 
     import pygeoutils as geoutils
-    from pygeoogc import WFS, WMS
+    from pygeoogc import WFS, WMS, ServiceURL
     from shapely.geometry import Polygon
 
 
@@ -112,20 +114,23 @@ via WFS, then convert the output to ``xarray.Dataset`` and ``GeoDataFrame``, res
             [-118.72, 34.118],
         ]
     )
+    crs = "epsg:4326"
 
-    url_wms = "https://www.fws.gov/wetlands/arcgis/services/Wetlands_Raster/ImageServer/WMSServer"
     wms = WMS(
-        url_wms,
-        layers="0",
-        outformat="image/tiff",
-        crs="epsg:3857",
+        ServiceURL().wms.mrlc,
+        layers="NLCD_2011_Tree_Canopy_L48",
+        outformat="image/geotiff",
+        crs=crs,
     )
     r_dict = wms.getmap_bybox(
         geometry.bounds,
         1e3,
-        box_crs="epsg:4326",
+        box_crs=crs,
     )
-    wetlands = geoutils.gtiff2xarray(r_dict, geometry, "epsg:4326")
+    canopy = geoutils.gtiff2xarray(r_dict, geometry, crs)
+
+    mask = canopy > 60
+    canopy_gdf = geoutils.xarray2geodf(canopy, "float32", mask)
 
     url_wfs = "https://hazards.fema.gov/gis/nfhl/services/public/NFHL/MapServer/WFSServer"
     wfs = WFS(
@@ -134,5 +139,5 @@ via WFS, then convert the output to ``xarray.Dataset`` and ``GeoDataFrame``, res
         outformat="esrigeojson",
         crs="epsg:4269",
     )
-    r = wfs.getfeature_bybox(geometry.bounds, box_crs="epsg:4326")
-    flood = geoutils.json2geodf(r.json(), "epsg:4269", "epsg:4326")
+    r = wfs.getfeature_bybox(geometry.bounds, box_crs=crs)
+    flood = geoutils.json2geodf(r.json(), "epsg:4269", crs)
