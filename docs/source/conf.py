@@ -12,8 +12,7 @@ copyright = f"2019-{datetime.datetime.now().year}, {author}"
 
 from github import Github
 
-g = Github()
-repo = g.get_repo("cheginit/pygeohydro")
+repo = Github().get_repo("cheginit/pygeohydro")
 tags = repo.get_tags()
 version = f"{'.'.join(tags[0].name[1:].split('.')[:2])}.x"
 release = version
@@ -36,7 +35,7 @@ extensions = [
     "sphinx_panels",
     "sphinxext.opengraph",
     "sphinx_copybutton",
-    "sphinxcontrib.bibtex"
+    "sphinxcontrib.bibtex",
 ]
 
 bibtex_bibfiles = ['refs.bib']
@@ -57,13 +56,13 @@ intersphinx_mapping = {
 
 # autoapi configurations
 autoapi_dirs = [
-    "../../pygeoogc",
-    "../../pygeoutils",
-    "../../async_retriever",
     "../../pynhd",
     "../../pygeohydro",
     "../../py3dep",
     "../../pydaymet",
+    "../../async_retriever",
+    "../../pygeoogc",
+    "../../pygeoutils",
 ]
 autoapi_ignore = [
     "**ipynb_checkpoints**",
@@ -81,13 +80,13 @@ autoapi_member_order = "groupwise"
 autoapi_keep_files = True
 autoapi_add_toctree_entry = False
 modindex_common_prefix = [
-    "async_retriever.",
-    "pygeoogc.",
-    "pygeoutils.",
     "pynhd.",
     "pygeohydro.",
     "py3dep.",
     "pydaymet.",
+    "async_retriever.",
+    "pygeoogc.",
+    "pygeoutils.",
 ]
 
 # typehints configurations
@@ -265,7 +264,6 @@ if not os.path.exists(ipython_savefig_dir):
     os.makedirs(ipython_savefig_dir)
 
 # -- markdown configurations -------------------------------------------------
-import recommonmark
 import inspect
 from recommonmark.transform import AutoStructify
 
