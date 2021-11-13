@@ -43,6 +43,7 @@ Module Contents
 
    :Parameters: * **ds** (:class:`xarray.Dataset` or :class:`xarray.DataArray`) -- The dataset(array) to be masked
                 * **ds_dims** (:class:`tuple`, *optional*) -- Names of the coordinames in the dataset, defaults to ``("y", "x")``.
+                  The order of the dimension names must be (vertical, horizontal).
 
    :returns: :class:`rasterio.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
 

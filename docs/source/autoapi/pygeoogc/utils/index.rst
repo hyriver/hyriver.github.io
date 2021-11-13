@@ -69,12 +69,6 @@ Module Contents
       Retrieve data from a url by GET and return the Response.
 
 
-   .. py:method:: onlyipv4()
-      :staticmethod:
-
-      Disable IPv6 and only use IPv4.
-
-
    .. py:method:: post(self, url, payload = None, headers = None)
 
       Retrieve data from a url by POST and return the Response.

@@ -17,7 +17,7 @@ Submodules
 
    core/index.rst
    network_tools/index.rst
-   nhdplus_dervived/index.rst
+   nhdplus_derived/index.rst
    pynhd/index.rst
 
 

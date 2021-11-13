@@ -1,7 +1,7 @@
-:py:mod:`pynhd.nhdplus_dervived`
-================================
+:py:mod:`pynhd.nhdplus_derived`
+===============================
 
-.. py:module:: pynhd.nhdplus_dervived
+.. py:module:: pynhd.nhdplus_derived
 
 .. autoapi-nested-parse::
 

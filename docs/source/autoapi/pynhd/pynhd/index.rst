@@ -44,11 +44,12 @@ Module Contents
                 a list of missing coords are returned as well.
 
 
-   .. py:method:: get_basins(self, station_ids)
+   .. py:method:: get_basins(self, station_ids, split_catchment = False)
 
       Get basins for a list of station IDs.
 
-      :Parameters: **station_ids** (:class:`str` or :class:`list`) -- USGS station ID(s).
+      :Parameters: * **station_ids** (:class:`str` or :class:`list`) -- USGS station ID(s).
+                   * **split_catchment** (:class:`bool`, *optional*) -- If True, split the basin at the watershed outlet location. Default to False.
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed basins in EPSG:4326. If some IDs don't return any features
                 a list of missing ID(s) are returned as well.
