@@ -12,11 +12,16 @@
 Module Contents
 ---------------
 
-.. py:class:: NID
+.. py:class:: NID(version = 2)
 
 
 
    Retrieve data from the National Inventory of Dams web service.
+
+   :Parameters: **version** (:class:`str`, *optional*) -- The database version. Version 2 and 3 are available. Version 2 has
+                NID 2019 data and version 3 includes more recent data as well. At the
+                moment both services are experimental and might not always work. The
+                default version is 2. More information can be found at https://damsdev.net.
 
 
 .. py:class:: NWIS
@@ -83,6 +88,87 @@ Module Contents
                    * **payloads** (:class:`list` of :class:`dict`) -- List of target payloads.
 
       :returns: :class:`pandas.DataFrame` -- Requested features as a pandas's DataFrame.
+
+
+
+.. py:class:: WaterQuality
+
+   Water Quality Web Service https://www.waterqualitydata.us.
+
+   .. rubric:: Notes
+
+   This class has a number of convenience methods to retrieve data from the
+   Water Quality Data. Since there are many parameter combinations that can be
+   used to retrieve data, a general method is also provided to retrieve data from
+   any of the valid endpoints. You can use ``get_json`` to retrieve stations info
+   as a ``geopandas.GeoDataFrame`` or ``get_csv`` to retrieve stations data as a
+   ``pandas.DataFrame``. You can construct a dictionary of the parameters and pass
+   it to one of these functions. For more information on the parameters, please
+   consult the
+   `Water Quality Data documentation <https://www.waterqualitydata.us/webservices_documentation>`__.
+
+   .. py:method:: data_bystation(self, station_ids, wq_kwds)
+
+      Retrieve data for a single station.
+
+      :Parameters: * **station_ids** (:class:`str` or :class:`list` of :class:`str`) -- Station ID(s). The IDs should have the format "Agency code-Station ID".
+                   * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
+
+      :returns: :class:`pandas.DataFrame` -- DataFrame of data for the stations.
+
+
+   .. py:method:: get_csv(self, endpoint, kwds, request_method = 'GET')
+
+      Get the CSV response from the Water Quality Web Service.
+
+      :Parameters: * **endpoint** (:class:`str`) -- Endpoint of the Water Quality Web Service.
+                   * **kwds** (:class:`dict`) -- Water Quality Web Service keyword arguments.
+                   * **request_method** (:class:`str`, *optional*) -- HTTP request method. Default to GET.
+
+      :returns: :class:`pandas.DataFrame` -- The web service response as a DataFrame.
+
+
+   .. py:method:: get_json(self, endpoint, kwds, request_method = 'GET')
+
+      Get the JSON response from the Water Quality Web Service.
+
+      :Parameters: * **endpoint** (:class:`str`) -- Endpoint of the Water Quality Web Service.
+                   * **kwds** (:class:`dict`) -- Water Quality Web Service keyword arguments.
+                   * **request_method** (:class:`str`, *optional*) -- HTTP request method. Default to GET.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- The web service response as a GeoDataFrame.
+
+
+   .. py:method:: get_param_table(self)
+
+      Get the parameter table from the USGS Water Quality Web Service.
+
+
+   .. py:method:: lookup_domain_values(self, endpoint)
+
+      Get the domain values for the target endpoint.
+
+
+   .. py:method:: station_bybbox(self, bbox, wq_kwds)
+
+      Retrieve station info within bounding box.
+
+      :Parameters: * **bbox** (:class:`tuple` of :class:`float`) -- Bounding box coordinates (west, south, east, north) in epsg:4326.
+                   * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of station info within the bounding box.
+
+
+   .. py:method:: station_bydistance(self, lon, lat, radius, wq_kwds)
+
+      Retrieve station within a radius (decimal miles) of a point.
+
+      :Parameters: * **lon** (:class:`float`) -- Longitude of point.
+                   * **lat** (:class:`float`) -- Latitude of point.
+                   * **radius** (:class:`float`) -- Radius (decimal miles) of search.
+                   * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of station info within the radius of the point.
 
 
 

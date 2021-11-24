@@ -51,7 +51,7 @@ Module Contents
 
 
 
-.. py:class:: RESTValidator
+.. py:class:: RESTValidator(__pydantic_self__, **data)
 
 
 

@@ -53,7 +53,10 @@ main modules: ``pygeohydro``, ``plot``, and ``helpers``.
 The ``pygeohydro`` module can pull data from the following web services:
 
 * `NWIS <https://nwis.waterdata.usgs.gov/nwis>`__ for daily mean streamflow observations,
-* `NID <https://damsdev.net/>`__ for accessing the National Inventory of Dams in the US,
+* `Water Quality Portal <https://www.waterqualitydata.us/>`__ for accessing current and
+  historical water quality data from more than 1.5 million sites across the US,
+* `NID <https://damsdev.net/>`__ for accessing both versions of the National Inventory of Dams
+  web services,
 * `HCDN 2009 <https://www2.usgs.gov/science/cite-view.php?cite=2932>`__ for identifying sites
   where human activity affects the natural flow of the watercourse,
 * `NLCD 2019 <https://www.mrlc.gov/>`__ for land cover/land use, imperviousness, imperviousness
@@ -161,6 +164,40 @@ Then, we can get the streamflow data in mm/day (by default the data are in cms) 
 
     qobs = nwis.get_streamflow(stations, dates, mmd=True)
     plot.signatures(qobs)
+
+The ``WaterQuality`` has a number of convenience methods to retrieve data from the
+web service. Since there are many parameter combinations that can be
+used to retrieve data, a general method is also provided to retrieve data from
+any of the valid endpoints. You can use ``get_json`` to retrieve stations info
+as a ``geopandas.GeoDataFrame`` or ``get_csv`` to retrieve stations data as a
+``pandas.DataFrame``. You can construct a dictionary of the parameters and pass
+it to one of these functions. For more information on the parameters, please
+consult the `Water Quality Data documentation <https://www.waterqualitydata.us/webservices_documentation>`__.
+For example, let's find all the stations within a bounding box that have Caffeine data:
+
+.. code-block:: python
+
+    from pynhd import WaterQuality
+
+    wq = WaterQuality()
+    stations = self.wq.station_bybbox((-92.8, 44.2, -88.9, 46.0), {"characteristicName": "Caffeine"})
+
+Or the same criterion but within a 30 mile radius of a point:
+
+.. code-block:: python
+
+    stations = self.wq.station_bydistance(-92.8, 44.2, 30, {"characteristicName": "Caffeine"})
+
+Then we can get for al these stations the data like this:
+
+.. code-block:: python
+
+    sids = stations.MonitoringLocationIdentifier.tolist()
+    caff = self.wq.data_bystation(sids, {"characteristicName": "Caffeine"})
+
+.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/water_quality.png
+    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/water_quality.ipynb
+    :alt: Water Quality
 
 Moreover, we can get land use/land cove data using ``nlcd`` function, percentages of
 land cover types using ``cover_statistics``, and actual ET with ``ssebopeta_bygeom``:
