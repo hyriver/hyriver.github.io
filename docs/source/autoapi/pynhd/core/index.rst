@@ -82,15 +82,9 @@ Module Contents
 
 
 
-.. py:class:: ScienceBase(save_dir = None)
+.. py:class:: ScienceBase
 
-   Access NHDPlus V2.1 Attributes from ScienceBase over CONUS.
-
-   More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
-
-   :Parameters: **save_dir** (:class:`str`) -- Directory to save the staged data frame containing metadata for the database,
-                defaults to system's temp directory. The metadata dataframe is saved as a feather
-                file, nhdplus_attrs.feather, in save_dir that can be loaded with Pandas.
+   Access and explore files on ScienceBase.
 
    .. py:method:: get_children(item)
       :staticmethod:
@@ -98,15 +92,20 @@ Module Contents
       Get children items of an item.
 
 
-   .. py:method:: get_files(item)
+   .. py:method:: get_file_urls(item)
       :staticmethod:
 
-      Get all the available zip files in an item.
+      Get download and meta URLs of all the available files for an item.
 
 
-   .. py:method:: stage_data(self)
 
-      Stage the NHDPlus Attributes database and save to nhdplus_attrs.feather.
+.. py:function:: stage_nhdplus_attrs(parquet_path = None)
 
+   Stage the NHDPlus Attributes database and save to nhdplus_attrs.parquet.
+
+   More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
+
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~pathlib.Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
+                later use.
 
 

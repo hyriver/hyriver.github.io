@@ -156,7 +156,8 @@ We can select all the stations within this boundary box that have daily mean str
         (info_box.begin_date <= dates[0]) & (info_box.end_date >= dates[1])
     ].site_no.tolist()
 
-Then, we can get the streamflow data in mm/day (by default the data are in cms) and plot them:
+Then, we can get the daily streamflow data in mm/day (by default the values are in cms)
+and plot them:
 
 .. code-block:: python
 
@@ -164,6 +165,23 @@ Then, we can get the streamflow data in mm/day (by default the data are in cms) 
 
     qobs = nwis.get_streamflow(stations, dates, mmd=True)
     plot.signatures(qobs)
+
+By default, ``get_streamflow`` returns a ``pandas.DataFrame`` that has an ``attrs`` method
+containing metadata for all the stations. You can access it like so ``qobs.attrs``.
+Moreover, we can get the same data as ``xarray.Dataset`` as follows:
+
+.. code-block:: python
+
+    qobs_ds = nwis.get_streamflow(stations, dates, to_xarray=True)
+
+In this case, metadata for each station can be accessed like so ``qobs_ds["USGS-01031450"]``.
+
+We can also get instantaneous streamflow data using ``get_streamflow``. This method assumes
+that the input dates are in UTC time zone and returns the data in UTC time zone as well.
+
+.. code-block:: python
+
+    qobs = nwis.get_streamflow("01646500", ("2005-01-01 12:00", "2005-01-12 15:00"), freq="iv")
 
 The ``WaterQuality`` has a number of convenience methods to retrieve data from the
 web service. Since there are many parameter combinations that can be
@@ -188,7 +206,7 @@ Or the same criterion but within a 30 mile radius of a point:
 
     stations = self.wq.station_bydistance(-92.8, 44.2, 30, {"characteristicName": "Caffeine"})
 
-Then we can get for al these stations the data like this:
+Then we can get the data for all these stations the data like this:
 
 .. code-block:: python
 

@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: prepare_nhdplus(flowlines, min_network_size, min_path_length, min_path_size = 0, purge_non_dendritic = False, verbose = False)
+.. py:function:: prepare_nhdplus(flowlines, min_network_size, min_path_length, min_path_size = 0, purge_non_dendritic = False, use_enhd_attrs = False, terminal2nan = True)
 
    Clean up and fix common issues of NHDPlus flowline database.
 
@@ -28,7 +28,12 @@ Module Contents
                   Drainage basins with an outlet drainage area smaller than
                   this value will be removed. Defaults to 0.
                 * **purge_non_dendritic** (:class:`bool`, *optional*) -- Whether to remove non dendritic paths, defaults to False
-                * **verbose** (:class:`bool`, *optional*) -- Whether to show a message about the removed features, defaults to True.
+                * **use_enhd_attrs** (:class:`bool`, *optional*) -- Whether to replace the attributes with the ENHD attributes, defaults to False.
+                  For more information, see
+                  `this <https://www.sciencebase.gov/catalog/item/60c92503d34e86b9389df1c9>`__.
+                * **terminal2nan** (:class:`bool`, *optional*) -- Whether to replace the COMID of the terminal flowline of the network with NaN,
+                  defaults to True. If False, the terminal COMID will be set from the
+                  ENHD attributes i.e. use_enhd_attrs will be set to True.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Cleaned up flowlines. Note that all column names are converted to lower case.
 

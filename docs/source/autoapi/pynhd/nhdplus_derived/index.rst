@@ -12,12 +12,29 @@
 Module Contents
 ---------------
 
+.. py:function:: enhd_attrs(parquet_path = None)
+
+   Get updated NHDPlus attributes from ENHD.
+
+   .. rubric:: Notes
+
+   This downloads a 140 MB ``parquet`` file from
+   `here <https://www.sciencebase.gov/catalog/item/60c92503d34e86b9389df1c9>`__ .
+   Although this dataframe does not include geometry, it can be linked to other geospatial
+   NHDPlus dataframes through ComIDs.
+
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
+                ``./cache/enhd_attrs.parquet``.
+
+   :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million NHDPlus flowlines.
+
+
 .. py:function:: nhd_fcode()
 
    Get all the NHDPlus FCodes.
 
 
-.. py:function:: nhdplus_attrs(name = None, save_dir = None)
+.. py:function:: nhdplus_attrs(name = None, parquet_path = None)
 
    Access NHDPlus V2.1 Attributes from ScienceBase over CONUS.
 
@@ -25,14 +42,13 @@ Module Contents
 
    :Parameters: * **name** (:class:`str`, *optional*) -- Name of the NHDPlus attribute, defaults to None which returns a dataframe containing
                   metadata of all the available attributes in the database.
-                * **save_dir** (:class:`str`, *optional*) -- Directory to save the staged data frame containing metadata for the database,
-                  defaults to system's temp directory. The metadata dataframe is saved as a feather
-                  file, nhdplus_attrs.feather, in save_dir that can be loaded with Pandas.
+                * **parquet_path** (:class:`str` or :class:`~~pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
+                  later use. Defaults to ``./cache/nhdplus_attrs.parquet``.
 
    :returns: :class:`pandas.DataFrame` -- Either a dataframe containing the database metadata or the requested attribute over CONUS.
 
 
-.. py:function:: nhdplus_vaa(parquet_name = None)
+.. py:function:: nhdplus_vaa(parquet_path = None)
 
    Get NHDPlus Value Added Attributes with ComID-level roughness and slope values.
 
@@ -43,8 +59,8 @@ Module Contents
    Although this dataframe does not include geometry, it can be linked to other geospatial
    NHDPlus dataframes through ComIDs.
 
-   :Parameters: **parquet_name** (:class:`str` or :class:`~~pathlib.Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
-                later use.
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
+                ``./cache/nldplus_vaa.parquet``.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million NHDPlus flowlines.
 

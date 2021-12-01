@@ -65,16 +65,22 @@ Module Contents
       'Discharge, cubic feet per second'
 
 
-   .. py:method:: get_streamflow(self, station_ids, dates, mmd = False)
+   .. py:method:: get_streamflow(self, station_ids, dates, freq = 'dv', mmd = False, to_xarray = False)
 
       Get mean daily streamflow observations from USGS.
 
       :Parameters: * **station_ids** (:class:`str`, :class:`list`) -- The gage ID(s)  of the USGS station.
                    * **dates** (:class:`tuple`) -- Start and end dates as a tuple (start, end).
+                   * **freq** (:class:`str`, *optional*) -- The frequency of the streamflow data, defaults to ``dv`` (daily values).
+                     Valid frequencies are ``dv`` (daily values), ``iv`` (instantaneous values).
+                     Note that for ``iv`` the time zone for the input dates is assumed to be UTC.
                    * **mmd** (:class:`bool`, *optional*) -- Convert cms to mm/day based on the contributing drainage area of the stations.
+                     Defaults to False.
+                   * **to_xarray** (:class:`bool`, *optional*) -- Whether to return a xarray.Dataset. Defaults to False.
 
-      :returns: :class:`pandas.DataFrame` -- Streamflow data observations in cubic meter per second (cms). The stations that
-                don't provide mean daily discharge in the target period will be dropped.
+      :returns: :class:`pandas.DataFrame` or :class:`xarray.Dataset` -- Streamflow data observations in cubic meter per second (cms). The stations that
+                don't provide the requested discharge data in the target period will be dropped.
+                Note that when frequency is set to ``iv`` the time zone is converted to UTC.
 
 
    .. py:method:: retrieve_rdb(url, payloads)
