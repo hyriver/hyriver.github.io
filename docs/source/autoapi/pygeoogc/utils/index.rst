@@ -132,11 +132,11 @@ Module Contents
 
    :Parameters: * **geom** (:class:`list` or :class:`tuple` or :class:`geometry`) -- Input geometry which could be a list of coordinates such as ``[(x1, y1), ...]``,
                   a bounding box like so ``(xmin, ymin, xmax, ymax)``, or any valid ``shapely``'s
-                  geometry such as sgeom.Polygon, sgeom.MultiPolygon, etc..
+                  geometry such as ``Polygon``, ``MultiPolygon``, etc..
                 * **in_crs** (:class:`str`) -- Spatial reference of the input geometry
                 * **out_crs** (:class:`str`) -- Target spatial reference
 
-   :returns: :class:`sgeom.LineString`, :class:`sgeom.MultiLineString`, :class:`sgeom.Polygon`, :class:`sgeom.MultiPolygon`, :class:`sgeom.Point`, or :class:`sgeom.MultiPoint` -- Input geometry in the specified CRS.
+   :returns: :class:`same type as the input geometry` -- Transformed geometry in the target CRS.
 
    .. rubric:: Examples
 

@@ -12,12 +12,18 @@
 Module Contents
 ---------------
 
-.. py:function:: clean_cache(cache_name)
+.. py:function:: delete_url_cache(url, request_method = 'GET', cache_name = None, **kwargs)
 
-   Remove expired responses from the cache file.
+   Delete cached response associated with `url`, along with its history (if applicable).
+
+   :Parameters: * **url** (:class:`str`) -- URL to be deleted from the cache
+                * **request_method** (:class:`str`, *optional*) -- HTTP request method to be deleted from the cache, defaults to ``GET``.
+                * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to
+                  ``./cache/aiohttp_cache.sqlite``.
+                * **kwargs** (:class:`dict`, *optional*) -- Keywords to pass to the ``cache.delete_url()``.
 
 
-.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both', timeout = 5.0, expire_after = _EXPIRE)
+.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both', timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
 
    Send async requests.
 
@@ -31,7 +37,11 @@ Module Contents
                 * **family** (:class:`str`, *optional*) -- TCP socket family, defaults to both, i.e., IPv4 and IPv6. For IPv4
                   or IPv6 only pass ``ipv4`` or ``ipv6``, respectively.
                 * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for the cache in seconds, defaults to 24 hours.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
+                  SSL cetification verification.
+                * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
+                  from the server, defaults to False.
 
    :returns: :class:`list` -- List of responses in the order of input URLs.
 

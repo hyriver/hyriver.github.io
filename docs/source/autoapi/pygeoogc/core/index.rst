@@ -12,32 +12,54 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1)
+.. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1, verbose = False, disable_retry = False, expire_after = EXPIRE, disable_caching = False)
 
    Access to an ArcGIS REST service.
 
    :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
-                  after the last ``/`` in the url or the target layer must be passed as an argument.
-                * **layer** (:class:`int`, *optional*) -- Target layer number, defaults to None. If None layer number must be included as after
-                  the last ``/`` in ``base_url``.
+                  after the last ``/`` in the url or the target layer must be passed as an
+                  argument.
+                * **layer** (:class:`int`, *optional*) -- Target layer number, defaults to None. If None layer number must be
+                  included as after the last ``/`` in ``base_url``.
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``geojson``.
                   It defaults to ``esriSpatialRelIntersects``.
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
-                  all the available fields which is the default behaviour.
+                  all the available fields which is the default setting.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
                 * **max_workers** (:class:`int`, *optional*) -- Max number of simultaneous requests, default to 2. Note
                   that some services might face issues when several requests are sent
                   simultaneously and will return the requests partially. It's recommended
-                  to avoid using too many workers unless you are certain the web service can handle it.
+                  to avoid using too many workers unless you are certain the web service
+                  can handle it.
+                * **verbose** (:class:`bool`, *optional*) -- If True, prints information about the requests and responses,
+                  defaults to False.
+                * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
+                  is done and object IDs of the failed requests is saved to a text file
+                  which its path can be accessed via ``self.failed_path``.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
-   .. py:method:: get_features(self, return_m = False)
+   .. py:method:: esri_query(self, geom, geo_crs = DEF_CRS)
+
+      Generate geometry queries based on ESRI template.
+
+
+   .. py:method:: get_features(self, featureids, return_m = False, return_geom = True)
 
       Get features based on the feature IDs.
 
-      :Parameters: **return_m** (:class:`bool`) -- Whether to activate the Return M (measure) in the request, defaults to False.
+      :Parameters: * **featureids** (:class:`list`) -- List of feature IDs.
+                   * **return_m** (:class:`bool`, *optional*) -- Whether to activate the Return M (measure) in the request,
+                     defaults to ``False``.
+                   * **return_geom** (:class:`bool`, *optional*) -- Whether to return the geometry of the feature, defaults to ``True``.
 
       :returns: :class:`dict` -- (Geo)json response from the web service.
+
+
+   .. py:method:: get_response(self, url, payloads, method = 'GET')
+
+      Send payload and get the response.
 
 
    .. py:method:: initialize_service(self)
@@ -47,7 +69,12 @@ Module Contents
 
    .. py:method:: partition_oids(self, oids)
 
-      Partition feature IDs based on service's max record number.
+      Partition feature IDs based on ``self.max_nrecords``.
+
+
+   .. py:method:: retry_failed_requests(self)
+
+      Retry failed requests.
 
 
 
@@ -63,17 +90,26 @@ Module Contents
                   the last ``/`` in ``base_url``.
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``geojson``.
-                  It defaults to ``esriSpatialRelIntersects``.
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
-                  all the available fields which is the default behaviour.
+                  all the available fields which is the default setting.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
                 * **max_workers** (:class:`int`, *optional*) -- Max number of simultaneous requests, default to 2. Note
                   that some services might face issues when several requests are sent
                   simultaneously and will return the requests partially. It's recommended
-                  to avoid using too many workers unless you are certain the web service can handle it.
+                  to avoid using too many workers unless you are certain the web service
+                  can handle it.
+                * **verbose** (:class:`bool`, *optional*) -- If True, prints information about the requests and responses,
+                  defaults to False.
+                * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
+                  is done and object IDs of the failed requests is saved to a text file
+                  which its path can be accessed via ``self.failed_path``.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
 
-.. py:class:: WFSBase
+.. py:class:: WFSBase(__pydantic_self__, **data)
+
+
 
    Base class for WFS service.
 
@@ -94,6 +130,8 @@ Module Contents
                 * **max_nrecords** (:class:`int`, *optional*) -- The maximum number of records in a single request to be retrieved from the service,
                   defaults to 1000. If the number of records requested is greater than this value,
                   it will be split into multiple requests.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: get_validnames(self)
 
@@ -106,7 +144,9 @@ Module Contents
 
 
 
-.. py:class:: WMSBase
+.. py:class:: WMSBase(__pydantic_self__, **data)
+
+
 
    Base class for accessing a WMS service.
 
@@ -118,6 +158,8 @@ Module Contents
                 * **version** (:class:`str`, *optional*) -- The WMS service version which should be either 1.1.1 or 1.3.0, defaults to 1.3.0.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: get_validlayers(self)
 

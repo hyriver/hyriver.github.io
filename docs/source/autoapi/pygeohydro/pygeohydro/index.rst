@@ -12,169 +12,107 @@
 Module Contents
 ---------------
 
-.. py:class:: NID(version = 2)
-
-
+.. py:class:: NID(expire_after = EXPIRE, disable_caching = False)
 
    Retrieve data from the National Inventory of Dams web service.
 
-   :Parameters: **version** (:class:`str`, *optional*) -- The database version. Version 2 and 3 are available. Version 2 has
-                NID 2019 data and version 3 includes more recent data as well. At the
-                moment both services are experimental and might not always work. The
-                default version is 2. More information can be found at https://damsdev.net.
+   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
+   .. py:method:: get_byfilter(self, query_list)
 
-.. py:class:: NWIS
+      Query dams by filters from the National Inventory of Dams web service.
 
-   Access NWIS web service.
+      :Parameters: **query_list** (:class:`list` of :class:`dict`) -- List of dictionary of query parameters. For an exhaustive list of the parameters,
+                   use the advanced fields dataframe that can be accessed via ``NID().fields_meta``.
+                   Some filter require min/max values such as ``damHeight`` and ``drainageArea``.
+                   For such filters, the min/max values should be passed like so:
+                   ``{filter_key: ["[min1 max1]", "[min2 max2]"]}``.
 
-   .. py:method:: get_info(self, queries, expanded = False)
-
-      Send multiple queries to USGS Site Web Service.
-
-      :Parameters: * **queries** (:class:`dict` or :class:`list` of :class:`dict`) -- A single or a list of valid queries.
-                   * **expanded** (:class:`bool`, *optional*) -- Whether to get expanded sit information for example drainage area, default to False.
-
-      :returns: :class:`pandas.DataFrame` -- A typed dataframe containing the site information.
-
-
-   .. py:method:: get_parameter_codes(self, keyword)
-
-      Search for parameter codes by name or number.
-
-      .. rubric:: Notes
-
-      NWIS guideline for keywords is as follows:
-
-          By default an exact search is made. To make a partial search the term
-          should be prefixed and suffixed with a % sign. The % sign matches zero
-          or more characters at the location. For example, to find all with "discharge"
-          enter %discharge% in the field. % will match any number of characters
-          (including zero characters) at the location.
-
-      :Parameters: **keyword** (:class:`str`) -- Keyword to search for parameters by name of number.
-
-      :returns: :class:`pandas.DataFrame` -- Matched parameter codes as a dataframe with their description.
+      :returns: :class:`geopandas.GeoDataFrame` -- Query results.
 
       .. rubric:: Examples
 
-      >>> from pygeohydro import NWIS
-      >>> nwis = NWIS()
-      >>> codes = nwis.get_parameter_codes("%discharge%")
-      >>> codes.loc[codes.parameter_cd == "00060", "parm_nm"][0]
-      'Discharge, cubic feet per second'
+      >>> from pygeohydro import NID
+      >>> nid = NID()
+      >>> query_list = [
+      ...    {"huc6": ["160502", "100500"], "drainageArea": ["[200 500]"]},
+      ...    {"nidId": ["CA01222"]},
+      ... ]
+      >>> dam_dfs = nid.get_byfilter(query_list)
+      >>> print(dam_dfs[0].name[0])
+      Stillwater Point Dam
 
 
-   .. py:method:: get_streamflow(self, station_ids, dates, freq = 'dv', mmd = False, to_xarray = False)
+   .. py:method:: get_bygeom(self, geometry, geo_crs)
 
-      Get mean daily streamflow observations from USGS.
+      Retrieve NID data within a geometry.
 
-      :Parameters: * **station_ids** (:class:`str`, :class:`list`) -- The gage ID(s)  of the USGS station.
-                   * **dates** (:class:`tuple`) -- Start and end dates as a tuple (start, end).
-                   * **freq** (:class:`str`, *optional*) -- The frequency of the streamflow data, defaults to ``dv`` (daily values).
-                     Valid frequencies are ``dv`` (daily values), ``iv`` (instantaneous values).
-                     Note that for ``iv`` the time zone for the input dates is assumed to be UTC.
-                   * **mmd** (:class:`bool`, *optional*) -- Convert cms to mm/day based on the contributing drainage area of the stations.
-                     Defaults to False.
-                   * **to_xarray** (:class:`bool`, *optional*) -- Whether to return a xarray.Dataset. Defaults to False.
+      :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Geometry or bounding box (west, south, east, north) for extracting the data.
+                   * **geo_crs** (:class:`list` of :class:`str`) -- The CRS of the input geometry, defaults to epsg:4326.
 
-      :returns: :class:`pandas.DataFrame` or :class:`xarray.Dataset` -- Streamflow data observations in cubic meter per second (cms). The stations that
-                don't provide the requested discharge data in the target period will be dropped.
-                Note that when frequency is set to ``iv`` the time zone is converted to UTC.
+      :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of NID data
 
+      .. rubric:: Examples
 
-   .. py:method:: retrieve_rdb(url, payloads)
-      :staticmethod:
-
-      Retrieve and process requests with RDB format.
-
-      :Parameters: * **service** (:class:`str`) -- Name of USGS REST service, valid values are ``site``, ``dv``, ``iv``,
-                     ``gwlevels``, and ``stat``. Please consult USGS documentation
-                     `here <https://waterservices.usgs.gov/rest>`__ for more information.
-                   * **payloads** (:class:`list` of :class:`dict`) -- List of target payloads.
-
-      :returns: :class:`pandas.DataFrame` -- Requested features as a pandas's DataFrame.
+      >>> from pygeohydro import NID
+      >>> nid = NID()
+      >>> dams = nid.get_bygeom((-69.77, 45.07, -69.31, 45.45), "epsg:4326")
+      >>> print(dams.name.iloc[0])
+      Little Moose
 
 
+   .. py:method:: get_suggestions(self, text, context_key = '')
 
-.. py:class:: WaterQuality
+      Get suggestions from the National Inventory of Dams web service.
 
-   Water Quality Web Service https://www.waterqualitydata.us.
+      .. rubric:: Notes
 
-   .. rubric:: Notes
+      This function is useful for exploring and/or narrowing down the filter fields
+      that are needed to query the dams using ``get_byfilter``.
 
-   This class has a number of convenience methods to retrieve data from the
-   Water Quality Data. Since there are many parameter combinations that can be
-   used to retrieve data, a general method is also provided to retrieve data from
-   any of the valid endpoints. You can use ``get_json`` to retrieve stations info
-   as a ``geopandas.GeoDataFrame`` or ``get_csv`` to retrieve stations data as a
-   ``pandas.DataFrame``. You can construct a dictionary of the parameters and pass
-   it to one of these functions. For more information on the parameters, please
-   consult the
-   `Water Quality Data documentation <https://www.waterqualitydata.us/webservices_documentation>`__.
+      :Parameters: * **text** (:class:`str`) -- Text to query for suggestions.
+                   * **context_key** (:class:`str`, *optional*) -- Suggestion context, defaults to empty string, i.e., all context keys.
+                     For a list of valid context keys, see ``NID().fields_meta``.
 
-   .. py:method:: data_bystation(self, station_ids, wq_kwds)
+      :returns: :class:`tuple` of :class:`pandas.DataFrame` -- The suggestions for the requested text as two DataFrames:
+                First, is suggestions found in the dams properties and
+                second, those found in the query fields such as states, huc6, etc.
 
-      Retrieve data for a single station.
+      .. rubric:: Examples
 
-      :Parameters: * **station_ids** (:class:`str` or :class:`list` of :class:`str`) -- Station ID(s). The IDs should have the format "Agency code-Station ID".
-                   * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
-
-      :returns: :class:`pandas.DataFrame` -- DataFrame of data for the stations.
-
-
-   .. py:method:: get_csv(self, endpoint, kwds, request_method = 'GET')
-
-      Get the CSV response from the Water Quality Web Service.
-
-      :Parameters: * **endpoint** (:class:`str`) -- Endpoint of the Water Quality Web Service.
-                   * **kwds** (:class:`dict`) -- Water Quality Web Service keyword arguments.
-                   * **request_method** (:class:`str`, *optional*) -- HTTP request method. Default to GET.
-
-      :returns: :class:`pandas.DataFrame` -- The web service response as a DataFrame.
+      >>> from pygeohydro import NID
+      >>> nid = NID()
+      >>> dams, contexts = nid.get_suggestions("texas", "huc2")
+      >>> print(contexts.loc["HUC2", "value"])
+      12
 
 
-   .. py:method:: get_json(self, endpoint, kwds, request_method = 'GET')
+   .. py:method:: inventory_byid(self, dam_ids)
 
-      Get the JSON response from the Water Quality Web Service.
+      Get extra attributes for dams based on their dam ID.
 
-      :Parameters: * **endpoint** (:class:`str`) -- Endpoint of the Water Quality Web Service.
-                   * **kwds** (:class:`dict`) -- Water Quality Web Service keyword arguments.
-                   * **request_method** (:class:`str`, *optional*) -- HTTP request method. Default to GET.
+      .. rubric:: Notes
 
-      :returns: :class:`geopandas.GeoDataFrame` -- The web service response as a GeoDataFrame.
+      This function is meant to be used for getting extra attributes for dams.
+      For example, first you need to use either ``get_bygeom`` or ``get_byfilter``
+      to get basic attributes of the target dams. Then you can use this function
+      to get extra attributes using the ``id`` column of the ``GeoDataFrame``
+      that ``get_bygeom`` or ``get_byfilter`` returns.
 
+      :Parameters: **dam_ids** (:class:`list` of :class:`int` or :class:`str`) -- List of the target dam IDs (digists only). Note that the dam IDs are not the
+                   same as the NID IDs.
 
-   .. py:method:: get_param_table(self)
+      :returns: :class:`pandas.DataFrame` -- Dams with extra attributes in addition to the standard NID fields
+                that other ``NID`` methods return.
 
-      Get the parameter table from the USGS Water Quality Web Service.
+      .. rubric:: Examples
 
-
-   .. py:method:: lookup_domain_values(self, endpoint)
-
-      Get the domain values for the target endpoint.
-
-
-   .. py:method:: station_bybbox(self, bbox, wq_kwds)
-
-      Retrieve station info within bounding box.
-
-      :Parameters: * **bbox** (:class:`tuple` of :class:`float`) -- Bounding box coordinates (west, south, east, north) in epsg:4326.
-                   * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
-
-      :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of station info within the bounding box.
-
-
-   .. py:method:: station_bydistance(self, lon, lat, radius, wq_kwds)
-
-      Retrieve station within a radius (decimal miles) of a point.
-
-      :Parameters: * **lon** (:class:`float`) -- Longitude of point.
-                   * **lat** (:class:`float`) -- Latitude of point.
-                   * **radius** (:class:`float`) -- Radius (decimal miles) of search.
-                   * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
-
-      :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of station info within the radius of the point.
+      >>> from pygeohydro import NID
+      >>> nid = NID()
+      >>> dams = nid.inventory_byid([514871, 459170, 514868, 463501, 463498])
+      >>> print(dams.damHeight.max())
+      120.0
 
 
 
@@ -187,34 +125,12 @@ Module Contents
    :returns: :class:`dict` -- Statistics of NLCD cover data
 
 
-.. py:function:: interactive_map(bbox, crs = DEF_CRS, nwis_kwds = None)
-
-   Generate an interactive map including all USGS stations within a bounding box.
-
-   :Parameters: * **bbox** (:class:`tuple`) -- List of corners in this order (west, south, east, north)
-                * **crs** (:class:`str`, *optional*) -- CRS of the input bounding box, defaults to EPSG:4326.
-                * **nwis_kwds** (:class:`dict`, *optional*) -- Optional keywords to include in the NWIS request as a dictionary like so:
-                  ``{"hasDataTypeCd": "dv,iv", "outputDataTypeCd": "dv,iv", "parameterCd": "06000"}``.
-                  Default to None.
-
-   :returns: :class:`folium.Map` -- Interactive map within a bounding box.
-
-   .. rubric:: Examples
-
-   >>> import pygeohydro as gh
-   >>> nwis_kwds = {"hasDataTypeCd": "dv,iv", "outputDataTypeCd": "dv,iv"}
-   >>> m = gh.interactive_map((-69.77, 45.07, -69.31, 45.45), nwis_kwds=nwis_kwds)
-   >>> n_stations = len(m.to_dict()["children"]) - 1
-   >>> n_stations
-   10
-
-
 .. py:function:: nlcd(geometry, resolution, years = None, region = 'L48', geo_crs = DEF_CRS, crs = DEF_CRS)
 
-   Get data from NLCD database (2016).
+   Get data from NLCD database (2019).
 
-   Download land use/land cover data from NLCD (2016) database within
-   a given geometry in epsg:4326.
+   .. deprecated:: 0.11.5
+       Use :func:`nlcd_bygeom` or :func:`nlcd_bycoords`  instead.
 
    :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- The geometry or bounding box (west, south, east, north) for extracting the data.
                 * **resolution** (:class:`float`) -- The data resolution in meters. The width and height of the output are computed in pixel
@@ -223,13 +139,71 @@ Module Contents
                   ``{'impervious': [2019], 'cover': [2019], 'canopy': [2019], "descriptor": [2019]}``.
                   Layers that are not in years are ignored, e.g., ``{'cover': [2016, 2019]}`` returns
                   land cover data for 2016 and 2019.
-                * **region** (:class:`str`, *optional*) -- Region in the US, defaults to ``L48``. Valid values are L48 (for CONUS), HI (for Hawaii),
-                  AK (for Alaska), and PR (for Puerto Rico). Both lower and upper cases are acceptable.
+                * **region** (:class:`str`, *optional*) -- Region in the US, defaults to ``L48``. Valid values are ``L48`` (for CONUS),
+                  ``HI`` (for Hawaii), ``AK`` (for Alaska), and ``PR`` (for Puerto Rico).
+                  Both lower and upper cases are acceptable.
                 * **geo_crs** (:class:`str`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
 
-   :returns: :class:`xarray.DataArray` -- NLCD within a geometry
+   :returns: :class:`xarray.Dataset` -- NLCD within a geometry
+
+
+.. py:function:: nlcd_bycoords(coords, years = None, region = 'L48', expire_after = EXPIRE, disable_caching = False)
+
+   Get data from NLCD database (2019).
+
+   :Parameters: * **coords** (:class:`list` of :class:`tuple`) -- List of coordinates in the form of (longitude, latitude).
+                * **years** (:class:`dict`, *optional*) -- The years for NLCD layers as a dictionary, defaults to
+                  ``{'impervious': [2019], 'cover': [2019], 'canopy': [2019], "descriptor": [2019]}``.
+                  Layers that are not in years are ignored, e.g., ``{'cover': [2016, 2019]}`` returns
+                  land cover data for 2016 and 2019.
+                * **region** (:class:`str`, *optional*) -- Region in the US, defaults to ``L48``. Valid values are ``L48`` (for CONUS),
+                  ``HI`` (for Hawaii), ``AK`` (for Alaska), and ``PR`` (for Puerto Rico).
+                  Both lower and upper cases are acceptable.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame with the NLCD data and the coordinates.
+
+
+.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = DEF_CRS, validation = True, expire_after = EXPIRE, disable_caching = False)
+
+   Get data from NLCD database (2019).
+
+   :Parameters: * **geometry** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with the geometry to query. The indices are used
+                  as keys in the output dictionary.
+                * **resolution** (:class:`float`) -- The data resolution in meters. The width and height of the output are computed in pixel
+                  based on the geometry bounds and the given resolution.
+                * **years** (:class:`dict`, *optional*) -- The years for NLCD layers as a dictionary, defaults to
+                  ``{'impervious': [2019], 'cover': [2019], 'canopy': [2019], "descriptor": [2019]}``.
+                  Layers that are not in years are ignored, e.g., ``{'cover': [2016, 2019]}`` returns
+                  land cover data for 2016 and 2019.
+                * **region** (:class:`str`, *optional*) -- Region in the US, defaults to ``L48``. Valid values are ``L48`` (for CONUS),
+                  ``HI`` (for Hawaii), ``AK`` (for Alaska), and ``PR`` (for Puerto Rico).
+                  Both lower and upper cases are acceptable.
+                * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
+                  epsg:4326.
+                * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WMS service, defaults to True. Set this
+                  to False if you are sure all the WMS settings such as layer and crs are correct
+                  to avoid sending extra requests.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+
+   :returns: :class:`dict` of :class:`xarray.Dataset` or :class:`xarray.Dataset` -- A single or a ``dict`` of NLCD datasets. If dict, the keys are indices
+             of the input ``GeoDataFrame``.
+
+
+.. py:function:: ssebopeta_bycoords(coords, dates, crs = DEF_CRS)
+
+   Daily actual ET for a dataframe of coords from SSEBop database in mm/day.
+
+   :Parameters: * **coords** (:class:`pandas.DataFrame`) -- A dataframe with ``id``, ``x``, ``y`` columns.
+                * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
+                * **crs** (:class:`str`, *optional*) -- The CRS of the input coordinates, defaults to epsg:4326.
+
+   :returns: :class:`xarray.Dataset` -- Daily actual ET in mm/day as a dataset with ``time`` and ``location_id`` dimensions.
+             The ``location_id`` dimension is the same as the ``id`` column in the input dataframe.
 
 
 .. py:function:: ssebopeta_bygeom(geometry, dates, geo_crs = DEF_CRS)
@@ -255,9 +229,16 @@ Module Contents
 
    Daily actual ET for a location from SSEBop database in mm/day.
 
-   :Parameters: * **coords** (:class:`tuple`) -- Longitude and latitude of the location of interest as a tuple (lon, lat)
+   .. deprecated:: 0.11.5
+       Use :func:`ssebopeta_bycoords` instead. For now, this function calls
+       :func:`ssebopeta_bycoords` but retains the same functionality, i.e.,
+       returns a dataframe and accepts only a single coordinate. Whereas the
+       new function returns a ``xarray.Dataset`` and accepts a dataframe
+       containing coordinates.
+
+   :Parameters: * **coords** (:class:`tuple`) -- Longitude and latitude of a single location as a tuple (lon, lat)
                 * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
 
-   :returns: :class:`pandas.DataFrame` -- Daily actual ET for a location
+   :returns: :class:`pandas.Series` -- Daily actual ET for a location
 
 

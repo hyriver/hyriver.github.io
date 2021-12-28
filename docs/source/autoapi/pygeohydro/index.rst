@@ -15,10 +15,14 @@ Submodules
    helpers/index.rst
    plot/index.rst
    pygeohydro/index.rst
+   waterdata/index.rst
 
 
 Package Contents
 ----------------
+
+
+
 
 
 

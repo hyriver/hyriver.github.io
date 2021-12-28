@@ -48,7 +48,7 @@ Module Contents
    :returns: :class:`rasterio.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
 
 
-.. py:function:: gtiff2xarray(r_dict, geometry, geo_crs, ds_dims = None, driver = None, all_touched = False)
+.. py:function:: gtiff2xarray(r_dict, geometry, geo_crs, ds_dims = None, driver = None, all_touched = False, nodata = None)
 
    Convert (Geo)Tiff byte responses to ``xarray.Dataset``.
 
@@ -63,7 +63,8 @@ Module Contents
                   the drivers can be found here: https://gdal.org/drivers/raster/index.html
                 * **all_touched** (:class:`bool`, *optional*) -- Include a pixel in the mask if it touches any of the shapes.
                   If False (default), include a pixel only if its center is within one
-                  of the shapes, or if it is selected by Bresenham’s line algorithm.
+                  of the shapes, or if it is selected by Bresenham's line algorithm.
+                * **nodata** (:class:`float` or :class:`int`, *optional*) -- The nodata value of the raster, defaults to None, i.e., is determined from the raster.
 
    :returns: :class:`xarray.Dataset` or :class:`xarray.DataAraay` -- Parallel (with dask) dataset or dataarray.
 

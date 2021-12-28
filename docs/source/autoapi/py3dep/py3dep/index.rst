@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: elevation_bycoords(coords, crs = DEF_CRS, source = 'airmap')
+.. py:function:: elevation_bycoords(coords, crs = DEF_CRS, source = 'airmap', expire_after = EXPIRE, disable_caching = False)
 
    Get elevation for a list of coordinates.
 
@@ -24,11 +24,13 @@ Module Contents
                   uses the 1/3 arc-second DEM layer from 3DEP service but it is limited to the US.
                   It also tends to be slower than the Airmap service and more unstable.
                   It's recommended to use ``airmap`` unless you need 10-m resolution accuracy.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`list` of :class:`float` -- Elevation in meter.
 
 
-.. py:function:: elevation_bygrid(xcoords, ycoords, crs, resolution, depression_filling = False)
+.. py:function:: elevation_bygrid(xcoords, ycoords, crs, resolution, depression_filling = False, expire_after = EXPIRE, disable_caching = False)
 
    Get elevation from DEM data for a grid.
 
@@ -42,11 +44,13 @@ Module Contents
                   increases computation time so chose this value with caution.
                 * **depression_filling** (:class:`bool`, *optional*) -- Fill depressions before sampling using
                   `RichDEM <https://richdem.readthedocs.io/en/latest/>`__ package, defaults to False.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`xarray.DataArray` -- Elevations of the input coordinates as a ``xarray.DataArray``.
 
 
-.. py:function:: get_map(layers, geometry, resolution, geo_crs = DEF_CRS, crs = DEF_CRS)
+.. py:function:: get_map(layers, geometry, resolution, geo_crs = DEF_CRS, crs = DEF_CRS, expire_after = EXPIRE, disable_caching = False)
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
 
@@ -76,6 +80,8 @@ Module Contents
                   ``EPSG:4326``. Valid values are ``EPSG:4326``, ``EPSG:3576``, ``EPSG:3571``,
                   ``EPSG:3575``, ``EPSG:3857``, ``EPSG:3572``, ``CRS:84``, ``EPSG:3573``,
                   and ``EPSG:3574``.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`xarray.DataArray` or :class:`xarray.Dataset` -- The requested topographic data as an ``xarray.DataArray`` or ``xarray.Dataset``.
 

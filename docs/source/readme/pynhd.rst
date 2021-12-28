@@ -53,7 +53,7 @@ the National Map's `NHDPlus HR <https://hydro.nationalmap.gov/arcgis/rest/servic
 `NLDI <https://labs.waterdata.usgs.gov/about-nldi/>`__,
 and `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ web services. These web services
 can be used to navigate and extract vector data from NHDPlus V2 (both medium- and
-hight-resolution) database such as catchments, HUC8, HUC12, GagesII, flowlines, and water bodies.
+high-resolution) database such as catchments, HUC8, HUC12, GagesII, flowlines, and water bodies.
 Moreover, PyNHD gives access to an item on `ScienceBase <https://sciencebase.usgs.gov>`_ called
 `Select Attributes for NHDPlus Version 2.1 Reach Catchments and Modified Network Routed Upstream Watersheds for the Conterminous United States <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
 This item provides over 30 attributes at catchment-scale based on NHDPlus ComIDs.
@@ -85,12 +85,25 @@ Additionally, PyNHD offers some extra utilities for processing the flowlines:
 - ``topoogical_sort``: For sorting the river network topologically which is useful for routing
   and flow accumulation.
 - ``vector_accumulation``: For computing flow accumulation in a river network. This function
-  is generic and any routing method can be plugged in.
+  is generic, and any routing method can be plugged in.
 
 These utilities are developed based on an ``R`` package called
 `nhdplusTools <https://github.com/USGS-R/nhdplusTools>`__.
 
+All functions and classes that request data from web services use ``async_retriever``
+that offers response caching. By default, the expiration time is set to never expire.
+All these functions and classes have two optional parameters for controlling the cache:
+``expire_after`` and ``disable_caching``. You can use ``expire_after`` to set the expiration
+time in seconds. If ``expire_after`` is set to ``-1``, the cache will never expire (default).
+You can use ``disable_caching`` if you don't want to use the cached responses. The cached
+responses are stored in the ``./cache/aiohttp_cache.sqlite`` file.
+
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+
+Furthermore, you can try using PyNHD without even installing it on your system by
+clicking on the binder badge below the PyNHD banner. A JupyterLab instance
+with the software stack pre-installed and all example notebooks will be launched
+in your web browser, and you can start coding!
 
 Please note that since this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
@@ -103,18 +116,15 @@ Installation
 ------------
 
 You can install PyNHD using ``pip`` after installing ``libgdal`` on your system
-(for example, in Ubuntu run ``sudo apt install libgdal-dev``). Moreover, PyNHD has an optional
-dependency for using persistent caching, ``requests-cache``. We highly recommend to install
-this package as it can significantly speedup send/receive queries. You don't have to change
-anything in your code, since PyNHD under-the-hood looks for ``requests-cache`` and if available,
-it will automatically use persistent caching:
+(for example, in Ubuntu run ``sudo apt install libgdal-dev``):
 
 .. code-block:: console
 
     $ pip install pynhd
 
 Alternatively, PyNHD can be installed from the ``conda-forge`` repository
-using `Conda <https://docs.conda.io/en/latest/>`__:
+using `Conda <https://docs.conda.io/en/latest/>`__
+or `Mamba <https://github.com/conda-forge/miniforge>`__:
 
 .. code-block:: console
 

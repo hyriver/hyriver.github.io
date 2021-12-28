@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None)
+.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, ssl = None, expire_after = EXPIRE, disable_caching = False)
 
    Get point-data from the Daymet database at 1-km resolution.
 
@@ -43,6 +43,10 @@ Module Contents
                   Defaults to ``None``.
                 * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
                   Defaults to ``None``.
+                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
+                  SSL cetification verification.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`pandas.DataFrame` -- Daily climate data for a location.
 
@@ -51,7 +55,13 @@ Module Contents
    >>> import pydaymet as daymet
    >>> coords = (-1431147.7928, 318483.4618)
    >>> dates = ("2000-01-01", "2000-12-31")
-   >>> clm = daymet.get_bycoords(coords, dates, crs="epsg:3542", pet="hargreaves_samani")
+   >>> clm = daymet.get_bycoords(
+   ...     coords,
+   ...     dates,
+   ...     crs="epsg:3542",
+   ...     pet="hargreaves_samani",
+   ...     ssl=False
+   ... )
    >>> clm["pet (mm/day)"].mean()
    3.713
 
@@ -60,7 +70,7 @@ Module Contents
    .. footbibliography::
 
 
-.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None)
+.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, ssl = None, expire_after = EXPIRE, disable_caching = False)
 
    Get gridded data from the Daymet database at 1-km resolution.
 
@@ -87,6 +97,10 @@ Module Contents
                   Defaults to ``None``.
                 * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
                   Defaults to ``None``.
+                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
+                  SSL cetification verification.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`xarray.Dataset` -- Daily climate data within the target geometry.
 

@@ -27,7 +27,7 @@ Module Contents
    Colormap (cmap) and their respective values (norm) for land cover data legends.
 
 
-.. py:function:: descriptor_legends(cmap_name = 'tab20')
+.. py:function:: descriptor_legends()
 
    Colormap (cmap) and their respective values (norm) for land cover data legends.
 

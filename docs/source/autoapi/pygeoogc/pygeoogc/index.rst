@@ -12,11 +12,17 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTful
-
-
+.. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1, verbose = False, disable_retry = False, expire_after = EXPIRE, disable_caching = False)
 
    Access to an ArcGIS REST service.
+
+   .. rubric:: Notes
+
+   By default, all retrieval methods retry to get the missing feature IDs,
+   if there are any. You can disable this behavior by setting ``disable_retry``
+   to ``True``. If there are any missing feature IDs after the retry,
+   they are saved to a text file, path of which can be accessed by
+   ``self.client.failed_path``.
 
    :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
                   after the last ``/`` in the url or the target layer must be passed as an argument.
@@ -30,7 +36,27 @@ Module Contents
                 * **max_workers** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1, i.e., no threading. Note
                   that some services might face issues when several requests are sent
                   simultaneously and will return the requests partially. It's recommended
-                  to avoid performing threading unless you are certain the web service can handle it.
+                  to avoid using too many workers unless you are certain the web service
+                  can handle it.
+                * **verbose** (:class:`bool`, *optional*) -- If True, prints information about the requests and responses,
+                  defaults to False.
+                * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
+                  is done and object IDs of the failed requests is saved to a text file
+                  which its path can be accessed via ``self.client.failed_path``.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+
+   .. py:method:: get_features(self, featureids, return_m = False, return_geom = True)
+
+      Get features based on the feature IDs.
+
+      :Parameters: * **featureids** (:class:`list`) -- List of feature IDs.
+                   * **return_m** (:class:`bool`, *optional*) -- Whether to activate the Return M (measure) in the request,
+                     defaults to ``False``.
+                   * **return_geom** (:class:`bool`, *optional*) -- Whether to return the geometry of the feature, defaults to ``True``.
+
+      :returns: :class:`dict` -- (Geo)json response from the web service.
+
 
    .. py:method:: oids_byfield(self, field, ids)
 
@@ -38,6 +64,8 @@ Module Contents
 
       :Parameters: * **field** (:class:`str`) -- Name of the target field that IDs belong to.
                    * **ids** (:class:`str` or :class:`list`) -- A list of target ID(s).
+
+      :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
    .. py:method:: oids_bygeom(self, geom, geo_crs = DEF_CRS, spatial_relation = 'esriSpatialRelIntersects', sql_clause = None, distance = None)
@@ -64,6 +92,8 @@ Module Contents
                    * **sql_clause** (:class:`str`, *optional*) -- Valid SQL 92 WHERE clause, default to None.
                    * **distance** (:class:`int`, *optional*) -- Buffer distance in meters for the input geometries, default to None.
 
+      :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
+
 
    .. py:method:: oids_bysql(self, sql_clause)
 
@@ -75,6 +105,17 @@ Module Contents
       `here <https://developers.arcgis.com/rest/services-reference/query-feature-service-.htm#ESRI_SECTION2_07DD2C5127674F6A814CE6C07D39AD46>`__.
 
       :Parameters: **sql_clause** (:class:`str`) -- A valid SQL 92 WHERE clause.
+
+      :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
+
+
+   .. py:method:: partition_oids(self, oids)
+
+      Partition feature IDs based on ``self.max_nrecords``.
+
+      :Parameters: **oids** (:class:`list` of :class:`int` or :class:`int`) -- A list of feature ID(s).
+
+      :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
 
@@ -107,7 +148,7 @@ Module Contents
 
 
 
-.. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = DEF_CRS, read_method = 'json', max_nrecords = 1000, validation = True)
+.. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = DEF_CRS, read_method = 'json', max_nrecords = 1000, validation = True, expire_after = EXPIRE, disable_caching = False)
 
 
 
@@ -133,6 +174,8 @@ Module Contents
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WFS service, defaults to True. Set this
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: getfeature_bybox(self, bbox, box_crs = DEF_CRS, always_xy = False)
 
@@ -203,7 +246,7 @@ Module Contents
 
 
 
-.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = DEF_CRS, validation = True)
+.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = DEF_CRS, validation = True, expire_after = EXPIRE, disable_caching = False)
 
 
 
@@ -220,6 +263,8 @@ Module Contents
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WMS service, defaults to True. Set this
                   to False if you are sure all the WMS settings such as layer and crs are correct
                   to avoid sending extra requests.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: getmap_bybox(self, bbox, resolution, box_crs = DEF_CRS, always_xy = False, max_px = 8000000, kwargs = None)
 

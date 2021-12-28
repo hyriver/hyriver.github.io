@@ -12,26 +12,28 @@
 Module Contents
 ---------------
 
-.. py:class:: NHDPlusHR(layer = None, outfields = '*', crs = DEF_CRS, service = 'hydro', auto_switch = False)
+.. py:class:: NHDPlusHR(layer, outfields = '*', crs = DEF_CRS, service = 'hydro')
 
 
 
    Access NHDPlus HR database through the National Map ArcGISRESTful.
 
-   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. To see a list of available layers instantiate the class
-                  without passing any argument like so ``NHDPlusHR()``.
+   :Parameters: * **layer** (:class:`str`) -- A valid service layer. To see a list of available layers instantiate the class
+                  with passing an empty string like so ``NHDPlusHR("")``.
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
                 * **service** (:class:`str`, *optional*) -- Name of the web service to use, defaults to hydro. Supported web services are:
 
                   * hydro: https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer
                   * edits: https://edits.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/NHDPlus_HR/MapServer
-                * **auto_switch** (:class:`bool`, *optional*) -- Automatically switch to other services' URL if the first one doesn't work, default to False.
 
 
-.. py:class:: NLDI
+.. py:class:: NLDI(expire_after = EXPIRE, disable_caching = False)
 
    Access the Hydro Network-Linked Data Index (NLDI) service.
+
+   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: comid_byloc(self, coords, loc_crs = DEF_CRS)
 
@@ -83,7 +85,7 @@ Module Contents
 
       :Parameters: * **fsource** (:class:`str`) -- The name of feature(s) source. The valid sources are:
                      comid, huc12pp, nwissite, wade, wqp
-                   * **fid** (:class:`str` or :class:`list`) -- Feature ID(s).
+                   * **fid** (:class:`str` or :class:`list` of :class:`str`) -- Feature ID(s).
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed features in EPSG:4326. If some IDs don't return any features
                 a list of missing ID(s) are returned as well.
@@ -131,6 +133,9 @@ Module Contents
 
    Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
 
+   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+
    .. py:method:: cross_section(self, coord, width, numpts, crs = DEF_CRS)
 
       Return a GeoDataFrame from the xsatpoint service.
@@ -146,8 +151,8 @@ Module Contents
 
       >>> from pynhd import PyGeoAPI
       >>> pygeoapi = PyGeoAPI()
-      >>> gdf = pygeoapi.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs=DEF_CRS)
-      >>> print(gdf.iloc[-1, 1])
+      >>> gdf = pygeoapi.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs=DEF_CRS)  # doctest: +SKIP
+      >>> print(gdf.iloc[-1, 1])  # doctest: +SKIP
       1000.0
 
 
@@ -168,8 +173,8 @@ Module Contents
       >>> pygeoapi = PyGeoAPI()
       >>> gdf = pygeoapi.elevation_profile(
       ...     [(-103.801086, 40.26772), (-103.80097, 40.270568)], numpts=101, dem_res=1, crs=DEF_CRS
-      ... )
-      >>> print(gdf.iloc[-1, 1])
+      ... )  # doctest: +SKIP
+      >>> print(gdf.iloc[-1, 1])  # doctest: +SKIP
       411.5906
 
 
@@ -191,8 +196,8 @@ Module Contents
       >>> pygeoapi = PyGeoAPI()
       >>> gdf = pygeoapi.flow_trace(
       ...     (1774209.63, 856381.68), crs="ESRI:102003", raindrop=False, direction="none"
-      ... )
-      >>> print(gdf.comid.iloc[0])
+      ... )  # doctest: +SKIP
+      >>> print(gdf.comid.iloc[0])  # doctest: +SKIP
       22294818
 
 
@@ -211,8 +216,8 @@ Module Contents
 
       >>> from pynhd import PyGeoAPI
       >>> pygeoapi = PyGeoAPI()
-      >>> gdf = pygeoapi.split_catchment((-73.82705, 43.29139), crs=DEF_CRS, upstream=False)
-      >>> print(gdf.catchmentID.iloc[0])
+      >>> gdf = pygeoapi.split_catchment((-73.82705, 43.29139), crs=DEF_CRS, upstream=False)  # doctest: +SKIP
+      >>> print(gdf.catchmentID.iloc[0])  # doctest: +SKIP
       22294818
 
 

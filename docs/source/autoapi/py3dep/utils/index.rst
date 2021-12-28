@@ -16,7 +16,7 @@ Module Contents
 
    Convert slope from degrees to meter/meter.
 
-   :Parameters: **da** (:class:`xarray.DataArray`) -- Slope in degrees.
+   :Parameters: **slope** (:class:`xarray.DataArray`) -- Slope in degrees.
 
    :returns: :class:`xarray.DataArray` -- Slope in meter/meter. The name is set to ``slope`` and the ``units`` attribute
              is set to ``m/m``.

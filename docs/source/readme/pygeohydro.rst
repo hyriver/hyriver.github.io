@@ -47,20 +47,21 @@ Features
 PyGeoHydro (formerly named `hydrodata <https://pypi.org/project/hydrodata>`__) is a part of
 `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
 is designed to aid in watershed analysis through web services. This package provides
-access to some of the public web services that offer geospatial hydrology data. It has three
+access to some public web services that offer geospatial hydrology data. It has three
 main modules: ``pygeohydro``, ``plot``, and ``helpers``.
 
 The ``pygeohydro`` module can pull data from the following web services:
 
-* `NWIS <https://nwis.waterdata.usgs.gov/nwis>`__ for daily mean streamflow observations,
+* `NWIS <https://nwis.waterdata.usgs.gov/nwis>`__ for daily mean streamflow observations
+  (returned as a ``pandas.DataFrame`` or ``xarray.Dataset`` with station attributes),
 * `Water Quality Portal <https://www.waterqualitydata.us/>`__ for accessing current and
   historical water quality data from more than 1.5 million sites across the US,
-* `NID <https://damsdev.net/>`__ for accessing both versions of the National Inventory of Dams
-  web services,
+* `NID <https://nid.sec.usace.army.mil>`__ for accessing the National Inventory of Dams
+  web service,
 * `HCDN 2009 <https://www2.usgs.gov/science/cite-view.php?cite=2932>`__ for identifying sites
   where human activity affects the natural flow of the watercourse,
 * `NLCD 2019 <https://www.mrlc.gov/>`__ for land cover/land use, imperviousness, imperviousness
-  descriptor, and canopy data,
+  descriptor, and canopy data. You can get data using both geometries and coordinates.
 * `SSEBop <https://earlywarning.usgs.gov/ssebop/modis/daily>`__ for daily actual
   evapotranspiration, for both single pixel and gridded data.
 
@@ -73,12 +74,12 @@ The ``plot`` module includes two main functions:
 
 * ``signatures``: Hydrologic signature graphs.
 * ``cover_legends``: Official NLCD land cover legends for plotting a land cover dataset.
-* ``descriptor_legends``: Color map and legends for plotting a imperviousness descriptor dataset.
+* ``descriptor_legends``: Color map and legends for plotting an imperviousness descriptor dataset.
 
 The ``helpers`` module includes:
 
 * ``nlcd_helper``: A roughness coefficients lookup table for each land cover and imperviousness
-  descriptortype which is useful for overland flow routing among other applications.
+  descriptor type which is useful for overland flow routing among other applications.
 * ``nwis_error``: A dataframe for finding information about NWIS requests' errors.
 
 Moreover, requests for additional databases and functionalities can be submitted via
@@ -87,9 +88,9 @@ Moreover, requests for additional databases and functionalities can be submitted
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
 
 You can also try using PyGeoHydro without installing
-it on you system by clicking on the binder badge. A Jupyter Lab
-instance with the HyRiver stack pre-installed will be launched in your web browser
-and you can start coding!
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver stack pre-installed will be launched in your web browser, and you
+can start coding!
 
 Please note that since this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
@@ -103,8 +104,8 @@ Installation
 
 You can install PyGeoHydro using ``pip`` after installing ``libgdal`` on your system
 (for example, in Ubuntu run ``sudo apt install libgdal-dev``). Moreover, PyGeoHydro has an optional
-dependency for using persistent caching, ``requests-cache``. We highly recommend to install
-this package as it can significantly speedup send/receive queries. You don't have to change
+dependency for using persistent caching, ``requests-cache``. We highly recommend installing
+this package as it can significantly speed up send/receive queries. You don't have to change
 anything in your code, since PyGeoHydro under-the-hood looks for ``requests-cache`` and
 if available, it will automatically use persistent caching:
 
@@ -123,7 +124,7 @@ Quick start
 -----------
 
 We can explore the available NWIS stations within a bounding box using ``interactive_map``
-function. It returns an interactive map and by clicking on an station some of the most
+function. It returns an interactive map and by clicking on a station some of the most
 important properties of stations are shown.
 
 .. code-block:: python
@@ -138,7 +139,7 @@ important properties of stations are shown.
     :alt: Interactive Map
 
 We can select all the stations within this boundary box that have daily mean streamflow data from
-2000-01-01 to 2010-12-31:
+``2000-01-01`` to ``2010-12-31``:
 
 .. code-block:: python
 
@@ -166,7 +167,7 @@ and plot them:
     qobs = nwis.get_streamflow(stations, dates, mmd=True)
     plot.signatures(qobs)
 
-By default, ``get_streamflow`` returns a ``pandas.DataFrame`` that has an ``attrs`` method
+By default, ``get_streamflow`` returns a ``pandas.DataFrame`` that has a ``attrs`` method
 containing metadata for all the stations. You can access it like so ``qobs.attrs``.
 Moreover, we can get the same data as ``xarray.Dataset`` as follows:
 
@@ -174,14 +175,17 @@ Moreover, we can get the same data as ``xarray.Dataset`` as follows:
 
     qobs_ds = nwis.get_streamflow(stations, dates, to_xarray=True)
 
-In this case, metadata for each station can be accessed like so ``qobs_ds["USGS-01031450"]``.
+This ``xarray.Dataset`` has two dimensions: ``time`` and ``station_id``. It has
+10 variables including ``discharge`` with two dimensions while other variables
+that are station attitudes are one dimensional.
 
 We can also get instantaneous streamflow data using ``get_streamflow``. This method assumes
 that the input dates are in UTC time zone and returns the data in UTC time zone as well.
 
 .. code-block:: python
 
-    qobs = nwis.get_streamflow("01646500", ("2005-01-01 12:00", "2005-01-12 15:00"), freq="iv")
+    date = ("2005-01-01 12:00", "2005-01-12 15:00")
+    qobs = nwis.get_streamflow("01646500", date, freq="iv")
 
 The ``WaterQuality`` has a number of convenience methods to retrieve data from the
 web service. Since there are many parameter combinations that can be
@@ -197,41 +201,53 @@ For example, let's find all the stations within a bounding box that have Caffein
 
     from pynhd import WaterQuality
 
+    bbox = (-92.8, 44.2, -88.9, 46.0)
+    kwds = {"characteristicName": "Caffeine"}
     wq = WaterQuality()
-    stations = self.wq.station_bybbox((-92.8, 44.2, -88.9, 46.0), {"characteristicName": "Caffeine"})
+    stations = wq.station_bybbox(bbox, kwds)
 
-Or the same criterion but within a 30 mile radius of a point:
+Or the same criterion but within a 30-mile radius of a point:
 
 .. code-block:: python
 
-    stations = self.wq.station_bydistance(-92.8, 44.2, 30, {"characteristicName": "Caffeine"})
+    stations = wq.station_bydistance(-92.8, 44.2, 30, kwds)
 
 Then we can get the data for all these stations the data like this:
 
 .. code-block:: python
 
     sids = stations.MonitoringLocationIdentifier.tolist()
-    caff = self.wq.data_bystation(sids, {"characteristicName": "Caffeine"})
+    caff = wq.data_bystation(sids, kwds)
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/water_quality.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/water_quality.ipynb
     :alt: Water Quality
 
-Moreover, we can get land use/land cove data using ``nlcd`` function, percentages of
-land cover types using ``cover_statistics``, and actual ET with ``ssebopeta_bygeom``:
+Moreover, we can get land use/land cove data using ``nlcd_bygeom`` or ``nlcd_bycoods`` functions
+and percentages of land cover types using ``cover_statistics``.
+The ``nlcd_bycoords`` function returns a ``geopandas.GeoDataFrame`` with the NLCD
+layers as columns and input coordinates as the ``geometry`` column. Moreover, The ``nlcd_bygeom``
+function accepts both a single geometry or a ``geopandas.GeoDataFrame`` as the input.
 
 .. code-block:: python
 
     from pynhd import NLDI
 
-    geometry = NLDI().get_basins("01031500").geometry[0]
-    lulc = gh.nlcd(geometry, 100, years={"cover": [2016, 2019]})
+    basins = NLDI().get_basins(["01031450", "01031500", "01031510"])
+    lulc = gh.nlcd_bygeom(geometry, 100, years={"cover": [2016, 2019]})
     stats = gh.cover_statistics(lulc.cover_2016)
-    eta = gh.ssebopeta_bygeom(geometry, dates=("2005-10-01", "2005-10-05"))
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/lulc.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nlcd.ipynb
     :alt: Land Use/Land Cover
+
+Next, let's use ``ssebopeta_bygeom`` to get actual ET data for a basin. Note that there's a
+``ssebopeta_bycoords`` function that returns an ETA time series for a single coordinate.
+
+.. code-block:: python
+
+    geometry = NLDI().get_basins("01315500").geometry[0]
+    eta = gh.ssebopeta_bygeom(geometry, dates=("2005-10-01", "2005-10-05"))
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/eta.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/ssebop.ipynb
@@ -243,17 +259,22 @@ bounding box and have a maximum storage larger than 200 acre-feet.
 .. code-block:: python
 
     nid = NID()
-    dams = nid.bygeom(bbox, "epsg:4326", sql_clause="MAX_STORAGE > 200")
+    dams = nid.get_bygeom((-65.77, 43.07, -69.31, 45.45), "epsg:4326")
+    dams = nid.inventory_byid(dams.id.to_list())
+    dams = dams[dams.maxStorage > 200]
 
-We can get all the dams within CONUS using ``NID`` and plot them:
+We can get also all dams within CONUS in NID with maximum storage larger than 200 acre-feet:
 
 .. code-block:: python
 
     import geopandas as gpd
 
     world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
-    conus = world[world.name == "United States of America"].geometry.iloc[0][0]
-    conus_dams = nid.bygeom(conus, "epsg:4326")
+    conus = world[world.name == "United States of America"].geometry.iloc[0].geoms[0]
+
+    dam_list = nid.get_byfilter([{"maxStorage": ["[200 5000]"]}])
+    dams = dam_list[0][dam_list[0].is_valid]
+    dams = dams[dams.within(conus)]
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/dams.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nid.ipynb
