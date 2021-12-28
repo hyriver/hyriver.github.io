@@ -83,7 +83,7 @@ Package         Description                                                     
 =============== ==================================================================== ============
 |nhd_stat|      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
-|geoh_stat|     Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases              |pygeohydro|
+|geoh_stat|     Access NWIS, NID, WQP, HCDN 2009, NLCD, and SSEBop databases         |pygeohydro|
 |day_stat|      Access Daymet for daily climate data both single pixel and gridded   |pydaymet|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
