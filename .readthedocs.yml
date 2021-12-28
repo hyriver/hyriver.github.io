@@ -1,4 +1,6 @@
 version: 2
+formats:
+  - htmlzip
 
 submodules:
   include: all
