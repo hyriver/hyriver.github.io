@@ -14,7 +14,7 @@ Module Contents
 
 .. py:function:: delete_url_cache(url, request_method = 'GET', cache_name = None, **kwargs)
 
-   Delete cached response associated with `url`, along with its history (if applicable).
+   Delete cached response associated with ``url``, along with its history (if applicable).
 
    :Parameters: * **url** (:class:`str`) -- URL to be deleted from the cache
                 * **request_method** (:class:`str`, *optional*) -- HTTP request method to be deleted from the cache, defaults to ``GET``.
