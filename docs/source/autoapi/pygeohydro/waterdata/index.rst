@@ -24,9 +24,10 @@ Module Contents
       Send multiple queries to USGS Site Web Service.
 
       :Parameters: * **queries** (:class:`dict` or :class:`list` of :class:`dict`) -- A single or a list of valid queries.
-                   * **expanded** (:class:`bool`, *optional*) -- Whether to get expanded sit information for example drainage area, default to False.
+                   * **expanded** (:class:`bool`, *optional*) -- Whether to get expanded sit information for example drainage area,
+                     default to False.
 
-      :returns: :class:`pandas.DataFrame` -- A typed dataframe containing the site information.
+      :returns: :class:`geopandas.GeoDataFrame` -- A correctly typed ``GeoDataFrame`` containing site(s) information.
 
 
    .. py:method:: get_parameter_codes(self, keyword)
