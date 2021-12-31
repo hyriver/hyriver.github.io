@@ -15,3 +15,4 @@ sphinx-gallery
 sphinx-panels
 sphinxcontrib-bibtex
 sphinxext-opengraph
+sphinx-codeautolink

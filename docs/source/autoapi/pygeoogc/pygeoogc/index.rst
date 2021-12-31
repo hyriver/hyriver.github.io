@@ -32,7 +32,7 @@ Module Contents
                   a list of available formats is shown, defaults to ``geojson``.
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
                   all the available fields which is the default behaviour.
-                * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to EPSG:4326
+                * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to ``epsg:4326``.
                 * **max_workers** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1, i.e., no threading. Note
                   that some services might face issues when several requests are sent
                   simultaneously and will return the requests partially. It's recommended
@@ -75,7 +75,7 @@ Module Contents
       :Parameters: * **geom** (:class:`LineString`, :class:`Polygon`, :class:`Point`, :class:`MultiPoint`, :class:`tuple`, or :class:`list` of :class:`tuples`) -- A geometry (LineString, Polygon, Point, MultiPoint), tuple of length two
                      (``(x, y)``), a list of tuples of length 2 (``[(x, y), ...]``), or bounding box
                      (tuple of length 4 (``(xmin, ymin, xmax, ymax)``)).
-                   * **geo_crs** (:class:`str`) -- The spatial reference of the input geometry, defaults to EPSG:4326.
+                   * **geo_crs** (:class:`str` or :class:`pyproj.CRS`) -- The spatial reference of the input geometry.
                    * **spatial_relation** (:class:`str`, *optional*) -- The spatial relationship to be applied on the input geometry
                      while performing the query. If not correct a list of available options is shown.
                      It defaults to ``esriSpatialRelIntersects``. Valid predicates are:
@@ -165,7 +165,7 @@ Module Contents
                 * **version** (:class:`str`, *optional*) -- The WFS service version which should be either 1.0.0, 1.1.0, or 2.0.0.
                   Defaults to 2.0.0.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
-                  epsg:4326.
+                  ``epsg:4326``.
                 * **read_method** (:class:`str`, *optional*) -- Method for reading the retrieved data, defaults to ``json``. Valid options are
                   ``json``, ``binary``, and ``text``.
                 * **max_nrecords** (:class:`int`, *optional*) -- The maximum number of records in a single request to be retrieved from the service,
@@ -182,8 +182,8 @@ Module Contents
       Get data from a WFS service within a bounding box.
 
       :Parameters: * **bbox** (:class:`tuple`) -- A bounding box for getting the data: [west, south, east, north]
-                   * **box_crs** (:class:`str`, *optional*) -- The spatial reference system of the input bbox, defaults to
-                     epsg:4326.
+                   * **box_crs** (:class:`str`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input bbox, defaults to
+                     ``epsg:4326``.
                    * **always_xy** (:class:`bool`, *optional*) -- Whether to always use xy axis order, defaults to False. Some services change the axis
                      order from xy to yx, following the latest WFS version specifications but some don't.
                      If the returned value does not have any geometry, it indicates that most probably the
@@ -213,7 +213,7 @@ Module Contents
       Get features based on a geometry.
 
       :Parameters: * **geometry** (:class:`shapely.geometry`) -- The input geometry
-                   * **geo_crs** (:class:`str`, *optional*) -- The CRS of the input geometry, default to epsg:4326.
+                   * **geo_crs** (:class:`str`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, default to ``epsg:4326``.
                    * **always_xy** (:class:`bool`, *optional*) -- Whether to always use xy axis order, defaults to False. Some services change the axis
                      order from xy to yx, following the latest WFS version specifications but some don't.
                      If the returned value does not have any geometry, it indicates that most probably the
@@ -258,7 +258,7 @@ Module Contents
                 * **outformat** (:class:`str`) -- The data format to request for data from the service. You can pass an empty
                   string to get a list of available output formats.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
-                  epsg:4326.
+                  ``epsg:4326``.
                 * **version** (:class:`str`, *optional*) -- The WMS service version which should be either 1.1.1 or 1.3.0, defaults to 1.3.0.
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WMS service, defaults to True. Set this
                   to False if you are sure all the WMS settings such as layer and crs are correct
@@ -273,8 +273,8 @@ Module Contents
       :Parameters: * **bbox** (:class:`tuple`) -- A bounding box for getting the data.
                    * **resolution** (:class:`float`) -- The output resolution in meters. The width and height of output are computed in pixel
                      based on the geometry bounds and the given resolution.
-                   * **box_crs** (:class:`str`, *optional*) -- The spatial reference system of the input bbox, defaults to
-                     epsg:4326.
+                   * **box_crs** (:class:`str`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input bbox, defaults to
+                     ``epsg:4326``.
                    * **always_xy** (:class:`bool`, *optional*) -- Whether to always use xy axis order, defaults to False. Some services change the axis
                      order from xy to yx, following the latest WFS version specifications but some don't.
                      If the returned value does not have any geometry, it indicates that most probably the

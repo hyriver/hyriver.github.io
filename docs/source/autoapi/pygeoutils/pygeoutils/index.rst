@@ -21,7 +21,7 @@ Module Contents
    Based on `arcgis2geojson <https://github.com/chris48s/arcgis2geojson>`__.
 
    :Parameters: * **arcgis** (:class:`str` or :class:`binary`) -- The ESRIGeoJSON format str (or binary)
-                * **id_attr** (:class:`str`) -- ID of the attribute of interest
+                * **id_attr** (:class:`str`, *optional*) -- ID of the attribute of interest, defaults to ``None``.
 
    :returns: :class:`dict` -- A GeoJSON file readable by GeoPandas.
 
