@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: potential_et(clm, coords = None, crs = 'epsg:4326', method = 'hargreaves_samani', params = None)
+.. py:function:: potential_et(clm, coords = None, crs = DEF_CRS, method = 'hargreaves_samani', params = None)
 
    Compute Potential EvapoTranspiration for both gridded and a single location.
 

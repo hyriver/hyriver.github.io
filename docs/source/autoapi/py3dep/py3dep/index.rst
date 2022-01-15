@@ -12,18 +12,41 @@
 Module Contents
 ---------------
 
-.. py:function:: elevation_bycoords(coords, crs = DEF_CRS, source = 'airmap', expire_after = EXPIRE, disable_caching = False)
+.. py:function:: check_3dep_availability(bbox, crs = DEF_CRS)
+
+   Query 3DEP's resolution availability within a bounding box.
+
+   This function checks availability of 3DEP's at the following resolutions:
+   1 m, 3 m, 5 m, 10 m, 30 m, and 60 m.
+
+   :Parameters: * **bbox** (:class:`tuple`) -- Bounding box as tuple of ``(min_x, min_y, max_x, max_y)``.
+                * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of bbox, defaults to ``EPSG:4326``.
+
+   :returns: :class:`dict` -- True if bbox intersects 3DEP elevation for each available resolution.
+             Keys are the supported resolutions and values are their availability.
+
+   .. rubric:: Examples
+
+   >>> import py3dep
+   >>> bbox = (-69.77, 45.07, -69.31, 45.45)
+   >>> py3dep.check_3dep_availability(bbox)
+   {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False}
+
+
+.. py:function:: elevation_bycoords(coords, crs = DEF_CRS, source = 'tep', expire_after = EXPIRE, disable_caching = False)
 
    Get elevation for a list of coordinates.
 
    :Parameters: * **coords** (:class:`list` of :class:`tuple`) -- Coordinates of target location as list of tuples ``[(x, y), ...]``.
                 * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of coords, defaults to ``EPSG:4326``.
                 * **source** (:class:`str`, *optional*) -- Data source to be used, default to ``airmap``. Supported sources are
-                  ``airmap`` (30 m resolution) and ``tnm`` (using The National Map's Bulk Point
-                  Query Service with 10 m resolution). The ``tnm`` source is more accurate since it
-                  uses the 1/3 arc-second DEM layer from 3DEP service but it is limited to the US.
-                  It also tends to be slower than the Airmap service and more unstable.
-                  It's recommended to use ``airmap`` unless you need 10-m resolution accuracy.
+                  ``airmap`` (30 m resolution), ``tnm`` (using The National Map's Bulk Point
+                  Query Service with 10 m resolution) and ``tep`` (using 3DEP's WMS service
+                  at 10 m resolution). The ``tnm`` and ``tep`` sources are more accurate since they
+                  use the 1/3 arc-second DEM layer from 3DEP service but it is limited to the US.
+                  They both tend to be slower than the Airmap service. Note that ``tnm`` is bit unstable.
+                  It's recommended to use ``tep`` unless 10-m resolution accuracy is not necessary which
+                  in that case ``airmap`` is more appropriate.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
                 * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
@@ -38,7 +61,7 @@ Module Contents
 
    :Parameters: * **xcoords** (:class:`list`) -- List of x-coordinates of a grid.
                 * **ycoords** (:class:`list`) -- List of y-coordinates of a grid.
-                * **crs** (:class:`str`) -- The spatial reference system of the input grid, defaults to ``EPSG:4326``.
+                * **crs** (:class:`str` or :class:`pyproj.CRS`) -- The spatial reference system of the input grid, defaults to ``EPSG:4326``.
                 * **resolution** (:class:`float`) -- The accuracy of the output, defaults to 10 m which is the highest
                   available resolution that covers CONUS. Note that higher resolution
                   increases computation time so chose this value with caution.

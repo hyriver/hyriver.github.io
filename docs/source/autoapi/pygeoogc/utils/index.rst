@@ -177,3 +177,17 @@ Module Contents
    [['Alice', 'Bob']]
 
 
+.. py:function:: valid_wms_crs(url)
+
+   Get valid CRSs from a WMS service version 1.3.0.
+
+
+.. py:function:: validate_crs(val)
+
+   Validate a CRS.
+
+   :Parameters: **val** (:class:`str` or :class:`int`) -- Input CRS.
+
+   :returns: :class:`str` -- Validated CRS as a string.
+
+

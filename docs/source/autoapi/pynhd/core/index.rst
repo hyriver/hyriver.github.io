@@ -14,7 +14,7 @@ Module Contents
 
 .. py:class:: AGRBase(base_url, layer = None, outfields = '*', crs = DEF_CRS, outformat = 'json', expire_after = EXPIRE, disable_caching = False)
 
-   Base class for accessing NHD(Plus) HR database through the National Map ArcGISRESTful.
+   Base class for getting geospatial data from a ArcGISRESTful service.
 
    :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
                   after the last ``/`` in the url or the target layer must be passed as an argument.

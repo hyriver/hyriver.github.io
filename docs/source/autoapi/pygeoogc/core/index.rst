@@ -121,17 +121,17 @@ Module Contents
 
                   The data format to request for data from the service, defaults to None which
                    throws an error and includes all the available format offered by the service.
-                * **version** (:class:`str`, *optional*) -- The WFS service version which should be either 1.0.0, 1.1.0, or 2.0.0.
-                  Defaults to 2.0.0.
+                * **version** (:class:`str`, *optional*) -- The WFS service version which should be either ``1.0.0``, ``1.1.0``, or
+                  ``2.0.0``. Defaults to ``2.0.0``.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   ``epsg:4326``.
                 * **read_method** (:class:`str`, *optional*) -- Method for reading the retrieved data, defaults to ``json``. Valid options are
                   ``json``, ``binary``, and ``text``.
                 * **max_nrecords** (:class:`int`, *optional*) -- The maximum number of records in a single request to be retrieved from the service,
-                  defaults to 1000. If the number of records requested is greater than this value,
-                  it will be split into multiple requests.
+                  defaults to 1000. If the number of requested records is greater than this value,
+                  the query will be split into multiple requests.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to ``False``.
 
    .. py:method:: get_validnames(self)
 
@@ -170,5 +170,15 @@ Module Contents
 
       Validate input arguments with the WMS service.
 
+
+
+.. py:function:: validate_version(val, valid_versions)
+
+   Validate version from a list of valid versions.
+
+   :Parameters: * **val** (:class:`str`) -- Input version value.
+                * **valid_versions** (:class:`list` of :class:`str`) -- List of valid versions.
+
+   :returns: :class:`str` -- Validated version value.
 
 

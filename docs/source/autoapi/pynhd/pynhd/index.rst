@@ -12,6 +12,40 @@
 Module Contents
 ---------------
 
+.. py:class:: NHD(layer, outfields = '*', crs = DEF_CRS, expire_after = EXPIRE, disable_caching = False)
+
+
+
+   Access National Hydrography Dataset (NHD), both meduim and high resolution.
+
+   .. rubric:: Notes
+
+   For more info visit: https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer
+
+   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. Layer names with ``_hr`` are high resolution and
+                  ``_mr`` are medium resolution. Also, layer names with ``_nonconus`` are for
+                  non-conus areas, i.e., Alaska, Hawaii, Puerto Rico, the Virgin Islands , and
+                  the Pacific Islands. Valid layers are:
+
+                  - ``point``
+                  - ``point_event``
+                  - ``line_hr``
+                  - ``flow_direction``
+                  - ``flowline_mr``
+                  - ``flowline_hr_nonconus``
+                  - ``flowline_hr``
+                  - ``area_mr``
+                  - ``area_hr_nonconus``
+                  - ``area_hr``
+                  - ``waterbody_mr``
+                  - ``waterbody_hr_nonconus``
+                  - ``waterbody_hr``
+                * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
+                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+
+
 .. py:class:: NHDPlusHR(layer, outfields = '*', crs = DEF_CRS, service = 'hydro')
 
 

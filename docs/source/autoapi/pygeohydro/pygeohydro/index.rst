@@ -167,7 +167,7 @@ Module Contents
    :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame with the NLCD data and the coordinates.
 
 
-.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = DEF_CRS, validation = True, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = DEF_CRS, expire_after = EXPIRE, disable_caching = False)
 
    Get data from NLCD database (2019).
 
@@ -184,9 +184,6 @@ Module Contents
                   Both lower and upper cases are acceptable.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
-                * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WMS service, defaults to True. Set this
-                  to False if you are sure all the WMS settings such as layer and crs are correct
-                  to avoid sending extra requests.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
                 * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 

@@ -12,6 +12,48 @@
 Module Contents
 ---------------
 
+.. py:function:: flowline_xsection(flw, distance, width)
+
+   Get cross-section of a river network at a given spacing.
+
+   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``comid`` columns and CRS attribute.
+                * **distance** (:class:`float`) -- The distance between two consecutive cross-sections.
+                * **width** (:class:`float`) -- The width of the cross-section.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- A dataframe with two columns: ``geometry`` and ``comid``. The ``geometry``
+             column contains the cross-section of the river network and the ``comid``
+             column contains the corresponding ``comid`` from the input dataframe.
+             Note that each ``comid`` can have multiple cross-sections depending on
+             the given spacing distance.
+
+
+.. py:function:: network_xsection(flw, distance, width)
+
+   Get cross-section of a river network at a given spacing.
+
+   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``comid`` columns and CRS attribute.
+                * **distance** (:class:`float`) -- The distance between two consecutive cross-sections.
+                * **width** (:class:`float`) -- The width of the cross-section.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- A dataframe with two columns: ``geometry`` and ``comid``. The ``geometry``
+             column contains the cross-section of the river network and the ``comid``
+             column contains the corresponding ``comid`` from the input dataframe.
+             Note that each ``comid`` can have multiple cross-sections depending on
+             the given spacing distance.
+
+
+.. py:function:: nhdflw2nx(flowlines, id_col = 'comid', toid_col = 'tocomid', edge_attr = None)
+
+   Convert NHDPlus flowline database to networkx graph.
+
+   :Parameters: * **flowlines** (:class:`geopandas.GeoDataFrame`) -- NHDPlus flowlines.
+                * **id_col** (:class:`str`, *optional*) -- Name of the column containing the node ID, defaults to "comid".
+                * **toid_col** (:class:`str`, *optional*) -- Name of the column containing the downstream node ID, defaults to "tocomid".
+                * **edge_attr** (:class:`str`, *optional*) -- Name of the column containing the edge attributes, defaults to ``None``.
+
+   :returns: :class:`nx.DiGraph` -- Networkx directed graph of the NHDPlus flowlines.
+
+
 .. py:function:: prepare_nhdplus(flowlines, min_network_size, min_path_length, min_path_size = 0, purge_non_dendritic = False, use_enhd_attrs = False, terminal2nan = True)
 
    Clean up and fix common issues of NHDPlus flowline database.

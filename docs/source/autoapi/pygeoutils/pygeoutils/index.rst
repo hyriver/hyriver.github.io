@@ -12,6 +12,66 @@
 Module Contents
 ---------------
 
+.. py:class:: Coordinates
+
+   Generate validated and normalized coordinates in WGS84.
+
+   :Parameters: * **lon** (:class:`float` or :class:`list` of :class:`floats`) -- Longitude(s) in decimal degrees.
+                * **lat** (:class:`float` or :class:`list` of :class:`floats`) -- Latitude(s) in decimal degrees.
+
+   .. rubric:: Examples
+
+   >>> from pygeoutils import Coordinates
+   >>> c = Coordinates([460, 20, -30], [80, 200, 10])
+   >>> c.points.x.tolist()
+   [100.0, -30.0]
+
+   .. py:method:: points(self)
+      :property:
+
+      Get validate coordinate as a ``geopandas.GeoSeries``.
+
+
+
+.. py:class:: GeoBSpline(points, npts_sp, degree = 3)
+
+   Create B-spline from a geo-dataframe of points.
+
+   :Parameters: * **points** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Input points as a ``GeoDataFrame`` or ``GeoSeries`` in a projected CRS.
+                * **npts_sp** (:class:`int`) -- Number of points in the output spline curve.
+                * **degree** (:class:`int`, *optional*) -- Degree of the spline. Should be less than the number of points and
+                  greater than 1. Default is 3.
+
+   .. rubric:: Examples
+
+   >>> from pygeoutils import GeoBSpline
+   >>> import geopandas as gpd
+   >>> xl, yl = zip(
+   ...     *[
+   ...         (-97.06138, 32.837),
+   ...         (-97.06133, 32.836),
+   ...         (-97.06124, 32.834),
+   ...         (-97.06127, 32.832),
+   ...     ]
+   ... )
+   >>> pts = gpd.GeoSeries(gpd.points_from_xy(xl, yl, crs="epsg:4326"))
+   >>> sp = GeoBSpline(pts.to_crs("epsg:3857"), 5).spline
+   >>> pts_sp = gpd.GeoSeries(gpd.points_from_xy(sp.x, sp.y, crs="epsg:3857"))
+   >>> pts_sp = pts_sp.to_crs("epsg:4326")
+   >>> list(zip(pts_sp.x, pts_sp.y))
+   [(-97.06138, 32.837),
+   (-97.06135, 32.83629),
+   (-97.06131, 32.83538),
+   (-97.06128, 32.83434),
+   (-97.06127, 32.83319)]
+
+   .. py:method:: spline(self)
+      :property:
+
+      Get the spline as a ``Spline`` object.
+
+
+
 .. py:function:: arcgis2geojson(arcgis, id_attr = None)
 
    Convert ESRIGeoJSON format to GeoJSON.
@@ -31,8 +91,8 @@ Module Contents
    Convert a geometry to a Shapely's Polygon and transform to any CRS.
 
    :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple` of :class:`length 4`) -- Polygon or bounding box (west, south, east, north).
-                * **geo_crs** (:class:`str`) -- Spatial reference of the input geometry
-                * **crs** (:class:`str`) -- Target spatial reference.
+                * **geo_crs** (:class:`str` or :class:`pyproj.CRS`) -- Spatial reference of the input geometry
+                * **crs** (:class:`str` or :class:`pyproj.CRS`) -- Target spatial reference.
 
    :returns: :class:`Polygon` -- A Polygon in the target CRS.
 
@@ -48,14 +108,16 @@ Module Contents
    :returns: :class:`rasterio.Affine`, :class:`int`, :class:`int` -- The affine transform, width, and height
 
 
-.. py:function:: gtiff2xarray(r_dict, geometry, geo_crs, ds_dims = None, driver = None, all_touched = False, nodata = None)
+.. py:function:: gtiff2xarray(r_dict, geometry = None, geo_crs = None, ds_dims = None, driver = None, all_touched = False, nodata = None, drop = True)
 
    Convert (Geo)Tiff byte responses to ``xarray.Dataset``.
 
    :Parameters: * **r_dict** (:class:`dict`) -- Dictionary of (Geo)Tiff byte responses where keys are some names that are used
                   for naming each responses, and values are bytes.
-                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple`) -- The geometry to mask the data that should be in the same CRS as the r_dict.
-                * **geo_crs** (:class:`str`) -- The spatial reference of the input geometry.
+                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple`, *optional*) -- The geometry to mask the data that should be in the same CRS as the r_dict.
+                  Defaults to ``None``.
+                * **geo_crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input geometry, defaults to ``None``. This
+                  argument should be given when ``geometry`` is given.
                 * **ds_dims** (:class:`tuple` of :class:`str`, *optional*) -- The names of the vertical and horizontal dimensions (in that order)
                   of the target dataset, default to None. If None, dimension names are determined
                   from a list of common names.
@@ -65,6 +127,9 @@ Module Contents
                   If False (default), include a pixel only if its center is within one
                   of the shapes, or if it is selected by Bresenham's line algorithm.
                 * **nodata** (:class:`float` or :class:`int`, *optional*) -- The nodata value of the raster, defaults to None, i.e., is determined from the raster.
+                * **drop** (:class:`bool`, *optional*) -- If True, drop the data outside of the extent of the mask geometries.
+                  Otherwise, it will return the same raster with the data masked.
+                  Default is True.
 
    :returns: :class:`xarray.Dataset` or :class:`xarray.DataAraay` -- Parallel (with dask) dataset or dataarray.
 
@@ -74,13 +139,13 @@ Module Contents
    Create GeoDataFrame from (Geo)JSON.
 
    :Parameters: * **content** (:class:`dict` or :class:`list` of :class:`dict`) -- A (Geo)JSON dictionary e.g., response.json() or a list of them.
-                * **in_crs** (:class:`str`) -- CRS of the content, defaults to ``epsg:4326``.
-                * **crs** (:class:`str`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
+                * **in_crs** (:class:`str` or :class:`pyproj.CRS`) -- CRS of the content, defaults to ``epsg:4326``.
+                * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON
 
 
-.. py:function:: xarray2geodf(da, dtype, mask_da = None)
+.. py:function:: xarray2geodf(da, dtype, mask_da = None, connectivity = 8)
 
    Vectorize a ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``.
 
@@ -88,23 +153,28 @@ Module Contents
                 * **dtype** (:class:`type`) -- The data type of the dataarray. Valid types are ``int16``, ``int32``,
                   ``uint8``, ``uint16``, and ``float32``.
                 * **mask_da** (:class:`xarray.DataArray`, *optional*) -- The dataarray to use as a mask, defaults to ``None``.
+                * **connectivity** (:class:`int`, *optional*) -- Use 4 or 8 pixel connectivity for grouping pixels into features,
+                  defaults to 8.
 
    :returns: :class:`geopandas.GeoDataFrame` -- The vectorized dataarray.
 
 
-.. py:function:: xarray_geomask(ds, geometry, geo_crs, ds_dims = None, all_touched = False)
+.. py:function:: xarray_geomask(ds, geometry, crs, all_touched = False, drop = True, from_disk = False)
 
    Mask a ``xarray.Dataset`` based on a geometry.
 
    :Parameters: * **ds** (:class:`xarray.Dataset` or :class:`xarray.DataArray`) -- The dataset(array) to be masked
-                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- The geometry or bounding box to mask the data
-                * **geo_crs** (:class:`str`) -- The spatial reference of the input geometry
-                * **ds_dims** (:class:`tuple` of :class:`str`, *optional*) -- The names of the vertical and horizontal dimensions (in that order)
-                  of the target dataset, default to None. If None, dimension names are determined
-                  from a list of common names.
+                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`) -- The geometry to mask the data
+                * **crs** (:class:`str` or :class:`pyproj.CRS`) -- The spatial reference of the input geometry
                 * **all_touched** (:class:`bool`, *optional*) -- Include a pixel in the mask if it touches any of the shapes.
                   If False (default), include a pixel only if its center is within one
-                  of the shapes, or if it is selected by Bresenham’s line algorithm.
+                  of the shapes, or if it is selected by Bresenham's line algorithm.
+                * **drop** (:class:`bool`, *optional*) -- If True, drop the data outside of the extent of the mask geometries.
+                  Otherwise, it will return the same raster with the data masked.
+                  Default is True.
+                * **from_disk** (:class:`bool`, *optional*) -- If True, it will clip from disk using rasterio.mask.mask if possible.
+                  This is beneficial when the size of the data is larger than memory.
+                  Default is False.
 
    :returns: :class:`xarray.Dataset` or :class:`xarray.DataArray` -- The input dataset with a mask applied (np.nan)
 

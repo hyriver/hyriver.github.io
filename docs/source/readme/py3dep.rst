@@ -62,7 +62,6 @@ the performance significantly. The 3DEP web service includes the following layer
 - GreyHillshade Elevation Fill
 - Hillshade Multidirectional
 - Slope Map
-- Slope Degrees
 - Hillshade Elevation Tinted
 - Height Ellipsoidal
 - Contour 25
@@ -74,9 +73,10 @@ Moreover, Py3DEP offers some additional utilities:
 - ``elevation_bycoords``: For getting elevation of a list of ``x`` and ``y`` coordinates.
 - ``deg2mpm``: For converting slope dataset from degree to meter per meter.
 
-You can try using Py3DEP without installing it on you system by clicking on the binder badge
-below the Py3DEP banner. A Jupyter notebook instance with the stack
-pre-installed will be launched in your web browser and you can start coding!
+You can also try using PyGeoHydro without installing
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver stack pre-installed will be launched in your web browser, and you
+can start coding!
 
 Please note that since this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
@@ -91,8 +91,8 @@ Installation
 
 You can install Py3DEP using ``pip`` after installing ``libgdal`` on your system
 (for example, in Ubuntu run ``sudo apt install libgdal-dev``). Moreover, Py3DEP has an optional
-dependency for using persistent caching, ``requests-cache``. We highly recommend to install
-this package as it can significantly speedup send/receive queries. You don't have to change
+dependency for using persistent caching, ``requests-cache``. We highly recommend installing
+this package as it can significantly speed up send/receive queries. You don't have to change
 anything in your code, since Py3DEP under-the-hood looks for ``requests-cache`` and if available,
 it will automatically use persistent caching:
 
@@ -110,7 +110,7 @@ using `Conda <https://docs.conda.io/en/latest/>`__:
 Quick start
 -----------
 
-You can use Py3DEP using command-line or as a Python library. The commanda-line
+You can use Py3DEP using command-line or as a Python library. The command line interface
 provides access to two functionality:
 
 - Getting topographic data: You must create a ``geopandas.GeoDataFrame`` that contains
@@ -156,7 +156,7 @@ The ``coords`` sub-command is as follows:
         $ py3dep coords coords.csv -q airmap -s topo_dir
 
     Options:
-    -q, --query_source [airmap|tnm]
+    -q, --query_source [airmap|tnm|tep]
                                     Source of the elevation data.
     -s, --save_dir PATH             Path to a directory to save the requested
                                     files. Extension for the outputs is either
@@ -246,7 +246,7 @@ add the elevation as a new variable to the dataset:
     clm["elevation"] = clm.elevation.where(~np.isnan(clm.isel(time=0).tmin), drop=True)
     clm.attrs.update(attrs)
 
-Now, let's get street network data using `osmnx <https://github.com/gboeing/osmnx>`_ package
+Now, let's get street network data using `osmnx <https://github.com/gboeing/osmnx>`__ package
 and add elevation data for its nodes using ``elevation_bycoords`` function.
 
 .. code-block:: python
