@@ -1,7 +1,9 @@
-:py:mod:`pygeoutils.utils`
-==========================
+:orphan:
 
-.. py:module:: pygeoutils.utils
+:py:mod:`pygeoutils._utils`
+===========================
+
+.. py:module:: pygeoutils._utils
 
 .. autoapi-nested-parse::
 

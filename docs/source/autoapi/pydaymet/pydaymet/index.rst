@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, ssl = None, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = None, expire_after = EXPIRE, disable_caching = False)
 
    Get point-data from the Daymet database at 1-km resolution.
 
@@ -43,6 +43,12 @@ Module Contents
                   Defaults to ``None``.
                 * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
                   Defaults to ``None``.
+                * **snow** (:class:`bool`, *optional*) -- Compute snowfall from precipitation and minimum temperature. Defaults to ``False``.
+                * **snow_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the snowfall function.
+                  These parameters are only used if ``snow`` is ``True``. Two parameters are required:
+                  ``t_rain`` (deg C) which is the threshold for temperature for considering rain and
+                  ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
+                  The default values are ``{'t_rain': 2.5, 't_snow': 0}``.
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL cetification verification.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
@@ -70,7 +76,7 @@ Module Contents
    .. footbibliography::
 
 
-.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, ssl = None, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = None, expire_after = EXPIRE, disable_caching = False)
 
    Get gridded data from the Daymet database at 1-km resolution.
 
@@ -97,6 +103,12 @@ Module Contents
                   Defaults to ``None``.
                 * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
                   Defaults to ``None``.
+                * **snow** (:class:`bool`, *optional*) -- Compute snowfall from precipitation and minimum temperature. Defaults to ``False``.
+                * **snow_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the snowfall function.
+                  These parameters are only used if ``snow`` is ``True``. Two parameters are required:
+                  ``t_rain`` (deg C) which is the threshold for temperature for considering rain and
+                  ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
+                  The default values are ``{'t_rain': 2.5, 't_snow': 0}``.
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL cetification verification.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).

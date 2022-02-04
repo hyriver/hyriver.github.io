@@ -122,7 +122,7 @@ Module Contents
 
    :Parameters: **ds** (:class:`xarray.DataArray`) -- Cover DataArray from a LULC Dataset from the ``nlcd`` function.
 
-   :returns: :class:`dict` -- Statistics of NLCD cover data
+   :returns: :class:`Stats` -- A named tuple with the percentages of the cover classes and categories.
 
 
 .. py:function:: nlcd(geometry, resolution, years = None, region = 'L48', geo_crs = DEF_CRS, crs = DEF_CRS)

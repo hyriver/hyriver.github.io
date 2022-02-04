@@ -125,7 +125,7 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. py:method:: navigate_byid(self, fsource, fid, navigation, source, distance = 500)
+   .. py:method:: navigate_byid(self, fsource, fid, navigation, source, distance = 500, trim_start = False)
 
       Navigate the NHDPlus database from a single feature id up to a distance.
 
@@ -139,11 +139,13 @@ Module Contents
                      defaults is 500 km. Note that this is an expensive request so you
                      have be mindful of the value that you provide. The value must be
                      between 1 to 9999 km.
+                   * **trim_start** (:class:`bool`, *optional*) -- If ``True``, trim the starting flowline at the source feature,
+                     defaults to ``False``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
 
-   .. py:method:: navigate_byloc(self, coords, navigation = None, source = None, loc_crs = DEF_CRS, distance = 500)
+   .. py:method:: navigate_byloc(self, coords, navigation = None, source = None, loc_crs = DEF_CRS, distance = 500, trim_start = False)
 
       Navigate the NHDPlus database from a coordinate.
 
@@ -158,6 +160,8 @@ Module Contents
                      defaults to 500 km. Note that this is an expensive request so you
                      have be mindful of the value that you provide. If you want to get
                      all the available features you can pass a large distance like 9999999.
+                   * **trim_start** (:class:`bool`, *optional*) -- If ``True``, trim the starting flowline at the source feature,
+                     defaults to ``False``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
@@ -212,14 +216,12 @@ Module Contents
       411.5906
 
 
-   .. py:method:: flow_trace(self, coord, crs = DEF_CRS, raindrop = False, direction = 'down')
+   .. py:method:: flow_trace(self, coord, crs = DEF_CRS, direction = 'down')
 
       Return a GeoDataFrame from the flowtrace service.
 
       :Parameters: * **coord** (:class:`tuple`) -- The coordinate of the point to trace as a tuple,e.g., (lon, lat).
                    * **crs** (:class:`str`) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
-                   * **raindrop** (:class:`bool`, *optional*) -- If True, use raindrop-based flowpaths, i.e. use raindrop trace web service
-                     with direction set to "none", defaults to False.
                    * **direction** (:class:`str`, *optional*) -- The direction of flowpaths, either "down", "up", or "none". Defaults to "down".
 
       :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the traced flowline.

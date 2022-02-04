@@ -86,6 +86,21 @@ Module Contents
    :returns: :class:`dict` -- A GeoJSON file readable by GeoPandas.
 
 
+.. py:function:: break_lines(lines, points, tol = 0.0)
+
+   Break lines at specified points at given direction.
+
+   :Parameters: * **lines** (:class:`geopandas.GeoDataFrame`) -- Lines to break at intersection points.
+                * **points** (:class:`geopandas.GeoDataFrame`) -- Points to break lines at. It must contain a column named ``direction``
+                  with values ``up`` or ``down``. This column is used to determine which
+                  part of the lines to keep, i.e., upstream or downstream of points.
+                * **tol** (:class:`float`, *optional*) -- Tolerance for snapping points to the nearest lines in meters.
+                  The default is 0.0.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- Original lines except for the parts that have been broken at the specified
+             points.
+
+
 .. py:function:: geo2polygon(geometry, geo_crs, crs)
 
    Convert a geometry to a Shapely's Polygon and transform to any CRS.
@@ -143,6 +158,18 @@ Module Contents
                 * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON
+
+
+.. py:function:: snap2nearest(lines, points, tol)
+
+   Break lines at specified points at given direction.
+
+   :Parameters: * **lines** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Lines.
+                * **points** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Points to snap to lines.
+                * **tol** (:class:`float`, *optional*) -- Tolerance for snapping points to the nearest lines in meters.
+                  It must be greater than 0.0.
+
+   :returns: :class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries` -- Points snapped to lines.
 
 
 .. py:function:: xarray2geodf(da, dtype, mask_da = None, connectivity = 8)

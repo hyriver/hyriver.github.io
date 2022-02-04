@@ -78,6 +78,12 @@ Module Contents
       :returns: :class:`dict` -- A dictionary of valid layers.
 
 
+   .. py:method:: service_info(self)
+      :property:
+
+      Get the service information.
+
+
 
 .. py:class:: ScienceBase
 

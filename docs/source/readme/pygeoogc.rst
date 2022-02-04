@@ -113,15 +113,14 @@ PyGeoOGC has three main classes:
 
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
 
-Furthermore, you can try using PyGeoOGC without even installing it on your system by
-clicking on the binder badge below the PyGeoOGC banner. A JupyterLab instance
-with the software stack pre-installed and all example notebooks will be launched
-in your web browser, and you can start coding!
+Furthermore, you can also try using PyGeoOGC without installing
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver stack pre-installed will be launched in your web browser, and you
+can start coding!
 
 Please note that since this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
-appreciate it if you give this project a try and provide feedback.
-Contributions are most welcome.
+appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
 
 Moreover, requests for additional functionalities can be submitted via
 `issue tracker <https://github.com/cheginit/pygeoogc/issues>`__.

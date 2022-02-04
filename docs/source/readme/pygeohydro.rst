@@ -82,10 +82,12 @@ The ``helpers`` module includes:
   descriptor type which is useful for overland flow routing among other applications.
 * ``nwis_error``: A dataframe for finding information about NWIS requests' errors.
 
-Moreover, requests for additional databases and functionalities can be submitted via
-`issue tracker <https://github.com/cheginit/pygeohydro/issues>`__.
-
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+
+Moreover, to fully utilize the capabilities of these web services, under-the-hood, PyGeoHydro uses
+`AsyncRetriever <https://github.com/cheginit/async_retriever>`__
+for retrieving topographic data asynchronously with persistent caching. This improves the
+reliability and speed of data retrieval significantly.
 
 You can also try using PyGeoHydro without installing
 it on your system by clicking on the binder badge. A Jupyter Lab

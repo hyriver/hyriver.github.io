@@ -51,9 +51,7 @@ database which is a part of the
 `National Map services <https://viewer.nationalmap.gov/services/>`__.
 The 3DEP service has multi-resolution sources and depending on the user provided resolution,
 the data is resampled on the server-side based on all the available data sources. Py3DEP returns
-the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset. Moreover,
-under-the-hood, this package uses ``requests-cache`` for persistent caching that can improve
-the performance significantly. The 3DEP web service includes the following layers:
+the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset.
 
 - DEM
 - Hillshade Gray
@@ -72,8 +70,16 @@ Moreover, Py3DEP offers some additional utilities:
 - ``elevation_bygrid``: For getting elevations of all the grid points in a 2D grid.
 - ``elevation_bycoords``: For getting elevation of a list of ``x`` and ``y`` coordinates.
 - ``deg2mpm``: For converting slope dataset from degree to meter per meter.
+- ``check_3dep_availability``: For querying 3DEP's resolution availability within a bounding box.
 
-You can also try using PyGeoHydro without installing
+You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+
+Moreover, to fully utilize the capabilities of the 3DEP, under-the-hood, Py3DEP uses
+`AsyncRetriever <https://github.com/cheginit/async_retriever>`__
+for retrieving topographic data asynchronously with persistent caching. This improves the
+reliability and speed of data retrieval significantly.
+
+You can also try using Py3DEP without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
 instance with the HyRiver stack pre-installed will be launched in your web browser, and you
 can start coding!

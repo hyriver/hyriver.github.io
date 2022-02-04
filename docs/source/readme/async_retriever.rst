@@ -52,6 +52,13 @@ to `nest_asyncio <https://github.com/erdewit/nest_asyncio>`__ you can use this p
 Jupyter notebooks. Although this package is in the HyRiver software stack, it's
 applicable to any HTTP requests.
 
+You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+
+You can also try using AsyncRetriever without installing
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver stack pre-installed will be launched in your web browser, and you
+can start coding!
+
 Please note that since this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.

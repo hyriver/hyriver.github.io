@@ -56,14 +56,17 @@ and annual. Additionally, PyDaymet can compute Potential EvapoTranspiration (PET
 using three methods: ``penman_monteith``, ``priestley_taylor``, and ``hargreaves_samani`` for
 both single pixel and gridded data.
 
-To fully utilize the capabilities of the NCSS, under-the-hood, PyDaymet uses
+You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+
+Moreover, to fully utilize the capabilities of the NCSS, under-the-hood, PyDaymet uses
 `AsyncRetriever <https://github.com/cheginit/async_retriever>`__
 for retrieving Daymet data asynchronously with persistent caching. This improves the reliability
 and speed of data retrieval significantly.
 
-You can try using PyDaymet without installing it on you system by clicking on the binder badge
-below the PyDaymet banner. A Jupyter notebook instance with the stack
-pre-installed will be launched in your web browser and you can start coding!
+You can also try using PyDaymet without installing
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver stack pre-installed will be launched in your web browser, and you
+can start coding!
 
 Please note that since this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
@@ -140,8 +143,8 @@ The ``coords`` sub-command is as follows:
         - ``lat``: Latitude of the points of interest.
         - ``time_scale``: (optional) Time scale, either ``daily`` (default), ``monthly`` or ``annual``.
         - ``pet``: (optional) Method to compute PET. Suppoerted methods are:
-                   ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
-        - ``alpha``: (optional) Alpha parameter for Priestley-Taylor method for computing PET. Defaults to 1.26.
+                    ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
+        - ``snow``: (optional) Separate snowfall from precipitation, default is ``False``.
 
     Examples:
         $ cat coords.csv
@@ -152,11 +155,10 @@ The ``coords`` sub-command is as follows:
     Options:
     -v, --variables TEXT  Target variables. You can pass this flag multiple
                             times for multiple variables.
-
     -s, --save_dir PATH   Path to a directory to save the requested files.
                             Extension for the outputs is .nc for geometry and .csv
                             for coords.
-
+    --disable_ssl         Pass to disable SSL certification verification.
     -h, --help            Show this message and exit.
 
 And, the ``geometry`` sub-command is as follows:
@@ -176,8 +178,8 @@ And, the ``geometry`` sub-command is as follows:
         - ``geometry``: Target geometries.
         - ``time_scale``: (optional) Time scale, either ``daily`` (default), ``monthly`` or ``annual``.
         - ``pet``: (optional) Method to compute PET. Suppoerted methods are:
-                   ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
-        - ``alpha``: (optional) Alpha parameter for Priestley-Taylor method for computing PET. Defaults to 1.26.
+                    ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
+        - ``snow``: (optional) Separate snowfall from precipitation, default is ``False``.
 
     Examples:
         $ pydaymet geometry geo.gpkg -v prcp -v tmin
@@ -185,11 +187,10 @@ And, the ``geometry`` sub-command is as follows:
     Options:
     -v, --variables TEXT  Target variables. You can pass this flag multiple
                             times for multiple variables.
-
     -s, --save_dir PATH   Path to a directory to save the requested files.
                             Extension for the outputs is .nc for geometry and .csv
                             for coords.
-
+    --disable_ssl         Pass to disable SSL certification verification.
     -h, --help            Show this message and exit.
 
 Now, let's see how we can use PyDaymet as a library.
@@ -197,9 +198,11 @@ Now, let's see how we can use PyDaymet as a library.
 PyDaymet offers two functions for getting climate data; ``get_bycoords`` and ``get_bygeom``.
 The arguments of these functions are identical except the first argument where the latter
 should be polygon and the former should be a coordinate (a tuple of length two as in (x, y)).
-The input geometry or coordinate can be in any valid CRS (defaults to EPSG:4326). The ``dates``
-argument can be either a tuple of length two like ``(start_str, end_str)`` or a list of years
-like ``[2000, 2005]``. It is noted that both functions have a ``pet`` flag for computing PET.
+The input geometry or coordinate can be in any valid CRS (defaults to ``EPSG:4326``). The
+``dates`` argument can be either a tuple of length two like ``(start_str, end_str)`` or a list of
+years like ``[2000, 2005]``. It is noted that both functions have a ``pet`` flag for computing PET
+and a ``snow`` flag for separating snow from precipitation using
+`Martinez and Gupta (2010) <https://doi.org/10.1029/2009WR008294>`__ method.
 Additionally, we can pass ``time_scale`` to get daily, monthly or annual summaries. This flag
 by default is set to daily.
 
@@ -213,13 +216,13 @@ by default is set to daily.
     var = ["prcp", "tmin"]
     dates = ("2000-01-01", "2000-06-30")
 
-    daily = daymet.get_bygeom(geometry, dates, variables=var, pet="priestley_taylor")
+    daily = daymet.get_bygeom(geometry, dates, variables=var, pet="priestley_taylor", snow=True)
     monthly = daymet.get_bygeom(geometry, dates, variables=var, time_scale="monthly")
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/daymet_grid.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/daymet.ipynb
 
-If the input geometry (or coordinate) is in a CRS other than EPSG:4326, we should pass
+If the input geometry (or coordinate) is in a CRS other than ``EPSG:4326``, we should pass
 it to the functions.
 
 .. code-block:: python

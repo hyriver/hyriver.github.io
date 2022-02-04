@@ -51,7 +51,7 @@ These utilities are:
 
 - ``json2geodf``: For converting (Geo)JSON objects to GeoPandas dataframe.
 - ``arcgis2geojson``: For converting ESRIGeoJSON to the standard GeoJSON format.
-- ``gtiff2xarray``: For converting (Geo)TIFF objects to `xarray <https://xarray.pydata.org/>`__.
+- ``gtiff2xarray``: For converting (Geo)TIFF objects to `xarray <https://xarray.pydata.org/>`__
   datasets.
 - ``xarray2geodf``: For converting ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``, i.e.,
   vectorization.
@@ -60,6 +60,11 @@ These utilities are:
 All these functions handle all necessary CRS transformations.
 
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+
+You can also try using PyGeoUtils without installing
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver stack pre-installed will be launched in your web browser, and you
+can start coding!
 
 Please note that since this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
@@ -72,11 +77,7 @@ Installation
 ------------
 
 You can install PyGeoUtils using ``pip`` after installing ``libgdal`` on your system
-(for example, in Ubuntu run ``sudo apt install libgdal-dev``). Moreover, PyGeoUtils has an optional
-dependency for using persistent caching, ``requests-cache``. We highly recommend to install
-this package as it can significantly speedup send/receive queries. You don't have to change
-anything in your code, since PyGeoUtils under-the-hood looks for ``requests-cache`` and
-if available, it will automatically use persistent caching:
+(for example, in Ubuntu run ``sudo apt install libgdal-dev``).
 
 .. code-block:: console
 
