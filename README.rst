@@ -83,7 +83,7 @@ Package         Description                                                     
 =============== ==================================================================== ============
 |nhd_stat|      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
-|geoh_stat|     Access NWIS, NID, WQP, HCDN 2009, NLCD, and SSEBop databases         |pygeohydro|
+|geoh_stat|     Access NWIS, NID, WQP, HCDN 2009, NLCD, CAMELS, and SSEBop databases |pygeohydro|
 |day_stat|      Access Daymet for daily climate data both single pixel and gridded   |pydaymet|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
@@ -98,7 +98,7 @@ Features
 --------
 
 `HyRiver <https://hyriver.readthedocs.io>`__ is a software stack consisting of seven
-Python libraries that are designed to aid in watershed analysis through web services.
+Python libraries that are designed to aid in hydroclimate analysis through web services.
 Currently, this project only includes hydrology and climatology data
 within the US. Some of the major capabilities of HyRiver are as follows:
 
