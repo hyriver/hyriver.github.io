@@ -12,12 +12,9 @@
 Module Contents
 ---------------
 
-.. py:class:: NID(expire_after = EXPIRE, disable_caching = False)
+.. py:class:: NID
 
    Retrieve data from the National Inventory of Dams web service.
-
-   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: get_byfilter(self, query_list)
 
@@ -36,12 +33,12 @@ Module Contents
       >>> from pygeohydro import NID
       >>> nid = NID()
       >>> query_list = [
-      ...    {"huc6": ["160502", "100500"], "drainageArea": ["[200 500]"]},
+      ...    {"drainageArea": ["[200 500]"]},
       ...    {"nidId": ["CA01222"]},
       ... ]
       >>> dam_dfs = nid.get_byfilter(query_list)
       >>> print(dam_dfs[0].name[0])
-      Stillwater Point Dam
+      Prairie Portage
 
 
    .. py:method:: get_bygeom(self, geometry, geo_crs)
@@ -83,9 +80,9 @@ Module Contents
 
       >>> from pygeohydro import NID
       >>> nid = NID()
-      >>> dams, contexts = nid.get_suggestions("texas", "huc2")
-      >>> print(contexts.loc["HUC2", "value"])
-      12
+      >>> dams, contexts = nid.get_suggestions("texas", "city")
+      >>> print(contexts.loc["CITY", "value"])
+      Texas City
 
 
    .. py:method:: inventory_byid(self, dam_ids)
@@ -116,40 +113,55 @@ Module Contents
 
 
 
-.. py:function:: cover_statistics(ds)
+.. py:class:: WBD(layer, outfields = '*', crs = DEF_CRS)
+
+
+
+   Access Watershed Boundary Dataset (WBD).
+
+   .. rubric:: Notes
+
+   This file contains Hydrologic Unit (HU) polygon boundaries for the United States,
+   Puerto Rico, and the U.S. Virgin Islands.
+   For more info visit: https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer
+
+   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. Valid layers are:
+
+                  - ``wbdline``
+                  - ``huc2``
+                  - ``huc4``
+                  - ``huc6``
+                  - ``huc8``
+                  - ``huc10``
+                  - ``huc12``
+                  - ``huc14``
+                  - ``huc16``
+                * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
+                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
+
+
+.. py:function:: cover_statistics(cover_da)
 
    Percentages of the categorical NLCD cover data.
 
-   :Parameters: **ds** (:class:`xarray.DataArray`) -- Cover DataArray from a LULC Dataset from the ``nlcd`` function.
+   :Parameters: **cover_da** (:class:`xarray.DataArray`) -- Land cover DataArray from a LULC Dataset from the ``nlcd_bygeom`` function.
 
    :returns: :class:`Stats` -- A named tuple with the percentages of the cover classes and categories.
 
 
-.. py:function:: nlcd(geometry, resolution, years = None, region = 'L48', geo_crs = DEF_CRS, crs = DEF_CRS)
+.. py:function:: get_camels()
 
-   Get data from NLCD database (2019).
+   Get streaflow and basin attributes of all 671 stations in CAMELS dataset.
 
-   .. deprecated:: 0.11.5
-       Use :func:`nlcd_bygeom` or :func:`nlcd_bycoords`  instead.
+   .. rubric:: Notes
 
-   :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- The geometry or bounding box (west, south, east, north) for extracting the data.
-                * **resolution** (:class:`float`) -- The data resolution in meters. The width and height of the output are computed in pixel
-                  based on the geometry bounds and the given resolution.
-                * **years** (:class:`dict`, *optional*) -- The years for NLCD layers as a dictionary, defaults to
-                  ``{'impervious': [2019], 'cover': [2019], 'canopy': [2019], "descriptor": [2019]}``.
-                  Layers that are not in years are ignored, e.g., ``{'cover': [2016, 2019]}`` returns
-                  land cover data for 2016 and 2019.
-                * **region** (:class:`str`, *optional*) -- Region in the US, defaults to ``L48``. Valid values are ``L48`` (for CONUS),
-                  ``HI`` (for Hawaii), ``AK`` (for Alaska), and ``PR`` (for Puerto Rico).
-                  Both lower and upper cases are acceptable.
-                * **geo_crs** (:class:`str`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
-                * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
-                  epsg:4326.
+   For more info on CAMELS visit: https://ral.ucar.edu/solutions/products/camels
 
-   :returns: :class:`xarray.Dataset` -- NLCD within a geometry
+   :returns: :class:`tuple` of :class:`geopandas.GeoDataFrame` and :class:`xarray.Dataset` -- The first is basin attributes as a ``geopandas.GeoDataFrame`` and the second
+             is streamflow data and basin attributes as an ``xarray.Dataset``.
 
 
-.. py:function:: nlcd_bycoords(coords, years = None, region = 'L48', expire_after = EXPIRE, disable_caching = False)
+.. py:function:: nlcd_bycoords(coords, years = None, region = 'L48', ssl = None)
 
    Get data from NLCD database (2019).
 
@@ -161,13 +173,13 @@ Module Contents
                 * **region** (:class:`str`, *optional*) -- Region in the US, defaults to ``L48``. Valid values are ``L48`` (for CONUS),
                   ``HI`` (for Hawaii), ``AK`` (for Alaska), and ``PR`` (for Puerto Rico).
                   Both lower and upper cases are acceptable.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to ``False`` to disable
+                  SSL certification verification.
 
    :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame with the NLCD data and the coordinates.
 
 
-.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = DEF_CRS, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = DEF_CRS, ssl = None)
 
    Get data from NLCD database (2019).
 
@@ -184,11 +196,20 @@ Module Contents
                   Both lower and upper cases are acceptable.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   epsg:4326.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to ``False`` to disable
+                  SSL certification verification.
 
    :returns: :class:`dict` of :class:`xarray.Dataset` or :class:`xarray.Dataset` -- A single or a ``dict`` of NLCD datasets. If dict, the keys are indices
              of the input ``GeoDataFrame``.
+
+
+.. py:function:: overland_roughness(cover_da)
+
+   Estimate overland roughness from land cover data.
+
+   :Parameters: **cover_da** (:class:`xarray.DataArray`) -- Land cover DataArray from a LULC Dataset from the ``nlcd_bygeom`` function.
+
+   :returns: :class:`xarray.DataArray` -- Overland roughness
 
 
 .. py:function:: ssebopeta_bycoords(coords, dates, crs = DEF_CRS)

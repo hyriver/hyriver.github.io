@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1, verbose = False, disable_retry = False, expire_after = EXPIRE, disable_caching = False)
+.. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1, verbose = False, disable_retry = False)
 
    Access to an ArcGIS REST service.
 
@@ -43,8 +43,6 @@ Module Contents
                 * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
                   is done and object IDs of the failed requests is saved to a text file
                   which its path can be accessed via ``self.client.failed_path``.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: get_features(self, featureids, return_m = False, return_geom = True)
 
@@ -119,36 +117,28 @@ Module Contents
 
 
 
+.. py:class:: HttpURLs
+
+
+
+   URLs of the supported HTTP services.
+
+
+.. py:class:: RESTfulURLs
+
+
+
+   URLs of the supported RESTful services.
+
+
 .. py:class:: ServiceURL
 
-   Base URLs of the supported services.
-
-   .. py:method:: http(self)
-      :property:
-
-      Read HTTP URLs from the source yml file.
 
 
-   .. py:method:: restful(self)
-      :property:
-
-      Read RESTful URLs from the source yml file.
+   URLs of the supported services.
 
 
-   .. py:method:: wfs(self)
-      :property:
-
-      Read WFS URLs from the source yml file.
-
-
-   .. py:method:: wms(self)
-      :property:
-
-      Read WMS URLs from the source yml file.
-
-
-
-.. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = DEF_CRS, read_method = 'json', max_nrecords = 1000, validation = True, expire_after = EXPIRE, disable_caching = False)
+.. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = DEF_CRS, read_method = 'json', max_nrecords = 1000, validation = True)
 
 
 
@@ -174,8 +164,6 @@ Module Contents
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WFS service, defaults to True. Set this
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: getfeature_bybox(self, bbox, box_crs = DEF_CRS, always_xy = False)
 
@@ -246,9 +234,14 @@ Module Contents
 
 
 
-.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = DEF_CRS, validation = True, expire_after = EXPIRE, disable_caching = False)
+.. py:class:: WFSURLs
 
 
+
+   URLs of the supported WFS services.
+
+
+.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = DEF_CRS, validation = True, ssl = None)
 
    Get data from a WMS service within a geometry or bounding box.
 
@@ -263,8 +256,13 @@ Module Contents
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WMS service, defaults to True. Set this
                   to False if you are sure all the WMS settings such as layer and crs are correct
                   to avoid sending extra requests.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
+                  SSL certification verification.
+
+   .. py:method:: get_validlayers(self)
+
+      Get the layers supported by the WMS service.
+
 
    .. py:method:: getmap_bybox(self, bbox, resolution, box_crs = DEF_CRS, always_xy = False, max_px = 8000000, kwargs = None)
 
@@ -287,5 +285,12 @@ Module Contents
       :returns: :class:`dict` -- A dict where the keys are the layer name and values are the returned response
                 from the WMS service as bytes.
 
+
+
+.. py:class:: WMSURLs
+
+
+
+   URLs of the supported WMS services.
 
 

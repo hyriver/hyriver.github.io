@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: AGRBase(base_url, layer = None, outfields = '*', crs = DEF_CRS, outformat = 'json', expire_after = EXPIRE, disable_caching = False)
+.. py:class:: AGRBase(base_url, layer = None, outfields = '*', crs = DEF_CRS, outformat = 'json')
 
    Base class for getting geospatial data from a ArcGISRESTful service.
 
@@ -24,8 +24,6 @@ Module Contents
                 * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``json``.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: bygeom(self, geom, geo_crs = DEF_CRS, sql_clause = '', distance = None, return_m = False, return_geom = True)
 
@@ -89,30 +87,27 @@ Module Contents
 
    Access and explore files on ScienceBase.
 
-   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
-
-   .. py:method:: get_children(self, item)
+   .. py:method:: get_children(item)
+      :staticmethod:
 
       Get children items of an item.
 
 
-   .. py:method:: get_file_urls(self, item)
+   .. py:method:: get_file_urls(item)
+      :staticmethod:
 
       Get download and meta URLs of all the available files for an item.
 
 
 
-.. py:function:: stage_nhdplus_attrs(parquet_path = None, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: stage_nhdplus_attrs(parquet_path = None)
 
    Stage the NHDPlus Attributes database and save to nhdplus_attrs.parquet.
 
    More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
 
-   :Parameters: * **parquet_path** (:class:`str` or :class:`~~pathlib.Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
-                  later use.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~pathlib.Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
+                later use.
 
    :returns: :class:`pandas.DataFrame` -- The staged data as a DataFrame.
 

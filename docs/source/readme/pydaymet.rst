@@ -45,7 +45,7 @@ Features
 --------
 
 PyDaymet is a part of `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
-is designed to aid in watershed analysis through web services. This package provides
+is designed to aid in hydroclimate analysis through web services. This package provides
 access to climate data from
 `Daymet V4 <https://daac.ornl.gov/DAYMET/guides/Daymet_Daily_V4.html>`__ database using NetCDF
 Subset Service (NCSS). Both single pixel (using ``get_bycoords`` function) and gridded data (using
@@ -58,17 +58,38 @@ both single pixel and gridded data.
 
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
 
-Moreover, to fully utilize the capabilities of the NCSS, under-the-hood, PyDaymet uses
+Moreover, under the hood, PyDaymet uses
 `AsyncRetriever <https://github.com/cheginit/async_retriever>`__
-for retrieving Daymet data asynchronously with persistent caching. This improves the reliability
-and speed of data retrieval significantly.
+for making requests asynchronously with persistent caching. This improves the
+reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
+pairs and upon making an already cached request, it will retrieve the responses from the cache
+if the server's response is unchanged.
+
+You can control the request/response caching behavior by setting the following
+environment variables:
+
+* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
+  ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
+  -1 (never expire).
+* ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+
+For example, in your code before making any requests you can do:
+
+.. code-block:: python
+
+    import os
+
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
+    os.environ["HYRIVER_CACHE_DISABLE"] = "true"
 
 You can also try using PyDaymet without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
 instance with the HyRiver stack pre-installed will be launched in your web browser, and you
 can start coding!
 
-Please note that since this project is in early development stages, while the provided
+Please note that since this project is in the early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
 

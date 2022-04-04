@@ -45,13 +45,14 @@ Features
 --------
 
 Py3DEP is a part of `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
-is designed to aid in watershed analysis through web services. This package provides
+is designed to aid in hydroclimate analysis through web services. This package provides
 access to the `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__
 database which is a part of the
 `National Map services <https://viewer.nationalmap.gov/services/>`__.
-The 3DEP service has multi-resolution sources and depending on the user provided resolution,
+The 3DEP service has multi-resolution sources and depending on the user-provided resolution,
 the data is resampled on the server-side based on all the available data sources. Py3DEP returns
-the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset.
+the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset. The main function is
+``get_map`` which supports the following layers:
 
 - DEM
 - Hillshade Gray
@@ -59,6 +60,7 @@ the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset.
 - Aspect Map
 - GreyHillshade Elevation Fill
 - Hillshade Multidirectional
+- Slope Degrees
 - Slope Map
 - Hillshade Elevation Tinted
 - Height Ellipsoidal
@@ -67,24 +69,49 @@ the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset.
 
 Moreover, Py3DEP offers some additional utilities:
 
-- ``elevation_bygrid``: For getting elevations of all the grid points in a 2D grid.
-- ``elevation_bycoords``: For getting elevation of a list of ``x`` and ``y`` coordinates.
+- ``elevation_bygrid``: For retrieving elevations of all the grid points in a 2D grid.
+- ``elevation_bycoords``: For retrieving elevation of a list of ``x`` and ``y`` coordinates.
+- ``elevation_profile``: For retrieving elevation profile along a line at a given spacing.
+  This function converts the line to a B-spline and then calculates the elevation along
+  the spline at a given uniform spacing.
 - ``deg2mpm``: For converting slope dataset from degree to meter per meter.
+- ``query_3dep_sources``: For querying bounds of 3DEP's data sources within a bounding box.
 - ``check_3dep_availability``: For querying 3DEP's resolution availability within a bounding box.
 
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
 
-Moreover, to fully utilize the capabilities of the 3DEP, under-the-hood, Py3DEP uses
+Moreover, under the hood, Py3DEP uses
 `AsyncRetriever <https://github.com/cheginit/async_retriever>`__
-for retrieving topographic data asynchronously with persistent caching. This improves the
-reliability and speed of data retrieval significantly.
+for making requests asynchronously with persistent caching. This improves the
+reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
+pairs and upon making an already cached request, it will retrieve the responses from the cache
+if the server's response is unchanged.
+
+You can control the request/response caching behavior by setting the following
+environment variables:
+
+* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
+  ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
+  -1 (never expire).
+* ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+
+For example, in your code before making any requests you can do:
+
+.. code-block:: python
+
+    import os
+
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
+    os.environ["HYRIVER_CACHE_DISABLE"] = "true"
 
 You can also try using Py3DEP without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
 instance with the HyRiver stack pre-installed will be launched in your web browser, and you
 can start coding!
 
-Please note that since this project is in early development stages, while the provided
+Please note that since this project is in the early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
 
@@ -116,7 +143,7 @@ using `Conda <https://docs.conda.io/en/latest/>`__:
 Quick start
 -----------
 
-You can use Py3DEP using command-line or as a Python library. The command line interface
+You can use Py3DEP using command-line or as a Python library. The command-line interface
 provides access to two functionality:
 
 - Getting topographic data: You must create a ``geopandas.GeoDataFrame`` that contains
@@ -235,7 +262,7 @@ dataset as a raster file:
 
     dem.rio.to_raster("dem_01031500.tif")
 
-Moreover, we can get the elevations of set of x- and y- coordinates on a grid. For example,
+Moreover, we can get the elevations of a set of x- and y- coordinates on a grid. For example,
 let's get the minimum temperature data within this watershed from Daymet using PyDaymet then
 add the elevation as a new variable to the dataset:
 
@@ -267,3 +294,22 @@ and add elevation data for its nodes using ``elevation_bycoords`` function.
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/street_elev.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/3dep.ipynb
     :align: center
+
+We can get the elevation profile along a line at a given spacing using ``elevation_profile``
+function. For example, let's get the elevation profile at 10-m spacing along the main flowline
+of the upstream drainage area of a USGS station with ID ``01031500``:
+
+.. code-block:: python
+
+    import py3dep
+    from pynhd import NLDI
+
+    flw_main = NLDI().navigate_byid(
+        fsource="nwissite",
+        fid="USGS-01031500",
+        navigation="upstreamMain",
+        source="flowlines",
+        distance=1000,
+    )
+    line = flw_main.geometry.unary_union
+    elevation = py3dep.elevation_profile(line, 10)

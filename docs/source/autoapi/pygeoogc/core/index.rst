@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1, verbose = False, disable_retry = False, expire_after = EXPIRE, disable_caching = False)
+.. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1, verbose = False, disable_retry = False)
 
    Access to an ArcGIS REST service.
 
@@ -37,8 +37,6 @@ Module Contents
                 * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
                   is done and object IDs of the failed requests is saved to a text file
                   which its path can be accessed via ``self.failed_path``.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: esri_query(self, geom, geo_crs = DEF_CRS)
 
@@ -103,8 +101,6 @@ Module Contents
                 * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
                   is done and object IDs of the failed requests is saved to a text file
                   which its path can be accessed via ``self.failed_path``.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
 
 .. py:class:: WFSBase(__pydantic_self__, **data)
@@ -130,8 +126,6 @@ Module Contents
                 * **max_nrecords** (:class:`int`, *optional*) -- The maximum number of records in a single request to be retrieved from the service,
                   defaults to 1000. If the number of requested records is greater than this value,
                   the query will be split into multiple requests.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to ``False``.
 
    .. py:method:: get_validnames(self)
 
@@ -158,8 +152,6 @@ Module Contents
                 * **version** (:class:`str`, *optional*) -- The WMS service version which should be either 1.1.1 or 1.3.0, defaults to 1.3.0.
                 * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   ``epsg:4326``.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: get_validlayers(self)
 

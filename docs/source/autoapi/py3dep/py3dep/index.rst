@@ -17,7 +17,7 @@ Module Contents
    Query 3DEP's resolution availability within a bounding box.
 
    This function checks availability of 3DEP's at the following resolutions:
-   1 m, 3 m, 5 m, 10 m, 30 m, and 60 m.
+   1 m, 3 m, 5 m, 10 m, 30 m, 60 m, and topobathy (integrated topobathymetry).
 
    :Parameters: * **bbox** (:class:`tuple`) -- Bounding box as tuple of ``(min_x, min_y, max_x, max_y)``.
                 * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of bbox, defaults to ``EPSG:4326``.
@@ -30,10 +30,10 @@ Module Contents
    >>> import py3dep
    >>> bbox = (-69.77, 45.07, -69.31, 45.45)
    >>> py3dep.check_3dep_availability(bbox)
-   {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False}
+   {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False, 'topobathy': False}
 
 
-.. py:function:: elevation_bycoords(coords, crs = DEF_CRS, source = 'tep', expire_after = EXPIRE, disable_caching = False)
+.. py:function:: elevation_bycoords(coords, crs = DEF_CRS, source = 'tep')
 
    Get elevation for a list of coordinates.
 
@@ -47,13 +47,11 @@ Module Contents
                   They both tend to be slower than the Airmap service. Note that ``tnm`` is bit unstable.
                   It's recommended to use ``tep`` unless 10-m resolution accuracy is not necessary which
                   in that case ``airmap`` is more appropriate.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`list` of :class:`float` -- Elevation in meter.
 
 
-.. py:function:: elevation_bygrid(xcoords, ycoords, crs, resolution, depression_filling = False, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: elevation_bygrid(xcoords, ycoords, crs, resolution, depression_filling = False)
 
    Get elevation from DEM data for a grid.
 
@@ -67,13 +65,30 @@ Module Contents
                   increases computation time so chose this value with caution.
                 * **depression_filling** (:class:`bool`, *optional*) -- Fill depressions before sampling using
                   `RichDEM <https://richdem.readthedocs.io/en/latest/>`__ package, defaults to False.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`xarray.DataArray` -- Elevations of the input coordinates as a ``xarray.DataArray``.
 
 
-.. py:function:: get_map(layers, geometry, resolution, geo_crs = DEF_CRS, crs = DEF_CRS, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: elevation_profile(lines, spacing, dem_res = 10, crs = DEF_CRS)
+
+   Get the elevation profile along a line at a given uniform spacing.
+
+   This function converts the line to a B-spline and then calculates the elevation
+   along the spline at a given uniform spacing.
+
+   :Parameters: * **lines** (:class:`LineString` or :class:`MultiLineString`) -- Line segment(s) to be profiled. If its type is ``MultiLineString``,
+                  it will be converted to a single ``LineString`` and if this operation
+                  fails, a ``InvalidInputType`` will be raised.
+                * **spacing** (:class:`float`) -- Spacing between the sample points along the line in meters.
+                * **dem_res** (:class:`float`, *optional*) -- Resolution of the DEM source to use in meter, defaults to 10.
+                * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of ``lines``, defaults to ``EPSG:4326``.
+
+   :returns: :class:`xarray.DataArray` -- Elevation profile with dimension ``z`` and three coordinates: ``x``, ``y``,
+             and ``distance``. The ``distance`` coordinate is the distance from the start
+             of the line in meters.
+
+
+.. py:function:: get_map(layers, geometry, resolution, geo_crs = DEF_CRS, crs = DEF_CRS)
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
 
@@ -103,9 +118,34 @@ Module Contents
                   ``EPSG:4326``. Valid values are ``EPSG:4326``, ``EPSG:3576``, ``EPSG:3571``,
                   ``EPSG:3575``, ``EPSG:3857``, ``EPSG:3572``, ``CRS:84``, ``EPSG:3573``,
                   and ``EPSG:3574``.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`xarray.DataArray` or :class:`xarray.Dataset` -- The requested topographic data as an ``xarray.DataArray`` or ``xarray.Dataset``.
+
+
+.. py:function:: query_3dep_sources(bbox, crs = DEF_CRS, res = None)
+
+   Query 3DEP's data sources within a bounding box.
+
+   This function queries the availability of the underlying data that 3DEP uses
+   at the following resolutions:
+   1 m, 3 m, 5 m, 10 m, 30 m, 60 m, and topobathy (integrated topobathymetry).
+
+   :Parameters: * **bbox** (:class:`tuple`) -- Bounding box as tuple of ``(min_x, min_y, max_x, max_y)``.
+                * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of bbox, defaults to ``EPSG:4326``.
+                * **res** (:class:`str`, *optional*) -- Resolution to query, defaults to ``None``, i.e., all resolutions.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- Polygon(s) representing the 3DEP data sources at each resolution.
+             Resolutions are given in the ``dem_res`` column.
+
+   .. rubric:: Examples
+
+   >>> import py3dep
+   >>> bbox = (-69.77, 45.07, -69.31, 45.45)
+   >>> src = py3dep.query_3dep_sources(bbox)
+   >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
+   {'10m': 8, '1m': 4, '30m': 8}
+   >>> src = py3dep.query_3dep_sources(bbox, res="1m")
+   >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
+   {'1m': 4}
 
 

@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: BaseRetriever(urls, read, request_kwds = None, request_method = 'GET', cache_name = None, family = 'both')
+.. py:class:: BaseRetriever(urls, read, request_kwds = None, request_method = 'GET', cache_name = None)
 
    Base class for async retriever.
 

@@ -23,7 +23,7 @@ Module Contents
                 * **kwargs** (:class:`dict`, *optional*) -- Keywords to pass to the ``cache.delete_url()``.
 
 
-.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both', timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
 
    Send async requests.
 
@@ -34,12 +34,10 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **family** (:class:`str`, *optional*) -- TCP socket family, defaults to both, i.e., IPv4 and IPv6. For IPv4
-                  or IPv6 only pass ``ipv4`` or ``ipv6``, respectively.
                 * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
-                  SSL cetification verification.
+                  SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
 
@@ -61,7 +59,7 @@ Module Contents
    '01646500'
 
 
-.. py:function:: retrieve_binary(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both', timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve_binary(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
 
    Send async requests and get the response as ``bytes``.
 
@@ -71,19 +69,17 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **family** (:class:`str`, *optional*) -- TCP socket family, defaults to both, i.e., IPv4 and IPv6. For IPv4
-                  or IPv6 only pass ``ipv4`` or ``ipv6``, respectively.
                 * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
-                  SSL cetification verification.
+                  SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
 
    :returns: :class:`bytes` -- List of responses in the order of input URLs.
 
 
-.. py:function:: retrieve_json(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both', timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve_json(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
 
    Send async requests and get the response as ``json``.
 
@@ -93,12 +89,10 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **family** (:class:`str`, *optional*) -- TCP socket family, defaults to both, i.e., IPv4 and IPv6. For IPv4
-                  or IPv6 only pass ``ipv4`` or ``ipv6``, respectively.
                 * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
-                  SSL cetification verification.
+                  SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
 
@@ -121,7 +115,7 @@ Module Contents
    2675320
 
 
-.. py:function:: retrieve_text(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, family = 'both', timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve_text(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
 
    Send async requests and get the response as ``text``.
 
@@ -131,12 +125,10 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **family** (:class:`str`, *optional*) -- TCP socket family, defaults to both, i.e., IPv4 and IPv6. For IPv4
-                  or IPv6 only pass ``ipv4`` or ``ipv6``, respectively.
                 * **timeout** (:class:`float`, *optional*) -- Timeout for the request in seconds, defaults to 5.0.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
-                  SSL cetification verification.
+                  SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
 

@@ -12,12 +12,9 @@
 Module Contents
 ---------------
 
-.. py:class:: NWIS(expire_after = EXPIRE, disable_caching = False)
+.. py:class:: NWIS
 
    Access NWIS web service.
-
-   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: get_info(self, queries, expanded = False)
 
@@ -88,7 +85,7 @@ Module Contents
 
 
 
-.. py:class:: WaterQuality(expire_after = EXPIRE, disable_caching = False)
+.. py:class:: WaterQuality
 
    Water Quality Web Service https://www.waterqualitydata.us.
 
@@ -103,9 +100,6 @@ Module Contents
    it to one of these functions. For more information on the parameters, please
    consult the
    `Water Quality Data documentation <https://www.waterqualitydata.us/webservices_documentation>`__.
-
-   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    .. py:method:: data_bystation(self, station_ids, wq_kwds)
 
@@ -172,7 +166,7 @@ Module Contents
 
 
 
-.. py:function:: interactive_map(bbox, crs = DEF_CRS, nwis_kwds = None, expire_after = EXPIRE, disable_caching = False)
+.. py:function:: interactive_map(bbox, crs = DEF_CRS, nwis_kwds = None)
 
    Generate an interactive map including all USGS stations within a bounding box.
 
@@ -181,8 +175,6 @@ Module Contents
                 * **nwis_kwds** (:class:`dict`, *optional*) -- Optional keywords to include in the NWIS request as a dictionary like so:
                   ``{"hasDataTypeCd": "dv,iv", "outputDataTypeCd": "dv,iv", "parameterCd": "06000"}``.
                   Default to None.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
    :returns: :class:`folium.Map` -- Interactive map within a bounding box.
 

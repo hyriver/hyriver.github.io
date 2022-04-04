@@ -46,14 +46,16 @@ Features
 
 PyGeoHydro (formerly named `hydrodata <https://pypi.org/project/hydrodata>`__) is a part of
 `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
-is designed to aid in watershed analysis through web services. This package provides
+is designed to aid in hydroclimate analysis through web services. This package provides
 access to some public web services that offer geospatial hydrology data. It has three
 main modules: ``pygeohydro``, ``plot``, and ``helpers``.
 
-The ``pygeohydro`` module can pull data from the following web services:
+PyGeoHydro supports the following datasets:
 
 * `NWIS <https://nwis.waterdata.usgs.gov/nwis>`__ for daily mean streamflow observations
   (returned as a ``pandas.DataFrame`` or ``xarray.Dataset`` with station attributes),
+* `CAMELS <https://ral.ucar.edu/solutions/products/camels>`__ for accessing streamflow
+  observations (1980-2014) and basin-level attributes of 671 stations within CONUS.
 * `Water Quality Portal <https://www.waterqualitydata.us/>`__ for accessing current and
   historical water quality data from more than 1.5 million sites across the US,
 * `NID <https://nid.sec.usace.army.mil>`__ for accessing the National Inventory of Dams
@@ -62,6 +64,8 @@ The ``pygeohydro`` module can pull data from the following web services:
   where human activity affects the natural flow of the watercourse,
 * `NLCD 2019 <https://www.mrlc.gov/>`__ for land cover/land use, imperviousness, imperviousness
   descriptor, and canopy data. You can get data using both geometries and coordinates.
+* `WBD <https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer/>`__ for accessing
+  Hydrologic Unit (HU) polygon boundaries within the US (all HUC levels).
 * `SSEBop <https://earlywarning.usgs.gov/ssebop/modis/daily>`__ for daily actual
   evapotranspiration, for both single pixel and gridded data.
 
@@ -69,6 +73,7 @@ Also, it has two other functions:
 
 * ``interactive_map``: Interactive map for exploring NWIS stations within a bounding box.
 * ``cover_statistics``: Categorical statistics of land use/land cover data.
+* ``overland_roughness``: Estimate overland roughness from land use/land cover data.
 
 The ``plot`` module includes two main functions:
 
@@ -84,10 +89,31 @@ The ``helpers`` module includes:
 
 You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
 
-Moreover, to fully utilize the capabilities of these web services, under-the-hood, PyGeoHydro uses
+Moreover, under the hood, PyGeoHydro uses
 `AsyncRetriever <https://github.com/cheginit/async_retriever>`__
-for retrieving topographic data asynchronously with persistent caching. This improves the
-reliability and speed of data retrieval significantly.
+for making requests asynchronously with persistent caching. This improves the
+reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
+pairs and upon making an already cached request, it will retrieve the responses from the cache
+if the server's response is unchanged.
+
+You can control the request/response caching behavior by setting the following
+environment variables:
+
+* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
+  ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
+  -1 (never expire).
+* ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+
+For example, in your code before making any requests you can do:
+
+.. code-block:: python
+
+    import os
+
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
+    os.environ["HYRIVER_CACHE_DISABLE"] = "true"
 
 You can also try using PyGeoHydro without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
@@ -189,6 +215,18 @@ that the input dates are in UTC time zone and returns the data in UTC time zone 
     date = ("2005-01-01 12:00", "2005-01-12 15:00")
     qobs = nwis.get_streamflow("01646500", date, freq="iv")
 
+We can get the CAMELS dataset as a ``geopandas.GeoDataFrame`` that includes geometry and
+basin-level attributes of 671 natural watersheds within CONUS and their streamflow
+observations between 1980-2014 as a ``xarray.Dataset``, like so:
+
+.. code-block:: python
+
+    attrs, qobs = gh.get_camels()
+
+.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/camels.png
+    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/camels.ipynb
+    :alt: CAMELS
+
 The ``WaterQuality`` has a number of convenience methods to retrieve data from the
 web service. Since there are many parameter combinations that can be
 used to retrieve data, a general method is also provided to retrieve data from
@@ -225,19 +263,21 @@ Then we can get the data for all these stations the data like this:
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/water_quality.ipynb
     :alt: Water Quality
 
-Moreover, we can get land use/land cove data using ``nlcd_bygeom`` or ``nlcd_bycoods`` functions
-and percentages of land cover types using ``cover_statistics``.
-The ``nlcd_bycoords`` function returns a ``geopandas.GeoDataFrame`` with the NLCD
-layers as columns and input coordinates as the ``geometry`` column. Moreover, The ``nlcd_bygeom``
-function accepts both a single geometry or a ``geopandas.GeoDataFrame`` as the input.
+Moreover, we can get land use/land cove data using ``nlcd_bygeom`` or ``nlcd_bycoods`` functions,
+percentages of land cover types using ``cover_statistics``, and overland roughness using
+``overland_roughness``. The ``nlcd_bycoords`` function returns a ``geopandas.GeoDataFrame``
+with the NLCD layers as columns and input coordinates as the ``geometry`` column. Moreover,
+the ``nlcd_bygeom`` function accepts both a single geometry or a ``geopandas.GeoDataFrame``
+as the input.
 
 .. code-block:: python
 
     from pynhd import NLDI
 
-    basins = NLDI().get_basins(["01031450", "01031500", "01031510"])
+    basins = NLDI().get_basins(["01031450", "01318500", "01031510"])
     lulc = gh.nlcd_bygeom(basins, 100, years={"cover": [2016, 2019]})
-    stats = gh.cover_statistics(lulc["01031450"].cover_2016)
+    stats = gh.cover_statistics(lulc["01318500"].cover_2016)
+    roughness = gh.overland_roughness(lulc["01318500"].cover_2019)
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/lulc.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nlcd.ipynb
@@ -281,3 +321,14 @@ We can get also all dams within CONUS in NID with maximum storage larger than 20
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/dams.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nid.ipynb
     :alt: Dams
+
+
+The ``WBD`` class allows us to get Hydrologic Unit (HU) polygon boundaries. Let's
+get the two Hudson HUC4s:
+
+.. code-block:: python
+
+    from pygeohydro import WBD
+
+    wbd = WBD("huc4")
+    hudson = wbd.byids("huc4", ["0202", "0203"])

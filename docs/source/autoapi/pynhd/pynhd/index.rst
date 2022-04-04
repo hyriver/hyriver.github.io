@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: NHD(layer, outfields = '*', crs = DEF_CRS, expire_after = EXPIRE, disable_caching = False)
+.. py:class:: NHD(layer, outfields = '*', crs = DEF_CRS)
 
 
 
@@ -42,50 +42,78 @@ Module Contents
                   - ``waterbody_hr``
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
 
 
-.. py:class:: NHDPlusHR(layer, outfields = '*', crs = DEF_CRS, service = 'hydro')
+.. py:class:: NHDPlusHR(layer, outfields = '*', crs = DEF_CRS)
 
 
 
-   Access NHDPlus HR database through the National Map ArcGISRESTful.
+   Access National Hydrography Dataset (NHD) high resolution.
 
-   :Parameters: * **layer** (:class:`str`) -- A valid service layer. To see a list of available layers instantiate the class
-                  with passing an empty string like so ``NHDPlusHR("")``.
+   .. rubric:: Notes
+
+   For more info visit: https://edits.nationalmap.gov/arcgis/rest/services/nhd/MapServer
+
+   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. Valid layers are:
+
+                  - ``point``
+                  - ``sink``
+                  - ``flowline``
+                  - ``non_network_flowline``
+                  - ``flow_direction``
+                  - ``line``
+                  - ``wall``
+                  - ``burn_line``
+                  - ``burn_waterbody``
+                  - ``area``
+                  - ``waterbody``
+                  - ``huc12``
+                  - ``catchment``
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
-                * **service** (:class:`str`, *optional*) -- Name of the web service to use, defaults to hydro. Supported web services are:
-
-                  * hydro: https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer
-                  * edits: https://edits.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/NHDPlus_HR/MapServer
+                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
 
 
-.. py:class:: NLDI(expire_after = EXPIRE, disable_caching = False)
+.. py:class:: NLDI
 
    Access the Hydro Network-Linked Data Index (NLDI) service.
 
-   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
-
    .. py:method:: comid_byloc(self, coords, loc_crs = DEF_CRS)
 
-      Get the closest ComID(s) based on coordinates.
+      Get the closest ComID based on coordinates.
+
+      .. rubric:: Notes
+
+      This function tries to find the closest ComID based on flowline grid cells. If
+      such a cell is not found, it will return the closest ComID using the flowtrace
+      endpoint of the PyGeoAPI service to find the closest downstream ComID. The returned
+      dataframe has a ``measure`` column that indicates the location of the input
+      coordinate on the flowline as a percentage of the total flowline length.
+
+      :Parameters: * **coords** (:class:`tuple` or :class:`list` of :class:`tuples`) -- A tuple of length two (x, y) or a list of them.
+                   * **loc_crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
+
+      :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed ComID(s) and points in EPSG:4326. If some coords don't return
+                any ComID a list of missing coords are returned as well.
+
+
+   .. py:method:: feature_byloc(self, coords, loc_crs = DEF_CRS)
+
+      Get the closest feature ID(s) based on coordinates.
 
       :Parameters: * **coords** (:class:`tuple` or :class:`list`) -- A tuple of length two (x, y) or a list of them.
                    * **loc_crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
 
-      :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed ComID(s) in EPSG:4326. If some coords don't return any ComID
-                a list of missing coords are returned as well.
+      :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed feature ID(s) and flowlines in EPSG:4326. If some coords don't
+                return any IDs a list of missing coords are returned as well.
 
 
-   .. py:method:: get_basins(self, station_ids, split_catchment = False)
+   .. py:method:: get_basins(self, station_ids, split_catchment = False, simplified = True)
 
       Get basins for a list of station IDs.
 
       :Parameters: * **station_ids** (:class:`str` or :class:`list`) -- USGS station ID(s).
-                   * **split_catchment** (:class:`bool`, *optional*) -- If True, split the basin at the watershed outlet location. Default to False.
+                   * **split_catchment** (:class:`bool`, *optional*) -- If ``True``, split basins at their outlet locations. Default to ``False``.
+                   * **simplified** (:class:`bool`, *optional*) -- If ``True``, return a simplified version of basin geometries. Default to ``True``.
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed basins in EPSG:4326. If some IDs don't return any features
                 a list of missing ID(s) are returned as well.
@@ -169,10 +197,9 @@ Module Contents
 
 .. py:class:: PyGeoAPI
 
-   Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
 
-   :Parameters: * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
-                * **disable_caching** (:class:`bool`, *optional*) -- If ``True``, disable caching requests, defaults to False.
+
+   Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
 
    .. py:method:: cross_section(self, coord, width, numpts, crs = DEF_CRS)
 
@@ -198,7 +225,8 @@ Module Contents
 
       Return a GeoDataFrame from the xsatendpts service.
 
-      :Parameters: * **coords** (:class:`list`) -- A list of two coordinates to trace as a list of tuples,e.g., [(lon, lat), (lon, lat)].
+      :Parameters: * **coords** (:class:`list`) -- A list of two coordinates to trace as a list of tuples, e.g.,
+                     [(lon1, lat1), (lon2, lat2)].
                    * **numpts** (:class:`int`) -- The number of points to extract the elevation profile from the DEM.
                    * **dem_res** (:class:`int`) -- The target resolution for requesting the DEM from 3DEP service.
                    * **crs** (:class:`str`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
@@ -216,13 +244,14 @@ Module Contents
       411.5906
 
 
-   .. py:method:: flow_trace(self, coord, crs = DEF_CRS, direction = 'down')
+   .. py:method:: flow_trace(self, coord, crs = DEF_CRS, direction = 'none')
 
       Return a GeoDataFrame from the flowtrace service.
 
       :Parameters: * **coord** (:class:`tuple`) -- The coordinate of the point to trace as a tuple,e.g., (lon, lat).
                    * **crs** (:class:`str`) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
-                   * **direction** (:class:`str`, *optional*) -- The direction of flowpaths, either "down", "up", or "none". Defaults to "down".
+                   * **direction** (:class:`str`, *optional*) -- The direction of flowpaths, either ``down``, ``up``, or ``none``.
+                     Defaults to ``none``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the traced flowline.
 
@@ -231,7 +260,7 @@ Module Contents
       >>> from pynhd import PyGeoAPI
       >>> pygeoapi = PyGeoAPI()
       >>> gdf = pygeoapi.flow_trace(
-      ...     (1774209.63, 856381.68), crs="ESRI:102003", raindrop=False, direction="none"
+      ...     (1774209.63, 856381.68), crs="ESRI:102003", direction="none"
       ... )  # doctest: +SKIP
       >>> print(gdf.comid.iloc[0])  # doctest: +SKIP
       22294818
@@ -303,5 +332,38 @@ Module Contents
 
       Get features based on IDs.
 
+
+
+.. py:function:: pygeoapi(coords, service)
+
+   Return a GeoDataFrame from the flowtrace service.
+
+   :Parameters: * **coords** (:class:`geopandas.GeoDataFrame`) -- A GeoDataFrame containing the coordinates to query.
+                  The required columns services are:
+
+                  * ``flow_trace``: ``direction`` that indicates the direction of the flow trace.
+                    It can be ``up``, ``down``, or ``none``.
+                  * ``split_catchment``: ``upstream`` that indicates whether to return all upstream
+                    catchments or just the local catchment.
+                  * ``elevation_profile``: ``numpts`` that indicates the number of points to extract
+                    along the flowpath and ``3dep_res`` that indicates the target resolution for
+                    requesting the DEM from 3DEP service.
+                  * ``cross_section``: ``numpts`` that indicates the number of points to extract
+                    along the flowpath and ``width`` that indicates the width of the cross-section
+                    in meters.
+                * **service** (:class:`str`) -- The service to query, can be ``flow_trace``, ``split_catchment``, ``elevation_profile``,
+                  or ``cross_section``.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the results of requested service.
+
+   .. rubric:: Examples
+
+   >>> from pynhd import PyGeoAPI
+   >>> pygeoapi = PyGeoAPI()
+   >>> gdf = pygeoapi.flow_trace(
+   ...     (1774209.63, 856381.68), crs="ESRI:102003", direction="none"
+   ... )  # doctest: +SKIP
+   >>> print(gdf.comid.iloc[0])  # doctest: +SKIP
+   22294818
 
 

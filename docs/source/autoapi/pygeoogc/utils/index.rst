@@ -49,7 +49,7 @@ Module Contents
 
 
 
-.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None)
+.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = EXPIRE)
 
    Configures the passed-in session to retry on failed requests.
 
@@ -63,6 +63,7 @@ Module Contents
                 * **prefixes** (:class:`tuple`, *optional*) -- The prefixes to consider, defaults to ("http://", "https://")
                 * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, default to None which uses
                   system's temp directory.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for the cache in seconds, defaults to -1 (never expire).
 
    .. py:method:: get(self, url, payload = None, headers = None)
 

@@ -162,7 +162,7 @@ Module Contents
 
 .. py:function:: snap2nearest(lines, points, tol)
 
-   Break lines at specified points at given direction.
+   Find the nearest points on a line to a set of points.
 
    :Parameters: * **lines** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Lines.
                 * **points** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Points to snap to lines.

@@ -49,22 +49,40 @@ Features
 --------
 
 PyGeoOGC is a part of `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
-is designed to aid in watershed analysis through web services. This package provides
+is designed to aid in hydroclimate analysis through web services. This package provides
 general interfaces to web services that are based on
 `ArcGIS RESTful <https://en.wikipedia.org/wiki/Representational_state_transfer>`__,
 `WMS <https://en.wikipedia.org/wiki/Web_Map_Service>`__, and
 `WFS <https://en.wikipedia.org/wiki/Web_Feature_Service>`__. Although
-all these web service have limits on the number of features per requests (e.g., 1000
-object IDs for a RESTful request or 8 million pixels for a WMS request), PyGeoOGC divides
-requests into smaller chunks, under-the-hood, and then merges the results.
+all these web services have limits on the number of features per request (e.g., 1000
+object IDs for a RESTful request or 8 million pixels for a WMS request), PyGeoOGC, first, divides
+the large requests into smaller chunks, and then returns the merged results.
 
-All functions and classes that request data from web services use ``async_retriever``
-that offers response caching. By default, the expiration time is set to never expire.
-All these functions and classes have two optional parameters for controlling the cache:
-``expire_after`` and ``disable_caching``. You can use ``expire_after`` to set the expiration
-time in seconds. If ``expire_after`` is set to ``-1``, the cache will never expire (default).
-You can use ``disable_caching`` if you don't want to use the cached responses. The cached
-responses are stored in the ``./cache/aiohttp_cache.sqlite`` file.
+Moreover, under the hood, PyGeoOGC uses
+`AsyncRetriever <https://github.com/cheginit/async_retriever>`__
+for making requests asynchronously with persistent caching. This improves the
+reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
+pairs and upon making an already cached request, it will retrieve the responses from the cache
+if the server's response is unchanged.
+
+You can control the request/response caching behavior by setting the following
+environment variables:
+
+* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
+  ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
+  -1 (never expire).
+* ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+
+For example, in your code before making any requests you can do:
+
+.. code-block:: python
+
+    import os
+
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
+    os.environ["HYRIVER_CACHE_DISABLE"] = "true"
 
 There is also an inventory of URLs for some of these web services in form of a class called
 ``ServiceURL``. These URLs are in four categories: ``ServiceURL().restful``,
