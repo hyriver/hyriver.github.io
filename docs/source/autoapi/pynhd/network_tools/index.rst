@@ -72,6 +72,7 @@ Module Contents
                 * **id_col** (:class:`str`, *optional*) -- Name of the column containing the node ID, defaults to "comid".
                 * **toid_col** (:class:`str`, *optional*) -- Name of the column containing the downstream node ID, defaults to "tocomid".
                 * **edge_attr** (:class:`str`, *optional*) -- Name of the column containing the edge attributes, defaults to ``None``.
+                  If ``True``, all remaining columns will be used as edge attributes.
 
    :returns: :class:`nx.DiGraph` -- Networkx directed graph of the NHDPlus flowlines.
 

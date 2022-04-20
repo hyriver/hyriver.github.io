@@ -107,11 +107,25 @@ Module Contents
                 return any IDs a list of missing coords are returned as well.
 
 
-   .. py:method:: get_basins(self, station_ids, split_catchment = False, simplified = True)
+   .. py:method:: get_basins(self, feature_ids, fsource = 'nwissite', split_catchment = False, simplified = True)
 
       Get basins for a list of station IDs.
 
-      :Parameters: * **station_ids** (:class:`str` or :class:`list`) -- USGS station ID(s).
+      :Parameters: * **feature_ids** (:class:`str` or :class:`list`) -- Target feature ID(s).
+                   * **fsource** (:class:`str`) -- The name of feature(s) source, defaults to ``nwissite``.
+                     The valid sources are:
+
+                     * 'comid' for NHDPlus comid.
+                     * 'ca_gages' for Streamgage catalog for CA SB19
+                     * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
+                     * 'huc12pp' for HUC12 Pour Points
+                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nwisgw' for NWIS Groundwater Sites
+                     * 'nwissite' for NWIS Surface Water Sites
+                     * 'ref_gage' for geoconnex.us reference gages
+                     * 'vigil' for Vigil Network Data
+                     * 'wade' for Water Data Exchange 2.0 Sites
+                     * 'WQP' for Water Quality Portal
                    * **split_catchment** (:class:`bool`, *optional*) -- If ``True``, split basins at their outlet locations. Default to ``False``.
                    * **simplified** (:class:`bool`, *optional*) -- If ``True``, return a simplified version of basin geometries. Default to ``True``.
 
@@ -128,7 +142,7 @@ Module Contents
 
       Get characteristics using a list ComIDs.
 
-      :Parameters: * **comids** (:class:`str` or :class:`list`) -- The ID of the feature.
+      :Parameters: * **comids** (:class:`str` or :class:`list`) -- The NHDPlus Common Identifier(s).
                    * **char_type** (:class:`str`) -- Type of the characteristic. Valid values are ``local`` for
                      individual reach catchments, ``tot`` for network-accumulated values
                      using total cumulative drainage area and ``div`` for network-accumulated values
@@ -146,7 +160,18 @@ Module Contents
       Get feature(s) based ID(s).
 
       :Parameters: * **fsource** (:class:`str`) -- The name of feature(s) source. The valid sources are:
-                     comid, huc12pp, nwissite, wade, wqp
+
+                     * 'comid' for NHDPlus comid.
+                     * 'ca_gages' for Streamgage catalog for CA SB19
+                     * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
+                     * 'huc12pp' for HUC12 Pour Points
+                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nwisgw' for NWIS Groundwater Sites
+                     * 'nwissite' for NWIS Surface Water Sites
+                     * 'ref_gage' for geoconnex.us reference gages
+                     * 'vigil' for Vigil Network Data
+                     * 'wade' for Water Data Exchange 2.0 Sites
+                     * 'WQP' for Water Quality Portal
                    * **fid** (:class:`str` or :class:`list` of :class:`str`) -- Feature ID(s).
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed features in EPSG:4326. If some IDs don't return any features
@@ -157,8 +182,19 @@ Module Contents
 
       Navigate the NHDPlus database from a single feature id up to a distance.
 
-      :Parameters: * **fsource** (:class:`str`) -- The name of feature source. The valid sources are:
-                     ``comid``, ``huc12pp``, ``nwissite``, ``wade``, ``WQP``.
+      :Parameters: * **fsource** (:class:`str`) -- The name of feature(s) source. The valid sources are:
+
+                     * 'comid' for NHDPlus comid.
+                     * 'ca_gages' for Streamgage catalog for CA SB19
+                     * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
+                     * 'huc12pp' for HUC12 Pour Points
+                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nwisgw' for NWIS Groundwater Sites
+                     * 'nwissite' for NWIS Surface Water Sites
+                     * 'ref_gage' for geoconnex.us reference gages
+                     * 'vigil' for Vigil Network Data
+                     * 'wade' for Water Data Exchange 2.0 Sites
+                     * 'WQP' for Water Quality Portal
                    * **fid** (:class:`str`) -- The ID of the feature.
                    * **navigation** (:class:`str`) -- The navigation method.
                    * **source** (:class:`str`, *optional*) -- Return the data from another source after navigating
@@ -358,12 +394,18 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from pynhd import PyGeoAPI
-   >>> pygeoapi = PyGeoAPI()
-   >>> gdf = pygeoapi.flow_trace(
-   ...     (1774209.63, 856381.68), crs="ESRI:102003", direction="none"
-   ... )  # doctest: +SKIP
-   >>> print(gdf.comid.iloc[0])  # doctest: +SKIP
+   >>> from shapely.geometry import Point
+   >>> gdf = gpd.GeoDataFrame(
+   ...     {
+   ...         "direction": [
+   ...             "none",
+   ...         ]
+   ...     },
+   ...     geometry=[Point((1774209.63, 856381.68))],
+   ...     crs="ESRI:102003",
+   ... )
+   >>> trace = nhd.pygeoapi(gdf, "flow_trace")
+   >>> print(trace.comid.iloc[0])
    22294818
 
 
