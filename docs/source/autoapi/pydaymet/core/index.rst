@@ -64,13 +64,13 @@ Module Contents
       :returns: :class:`list` -- All the dates in the Daymet database within the provided date range.
 
 
-   .. py:method:: separate_snow(self, clm, t_rain = 2.5, t_snow = 0.0)
+   .. py:method:: separate_snow(self, clm, t_rain = T_RAIN, t_snow = T_SNOW)
 
       Separate snow based on :footcite:t:`Martinez_2010`.
 
       :Parameters: * **clm** (:class:`pandas.DataFrame` or :class:`xarray.Dataset`) -- Climate data that should include ``prcp`` and ``tmin``.
                    * **t_rain** (:class:`float`, *optional*) -- Threshold for temperature for considering rain, defaults to 2.5 degrees C.
-                   * **t_snow** (:class:`float`, *optional*) -- Threshold for temperature for considering snow, defaults to 0.0 degrees C.
+                   * **t_snow** (:class:`float`, *optional*) -- Threshold for temperature for considering snow, defaults to 0.6 degrees C.
 
       :returns: :class:`pandas.DataFrame` or :class:`xarray.Dataset` -- Input data with ``snow (mm/day)`` column if input is a ``pandas.DataFrame``,
                 or ``snow`` variable if input is an ``xarray.Dataset``.

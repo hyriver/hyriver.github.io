@@ -112,6 +112,11 @@ Module Contents
    :returns: :class:`Polygon` -- A Polygon in the target CRS.
 
 
+.. py:function:: geometry_list(geometry)
+
+   Get a list of polygons, points, and lines from a geometry.
+
+
 .. py:function:: get_transform(ds, ds_dims = ('y', 'x'))
 
    Get transform of a ``xarray.Dataset`` or ``xarray.DataArray``.

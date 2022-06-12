@@ -87,10 +87,9 @@ For example, in your code before making any requests you can do:
 There is also an inventory of URLs for some of these web services in form of a class called
 ``ServiceURL``. These URLs are in four categories: ``ServiceURL().restful``,
 ``ServiceURL().wms``, ``ServiceURL().wfs``, and ``ServiceURL().http``. These URLs provide you
-with some examples of the services that PyGeoOGC supports. All the URLs are read from a YAML
-file located `here <pygeoogc/static/urls.yml>`_. If you have success using PyGeoOGC with a web
-service please consider submitting a request to be added to this URL inventory, located at
-``pygeoogc/static/urls.yml``.
+with some examples of the services that PyGeoOGC supports. If you have success using PyGeoOGC with a web
+service please consider submitting a request to be added to this URL inventory. You can get all
+the URLs in the ``ServiceURL`` class by just printing it ``print(ServiceURL())``.
 
 PyGeoOGC has three main classes:
 

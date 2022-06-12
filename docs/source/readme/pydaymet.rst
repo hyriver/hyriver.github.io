@@ -237,7 +237,9 @@ by default is set to daily.
     var = ["prcp", "tmin"]
     dates = ("2000-01-01", "2000-06-30")
 
-    daily = daymet.get_bygeom(geometry, dates, variables=var, pet="priestley_taylor", snow=True)
+    daily = daymet.get_bygeom(
+        geometry, dates, variables=var, pet="priestley_taylor", snow=True
+    )
     monthly = daymet.get_bygeom(geometry, dates, variables=var, time_scale="monthly")
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/daymet_grid.png
@@ -251,7 +253,9 @@ it to the functions.
     coords = (-1431147.7928, 318483.4618)
     crs = "epsg:3542"
     dates = ("2000-01-01", "2006-12-31")
-    annual = daymet.get_bycoords(coords, dates, variables=var, loc_crs=crs, time_scale="annual")
+    annual = daymet.get_bycoords(
+        coords, dates, variables=var, loc_crs=crs, time_scale="annual"
+    )
 
 .. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/daymet_loc.png
     :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/daymet.ipynb

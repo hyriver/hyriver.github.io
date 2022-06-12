@@ -83,6 +83,30 @@ Module Contents
 
 
 
+.. py:class:: GeoConnex(item = None)
+
+   Access to the GeoConnex API.
+
+   .. rubric:: Notes
+
+   The ``geometry`` field of the query can be a Polygon, MultiPolygon,
+   or tuple/list of length 4 (bbox) in ``EPSG:4326`` CRS. They should
+   be within the extent of the GeoConnex endpoint.
+
+   :Parameters: **item** (:class:`str`, *optional*) -- The target endpoint to query, defaults to ``None``.
+
+   .. py:method:: item(self)
+      :property:
+
+      Return the name of the endpoint.
+
+
+   .. py:method:: query(self, kwds, skip_geometry = False)
+
+      Query the GeoConnex endpoint.
+
+
+
 .. py:class:: ScienceBase
 
    Access and explore files on ScienceBase.

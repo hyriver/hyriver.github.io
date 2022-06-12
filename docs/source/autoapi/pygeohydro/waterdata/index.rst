@@ -16,13 +16,15 @@ Module Contents
 
    Access NWIS web service.
 
-   .. py:method:: get_info(self, queries, expanded = False)
+   .. py:method:: get_info(self, queries, expanded = False, fix_names = True)
 
       Send multiple queries to USGS Site Web Service.
 
       :Parameters: * **queries** (:class:`dict` or :class:`list` of :class:`dict`) -- A single or a list of valid queries.
                    * **expanded** (:class:`bool`, *optional*) -- Whether to get expanded sit information for example drainage area,
                      default to False.
+                   * **fix_names** (:class:`bool`, *optional*) -- If ``True``, reformat station names and some small annoyances,
+                     defaults to ``True``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- A correctly typed ``GeoDataFrame`` containing site(s) information.
 

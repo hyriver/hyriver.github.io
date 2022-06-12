@@ -18,7 +18,7 @@ Module Contents
 
    .. rubric:: Notes
 
-   This downloads a 140 MB ``parquet`` file from
+   This downloads a 160 MB ``parquet`` file from
    `here <https://www.sciencebase.gov/catalog/item/60c92503d34e86b9389df1c9>`__ .
    Although this dataframe does not include geometry, it can be linked to other geospatial
    NHDPlus dataframes through ComIDs.

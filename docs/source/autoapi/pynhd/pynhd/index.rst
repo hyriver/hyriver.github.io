@@ -323,7 +323,7 @@ Module Contents
 
 
 
-.. py:class:: WaterData(layer, crs = DEF_CRS)
+.. py:class:: WaterData(layer, crs = DEF_CRS, validation = True)
 
    Access to `Water Data <https://labs.waterdata.usgs.gov/geoserver>`__ service.
 
@@ -333,6 +333,7 @@ Module Contents
                   the layers' worksapce for the Water Data service is ``wmadata`` which will
                   be added to the given ``layer`` argument if it is not provided.
                 * **crs** (:class:`str`, *optional*) -- The target spatial reference system, defaults to ``epsg:4326``.
+                * **validation** (:class:`bool`, *optional*) -- Whether to validate the input data, defaults to ``True``.
 
    .. py:method:: bybox(self, bbox, box_crs = DEF_CRS)
 
@@ -370,6 +371,25 @@ Module Contents
 
 
 
+.. py:function:: geoconnex(item = None, query = None, skip_geometry = False)
+
+   Query the GeoConnex API.
+
+   .. rubric:: Notes
+
+   If you run the function without any arguments, it will print out a list
+   of available endpoints. If you run the function with ``item`` but no ``query``,
+   it will print out the description, queryable fields, and extent of the
+   selected endpoint (``item``).
+
+   :Parameters: * **item** (:class:`str`, *optional*) -- The item to query.
+                * **query** (:class:`dict`, *optional*) -- Query parameters. The ``geometry`` field can be a Polygon, MultiPolygon,
+                  or tuple/list of length 4 (bbox) in ``EPSG:4326`` CRS.
+                * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, the geometry will not be returned.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- The data.
+
+
 .. py:function:: pygeoapi(coords, service)
 
    Return a GeoDataFrame from the flowtrace service.
@@ -401,7 +421,7 @@ Module Contents
    ...             "none",
    ...         ]
    ...     },
-   ...     geometry=[Point((1774209.63, 856381.68))],
+   ...     geometry=[sgeom.Point((1774209.63, 856381.68))],
    ...     crs="ESRI:102003",
    ... )
    >>> trace = nhd.pygeoapi(gdf, "flow_trace")

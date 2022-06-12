@@ -48,7 +48,8 @@ Module Contents
                   These parameters are only used if ``snow`` is ``True``. Two parameters are required:
                   ``t_rain`` (deg C) which is the threshold for temperature for considering rain and
                   ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
-                  The default values are ``{'t_rain': 2.5, 't_snow': 0}``.
+                  The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
+                  https://doi.org/10.5194/gmd-11-1077-2018.
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
 
@@ -106,7 +107,8 @@ Module Contents
                   These parameters are only used if ``snow`` is ``True``. Two parameters are required:
                   ``t_rain`` (deg C) which is the threshold for temperature for considering rain and
                   ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
-                  The default values are ``{'t_rain': 2.5, 't_snow': 0}``.
+                  The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
+                  https://doi.org/10.5194/gmd-11-1077-2018.
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
 
