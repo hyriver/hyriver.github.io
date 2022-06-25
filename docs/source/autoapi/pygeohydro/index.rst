@@ -1,9 +1,12 @@
-:orphan:
-
 :py:mod:`pygeohydro`
 ====================
 
 .. py:module:: pygeohydro
+
+.. autoapi-nested-parse::
+
+   Top-level package for PyGeoHydro.
+
 
 
 Submodules
