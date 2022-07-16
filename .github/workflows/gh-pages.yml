@@ -1,0 +1,45 @@
+name: Build Website
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+
+    - name: Create a Python environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+        cache-dependency-path: 'docs/requirements.txt'
+
+    - name: Install Python dependencies
+      run: pip install -r docs/requirements.txt
+
+    - name: Build the website
+      run: make docs-ci
+
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        external_repository: hyriver/hyriver.github.io
+        publish_dir: docs/build/html
