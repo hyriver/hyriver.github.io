@@ -1,0 +1,2937 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+<meta property="og:title" content="Dam Impact on streamflow" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://hyriver.readthedocs.io/en/notebooks/dam_impact.html" />
+  
+<meta property="og:description" content="This page was generated from notebooks/dam_impact.ipynb. Interactive online version: We’re going to take a look at the impact of building dams on their downstream streamflow. Here are some example ..." />
+  
+<meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+  
+<meta property="og:image:alt" content="Dam Impact on streamflow" />
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@_taher_" />
+<meta name="twitter:creator" content="@_taher_" />
+<meta name="twitter:description" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+<meta name="twitter:image:alt" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+    <title>Dam Impact on streamflow</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Climate Data" href="daymet.html" />
+    <link rel="prev" title="River Elevation and Cross-Section" href="cross_section.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/hyriver_logo_text.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Hydroclimate Data Retriever
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../readmes.html">
+   Software Stack
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pynhd.html">
+     PyNHD: Navigate and subset NHDPlus database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeohydro.html">
+     PyGeoHydro: Retrieve Geospatial Hydrology Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/py3dep.html">
+     Py3DEP: Topographic data through 3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pydaymet.html">
+     PyDaymet: Daily climate data through Daymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/async_retriever.html">
+     AsyncRetriever: Asynchronous requests with persistent caching
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeoogc.html">
+     PyGeoOGC: Retrieve Data from RESTful, WMS, and WFS Services
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeoutils.html">
+     PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../examples.html">
+   Example Gallery
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="3dep.html">
+     Topographic Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="aridity.html">
+     Aridity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="columbia.html">
+     Dams in Columbia River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross_section.html">
+     River Elevation and Cross-Section
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Dam Impact on streamflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="daymet.html">
+     Climate Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geoconnex.html">
+     GeoConnex
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hymod_calibration.html">
+     Hydrological Modeling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ndvi.html">
+     NDVI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nhdplus.html">
+     River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nid.html">
+     National Inventory of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nid_dib.html">
+     Spatiotemporal Distribution of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlcd.html">
+     Land Use/Land Cover
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="noaa.html">
+     Water Levels and Tides
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nwis.html">
+     River Discharge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pet_validation.html">
+     Computing PET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeoapi.html">
+     Split Catchment with PyGeoAPI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rem.html">
+     Relative Elevation Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ssebop.html">
+     Actual Evapotranspiration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="us_coasts.html">
+     CONUS Coasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="water_quality.html">
+     Water Quality Portal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="webservices.html">
+     Web Services Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../autoapi/index.html">
+   API References
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pynhd/index.html">
+     PyNHD
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/network_tools/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.network_tools
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/nhdplus_derived/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.nhdplus_derived
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/pynhd/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.pynhd
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeohydro/index.html">
+     PyGeoHydro
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/helpers/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.helpers
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/plot/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.plot
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/pygeohydro/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.pygeohydro
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/us_abbrs/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.us_abbrs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/waterdata/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.waterdata
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/py3dep/index.html">
+     Py3DEP
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/py3dep/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.py3dep
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pydaymet/index.html">
+     PyDaymet
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pet
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pydaymet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pydaymet
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/async_retriever/index.html">
+     AsyncRetriever
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/async_retriever/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.async_retriever
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoogc/index.html">
+     PyGeoOGC
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/pygeoogc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.pygeoogc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoutils/index.html">
+     PyGeoUtils
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoutils/pygeoutils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoutils.pygeoutils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../history.html">
+   Changelogs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pynhd.html">
+     PyNHD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pygeohydro.html">
+     PyGeoHydro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/py3dep.html">
+     Py3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pydaymet.html">
+     PyDaymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/async_retriever.html">
+     AsyncRetriever
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pygeoogc.html">
+     PyGeoOGC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pygeoutils.html">
+     PyGeoUtils
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../authors.html">
+   Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cheginit/HyRiver"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/issues/new?title=Issue%20on%20page%20%2Fnotebooks/dam_impact.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/edit/main/docs/notebooks/dam_impact.nblink"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Streamflow-Gauges">
+   Streamflow Gauges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dams">
+   Dams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Flowlines-and-Hydrolinking">
+   Flowlines and Hydrolinking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Streamflow-Observations">
+   Streamflow Observations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Land-Use/Land-Cover-(LULC)">
+   Land Use/Land Cover (LULC)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Final-Remarks">
+   Final Remarks
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dam Impact on streamflow</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Streamflow-Gauges">
+   Streamflow Gauges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dams">
+   Dams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Flowlines-and-Hydrolinking">
+   Flowlines and Hydrolinking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Streamflow-Observations">
+   Streamflow Observations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Land-Use/Land-Cover-(LULC)">
+   Land Use/Land Cover (LULC)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Final-Remarks">
+   Final Remarks
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="admonition note">
+<p>This page was generated from <a class="reference external" href="https://github.com/cheginit/HyRiver-examples/tree/main/notebooks/dam_impact.ipynb">notebooks/dam_impact.ipynb</a>.
+Interactive online version:
+<span class="raw-html"><a href="https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks/dam_impact.ipynb"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a></span></p>
+</div>
+<section id="Dam-Impact-on-streamflow">
+<h1>Dam Impact on streamflow<a class="headerlink" href="#Dam-Impact-on-streamflow" title="Permalink to this headline">#</a></h1>
+<p>We’re going to take a look at the impact of building dams on their downstream streamflow. Here are some example peer-reviewed papers on this topic.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.5194/hess-17-3189-2013">https://doi.org/10.5194/hess-17-3189-2013</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1002/2017WR020871">https://doi.org/10.1002/2017WR020871</a></p></li>
+</ul>
+<p>We set the area of interest (AOI) to Texas and study dams that have been built in the 1995-2005 period.</p>
+<p>Workflow: - Get gauge stations within Texas that have enough streamflow data - Get dams within Texas that have been built have been built between 1995-2005 - Filter out stations that don’t have any dams in their upstream up to 10 km - Get streamflow data for the remaining stations - Visually inspect the streamflow data for dam impacts - Check land use/land cover type around the dams</p>
+<section id="Streamflow-Gauges">
+<h2>Streamflow Gauges<a class="headerlink" href="#Streamflow-Gauges" title="Permalink to this headline">#</a></h2>
+<p>First, we use the National Water Information System (NWIS) service to check streamflow data availability in our AOI and 10 years before and after the period of our study, i.e., the 1985-2015 period.</p>
+<p>Let’s start by importing the required libraries.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">proplot</span> <span class="k">as</span> <span class="nn">pplt</span>
+<span class="kn">import</span> <span class="nn">pygeohydro</span> <span class="k">as</span> <span class="nn">gh</span>
+<span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">NID</span><span class="p">,</span> <span class="n">NWIS</span>
+<span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">NLDI</span><span class="p">,</span> <span class="n">WaterData</span><span class="p">,</span> <span class="n">ZeroMatched</span>
+
+<span class="n">pplt</span><span class="o">.</span><span class="n">rc</span><span class="p">[</span><span class="s2">&quot;figure.facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="s2">&quot;1985-01-01&quot;</span>
+<span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;2015-01-01&quot;</span>
+<span class="n">texas</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_us_states</span><span class="p">(</span><span class="s2">&quot;contiguous&quot;</span><span class="p">)</span>
+<span class="n">texas</span> <span class="o">=</span> <span class="n">texas</span><span class="p">[</span><span class="n">texas</span><span class="o">.</span><span class="n">STUSPS</span> <span class="o">==</span> <span class="s2">&quot;TX&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">texas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_5_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_5_0.png" style="width: 700px; height: 498px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwis</span> <span class="o">=</span> <span class="n">NWIS</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;stateCd&quot;</span><span class="p">:</span> <span class="s2">&quot;TX&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;startDt&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+    <span class="s2">&quot;endDt&quot;</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+    <span class="s2">&quot;outputDataTypeCd&quot;</span><span class="p">:</span> <span class="s2">&quot;dv&quot;</span><span class="p">,</span>  <span class="c1"># daily values</span>
+    <span class="s2">&quot;hasDataTypeCd&quot;</span><span class="p">:</span> <span class="s2">&quot;dv&quot;</span><span class="p">,</span>  <span class="c1"># daily values</span>
+    <span class="s2">&quot;parameterCd&quot;</span><span class="p">:</span> <span class="s2">&quot;00060&quot;</span><span class="p">,</span>  <span class="c1"># discharge</span>
+<span class="p">}</span>
+<span class="n">sites</span> <span class="o">=</span> <span class="n">nwis</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">sites</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3856
+</pre></div></div>
+</div>
+<p>We can see that there are 3856 streamflow gauge stations in Texas that fit our criteria.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">texas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sites</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;NWIS sites&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_8_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_8_0.png" style="width: 700px; height: 495px;" />
+</div>
+</div>
+<p>Now, let’s filter these stations a step further to include only those stations that have around 30 years of daily streamflow data with drainage area of larger than 10 km<span class="math notranslate nohighlight">\(^2\)</span> that have been impacted by human activities.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sites</span> <span class="o">=</span> <span class="n">sites</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">sites</span><span class="o">.</span><span class="n">parm_cd</span> <span class="o">==</span> <span class="s2">&quot;00060&quot;</span><span class="p">)</span>  <span class="c1"># discharge</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">sites</span><span class="o">.</span><span class="n">stat_cd</span> <span class="o">==</span> <span class="s2">&quot;00003&quot;</span><span class="p">)</span>  <span class="c1"># mean</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">sites</span><span class="o">.</span><span class="n">count_nu</span> <span class="o">&gt;=</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">365</span><span class="p">)</span>  <span class="c1"># at least 30 years of data</span>
+    <span class="o">&amp;</span> <span class="o">~</span><span class="n">sites</span><span class="o">.</span><span class="n">hcdn_2009</span>  <span class="c1"># not pristine</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">sites</span><span class="o">.</span><span class="n">drain_sqkm</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">sites</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+280
+</pre></div></div>
+</div>
+<p>Upon applying this filter, we’re left with 280 stations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">texas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sites</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;NWIS sites&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_12_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_12_0.png" style="width: 700px; height: 495px;" />
+</div>
+</div>
+</section>
+<section id="Dams">
+<h2>Dams<a class="headerlink" href="#Dams" title="Permalink to this headline">#</a></h2>
+<p>Next, we need to retrieve the dams in Texas that have been built between 1995 and 2005. We use National Inventory of Dams (NID) web service for this purpose. First, let’s check out the fields that NID exposes through their web service.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nid</span> <span class="o">=</span> <span class="n">NID</span><span class="p">()</span>
+<span class="n">nid</span><span class="o">.</span><span class="n">valid_fields</span><span class="p">[</span><span class="n">nid</span><span class="o">.</span><span class="n">valid_fields</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+70      yearCompleted
+71    yearCompletedId
+83      yearsModified
+Name: name, dtype: object
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nid</span><span class="o">.</span><span class="n">valid_fields</span><span class="p">[</span><span class="n">nid</span><span class="o">.</span><span class="n">valid_fields</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+13                stateFedId
+17          stateRegulatedId
+19     stateRegulatoryAgency
+30                     state
+31                 cityState
+38               countyState
+191                 statesId
+193                 stateKey
+Name: name, dtype: object
+</pre></div></div>
+</div>
+<p>Based on these, we should use the <code class="docutils literal notranslate"><span class="pre">stateKey</span></code> and <code class="docutils literal notranslate"><span class="pre">yearCompleted</span></code> fields.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dam_list</span> <span class="o">=</span> <span class="n">nid</span><span class="o">.</span><span class="n">get_byfilter</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;stateKey&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;TX&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;yearCompleted&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;[1995 2005]&quot;</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="n">dams</span> <span class="o">=</span> <span class="n">dam_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">texas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sites</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">110</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;NWIS sites&quot;</span><span class="p">)</span>
+<span class="n">dams</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;NID dams&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_18_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_18_0.png" style="width: 700px; height: 501px;" />
+</div>
+</div>
+<p>As is evident from the plot above, there are many stations that don’t have any dams in their vicinity. One way to eliminate these stations is using a spatial query based on a search radius. We can determine an estimation for our search radius based on the upstream drainage area distribution of the streamflow gauges.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s2">&quot;drain_sqkm&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Drainage Area (km$^2$) Histogram&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_20_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_20_0.png" style="width: 400px; height: 250px;" />
+</div>
+</div>
+<p>We can see that most stations have a drainage area of less than 15000 km<span class="math notranslate nohighlight">\(^2\)</span>. Since they’re not very large a search radius of 10 km should be sufficient. Now, we define a function that carries out an efficient spatial query to find the stations that have at least one dam within a 10-km radius.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance_filter</span><span class="p">(</span><span class="n">gdf1</span><span class="p">,</span> <span class="n">gdf2</span><span class="p">,</span> <span class="n">dist_km</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filter gdf1 to only include points within distance of gdf2.&quot;&quot;&quot;</span>
+    <span class="n">buff</span> <span class="o">=</span> <span class="n">gdf1</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">5070</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">dist_km</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">)</span>
+    <span class="n">idx2</span><span class="p">,</span> <span class="n">idx1</span> <span class="o">=</span> <span class="n">buff</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query_bulk</span><span class="p">(</span><span class="n">gdf2</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">5070</span><span class="p">)</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gdf1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">idx1</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">gdf2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">idx2</span><span class="p">)</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sites</span><span class="p">,</span> <span class="n">dams</span> <span class="o">=</span> <span class="n">distance_filter</span><span class="p">(</span><span class="n">sites</span><span class="p">,</span> <span class="n">dams</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s2">&quot;drain_sqkm&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Drainage Area (km$^2$) Histogram&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_23_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_23_0.png" style="width: 400px; height: 250px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">texas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sites</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">110</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;NWIS sites&quot;</span><span class="p">)</span>
+<span class="n">dams</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;NID dams&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_24_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_24_0.png" style="width: 700px; height: 497px;" />
+</div>
+</div>
+</section>
+<section id="Flowlines-and-Hydrolinking">
+<h2>Flowlines and Hydrolinking<a class="headerlink" href="#Flowlines-and-Hydrolinking" title="Permalink to this headline">#</a></h2>
+<p>So far, we obtained only the stations that have at least one dam in their 10-km radius, but we didn’t find if those dams are in their upstream or downstream. We use the Hydro Network-Linked Data Index (NLDI) web service to obtain the upstream flowlines of the streamflow gauges up to 10 km. Note that this 10 km is the distance along the flowlines.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nldi</span> <span class="o">=</span> <span class="n">NLDI</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flw_up</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">noflw</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">agency</span><span class="p">,</span> <span class="n">fid</span> <span class="ow">in</span> <span class="n">sites</span><span class="p">[[</span><span class="s2">&quot;agency_cd&quot;</span><span class="p">,</span> <span class="s2">&quot;site_no&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">flw_up</span><span class="p">[</span><span class="n">fid</span><span class="p">]</span> <span class="o">=</span> <span class="n">nldi</span><span class="o">.</span><span class="n">navigate_byid</span><span class="p">(</span>
+            <span class="n">fsource</span><span class="o">=</span><span class="s2">&quot;nwissite&quot;</span><span class="p">,</span>
+            <span class="n">fid</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">agency</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">fid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">navigation</span><span class="o">=</span><span class="s2">&quot;upstreamTributaries&quot;</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="s2">&quot;flowlines&quot;</span><span class="p">,</span>
+            <span class="n">distance</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="n">ZeroMatched</span><span class="p">:</span>
+        <span class="n">noflw</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fid</span><span class="p">)</span>
+<span class="n">noflw</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;08058900&#39;, &#39;08059400&#39;]
+</pre></div></div>
+</div>
+<p>Note that two of our stations are not indexed by the NLDI service. There could be several reasons for this but in this tutorial we just simply ignore them.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sites</span> <span class="o">=</span> <span class="n">sites</span><span class="p">[</span><span class="n">sites</span><span class="o">.</span><span class="n">site_no</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">flw_up</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">sites</span><span class="p">,</span> <span class="n">dams</span> <span class="o">=</span> <span class="n">distance_filter</span><span class="p">(</span><span class="n">sites</span><span class="p">,</span> <span class="n">dams</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We now have flowlines and dams that are closer than 10 km, but we still don’t have a way of linking these features. For this purpose, we use NHDPlus’s Common Identifier (<code class="docutils literal notranslate"><span class="pre">comid</span></code>). One way to obtain the first downstream flowline of coordinate is to use NLDI’s <code class="docutils literal notranslate"><span class="pre">hydrolocation</span></code> endpoint.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dams</span><span class="p">[[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">nid_comids</span> <span class="o">=</span> <span class="n">nldi</span><span class="o">.</span><span class="n">comid_byloc</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">missing</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nid_comids</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+    <span class="n">nid_comids</span><span class="p">,</span> <span class="n">missing</span> <span class="o">=</span> <span class="n">nid_comids</span>
+
+<span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+    <span class="n">coords_str</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">]</span>
+    <span class="n">dams</span> <span class="o">=</span> <span class="n">dams</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">coords_str</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missing</span><span class="p">])</span>
+    <span class="n">sites</span><span class="p">,</span> <span class="n">dams</span> <span class="o">=</span> <span class="n">distance_filter</span><span class="p">(</span><span class="n">sites</span><span class="p">,</span> <span class="n">dams</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">dams</span><span class="p">[</span><span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nid_comids</span><span class="o">.</span><span class="n">comid</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1 of 37 inputs didn&#39;t return any features. They are returned as a list.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sites</span><span class="p">[[</span><span class="s2">&quot;dec_long_va&quot;</span><span class="p">,</span> <span class="s2">&quot;dec_lat_va&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">site_comids</span> <span class="o">=</span> <span class="n">nldi</span><span class="o">.</span><span class="n">comid_byloc</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+<span class="n">missing</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">site_comids</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+    <span class="n">site_comids</span><span class="p">,</span> <span class="n">missing</span> <span class="o">=</span> <span class="n">site_comids</span>
+
+<span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+    <span class="n">coords_str</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">]</span>
+    <span class="n">sites</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">coords_str</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missing</span><span class="p">])</span>
+    <span class="n">sites</span><span class="p">,</span> <span class="n">dams</span> <span class="o">=</span> <span class="n">distance_filter</span><span class="p">(</span><span class="n">sites</span><span class="p">,</span> <span class="n">dams</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">sites</span><span class="p">[</span><span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">site_comids</span><span class="o">.</span><span class="n">comid</span>
+</pre></div>
+</div>
+</div>
+<p>We can then use these obtained comids to hydrolink the dams, stations, and flowlines.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flw_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">flw_up</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">keys</span><span class="o">=</span><span class="n">flw_up</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;level_1&quot;</span><span class="p">)</span>
+<span class="n">flw_all</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">flw_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;level_0&quot;</span><span class="p">:</span> <span class="s2">&quot;usgs_id&quot;</span><span class="p">}),</span> <span class="n">crs</span><span class="o">=</span><span class="n">flw_up</span><span class="p">[</span><span class="s2">&quot;07312200&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">crs</span>
+<span class="p">)</span>
+<span class="n">flw_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>usgs_id</th>
+      <th>geometry</th>
+      <th>nhdplus_comid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>07312200</td>
+      <td>LINESTRING (-98.91447 33.90670, -98.91436 33.9...</td>
+      <td>13730379</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>07312200</td>
+      <td>LINESTRING (-98.98054 33.88001, -98.98019 33.8...</td>
+      <td>13730385</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>07312200</td>
+      <td>LINESTRING (-98.90898 33.91041, -98.90892 33.9...</td>
+      <td>13730365</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>07312200</td>
+      <td>LINESTRING (-98.92151 33.91425, -98.92038 33.9...</td>
+      <td>13730363</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>07312200</td>
+      <td>LINESTRING (-98.90453 33.92514, -98.90453 33.9...</td>
+      <td>13730361</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Finally, upon hydrolinking these features we can determine the stations that have at least one dam in their upstream up to 10 km.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flw_dam</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">flw_all</span><span class="p">[[</span><span class="s2">&quot;usgs_id&quot;</span><span class="p">,</span> <span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">]],</span>
+    <span class="n">dams</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;dam_id&quot;</span><span class="p">}),</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">flw_dam</span> <span class="o">=</span> <span class="n">flw_dam</span><span class="p">[</span><span class="o">~</span><span class="n">flw_dam</span><span class="o">.</span><span class="n">dam_id</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">flw_dam</span><span class="p">[</span><span class="s2">&quot;dam_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flw_dam</span><span class="o">.</span><span class="n">dam_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">flw_dam</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>usgs_id</th>
+      <th>nhdplus_comid</th>
+      <th>dam_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>07312200</td>
+      <td>13730353</td>
+      <td>543785</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>07312200</td>
+      <td>13730353</td>
+      <td>543855</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>08095000</td>
+      <td>5531532</td>
+      <td>544204</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>08095000</td>
+      <td>5531532</td>
+      <td>544213</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>08158920</td>
+      <td>5781345</td>
+      <td>542221</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>08158920</td>
+      <td>5781345</td>
+      <td>543202</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>08057445</td>
+      <td>1260363</td>
+      <td>543218</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>08177300</td>
+      <td>1638809</td>
+      <td>544499</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">site_dam</span> <span class="o">=</span> <span class="n">flw_dam</span><span class="o">.</span><span class="n">usgs_id</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">site_dam</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;07312200&#39;, &#39;08095000&#39;, &#39;08158920&#39;, &#39;08057445&#39;, &#39;08177300&#39;],
+      dtype=object)
+</pre></div></div>
+</div>
+</section>
+<section id="Streamflow-Observations">
+<h2>Streamflow Observations<a class="headerlink" href="#Streamflow-Observations" title="Permalink to this headline">#</a></h2>
+<p>Upon finalizing the stations that satisfy our criteria, we use NWIS to obtain the daily streamflow data. But first, we need to obtain the year that the construction of dams were completed, so we can exactly specify the required streamflow data period.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dams_info</span> <span class="o">=</span> <span class="n">nid</span><span class="o">.</span><span class="n">inventory_byid</span><span class="p">(</span><span class="n">flw_dam</span><span class="o">.</span><span class="n">dam_id</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">dams_info</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>associatedStructuresCount</th>
+      <th>conditionAssessDate</th>
+      <th>conditionAssessDetail</th>
+      <th>conditionAssessId</th>
+      <th>congRepresentative</th>
+      <th>damHeight</th>
+      <th>damLength</th>
+      <th>distance</th>
+      <th>drainageArea</th>
+      <th>...</th>
+      <th>ownerTypeIds</th>
+      <th>primaryDamTypeId</th>
+      <th>primaryOwnerTypeId</th>
+      <th>primaryPurposeId</th>
+      <th>purposeIds</th>
+      <th>dsacId</th>
+      <th>femaRegion</th>
+      <th>lastEapExcerDate</th>
+      <th>dataUpdated</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>543785</td>
+      <td>0</td>
+      <td>None</td>
+      <td>NOT RATED</td>
+      <td>6</td>
+      <td>Mac Thornberry (R)</td>
+      <td>29.0</td>
+      <td>983</td>
+      <td>20</td>
+      <td>0.00</td>
+      <td>...</td>
+      <td>1</td>
+      <td>8</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>None</td>
+      <td>6</td>
+      <td>None</td>
+      <td>2021-05-24T12:00:00.000Z</td>
+      <td>POINT (-98.91833 33.92000)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>543855</td>
+      <td>0</td>
+      <td>None</td>
+      <td>NOT RATED</td>
+      <td>5</td>
+      <td>Mac Thornberry (R)</td>
+      <td>27.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>...</td>
+      <td>1</td>
+      <td>8</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>None</td>
+      <td>6</td>
+      <td>None</td>
+      <td>2018-07-23T12:00:00.000Z</td>
+      <td>POINT (-98.91696 33.92299)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>544204</td>
+      <td>0</td>
+      <td>None</td>
+      <td>NOT RATED</td>
+      <td>5</td>
+      <td>Roger Williams (R)</td>
+      <td>18.6</td>
+      <td>130</td>
+      <td>0</td>
+      <td>150.00</td>
+      <td>...</td>
+      <td>5</td>
+      <td>11</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2;8</td>
+      <td>None</td>
+      <td>6</td>
+      <td>None</td>
+      <td>2018-07-23T12:00:00.000Z</td>
+      <td>POINT (-97.57644 31.79505)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>544213</td>
+      <td>0</td>
+      <td>2015-12-14T12:00:00.000Z</td>
+      <td>SATISFACTORY</td>
+      <td>1</td>
+      <td>Roger Williams (R)</td>
+      <td>47.0</td>
+      <td>1300</td>
+      <td>0</td>
+      <td>0.36</td>
+      <td>...</td>
+      <td>5</td>
+      <td>8</td>
+      <td>5</td>
+      <td>8</td>
+      <td>8</td>
+      <td>None</td>
+      <td>6</td>
+      <td>None</td>
+      <td>2018-07-23T12:00:00.000Z</td>
+      <td>POINT (-97.60174 31.78104)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>542221</td>
+      <td>0</td>
+      <td>2016-10-13T12:00:00.000Z</td>
+      <td>POOR</td>
+      <td>3</td>
+      <td>Chip Roy (R)</td>
+      <td>26.0</td>
+      <td>730</td>
+      <td>0</td>
+      <td>1.34</td>
+      <td>...</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>9</td>
+      <td>9</td>
+      <td>None</td>
+      <td>6</td>
+      <td>None</td>
+      <td>2018-07-23T12:00:00.000Z</td>
+      <td>POINT (-97.89934 30.24614)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 90 columns</p>
+</div></div>
+</div>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">yearCompleted</span></code> field to determine the required study period by looking at 15 years before and after the year completed for each dam. The reason that we opted for 15 years is the fact that during the construction the streamflow is temporarily diverted from its original path and also upon completion it usually takes some time for dams to be filled and reach their operational capacity. So we consider a 5-year buffer around the year completed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flw_dam</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">flw_dam</span><span class="p">,</span>
+    <span class="n">dams_info</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;nidStorage&quot;</span><span class="p">,</span> <span class="s2">&quot;nidHeight&quot;</span><span class="p">,</span> <span class="s2">&quot;yearCompleted&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;dam_id&quot;</span><span class="p">}),</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;dam_id&quot;</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">flw_dam</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">flw_dam</span><span class="o">.</span><span class="n">yearCompleted</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">)</span>
+<span class="n">flw_dam</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">flw_dam</span><span class="o">.</span><span class="n">yearCompleted</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span>
+    <span class="n">years</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">days</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">flw_dam</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>usgs_id</th>
+      <th>nhdplus_comid</th>
+      <th>dam_id</th>
+      <th>nidStorage</th>
+      <th>nidHeight</th>
+      <th>yearCompleted</th>
+      <th>start</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>07312200</td>
+      <td>13730353</td>
+      <td>543785</td>
+      <td>22</td>
+      <td>30.0</td>
+      <td>1997</td>
+      <td>1982-01-01</td>
+      <td>2012-12-31</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>07312200</td>
+      <td>13730353</td>
+      <td>543855</td>
+      <td>135</td>
+      <td>30.0</td>
+      <td>1997</td>
+      <td>1982-01-01</td>
+      <td>2012-12-31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>08095000</td>
+      <td>5531532</td>
+      <td>544204</td>
+      <td>410</td>
+      <td>22.6</td>
+      <td>1998</td>
+      <td>1983-01-01</td>
+      <td>2013-12-31</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>08095000</td>
+      <td>5531532</td>
+      <td>544213</td>
+      <td>731</td>
+      <td>73.0</td>
+      <td>2000</td>
+      <td>1985-01-01</td>
+      <td>2015-12-31</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>08158920</td>
+      <td>5781345</td>
+      <td>542221</td>
+      <td>156</td>
+      <td>26.0</td>
+      <td>1999</td>
+      <td>1984-01-01</td>
+      <td>2014-12-31</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>We then use these dates to obtain the streamflow.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="p">(</span><span class="n">flw_dam</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">flw_dam</span><span class="o">.</span><span class="n">end</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">qobs</span> <span class="o">=</span> <span class="n">nwis</span><span class="o">.</span><span class="n">get_streamflow</span><span class="p">(</span><span class="n">site_dam</span><span class="p">,</span> <span class="n">dates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now, let’s take a look at the data and assess the station by visual inspection. Note the there are several methods for quantifying the impact of dams on streamflow such as Reservoir Index, but in this tutorial we just rely on visual inspection for brevity.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma</span> <span class="o">=</span> <span class="n">qobs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">yc</span> <span class="o">=</span> <span class="n">flw_dam</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;usgs_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">yearCompleted</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">ma</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">refwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">refaspect</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">hs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ma</span><span class="p">):</span>
+    <span class="n">hs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ma</span><span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mean annual flow (cms)&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ma</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.7</span><span class="p">),</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">yrs</span> <span class="o">=</span> <span class="n">yc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;USGS-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)]</span>
+    <span class="n">yrs</span> <span class="o">=</span> <span class="p">[</span><span class="n">yrs</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">yrs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="k">else</span> <span class="n">yrs</span>
+    <span class="k">for</span> <span class="n">yr</span> <span class="ow">in</span> <span class="n">yrs</span><span class="p">:</span>
+        <span class="n">hs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">yr</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+            <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dam Year Completed&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_45_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_45_0.png" style="width: 562px; height: 1016px;" />
+</div>
+</div>
+<p>We can see that based on the available data and visual inspection, the first station shows a noticeable difference before and after the dam construction. Next we take a closer look at this station, <code class="docutils literal notranslate"><span class="pre">USGS-07312200</span></code>.</p>
+</section>
+<section id="Land-Use/Land-Cover-(LULC)">
+<h2>Land Use/Land Cover (LULC)<a class="headerlink" href="#Land-Use/Land-Cover-(LULC)" title="Permalink to this headline">#</a></h2>
+<p>To gain a better understanding of the land features around and near the <code class="docutils literal notranslate"><span class="pre">USGS-07312200</span></code> station and its dams, we use the LULC data. For this purpose, first, we need to obtain the local catchments up to 10 km upstream of the station. The WaterData web service has several layers one of which is local catchments. Let’s use the comids to obtain their corresponding catchments.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_id</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;USGS-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">wd</span> <span class="o">=</span> <span class="n">WaterData</span><span class="p">(</span><span class="s2">&quot;catchmentsp&quot;</span><span class="p">)</span>
+<span class="n">catchment</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">byid</span><span class="p">(</span><span class="s2">&quot;featureid&quot;</span><span class="p">,</span> <span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">catchment</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geometry</th>
+      <th>gridcode</th>
+      <th>featureid</th>
+      <th>sourcefc</th>
+      <th>areasqkm</th>
+      <th>shape_length</th>
+      <th>shape_area</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MULTIPOLYGON (((-98.92139 33.91434, -98.92185 ...</td>
+      <td>1347963</td>
+      <td>13730353</td>
+      <td>NHDFlowline</td>
+      <td>0.973724</td>
+      <td>0.059060</td>
+      <td>0.000095</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MULTIPOLYGON (((-98.96395 33.90708, -98.96382 ...</td>
+      <td>1347704</td>
+      <td>13730355</td>
+      <td>NHDFlowline</td>
+      <td>5.234858</td>
+      <td>0.119837</td>
+      <td>0.000510</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MULTIPOLYGON (((-98.90715 33.90959, -98.90847 ...</td>
+      <td>1347573</td>
+      <td>13730361</td>
+      <td>NHDFlowline</td>
+      <td>2.926106</td>
+      <td>0.087883</td>
+      <td>0.000285</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MULTIPOLYGON (((-98.92131 33.91219, -98.92150 ...</td>
+      <td>1347533</td>
+      <td>13730363</td>
+      <td>NHDFlowline</td>
+      <td>0.600177</td>
+      <td>0.033255</td>
+      <td>0.000059</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MULTIPOLYGON (((-98.91456 33.90672, -98.91476 ...</td>
+      <td>1347708</td>
+      <td>13730365</td>
+      <td>NHDFlowline</td>
+      <td>0.277969</td>
+      <td>0.036201</td>
+      <td>0.000027</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">catchment</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sites</span><span class="p">[</span><span class="n">sites</span><span class="o">.</span><span class="n">site_no</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">station_id</span><span class="p">])]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Station&quot;</span>
+<span class="p">)</span>
+<span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dam&quot;</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_49_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_49_0.png" style="width: 700px; height: 351px;" />
+</div>
+</div>
+<p>Now, we can retrieve the LULC data at 30-m resolution within the union of these catchments using the Multi-Resolution Land Characteristics (MRLC) Consortium web service.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geom</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">catchment</span><span class="o">.</span><span class="n">unary_union</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">catchment</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">station_id</span><span class="p">])</span>
+<span class="n">nlcd</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">nlcd_bygeom</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="mi">30</span><span class="p">)[</span><span class="n">station_id</span><span class="p">]</span>
+<span class="n">nlcd</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:          (y: 268, x: 383)
+Coordinates:
+  * y                (y) float64 33.94 33.93 33.93 33.93 ... 33.86 33.86 33.86
+  * x                (x) float64 -99.0 -99.0 -99.0 ... -98.87 -98.87 -98.87
+    spatial_ref      int64 0
+Data variables:
+    canopy_2016      (y, x) float32 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;
+    impervious_2019  (y, x) float32 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;
+    descriptor_2019  (y, x) uint8 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;
+    cover_2019       (y, x) uint8 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b8ca0e2a-026d-4afb-ac03-9a90dd4f1b0d' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b8ca0e2a-026d-4afb-ac03-9a90dd4f1b0d' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 268</li><li><span class='xr-has-index'>x</span>: 383</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-fe5ae2ec-948e-4e52-ab33-e2c2224a3660' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fe5ae2ec-948e-4e52-ab33-e2c2224a3660' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>33.94 33.93 33.93 ... 33.86 33.86</div><input id='attrs-7d5e94a3-268d-402b-b143-a19d5e10bcef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7d5e94a3-268d-402b-b143-a19d5e10bcef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c1c4e33a-1472-4428-be63-2d900de3bba6' class='xr-var-data-in' type='checkbox'><label for='data-c1c4e33a-1472-4428-be63-2d900de3bba6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([33.935035, 33.934764, 33.934494, ..., 33.863282, 33.863011, 33.862741])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-99.0 -99.0 -99.0 ... -98.87 -98.87</div><input id='attrs-efcc1074-1442-4d3a-a21f-408c47a96d7e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-efcc1074-1442-4d3a-a21f-408c47a96d7e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e74e2929-fa62-4f56-b253-3e8e4fe243b8' class='xr-var-data-in' type='checkbox'><label for='data-e74e2929-fa62-4f56-b253-3e8e4fe243b8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-98.996597, -98.996272, -98.995947, ..., -98.873123, -98.872798,
+       -98.872473])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-4b83a5fc-dfb3-4c9d-aa7d-37a5449699e7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4b83a5fc-dfb3-4c9d-aa7d-37a5449699e7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-654d4ae8-042d-4632-9bee-0c35c61f4a11' class='xr-var-data-in' type='checkbox'><label for='data-654d4ae8-042d-4632-9bee-0c35c61f4a11' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>-98.9967590684583 0.00032493171799249915 0.0 33.935170430107284 0.0 -0.00027076543406899745</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a92c1db8-66c9-416c-a86a-e9ab43576089' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a92c1db8-66c9-416c-a86a-e9ab43576089' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>canopy_2016</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-70bd996e-cfa7-4e33-84f1-10f929375f6d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-70bd996e-cfa7-4e33-84f1-10f929375f6d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2e353511-4c28-4a48-a6b7-57e8131171f8' class='xr-var-data-in' type='checkbox'><label for='data-2e353511-4c28-4a48-a6b7-57e8131171f8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>0.0</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(0,)</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 400.95 kiB </td>
+                        <td> 400.95 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (268, 383) </td>
+                        <td> (268, 383) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 16 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
+  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>impervious_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-5bf63bc1-fa22-459f-bffa-de727b97d068' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5bf63bc1-fa22-459f-bffa-de727b97d068' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71ee9af3-2d37-49c0-b956-e48beab37ed4' class='xr-var-data-in' type='checkbox'><label for='data-71ee9af3-2d37-49c0-b956-e48beab37ed4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>0.0</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(0,)</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 400.95 kiB </td>
+                        <td> 400.95 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (268, 383) </td>
+                        <td> (268, 383) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 16 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
+  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>descriptor_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-6f945c76-8a77-4c6a-a27c-9681aa1de2d5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6f945c76-8a77-4c6a-a27c-9681aa1de2d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-316305c2-8c23-451e-9b97-f67cc8265dc1' class='xr-var-data-in' type='checkbox'><label for='data-316305c2-8c23-451e-9b97-f67cc8265dc1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>127</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(127,)</dd><dt><span>units :</span></dt><dd>classes</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 100.24 kiB </td>
+                        <td> 100.24 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (268, 383) </td>
+                        <td> (268, 383) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 15 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> uint8 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
+  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cover_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-4e63f678-099d-4fac-9a90-b68275e90168' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4e63f678-099d-4fac-9a90-b68275e90168' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-59543310-6a69-4cf3-a8f6-5fbef70d561a' class='xr-var-data-in' type='checkbox'><label for='data-59543310-6a69-4cf3-a8f6-5fbef70d561a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>127</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(127,)</dd><dt><span>units :</span></dt><dd>classes</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 100.24 kiB </td>
+                        <td> 100.24 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (268, 383) </td>
+                        <td> (268, 383) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 15 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> uint8 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
+  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-f6ac4c07-c0cd-4a3e-954a-8adda5022210' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f6ac4c07-c0cd-4a3e-954a-8adda5022210' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">nlcd_helper</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;classes&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+11     Open Water - All areas of open water, generall...
+12     Perennial Ice/Snow - All areas characterized b...
+21     Developed, Open Space - Includes areas with a ...
+22     Developed, Low Intensity -Includes areas with ...
+23     Developed, Medium Intensity - Includes areas w...
+24     Developed, High Intensity - Includes highly de...
+31     Barren Land (Rock/Sand/Clay) - Barren areas of...
+41     Deciduous Forest - Areas dominated by trees ge...
+42     Evergreen Forest - Areas dominated by trees ge...
+43     Mixed Forest - Areas dominated by trees genera...
+45     Shrub-Forest - Areas identified as currently s...
+46     Herbaceous-Forest - Areas identified as curren...
+51     Dwarf Scrub - Alaska only areas dominated by s...
+52     Shrub/Scrub - Areas dominated by shrubs; less ...
+71     Grassland/Herbaceous - Areas dominated by gram...
+72     Sedge/Herbaceous - Alaska only areas dominated...
+73     Lichens - Alaska only areas dominated by fruti...
+74     Moss - Alaska only areas dominated by mosses, ...
+81     Pasture/Hay - Areas of grasses, legumes, or gr...
+82     Cultivated Crops - Areas used for the producti...
+90     Woody Wetlands - Areas where forest or shrub l...
+95     Emergent Herbaceous Wetlands - Areas where per...
+127                                     Background value
+dtype: object
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">cover_legends</span><span class="p">()</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">refaspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nlcd</span><span class="o">.</span><span class="n">cover_2019</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ticks&quot;</span><span class="p">:</span> <span class="n">levels</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Land Use/Land Cover 2019&quot;</span><span class="p">)</span>
+<span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sites</span><span class="p">[</span><span class="n">sites</span><span class="o">.</span><span class="n">site_no</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">station_id</span><span class="p">])]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Station&quot;</span>
+<span class="p">)</span>
+<span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dam&quot;</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_dam_impact_53_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_53_0.png" style="width: 666px; height: 337px;" />
+</div>
+</div>
+<p>As is evident from the plot, there are mostly cultivated crops (82) and grasslands (71) close to the dams.</p>
+</section>
+<section id="Final-Remarks">
+<h2>Final Remarks<a class="headerlink" href="#Final-Remarks" title="Permalink to this headline">#</a></h2>
+<p>This tutorial demonstrated the application of various web services for obtaining hydrolinked geospatial data using only web services. These web services are powerful tools that make big geospatial data more equitable and the rich ecosystem of tools that are available in R and Python facilitate accessing them.</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cross_section.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">River Elevation and Cross-Section</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="daymet.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Climate Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Taher Chegini<br/>
+  
+      &copy; Copyright 2019-2022, Taher Chegini.<br/>
+    Last updated on 2022-07-16.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

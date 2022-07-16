@@ -1,0 +1,1422 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+<meta property="og:title" content="History" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://hyriver.readthedocs.io/en/changelogs/async_retriever.html" />
+  
+<meta property="og:description" content="0.3.3 (2022-06-14): Breaking Changes: Set the minimum supported version of Python to 3.8 since many of the dependencies such as xarray, pandas, rioxarray have dropped support for Python 3.7.. Inter..." />
+  
+<meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+  
+<meta property="og:image:alt" content="History" />
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@_taher_" />
+<meta name="twitter:creator" content="@_taher_" />
+<meta name="twitter:description" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+<meta name="twitter:image:alt" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+    <title>History</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="History" href="pygeoogc.html" />
+    <link rel="prev" title="History" href="pydaymet.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/hyriver_logo_text.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Hydroclimate Data Retriever
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../readmes.html">
+   Software Stack
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pynhd.html">
+     PyNHD: Navigate and subset NHDPlus database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeohydro.html">
+     PyGeoHydro: Retrieve Geospatial Hydrology Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/py3dep.html">
+     Py3DEP: Topographic data through 3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pydaymet.html">
+     PyDaymet: Daily climate data through Daymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/async_retriever.html">
+     AsyncRetriever: Asynchronous requests with persistent caching
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeoogc.html">
+     PyGeoOGC: Retrieve Data from RESTful, WMS, and WFS Services
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeoutils.html">
+     PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples.html">
+   Example Gallery
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/3dep.html">
+     Topographic Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/aridity.html">
+     Aridity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/columbia.html">
+     Dams in Columbia River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/cross_section.html">
+     River Elevation and Cross-Section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/dam_impact.html">
+     Dam Impact on streamflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/daymet.html">
+     Climate Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/geoconnex.html">
+     GeoConnex
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/hymod_calibration.html">
+     Hydrological Modeling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/ndvi.html">
+     NDVI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nhdplus.html">
+     River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nid.html">
+     National Inventory of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nid_dib.html">
+     Spatiotemporal Distribution of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nlcd.html">
+     Land Use/Land Cover
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/noaa.html">
+     Water Levels and Tides
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nwis.html">
+     River Discharge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/pet_validation.html">
+     Computing PET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/pygeoapi.html">
+     Split Catchment with PyGeoAPI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/rem.html">
+     Relative Elevation Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/ssebop.html">
+     Actual Evapotranspiration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/us_coasts.html">
+     CONUS Coasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/water_quality.html">
+     Water Quality Portal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/webservices.html">
+     Web Services Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../autoapi/index.html">
+   API References
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pynhd/index.html">
+     PyNHD
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/network_tools/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.network_tools
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/nhdplus_derived/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.nhdplus_derived
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/pynhd/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.pynhd
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeohydro/index.html">
+     PyGeoHydro
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/helpers/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.helpers
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/plot/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.plot
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/pygeohydro/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.pygeohydro
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/us_abbrs/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.us_abbrs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/waterdata/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.waterdata
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/py3dep/index.html">
+     Py3DEP
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/py3dep/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.py3dep
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pydaymet/index.html">
+     PyDaymet
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pet
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pydaymet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pydaymet
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/async_retriever/index.html">
+     AsyncRetriever
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/async_retriever/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.async_retriever
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoogc/index.html">
+     PyGeoOGC
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/pygeoogc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.pygeoogc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoutils/index.html">
+     PyGeoUtils
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoutils/pygeoutils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoutils.pygeoutils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../history.html">
+   Changelogs
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pynhd.html">
+     PyNHD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeohydro.html">
+     PyGeoHydro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="py3dep.html">
+     Py3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pydaymet.html">
+     PyDaymet
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     AsyncRetriever
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeoogc.html">
+     PyGeoOGC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeoutils.html">
+     PyGeoUtils
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../authors.html">
+   Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cheginit/HyRiver"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/issues/new?title=Issue%20on%20page%20%2Fchangelogs/async_retriever.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/edit/main/docs/changelogs/async_retriever.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   0.3.3 (2022-06-14)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#breaking-changes">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#internal-changes">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   0.3.2 (2022-04-03)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-features">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   0.3.1 (2021-12-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   0.3.0 (2021-12-27)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     New Features
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   0.2.5 (2021-11-09)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   0.2.4 (2021-09-10)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   0.2.3 (2021-08-26)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   0.2.2 (2021-08-19)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id20">
+   0.2.1 (2021-07-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id23">
+   0.2.0 (2021-06-17)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     Bug Fixes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id26">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id27">
+   0.1.0 (2021-05-01)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>History</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   0.3.3 (2022-06-14)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#breaking-changes">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#internal-changes">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   0.3.2 (2022-04-03)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-features">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   0.3.1 (2021-12-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   0.3.0 (2021-12-27)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     New Features
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   0.2.5 (2021-11-09)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   0.2.4 (2021-09-10)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   0.2.3 (2021-08-26)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   0.2.2 (2021-08-19)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id20">
+   0.2.1 (2021-07-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id23">
+   0.2.0 (2021-06-17)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     Bug Fixes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id26">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id27">
+   0.1.0 (2021-05-01)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="history">
+<h1>History<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h1>
+<section id="id1">
+<h2>0.3.3 (2022-06-14)<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="breaking-changes">
+<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Set the minimum supported version of Python to 3.8 since many of the
+dependencies such as <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> have dropped support
+for Python 3.7.</p></li>
+</ul>
+</section>
+<section id="internal-changes">
+<h3>Internal Changes<a class="headerlink" href="#internal-changes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use <a class="reference external" href="https://github.com/marketplace/actions/provision-with-micromamba">micromamba</a>
+for running tests
+and use <a class="reference external" href="https://github.com/marketplace/actions/setup-nox">nox</a>
+for linting in CI.</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>0.3.2 (2022-04-03)<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>Add support for setting caching-related arguments using three environmental variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_NAME</span></code>: Path to the caching SQLite database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_EXPIRE</span></code>: Expiration time for cached requests in seconds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_DISABLE</span></code>: Disable reading/writing from/to the cache file.</p></li>
+</ul>
+<p>You can do this like so:</p>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;path/to/file.sqlite&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_EXPIRE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;3600&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_DISABLE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Internal Changes<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Include the URL of a failed request in its exception error message.</p></li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h2>0.3.1 (2021-12-31)<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3>New Features<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add three new functions called <code class="docutils literal notranslate"><span class="pre">retrieve_text</span></code>, <code class="docutils literal notranslate"><span class="pre">retrieve_json</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">retrieve_binary</span></code>. These functions are derived from the <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> function
+and are used to retrieve the text, JSON, or binary content of a response. They
+are meant to help with type hinting since they have only one return type instead
+of the three different return types that the <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> function has.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Internal Changes<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Move all private functions to a new module called <code class="docutils literal notranslate"><span class="pre">utils</span></code>. This makes the code-base
+more readable and easier to maintain.</p></li>
+</ul>
+</section>
+</section>
+<section id="id7">
+<h2>0.3.0 (2021-12-27)<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<section id="id8">
+<h3>Breaking Changes<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Set the expiration time to never expire by default.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>New Features<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add two new arguments to <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> for controlling caching. First, <code class="docutils literal notranslate"><span class="pre">delete_url_cache</span></code>
+for deleting caches for specific requests. Second, <code class="docutils literal notranslate"><span class="pre">expire_after</span></code> for setting a
+custom expiration time.</p></li>
+<li><p>Expose the <code class="docutils literal notranslate"><span class="pre">ssl</span></code> argument for disabling the SSL certification
+verification (<a class="reference external" href="https://github.com/cheginit/pydaymet/issues/41">GH41</a>).</p></li>
+<li><p>Add a new option called <code class="docutils literal notranslate"><span class="pre">disable</span></code> that temporarily disables caching
+requests/responses if set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. It defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id10">
+<h2>0.2.5 (2021-11-09)<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<section id="id11">
+<h3>New Features<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add two new arguments, <code class="docutils literal notranslate"><span class="pre">timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">expire_after</span></code>, to <code class="docutils literal notranslate"><span class="pre">retrieve</span></code>.
+These two arguments give the user more control in dealing with issues
+related to caching.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Internal Changes<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Revert to <code class="docutils literal notranslate"><span class="pre">pytest</span></code> as the testing framework.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">importlib-metadata</span></code> for getting the version instead of <code class="docutils literal notranslate"><span class="pre">pkg_resources</span></code>
+to decrease import time as discussed in this
+<a class="reference external" href="https://github.com/pydata/xarray/issues/5676">issue</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id13">
+<h2>0.2.4 (2021-09-10)<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
+<section id="id14">
+<h3>Internal Changes<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">ujon</span></code> for converting responses to JSON.</p></li>
+</ul>
+</section>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix an issue with catching service error messages.</p></li>
+</ul>
+</section>
+</section>
+<section id="id15">
+<h2>0.2.3 (2021-08-26)<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
+<section id="id16">
+<h3>Internal Changes<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">ujson</span></code> for JSON parsing instead of <code class="docutils literal notranslate"><span class="pre">orjson</span></code> since <code class="docutils literal notranslate"><span class="pre">orjson</span></code> only serializes to
+<code class="docutils literal notranslate"><span class="pre">bytes</span></code> which is not compatible with <code class="docutils literal notranslate"><span class="pre">aiohttp</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id17">
+<h2>0.2.2 (2021-08-19)<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<section id="id18">
+<h3>New Features<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add a new function, <code class="docutils literal notranslate"><span class="pre">clean_cache</span></code>, for manually removing the expired responses
+from the cache database.</p></li>
+</ul>
+</section>
+<section id="id19">
+<h3>Internal Changes<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Handle all cache file-related operations in the <code class="docutils literal notranslate"><span class="pre">create_cachefile</span></code> function.</p></li>
+</ul>
+</section>
+</section>
+<section id="id20">
+<h2>0.2.1 (2021-07-31)<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
+<section id="id21">
+<h3>New Features<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The responses now are returned to the same order as the input URLs.</p></li>
+<li><p>Add support for passing connection type, i.e., IPv4 only, IPv6 only,
+or both via the <code class="docutils literal notranslate"><span class="pre">family</span></code> argument. Defaults to <code class="docutils literal notranslate"><span class="pre">both</span></code>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">trust_env=True</span></code>, so the session can read the system’s <code class="docutils literal notranslate"><span class="pre">netrc</span></code> files.
+This can be useful for working with services such as EarthData service
+that read the user authentication info from a <code class="docutils literal notranslate"><span class="pre">netrc</span></code> file.</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>Internal Changes<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Replace the <code class="docutils literal notranslate"><span class="pre">AsyncRequest</span></code> class with the <code class="docutils literal notranslate"><span class="pre">_retrieve</span></code> function to increase
+readability and reduce overhead.</p></li>
+<li><p>More robust handling of validating user inputs via a new class called <code class="docutils literal notranslate"><span class="pre">ValidateInputs</span></code>.</p></li>
+<li><p>Move all if-blocks in <code class="docutils literal notranslate"><span class="pre">async_session</span></code> to other functions to improve performance.</p></li>
+</ul>
+</section>
+</section>
+<section id="id23">
+<h2>0.2.0 (2021-06-17)<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h2>
+<section id="id24">
+<h3>Breaking Changes<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Make persistent caching dependencies required.</p></li>
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">request</span></code> argument to <code class="docutils literal notranslate"><span class="pre">request_method</span></code> in <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> which now accepts both
+lower and upper cases of <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p></li>
+</ul>
+</section>
+<section id="id25">
+<h3>Bug Fixes<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Pass a new loop explicitly to <code class="docutils literal notranslate"><span class="pre">nest_asyncio</span></code> (<a class="reference external" href="https://github.com/cheginit/async_retriever/issues/1">GH1</a>).</p></li>
+</ul>
+</section>
+<section id="id26">
+<h3>Internal Changes<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Refactor the entire code-base for more efficient handling of different request methods.</p></li>
+<li><p>Check the validity of inputs before sending requests.</p></li>
+<li><p>Improve documentation.</p></li>
+<li><p>Improve cache handling by removing the expired responses before returning the results.</p></li>
+<li><p>Increase testing coverage to 100%.</p></li>
+</ul>
+</section>
+</section>
+<section id="id27">
+<h2>0.1.0 (2021-05-01)<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Initial release.</p></li>
+</ul>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="pydaymet.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">History</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="pygeoogc.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">History</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Taher Chegini<br/>
+  
+      &copy; Copyright 2019-2022, Taher Chegini.<br/>
+    Last updated on 2022-07-16.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

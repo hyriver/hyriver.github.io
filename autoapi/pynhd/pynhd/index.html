@@ -1,0 +1,1673 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+<meta property="og:title" content="pynhd.pynhd" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://hyriver.readthedocs.io/en/autoapi/pynhd/pynhd/index.html" />
+  
+<meta property="og:description" content="Access NLDI and WaterData databases. Module Contents:" />
+  
+<meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+  
+<meta property="og:image:alt" content="pynhd.pynhd" />
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@_taher_" />
+<meta name="twitter:creator" content="@_taher_" />
+<meta name="twitter:description" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+<meta name="twitter:image:alt" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+    <title>pynhd.pynhd</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="pygeohydro" href="../../pygeohydro/index.html" />
+    <link rel="prev" title="pynhd.nhdplus_derived" href="../nhdplus_derived/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/hyriver_logo_text.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Hydroclimate Data Retriever
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../readmes.html">
+   Software Stack
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../readme/pynhd.html">
+     PyNHD: Navigate and subset NHDPlus database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../readme/pygeohydro.html">
+     PyGeoHydro: Retrieve Geospatial Hydrology Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../readme/py3dep.html">
+     Py3DEP: Topographic data through 3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../readme/pydaymet.html">
+     PyDaymet: Daily climate data through Daymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../readme/async_retriever.html">
+     AsyncRetriever: Asynchronous requests with persistent caching
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../readme/pygeoogc.html">
+     PyGeoOGC: Retrieve Data from RESTful, WMS, and WFS Services
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../readme/pygeoutils.html">
+     PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../examples.html">
+   Example Gallery
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/3dep.html">
+     Topographic Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/aridity.html">
+     Aridity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/columbia.html">
+     Dams in Columbia River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/cross_section.html">
+     River Elevation and Cross-Section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/dam_impact.html">
+     Dam Impact on streamflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/daymet.html">
+     Climate Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/geoconnex.html">
+     GeoConnex
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/hymod_calibration.html">
+     Hydrological Modeling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/ndvi.html">
+     NDVI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/nhdplus.html">
+     River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/nid.html">
+     National Inventory of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/nid_dib.html">
+     Spatiotemporal Distribution of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/nlcd.html">
+     Land Use/Land Cover
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/noaa.html">
+     Water Levels and Tides
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/nwis.html">
+     River Discharge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/pet_validation.html">
+     Computing PET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/pygeoapi.html">
+     Split Catchment with PyGeoAPI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/rem.html">
+     Relative Elevation Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/ssebop.html">
+     Actual Evapotranspiration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/us_coasts.html">
+     CONUS Coasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/water_quality.html">
+     Water Quality Portal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/webservices.html">
+     Web Services Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../index.html">
+   API References
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="../index.html">
+     PyNHD
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../network_tools/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.network_tools
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../nhdplus_derived/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.nhdplus_derived
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.pynhd
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../pygeohydro/index.html">
+     PyGeoHydro
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeohydro/helpers/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.helpers
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeohydro/plot/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.plot
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeohydro/pygeohydro/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.pygeohydro
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeohydro/us_abbrs/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.us_abbrs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeohydro/waterdata/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.waterdata
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../py3dep/index.html">
+     Py3DEP
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../py3dep/py3dep/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.py3dep
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../py3dep/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../pydaymet/index.html">
+     PyDaymet
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pydaymet/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pydaymet/pet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pet
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pydaymet/pydaymet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pydaymet
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../async_retriever/index.html">
+     AsyncRetriever
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../async_retriever/async_retriever/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.async_retriever
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../async_retriever/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../pygeoogc/index.html">
+     PyGeoOGC
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeoogc/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeoogc/pygeoogc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.pygeoogc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeoogc/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../pygeoutils/index.html">
+     PyGeoUtils
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pygeoutils/pygeoutils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoutils.pygeoutils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../history.html">
+   Changelogs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../changelogs/pynhd.html">
+     PyNHD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../changelogs/pygeohydro.html">
+     PyGeoHydro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../changelogs/py3dep.html">
+     Py3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../changelogs/pydaymet.html">
+     PyDaymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../changelogs/async_retriever.html">
+     AsyncRetriever
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../changelogs/pygeoogc.html">
+     PyGeoOGC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../changelogs/pygeoutils.html">
+     PyGeoUtils
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../authors.html">
+   Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cheginit/HyRiver"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/issues/new?title=Issue%20on%20page%20%2Fautoapi/pynhd/pynhd/index.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/edit/main/docs/autoapi/pynhd/pynhd/index.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-contents">
+   Module Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.NHD">
+     NHD
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.NHDPlusHR">
+     NHDPlusHR
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI">
+     NLDI
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.comid_byloc">
+       comid_byloc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.feature_byloc">
+       feature_byloc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.get_basins">
+       get_basins
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.get_validchars">
+       get_validchars
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.getcharacteristic_byid">
+       getcharacteristic_byid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.getfeature_byid">
+       getfeature_byid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.navigate_byid">
+       navigate_byid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.navigate_byloc">
+       navigate_byloc
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI">
+     PyGeoAPI
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.cross_section">
+       cross_section
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.elevation_profile">
+       elevation_profile
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.flow_trace">
+       flow_trace
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.split_catchment">
+       split_catchment
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData">
+     WaterData
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.bybox">
+       bybox
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.bydistance">
+       bydistance
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.byfilter">
+       byfilter
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.bygeom">
+       bygeom
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.byid">
+       byid
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.geoconnex">
+     geoconnex
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.pygeoapi">
+     pygeoapi
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>pynhd.pynhd</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-contents">
+   Module Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.NHD">
+     NHD
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.NHDPlusHR">
+     NHDPlusHR
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI">
+     NLDI
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.comid_byloc">
+       comid_byloc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.feature_byloc">
+       feature_byloc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.get_basins">
+       get_basins
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.get_validchars">
+       get_validchars
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.getcharacteristic_byid">
+       getcharacteristic_byid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.getfeature_byid">
+       getfeature_byid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.navigate_byid">
+       navigate_byid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.NLDI.navigate_byloc">
+       navigate_byloc
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI">
+     PyGeoAPI
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.cross_section">
+       cross_section
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.elevation_profile">
+       elevation_profile
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.flow_trace">
+       flow_trace
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.PyGeoAPI.split_catchment">
+       split_catchment
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData">
+     WaterData
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.bybox">
+       bybox
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.bydistance">
+       bydistance
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.byfilter">
+       byfilter
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.bygeom">
+       bygeom
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pynhd.pynhd.WaterData.byid">
+       byid
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.geoconnex">
+     geoconnex
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pynhd.pynhd.pygeoapi">
+     pygeoapi
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="module-pynhd.pynhd">
+<span id="pynhd-pynhd"></span><h1><a class="reference internal" href="#module-pynhd.pynhd" title="pynhd.pynhd"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pynhd.pynhd</span></code></a><a class="headerlink" href="#module-pynhd.pynhd" title="Permalink to this headline">#</a></h1>
+<p>Access NLDI and WaterData databases.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pynhd.pynhd.NHD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pynhd.pynhd.</span></span><span class="sig-name descname"><span class="pre">NHD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NHD" title="Permalink to this definition">#</a></dt>
+<dd><p>Access National Hydrography Dataset (NHD), both meduim and high resolution.</p>
+<p class="rubric">Notes</p>
+<p>For more info visit: <a class="reference external" href="https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer">https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – A valid service layer. Layer names with <code class="docutils literal notranslate"><span class="pre">_hr</span></code> are high resolution and
+<code class="docutils literal notranslate"><span class="pre">_mr</span></code> are medium resolution. Also, layer names with <code class="docutils literal notranslate"><span class="pre">_nonconus</span></code> are for
+non-conus areas, i.e., Alaska, Hawaii, Puerto Rico, the Virgin Islands , and
+the Pacific Islands. Valid layers are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">point</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">point_event</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">line_hr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_direction</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flowline_mr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flowline_hr_nonconus</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flowline_hr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area_mr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area_hr_nonconus</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area_hr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">waterbody_mr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">waterbody_hr_nonconus</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">waterbody_hr</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>outfields</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <em>optional</em>) – Target field name(s), default to “*” i.e., all the fields.</p></li>
+<li><p><strong>crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Target spatial reference, default to <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pynhd.pynhd.NHDPlusHR">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pynhd.pynhd.</span></span><span class="sig-name descname"><span class="pre">NHDPlusHR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NHDPlusHR" title="Permalink to this definition">#</a></dt>
+<dd><p>Access National Hydrography Dataset (NHD) high resolution.</p>
+<p class="rubric">Notes</p>
+<p>For more info visit: <a class="reference external" href="https://edits.nationalmap.gov/arcgis/rest/services/nhd/MapServer">https://edits.nationalmap.gov/arcgis/rest/services/nhd/MapServer</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – A valid service layer. Valid layers are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">point</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sink</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flowline</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">non_network_flowline</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_direction</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wall</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">burn_line</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">burn_waterbody</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">waterbody</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">huc12</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catchment</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>outfields</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <em>optional</em>) – Target field name(s), default to “*” i.e., all the fields.</p></li>
+<li><p><strong>crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Target spatial reference, default to <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pynhd.pynhd.</span></span><span class="sig-name descname"><span class="pre">NLDI</span></span><a class="headerlink" href="#pynhd.pynhd.NLDI" title="Permalink to this definition">#</a></dt>
+<dd><p>Access the Hydro Network-Linked Data Index (NLDI) service.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.comid_byloc">
+<span class="sig-name descname"><span class="pre">comid_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.comid_byloc" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the closest ComID based on coordinates.</p>
+<p class="rubric">Notes</p>
+<p>This function tries to find the closest ComID based on flowline grid cells. If
+such a cell is not found, it will return the closest ComID using the flowtrace
+endpoint of the PyGeoAPI service to find the closest downstream ComID. The returned
+dataframe has a <code class="docutils literal notranslate"><span class="pre">measure</span></code> column that indicates the location of the input
+coordinate on the flowline as a percentage of the total flowline length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <code class="xref py py-class docutils literal notranslate"><span class="pre">tuples</span></code>) – A tuple of length two (x, y) or a list of them.</p></li>
+<li><p><strong>loc_crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The spatial reference of the input coordinate, defaults to EPSG:4326.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">(geopandas.GeoDataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list)</span></code> – NLDI indexed ComID(s) and points in EPSG:4326. If some coords don’t return
+any ComID a list of missing coords are returned as well.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.feature_byloc">
+<span class="sig-name descname"><span class="pre">feature_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.feature_byloc" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the closest feature ID(s) based on coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>) – A tuple of length two (x, y) or a list of them.</p></li>
+<li><p><strong>loc_crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The spatial reference of the input coordinate, defaults to EPSG:4326.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">(geopandas.GeoDataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list)</span></code> – NLDI indexed feature ID(s) and flowlines in EPSG:4326. If some coords don’t
+return any IDs a list of missing coords are returned as well.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.get_basins">
+<span class="sig-name descname"><span class="pre">get_basins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsource</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nwissite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_catchment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simplified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.get_basins" title="Permalink to this definition">#</a></dt>
+<dd><p>Get basins for a list of station IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>feature_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>) – Target feature ID(s).</p></li>
+<li><p><strong>fsource</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The name of feature(s) source, defaults to <code class="docutils literal notranslate"><span class="pre">nwissite</span></code>.
+The valid sources are:</p>
+<ul>
+<li><p>‘comid’ for NHDPlus comid.</p></li>
+<li><p>‘ca_gages’ for Streamgage catalog for CA SB19</p></li>
+<li><p>‘gfv11_pois’ for USGS Geospatial Fabric V1.1 Points of Interest</p></li>
+<li><p>‘huc12pp’ for HUC12 Pour Points</p></li>
+<li><p>‘nmwdi-st’ for New Mexico Water Data Initative Sites</p></li>
+<li><p>‘nwisgw’ for NWIS Groundwater Sites</p></li>
+<li><p>‘nwissite’ for NWIS Surface Water Sites</p></li>
+<li><p>‘ref_gage’ for geoconnex.us reference gages</p></li>
+<li><p>‘vigil’ for Vigil Network Data</p></li>
+<li><p>‘wade’ for Water Data Exchange 2.0 Sites</p></li>
+<li><p>‘WQP’ for Water Quality Portal</p></li>
+</ul>
+</li>
+<li><p><strong>split_catchment</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, split basins at their outlet locations. Default to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>simplified</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a simplified version of basin geometries. Default to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">(geopandas.GeoDataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list)</span></code> – NLDI indexed basins in EPSG:4326. If some IDs don’t return any features
+a list of missing ID(s) are returned as well.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.get_validchars">
+<span class="sig-name descname"><span class="pre">get_validchars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.get_validchars" title="Permalink to this definition">#</a></dt>
+<dd><p>Get all the available characteristics IDs for a given characteristics type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.getcharacteristic_byid">
+<span class="sig-name descname"><span class="pre">getcharacteristic_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.getcharacteristic_byid" title="Permalink to this definition">#</a></dt>
+<dd><p>Get characteristics using a list ComIDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>comids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>) – The NHDPlus Common Identifier(s).</p></li>
+<li><p><strong>char_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Type of the characteristic. Valid values are <code class="docutils literal notranslate"><span class="pre">local</span></code> for
+individual reach catchments, <code class="docutils literal notranslate"><span class="pre">tot</span></code> for network-accumulated values
+using total cumulative drainage area and <code class="docutils literal notranslate"><span class="pre">div</span></code> for network-accumulated values
+using divergence-routed.</p></li>
+<li><p><strong>char_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <em>optional</em>) – Name(s) of the target characteristics, default to all.</p></li>
+<li><p><strong>values_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – Whether to return only <code class="docutils literal notranslate"><span class="pre">characteristic_value</span></code> as a series, default to True.
+If is set to False, <code class="docutils literal notranslate"><span class="pre">percent_nodata</span></code> is returned as well.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> – Either only <code class="docutils literal notranslate"><span class="pre">characteristic_value</span></code> as a dataframe or
+or if <code class="docutils literal notranslate"><span class="pre">values_only</span></code> is Fale return <code class="docutils literal notranslate"><span class="pre">percent_nodata</span></code> as well.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.getfeature_byid">
+<span class="sig-name descname"><span class="pre">getfeature_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.getfeature_byid" title="Permalink to this definition">#</a></dt>
+<dd><p>Get feature(s) based ID(s).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fsource</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The name of feature(s) source. The valid sources are:</p>
+<ul>
+<li><p>‘comid’ for NHDPlus comid.</p></li>
+<li><p>‘ca_gages’ for Streamgage catalog for CA SB19</p></li>
+<li><p>‘gfv11_pois’ for USGS Geospatial Fabric V1.1 Points of Interest</p></li>
+<li><p>‘huc12pp’ for HUC12 Pour Points</p></li>
+<li><p>‘nmwdi-st’ for New Mexico Water Data Initative Sites</p></li>
+<li><p>‘nwisgw’ for NWIS Groundwater Sites</p></li>
+<li><p>‘nwissite’ for NWIS Surface Water Sites</p></li>
+<li><p>‘ref_gage’ for geoconnex.us reference gages</p></li>
+<li><p>‘vigil’ for Vigil Network Data</p></li>
+<li><p>‘wade’ for Water Data Exchange 2.0 Sites</p></li>
+<li><p>‘WQP’ for Water Quality Portal</p></li>
+</ul>
+</li>
+<li><p><strong>fid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Feature ID(s).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">(geopandas.GeoDataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list)</span></code> – NLDI indexed features in EPSG:4326. If some IDs don’t return any features
+a list of missing ID(s) are returned as well.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.navigate_byid">
+<span class="sig-name descname"><span class="pre">navigate_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">navigation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.navigate_byid" title="Permalink to this definition">#</a></dt>
+<dd><p>Navigate the NHDPlus database from a single feature id up to a distance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fsource</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The name of feature(s) source. The valid sources are:</p>
+<ul>
+<li><p>‘comid’ for NHDPlus comid.</p></li>
+<li><p>‘ca_gages’ for Streamgage catalog for CA SB19</p></li>
+<li><p>‘gfv11_pois’ for USGS Geospatial Fabric V1.1 Points of Interest</p></li>
+<li><p>‘huc12pp’ for HUC12 Pour Points</p></li>
+<li><p>‘nmwdi-st’ for New Mexico Water Data Initative Sites</p></li>
+<li><p>‘nwisgw’ for NWIS Groundwater Sites</p></li>
+<li><p>‘nwissite’ for NWIS Surface Water Sites</p></li>
+<li><p>‘ref_gage’ for geoconnex.us reference gages</p></li>
+<li><p>‘vigil’ for Vigil Network Data</p></li>
+<li><p>‘wade’ for Water Data Exchange 2.0 Sites</p></li>
+<li><p>‘WQP’ for Water Quality Portal</p></li>
+</ul>
+</li>
+<li><p><strong>fid</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The ID of the feature.</p></li>
+<li><p><strong>navigation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The navigation method.</p></li>
+<li><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Return the data from another source after navigating
+the features using fsource, defaults to None.</p></li>
+<li><p><strong>distance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – Limit the search for navigation up to a distance in km,
+defaults is 500 km. Note that this is an expensive request so you
+have be mindful of the value that you provide. The value must be
+between 1 to 9999 km.</p></li>
+<li><p><strong>trim_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, trim the starting flowline at the source feature,
+defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – NLDI indexed features in EPSG:4326.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.NLDI.navigate_byloc">
+<span class="sig-name descname"><span class="pre">navigate_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">navigation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.navigate_byloc" title="Permalink to this definition">#</a></dt>
+<dd><p>Navigate the NHDPlus database from a coordinate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>) – A tuple of length two (x, y).</p></li>
+<li><p><strong>navigation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The navigation method, defaults to None which throws an exception
+if comid_only is False.</p></li>
+<li><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Return the data from another source after navigating
+the features using fsource, defaults to None which throws an exception
+if comid_only is False.</p></li>
+<li><p><strong>loc_crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The spatial reference of the input coordinate, defaults to EPSG:4326.</p></li>
+<li><p><strong>distance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – Limit the search for navigation up to a distance in km,
+defaults to 500 km. Note that this is an expensive request so you
+have be mindful of the value that you provide. If you want to get
+all the available features you can pass a large distance like 9999999.</p></li>
+<li><p><strong>trim_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, trim the starting flowline at the source feature,
+defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – NLDI indexed features in EPSG:4326.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pynhd.pynhd.</span></span><span class="sig-name descname"><span class="pre">PyGeoAPI</span></span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI" title="Permalink to this definition">#</a></dt>
+<dd><p>Access <a class="reference external" href="https://labs.waterdata.usgs.gov/api/nldi/pygeoapi">PyGeoAPI</a> service.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.cross_section">
+<span class="sig-name descname"><span class="pre">cross_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.cross_section" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a GeoDataFrame from the xsatpoint service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>) – The coordinate of the point to extract the cross-section as a tuple,e.g., (lon, lat).</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The width of the cross-section in meters.</p></li>
+<li><p><strong>numpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number of points to extract the cross-section from the DEM.</p></li>
+<li><p><strong>crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The coordinate reference system of the coordinates, defaults to EPSG:4326.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – A GeoDataFrame containing the cross-section at the requested point.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">PyGeoAPI</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pygeoapi</span> <span class="o">=</span> <span class="n">PyGeoAPI</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span> <span class="o">=</span> <span class="n">pygeoapi</span><span class="o">.</span><span class="n">cross_section</span><span class="p">((</span><span class="o">-</span><span class="mf">103.80119</span><span class="p">,</span> <span class="mf">40.2684</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">numpts</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">DEF_CRS</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  
+<span class="go">1000.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.elevation_profile">
+<span class="sig-name descname"><span class="pre">elevation_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dem_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.elevation_profile" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a GeoDataFrame from the xsatendpts service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>) – A list of two coordinates to trace as a list of tuples, e.g.,
+[(lon1, lat1), (lon2, lat2)].</p></li>
+<li><p><strong>numpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number of points to extract the elevation profile from the DEM.</p></li>
+<li><p><strong>dem_res</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The target resolution for requesting the DEM from 3DEP service.</p></li>
+<li><p><strong>crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The coordinate reference system of the coordinates, defaults to EPSG:4326.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – A GeoDataFrame containing the elevation profile along the requested endpoints.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">PyGeoAPI</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pygeoapi</span> <span class="o">=</span> <span class="n">PyGeoAPI</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span> <span class="o">=</span> <span class="n">pygeoapi</span><span class="o">.</span><span class="n">elevation_profile</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[(</span><span class="o">-</span><span class="mf">103.801086</span><span class="p">,</span> <span class="mf">40.26772</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">103.80097</span><span class="p">,</span> <span class="mf">40.270568</span><span class="p">)],</span> <span class="n">numpts</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">dem_res</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">DEF_CRS</span>
+<span class="gp">... </span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  
+<span class="go">411.5906</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.flow_trace">
+<span class="sig-name descname"><span class="pre">flow_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.flow_trace" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a GeoDataFrame from the flowtrace service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>) – The coordinate of the point to trace as a tuple,e.g., (lon, lat).</p></li>
+<li><p><strong>crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The coordinate reference system of the coordinates, defaults to EPSG:4326.</p></li>
+<li><p><strong>direction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The direction of flowpaths, either <code class="docutils literal notranslate"><span class="pre">down</span></code>, <code class="docutils literal notranslate"><span class="pre">up</span></code>, or <code class="docutils literal notranslate"><span class="pre">none</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">none</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – A GeoDataFrame containing the traced flowline.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">PyGeoAPI</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pygeoapi</span> <span class="o">=</span> <span class="n">PyGeoAPI</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span> <span class="o">=</span> <span class="n">pygeoapi</span><span class="o">.</span><span class="n">flow_trace</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mf">1774209.63</span><span class="p">,</span> <span class="mf">856381.68</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;ESRI:102003&quot;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+<span class="gp">... </span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">comid</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  
+<span class="go">22294818</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.split_catchment">
+<span class="sig-name descname"><span class="pre">split_catchment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upstream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.split_catchment" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a GeoDataFrame from the splitcatchment service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>) – The coordinate of the point to trace as a tuple,e.g., (lon, lat).</p></li>
+<li><p><strong>crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The coordinate reference system of the coordinates, defaults to EPSG:4326.</p></li>
+<li><p><strong>upstream</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If True, return all upstream catchments rather than just the local catchment,
+defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – A GeoDataFrame containing the local catchment or the entire upstream catchments.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">PyGeoAPI</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pygeoapi</span> <span class="o">=</span> <span class="n">PyGeoAPI</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span> <span class="o">=</span> <span class="n">pygeoapi</span><span class="o">.</span><span class="n">split_catchment</span><span class="p">((</span><span class="o">-</span><span class="mf">73.82705</span><span class="p">,</span> <span class="mf">43.29139</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="n">DEF_CRS</span><span class="p">,</span> <span class="n">upstream</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">catchmentID</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  
+<span class="go">22294818</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pynhd.pynhd.WaterData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pynhd.pynhd.</span></span><span class="sig-name descname"><span class="pre">WaterData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData" title="Permalink to this definition">#</a></dt>
+<dd><p>Access to <a class="reference external" href="https://labs.waterdata.usgs.gov/geoserver">Water Data</a> service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – A valid layer from the WaterData service. Valid layers are:
+<code class="docutils literal notranslate"><span class="pre">nhdarea</span></code>, <code class="docutils literal notranslate"><span class="pre">nhdwaterbody</span></code>, <code class="docutils literal notranslate"><span class="pre">catchmentsp</span></code>, <code class="docutils literal notranslate"><span class="pre">nhdflowline_network</span></code>
+<code class="docutils literal notranslate"><span class="pre">gagesii</span></code>, <code class="docutils literal notranslate"><span class="pre">huc08</span></code>, <code class="docutils literal notranslate"><span class="pre">huc12</span></code>, <code class="docutils literal notranslate"><span class="pre">huc12agg</span></code>, and <code class="docutils literal notranslate"><span class="pre">huc12all</span></code>. Note that
+the layers’ worksapce for the Water Data service is <code class="docutils literal notranslate"><span class="pre">wmadata</span></code> which will
+be added to the given <code class="docutils literal notranslate"><span class="pre">layer</span></code> argument if it is not provided.</p></li>
+<li><p><strong>crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The target spatial reference system, defaults to <code class="docutils literal notranslate"><span class="pre">epsg:4326</span></code>.</p></li>
+<li><p><strong>validation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – Whether to validate the input data, defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.WaterData.bybox">
+<span class="sig-name descname"><span class="pre">bybox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bybox" title="Permalink to this definition">#</a></dt>
+<dd><p>Get features within a bounding box.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.WaterData.bydistance">
+<span class="sig-name descname"><span class="pre">bydistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bydistance" title="Permalink to this definition">#</a></dt>
+<dd><p>Get features within a radius (in meters) of a point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.WaterData.byfilter">
+<span class="sig-name descname"><span class="pre">byfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cql_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.byfilter" title="Permalink to this definition">#</a></dt>
+<dd><p>Get features based on a CQL filter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.WaterData.bygeom">
+<span class="sig-name descname"><span class="pre">bygeom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'INTERSECTS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bygeom" title="Permalink to this definition">#</a></dt>
+<dd><p>Get features within a geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geometry</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">shapely.geometry</span></code>) – The input geometry</p></li>
+<li><p><strong>geo_crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The CRS of the input geometry, default to epsg:4326.</p></li>
+<li><p><strong>xy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – Whether axis order of the input geometry is xy or yx.</p></li>
+<li><p><strong>predicate</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The geometric prediacte to use for requesting the data, defaults to
+INTERSECTS. Valid predicates are:
+<code class="docutils literal notranslate"><span class="pre">EQUALS</span></code>, <code class="docutils literal notranslate"><span class="pre">DISJOINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERSECTS</span></code>, <code class="docutils literal notranslate"><span class="pre">TOUCHES</span></code>, <code class="docutils literal notranslate"><span class="pre">CROSSES</span></code>, <code class="docutils literal notranslate"><span class="pre">WITHIN</span></code>
+<code class="docutils literal notranslate"><span class="pre">CONTAINS</span></code>, <code class="docutils literal notranslate"><span class="pre">OVERLAPS</span></code>, <code class="docutils literal notranslate"><span class="pre">RELATE</span></code>, <code class="docutils literal notranslate"><span class="pre">BEYOND</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – The requested features in the given geometry.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pynhd.pynhd.WaterData.byid">
+<span class="sig-name descname"><span class="pre">byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featurename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.byid" title="Permalink to this definition">#</a></dt>
+<dd><p>Get features based on IDs.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pynhd.pynhd.geoconnex">
+<span class="sig-prename descclassname"><span class="pre">pynhd.pynhd.</span></span><span class="sig-name descname"><span class="pre">geoconnex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_geometry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.geoconnex" title="Permalink to this definition">#</a></dt>
+<dd><p>Query the GeoConnex API.</p>
+<p class="rubric">Notes</p>
+<p>If you run the function without any arguments, it will print out a list
+of available endpoints. If you run the function with <code class="docutils literal notranslate"><span class="pre">item</span></code> but no <code class="docutils literal notranslate"><span class="pre">query</span></code>,
+it will print out the description, queryable fields, and extent of the
+selected endpoint (<code class="docutils literal notranslate"><span class="pre">item</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The item to query.</p></li>
+<li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <em>optional</em>) – Query parameters. The <code class="docutils literal notranslate"><span class="pre">geometry</span></code> field can be a Polygon, MultiPolygon,
+or tuple/list of length 4 (bbox) in <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> CRS.</p></li>
+<li><p><strong>skip_geometry</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the geometry will not be returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – The data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pynhd.pynhd.pygeoapi">
+<span class="sig-prename descclassname"><span class="pre">pynhd.pynhd.</span></span><span class="sig-name descname"><span class="pre">pygeoapi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.pygeoapi" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a GeoDataFrame from the flowtrace service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coords</strong> (<a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a>) – A GeoDataFrame containing the coordinates to query.
+The required columns services are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_trace</span></code>: <code class="docutils literal notranslate"><span class="pre">direction</span></code> that indicates the direction of the flow trace.
+It can be <code class="docutils literal notranslate"><span class="pre">up</span></code>, <code class="docutils literal notranslate"><span class="pre">down</span></code>, or <code class="docutils literal notranslate"><span class="pre">none</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">split_catchment</span></code>: <code class="docutils literal notranslate"><span class="pre">upstream</span></code> that indicates whether to return all upstream
+catchments or just the local catchment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elevation_profile</span></code>: <code class="docutils literal notranslate"><span class="pre">numpts</span></code> that indicates the number of points to extract
+along the flowpath and <code class="docutils literal notranslate"><span class="pre">3dep_res</span></code> that indicates the target resolution for
+requesting the DEM from 3DEP service.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cross_section</span></code>: <code class="docutils literal notranslate"><span class="pre">numpts</span></code> that indicates the number of points to extract
+along the flowpath and <code class="docutils literal notranslate"><span class="pre">width</span></code> that indicates the width of the cross-section
+in meters.</p></li>
+</ul>
+</li>
+<li><p><strong>service</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The service to query, can be <code class="docutils literal notranslate"><span class="pre">flow_trace</span></code>, <code class="docutils literal notranslate"><span class="pre">split_catchment</span></code>, <code class="docutils literal notranslate"><span class="pre">elevation_profile</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">cross_section</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> – A GeoDataFrame containing the results of requested service.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>            <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">]</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">sgeom</span><span class="o">.</span><span class="n">Point</span><span class="p">((</span><span class="mf">1774209.63</span><span class="p">,</span> <span class="mf">856381.68</span><span class="p">))],</span>
+<span class="gp">... </span>    <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;ESRI:102003&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">nhd</span><span class="o">.</span><span class="n">pygeoapi</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="s2">&quot;flow_trace&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">trace</span><span class="o">.</span><span class="n">comid</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">22294818</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../nhdplus_derived/index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pynhd.nhdplus_derived</span></code></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../pygeohydro/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pygeohydro</span></code></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Taher Chegini<br/>
+  
+      &copy; Copyright 2019-2022, Taher Chegini.<br/>
+    Last updated on 2022-07-16.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

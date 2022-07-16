@@ -1,0 +1,1152 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+<meta property="og:title" content="PyGeoHydro: Retrieve Geospatial Hydrology Data" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://hyriver.readthedocs.io/en/readme/pygeohydro.html" />
+  
+<meta property="og:description" content="PyPi Conda Version CodeCov Python Versions Downloads, CodeFactor black pre-commit Binder, Features: PyGeoHydro (formerly named hydrodata) is a part of HyRiver software stack that is designed to aid..." />
+  
+<meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+  
+<meta property="og:image:alt" content="PyGeoHydro: Retrieve Geospatial Hydrology Data" />
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@_taher_" />
+<meta name="twitter:creator" content="@_taher_" />
+<meta name="twitter:description" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+<meta name="twitter:image:alt" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+    <title>PyGeoHydro: Retrieve Geospatial Hydrology Data</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Py3DEP: Topographic data through 3DEP" href="py3dep.html" />
+    <link rel="prev" title="PyNHD: Navigate and subset NHDPlus database" href="pynhd.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/hyriver_logo_text.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Hydroclimate Data Retriever
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../readmes.html">
+   Software Stack
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pynhd.html">
+     PyNHD: Navigate and subset NHDPlus database
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     PyGeoHydro: Retrieve Geospatial Hydrology Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="py3dep.html">
+     Py3DEP: Topographic data through 3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pydaymet.html">
+     PyDaymet: Daily climate data through Daymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="async_retriever.html">
+     AsyncRetriever: Asynchronous requests with persistent caching
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeoogc.html">
+     PyGeoOGC: Retrieve Data from RESTful, WMS, and WFS Services
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeoutils.html">
+     PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples.html">
+   Example Gallery
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/3dep.html">
+     Topographic Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/aridity.html">
+     Aridity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/columbia.html">
+     Dams in Columbia River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/cross_section.html">
+     River Elevation and Cross-Section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/dam_impact.html">
+     Dam Impact on streamflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/daymet.html">
+     Climate Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/geoconnex.html">
+     GeoConnex
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/hymod_calibration.html">
+     Hydrological Modeling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/ndvi.html">
+     NDVI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nhdplus.html">
+     River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nid.html">
+     National Inventory of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nid_dib.html">
+     Spatiotemporal Distribution of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nlcd.html">
+     Land Use/Land Cover
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/noaa.html">
+     Water Levels and Tides
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nwis.html">
+     River Discharge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/pet_validation.html">
+     Computing PET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/pygeoapi.html">
+     Split Catchment with PyGeoAPI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/rem.html">
+     Relative Elevation Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/ssebop.html">
+     Actual Evapotranspiration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/us_coasts.html">
+     CONUS Coasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/water_quality.html">
+     Water Quality Portal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/webservices.html">
+     Web Services Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../autoapi/index.html">
+   API References
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pynhd/index.html">
+     PyNHD
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/network_tools/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.network_tools
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/nhdplus_derived/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.nhdplus_derived
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/pynhd/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.pynhd
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeohydro/index.html">
+     PyGeoHydro
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/helpers/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.helpers
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/plot/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.plot
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/pygeohydro/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.pygeohydro
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/us_abbrs/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.us_abbrs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/waterdata/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.waterdata
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/py3dep/index.html">
+     Py3DEP
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/py3dep/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.py3dep
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pydaymet/index.html">
+     PyDaymet
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pet
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pydaymet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pydaymet
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/async_retriever/index.html">
+     AsyncRetriever
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/async_retriever/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.async_retriever
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoogc/index.html">
+     PyGeoOGC
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/pygeoogc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.pygeoogc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoutils/index.html">
+     PyGeoUtils
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoutils/pygeoutils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoutils.pygeoutils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../history.html">
+   Changelogs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pynhd.html">
+     PyNHD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pygeohydro.html">
+     PyGeoHydro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/py3dep.html">
+     Py3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pydaymet.html">
+     PyDaymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/async_retriever.html">
+     AsyncRetriever
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pygeoogc.html">
+     PyGeoOGC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../changelogs/pygeoutils.html">
+     PyGeoUtils
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../authors.html">
+   Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cheginit/HyRiver"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/issues/new?title=Issue%20on%20page%20%2Freadme/pygeohydro.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/edit/main/docs/readme/pygeohydro.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   PyGeoHydro: Retrieve Geospatial Hydrology Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#features">
+   Features
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-start">
+   Quick start
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>PyGeoHydro: Retrieve Geospatial Hydrology Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   PyGeoHydro: Retrieve Geospatial Hydrology Data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#features">
+   Features
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-start">
+   Quick start
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="pygeohydro-retrieve-geospatial-hydrology-data">
+<h1>PyGeoHydro: Retrieve Geospatial Hydrology Data<a class="headerlink" href="#pygeohydro-retrieve-geospatial-hydrology-data" title="Permalink to this headline">#</a></h1>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pygeohydro"><img alt="PyPi" src="https://img.shields.io/pypi/v/pygeohydro.svg" /></a>
+<a class="reference external image-reference" href="https://anaconda.org/conda-forge/pygeohydro"><img alt="Conda Version" src="https://img.shields.io/conda/vn/conda-forge/pygeohydro.svg" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/cheginit/pygeohydro"><img alt="CodeCov" src="https://codecov.io/gh/cheginit/pygeohydro/graph/badge.svg" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/pygeohydro"><img alt="Python Versions" src="https://img.shields.io/pypi/pyversions/pygeohydro.svg" /></a>
+<a class="reference external image-reference" href="https://pepy.tech/project/hydrodata"><img alt="Downloads" src="https://pepy.tech/badge/hydrodata" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference external image-reference" href="https://www.codefactor.io/repository/github/cheginit/pygeohydro/overview/main"><img alt="CodeFactor" src="https://www.codefactor.io/repository/github/cheginit/pygeohydro/badge/main" /></a>
+<a class="reference external image-reference" href="https://github.com/psf/black"><img alt="black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&amp;logoColor=white" /></a>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="features">
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">#</a></h1>
+<p>PyGeoHydro (formerly named <a class="reference external" href="https://pypi.org/project/hydrodata">hydrodata</a>) is a part of
+<a class="reference external" href="https://github.com/cheginit/HyRiver">HyRiver</a> software stack that
+is designed to aid in hydroclimate analysis through web services. This package provides
+access to some public web services that offer geospatial hydrology data. It has three
+main modules: <code class="docutils literal notranslate"><span class="pre">pygeohydro</span></code>, <code class="docutils literal notranslate"><span class="pre">plot</span></code>, and <code class="docutils literal notranslate"><span class="pre">helpers</span></code>.</p>
+<p>PyGeoHydro supports the following datasets:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nwis.waterdata.usgs.gov/nwis">NWIS</a> for daily mean streamflow observations
+(returned as a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> or <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> with station attributes),</p></li>
+<li><p><a class="reference external" href="https://ral.ucar.edu/solutions/products/camels">CAMELS</a> for accessing streamflow
+observations (1980-2014) and basin-level attributes of 671 stations within CONUS.</p></li>
+<li><p><a class="reference external" href="https://www.waterqualitydata.us/">Water Quality Portal</a> for accessing current and
+historical water quality data from more than 1.5 million sites across the US,</p></li>
+<li><p><a class="reference external" href="https://nid.sec.usace.army.mil">NID</a> for accessing the National Inventory of Dams
+web service,</p></li>
+<li><p><a class="reference external" href="https://www2.usgs.gov/science/cite-view.php?cite=2932">HCDN 2009</a> for identifying sites
+where human activity affects the natural flow of the watercourse,</p></li>
+<li><p><a class="reference external" href="https://www.mrlc.gov/">NLCD 2019</a> for land cover/land use, imperviousness, imperviousness
+descriptor, and canopy data. You can get data using both geometries and coordinates.</p></li>
+<li><p><a class="reference external" href="https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer/">WBD</a> for accessing
+Hydrologic Unit (HU) polygon boundaries within the US (all HUC levels).</p></li>
+<li><p><a class="reference external" href="https://earlywarning.usgs.gov/ssebop/modis/daily">SSEBop</a> for daily actual
+evapotranspiration, for both single pixel and gridded data.</p></li>
+</ul>
+<p>Also, it has two other functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interactive_map</span></code>: Interactive map for exploring NWIS stations within a bounding box.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cover_statistics</span></code>: Categorical statistics of land use/land cover data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overland_roughness</span></code>: Estimate overland roughness from land use/land cover data.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">plot</span></code> module includes two main functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">signatures</span></code>: Hydrologic signature graphs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cover_legends</span></code>: Official NLCD land cover legends for plotting a land cover dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">descriptor_legends</span></code>: Color map and legends for plotting an imperviousness descriptor dataset.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">helpers</span></code> module includes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nlcd_helper</span></code>: A roughness coefficients lookup table for each land cover and imperviousness
+descriptor type which is useful for overland flow routing among other applications.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nwis_error</span></code>: A dataframe for finding information about NWIS requests’ errors.</p></li>
+</ul>
+<p>You can find some example notebooks <a class="reference external" href="https://github.com/cheginit/HyRiver-examples">here</a>.</p>
+<p>Moreover, under the hood, PyGeoHydro uses
+<a class="reference external" href="https://github.com/cheginit/async_retriever">AsyncRetriever</a>
+for making requests asynchronously with persistent caching. This improves the
+reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
+pairs and upon making an already cached request, it will retrieve the responses from the cache
+if the server’s response is unchanged.</p>
+<p>You can control the request/response caching behavior by setting the following
+environment variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_NAME</span></code>: Path to the caching SQLite database. It defaults to
+<code class="docutils literal notranslate"><span class="pre">./cache/aiohttp_cache.sqlite</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_EXPIRE</span></code>: Expiration time for cached requests in seconds. It defaults to
+-1 (never expire).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_DISABLE</span></code>: Disable reading/writing from/to the cache. The default is false.</p></li>
+</ul>
+<p>For example, in your code before making any requests you can do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;path/to/file.sqlite&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_EXPIRE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;3600&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_DISABLE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+<p>You can also try using PyGeoHydro without installing
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver stack pre-installed will be launched in your web browser, and you
+can start coding!</p>
+<p>Please note that since this project is in early development stages, while the provided
+functionalities should be stable, changes in APIs are possible in new releases. But we
+appreciate it if you give this project a try and provide feedback. Contributions are most welcome.</p>
+<p>Moreover, requests for additional functionalities can be submitted via
+<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues">issue tracker</a>.</p>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
+<p>You can install PyGeoHydro using <code class="docutils literal notranslate"><span class="pre">pip</span></code> after installing <code class="docutils literal notranslate"><span class="pre">libgdal</span></code> on your system
+(for example, in Ubuntu run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">libgdal-dev</span></code>). Moreover, PyGeoHydro has an optional
+dependency for using persistent caching, <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code>. We highly recommend installing
+this package as it can significantly speed up send/receive queries. You don’t have to change
+anything in your code, since PyGeoHydro under-the-hood looks for <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code> and
+if available, it will automatically use persistent caching:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install pygeohydro
+</pre></div>
+</div>
+<p>Alternatively, PyGeoHydro can be installed from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> repository
+using <a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install -c conda-forge pygeohydro
+</pre></div>
+</div>
+</section>
+<section id="quick-start">
+<h1>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">#</a></h1>
+<p>We can explore the available NWIS stations within a bounding box using <code class="docutils literal notranslate"><span class="pre">interactive_map</span></code>
+function. It returns an interactive map and by clicking on a station some of the most
+important properties of stations are shown.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygeohydro</span> <span class="k">as</span> <span class="nn">gh</span>
+
+<span class="n">bbox</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">69.5</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="o">-</span><span class="mi">69</span><span class="p">,</span> <span class="mf">45.5</span><span class="p">)</span>
+<span class="n">gh</span><span class="o">.</span><span class="n">interactive_map</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nwis.ipynb"><img alt="Interactive Map" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/interactive_map.png" /></a>
+<p>We can select all the stations within this boundary box that have daily mean streamflow data from
+<code class="docutils literal notranslate"><span class="pre">2000-01-01</span></code> to <code class="docutils literal notranslate"><span class="pre">2010-12-31</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">NWIS</span>
+
+<span class="n">nwis</span> <span class="o">=</span> <span class="n">NWIS</span><span class="p">()</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">**</span><span class="n">nwis</span><span class="o">.</span><span class="n">query_bybox</span><span class="p">(</span><span class="n">bbox</span><span class="p">),</span>
+    <span class="s2">&quot;hasDataTypeCd&quot;</span><span class="p">:</span> <span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;outputDataTypeCd&quot;</span><span class="p">:</span> <span class="s2">&quot;dv&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">info_box</span> <span class="o">=</span> <span class="n">nwis</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2010-12-31&quot;</span><span class="p">)</span>
+<span class="n">stations</span> <span class="o">=</span> <span class="n">info_box</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">info_box</span><span class="o">.</span><span class="n">begin_date</span> <span class="o">&lt;=</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">info_box</span><span class="o">.</span><span class="n">end_date</span> <span class="o">&gt;=</span> <span class="n">dates</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">]</span><span class="o">.</span><span class="n">site_no</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then, we can get the daily streamflow data in mm/day (by default the values are in cms)
+and plot them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">qobs</span> <span class="o">=</span> <span class="n">nwis</span><span class="o">.</span><span class="n">get_streamflow</span><span class="p">(</span><span class="n">stations</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">mmd</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">signatures</span><span class="p">(</span><span class="n">qobs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">get_streamflow</span></code> returns a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that has a <code class="docutils literal notranslate"><span class="pre">attrs</span></code> method
+containing metadata for all the stations. You can access it like so <code class="docutils literal notranslate"><span class="pre">qobs.attrs</span></code>.
+Moreover, we can get the same data as <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qobs_ds</span> <span class="o">=</span> <span class="n">nwis</span><span class="o">.</span><span class="n">get_streamflow</span><span class="p">(</span><span class="n">stations</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">to_xarray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> has two dimensions: <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">station_id</span></code>. It has
+10 variables including <code class="docutils literal notranslate"><span class="pre">discharge</span></code> with two dimensions while other variables
+that are station attitudes are one dimensional.</p>
+<p>We can also get instantaneous streamflow data using <code class="docutils literal notranslate"><span class="pre">get_streamflow</span></code>. This method assumes
+that the input dates are in UTC time zone and returns the data in UTC time zone as well.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;2005-01-01 12:00&quot;</span><span class="p">,</span> <span class="s2">&quot;2005-01-12 15:00&quot;</span><span class="p">)</span>
+<span class="n">qobs</span> <span class="o">=</span> <span class="n">nwis</span><span class="o">.</span><span class="n">get_streamflow</span><span class="p">(</span><span class="s2">&quot;01646500&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;iv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can get the CAMELS dataset as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> that includes geometry and
+basin-level attributes of 671 natural watersheds within CONUS and their streamflow
+observations between 1980-2014 as a <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>, like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">attrs</span><span class="p">,</span> <span class="n">qobs</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">get_camels</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/camels.ipynb"><img alt="CAMELS" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/camels.png" /></a>
+<p>The <code class="docutils literal notranslate"><span class="pre">WaterQuality</span></code> has a number of convenience methods to retrieve data from the
+web service. Since there are many parameter combinations that can be
+used to retrieve data, a general method is also provided to retrieve data from
+any of the valid endpoints. You can use <code class="docutils literal notranslate"><span class="pre">get_json</span></code> to retrieve stations info
+as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> or <code class="docutils literal notranslate"><span class="pre">get_csv</span></code> to retrieve stations data as a
+<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>. You can construct a dictionary of the parameters and pass
+it to one of these functions. For more information on the parameters, please
+consult the <a class="reference external" href="https://www.waterqualitydata.us/webservices_documentation">Water Quality Data documentation</a>.
+For example, let’s find all the stations within a bounding box that have Caffeine data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">WaterQuality</span>
+
+<span class="n">bbox</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">92.8</span><span class="p">,</span> <span class="mf">44.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">88.9</span><span class="p">,</span> <span class="mf">46.0</span><span class="p">)</span>
+<span class="n">kwds</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;characteristicName&quot;</span><span class="p">:</span> <span class="s2">&quot;Caffeine&quot;</span><span class="p">}</span>
+<span class="n">wq</span> <span class="o">=</span> <span class="n">WaterQuality</span><span class="p">()</span>
+<span class="n">stations</span> <span class="o">=</span> <span class="n">wq</span><span class="o">.</span><span class="n">station_bybbox</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or the same criterion but within a 30-mile radius of a point:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stations</span> <span class="o">=</span> <span class="n">wq</span><span class="o">.</span><span class="n">station_bydistance</span><span class="p">(</span><span class="o">-</span><span class="mf">92.8</span><span class="p">,</span> <span class="mf">44.2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then we can get the data for all these stations the data like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sids</span> <span class="o">=</span> <span class="n">stations</span><span class="o">.</span><span class="n">MonitoringLocationIdentifier</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">caff</span> <span class="o">=</span> <span class="n">wq</span><span class="o">.</span><span class="n">data_bystation</span><span class="p">(</span><span class="n">sids</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/water_quality.ipynb"><img alt="Water Quality" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/water_quality.png" /></a>
+<p>Moreover, we can get land use/land cove data using <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> or <code class="docutils literal notranslate"><span class="pre">nlcd_bycoods</span></code> functions,
+percentages of land cover types using <code class="docutils literal notranslate"><span class="pre">cover_statistics</span></code>, and overland roughness using
+<code class="docutils literal notranslate"><span class="pre">overland_roughness</span></code>. The <code class="docutils literal notranslate"><span class="pre">nlcd_bycoords</span></code> function returns a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code>
+with the NLCD layers as columns and input coordinates as the <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column. Moreover,
+the <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> function accepts both a single geometry or a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code>
+as the input.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">NLDI</span>
+
+<span class="n">basins</span> <span class="o">=</span> <span class="n">NLDI</span><span class="p">()</span><span class="o">.</span><span class="n">get_basins</span><span class="p">([</span><span class="s2">&quot;01031450&quot;</span><span class="p">,</span> <span class="s2">&quot;01318500&quot;</span><span class="p">,</span> <span class="s2">&quot;01031510&quot;</span><span class="p">])</span>
+<span class="n">lulc</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">nlcd_bygeom</span><span class="p">(</span><span class="n">basins</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cover&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">2019</span><span class="p">]})</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">cover_statistics</span><span class="p">(</span><span class="n">lulc</span><span class="p">[</span><span class="s2">&quot;01318500&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cover_2016</span><span class="p">)</span>
+<span class="n">roughness</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">overland_roughness</span><span class="p">(</span><span class="n">lulc</span><span class="p">[</span><span class="s2">&quot;01318500&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cover_2019</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nlcd.ipynb"><img alt="Land Use/Land Cover" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/lulc.png" /></a>
+<p>Next, let’s use <code class="docutils literal notranslate"><span class="pre">ssebopeta_bygeom</span></code> to get actual ET data for a basin. Note that there’s a
+<code class="docutils literal notranslate"><span class="pre">ssebopeta_bycoords</span></code> function that returns an ETA time series for a single coordinate.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="n">NLDI</span><span class="p">()</span><span class="o">.</span><span class="n">get_basins</span><span class="p">(</span><span class="s2">&quot;01315500&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">geometry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">ssebopeta_bygeom</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">dates</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;2005-10-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2005-10-05&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/ssebop.ipynb"><img alt="Actual ET" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/eta.png" /></a>
+<p>Additionally, we can pull all the US dams data using <code class="docutils literal notranslate"><span class="pre">NID</span></code>. Let’s get dams that are within this
+bounding box and have a maximum storage larger than 200 acre-feet.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nid</span> <span class="o">=</span> <span class="n">NID</span><span class="p">()</span>
+<span class="n">dams</span> <span class="o">=</span> <span class="n">nid</span><span class="o">.</span><span class="n">get_bygeom</span><span class="p">((</span><span class="o">-</span><span class="mf">65.77</span><span class="p">,</span> <span class="mf">43.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.31</span><span class="p">,</span> <span class="mf">45.45</span><span class="p">),</span> <span class="s2">&quot;epsg:4326&quot;</span><span class="p">)</span>
+<span class="n">dams</span> <span class="o">=</span> <span class="n">nid</span><span class="o">.</span><span class="n">inventory_byid</span><span class="p">(</span><span class="n">dams</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">dams</span> <span class="o">=</span> <span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">maxStorage</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We can get also all dams within CONUS in NID with maximum storage larger than 200 acre-feet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;naturalearth_lowres&quot;</span><span class="p">))</span>
+<span class="n">conus</span> <span class="o">=</span> <span class="n">world</span><span class="p">[</span><span class="n">world</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;United States of America&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">geoms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">dam_list</span> <span class="o">=</span> <span class="n">nid</span><span class="o">.</span><span class="n">get_byfilter</span><span class="p">([{</span><span class="s2">&quot;maxStorage&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;[200 5000]&quot;</span><span class="p">]}])</span>
+<span class="n">dams</span> <span class="o">=</span> <span class="n">dam_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">dam_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">is_valid</span><span class="p">]</span>
+<span class="n">dams</span> <span class="o">=</span> <span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">conus</span><span class="p">)]</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nid.ipynb"><img alt="Dams" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/dams.png" /></a>
+<p>The <code class="docutils literal notranslate"><span class="pre">WBD</span></code> class allows us to get Hydrologic Unit (HU) polygon boundaries. Let’s
+get the two Hudson HUC4s:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">WBD</span>
+
+<span class="n">wbd</span> <span class="o">=</span> <span class="n">WBD</span><span class="p">(</span><span class="s2">&quot;huc4&quot;</span><span class="p">)</span>
+<span class="n">hudson</span> <span class="o">=</span> <span class="n">wbd</span><span class="o">.</span><span class="n">byids</span><span class="p">(</span><span class="s2">&quot;huc4&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;0202&quot;</span><span class="p">,</span> <span class="s2">&quot;0203&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="pynhd.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">PyNHD: Navigate and subset NHDPlus database</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="py3dep.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Py3DEP: Topographic data through 3DEP</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Taher Chegini<br/>
+  
+      &copy; Copyright 2019-2022, Taher Chegini.<br/>
+    Last updated on 2022-07-16.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

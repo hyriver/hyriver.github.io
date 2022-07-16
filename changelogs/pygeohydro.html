@@ -1,0 +1,2372 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+<meta property="og:title" content="History" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://hyriver.readthedocs.io/en/changelogs/pygeohydro.html" />
+  
+<meta property="og:description" content="0.13.2 (2022-06-14): Breaking Changes: Set the minimum supported version of Python to 3.8 since many of the dependencies such as xarray, pandas, rioxarray have dropped support for Python 3.7.. Inte..." />
+  
+<meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+  
+<meta property="og:image:alt" content="History" />
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@_taher_" />
+<meta name="twitter:creator" content="@_taher_" />
+<meta name="twitter:description" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+<meta name="twitter:image:alt" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
+    <title>History</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="History" href="py3dep.html" />
+    <link rel="prev" title="History" href="pynhd.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/hyriver_logo_text.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Hydroclimate Data Retriever
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../readmes.html">
+   Software Stack
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pynhd.html">
+     PyNHD: Navigate and subset NHDPlus database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeohydro.html">
+     PyGeoHydro: Retrieve Geospatial Hydrology Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/py3dep.html">
+     Py3DEP: Topographic data through 3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pydaymet.html">
+     PyDaymet: Daily climate data through Daymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/async_retriever.html">
+     AsyncRetriever: Asynchronous requests with persistent caching
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeoogc.html">
+     PyGeoOGC: Retrieve Data from RESTful, WMS, and WFS Services
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../readme/pygeoutils.html">
+     PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples.html">
+   Example Gallery
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/3dep.html">
+     Topographic Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/aridity.html">
+     Aridity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/columbia.html">
+     Dams in Columbia River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/cross_section.html">
+     River Elevation and Cross-Section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/dam_impact.html">
+     Dam Impact on streamflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/daymet.html">
+     Climate Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/geoconnex.html">
+     GeoConnex
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/hymod_calibration.html">
+     Hydrological Modeling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/ndvi.html">
+     NDVI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nhdplus.html">
+     River Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nid.html">
+     National Inventory of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nid_dib.html">
+     Spatiotemporal Distribution of Dams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nlcd.html">
+     Land Use/Land Cover
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/noaa.html">
+     Water Levels and Tides
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/nwis.html">
+     River Discharge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/pet_validation.html">
+     Computing PET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/pygeoapi.html">
+     Split Catchment with PyGeoAPI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/rem.html">
+     Relative Elevation Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/ssebop.html">
+     Actual Evapotranspiration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/us_coasts.html">
+     CONUS Coasts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/water_quality.html">
+     Water Quality Portal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/webservices.html">
+     Web Services Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../autoapi/index.html">
+   API References
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pynhd/index.html">
+     PyNHD
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/network_tools/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.network_tools
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/nhdplus_derived/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.nhdplus_derived
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pynhd/pynhd/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pynhd.pynhd
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeohydro/index.html">
+     PyGeoHydro
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/helpers/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.helpers
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/plot/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.plot
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/pygeohydro/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.pygeohydro
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/us_abbrs/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.us_abbrs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeohydro/waterdata/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeohydro.waterdata
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/py3dep/index.html">
+     Py3DEP
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/py3dep/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.py3dep
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/py3dep/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         py3dep.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pydaymet/index.html">
+     PyDaymet
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pet
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pydaymet/pydaymet/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pydaymet.pydaymet
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/async_retriever/index.html">
+     AsyncRetriever
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/async_retriever/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.async_retriever
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/async_retriever/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         async_retriever.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoogc/index.html">
+     PyGeoOGC
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/core/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.core
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/pygeoogc/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.pygeoogc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoogc/utils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoogc.utils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../autoapi/pygeoutils/index.html">
+     PyGeoUtils
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/pygeoutils/pygeoutils/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         pygeoutils.pygeoutils
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../history.html">
+   Changelogs
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pynhd.html">
+     PyNHD
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     PyGeoHydro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="py3dep.html">
+     Py3DEP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pydaymet.html">
+     PyDaymet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="async_retriever.html">
+     AsyncRetriever
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeoogc.html">
+     PyGeoOGC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pygeoutils.html">
+     PyGeoUtils
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contributing.html">
+   Contributing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../authors.html">
+   Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/cheginit/HyRiver"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/issues/new?title=Issue%20on%20page%20%2Fchangelogs/pygeohydro.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cheginit/HyRiver/edit/main/docs/changelogs/pygeohydro.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   0.13.2 (2022-06-14)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#breaking-changes">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#internal-changes">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   0.13.1 (2022-06-11)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-features">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   0.13.0 (2022-04-03)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   0.12.4 (2022-02-04)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   0.12.3 (2022-01-15)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Bug Fixes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   0.12.2 (2021-12-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   0.12.1 (2021-12-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id20">
+   0.12.0 (2021-12-27)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id24">
+   0.11.4 (2021-11-24)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id26">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id27">
+   0.11.3 (2021-11-12)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id28">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id29">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id30">
+   0.11.2 (2021-07-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id31">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id32">
+   0.11.1 (2021-07-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id33">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id34">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id35">
+   0.11.0 (2021-06-19)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id36">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id37">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id38">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id39">
+   0.10.2 (2021-03-27)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id40">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id41">
+   0.10.1 (2021-03-06)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id42">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id43">
+   0.10.0 (2021-03-06)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id44">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id45">
+   0.9.2 (2021-03-02)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id46">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id47">
+     New Features
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id48">
+   0.9.1 (2021-02-22)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id49">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id50">
+   0.9.0 (2021-02-14)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id51">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id52">
+   0.8.0 (2020-12-06)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id53">
+   0.7.2 (2020-8-18)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enhancements">
+     Enhancements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id54">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id55">
+   0.7.1 (2020-8-13)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id56">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id57">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id58">
+   0.7.0 (2020-8-12)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id59">
+     Breaking changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id60">
+     Enhancements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id61">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id62">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id63">
+   0.6.0 (2020-06-23)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id64">
+   0.5.5 (2020-06-03)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id65">
+   0.5.3 (2020-06-07)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id66">
+   0.5.0 (2020-04-25)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id67">
+   0.4.4 (2020-03-12)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id68">
+   0.3.0 (2020-02-10)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id69">
+   0.2.0 (2020-02-09)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id70">
+   0.1.0 (2020-01-31)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>History</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   0.13.2 (2022-06-14)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#breaking-changes">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#internal-changes">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   0.13.1 (2022-06-11)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-features">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   0.13.0 (2022-04-03)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   0.12.4 (2022-02-04)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   0.12.3 (2022-01-15)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Bug Fixes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   0.12.2 (2021-12-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   0.12.1 (2021-12-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id20">
+   0.12.0 (2021-12-27)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id24">
+   0.11.4 (2021-11-24)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id26">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id27">
+   0.11.3 (2021-11-12)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id28">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id29">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id30">
+   0.11.2 (2021-07-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id31">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id32">
+   0.11.1 (2021-07-31)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id33">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id34">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id35">
+   0.11.0 (2021-06-19)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id36">
+     Breaking Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id37">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id38">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id39">
+   0.10.2 (2021-03-27)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id40">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id41">
+   0.10.1 (2021-03-06)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id42">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id43">
+   0.10.0 (2021-03-06)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id44">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id45">
+   0.9.2 (2021-03-02)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id46">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id47">
+     New Features
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id48">
+   0.9.1 (2021-02-22)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id49">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id50">
+   0.9.0 (2021-02-14)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id51">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id52">
+   0.8.0 (2020-12-06)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id53">
+   0.7.2 (2020-8-18)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enhancements">
+     Enhancements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id54">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id55">
+   0.7.1 (2020-8-13)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id56">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id57">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id58">
+   0.7.0 (2020-8-12)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id59">
+     Breaking changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id60">
+     Enhancements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id61">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id62">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id63">
+   0.6.0 (2020-06-23)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id64">
+   0.5.5 (2020-06-03)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id65">
+   0.5.3 (2020-06-07)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id66">
+   0.5.0 (2020-04-25)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id67">
+   0.4.4 (2020-03-12)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id68">
+   0.3.0 (2020-02-10)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id69">
+   0.2.0 (2020-02-09)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id70">
+   0.1.0 (2020-01-31)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="history">
+<h1>History<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h1>
+<section id="id1">
+<h2>0.13.2 (2022-06-14)<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="breaking-changes">
+<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Set the minimum supported version of Python to 3.8 since many of the
+dependencies such as <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> have dropped support
+for Python 3.7.</p></li>
+</ul>
+</section>
+<section id="internal-changes">
+<h3>Internal Changes<a class="headerlink" href="#internal-changes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">USGS</span></code> prefixes from the input station IDs in <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code>
+function. Also, check if the remaining parts of the IDs are all digits and throw
+an exception if otherwise. Additionally, make sure that IDs have at least 8 chars by
+adding leading zeros (<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues/99">GH99</a>).</p></li>
+<li><p>Use <a class="reference external" href="https://github.com/marketplace/actions/provision-with-micromamba">micromamba</a>
+for running tests
+and use <a class="reference external" href="https://github.com/marketplace/actions/setup-nox">nox</a>
+for linting in CI.</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>0.13.1 (2022-06-11)<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add a new function called <code class="docutils literal notranslate"><span class="pre">get_us_states</span></code> to the <code class="docutils literal notranslate"><span class="pre">helpers</span></code> module for obtaining
+a GeoDataFrame of the US states. It has an optional argument for returning the
+<code class="docutils literal notranslate"><span class="pre">contiguous</span></code> states, <code class="docutils literal notranslate"><span class="pre">continental</span></code> states, <code class="docutils literal notranslate"><span class="pre">commonwealths</span></code> states, or
+US <code class="docutils literal notranslate"><span class="pre">territories</span></code>. The data are retrieved from the Census’ Tiger 2021 database.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">NID</span></code> class keep the <code class="docutils literal notranslate"><span class="pre">valid_fields</span></code> property as a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>
+instead of a <code class="docutils literal notranslate"><span class="pre">list</span></code>, so it can be searched easier via its <code class="docutils literal notranslate"><span class="pre">str</span></code> accessor.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Internal Changes<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Refactor the <code class="docutils literal notranslate"><span class="pre">plot.signatures</span></code> function to use <code class="docutils literal notranslate"><span class="pre">proplot</span></code> instead of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p></li>
+<li><p>Improve performance of <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code> by not validating the layer name
+when instantiating the <code class="docutils literal notranslate"><span class="pre">WaterData</span></code> class. Also, make the function more robust
+by checking if streamflow data is available for each station and throw a warning
+if not.</p></li>
+</ul>
+</section>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix an issue in <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code> where <code class="docutils literal notranslate"><span class="pre">-9999</span></code> values were not being
+filtered out. According to NWIS, these values are reserved for ice-affected
+data. This fix sets these values to <code class="docutils literal notranslate"><span class="pre">numpy.nan</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h2>0.13.0 (2022-04-03)<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3>New Features<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add a new flag to <code class="docutils literal notranslate"><span class="pre">nlcd_*</span></code> functions called <code class="docutils literal notranslate"><span class="pre">ssl</span></code> for disabling SSL verification.</p></li>
+<li><p>Add a new function called <code class="docutils literal notranslate"><span class="pre">get_camels</span></code> for getting the
+<a class="reference external" href="https://ral.ucar.edu/solutions/products/camels">CAMELS</a> dataset. The function
+returns a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> that includes basin-level attributes
+for all 671 stations in the dataset and a <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> that contains
+streamflow data for all 671 stations and their basin-level attributes.</p></li>
+<li><p>Add a new function named <code class="docutils literal notranslate"><span class="pre">overland_roughness</span></code> for getting the overland
+roughness values from land cover data.</p></li>
+<li><p>Add a new class called <code class="docutils literal notranslate"><span class="pre">WBD</span></code> for getting watershed boundary (HUC) data.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">WBD</span>
+
+<span class="n">wbd</span> <span class="o">=</span> <span class="n">WBD</span><span class="p">(</span><span class="s2">&quot;huc4&quot;</span><span class="p">)</span>
+<span class="n">hudson</span> <span class="o">=</span> <span class="n">wbd</span><span class="o">.</span><span class="n">byids</span><span class="p">(</span><span class="s2">&quot;huc4&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;0202&quot;</span><span class="p">,</span> <span class="s2">&quot;0203&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>Breaking Changes<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>Remove caching-related arguments from all functions since now they
+can be set globally via three environmental variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_NAME</span></code>: Path to the caching SQLite database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_EXPIRE</span></code>: Expiration time for cached requests in seconds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HYRIVER_CACHE_DISABLE</span></code>: Disable reading/writing from/to the cache file.</p></li>
+</ul>
+<p>You can do this like so:</p>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;path/to/file.sqlite&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_EXPIRE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;3600&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HYRIVER_CACHE_DISABLE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>Internal Changes<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Write <code class="docutils literal notranslate"><span class="pre">nodata</span></code> attribute using <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> in <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> since the
+clipping operation of <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> uses this value as the fill value.</p></li>
+</ul>
+</section>
+</section>
+<section id="id8">
+<h2>0.12.4 (2022-02-04)<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<section id="id9">
+<h3>Internal Changes<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Return a named tuple instead of a <code class="docutils literal notranslate"><span class="pre">dict</span></code> of percentages in the
+<code class="docutils literal notranslate"><span class="pre">cover_statistics</span></code> function. It makes accessing the values easier.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">pycln</span></code> as a new <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks for removing unused imports.</p></li>
+<li><p>Remove time zone info from the inputs to <code class="docutils literal notranslate"><span class="pre">plot.signatures</span></code> to avoid
+issues with the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> backend.</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>Bug Fixes<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix an issue in <code class="docutils literal notranslate"><span class="pre">plot.signatures</span></code> where the new <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>
+version requires a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array instead of a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id11">
+<h2>0.12.3 (2022-01-15)<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<section id="id12">
+<h3>Bug Fixes<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Replace no data values of data in <code class="docutils literal notranslate"><span class="pre">ssebopeta_bygeom</span></code> with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> before
+converting it to mm/day.</p></li>
+<li><p>Fix an inconsistency issue with CRS projection when using UTM in <code class="docutils literal notranslate"><span class="pre">nlcd_*</span></code>.
+Use <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code> for all reprojections and get the data from NLCD in the same
+projection. (<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues/85">GH85</a>)</p></li>
+<li><p>Improve performance of <code class="docutils literal notranslate"><span class="pre">nlcd_*</span></code> functions by reducing number of service calls.</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>Internal Changes<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add type checking with <code class="docutils literal notranslate"><span class="pre">typeguard</span></code> and fix type hinting issues raised by
+<code class="docutils literal notranslate"><span class="pre">typeguard</span></code>.</p></li>
+<li><p>Refactor <code class="docutils literal notranslate"><span class="pre">show_versions</span></code> to ensure getting correct versions of all
+dependencies.</p></li>
+</ul>
+</section>
+</section>
+<section id="id14">
+<h2>0.12.2 (2021-12-31)<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<section id="id15">
+<h3>New Features<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code> now returns a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> instead of a
+<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>Bug Fixes<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix a bug in <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code> where the drainage area might not be
+computed correctly if target stations are not located at the outlet of
+their watersheds.</p></li>
+</ul>
+</section>
+</section>
+<section id="id17">
+<h2>0.12.1 (2021-12-31)<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<section id="id18">
+<h3>Internal Changes<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use the three new <code class="docutils literal notranslate"><span class="pre">ar.retrieve_*</span></code> functions instead of the old <code class="docutils literal notranslate"><span class="pre">ar.retrieve</span></code>
+function to improve type hinting and to make the API more consistent.</p></li>
+</ul>
+</section>
+<section id="id19">
+<h3>Bug Fixes<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix an in issue with <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code> where time zone of the data
+was not being correctly determined when it was US specific abbreviations
+such as <code class="docutils literal notranslate"><span class="pre">CST</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id20">
+<h2>0.12.0 (2021-12-27)<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
+<section id="id21">
+<h3>New Features<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add support for getting instantaneous streamflow from NWIS in addition to
+the daily streamflow by adding <code class="docutils literal notranslate"><span class="pre">freq</span></code> argument to <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code>
+that can be either <code class="docutils literal notranslate"><span class="pre">iv</span></code> or <code class="docutils literal notranslate"><span class="pre">dv</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">dv</span></code> to retain the previous
+behavior of the function.</p></li>
+<li><p>Convert the time zone of the streamflow data to UTC.</p></li>
+<li><p>Add attributes of the requested stations as <code class="docutils literal notranslate"><span class="pre">attrs</span></code> parameter to the returned
+<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>. (<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues/75">GH75</a>)</p></li>
+<li><p>Add a new flag to <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code> for returning the streamflow as
+<code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>. This dataset has two dimensions; <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">station_id</span></code>.
+It has ten variables which includes <code class="docutils literal notranslate"><span class="pre">discharge</span></code> and nine other station attributes.
+(<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues/75">GH75</a>)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">drain_sqkm</span></code> from GagesII to <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code>.</p></li>
+<li><p>Show <code class="docutils literal notranslate"><span class="pre">drain_sqkm</span></code> in the interactive map generated by <code class="docutils literal notranslate"><span class="pre">interactive_map</span></code>.</p></li>
+<li><p>Add two new functions for getting NLCD data; <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> and <code class="docutils literal notranslate"><span class="pre">nlcd_bycoords</span></code>.
+The new <code class="docutils literal notranslate"><span class="pre">nlcd_bycoords</span></code> function returns a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> with the NLCD
+layers as columns and input coordinates, which should be a list of <code class="docutils literal notranslate"><span class="pre">(lon,</span> <span class="pre">lat)</span></code> tuples,
+as the <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column. Moreover, The new <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> function now accepts a
+<code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> as the input. In this case, it returns a <code class="docutils literal notranslate"><span class="pre">dict</span></code> with keys as
+indices of the input <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code>. (<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues/80">GH80</a>)</p></li>
+<li><p>The previous <code class="docutils literal notranslate"><span class="pre">nlcd</span></code> function is being deprecated. For now, it calls <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code>
+internally and retains the old behavior. This function will be removed in future versions.</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>Breaking Changes<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ssebop_byloc</span></code> is being deprecated and replaced by <code class="docutils literal notranslate"><span class="pre">ssebop_bycoords</span></code>.
+The new function accepts a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> as input that should include
+three columns: <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, and <code class="docutils literal notranslate"><span class="pre">y</span></code>. It returns a <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> with
+two dimensions: <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">location_id</span></code>. The <code class="docutils literal notranslate"><span class="pre">id</span></code> columns from the input
+is used as the <code class="docutils literal notranslate"><span class="pre">location_id</span></code> dimension. The <code class="docutils literal notranslate"><span class="pre">ssebop_byloc</span></code> function still
+retains the old behavior and will be removed in future versions.</p></li>
+<li><p>Set the request caching’s expiration time to never expire. Add two flags to all
+functions to control the caching: <code class="docutils literal notranslate"><span class="pre">expire_after</span></code> and <code class="docutils literal notranslate"><span class="pre">disable_caching</span></code>.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">NID</span></code> class with the new RESTful-based web service of National Inventory
+of Dams. The new NID service is very different from the old one, so this is considered
+a breaking change.</p></li>
+</ul>
+</section>
+<section id="id23">
+<h3>Internal Changes<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Improve exception handling in <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code> when NWIS returns an error message
+rather than 500s web service error.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code> function now checks if the site info dataset contains
+any duplicates. Therefore, all the remaining station numbers will be unique. This
+prevents an issue with setting <code class="docutils literal notranslate"><span class="pre">attrs</span></code> where duplicate indexes cause an exception
+when being converted to a dict. (<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues/75">GH75</a>)</p></li>
+<li><p>Add all the missing types so <code class="docutils literal notranslate"><span class="pre">mypy</span> <span class="pre">--strict</span></code> passes.</p></li>
+</ul>
+</section>
+</section>
+<section id="id24">
+<h2>0.11.4 (2021-11-24)<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h2>
+<section id="id25">
+<h3>New Features<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add support for the
+<a class="reference external" href="http://www.waterqualitydata.us">Water Quality Portal</a> Web Services. (<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues/72">GH72</a>)</p></li>
+<li><p>Add support for two versions of NID web service. The original NID web service is considered
+version 2 and the new NID is considered version 3. You can pass the version number to the
+<code class="docutils literal notranslate"><span class="pre">NID</span></code> like so <code class="docutils literal notranslate"><span class="pre">NID(2)</span></code>. The default version is 2.</p></li>
+</ul>
+</section>
+<section id="id26">
+<h3>Bug Fixes<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix an issue with background percentage calculation in <code class="docutils literal notranslate"><span class="pre">cover_statistics</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id27">
+<h2>0.11.3 (2021-11-12)<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h2>
+<section id="id28">
+<h3>New Features<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add a <a class="reference external" href="https://ags03.sec.usace.army.mil/server/rest/services/Dams_Public/MapServer/0">new</a>
+map service for National Inventory of Dams (NID).</p></li>
+</ul>
+</section>
+<section id="id29">
+<h3>Internal Changes<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">importlib-metadata</span></code> for getting the version instead of <code class="docutils literal notranslate"><span class="pre">pkg_resources</span></code>
+to decrease import time as discussed in this
+<a class="reference external" href="https://github.com/pydata/xarray/issues/5676">issue</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="id30">
+<h2>0.11.2 (2021-07-31)<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h2>
+<section id="id31">
+<h3>Bug Fixes<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Refactor <code class="docutils literal notranslate"><span class="pre">cover_statistics</span></code> to address an issue with wrong category names and also
+improve performance for large datasets by using <code class="docutils literal notranslate"><span class="pre">numpy</span></code>’s functions.</p></li>
+<li><p>Fix an issue with detecting wrong number of stations in <code class="docutils literal notranslate"><span class="pre">NWIS.get_streamflow</span></code>.
+Also, improve filtering stations that their start/end date don’t match the user requested
+interval.</p></li>
+</ul>
+</section>
+</section>
+<section id="id32">
+<h2>0.11.1 (2021-07-31)<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h2>
+<p>The highlight of this release is adding support for NLCD 2019 and significant improvements
+in NWIS support.</p>
+<section id="id33">
+<h3>New Features<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>Add support for the recently released version of NLCD (2019), including the impervious
+descriptor layer. Highlights of the new database are:</p>
+<blockquote>
+<div><p>NLCD 2019 now offers land cover for years 2001, 2004, 2006, 2008, 2011, 2013, 2016, 2019,
+and impervious surface and impervious descriptor products now updated to match each date
+of land cover. These products update all previously released versions of land cover and
+impervious products for CONUS (NLCD 2001, NLCD 2006, NLCD 2011, NLCD 2016) and are not
+directly comparable to previous products. NLCD 2019 land cover and impervious surface product
+versions of previous dates must be downloaded for proper comparison. NLCD 2019 also offers an
+impervious surface descriptor product that identifies the type of each impervious surface pixel.
+This product identifies types of roads, wind tower sites, building locations, and energy
+production sites to allow deeper analysis of developed features.</p>
+<p class="attribution">—<a class="reference external" href="https://www.mrlc.gov">MRLC</a></p>
+</div></blockquote>
+</li>
+<li><p>Add support for all the supported regions of NLCD database (CONUS, AK, HI, and PR).</p></li>
+<li><p>Add support for passing multiple years to the NLCD function, like so <code class="docutils literal notranslate"><span class="pre">{&quot;cover&quot;:</span> <span class="pre">[2016,</span> <span class="pre">2019]}</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">plot.descriptor_legends</span></code> function to plot the legend for the impervious descriptor layer.</p></li>
+<li><p>New features in <code class="docutils literal notranslate"><span class="pre">NWIS</span></code> class are:</p>
+<ul class="simple">
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">query_*</span></code> methods since it’s not convenient to pass them directly as a dictionary.</p></li>
+<li><p>Add a new function called <code class="docutils literal notranslate"><span class="pre">get_parameter_codes</span></code> to query parameters and get information
+about them.</p></li>
+<li><p>To decrease complexity of <code class="docutils literal notranslate"><span class="pre">get_streamflow</span></code> method add a new private function to handle
+some tasks.</p></li>
+<li><p>For handling more of NWIS’s services make <code class="docutils literal notranslate"><span class="pre">retrieve_rdb</span></code> more general.</p></li>
+</ul>
+</li>
+<li><p>Add a new argument called <code class="docutils literal notranslate"><span class="pre">nwis_kwds</span></code> to <code class="docutils literal notranslate"><span class="pre">interactive_map</span></code> so any NWIS
+specific keywords can be passed for filtering stations.</p></li>
+<li><p>Improve exception handling in <code class="docutils literal notranslate"><span class="pre">get_info</span></code> method and simplify and improve
+its performance for getting HCDN.</p></li>
+</ul>
+</section>
+<section id="id34">
+<h3>Internal Changes<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Migrate to using <code class="docutils literal notranslate"><span class="pre">AsyncRetriever</span></code> for handling communications with web services.</p></li>
+</ul>
+</section>
+</section>
+<section id="id35">
+<h2>0.11.0 (2021-06-19)<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h2>
+<section id="id36">
+<h3>Breaking Changes<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Drop support for Python 3.6 since many of the dependencies such as <code class="docutils literal notranslate"><span class="pre">xarray</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>
+have done so.</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">get_nid</span></code> and <code class="docutils literal notranslate"><span class="pre">get_nid_codes</span></code> functions since NID now has a ArcGISRESTFul service.</p></li>
+</ul>
+</section>
+<section id="id37">
+<h3>New Features<a class="headerlink" href="#id37" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add a new class called <code class="docutils literal notranslate"><span class="pre">NID</span></code> for accessing the recently released National Inventory of Dams
+web service. This service is based on ArcGIS’s RESTful service. So now the user just need to
+instantiate the class like so <code class="docutils literal notranslate"><span class="pre">NID()</span></code> and with three methods of <code class="docutils literal notranslate"><span class="pre">AGRBase</span></code> class, the
+user can retrieve the data. These methods are: <code class="docutils literal notranslate"><span class="pre">bygeom</span></code>, <code class="docutils literal notranslate"><span class="pre">byids</span></code>, and <code class="docutils literal notranslate"><span class="pre">bysql</span></code>. Moreover,
+it has a <code class="docutils literal notranslate"><span class="pre">attrs</span></code> property that includes descriptions of the database fields with their units.</p></li>
+<li><p>Refactor <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code> to be more generic by accepting any valid queries that are
+documented at
+<a class="reference external" href="https://waterservices.usgs.gov/rest/Site-Service.html#outputDataTypeCd">USGS Site Web Service</a>.</p></li>
+<li><p>Allow for passing a list of queries to <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code> and use <code class="docutils literal notranslate"><span class="pre">async_retriever</span></code> that
+significantly improves the network response time.</p></li>
+<li><p>Add two new flags to <code class="docutils literal notranslate"><span class="pre">interactive_map</span></code> for limiting the stations to those with
+daily values (<code class="docutils literal notranslate"><span class="pre">dv=True</span></code>) and/or instantaneous values (<code class="docutils literal notranslate"><span class="pre">iv=True</span></code>). This function
+now includes a link to stations webpage on USGS website.</p></li>
+</ul>
+</section>
+<section id="id38">
+<h3>Internal Changes<a class="headerlink" href="#id38" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use persistent caching for all send/receive requests that can significantly improve the
+network response time.</p></li>
+<li><p>Explicitly include all the hard dependencies in <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>.</p></li>
+<li><p>Refactor <code class="docutils literal notranslate"><span class="pre">interactive_map</span></code> and <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code> to make them more efficient and reduce
+their code complexity.</p></li>
+</ul>
+</section>
+</section>
+<section id="id39">
+<h2>0.10.2 (2021-03-27)<a class="headerlink" href="#id39" title="Permalink to this headline">#</a></h2>
+<section id="id40">
+<h3>Internal Changes<a class="headerlink" href="#id40" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add announcement regarding the new name for the software stack, HyRiver.</p></li>
+<li><p>Improve <code class="docutils literal notranslate"><span class="pre">pip</span></code> installation and release workflow.</p></li>
+</ul>
+</section>
+</section>
+<section id="id41">
+<h2>0.10.1 (2021-03-06)<a class="headerlink" href="#id41" title="Permalink to this headline">#</a></h2>
+<section id="id42">
+<h3>Internal Changes<a class="headerlink" href="#id42" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">lxml</span></code> to deps.</p></li>
+</ul>
+</section>
+</section>
+<section id="id43">
+<h2>0.10.0 (2021-03-06)<a class="headerlink" href="#id43" title="Permalink to this headline">#</a></h2>
+<section id="id44">
+<h3>Internal Changes<a class="headerlink" href="#id44" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The official first release of PyGeoHydro with a new name and logo.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">cElementTree</span></code> with <code class="docutils literal notranslate"><span class="pre">ElementTree</span></code> since it’s been deprecated by <code class="docutils literal notranslate"><span class="pre">defusedxml</span></code>.</p></li>
+<li><p>Make <code class="docutils literal notranslate"><span class="pre">mypy</span></code> checks more strict and fix all the errors and prevent possible
+bugs.</p></li>
+<li><p>Speed up CI testing by using <code class="docutils literal notranslate"><span class="pre">mamba</span></code> and caching.</p></li>
+</ul>
+</section>
+</section>
+<section id="id45">
+<h2>0.9.2 (2021-03-02)<a class="headerlink" href="#id45" title="Permalink to this headline">#</a></h2>
+<section id="id46">
+<h3>Internal Changes<a class="headerlink" href="#id46" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">hydrodata</span></code> package to <code class="docutils literal notranslate"><span class="pre">PyGeoHydro</span></code> for publication on JOSS.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code>, drop rows that don’t have mean daily discharge data instead of slicing.</p></li>
+<li><p>Speed up Github Actions by using <code class="docutils literal notranslate"><span class="pre">mamba</span></code> and caching.</p></li>
+<li><p>Improve <code class="docutils literal notranslate"><span class="pre">pip</span></code> installation by adding <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p></li>
+</ul>
+</section>
+<section id="id47">
+<h3>New Features<a class="headerlink" href="#id47" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Add support for the National Inventory of Dams (NID) via <code class="docutils literal notranslate"><span class="pre">get_nid</span></code> function.</p></li>
+</ul>
+</section>
+</section>
+<section id="id48">
+<h2>0.9.1 (2021-02-22)<a class="headerlink" href="#id48" title="Permalink to this headline">#</a></h2>
+<section id="id49">
+<h3>Internal Changes<a class="headerlink" href="#id49" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix an issue with <code class="docutils literal notranslate"><span class="pre">NWIS.get_info</span></code> method where stations with False values as their
+<code class="docutils literal notranslate"><span class="pre">hcdn_2009</span></code> value were returned as <code class="docutils literal notranslate"><span class="pre">None</span></code> instead.</p></li>
+</ul>
+</section>
+</section>
+<section id="id50">
+<h2>0.9.0 (2021-02-14)<a class="headerlink" href="#id50" title="Permalink to this headline">#</a></h2>
+<section id="id51">
+<h3>Internal Changes<a class="headerlink" href="#id51" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Bump versions of packages across the stack to the same version.</p></li>
+<li><p>Use the new PyNHD function for getting basins, <code class="docutils literal notranslate"><span class="pre">NLDI.get_basisn</span></code>.</p></li>
+<li><p>Made <code class="docutils literal notranslate"><span class="pre">mypy</span></code> checks more strict and added all the missing type annotations.</p></li>
+</ul>
+</section>
+</section>
+<section id="id52">
+<h2>0.8.0 (2020-12-06)<a class="headerlink" href="#id52" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Fixed the issue with WaterData due to the recent changes on the server side.</p></li>
+<li><p>Updated the examples based on the latest changes across the stack.</p></li>
+<li><p>Add support for multipolygon.</p></li>
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">fill_hole</span></code> argument.</p></li>
+<li><p>Fix a warning in <code class="docutils literal notranslate"><span class="pre">nlcd</span></code> regarding performing division on <code class="docutils literal notranslate"><span class="pre">nan</span></code> values.</p></li>
+</ul>
+</section>
+<section id="id53">
+<h2>0.7.2 (2020-8-18)<a class="headerlink" href="#id53" title="Permalink to this headline">#</a></h2>
+<section id="enhancements">
+<h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Replaced <code class="docutils literal notranslate"><span class="pre">simplejson</span></code> with <code class="docutils literal notranslate"><span class="pre">orjson</span></code> to speed-up JSON operations.</p></li>
+<li><p>Explicitly sort the time dimension of the <code class="docutils literal notranslate"><span class="pre">ssebopeta_bygeom</span></code> function.</p></li>
+</ul>
+</section>
+<section id="id54">
+<h3>Bug Fixes<a class="headerlink" href="#id54" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix an issue with the <code class="docutils literal notranslate"><span class="pre">nlcd</span></code> function where high resolution requests fail.</p></li>
+</ul>
+</section>
+</section>
+<section id="id55">
+<h2>0.7.1 (2020-8-13)<a class="headerlink" href="#id55" title="Permalink to this headline">#</a></h2>
+<section id="id56">
+<h3>New Features<a class="headerlink" href="#id56" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Added a new argument to <code class="docutils literal notranslate"><span class="pre">plot.signatures</span></code> for controlling the vertical position of the
+plot title, called <code class="docutils literal notranslate"><span class="pre">title_ypos</span></code>. This could be useful for multi-line titles.</p></li>
+</ul>
+</section>
+<section id="id57">
+<h3>Bug Fixes<a class="headerlink" href="#id57" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fixed an issue with the <code class="docutils literal notranslate"><span class="pre">nlcd</span></code> function where none layers are not dropped and cause the
+function to fails.</p></li>
+</ul>
+</section>
+</section>
+<section id="id58">
+<h2>0.7.0 (2020-8-12)<a class="headerlink" href="#id58" title="Permalink to this headline">#</a></h2>
+<p>This version divides PyGeoHydro into six standalone Python libraries. So many of the changes
+listed below belong to the modules and functions that are now a separate package. This decision
+was made for reducing the complexity of the code base and allow the users to only install
+the packages that they need without having to install all the PyGeoHydro dependencies.</p>
+<section id="id59">
+<h3>Breaking changes<a class="headerlink" href="#id59" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">services</span></code> module is now a separate package called PyGeoOGCC and is set as a requirement
+for PyGeoHydro. PyGeoOGC is a leaner package with much fewer dependencies and is suitable for
+people who might only need an interface to web services.</p></li>
+<li><p>Unified function names for getting feature by ID and by box.</p></li>
+<li><p>Combined <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> arguments into a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> argument
+called <code class="docutils literal notranslate"><span class="pre">dates</span></code> across the code base.</p></li>
+<li><p>Rewrote NLDI function and moved most of its <code class="docutils literal notranslate"><span class="pre">classmethods</span></code> to <code class="docutils literal notranslate"><span class="pre">Station</span></code> so now <code class="docutils literal notranslate"><span class="pre">Station</span></code>
+class has more cohesion.</p></li>
+<li><p>Removed exploratory functionality of <code class="docutils literal notranslate"><span class="pre">ArcGISREST</span></code>, since it’s more convenient
+to do so from a browser. Now, <code class="docutils literal notranslate"><span class="pre">base_url</span></code> is a required argument.</p></li>
+<li><p>Renamed <code class="docutils literal notranslate"><span class="pre">in_crs</span></code> in <code class="docutils literal notranslate"><span class="pre">datasets</span></code> and <code class="docutils literal notranslate"><span class="pre">services</span></code> functions to <code class="docutils literal notranslate"><span class="pre">geo_crs</span></code> for geometry and
+<code class="docutils literal notranslate"><span class="pre">box_crs</span></code> for bounding box inputs.</p></li>
+<li><p>Re-wrote the <code class="docutils literal notranslate"><span class="pre">signatures</span></code> function from scratch using <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code> to improve readability
+and efficiency. Now, the <code class="docutils literal notranslate"><span class="pre">daily</span></code> argument should be just a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> or
+<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> and the column names are used for legends.</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">utils.geom_mask</span></code> function and replaced it with <code class="docutils literal notranslate"><span class="pre">rasterio.mask.mask</span></code>.</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">width</span></code> as an input in functions with raster output since <code class="docutils literal notranslate"><span class="pre">resolution</span></code> is almost
+always the preferred way to request for data. This change made the code more readable.</p></li>
+<li><p>Renamed two functions: <code class="docutils literal notranslate"><span class="pre">ArcGISRESTful</span></code> and <code class="docutils literal notranslate"><span class="pre">wms_bybox</span></code>. These function now return
+<code class="docutils literal notranslate"><span class="pre">requests.Response</span></code> type output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">onlyipv4</span></code> is now a class method in <code class="docutils literal notranslate"><span class="pre">RetrySession</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">plot.signatures</span></code> function now assumes that the input time series are in mm/day.</p></li>
+<li><p>Added a flag to <code class="docutils literal notranslate"><span class="pre">get_streamflow</span></code> function in the <code class="docutils literal notranslate"><span class="pre">NWIS</span></code> class to convert from cms
+to mm/day which is useful for plotting hydrologic signatures using the <code class="docutils literal notranslate"><span class="pre">signatures</span></code>
+functions.</p></li>
+</ul>
+</section>
+<section id="id60">
+<h3>Enhancements<a class="headerlink" href="#id60" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Remove soft requirements from the env files.</p></li>
+<li><p>Refactored <code class="docutils literal notranslate"><span class="pre">requests</span></code> functions into a single class and a separate file.</p></li>
+<li><p>Made all the classes available directly from <code class="docutils literal notranslate"><span class="pre">PyGeoHydro</span></code>.</p></li>
+<li><p>Added <a class="reference external" href="https://www.codefactor.io/">CodeFactor</a> to the Github pipeline and addressed
+some issues that <code class="docutils literal notranslate"><span class="pre">CodeFactor</span></code> found.</p></li>
+<li><p>Added <a class="reference external" href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to check the code for
+security issue.</p></li>
+<li><p>Improved docstrings and documentations.</p></li>
+<li><p>Added customized exceptions for better exception handling.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">pytest</span></code> fixtures to improve the tests speed.</p></li>
+<li><p>Refactored <code class="docutils literal notranslate"><span class="pre">daymet</span></code> and <code class="docutils literal notranslate"><span class="pre">nwis_siteinfo</span></code> functions to reduce code complexity
+and improve readability.</p></li>
+<li><p>Major refactoring of the code base while adding type hinting.</p></li>
+<li><p>The input geometry (or bounding box) can be provided in any projection
+and the necessary re-projections are done under the hood.</p></li>
+<li><p>Refactored the method for getting object IDs in <code class="docutils literal notranslate"><span class="pre">ArcGISREST</span></code> class to improve
+robustness and efficiency.</p></li>
+<li><p>Refactored <code class="docutils literal notranslate"><span class="pre">Daymet</span></code> class to improve readability.</p></li>
+<li><p>Add <a class="reference external" href="https://deepsource.io/">Deepsource</a> for further code quality checking.</p></li>
+<li><p>Automatic handling of large WMS requests (more than 8 million pixels i.e., width x height)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">json_togeodf</span></code> function now accepts both a single (Geo)JSON or a list of them</p></li>
+<li><p>Refactored <code class="docutils literal notranslate"><span class="pre">plot.signatures</span></code> using <code class="docutils literal notranslate"><span class="pre">add_gridspec</span></code> for a much cleaner code.</p></li>
+</ul>
+</section>
+<section id="id61">
+<h3>New Features<a class="headerlink" href="#id61" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Added access to WaterData’s GeoServer databases.</p></li>
+<li><p>Added access to the remaining NLDI database (Water Quality Portal and Water Data Exchange).</p></li>
+<li><p>Created a Binder for launching a computing environment on the cloud and testing PyGeoHydro.</p></li>
+<li><p>Added a URL repository for the supported services called <code class="docutils literal notranslate"><span class="pre">ServiceURL</span></code></p></li>
+<li><p>Added support for <a class="reference external" href="https://hazards.fema.gov/femaportal/wps/portal/NFHLWMS">FEMA</a> web services
+for flood maps and <a class="reference external" href="https://www.fws.gov/wetlands/Data/Web-Map-Services.html">FWS</a> for wetlands.</p></li>
+<li><p>Added a new function called <code class="docutils literal notranslate"><span class="pre">wms_toxarray</span></code> for converting WMS request responses to
+<code class="docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> or <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>.</p></li>
+</ul>
+</section>
+<section id="id62">
+<h3>Bug Fixes<a class="headerlink" href="#id62" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Re-projection issues for function with input geometry.</p></li>
+<li><p>Start and end variables not being initialized when coords was used in <code class="docutils literal notranslate"><span class="pre">Station</span></code>.</p></li>
+<li><p>Geometry mask for <code class="docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></p></li>
+<li><p>WMS output re-projections</p></li>
+</ul>
+</section>
+</section>
+<section id="id63">
+<h2>0.6.0 (2020-06-23)<a class="headerlink" href="#id63" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Refactor requests session</p></li>
+<li><p>Improve overall code quality based on CodeFactor suggestions</p></li>
+<li><p>Migrate to Github Actions from TravisCI</p></li>
+</ul>
+</section>
+<section id="id64">
+<h2>0.5.5 (2020-06-03)<a class="headerlink" href="#id64" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Add to conda-forge</p></li>
+<li><p>Remove pqdm and arcgis2geojson dependencies</p></li>
+</ul>
+</section>
+<section id="id65">
+<h2>0.5.3 (2020-06-07)<a class="headerlink" href="#id65" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Added threading capability to the flow accumulation function</p></li>
+<li><p>Generalized WFS to include both by bbox and by featureID</p></li>
+<li><p>Migrate RTD to <code class="docutils literal notranslate"><span class="pre">pip</span></code> from <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p></li>
+<li><p>Changed HCDN database source to GagesII database</p></li>
+<li><p>Increased robustness of functions that need network connections</p></li>
+<li><p>Made the flow accumulation output a pandas Series for better handling of time
+series input</p></li>
+<li><p>Combined DEM, slope, and aspect in a class called NationalMap.</p></li>
+<li><p>Installation from pip installs all the dependencies</p></li>
+</ul>
+</section>
+<section id="id66">
+<h2>0.5.0 (2020-04-25)<a class="headerlink" href="#id66" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>An almost complete re-writing of the code base and not backward-compatible</p></li>
+<li><p>New website design</p></li>
+<li><p>Added vector accumulation</p></li>
+<li><p>Added base classes and function accessing any ArcGIS REST, WMS, WMS service</p></li>
+<li><p>Standalone functions for creating datasets from responses and masking the data</p></li>
+<li><p>Added threading using <code class="docutils literal notranslate"><span class="pre">pqdm</span></code> to speed up the downloads</p></li>
+<li><p>Interactive map for exploring USGS stations</p></li>
+<li><p>Replaced OpenTopography with 3DEP</p></li>
+<li><p>Added HCDN database for identifying natural watersheds</p></li>
+</ul>
+</section>
+<section id="id67">
+<h2>0.4.4 (2020-03-12)<a class="headerlink" href="#id67" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Added new databases: NLDI, NHDPLus V2, OpenTopography, gridded Daymet, and SSEBop</p></li>
+<li><p>The gridded data are returned as xarray DataArrays</p></li>
+<li><p>Removed dependency on StreamStats and replaced it by NLDI</p></li>
+<li><p>Improved overall robustness and efficiency of the code</p></li>
+<li><p>Not backward comparable</p></li>
+<li><p>Added code style enforcement with <code class="docutils literal notranslate"><span class="pre">isort</span></code>, black, flake8 and pre-commit</p></li>
+<li><p>Added a new shiny logo!</p></li>
+<li><p>New installation method</p></li>
+<li><p>Changed OpenTopography base url to their new server</p></li>
+<li><p>Fixed NLCD legend and statistics bug</p></li>
+</ul>
+</section>
+<section id="id68">
+<h2>0.3.0 (2020-02-10)<a class="headerlink" href="#id68" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Clipped the obtained NLCD data using the watershed geometry</p></li>
+<li><p>Added support for specifying the year for getting NLCD</p></li>
+<li><p>Removed direct NHDPlus data download dependency by using StreamStats and USGS APIs</p></li>
+<li><p>Renamed <code class="docutils literal notranslate"><span class="pre">get_lulc</span></code> function to <code class="docutils literal notranslate"><span class="pre">get_nlcd</span></code></p></li>
+</ul>
+</section>
+<section id="id69">
+<h2>0.2.0 (2020-02-09)<a class="headerlink" href="#id69" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Simplified import method</p></li>
+<li><p>Changed usage from <code class="docutils literal notranslate"><span class="pre">rst</span></code> format to <code class="docutils literal notranslate"><span class="pre">ipynb</span></code></p></li>
+<li><p>Auto-formatting with the black python package</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">docstring</span></code> format based on Sphinx</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">pytest</span></code> warnings and changed its working directory</p></li>
+<li><p>Added an example notebook with data files</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">docstring</span></code> for all the functions</p></li>
+<li><p>Added Module section to the documentation</p></li>
+<li><p>Fixed py7zr issue</p></li>
+<li><p>Changed 7z extractor from <code class="docutils literal notranslate"><span class="pre">pyunpack</span></code> to py7zr</p></li>
+<li><p>Fixed some linting issues.</p></li>
+</ul>
+</section>
+<section id="id70">
+<h2>0.1.0 (2020-01-31)<a class="headerlink" href="#id70" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>First release on PyPI.</p></li>
+</ul>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="pynhd.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">History</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="py3dep.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">History</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Taher Chegini<br/>
+  
+      &copy; Copyright 2019-2022, Taher Chegini.<br/>
+    Last updated on 2022-07-16.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
