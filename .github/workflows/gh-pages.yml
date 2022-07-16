@@ -28,17 +28,14 @@ jobs:
       run: |-
         echo "TODAY=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
         echo "CONDA_ENV_FILE=docs/environment.yml" >> $GITHUB_ENV
-        echo "PYTHON_VERSION='3.10'" >> $GITHUB_ENV
 
     - name: Setup micromamba
       uses: mamba-org/provision-with-micromamba@main
       with:
         environment-file: ${{ env.CONDA_ENV_FILE }}
         environment-name: docs
-        extra-specs: |
-          python=${{ env.PYTHON_VERSION }}
         cache-env: true
-        cache-env-key: "${{runner.os}}-${{runner.arch}}-py${{env.PYTHON_VERSION}}-${{env.TODAY}}-${{hashFiles(env.CONDA_ENV_FILE)}}"
+        cache-env-key: "${{env.TODAY}}-${{hashFiles(env.CONDA_ENV_FILE)}}"
 
     - name: Build the website
       run: make docs-ci
