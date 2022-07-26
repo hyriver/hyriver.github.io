@@ -12,11 +12,11 @@
 Module Contents
 ---------------
 
-.. py:class:: BaseRetriever(urls, read, request_kwds = None, request_method = 'GET', cache_name = None)
+.. py:class:: BaseRetriever(urls, file_paths = None, read_method = None, request_kwds = None, request_method = 'GET', cache_name = None)
 
    Base class for async retriever.
 
-   .. py:method:: generate_requests(urls, request_kwds)
+   .. py:method:: generate_requests(urls, request_kwds, file_paths)
       :staticmethod:
 
       Generate urls and keywords.
@@ -54,5 +54,11 @@ Module Contents
                   else an empty ``dict``.
 
    :returns: :class:`bytes` -- The retrieved response as binary.
+
+
+.. py:function:: stream_session(url, s_kwds, session, filepath)
+   :async:
+
+   Stream the response to a file.
 
 

@@ -9,16 +9,16 @@ AsyncRetriever: Asynchronous requests with persistent caching
     :target: https://anaconda.org/conda-forge/async_retriever
     :alt: Conda Version
 
-.. image:: https://codecov.io/gh/cheginit/async_retriever/branch/main/graph/badge.svg
-    :target: https://codecov.io/gh/cheginit/async_retriever
+.. image:: https://codecov.io/gh/hyriver/async_retriever/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/hyriver/async_retriever
     :alt: CodeCov
 
 .. image:: https://img.shields.io/pypi/pyversions/async_retriever.svg
     :target: https://pypi.python.org/pypi/async_retriever
     :alt: Python Versions
 
-.. image:: https://github.com/cheginit/async_retriever/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/async_retriever/actions/workflows/test.yml
+.. image:: https://github.com/hyriver/async_retriever/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/async_retriever/actions/workflows/test.yml
     :alt: Github Actions
 
 |
@@ -27,8 +27,8 @@ AsyncRetriever: Asynchronous requests with persistent caching
     :target: https://github.com/PyCQA/bandit
     :alt: Security Status
 
-.. image:: https://www.codefactor.io/repository/github/cheginit/async_retriever/badge
-   :target: https://www.codefactor.io/repository/github/cheginit/async_retriever
+.. image:: https://www.codefactor.io/repository/github/hyriver/async_retriever/badge
+   :target: https://www.codefactor.io/repository/github/hyriver/async_retriever
    :alt: CodeFactor
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -44,7 +44,7 @@ AsyncRetriever: Asynchronous requests with persistent caching
 Features
 --------
 
-AsyncRetriever is a part of `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
+AsyncRetriever is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
 is designed to aid in hydroclimate analysis through web services. This package serves as HyRiver's
 engine for asynchronously sending requests and retrieving responses as ``text``, ``binary``, or
 ``json`` objects. It uses persistent caching using
@@ -82,7 +82,7 @@ For example, in your code before making any requests you can do:
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
 
-You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 You can also try using AsyncRetriever without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
@@ -94,7 +94,7 @@ functionalities should be stable, changes in APIs are possible in new releases. 
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
 
 Moreover, requests for additional functionalities can be submitted via
-`issue tracker <https://github.com/cheginit/async_retriever/issues>`__.
+`issue tracker <https://github.com/hyriver/async_retriever/issues>`__.
 
 Installation
 ------------
@@ -170,8 +170,8 @@ We can remove these requests and their responses from the cache like so:
 
     ar.delete_url_cache(base_url)
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/ndvi.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/async.ipunb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/ndvi.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipunb
 
 For a ``json`` response example, let's get water level recordings of an NOAA's water level station,
 8534720 (Atlantic City, NJ), during 2012, using CO-OPS API. Note that this CO-OPS product has a
@@ -226,8 +226,8 @@ For a ``json`` response example, let's get water level recordings of an NOAA's w
     water_level = pd.concat(wl_list).sort_index()
     water_level.attrs = rjson["metadata"]
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/water_level.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/async.ipunb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/water_level.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipunb
 
 Now, let's see an example without any payload or headers. Here's how we can retrieve
 harmonic constituents of several NOAA stations from CO-OPS:
@@ -262,5 +262,5 @@ harmonic constituents of several NOAA stations from CO-OPS:
     amp = pd.concat(amp_list, axis=1)
     phs = pd.concat(phs_list, axis=1)
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/tides.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/async.ipunb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/tides.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipunb

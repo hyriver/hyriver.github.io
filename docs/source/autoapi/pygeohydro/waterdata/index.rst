@@ -74,7 +74,8 @@ Module Contents
                 Note that when frequency is set to ``iv`` the time zone is converted to UTC.
 
 
-   .. py:method:: retrieve_rdb(self, url, payloads)
+   .. py:method:: retrieve_rdb(url, payloads)
+      :staticmethod:
 
       Retrieve and process requests with RDB format.
 
