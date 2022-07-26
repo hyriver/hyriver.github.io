@@ -39,13 +39,13 @@
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -1156,7 +1156,7 @@ the Pacific Islands. Valid layers are:</p>
 <dd><p>Access the Hydro Network-Linked Data Index (NLDI) service.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.comid_byloc">
-<span class="sig-name descname"><span class="pre">comid_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.comid_byloc" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">comid_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.comid_byloc" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the closest ComID based on coordinates.</p>
 <p class="rubric">Notes</p>
 <p>This function tries to find the closest ComID based on flowline grid cells. If
@@ -1180,7 +1180,7 @@ any ComID a list of missing coords are returned as well.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.feature_byloc">
-<span class="sig-name descname"><span class="pre">feature_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.feature_byloc" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">feature_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.feature_byloc" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the closest feature ID(s) based on coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1198,7 +1198,7 @@ return any IDs a list of missing coords are returned as well.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.get_basins">
-<span class="sig-name descname"><span class="pre">get_basins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsource</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nwissite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_catchment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simplified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.get_basins" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_basins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsource</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nwissite'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_catchment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simplified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.get_basins" title="Permalink to this definition">#</a></dt>
 <dd><p>Get basins for a list of station IDs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1233,13 +1233,13 @@ a list of missing ID(s) are returned as well.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.get_validchars">
-<span class="sig-name descname"><span class="pre">get_validchars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.get_validchars" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_validchars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.get_validchars" title="Permalink to this definition">#</a></dt>
 <dd><p>Get all the available characteristics IDs for a given characteristics type.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.getcharacteristic_byid">
-<span class="sig-name descname"><span class="pre">getcharacteristic_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.getcharacteristic_byid" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getcharacteristic_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.getcharacteristic_byid" title="Permalink to this definition">#</a></dt>
 <dd><p>Get characteristics using a list ComIDs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1263,7 +1263,7 @@ or if <code class="docutils literal notranslate"><span class="pre">values_only</
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.getfeature_byid">
-<span class="sig-name descname"><span class="pre">getfeature_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.getfeature_byid" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getfeature_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fsource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.getfeature_byid" title="Permalink to this definition">#</a></dt>
 <dd><p>Get feature(s) based ID(s).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1295,7 +1295,7 @@ a list of missing ID(s) are returned as well.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.navigate_byid">
-<span class="sig-name descname"><span class="pre">navigate_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">navigation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.navigate_byid" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">navigate_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fsource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">navigation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.navigate_byid" title="Permalink to this definition">#</a></dt>
 <dd><p>Navigate the NHDPlus database from a single feature id up to a distance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1335,7 +1335,7 @@ defaults to <code class="docutils literal notranslate"><span class="pre">False</
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.NLDI.navigate_byloc">
-<span class="sig-name descname"><span class="pre">navigate_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">navigation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.navigate_byloc" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">navigate_byloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">navigation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.NLDI.navigate_byloc" title="Permalink to this definition">#</a></dt>
 <dd><p>Navigate the NHDPlus database from a coordinate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1369,7 +1369,7 @@ defaults to <code class="docutils literal notranslate"><span class="pre">False</
 <dd><p>Access <a class="reference external" href="https://labs.waterdata.usgs.gov/api/nldi/pygeoapi">PyGeoAPI</a> service.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.cross_section">
-<span class="sig-name descname"><span class="pre">cross_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.cross_section" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">cross_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.cross_section" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a GeoDataFrame from the xsatpoint service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1396,7 +1396,7 @@ defaults to <code class="docutils literal notranslate"><span class="pre">False</
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.elevation_profile">
-<span class="sig-name descname"><span class="pre">elevation_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dem_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.elevation_profile" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">elevation_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dem_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.elevation_profile" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a GeoDataFrame from the xsatendpts service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1426,7 +1426,7 @@ defaults to <code class="docutils literal notranslate"><span class="pre">False</
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.flow_trace">
-<span class="sig-name descname"><span class="pre">flow_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.flow_trace" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">flow_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.flow_trace" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a GeoDataFrame from the flowtrace service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1455,7 +1455,7 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">none</s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.PyGeoAPI.split_catchment">
-<span class="sig-name descname"><span class="pre">split_catchment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upstream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.split_catchment" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">split_catchment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upstream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.PyGeoAPI.split_catchment" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a GeoDataFrame from the splitcatchment service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1501,25 +1501,25 @@ be added to the given <code class="docutils literal notranslate"><span class="pr
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.WaterData.bybox">
-<span class="sig-name descname"><span class="pre">bybox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bybox" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">bybox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">box_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bybox" title="Permalink to this definition">#</a></dt>
 <dd><p>Get features within a bounding box.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.WaterData.bydistance">
-<span class="sig-name descname"><span class="pre">bydistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bydistance" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">bydistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bydistance" title="Permalink to this definition">#</a></dt>
 <dd><p>Get features within a radius (in meters) of a point.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.WaterData.byfilter">
-<span class="sig-name descname"><span class="pre">byfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cql_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.byfilter" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">byfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cql_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.byfilter" title="Permalink to this definition">#</a></dt>
 <dd><p>Get features based on a CQL filter.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.WaterData.bygeom">
-<span class="sig-name descname"><span class="pre">bygeom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'INTERSECTS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bygeom" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">bygeom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'INTERSECTS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.bygeom" title="Permalink to this definition">#</a></dt>
 <dd><p>Get features within a geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1541,7 +1541,7 @@ INTERSECTS. Valid predicates are:
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.pynhd.WaterData.byid">
-<span class="sig-name descname"><span class="pre">byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featurename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.byid" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featurename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.pynhd.WaterData.byid" title="Permalink to this definition">#</a></dt>
 <dd><p>Get features based on IDs.</p>
 </dd></dl>
 
@@ -1654,7 +1654,7 @@ or <code class="docutils literal notranslate"><span class="pre">cross_section</s
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

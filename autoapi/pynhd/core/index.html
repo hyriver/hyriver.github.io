@@ -39,13 +39,13 @@
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -991,7 +991,7 @@ a list of available formats is shown, defaults to <code class="docutils literal 
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.core.AGRBase.bygeom">
-<span class="sig-name descname"><span class="pre">bygeom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sql_clause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.bygeom" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">bygeom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sql_clause</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.bygeom" title="Permalink to this definition">#</a></dt>
 <dd><p>Get feature within a geometry that can be combined with a SQL where clause.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1012,7 +1012,7 @@ a list of available formats is shown, defaults to <code class="docutils literal 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.core.AGRBase.byids">
-<span class="sig-name descname"><span class="pre">byids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.byids" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">byids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.byids" title="Permalink to this definition">#</a></dt>
 <dd><p>Get features based on a list of field IDs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1031,7 +1031,7 @@ a list of available formats is shown, defaults to <code class="docutils literal 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.core.AGRBase.bysql">
-<span class="sig-name descname"><span class="pre">bysql</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sql_clause</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.bysql" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">bysql</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql_clause</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.bysql" title="Permalink to this definition">#</a></dt>
 <dd><p>Get feature IDs using a valid SQL 92 WHERE clause.</p>
 <p class="rubric">Notes</p>
 <p>Not all web services support this type of query. For more details look
@@ -1052,7 +1052,7 @@ a list of available formats is shown, defaults to <code class="docutils literal 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.core.AGRBase.get_validlayers">
-<span class="sig-name descname"><span class="pre">get_validlayers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.get_validlayers" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_validlayers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.get_validlayers" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a list of valid layers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1066,7 +1066,7 @@ a list of available formats is shown, defaults to <code class="docutils literal 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.core.AGRBase.service_info">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">service_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.AGRBase.service_info" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">service_info</span></span><a class="headerlink" href="#pynhd.core.AGRBase.service_info" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the service information.</p>
 </dd></dl>
 
@@ -1087,13 +1087,13 @@ be within the extent of the GeoConnex endpoint.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.core.GeoConnex.item">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.GeoConnex.item" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">item</span></span><a class="headerlink" href="#pynhd.core.GeoConnex.item" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the name of the endpoint.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pynhd.core.GeoConnex.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_geometry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.GeoConnex.query" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_geometry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynhd.core.GeoConnex.query" title="Permalink to this definition">#</a></dt>
 <dd><p>Query the GeoConnex endpoint.</p>
 </dd></dl>
 
@@ -1168,7 +1168,7 @@ later use.</p>
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

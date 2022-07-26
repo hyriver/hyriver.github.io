@@ -54,7 +54,7 @@ Module Contents
 
    .. rubric:: Notes
 
-   This function downloads a 200 MB ``parquet`` file from
+   This function downloads a 245 MB ``parquet`` file from
    `here <https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726>`__ .
    Although this dataframe does not include geometry, it can be linked to other geospatial
    NHDPlus dataframes through ComIDs.

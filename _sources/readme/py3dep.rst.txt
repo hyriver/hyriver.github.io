@@ -9,8 +9,8 @@ Py3DEP: Topographic data through 3DEP
     :target: https://anaconda.org/conda-forge/py3dep
     :alt: Conda Version
 
-.. image:: https://codecov.io/gh/cheginit/py3dep/branch/main/graph/badge.svg
-    :target: https://codecov.io/gh/cheginit/py3dep
+.. image:: https://codecov.io/gh/hyriver/py3dep/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/hyriver/py3dep
     :alt: CodeCov
 
 .. image:: https://img.shields.io/pypi/pyversions/py3dep.svg
@@ -23,8 +23,8 @@ Py3DEP: Topographic data through 3DEP
 
 |
 
-.. image:: https://www.codefactor.io/repository/github/cheginit/py3dep/badge
-   :target: https://www.codefactor.io/repository/github/cheginit/py3dep
+.. image:: https://www.codefactor.io/repository/github/hyriver/py3dep/badge
+   :target: https://www.codefactor.io/repository/github/hyriver/py3dep
    :alt: CodeFactor
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -36,7 +36,7 @@ Py3DEP: Topographic data through 3DEP
     :alt: pre-commit
 
 .. image:: https://mybinder.org/badge_logo.svg
-    :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
+    :target: https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks
     :alt: Binder
 
 |
@@ -44,7 +44,7 @@ Py3DEP: Topographic data through 3DEP
 Features
 --------
 
-Py3DEP is a part of `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
+Py3DEP is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
 is designed to aid in hydroclimate analysis through web services. This package provides
 access to the `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__
 database which is a part of the
@@ -78,10 +78,10 @@ Moreover, Py3DEP offers some additional utilities:
 - ``query_3dep_sources``: For querying bounds of 3DEP's data sources within a bounding box.
 - ``check_3dep_availability``: For querying 3DEP's resolution availability within a bounding box.
 
-You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 Moreover, under the hood, Py3DEP uses
-`AsyncRetriever <https://github.com/cheginit/async_retriever>`__
+`AsyncRetriever <https://github.com/hyriver/async_retriever>`__
 for making requests asynchronously with persistent caching. This improves the
 reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
 pairs and upon making an already cached request, it will retrieve the responses from the cache
@@ -116,7 +116,7 @@ functionalities should be stable, changes in APIs are possible in new releases. 
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
 
 Moreover, requests for additional functionalities can be submitted via
-`issue tracker <https://github.com/cheginit/py3dep/issues>`__.
+`issue tracker <https://github.com/hyriver/py3dep/issues>`__.
 
 
 Installation
@@ -249,8 +249,8 @@ these spatial references.
     slope = py3dep.get_map("Slope Degrees", geom, resolution=30)
     slope = py3dep.deg2mpm(slope)
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/dem_slope.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/3dep.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/dem_slope.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/3dep.ipynb
     :align: center
 
 We can use `rioxarray <https://github.com/corteva/rioxarray>`__ package to save the obtained
@@ -291,8 +291,8 @@ and add elevation data for its nodes using ``elevation_bycoords`` function.
     elevation = py3dep.elevation_bycoords(zip(x, y), crs="epsg:4326")
     nx.set_node_attributes(G, dict(zip(G.nodes(), elevation)), "elevation")
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/street_elev.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/3dep.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/street_elev.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/3dep.ipynb
     :align: center
 
 We can get the elevation profile along a line at a given spacing using ``elevation_profile``

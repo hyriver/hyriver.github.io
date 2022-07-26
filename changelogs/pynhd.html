@@ -12,7 +12,7 @@
   
 <meta property="og:url" content="https://hyriver.readthedocs.io/en/changelogs/pynhd.html" />
   
-<meta property="og:description" content="0.13.2 (2022-06-14): Breaking Changes: Set the minimum supported version of Python to 3.8 since many of the dependencies such as xarray, pandas, rioxarray have dropped support for Python 3.7.. Inte..." />
+<meta property="og:description" content="0.13.3 (unreleased): Internal Changes: Use the new async_retriever.stream_write function to download files in nhdplus_vaa and enhd_attrs functions. This is more memory efficient., Convert the type ..." />
   
 <meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
   
@@ -39,13 +39,13 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -782,6 +782,18 @@ title="Edit this page"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unreleased">
+   0.13.3 (unreleased)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#internal-changes">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    0.13.2 (2022-06-14)
   </a>
@@ -792,14 +804,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#internal-changes">
+    <a class="reference internal nav-link" href="#id2">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
+  <a class="reference internal nav-link" href="#id3">
    0.13.1 (2022-06-11)
   </a>
   <ul class="nav section-nav flex-column">
@@ -816,219 +828,219 @@ title="Edit this page"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    0.13.0 (2022-04-03)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
+    <a class="reference internal nav-link" href="#id5">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
+    <a class="reference internal nav-link" href="#id6">
      Breaking Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
+  <a class="reference internal nav-link" href="#id7">
    0.12.2 (2022-02-04)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
+    <a class="reference internal nav-link" href="#id8">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
+    <a class="reference internal nav-link" href="#id9">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id10">
    0.12.1 (2021-12-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
+    <a class="reference internal nav-link" href="#id11">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
+  <a class="reference internal nav-link" href="#id12">
    0.12.0 (2021-12-27)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     Breaking Changes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     New Features
+     Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id15">
+  <a class="reference internal nav-link" href="#id16">
    0.11.4 (2021-11-12)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id17">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id18">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id18">
+  <a class="reference internal nav-link" href="#id19">
    0.11.3 (2021-09-10)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
+    <a class="reference internal nav-link" href="#id20">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id20">
+  <a class="reference internal nav-link" href="#id21">
    0.11.2 (2021-08-26)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id21">
+    <a class="reference internal nav-link" href="#id22">
      New Features
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id22">
+  <a class="reference internal nav-link" href="#id23">
    0.11.1 (2021-07-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id23">
+    <a class="reference internal nav-link" href="#id24">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id24">
+    <a class="reference internal nav-link" href="#id25">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id25">
+  <a class="reference internal nav-link" href="#id26">
    0.11.0 (2021-06-19)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id26">
+    <a class="reference internal nav-link" href="#id27">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id27">
+    <a class="reference internal nav-link" href="#id28">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id28">
+    <a class="reference internal nav-link" href="#id29">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id29">
+  <a class="reference internal nav-link" href="#id30">
    0.10.1 (2021-03-27)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id30">
+  <a class="reference internal nav-link" href="#id31">
    0.10.0 (2021-03-06)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id31">
+  <a class="reference internal nav-link" href="#id32">
    0.9.0 (2021-02-14)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id32">
+    <a class="reference internal nav-link" href="#id33">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id33">
+    <a class="reference internal nav-link" href="#id34">
      New Features
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id34">
+  <a class="reference internal nav-link" href="#id35">
    0.2.0 (2020-12-06)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id35">
+    <a class="reference internal nav-link" href="#id36">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id36">
+    <a class="reference internal nav-link" href="#id37">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id37">
+    <a class="reference internal nav-link" href="#id38">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id38">
+  <a class="reference internal nav-link" href="#id39">
    0.1.3 (2020-08-18)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id39">
+  <a class="reference internal nav-link" href="#id40">
    0.1.2 (2020-08-11)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id40">
+  <a class="reference internal nav-link" href="#id41">
    0.1.1 (2020-08-03)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id41">
+  <a class="reference internal nav-link" href="#id42">
    0.1.0 (2020-07-23)
   </a>
  </li>
@@ -1052,6 +1064,18 @@ title="Edit this page"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unreleased">
+   0.13.3 (unreleased)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#internal-changes">
+     Internal Changes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    0.13.2 (2022-06-14)
   </a>
@@ -1062,14 +1086,14 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#internal-changes">
+    <a class="reference internal nav-link" href="#id2">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
+  <a class="reference internal nav-link" href="#id3">
    0.13.1 (2022-06-11)
   </a>
   <ul class="nav section-nav flex-column">
@@ -1086,219 +1110,219 @@ title="Edit this page"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    0.13.0 (2022-04-03)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
+    <a class="reference internal nav-link" href="#id5">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
+    <a class="reference internal nav-link" href="#id6">
      Breaking Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
+  <a class="reference internal nav-link" href="#id7">
    0.12.2 (2022-02-04)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
+    <a class="reference internal nav-link" href="#id8">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
+    <a class="reference internal nav-link" href="#id9">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id10">
    0.12.1 (2021-12-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
+    <a class="reference internal nav-link" href="#id11">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
+  <a class="reference internal nav-link" href="#id12">
    0.12.0 (2021-12-27)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     Breaking Changes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     New Features
+     Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
+     New Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id15">
+  <a class="reference internal nav-link" href="#id16">
    0.11.4 (2021-11-12)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id17">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id18">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id18">
+  <a class="reference internal nav-link" href="#id19">
    0.11.3 (2021-09-10)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id19">
+    <a class="reference internal nav-link" href="#id20">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id20">
+  <a class="reference internal nav-link" href="#id21">
    0.11.2 (2021-08-26)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id21">
+    <a class="reference internal nav-link" href="#id22">
      New Features
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id22">
+  <a class="reference internal nav-link" href="#id23">
    0.11.1 (2021-07-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id23">
+    <a class="reference internal nav-link" href="#id24">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id24">
+    <a class="reference internal nav-link" href="#id25">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id25">
+  <a class="reference internal nav-link" href="#id26">
    0.11.0 (2021-06-19)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id26">
+    <a class="reference internal nav-link" href="#id27">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id27">
+    <a class="reference internal nav-link" href="#id28">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id28">
+    <a class="reference internal nav-link" href="#id29">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id29">
+  <a class="reference internal nav-link" href="#id30">
    0.10.1 (2021-03-27)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id30">
+  <a class="reference internal nav-link" href="#id31">
    0.10.0 (2021-03-06)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id31">
+  <a class="reference internal nav-link" href="#id32">
    0.9.0 (2021-02-14)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id32">
+    <a class="reference internal nav-link" href="#id33">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id33">
+    <a class="reference internal nav-link" href="#id34">
      New Features
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id34">
+  <a class="reference internal nav-link" href="#id35">
    0.2.0 (2020-12-06)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id35">
+    <a class="reference internal nav-link" href="#id36">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id36">
+    <a class="reference internal nav-link" href="#id37">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id37">
+    <a class="reference internal nav-link" href="#id38">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id38">
+  <a class="reference internal nav-link" href="#id39">
    0.1.3 (2020-08-18)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id39">
+  <a class="reference internal nav-link" href="#id40">
    0.1.2 (2020-08-11)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id40">
+  <a class="reference internal nav-link" href="#id41">
    0.1.1 (2020-08-03)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id41">
+  <a class="reference internal nav-link" href="#id42">
    0.1.0 (2020-07-23)
   </a>
  </li>
@@ -1314,6 +1338,25 @@ title="Edit this page"
                 
   <section id="history">
 <h1>History<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h1>
+<section id="unreleased">
+<h2>0.13.3 (unreleased)<a class="headerlink" href="#unreleased" title="Permalink to this headline">#</a></h2>
+<section id="internal-changes">
+<h3>Internal Changes<a class="headerlink" href="#internal-changes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Use the new <code class="docutils literal notranslate"><span class="pre">async_retriever.stream_write</span></code> function to download files in
+<code class="docutils literal notranslate"><span class="pre">nhdplus_vaa</span></code> and <code class="docutils literal notranslate"><span class="pre">enhd_attrs</span></code> functions. This is more memory efficient.</p></li>
+<li><p>Convert the type of list of not found items in <code class="docutils literal notranslate"><span class="pre">NLDI.comid_byloc</span></code> and
+<code class="docutils literal notranslate"><span class="pre">NLDI.feature_byloc</span></code> to list of tuples of coordinates from list of strings.
+This matches the type of returned not found coordinates to that of the inputs.</p></li>
+<li><p>Fix an issue with NLDI that was caused by the recent changes in the NLDI web
+service’s error handling. The NLDI web service now returns more descriptive
+error messages in a <code class="docutils literal notranslate"><span class="pre">json</span></code> format instead of returning the usual status
+errors.</p></li>
+<li><p>Slice the ENHD dataframe in <code class="docutils literal notranslate"><span class="pre">NHDTools.clean_flowlines</span></code> before updating
+the flowline dataframe to reduce the required memory for the <code class="docutils literal notranslate"><span class="pre">update</span></code> operation.</p></li>
+</ul>
+</section>
+</section>
 <section id="id1">
 <h2>0.13.2 (2022-06-14)<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <section id="breaking-changes">
@@ -1324,8 +1367,8 @@ dependencies such as <code class="docutils literal notranslate"><span class="pre
 for Python 3.7.</p></li>
 </ul>
 </section>
-<section id="internal-changes">
-<h3>Internal Changes<a class="headerlink" href="#internal-changes" title="Permalink to this headline">#</a></h3>
+<section id="id2">
+<h3>Internal Changes<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Use <a class="reference external" href="https://github.com/marketplace/actions/provision-with-micromamba">micromamba</a>
 for running tests
@@ -1334,8 +1377,8 @@ for linting in CI.</p></li>
 </ul>
 </section>
 </section>
-<section id="id2">
-<h2>0.13.1 (2022-06-11)<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h2>0.13.1 (2022-06-11)<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <section id="new-features">
 <h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
@@ -1355,10 +1398,10 @@ and <code class="docutils literal notranslate"><span class="pre">nhdplus_vaa</sp
 </ul>
 </section>
 </section>
-<section id="id3">
-<h2>0.13.0 (2022-04-03)<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <section id="id4">
-<h3>New Features<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h2>0.13.0 (2022-04-03)<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3>New Features<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add two new functions called <code class="docutils literal notranslate"><span class="pre">flowline_resample</span></code> and <code class="docutils literal notranslate"><span class="pre">network_resample</span></code> for
 resampling a flowline or network of flowlines based on a given spacing. This is
@@ -1380,8 +1423,8 @@ all the required service parameters as columns.</p></li>
 The default value is <code class="docutils literal notranslate"><span class="pre">True</span></code> to retain the old behavior.</p></li>
 </ul>
 </section>
-<section id="id5">
-<h3>Breaking Changes<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<section id="id6">
+<h3>Breaking Changes<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>Remove caching-related arguments from all functions since now they
 can be set globally via three environmental variables:</p>
@@ -1402,10 +1445,10 @@ can be set globally via three environmental variables:</p>
 </div>
 </section>
 </section>
-<section id="id6">
-<h2>0.12.2 (2022-02-04)<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <section id="id7">
-<h3>New Features<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h2>0.12.2 (2022-02-04)<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<section id="id8">
+<h3>New Features<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add a new class called <code class="docutils literal notranslate"><span class="pre">NHD</span></code> for accessing the latest National Hydrography Dataset.
 More info regarding this data can be found
@@ -1419,8 +1462,8 @@ about the service including <code class="docutils literal notranslate"><span cla
 numeric values of types to their string equivalent.</p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>Internal Changes<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<section id="id9">
+<h3>Internal Changes<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Use the new PyGeoAPI API.</p></li>
 <li><p>Refactor <code class="docutils literal notranslate"><span class="pre">prepare_nhdplus</span></code> for improving the performance and robustness of determining
@@ -1431,10 +1474,10 @@ an empty geometry for these flowlines. (<a class="reference external" href="http
 </ul>
 </section>
 </section>
-<section id="id9">
-<h2>0.12.1 (2021-12-31)<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <section id="id10">
-<h3>Internal Changes<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h2>0.12.1 (2021-12-31)<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<section id="id11">
+<h3>Internal Changes<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Use the three new <code class="docutils literal notranslate"><span class="pre">ar.retrieve_*</span></code> functions instead of the old <code class="docutils literal notranslate"><span class="pre">ar.retrieve</span></code>
 function to improve type hinting and to make the API more consistent.</p></li>
@@ -1442,10 +1485,10 @@ function to improve type hinting and to make the API more consistent.</p></li>
 </ul>
 </section>
 </section>
-<section id="id11">
-<h2>0.12.0 (2021-12-27)<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
 <section id="id12">
-<h3>Breaking Changes<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h2>0.12.0 (2021-12-27)<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<section id="id13">
+<h3>Breaking Changes<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Rewrite <code class="docutils literal notranslate"><span class="pre">ScienceBase</span></code> to make it applicable for working with other ScienceBase
 items. A new function has been added for staging the Additional NHDPlus attributes items
@@ -1457,8 +1500,8 @@ might not work as expected. As soon as the web service is stable, a new version
 will be released.</p></li>
 </ul>
 </section>
-<section id="id13">
-<h3>New Features<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<section id="id14">
+<h3>New Features<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>In <code class="docutils literal notranslate"><span class="pre">WaterData.byid</span></code> show a warning if there are any missing feature IDs that are
 requested but are not available in the dataset.</p></li>
@@ -1470,8 +1513,8 @@ You can use <code class="docutils literal notranslate"><span class="pre">disable
 refer to documentation of the functions for more details.</p></li>
 </ul>
 </section>
-<section id="id14">
-<h3>Internal Changes<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<section id="id15">
+<h3>Internal Changes<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Refactor <code class="docutils literal notranslate"><span class="pre">prepare_nhdplus</span></code> to reduce code complexity by grouping all the
 NHDPlus tools as a private class.</p></li>
@@ -1483,17 +1526,17 @@ used private functions. This will make the code more readable and easier to main
 </ul>
 </section>
 </section>
-<section id="id15">
-<h2>0.11.4 (2021-11-12)<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
 <section id="id16">
-<h3>New Features<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<h2>0.11.4 (2021-11-12)<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
+<section id="id17">
+<h3>New Features<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add a new argument to <code class="docutils literal notranslate"><span class="pre">NLDI.get_basins</span></code> called <code class="docutils literal notranslate"><span class="pre">split_catchment</span></code> that
 if is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> will split the basin geometry at the watershed outlet.</p></li>
 </ul>
 </section>
-<section id="id17">
-<h3>Internal Changes<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<section id="id18">
+<h3>Internal Changes<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Catch service errors in <code class="docutils literal notranslate"><span class="pre">PyGeoAPI</span></code> and show useful error messages.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">importlib-metadata</span></code> for getting the version instead of <code class="docutils literal notranslate"><span class="pre">pkg_resources</span></code>
@@ -1502,10 +1545,10 @@ to decrease import time as discussed in this
 </ul>
 </section>
 </section>
-<section id="id18">
-<h2>0.11.3 (2021-09-10)<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
 <section id="id19">
-<h3>Internal Changes<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<h2>0.11.3 (2021-09-10)<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h2>
+<section id="id20">
+<h3>Internal Changes<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>More robust handling of inputs and outputs of <code class="docutils literal notranslate"><span class="pre">NLDI</span></code>’s methods.</p></li>
 <li><p>Use an alternative download link for NHDPlus VAA file on Hydroshare.</p></li>
@@ -1517,10 +1560,10 @@ additional attributes for the NHDPlus database.</p></li>
 </ul>
 </section>
 </section>
-<section id="id20">
-<h2>0.11.2 (2021-08-26)<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
 <section id="id21">
-<h3>New Features<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<h2>0.11.2 (2021-08-26)<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h2>
+<section id="id22">
+<h3>New Features<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add support for <a class="reference external" href="https://labs.waterdata.usgs.gov/api/nldi/pygeoapi">PyGeoAPI</a>. It offers
 four functionalities: <code class="docutils literal notranslate"><span class="pre">flow_trace</span></code>, <code class="docutils literal notranslate"><span class="pre">split_catchment</span></code>, <code class="docutils literal notranslate"><span class="pre">elevation_profile</span></code>, and
@@ -1528,18 +1571,18 @@ four functionalities: <code class="docutils literal notranslate"><span class="pr
 </ul>
 </section>
 </section>
-<section id="id22">
-<h2>0.11.1 (2021-07-31)<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h2>
 <section id="id23">
-<h3>New Features<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<h2>0.11.1 (2021-07-31)<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h2>
+<section id="id24">
+<h3>New Features<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add a function for getting all NHD <code class="docutils literal notranslate"><span class="pre">FCodes</span></code> as a data frame, called <code class="docutils literal notranslate"><span class="pre">nhd_fcode</span></code>.</p></li>
 <li><p>Improve <code class="docutils literal notranslate"><span class="pre">prepare_nhdplus</span></code> function by removing all coastlines and better detection
 of the terminal point in a network.</p></li>
 </ul>
 </section>
-<section id="id24">
-<h3>Internal Changes<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
+<section id="id25">
+<h3>Internal Changes<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Migrate to using <code class="docutils literal notranslate"><span class="pre">AsyncRetriever</span></code> for handling communications with web services.</p></li>
 <li><p>Catch the <code class="docutils literal notranslate"><span class="pre">ConnectionError</span></code> separately in <code class="docutils literal notranslate"><span class="pre">NLDI</span></code> and raise a <code class="docutils literal notranslate"><span class="pre">ServiceError</span></code> instead.
@@ -1548,40 +1591,40 @@ not <code class="docutils literal notranslate"><span class="pre">ZeroMatched</sp
 </ul>
 </section>
 </section>
-<section id="id25">
-<h2>0.11.0 (2021-06-19)<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h2>
 <section id="id26">
-<h3>New Features<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
+<h2>0.11.0 (2021-06-19)<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h2>
+<section id="id27">
+<h3>New Features<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">nhdplus_vaa</span></code> to access NHDPlus Value Added Attributes for all its flowlines.</p></li>
 <li><p>To see a list of available layers in NHDPlus HR, you can instantiate its class without
 passing any argument like so <code class="docutils literal notranslate"><span class="pre">NHDPlusHR()</span></code>.</p></li>
 </ul>
 </section>
-<section id="id27">
-<h3>Breaking Changes<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
+<section id="id28">
+<h3>Breaking Changes<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Drop support for Python 3.6 since many of the dependencies such as <code class="docutils literal notranslate"><span class="pre">xarray</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>
 have done so.</p></li>
 </ul>
 </section>
-<section id="id28">
-<h3>Internal Changes<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h3>
+<section id="id29">
+<h3>Internal Changes<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Use persistent caching for all requests which can help speed up network responses significantly.</p></li>
 <li><p>Improve documentation and testing.</p></li>
 </ul>
 </section>
 </section>
-<section id="id29">
-<h2>0.10.1 (2021-03-27)<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h2>
+<section id="id30">
+<h2>0.10.1 (2021-03-27)<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Add an announcement regarding the new name for the software stack, HyRiver.</p></li>
 <li><p>Improve <code class="docutils literal notranslate"><span class="pre">pip</span></code> installation and release workflow.</p></li>
 </ul>
 </section>
-<section id="id30">
-<h2>0.10.0 (2021-03-06)<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h2>
+<section id="id31">
+<h2>0.10.0 (2021-03-06)<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The first release after renaming hydrodata to PyGeoHydro.</p></li>
 <li><p>Make <code class="docutils literal notranslate"><span class="pre">mypy</span></code> checks more strict and fix all the errors and prevent possible
@@ -1589,13 +1632,13 @@ bugs.</p></li>
 <li><p>Speed up CI testing by using <code class="docutils literal notranslate"><span class="pre">mamba</span></code> and caching.</p></li>
 </ul>
 </section>
-<section id="id31">
-<h2>0.9.0 (2021-02-14)<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h2>
+<section id="id32">
+<h2>0.9.0 (2021-02-14)<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Bump version to the same version as PyGeoHydro.</p></li>
 </ul>
-<section id="id32">
-<h3>Breaking Changes<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h3>
+<section id="id33">
+<h3>Breaking Changes<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add a new function for getting basins geometries for a list of USGS station IDs.
 The function is a method of <code class="docutils literal notranslate"><span class="pre">NLDI</span></code> class called <code class="docutils literal notranslate"><span class="pre">get_basins</span></code>. So, now
@@ -1610,8 +1653,8 @@ are <code class="docutils literal notranslate"><span class="pre">service</span><
 switching to the other service if the ones passed by <code class="docutils literal notranslate"><span class="pre">service</span></code> fails.</p></li>
 </ul>
 </section>
-<section id="id33">
-<h3>New Features<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h3>
+<section id="id34">
+<h3>New Features<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add a new argument to <code class="docutils literal notranslate"><span class="pre">topoogical_sort</span></code> called <code class="docutils literal notranslate"><span class="pre">edge_attr</span></code> that allows adding attribute(s) to
 the returned Networkx Graph. By default, it is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
@@ -1624,10 +1667,10 @@ lon/lat coordinates.</p></li>
 </ul>
 </section>
 </section>
-<section id="id34">
-<h2>0.2.0 (2020-12-06)<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h2>
 <section id="id35">
-<h3>Breaking Changes<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h3>
+<h2>0.2.0 (2020-12-06)<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h2>
+<section id="id36">
+<h3>Breaking Changes<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Re-wrote the <code class="docutils literal notranslate"><span class="pre">NLDI</span></code> function to use API v3 of the NLDI service.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">crs</span></code> argument of <code class="docutils literal notranslate"><span class="pre">WaterData</span></code> now is the target CRS of the output dataframe.
@@ -1635,8 +1678,8 @@ The service CRS is now <code class="docutils literal notranslate"><span class="p
 <li><p>Remove the <code class="docutils literal notranslate"><span class="pre">url_only</span></code> argument of <code class="docutils literal notranslate"><span class="pre">NLDI</span></code> since it’s not applicable anymore.</p></li>
 </ul>
 </section>
-<section id="id36">
-<h3>New Features<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h3>
+<section id="id37">
+<h3>New Features<a class="headerlink" href="#id37" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Added support for NHDPlus High Resolution for getting features by geometry, IDs, or
 SQL where clause.</p></li>
@@ -1661,35 +1704,35 @@ characteristic type.</p></li>
 <li><p>Add support for Python 3.9 and tests for Windows.</p></li>
 </ul>
 </section>
-<section id="id37">
-<h3>Bug Fixes<a class="headerlink" href="#id37" title="Permalink to this headline">#</a></h3>
+<section id="id38">
+<h3>Bug Fixes<a class="headerlink" href="#id38" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Refactored <code class="docutils literal notranslate"><span class="pre">WaterData</span></code> to fix the CRS inconsistencies (#1).</p></li>
 </ul>
 </section>
 </section>
-<section id="id38">
-<h2>0.1.3 (2020-08-18)<a class="headerlink" href="#id38" title="Permalink to this headline">#</a></h2>
+<section id="id39">
+<h2>0.1.3 (2020-08-18)<a class="headerlink" href="#id39" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Replaced <code class="docutils literal notranslate"><span class="pre">simplejson</span></code> with <code class="docutils literal notranslate"><span class="pre">orjson</span></code> to speed-up JSON operations.</p></li>
 </ul>
 </section>
-<section id="id39">
-<h2>0.1.2 (2020-08-11)<a class="headerlink" href="#id39" title="Permalink to this headline">#</a></h2>
+<section id="id40">
+<h2>0.1.2 (2020-08-11)<a class="headerlink" href="#id40" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">show_versions</span></code> function for showing versions of the installed deps.</p></li>
 <li><p>Improve documentation</p></li>
 </ul>
 </section>
-<section id="id40">
-<h2>0.1.1 (2020-08-03)<a class="headerlink" href="#id40" title="Permalink to this headline">#</a></h2>
+<section id="id41">
+<h2>0.1.1 (2020-08-03)<a class="headerlink" href="#id41" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Improved documentation</p></li>
 <li><p>Refactored <code class="docutils literal notranslate"><span class="pre">WaterData</span></code> to improve readability.</p></li>
 </ul>
 </section>
-<section id="id41">
-<h2>0.1.0 (2020-07-23)<a class="headerlink" href="#id41" title="Permalink to this headline">#</a></h2>
+<section id="id42">
+<h2>0.1.0 (2020-07-23)<a class="headerlink" href="#id42" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>First release on PyPI.</p></li>
 </ul>
@@ -1728,7 +1771,7 @@ characteristic type.</p></li>
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

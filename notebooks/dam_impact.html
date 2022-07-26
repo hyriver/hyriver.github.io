@@ -6,17 +6,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<meta property="og:title" content="Dam Impact on streamflow" />
+<meta property="og:title" content="Working with Geospatial Hydrologic Data Using Web Services" />
   
 <meta property="og:type" content="website" />
   
 <meta property="og:url" content="https://hyriver.readthedocs.io/en/notebooks/dam_impact.html" />
   
-<meta property="og:description" content="This page was generated from notebooks/dam_impact.ipynb. Interactive online version: We’re going to take a look at the impact of building dams on their downstream streamflow. Here are some example ..." />
+<meta property="og:description" content="This page was generated from notebooks/dam_impact.ipynb. Interactive online version: Dam Impact on streamflow: Python,, Author, Affiliation,,, Taher Chegini, University of Houston,, Mike Johnson, L..." />
   
 <meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
   
-<meta property="og:image:alt" content="Dam Impact on streamflow" />
+<meta property="og:image:alt" content="Working with Geospatial Hydrologic Data Using Web Services" />
   
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@_taher_" />
@@ -24,7 +24,7 @@
 <meta name="twitter:description" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
 <meta name="twitter:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
 <meta name="twitter:image:alt" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
-    <title>Dam Impact on streamflow</title>
+    <title>Working with Geospatial Hydrologic Data Using Web Services</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -39,13 +39,13 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -209,7 +209,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -784,6 +784,16 @@ title="Edit this page"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Geospatial-Tools-in-Python">
+   Geospatial Tools in Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Streamflow-Gauges">
    Streamflow Gauges
   </a>
@@ -822,7 +832,7 @@ title="Edit this page"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Dam Impact on streamflow</h1>
+                <h1>Working with Geospatial Hydrologic Data Using Web Services</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -832,6 +842,16 @@ title="Edit this page"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Geospatial-Tools-in-Python">
+   Geospatial Tools in Python
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Streamflow-Gauges">
    Streamflow Gauges
@@ -1133,15 +1153,67 @@ div.rendered_html tbody tr:hover {
 Interactive online version:
 <span class="raw-html"><a href="https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks/dam_impact.ipynb"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a></span></p>
 </div>
-<section id="Dam-Impact-on-streamflow">
-<h1>Dam Impact on streamflow<a class="headerlink" href="#Dam-Impact-on-streamflow" title="Permalink to this headline">#</a></h1>
-<p>We’re going to take a look at the impact of building dams on their downstream streamflow. Here are some example peer-reviewed papers on this topic.</p>
+<section id="Working-with-Geospatial-Hydrologic-Data-Using-Web-Services">
+<h1>Working with Geospatial Hydrologic Data Using Web Services<a class="headerlink" href="#Working-with-Geospatial-Hydrologic-Data-Using-Web-Services" title="Permalink to this headline">#</a></h1>
+<p><em>Dam Impact on streamflow: Python</em></p>
+<table class="table">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Author</p></th>
+<th class="head"><p>Affiliation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Taher Chegini</p></td>
+<td><p>University of Houston</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mike Johnson</p></td>
+<td><p><a class="reference external" href="https://www.lynker.com/solutions/water-environmental-resources/">Lynker</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Marc Weber</p></td>
+<td><p>US Environmental Protection Agency</p></td>
+</tr>
+</tbody>
+</table>
+<section id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">#</a></h2>
+<p>This is the second part of the “Working with Geospatial Hydrologic Data Using Web Services” workshop. In the <a class="reference external" href="https://mikejohnson51.github.io/IOW2022_R/slides.html">first part</a>, we covered some basic concepts related to geospatial analysis. Although R is used in the first part, the introduced concepts are applicable to Python as well. So, in this tutorial, we won’t repeat the same concepts, instead we focus on equivalent tools in Python and provide an in-depth hands-on example geospatial
+analysis workflow.</p>
+</section>
+<section id="Geospatial-Tools-in-Python">
+<h2>Geospatial Tools in Python<a class="headerlink" href="#Geospatial-Tools-in-Python" title="Permalink to this headline">#</a></h2>
+<p>This is non-exhaustive list of geospatial tools that we directly/indirectly use in this tutorial:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://doi.org/10.5194/hess-17-3189-2013">https://doi.org/10.5194/hess-17-3189-2013</a></p></li>
-<li><p><a class="reference external" href="https://doi.org/10.1002/2017WR020871">https://doi.org/10.1002/2017WR020871</a></p></li>
+<li><p><a class="reference external" href="https://docs.hyriver.io/en/latest/readme/pynhd.html">PyNHD</a>: Navigate and subset NHDPlus (MR and HR) dataset using web services.</p></li>
+<li><p><a class="reference external" href="https://docs.hyriver.io/en/latest/readme/py3dep.html">Py3DEP</a>: Access topographic data through National Map’s 3DEP web service.</p></li>
+<li><p><a class="reference external" href="https://docs.hyriver.io/en/latest/readme/pygeohydro.html">PyGeoHydro</a>: Access NWIS, NID, WQP, HCDN 2009, NLCD, CAMELS, and SSEBop databases.</p></li>
+<li><p><a class="reference external" href="https://docs.hyriver.io/en/latest/readme/pydaymet.html">PyDaymet</a>: Access Daymet for daily climate data both single pixel and gridded.</p></li>
+<li><p><a class="reference external" href="https://xarray.pydata.org/en/stable/">xarray</a>: An open-source project and Python package that makes working with labeled multi-dimensional arrays simple, efficient, and fun!</p></li>
+<li><p><a class="reference external" href="https://corteva.github.io/rioxarray/stable/index.html">rioxarray</a>: Rasterio xarray extension.</p></li>
+<li><p><a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a>: An open-source project to make working with geospatial data in python easier.</p></li>
+<li><p><a class="reference external" href="https://proplot.readthedocs.io/en/stable/">Proplot</a>: A succinct <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> wrapper for making beautiful, publication-quality graphics.</p></li>
+<li><p><a class="reference external" href="https://python-visualization.github.io/folium/">Folium</a>: Makes it easy to visualize data that’s been manipulated in Python on an interactive leaflet map. It enables both the binding of data to a map for choropleth visualizations and passing rich vector/raster/HTML visualizations as markers on the map.</p></li>
+</ul>
+<p>You can find more geospatial tools at <a class="reference external" href="https://github.com/sacridini/Awesome-Geospatial">Awesome Geospatial</a> repository.</p>
+<p>The primary goal of this hands-on tutorial is to introduce a handful of geospatial web services for conducting scientific studies. For this purpose, we’re going to take a look at the impact of building dams on their downstream streamflow. Here are some example peer-reviewed papers on this topic.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.5194/hess-17-3189-2013">Non-stationary flood frequency analysis in continental Spanish rivers, using climate and reservoir indices as external covariates</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1002/2017WR020871">Nonlinear Filtering Effects of Reservoirs on Flood Frequency Curves at the Regional Scale</a></p></li>
 </ul>
 <p>We set the area of interest (AOI) to Texas and study dams that have been built in the 1995-2005 period.</p>
-<p>Workflow: - Get gauge stations within Texas that have enough streamflow data - Get dams within Texas that have been built have been built between 1995-2005 - Filter out stations that don’t have any dams in their upstream up to 10 km - Get streamflow data for the remaining stations - Visually inspect the streamflow data for dam impacts - Check land use/land cover type around the dams</p>
+<p>Workflow:</p>
+<ul class="simple">
+<li><p>Get gauge stations within Texas that have enough streamflow data</p></li>
+<li><p>Get dams within Texas that have been built have been built between 1995-2005</p></li>
+<li><p>Filter out stations that don’t have any dams in their upstream up to 10 km</p></li>
+<li><p>Get streamflow data for the remaining stations</p></li>
+<li><p>Visually inspect the streamflow data for dam impacts</p></li>
+<li><p>Check land use/land cover type around the dams</p></li>
+</ul>
+</section>
 <section id="Streamflow-Gauges">
 <h2>Streamflow Gauges<a class="headerlink" href="#Streamflow-Gauges" title="Permalink to this headline">#</a></h2>
 <p>First, we use the National Water Information System (NWIS) service to check streamflow data availability in our AOI and 10 years before and after the period of our study, i.e., the 1985-2015 period.</p>
@@ -1154,7 +1226,9 @@ Interactive online version:
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">proplot</span> <span class="k">as</span> <span class="nn">pplt</span>
+
 <span class="kn">import</span> <span class="nn">pygeohydro</span> <span class="k">as</span> <span class="nn">gh</span>
+<span class="kn">import</span> <span class="nn">pygeoutils</span> <span class="k">as</span> <span class="nn">geoutils</span>
 <span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">NID</span><span class="p">,</span> <span class="n">NWIS</span>
 <span class="kn">from</span> <span class="nn">pynhd</span> <span class="kn">import</span> <span class="n">NLDI</span><span class="p">,</span> <span class="n">WaterData</span><span class="p">,</span> <span class="n">ZeroMatched</span>
 
@@ -1187,7 +1261,7 @@ Interactive online version:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_5_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_5_0.png" style="width: 700px; height: 498px;" />
+<img alt="../_images/notebooks_dam_impact_7_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_7_0.png" style="width: 700px; height: 498px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1234,7 +1308,7 @@ Interactive online version:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_8_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_8_0.png" style="width: 700px; height: 495px;" />
+<img alt="../_images/notebooks_dam_impact_10_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_10_0.png" style="width: 700px; height: 495px;" />
 </div>
 </div>
 <p>Now, let’s filter these stations a step further to include only those stations that have around 30 years of daily streamflow data with drainage area of larger than 10 km<span class="math notranslate nohighlight">\(^2\)</span> that have been impacted by human activities.</p>
@@ -1279,7 +1353,7 @@ Interactive online version:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_12_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_12_0.png" style="width: 700px; height: 495px;" />
+<img alt="../_images/notebooks_dam_impact_14_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_14_0.png" style="width: 700px; height: 495px;" />
 </div>
 </div>
 </section>
@@ -1366,7 +1440,7 @@ Name: name, dtype: object
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_18_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_18_0.png" style="width: 700px; height: 501px;" />
+<img alt="../_images/notebooks_dam_impact_20_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_20_0.png" style="width: 700px; height: 501px;" />
 </div>
 </div>
 <p>As is evident from the plot above, there are many stations that don’t have any dams in their vicinity. One way to eliminate these stations is using a spatial query based on a search radius. We can determine an estimation for our search radius based on the upstream drainage area distribution of the streamflow gauges.</p>
@@ -1383,7 +1457,7 @@ Name: name, dtype: object
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_20_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_20_0.png" style="width: 400px; height: 250px;" />
+<img alt="../_images/notebooks_dam_impact_22_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_22_0.png" style="width: 400px; height: 250px;" />
 </div>
 </div>
 <p>We can see that most stations have a drainage area of less than 15000 km<span class="math notranslate nohighlight">\(^2\)</span>. Since they’re not very large a search radius of 10 km should be sufficient. Now, we define a function that carries out an efficient spatial query to find the stations that have at least one dam within a 10-km radius.</p>
@@ -1416,7 +1490,7 @@ Name: name, dtype: object
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_23_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_23_0.png" style="width: 400px; height: 250px;" />
+<img alt="../_images/notebooks_dam_impact_25_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_25_0.png" style="width: 400px; height: 250px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1436,7 +1510,7 @@ Name: name, dtype: object
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_24_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_24_0.png" style="width: 700px; height: 497px;" />
+<img alt="../_images/notebooks_dam_impact_26_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_26_0.png" style="width: 700px; height: 497px;" />
 </div>
 </div>
 </section>
@@ -1503,8 +1577,7 @@ Name: name, dtype: object
     <span class="n">nid_comids</span><span class="p">,</span> <span class="n">missing</span> <span class="o">=</span> <span class="n">nid_comids</span>
 
 <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
-    <span class="n">coords_str</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">]</span>
-    <span class="n">dams</span> <span class="o">=</span> <span class="n">dams</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">coords_str</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missing</span><span class="p">])</span>
+    <span class="n">dams</span> <span class="o">=</span> <span class="n">dams</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">coords</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missing</span><span class="p">])</span>
     <span class="n">sites</span><span class="p">,</span> <span class="n">dams</span> <span class="o">=</span> <span class="n">distance_filter</span><span class="p">(</span><span class="n">sites</span><span class="p">,</span> <span class="n">dams</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">dams</span><span class="p">[</span><span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nid_comids</span><span class="o">.</span><span class="n">comid</span>
@@ -1530,8 +1603,7 @@ Name: name, dtype: object
     <span class="n">site_comids</span><span class="p">,</span> <span class="n">missing</span> <span class="o">=</span> <span class="n">site_comids</span>
 
 <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
-    <span class="n">coords_str</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">]</span>
-    <span class="n">sites</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">coords_str</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missing</span><span class="p">])</span>
+    <span class="n">sites</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">coords</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">missing</span><span class="p">])</span>
     <span class="n">sites</span><span class="p">,</span> <span class="n">dams</span> <span class="o">=</span> <span class="n">distance_filter</span><span class="p">(</span><span class="n">sites</span><span class="p">,</span> <span class="n">dams</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">sites</span><span class="p">[</span><span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">site_comids</span><span class="o">.</span><span class="n">comid</span>
@@ -2069,21 +2141,39 @@ array([&#39;07312200&#39;, &#39;08095000&#39;, &#39;08158920&#39;, &#39;08057445
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_45_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_45_0.png" style="width: 562px; height: 1016px;" />
+<img alt="../_images/notebooks_dam_impact_47_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_47_0.png" style="width: 562px; height: 1016px;" />
 </div>
 </div>
 <p>We can see that based on the available data and visual inspection, the first station shows a noticeable difference before and after the dam construction. Next we take a closer look at this station, <code class="docutils literal notranslate"><span class="pre">USGS-07312200</span></code>.</p>
 </section>
 <section id="Land-Use/Land-Cover-(LULC)">
 <h2>Land Use/Land Cover (LULC)<a class="headerlink" href="#Land-Use/Land-Cover-(LULC)" title="Permalink to this headline">#</a></h2>
-<p>To gain a better understanding of the land features around and near the <code class="docutils literal notranslate"><span class="pre">USGS-07312200</span></code> station and its dams, we use the LULC data. For this purpose, first, we need to obtain the local catchments up to 10 km upstream of the station. The WaterData web service has several layers one of which is local catchments. Let’s use the comids to obtain their corresponding catchments.</p>
+<p>To gain a better understanding of the land features around and near the <code class="docutils literal notranslate"><span class="pre">USGS-07312200</span></code> station and its dams, we use the LULC data. For this purpose, first, we obtain the local catchments up to 30 km upstream and downstream of the station. The WaterData web service has several layers one of which is local catchments. Let’s use the COMIDs to obtain their corresponding catchments.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_id</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;USGS-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_id</span> <span class="o">=</span> <span class="s2">&quot;07312200&quot;</span>
+<span class="n">flw_ut</span> <span class="o">=</span> <span class="n">nldi</span><span class="o">.</span><span class="n">navigate_byid</span><span class="p">(</span>
+    <span class="n">fsource</span><span class="o">=</span><span class="s2">&quot;nwissite&quot;</span><span class="p">,</span>
+    <span class="n">fid</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;USGS-</span><span class="si">{</span><span class="n">station_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">navigation</span><span class="o">=</span><span class="s2">&quot;upstreamTributaries&quot;</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;flowlines&quot;</span><span class="p">,</span>
+    <span class="n">distance</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">flw_dd</span> <span class="o">=</span> <span class="n">nldi</span><span class="o">.</span><span class="n">navigate_byid</span><span class="p">(</span>
+    <span class="n">fsource</span><span class="o">=</span><span class="s2">&quot;nwissite&quot;</span><span class="p">,</span>
+    <span class="n">fid</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;USGS-</span><span class="si">{</span><span class="n">station_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">navigation</span><span class="o">=</span><span class="s2">&quot;downstreamDiversions&quot;</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;flowlines&quot;</span><span class="p">,</span>
+    <span class="n">distance</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">flowlines</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">flw_ut</span><span class="p">,</span> <span class="n">flw_dd</span><span class="p">]),</span> <span class="n">crs</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
 <span class="n">wd</span> <span class="o">=</span> <span class="n">WaterData</span><span class="p">(</span><span class="s2">&quot;catchmentsp&quot;</span><span class="p">)</span>
-<span class="n">catchment</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">byid</span><span class="p">(</span><span class="s2">&quot;featureid&quot;</span><span class="p">,</span> <span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">catchment</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">byid</span><span class="p">(</span><span class="s2">&quot;featureid&quot;</span><span class="p">,</span> <span class="n">flowlines</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">flw_dd</span><span class="p">[</span><span class="s2">&quot;nhdplus_comid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flw_dd</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">catchment</span><span class="o">.</span><span class="n">featureid</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">catchment</span><span class="p">[</span><span class="s2">&quot;direction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;upstream&quot;</span>
+<span class="n">catchment</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">catchment</span><span class="o">.</span><span class="n">featureid</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">flw_dd</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="p">),</span> <span class="s2">&quot;direction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;downstream&quot;</span>
 <span class="n">catchment</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2118,58 +2208,64 @@ array([&#39;07312200&#39;, &#39;08095000&#39;, &#39;08158920&#39;, &#39;08057445
       <th>areasqkm</th>
       <th>shape_length</th>
       <th>shape_area</th>
+      <th>direction</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>MULTIPOLYGON (((-98.92139 33.91434, -98.92185 ...</td>
-      <td>1347963</td>
-      <td>13730353</td>
+      <td>MULTIPOLYGON (((-98.95702 34.00904, -98.95757 ...</td>
+      <td>1347768</td>
+      <td>13728581</td>
       <td>NHDFlowline</td>
-      <td>0.973724</td>
-      <td>0.059060</td>
-      <td>0.000095</td>
+      <td>3.667051</td>
+      <td>0.082690</td>
+      <td>3.579443e-04</td>
+      <td>upstream</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>MULTIPOLYGON (((-98.96395 33.90708, -98.96382 ...</td>
-      <td>1347704</td>
-      <td>13730355</td>
+      <td>MULTIPOLYGON (((-98.95302 34.00727, -98.95292 ...</td>
+      <td>1347933</td>
+      <td>13728583</td>
       <td>NHDFlowline</td>
-      <td>5.234858</td>
-      <td>0.119837</td>
-      <td>0.000510</td>
+      <td>0.005346</td>
+      <td>0.003188</td>
+      <td>5.217419e-07</td>
+      <td>upstream</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>MULTIPOLYGON (((-98.90715 33.90959, -98.90847 ...</td>
-      <td>1347573</td>
-      <td>13730361</td>
+      <td>MULTIPOLYGON (((-98.95483 34.00319, -98.95537 ...</td>
+      <td>1348044</td>
+      <td>13728585</td>
       <td>NHDFlowline</td>
-      <td>2.926106</td>
-      <td>0.087883</td>
-      <td>0.000285</td>
+      <td>0.150286</td>
+      <td>0.018680</td>
+      <td>1.466643e-05</td>
+      <td>upstream</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>MULTIPOLYGON (((-98.92131 33.91219, -98.92150 ...</td>
-      <td>1347533</td>
-      <td>13730363</td>
+      <td>MULTIPOLYGON (((-98.94654 34.00018, -98.94817 ...</td>
+      <td>1347921</td>
+      <td>13728587</td>
       <td>NHDFlowline</td>
-      <td>0.600177</td>
-      <td>0.033255</td>
-      <td>0.000059</td>
+      <td>0.010543</td>
+      <td>0.004362</td>
+      <td>1.028886e-06</td>
+      <td>upstream</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>MULTIPOLYGON (((-98.91456 33.90672, -98.91476 ...</td>
-      <td>1347708</td>
-      <td>13730365</td>
+      <td>MULTIPOLYGON (((-98.94831 34.00390, -98.94784 ...</td>
+      <td>1347981</td>
+      <td>13728589</td>
       <td>NHDFlowline</td>
-      <td>0.277969</td>
-      <td>0.036201</td>
-      <td>0.000027</td>
+      <td>0.142392</td>
+      <td>0.027063</td>
+      <td>1.389548e-05</td>
+      <td>upstream</td>
     </tr>
   </tbody>
 </table>
@@ -2180,12 +2276,12 @@ array([&#39;07312200&#39;, &#39;08095000&#39;, &#39;08158920&#39;, &#39;08057445
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pplt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">refwidth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">catchment</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">catchment</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;direction&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">flowlines</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">sites</span><span class="p">[</span><span class="n">sites</span><span class="o">.</span><span class="n">site_no</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">station_id</span><span class="p">])]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Station&quot;</span>
 <span class="p">)</span>
-<span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">flowlines</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dam&quot;</span>
 <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
@@ -2197,7 +2293,7 @@ array([&#39;07312200&#39;, &#39;08095000&#39;, &#39;08158920&#39;, &#39;08057445
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_49_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_49_0.png" style="width: 700px; height: 351px;" />
+<img alt="../_images/notebooks_dam_impact_51_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_51_0.png" style="width: 700px; height: 322px;" />
 </div>
 </div>
 <p>Now, we can retrieve the LULC data at 30-m resolution within the union of these catchments using the Multi-Resolution Land Characteristics (MRLC) Consortium web service.</p>
@@ -2247,6 +2343,7 @@ array([&#39;07312200&#39;, &#39;08095000&#39;, &#39;08158920&#39;, &#39;08057445
 }
 
 html[theme=dark],
+body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -2568,17 +2665,17 @@ dl.xr-attrs {
   fill: currentColor;
 }
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
-Dimensions:          (y: 268, x: 383)
+Dimensions:          (x: 1257, y: 803)
 Coordinates:
-  * y                (y) float64 33.94 33.93 33.93 33.93 ... 33.86 33.86 33.86
-  * x                (x) float64 -99.0 -99.0 -99.0 ... -98.87 -98.87 -98.87
+  * x                (x) float64 -99.12 -99.12 -99.12 ... -98.71 -98.71 -98.71
+  * y                (y) float64 34.04 34.04 34.04 34.04 ... 33.82 33.82 33.82
     spatial_ref      int64 0
 Data variables:
-    canopy_2016      (y, x) float32 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;
-    impervious_2019  (y, x) float32 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;
-    descriptor_2019  (y, x) uint8 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;
-    cover_2019       (y, x) uint8 dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b8ca0e2a-026d-4afb-ac03-9a90dd4f1b0d' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b8ca0e2a-026d-4afb-ac03-9a90dd4f1b0d' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 268</li><li><span class='xr-has-index'>x</span>: 383</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-fe5ae2ec-948e-4e52-ab33-e2c2224a3660' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fe5ae2ec-948e-4e52-ab33-e2c2224a3660' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>33.94 33.93 33.93 ... 33.86 33.86</div><input id='attrs-7d5e94a3-268d-402b-b143-a19d5e10bcef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7d5e94a3-268d-402b-b143-a19d5e10bcef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c1c4e33a-1472-4428-be63-2d900de3bba6' class='xr-var-data-in' type='checkbox'><label for='data-c1c4e33a-1472-4428-be63-2d900de3bba6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([33.935035, 33.934764, 33.934494, ..., 33.863282, 33.863011, 33.862741])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-99.0 -99.0 -99.0 ... -98.87 -98.87</div><input id='attrs-efcc1074-1442-4d3a-a21f-408c47a96d7e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-efcc1074-1442-4d3a-a21f-408c47a96d7e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e74e2929-fa62-4f56-b253-3e8e4fe243b8' class='xr-var-data-in' type='checkbox'><label for='data-e74e2929-fa62-4f56-b253-3e8e4fe243b8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-98.996597, -98.996272, -98.995947, ..., -98.873123, -98.872798,
-       -98.872473])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-4b83a5fc-dfb3-4c9d-aa7d-37a5449699e7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4b83a5fc-dfb3-4c9d-aa7d-37a5449699e7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-654d4ae8-042d-4632-9bee-0c35c61f4a11' class='xr-var-data-in' type='checkbox'><label for='data-654d4ae8-042d-4632-9bee-0c35c61f4a11' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>-98.9967590684583 0.00032493171799249915 0.0 33.935170430107284 0.0 -0.00027076543406899745</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a92c1db8-66c9-416c-a86a-e9ab43576089' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a92c1db8-66c9-416c-a86a-e9ab43576089' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>canopy_2016</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-70bd996e-cfa7-4e33-84f1-10f929375f6d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-70bd996e-cfa7-4e33-84f1-10f929375f6d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2e353511-4c28-4a48-a6b7-57e8131171f8' class='xr-var-data-in' type='checkbox'><label for='data-2e353511-4c28-4a48-a6b7-57e8131171f8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>0.0</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(0,)</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
+    canopy_2016      (y, x) float32 dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;
+    impervious_2019  (y, x) float32 dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;
+    descriptor_2019  (y, x) uint8 dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;
+    cover_2019       (y, x) uint8 dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-c7e92010-365f-43cb-88b9-cb2499190d83' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c7e92010-365f-43cb-88b9-cb2499190d83' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>x</span>: 1257</li><li><span class='xr-has-index'>y</span>: 803</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-60e34e18-65e7-4724-89d5-ad3a87ff8823' class='xr-section-summary-in' type='checkbox'  checked><label for='section-60e34e18-65e7-4724-89d5-ad3a87ff8823' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-99.12 -99.12 ... -98.71 -98.71</div><input id='attrs-5a0ca493-0138-40c1-a71d-1b7346c6e064' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5a0ca493-0138-40c1-a71d-1b7346c6e064' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ce81381b-1f11-49dc-900a-fa9f6f4a1d3d' class='xr-var-data-in' type='checkbox'><label for='data-ce81381b-1f11-49dc-900a-fa9f6f4a1d3d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-99.119952, -99.119627, -99.119303, ..., -98.713271, -98.712947,
+       -98.712623])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>34.04 34.04 34.04 ... 33.82 33.82</div><input id='attrs-a57c0ed6-4c7f-47ac-98d5-a1a8bd3b165a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a57c0ed6-4c7f-47ac-98d5-a1a8bd3b165a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71caa391-b58e-49a5-bb18-e9b31e7b1681' class='xr-var-data-in' type='checkbox'><label for='data-71caa391-b58e-49a5-bb18-e9b31e7b1681' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([34.039062, 34.038791, 34.038521, ..., 33.822523, 33.822252, 33.821981])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-b085826f-e6e1-4d7e-b438-5473300b38e9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b085826f-e6e1-4d7e-b438-5473300b38e9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3cf272fd-a206-447d-8fb3-46443ee26eed' class='xr-var-data-in' type='checkbox'><label for='data-3cf272fd-a206-447d-8fb3-46443ee26eed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>-99.12011392422814 0.00032430669173633765 0.0 34.0391973953052 0.0 -0.00027067410484067617</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-77ad51ac-7967-4bc9-9fb4-7fc70fa7a8b0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-77ad51ac-7967-4bc9-9fb4-7fc70fa7a8b0' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>canopy_2016</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;</div><input id='attrs-d799c59f-89ad-45d8-9d54-7a4817eb6a66' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d799c59f-89ad-45d8-9d54-7a4817eb6a66' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b9735ad9-23e9-4c07-8b5b-b063bf140424' class='xr-var-data-in' type='checkbox'><label for='data-b9735ad9-23e9-4c07-8b5b-b063bf140424' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>0.0</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(0,)</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2593,14 +2690,14 @@ Data variables:
 
                     <tr>
                         <th> Bytes </th>
-                        <td> 400.95 kiB </td>
-                        <td> 400.95 kiB </td>
+                        <td> 3.85 MiB </td>
+                        <td> 3.85 MiB </td>
                     </tr>
 
                     <tr>
                         <th> Shape </th>
-                        <td> (268, 383) </td>
-                        <td> (268, 383) </td>
+                        <td> (803, 1257) </td>
+                        <td> (803, 1257) </td>
                     </tr>
                     <tr>
                         <th> Count </th>
@@ -2616,26 +2713,26 @@ Data variables:
             </table>
         </td>
         <td>
-        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+        <svg width="170" height="126" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="76" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="76" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 120.0,0.0 120.0,76.65871121718376 0.0,76.65871121718376" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
-  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
-  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+  <text x="60.000000" y="96.658711" font-size="1.0rem" font-weight="100" text-anchor="middle" >1257</text>
+  <text x="140.000000" y="38.329356" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,38.329356)">803</text>
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>impervious_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-5bf63bc1-fa22-459f-bffa-de727b97d068' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5bf63bc1-fa22-459f-bffa-de727b97d068' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71ee9af3-2d37-49c0-b956-e48beab37ed4' class='xr-var-data-in' type='checkbox'><label for='data-71ee9af3-2d37-49c0-b956-e48beab37ed4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>0.0</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(0,)</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>impervious_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;</div><input id='attrs-97219e2e-7b24-42ec-a254-ac71358f4da2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-97219e2e-7b24-42ec-a254-ac71358f4da2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cc06bc8d-1d90-4ab5-965b-f8453d9b7310' class='xr-var-data-in' type='checkbox'><label for='data-cc06bc8d-1d90-4ab5-965b-f8453d9b7310' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>0.0</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(0,)</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2650,14 +2747,14 @@ Data variables:
 
                     <tr>
                         <th> Bytes </th>
-                        <td> 400.95 kiB </td>
-                        <td> 400.95 kiB </td>
+                        <td> 3.85 MiB </td>
+                        <td> 3.85 MiB </td>
                     </tr>
 
                     <tr>
                         <th> Shape </th>
-                        <td> (268, 383) </td>
-                        <td> (268, 383) </td>
+                        <td> (803, 1257) </td>
+                        <td> (803, 1257) </td>
                     </tr>
                     <tr>
                         <th> Count </th>
@@ -2673,26 +2770,26 @@ Data variables:
             </table>
         </td>
         <td>
-        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+        <svg width="170" height="126" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="76" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="76" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 120.0,0.0 120.0,76.65871121718376 0.0,76.65871121718376" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
-  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
-  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+  <text x="60.000000" y="96.658711" font-size="1.0rem" font-weight="100" text-anchor="middle" >1257</text>
+  <text x="140.000000" y="38.329356" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,38.329356)">803</text>
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>descriptor_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-6f945c76-8a77-4c6a-a27c-9681aa1de2d5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6f945c76-8a77-4c6a-a27c-9681aa1de2d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-316305c2-8c23-451e-9b97-f67cc8265dc1' class='xr-var-data-in' type='checkbox'><label for='data-316305c2-8c23-451e-9b97-f67cc8265dc1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>127</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(127,)</dd><dt><span>units :</span></dt><dd>classes</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>descriptor_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;</div><input id='attrs-e0195edd-d7f0-41ee-aed5-ed1cd9679fb7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e0195edd-d7f0-41ee-aed5-ed1cd9679fb7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c25d48fd-b60c-4737-913f-5f974ee4c871' class='xr-var-data-in' type='checkbox'><label for='data-c25d48fd-b60c-4737-913f-5f974ee4c871' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>127</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(127,)</dd><dt><span>units :</span></dt><dd>classes</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2707,14 +2804,14 @@ Data variables:
 
                     <tr>
                         <th> Bytes </th>
-                        <td> 100.24 kiB </td>
-                        <td> 100.24 kiB </td>
+                        <td> 0.96 MiB </td>
+                        <td> 0.96 MiB </td>
                     </tr>
 
                     <tr>
                         <th> Shape </th>
-                        <td> (268, 383) </td>
-                        <td> (268, 383) </td>
+                        <td> (803, 1257) </td>
+                        <td> (803, 1257) </td>
                     </tr>
                     <tr>
                         <th> Count </th>
@@ -2730,26 +2827,26 @@ Data variables:
             </table>
         </td>
         <td>
-        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+        <svg width="170" height="126" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="76" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="76" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 120.0,0.0 120.0,76.65871121718376 0.0,76.65871121718376" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
-  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
-  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+  <text x="60.000000" y="96.658711" font-size="1.0rem" font-weight="100" text-anchor="middle" >1257</text>
+  <text x="140.000000" y="38.329356" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,38.329356)">803</text>
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cover_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(268, 383), meta=np.ndarray&gt;</div><input id='attrs-4e63f678-099d-4fac-9a90-b68275e90168' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4e63f678-099d-4fac-9a90-b68275e90168' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-59543310-6a69-4cf3-a8f6-5fbef70d561a' class='xr-var-data-in' type='checkbox'><label for='data-59543310-6a69-4cf3-a8f6-5fbef70d561a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>127</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(127,)</dd><dt><span>units :</span></dt><dd>classes</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cover_2019</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(803, 1257), meta=np.ndarray&gt;</div><input id='attrs-2013127c-03e2-4958-941b-f92f942c3c55' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2013127c-03e2-4958-941b-f92f942c3c55' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9a2c3284-3290-4832-b4ea-47579a1b346b' class='xr-var-data-in' type='checkbox'><label for='data-9a2c3284-3290-4832-b4ea-47579a1b346b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>127</dd><dt><span>crs :</span></dt><dd>EPSG:4326</dd><dt><span>nodatavals :</span></dt><dd>(127,)</dd><dt><span>units :</span></dt><dd>classes</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2764,14 +2861,14 @@ Data variables:
 
                     <tr>
                         <th> Bytes </th>
-                        <td> 100.24 kiB </td>
-                        <td> 100.24 kiB </td>
+                        <td> 0.96 MiB </td>
+                        <td> 0.96 MiB </td>
                     </tr>
 
                     <tr>
                         <th> Shape </th>
-                        <td> (268, 383) </td>
-                        <td> (268, 383) </td>
+                        <td> (803, 1257) </td>
+                        <td> (803, 1257) </td>
                     </tr>
                     <tr>
                         <th> Count </th>
@@ -2787,26 +2884,26 @@ Data variables:
             </table>
         </td>
         <td>
-        <svg width="170" height="133" style="stroke:rgb(0,0,0);stroke-width:1" >
+        <svg width="170" height="126" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="83" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="76" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="83" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="83" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="76" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="76" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,83.9686684073107 0.0,83.9686684073107" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 120.0,0.0 120.0,76.65871121718376 0.0,76.65871121718376" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
-  <text x="60.000000" y="103.968668" font-size="1.0rem" font-weight="100" text-anchor="middle" >383</text>
-  <text x="140.000000" y="41.984334" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,41.984334)">268</text>
+  <text x="60.000000" y="96.658711" font-size="1.0rem" font-weight="100" text-anchor="middle" >1257</text>
+  <text x="140.000000" y="38.329356" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,38.329356)">803</text>
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-f6ac4c07-c0cd-4a3e-954a-8adda5022210' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f6ac4c07-c0cd-4a3e-954a-8adda5022210' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-9da8bda9-db49-42c6-9e4a-974f8fd5fa27' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-9da8bda9-db49-42c6-9e4a-974f8fd5fa27' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
@@ -2859,10 +2956,6 @@ dtype: object
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Land Use/Land Cover 2019&quot;</span><span class="p">)</span>
-<span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">sites</span><span class="p">[</span><span class="n">sites</span><span class="o">.</span><span class="n">site_no</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">station_id</span><span class="p">])]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Station&quot;</span>
-<span class="p">)</span>
 <span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">flw_up</span><span class="p">[</span><span class="n">station_id</span><span class="p">]</span><span class="o">.</span><span class="n">nhdplus_comid</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dam&quot;</span>
 <span class="p">)</span>
@@ -2875,10 +2968,115 @@ dtype: object
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/notebooks_dam_impact_53_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_53_0.png" style="width: 666px; height: 337px;" />
+<img alt="../_images/notebooks_dam_impact_55_0.png" class="no-scaled-link" src="../_images/notebooks_dam_impact_55_0.png" style="width: 666px; height: 337px;" />
 </div>
 </div>
-<p>As is evident from the plot, there are mostly cultivated crops (82) and grasslands (71) close to the dams.</p>
+<p>Now, let’s take a look at the differences in land cover types, upstream and downstream of the station. We use <code class="docutils literal notranslate"><span class="pre">cover_statistics</span></code> function of <a class="reference external" href="https://github.com/hyriver/pygeohydro">PyGeoHydro</a> to get the statistics for each land cover types. For this purpose, first we need to mask the NLCD dataset based on the <code class="docutils literal notranslate"><span class="pre">direction</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">catchment</span></code> geo-dataframe using <code class="docutils literal notranslate"><span class="pre">xarray_geomask</span></code> function from <a class="reference external" href="https://github.com/hyriver/pygeoutils">PyGeoUtils</a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ut_geom</span> <span class="o">=</span> <span class="n">catchment</span><span class="p">[</span><span class="n">catchment</span><span class="o">.</span><span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;upstream&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unary_union</span>
+<span class="n">ut_cover</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">cover_statistics</span><span class="p">(</span><span class="n">geoutils</span><span class="o">.</span><span class="n">xarray_geomask</span><span class="p">(</span><span class="n">nlcd</span><span class="o">.</span><span class="n">cover_2019</span><span class="p">,</span> <span class="n">ut_geom</span><span class="p">,</span> <span class="n">catchment</span><span class="o">.</span><span class="n">crs</span><span class="p">))</span>
+
+<span class="n">dd_geom</span> <span class="o">=</span> <span class="n">catchment</span><span class="p">[</span><span class="n">catchment</span><span class="o">.</span><span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;downstream&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unary_union</span>
+<span class="n">dd_cover</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">cover_statistics</span><span class="p">(</span><span class="n">geoutils</span><span class="o">.</span><span class="n">xarray_geomask</span><span class="p">(</span><span class="n">nlcd</span><span class="o">.</span><span class="n">cover_2019</span><span class="p">,</span> <span class="n">dd_geom</span><span class="p">,</span> <span class="n">catchment</span><span class="o">.</span><span class="n">crs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">ut_cover</span><span class="o">.</span><span class="n">categories</span><span class="p">,</span> <span class="n">dd_cover</span><span class="o">.</span><span class="n">categories</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Upstream&quot;</span><span class="p">,</span> <span class="s2">&quot;Downstream&quot;</span><span class="p">]</span>
+<span class="n">stats</span><span class="p">[</span><span class="s2">&quot;Upstream - Downstream&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">Upstream</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">Downstream</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Upstream</th>
+      <th>Downstream</th>
+      <th>Upstream - Downstream</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Water</th>
+      <td>1.1</td>
+      <td>0.4</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>Developed</th>
+      <td>1.4</td>
+      <td>3.6</td>
+      <td>-2.2</td>
+    </tr>
+    <tr>
+      <th>Barren</th>
+      <td>1.6</td>
+      <td>0.4</td>
+      <td>1.2</td>
+    </tr>
+    <tr>
+      <th>Forest</th>
+      <td>0.8</td>
+      <td>7.6</td>
+      <td>-6.8</td>
+    </tr>
+    <tr>
+      <th>Shrubland</th>
+      <td>28.9</td>
+      <td>13.0</td>
+      <td>15.9</td>
+    </tr>
+    <tr>
+      <th>Herbaceous</th>
+      <td>62.5</td>
+      <td>50.3</td>
+      <td>12.2</td>
+    </tr>
+    <tr>
+      <th>Planted/Cultivated</th>
+      <td>3.7</td>
+      <td>24.5</td>
+      <td>-20.8</td>
+    </tr>
+    <tr>
+      <th>Wetlands</th>
+      <td>0.1</td>
+      <td>0.3</td>
+      <td>-0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Notably we see that the upstream area has significantly more grassland than downstream, while the downstream catchments have significantly more cropland. The implication is that these dams were constructed to support the transition of grassland to agricultural land.</p>
 </section>
 <section id="Final-Remarks">
 <h2>Final Remarks<a class="headerlink" href="#Final-Remarks" title="Permalink to this headline">#</a></h2>
@@ -2918,7 +3116,7 @@ dtype: object
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

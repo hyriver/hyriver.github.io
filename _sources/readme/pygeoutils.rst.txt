@@ -9,8 +9,8 @@ PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
     :target: https://anaconda.org/conda-forge/pygeoutils
     :alt: Conda Version
 
-.. image:: https://codecov.io/gh/cheginit/pygeoutils/branch/main/graph/badge.svg
-    :target: https://codecov.io/gh/cheginit/pygeoutils
+.. image:: https://codecov.io/gh/hyriver/pygeoutils/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/hyriver/pygeoutils
     :alt: CodeCov
 
 .. image:: https://img.shields.io/pypi/pyversions/pygeoutils.svg
@@ -23,8 +23,8 @@ PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
 
 |
 
-.. image:: https://www.codefactor.io/repository/github/cheginit/pygeoutils/badge
-   :target: https://www.codefactor.io/repository/github/cheginit/pygeoutils
+.. image:: https://www.codefactor.io/repository/github/hyriver/pygeoutils/badge
+   :target: https://www.codefactor.io/repository/github/hyriver/pygeoutils
    :alt: CodeFactor
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -36,7 +36,7 @@ PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
     :alt: pre-commit
 
 .. image:: https://mybinder.org/badge_logo.svg
-    :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
+    :target: https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks
     :alt: Binder
 
 |
@@ -44,7 +44,7 @@ PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
 Features
 --------
 
-PyGeoUtils is a part of `HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
+PyGeoUtils is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
 is designed to aid in hydroclimate analysis through web services. This package provides
 utilities for manipulating (Geo)JSON and (Geo)TIFF responses from web services.
 These utilities are:
@@ -59,7 +59,7 @@ These utilities are:
 
 All these functions handle all necessary CRS transformations.
 
-You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 You can also try using PyGeoUtils without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
@@ -71,7 +71,7 @@ functionalities should be stable, changes in APIs are possible in new releases. 
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
 
 Moreover, requests for additional functionalities can be submitted via
-`issue tracker <https://github.com/cheginit/pygeoutils/issues>`__.
+`issue tracker <https://github.com/hyriver/pygeoutils/issues>`__.
 
 Installation
 ------------
@@ -94,7 +94,7 @@ Quick start
 -----------
 
 To demonstrate the capabilities of PyGeoUtils let's use
-`PyGeoOGC <https://github.com/cheginit/pygeoogc>`__ to access
+`PyGeoOGC <https://github.com/hyriver/pygeoogc>`__ to access
 `National Wetlands Inventory <https://www.fws.gov/wetlands/>`__ from WMS, and
 `FEMA National Flood Hazard <https://www.fema.gov/national-flood-hazard-layer-nfhl>`__
 via WFS, then convert the output to ``xarray.Dataset`` and ``GeoDataFrame``, respectively.

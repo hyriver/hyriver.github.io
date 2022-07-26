@@ -39,13 +39,13 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -854,16 +854,16 @@ title="Edit this page"
 <h1>PyGeoHydro: Retrieve Geospatial Hydrology Data<a class="headerlink" href="#pygeohydro-retrieve-geospatial-hydrology-data" title="Permalink to this headline">#</a></h1>
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/pygeohydro"><img alt="PyPi" src="https://img.shields.io/pypi/v/pygeohydro.svg" /></a>
 <a class="reference external image-reference" href="https://anaconda.org/conda-forge/pygeohydro"><img alt="Conda Version" src="https://img.shields.io/conda/vn/conda-forge/pygeohydro.svg" /></a>
-<a class="reference external image-reference" href="https://codecov.io/gh/cheginit/pygeohydro"><img alt="CodeCov" src="https://codecov.io/gh/cheginit/pygeohydro/graph/badge.svg" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/hyriver/pygeohydro"><img alt="CodeCov" src="https://codecov.io/gh/hyriver/pygeohydro/graph/badge.svg" /></a>
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/pygeohydro"><img alt="Python Versions" src="https://img.shields.io/pypi/pyversions/pygeohydro.svg" /></a>
 <a class="reference external image-reference" href="https://pepy.tech/project/hydrodata"><img alt="Downloads" src="https://pepy.tech/badge/hydrodata" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<a class="reference external image-reference" href="https://www.codefactor.io/repository/github/cheginit/pygeohydro/overview/main"><img alt="CodeFactor" src="https://www.codefactor.io/repository/github/cheginit/pygeohydro/badge/main" /></a>
+<a class="reference external image-reference" href="https://www.codefactor.io/repository/github/hyriver/pygeohydro/overview/main"><img alt="CodeFactor" src="https://www.codefactor.io/repository/github/hyriver/pygeohydro/badge/main" /></a>
 <a class="reference external image-reference" href="https://github.com/psf/black"><img alt="black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <a class="reference external image-reference" href="https://github.com/pre-commit/pre-commit"><img alt="pre-commit" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&amp;logoColor=white" /></a>
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -871,7 +871,7 @@ title="Edit this page"
 <section id="features">
 <h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">#</a></h1>
 <p>PyGeoHydro (formerly named <a class="reference external" href="https://pypi.org/project/hydrodata">hydrodata</a>) is a part of
-<a class="reference external" href="https://github.com/cheginit/HyRiver">HyRiver</a> software stack that
+<a class="reference external" href="https://github.com/hyriver/HyRiver">HyRiver</a> software stack that
 is designed to aid in hydroclimate analysis through web services. This package provides
 access to some public web services that offer geospatial hydrology data. It has three
 main modules: <code class="docutils literal notranslate"><span class="pre">pygeohydro</span></code>, <code class="docutils literal notranslate"><span class="pre">plot</span></code>, and <code class="docutils literal notranslate"><span class="pre">helpers</span></code>.</p>
@@ -912,9 +912,9 @@ evapotranspiration, for both single pixel and gridded data.</p></li>
 descriptor type which is useful for overland flow routing among other applications.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nwis_error</span></code>: A dataframe for finding information about NWIS requests’ errors.</p></li>
 </ul>
-<p>You can find some example notebooks <a class="reference external" href="https://github.com/cheginit/HyRiver-examples">here</a>.</p>
+<p>You can find some example notebooks <a class="reference external" href="https://github.com/hyriver/HyRiver-examples">here</a>.</p>
 <p>Moreover, under the hood, PyGeoHydro uses
-<a class="reference external" href="https://github.com/cheginit/async_retriever">AsyncRetriever</a>
+<a class="reference external" href="https://github.com/hyriver/async_retriever">AsyncRetriever</a>
 for making requests asynchronously with persistent caching. This improves the
 reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
 pairs and upon making an already cached request, it will retrieve the responses from the cache
@@ -944,7 +944,7 @@ can start coding!</p>
 functionalities should be stable, changes in APIs are possible in new releases. But we
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.</p>
 <p>Moreover, requests for additional functionalities can be submitted via
-<a class="reference external" href="https://github.com/cheginit/pygeohydro/issues">issue tracker</a>.</p>
+<a class="reference external" href="https://github.com/hyriver/pygeohydro/issues">issue tracker</a>.</p>
 </section>
 <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
@@ -974,7 +974,7 @@ important properties of stations are shown.</p>
 <span class="n">gh</span><span class="o">.</span><span class="n">interactive_map</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nwis.ipynb"><img alt="Interactive Map" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/interactive_map.png" /></a>
+<a class="reference external image-reference" href="https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/nwis.ipynb"><img alt="Interactive Map" src="https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/interactive_map.png" /></a>
 <p>We can select all the stations within this boundary box that have daily mean streamflow data from
 <code class="docutils literal notranslate"><span class="pre">2000-01-01</span></code> to <code class="docutils literal notranslate"><span class="pre">2010-12-31</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">NWIS</span>
@@ -1021,7 +1021,7 @@ observations between 1980-2014 as a <code class="docutils literal notranslate"><
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">attrs</span><span class="p">,</span> <span class="n">qobs</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">get_camels</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/camels.ipynb"><img alt="CAMELS" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/camels.png" /></a>
+<a class="reference external image-reference" href="https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/camels.ipynb"><img alt="CAMELS" src="https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/camels.png" /></a>
 <p>The <code class="docutils literal notranslate"><span class="pre">WaterQuality</span></code> has a number of convenience methods to retrieve data from the
 web service. Since there are many parameter combinations that can be
 used to retrieve data, a general method is also provided to retrieve data from
@@ -1048,7 +1048,7 @@ For example, let’s find all the stations within a bounding box that have Caffe
 <span class="n">caff</span> <span class="o">=</span> <span class="n">wq</span><span class="o">.</span><span class="n">data_bystation</span><span class="p">(</span><span class="n">sids</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/water_quality.ipynb"><img alt="Water Quality" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/water_quality.png" /></a>
+<a class="reference external image-reference" href="https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/water_quality.ipynb"><img alt="Water Quality" src="https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/water_quality.png" /></a>
 <p>Moreover, we can get land use/land cove data using <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> or <code class="docutils literal notranslate"><span class="pre">nlcd_bycoods</span></code> functions,
 percentages of land cover types using <code class="docutils literal notranslate"><span class="pre">cover_statistics</span></code>, and overland roughness using
 <code class="docutils literal notranslate"><span class="pre">overland_roughness</span></code>. The <code class="docutils literal notranslate"><span class="pre">nlcd_bycoords</span></code> function returns a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code>
@@ -1063,14 +1063,14 @@ as the input.</p>
 <span class="n">roughness</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">overland_roughness</span><span class="p">(</span><span class="n">lulc</span><span class="p">[</span><span class="s2">&quot;01318500&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cover_2019</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nlcd.ipynb"><img alt="Land Use/Land Cover" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/lulc.png" /></a>
+<a class="reference external image-reference" href="https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/nlcd.ipynb"><img alt="Land Use/Land Cover" src="https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/lulc.png" /></a>
 <p>Next, let’s use <code class="docutils literal notranslate"><span class="pre">ssebopeta_bygeom</span></code> to get actual ET data for a basin. Note that there’s a
 <code class="docutils literal notranslate"><span class="pre">ssebopeta_bycoords</span></code> function that returns an ETA time series for a single coordinate.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="n">NLDI</span><span class="p">()</span><span class="o">.</span><span class="n">get_basins</span><span class="p">(</span><span class="s2">&quot;01315500&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">geometry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">eta</span> <span class="o">=</span> <span class="n">gh</span><span class="o">.</span><span class="n">ssebopeta_bygeom</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">dates</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;2005-10-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2005-10-05&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/ssebop.ipynb"><img alt="Actual ET" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/eta.png" /></a>
+<a class="reference external image-reference" href="https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/ssebop.ipynb"><img alt="Actual ET" src="https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/eta.png" /></a>
 <p>Additionally, we can pull all the US dams data using <code class="docutils literal notranslate"><span class="pre">NID</span></code>. Let’s get dams that are within this
 bounding box and have a maximum storage larger than 200 acre-feet.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nid</span> <span class="o">=</span> <span class="n">NID</span><span class="p">()</span>
@@ -1090,7 +1090,7 @@ bounding box and have a maximum storage larger than 200 acre-feet.</p>
 <span class="n">dams</span> <span class="o">=</span> <span class="n">dams</span><span class="p">[</span><span class="n">dams</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">conus</span><span class="p">)]</span>
 </pre></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nid.ipynb"><img alt="Dams" src="https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/dams.png" /></a>
+<a class="reference external image-reference" href="https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/nid.ipynb"><img alt="Dams" src="https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/dams.png" /></a>
 <p>The <code class="docutils literal notranslate"><span class="pre">WBD</span></code> class allows us to get Hydrologic Unit (HU) polygon boundaries. Let’s
 get the two Hudson HUC4s:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygeohydro</span> <span class="kn">import</span> <span class="n">WBD</span>
@@ -1133,7 +1133,7 @@ get the two Hudson HUC4s:</p>
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

@@ -77,7 +77,7 @@ Module Contents
 
    Access the Hydro Network-Linked Data Index (NLDI) service.
 
-   .. py:method:: comid_byloc(self, coords, loc_crs = DEF_CRS)
+   .. py:method:: comid_byloc(coords, loc_crs = DEF_CRS)
 
       Get the closest ComID based on coordinates.
 
@@ -96,7 +96,7 @@ Module Contents
                 any ComID a list of missing coords are returned as well.
 
 
-   .. py:method:: feature_byloc(self, coords, loc_crs = DEF_CRS)
+   .. py:method:: feature_byloc(coords, loc_crs = DEF_CRS)
 
       Get the closest feature ID(s) based on coordinates.
 
@@ -107,7 +107,7 @@ Module Contents
                 return any IDs a list of missing coords are returned as well.
 
 
-   .. py:method:: get_basins(self, feature_ids, fsource = 'nwissite', split_catchment = False, simplified = True)
+   .. py:method:: get_basins(feature_ids, fsource = 'nwissite', split_catchment = False, simplified = True)
 
       Get basins for a list of station IDs.
 
@@ -133,12 +133,12 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. py:method:: get_validchars(self, char_type)
+   .. py:method:: get_validchars(char_type)
 
       Get all the available characteristics IDs for a given characteristics type.
 
 
-   .. py:method:: getcharacteristic_byid(self, comids, char_type, char_ids = 'all', values_only = True)
+   .. py:method:: getcharacteristic_byid(comids, char_type, char_ids = 'all', values_only = True)
 
       Get characteristics using a list ComIDs.
 
@@ -155,7 +155,7 @@ Module Contents
                 or if ``values_only`` is Fale return ``percent_nodata`` as well.
 
 
-   .. py:method:: getfeature_byid(self, fsource, fid)
+   .. py:method:: getfeature_byid(fsource, fid)
 
       Get feature(s) based ID(s).
 
@@ -178,7 +178,7 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. py:method:: navigate_byid(self, fsource, fid, navigation, source, distance = 500, trim_start = False)
+   .. py:method:: navigate_byid(fsource, fid, navigation, source, distance = 500, trim_start = False)
 
       Navigate the NHDPlus database from a single feature id up to a distance.
 
@@ -209,7 +209,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
 
-   .. py:method:: navigate_byloc(self, coords, navigation = None, source = None, loc_crs = DEF_CRS, distance = 500, trim_start = False)
+   .. py:method:: navigate_byloc(coords, navigation = None, source = None, loc_crs = DEF_CRS, distance = 500, trim_start = False)
 
       Navigate the NHDPlus database from a coordinate.
 
@@ -237,7 +237,7 @@ Module Contents
 
    Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
 
-   .. py:method:: cross_section(self, coord, width, numpts, crs = DEF_CRS)
+   .. py:method:: cross_section(coord, width, numpts, crs = DEF_CRS)
 
       Return a GeoDataFrame from the xsatpoint service.
 
@@ -257,7 +257,7 @@ Module Contents
       1000.0
 
 
-   .. py:method:: elevation_profile(self, coords, numpts, dem_res, crs = DEF_CRS)
+   .. py:method:: elevation_profile(coords, numpts, dem_res, crs = DEF_CRS)
 
       Return a GeoDataFrame from the xsatendpts service.
 
@@ -280,7 +280,7 @@ Module Contents
       411.5906
 
 
-   .. py:method:: flow_trace(self, coord, crs = DEF_CRS, direction = 'none')
+   .. py:method:: flow_trace(coord, crs = DEF_CRS, direction = 'none')
 
       Return a GeoDataFrame from the flowtrace service.
 
@@ -302,7 +302,7 @@ Module Contents
       22294818
 
 
-   .. py:method:: split_catchment(self, coord, crs = DEF_CRS, upstream = False)
+   .. py:method:: split_catchment(coord, crs = DEF_CRS, upstream = False)
 
       Return a GeoDataFrame from the splitcatchment service.
 
@@ -335,22 +335,22 @@ Module Contents
                 * **crs** (:class:`str`, *optional*) -- The target spatial reference system, defaults to ``epsg:4326``.
                 * **validation** (:class:`bool`, *optional*) -- Whether to validate the input data, defaults to ``True``.
 
-   .. py:method:: bybox(self, bbox, box_crs = DEF_CRS)
+   .. py:method:: bybox(bbox, box_crs = DEF_CRS)
 
       Get features within a bounding box.
 
 
-   .. py:method:: bydistance(self, coords, distance, loc_crs = DEF_CRS)
+   .. py:method:: bydistance(coords, distance, loc_crs = DEF_CRS)
 
       Get features within a radius (in meters) of a point.
 
 
-   .. py:method:: byfilter(self, cql_filter, method = 'GET')
+   .. py:method:: byfilter(cql_filter, method = 'GET')
 
       Get features based on a CQL filter.
 
 
-   .. py:method:: bygeom(self, geometry, geo_crs = DEF_CRS, xy = True, predicate = 'INTERSECTS')
+   .. py:method:: bygeom(geometry, geo_crs = DEF_CRS, xy = True, predicate = 'INTERSECTS')
 
       Get features within a geometry.
 
@@ -365,7 +365,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features in the given geometry.
 
 
-   .. py:method:: byid(self, featurename, featureids)
+   .. py:method:: byid(featurename, featureids)
 
       Get features based on IDs.
 

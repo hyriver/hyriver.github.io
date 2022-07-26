@@ -25,7 +25,7 @@ Module Contents
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``json``.
 
-   .. py:method:: bygeom(self, geom, geo_crs = DEF_CRS, sql_clause = '', distance = None, return_m = False, return_geom = True)
+   .. py:method:: bygeom(geom, geo_crs = DEF_CRS, sql_clause = '', distance = None, return_m = False, return_geom = True)
 
       Get feature within a geometry that can be combined with a SQL where clause.
 
@@ -39,7 +39,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
-   .. py:method:: byids(self, field, fids, return_m = False, return_geom = True)
+   .. py:method:: byids(field, fids, return_m = False, return_geom = True)
 
       Get features based on a list of field IDs.
 
@@ -51,7 +51,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
-   .. py:method:: bysql(self, sql_clause, return_m = False, return_geom = True)
+   .. py:method:: bysql(sql_clause, return_m = False, return_geom = True)
 
       Get feature IDs using a valid SQL 92 WHERE clause.
 
@@ -67,7 +67,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
-   .. py:method:: get_validlayers(self, url)
+   .. py:method:: get_validlayers(url)
 
       Get a list of valid layers.
 
@@ -76,7 +76,7 @@ Module Contents
       :returns: :class:`dict` -- A dictionary of valid layers.
 
 
-   .. py:method:: service_info(self)
+   .. py:method:: service_info()
       :property:
 
       Get the service information.
@@ -95,13 +95,13 @@ Module Contents
 
    :Parameters: **item** (:class:`str`, *optional*) -- The target endpoint to query, defaults to ``None``.
 
-   .. py:method:: item(self)
+   .. py:method:: item()
       :property:
 
       Return the name of the endpoint.
 
 
-   .. py:method:: query(self, kwds, skip_geometry = False)
+   .. py:method:: query(kwds, skip_geometry = False)
 
       Query the GeoConnex endpoint.
 

@@ -23,12 +23,12 @@ Module Contents
                 * **kwargs** (:class:`dict`, *optional*) -- Keywords to pass to the ``cache.delete_url()``.
 
 
-.. py:function:: retrieve(urls, read, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve(urls, read_method, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
 
    Send async requests.
 
    :Parameters: * **urls** (:class:`list` of :class:`str`) -- List of URLs.
-                * **read** (:class:`str`) -- Method for returning the request; ``binary``, ``json``, and ``text``.
+                * **read_method** (:class:`str`) -- Method for returning the request; ``binary``, ``json``, and ``text``.
                 * **request_kwds** (:class:`list` of :class:`dict`, *optional*) -- List of requests keywords corresponding to input URLs (1 on 1 mapping),
                   defaults to ``None``. For example, ``[{"params": {...}, "headers": {...}}, ...]``.
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
@@ -148,5 +148,27 @@ Module Contents
    >>> resp = ar.retrieve_text(urls, kwds)
    >>> resp[0].split('\n')[-2].split('\t')[1]
    '01646500'
+
+
+.. py:function:: stream_write(urls, file_paths, request_kwds = None, request_method = 'GET', max_workers = 8, ssl = None)
+
+   Send async requests.
+
+   :Parameters: * **urls** (:class:`list` of :class:`str`) -- List of URLs.
+                * **file_paths** (:class:`list` of :class:`str` or :class:`~~pathlib.Path`) -- List of file paths to write the response to.
+                * **request_kwds** (:class:`list` of :class:`dict`, *optional*) -- List of requests keywords corresponding to input URLs (1 on 1 mapping),
+                  defaults to ``None``. For example, ``[{"params": {...}, "headers": {...}}, ...]``.
+                * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
+                * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
+                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
+                  SSL certification verification.
+
+   .. rubric:: Examples
+
+   >>> import async_retriever as ar
+   >>> import tempfile
+   >>> url = "https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_500KB_CSV-1.csv"
+   >>> with tempfile.NamedTemporaryFile() as temp:
+   ...     ar.stream_write([url], [temp.name])
 
 

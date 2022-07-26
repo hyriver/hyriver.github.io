@@ -12,7 +12,7 @@
   
 <meta property="og:url" content="https://hyriver.readthedocs.io/en/changelogs/pydaymet.html" />
   
-<meta property="og:description" content="0.13.2 (2022-06-14): Breaking Changes: Set the minimum supported version of Python to 3.8 since many of the dependencies such as xarray, pandas, rioxarray have dropped support for Python 3.7.. Inte..." />
+<meta property="og:description" content="0.13.3 (unreleased): Bug Fixes: Fix a bug in PETGridded where the wrong data type was being set for pet and elevation variables., When initializing PETGridded, only chunk the elevation if the input..." />
   
 <meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
   
@@ -39,13 +39,13 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -782,6 +782,18 @@ title="Edit this page"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unreleased">
+   0.13.3 (unreleased)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    0.13.2 (2022-06-14)
   </a>
@@ -809,162 +821,162 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bug-fixes">
+    <a class="reference internal nav-link" href="#id3">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    0.13.0 (2022-03-03)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
+    <a class="reference internal nav-link" href="#id5">
      Breaking Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
+  <a class="reference internal nav-link" href="#id6">
    0.12.3 (2022-02-04)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     New Features
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     Internal Changes
+     New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id10">
    0.12.2 (2022-01-15)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
+    <a class="reference internal nav-link" href="#id11">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
+  <a class="reference internal nav-link" href="#id12">
    0.12.1 (2021-12-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
+    <a class="reference internal nav-link" href="#id13">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id13">
+  <a class="reference internal nav-link" href="#id14">
    0.12.0 (2021-12-27)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
+    <a class="reference internal nav-link" href="#id15">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id16">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id17">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id17">
+  <a class="reference internal nav-link" href="#id18">
    0.11.4 (2021-11-12)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
+    <a class="reference internal nav-link" href="#id19">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id19">
+  <a class="reference internal nav-link" href="#id20">
    0.11.3 (2021-10-07)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
+    <a class="reference internal nav-link" href="#id21">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id21">
+  <a class="reference internal nav-link" href="#id22">
    0.11.2 (2021-10-07)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id22">
+    <a class="reference internal nav-link" href="#id23">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id23">
+    <a class="reference internal nav-link" href="#id24">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id24">
+    <a class="reference internal nav-link" href="#id25">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id25">
+  <a class="reference internal nav-link" href="#id26">
    0.11.1 (2021-07-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id26">
+    <a class="reference internal nav-link" href="#id27">
      New Features
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id27">
+  <a class="reference internal nav-link" href="#id28">
    0.11.0 (2021-06-19)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id28">
+    <a class="reference internal nav-link" href="#id29">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id29">
+    <a class="reference internal nav-link" href="#id30">
      Breaking Changes
     </a>
    </li>
@@ -974,49 +986,49 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id30">
+    <a class="reference internal nav-link" href="#id31">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id31">
+  <a class="reference internal nav-link" href="#id32">
    0.10.2 (2021-03-27)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id32">
+  <a class="reference internal nav-link" href="#id33">
    0.10.0 (2021-03-06)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id33">
+  <a class="reference internal nav-link" href="#id34">
    0.9.0 (2021-02-14)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id34">
+  <a class="reference internal nav-link" href="#id35">
    0.2.0 (2020-12-06)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id35">
+  <a class="reference internal nav-link" href="#id36">
    0.1.3 (2020-08-18)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id36">
+  <a class="reference internal nav-link" href="#id37">
    0.1.2 (2020-08-11)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id37">
+  <a class="reference internal nav-link" href="#id38">
    0.1.1 (2020-08-03)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id38">
+  <a class="reference internal nav-link" href="#id39">
    0.1.0 (2020-07-27)
   </a>
  </li>
@@ -1040,6 +1052,18 @@ title="Edit this page"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unreleased">
+   0.13.3 (unreleased)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug-fixes">
+     Bug Fixes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    0.13.2 (2022-06-14)
   </a>
@@ -1067,162 +1091,162 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bug-fixes">
+    <a class="reference internal nav-link" href="#id3">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    0.13.0 (2022-03-03)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
+    <a class="reference internal nav-link" href="#id5">
      Breaking Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
+  <a class="reference internal nav-link" href="#id6">
    0.12.3 (2022-02-04)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     New Features
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     Internal Changes
+     New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
+     Internal Changes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id10">
    0.12.2 (2022-01-15)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
+    <a class="reference internal nav-link" href="#id11">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
+  <a class="reference internal nav-link" href="#id12">
    0.12.1 (2021-12-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
+    <a class="reference internal nav-link" href="#id13">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id13">
+  <a class="reference internal nav-link" href="#id14">
    0.12.0 (2021-12-27)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
+    <a class="reference internal nav-link" href="#id15">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id16">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id17">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id17">
+  <a class="reference internal nav-link" href="#id18">
    0.11.4 (2021-11-12)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id18">
+    <a class="reference internal nav-link" href="#id19">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id19">
+  <a class="reference internal nav-link" href="#id20">
    0.11.3 (2021-10-07)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id20">
+    <a class="reference internal nav-link" href="#id21">
      Bug Fixes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id21">
+  <a class="reference internal nav-link" href="#id22">
    0.11.2 (2021-10-07)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id22">
+    <a class="reference internal nav-link" href="#id23">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id23">
+    <a class="reference internal nav-link" href="#id24">
      Breaking Changes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id24">
+    <a class="reference internal nav-link" href="#id25">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id25">
+  <a class="reference internal nav-link" href="#id26">
    0.11.1 (2021-07-31)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id26">
+    <a class="reference internal nav-link" href="#id27">
      New Features
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id27">
+  <a class="reference internal nav-link" href="#id28">
    0.11.0 (2021-06-19)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id28">
+    <a class="reference internal nav-link" href="#id29">
      New Features
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id29">
+    <a class="reference internal nav-link" href="#id30">
      Breaking Changes
     </a>
    </li>
@@ -1232,49 +1256,49 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id30">
+    <a class="reference internal nav-link" href="#id31">
      Internal Changes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id31">
+  <a class="reference internal nav-link" href="#id32">
    0.10.2 (2021-03-27)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id32">
+  <a class="reference internal nav-link" href="#id33">
    0.10.0 (2021-03-06)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id33">
+  <a class="reference internal nav-link" href="#id34">
    0.9.0 (2021-02-14)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id34">
+  <a class="reference internal nav-link" href="#id35">
    0.2.0 (2020-12-06)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id35">
+  <a class="reference internal nav-link" href="#id36">
    0.1.3 (2020-08-18)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id36">
+  <a class="reference internal nav-link" href="#id37">
    0.1.2 (2020-08-11)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id37">
+  <a class="reference internal nav-link" href="#id38">
    0.1.1 (2020-08-03)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id38">
+  <a class="reference internal nav-link" href="#id39">
    0.1.0 (2020-07-27)
   </a>
  </li>
@@ -1290,6 +1314,18 @@ title="Edit this page"
                 
   <section id="history">
 <h1>History<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h1>
+<section id="unreleased">
+<h2>0.13.3 (unreleased)<a class="headerlink" href="#unreleased" title="Permalink to this headline">#</a></h2>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fix a bug in <code class="docutils literal notranslate"><span class="pre">PETGridded</span></code> where the wrong data type was being set for
+<code class="docutils literal notranslate"><span class="pre">pet</span></code> and <code class="docutils literal notranslate"><span class="pre">elevation</span></code> variables.</p></li>
+<li><p>When initializing <code class="docutils literal notranslate"><span class="pre">PETGridded</span></code>, only chunk the elevation if the input
+climate data is chunked.</p></li>
+</ul>
+</section>
+</section>
 <section id="id1">
 <h2>0.13.2 (2022-06-14)<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <section id="breaking-changes">
@@ -1319,8 +1355,8 @@ for linting in CI.</p></li>
 <a class="reference external" href="https://doi.org/10.5194/gmd-11-1077-2018">https://doi.org/10.5194/gmd-11-1077-2018</a> and add the citation.</p></li>
 </ul>
 </section>
-<section id="bug-fixes">
-<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">#</a></h3>
+<section id="id3">
+<h3>Bug Fixes<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Set the end year based on the current year since Daymet data get updated
 every year (<a class="reference external" href="https://github.com/cheginit/pydaymet/pull/55">PR55</a>) by <a class="reference external" href="https://github.com/timcera">Tim Cera</a>.</p></li>
@@ -1329,10 +1365,10 @@ by <a class="reference external" href="https://github.com/timcera">Tim Cera</a>.
 </ul>
 </section>
 </section>
-<section id="id3">
-<h2>0.13.0 (2022-03-03)<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <section id="id4">
-<h3>Breaking Changes<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h2>0.13.0 (2022-03-03)<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3>Breaking Changes<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>Remove caching-related arguments from all functions since now they
 can be set globally via three environmental variables:</p>
@@ -1353,26 +1389,26 @@ can be set globally via three environmental variables:</p>
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>0.12.3 (2022-02-04)<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <section id="id6">
-<h3>New Features<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h2>0.12.3 (2022-02-04)<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<section id="id7">
+<h3>New Features<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add a new flag to both <code class="docutils literal notranslate"><span class="pre">get_bycoords</span></code> and <code class="docutils literal notranslate"><span class="pre">get_bygeom</span></code> functions
 called <code class="docutils literal notranslate"><span class="pre">snow</span></code> which separates snow from the precipitation using
 the <a class="reference external" href="https://doi.org/10.1029/2009WR008294">Martinez and Gupta (2010)</a> method.</p></li>
 </ul>
 </section>
-<section id="id7">
-<h3>Internal Changes<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<section id="id8">
+<h3>Internal Changes<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add elevation data when computing PET regardless of the <code class="docutils literal notranslate"><span class="pre">pet</span></code> method.</p></li>
 <li><p>Match the chunk size of <code class="docutils literal notranslate"><span class="pre">elevation</span></code> with that of the climate data.</p></li>
 <li><p>Drop <code class="docutils literal notranslate"><span class="pre">time</span></code> dimension from <code class="docutils literal notranslate"><span class="pre">elevation</span></code>, <code class="docutils literal notranslate"><span class="pre">lon</span></code>, and <code class="docutils literal notranslate"><span class="pre">lat</span></code> variables.</p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>Bug Fixes<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<section id="id9">
+<h3>Bug Fixes<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Fix a bug in setting dates for monthly timescales. For monthly timescale
 Daymet calendar is at 15th or 16th of the month, so input dates need to be
@@ -1380,10 +1416,10 @@ adjusted accordingly.</p></li>
 </ul>
 </section>
 </section>
-<section id="id9">
-<h2>0.12.2 (2022-01-15)<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <section id="id10">
-<h3>Internal Changes<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h2>0.12.2 (2022-01-15)<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<section id="id11">
+<h3>Internal Changes<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Clean up the PET computation functions’ output by removing temporary
 variables that are created during the computation.</p></li>
@@ -1395,20 +1431,20 @@ dependencies.</p></li>
 </ul>
 </section>
 </section>
-<section id="id11">
-<h2>0.12.1 (2021-12-31)<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
 <section id="id12">
-<h3>Internal Changes<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h2>0.12.1 (2021-12-31)<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<section id="id13">
+<h3>Internal Changes<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Use the three new <code class="docutils literal notranslate"><span class="pre">ar.retrieve_*</span></code> functions instead of the old <code class="docutils literal notranslate"><span class="pre">ar.retrieve</span></code>
 function to improve type hinting and to make the API more consistent.</p></li>
 </ul>
 </section>
 </section>
-<section id="id13">
-<h2>0.12.0 (2021-12-27)<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
 <section id="id14">
-<h3>New Features<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<h2>0.12.0 (2021-12-27)<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<section id="id15">
+<h3>New Features<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Expose the <code class="docutils literal notranslate"><span class="pre">ssl</span></code> argument for disabling the SSL certification verification (<a class="reference external" href="https://github.com/cheginit/pydaymet/issues/41">GH41</a>).
 Now, you can pass <code class="docutils literal notranslate"><span class="pre">ssl=False</span></code> to disable the SSL verification in both <code class="docutils literal notranslate"><span class="pre">get_bygeom</span></code> and
@@ -1416,24 +1452,24 @@ Now, you can pass <code class="docutils literal notranslate"><span class="pre">s
 interface to disable the SSL verification.</p></li>
 </ul>
 </section>
-<section id="id15">
-<h3>Breaking Changes<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<section id="id16">
+<h3>Breaking Changes<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Set the request caching’s expiration time to never expire. Add two flags to all
 functions to control the caching: <code class="docutils literal notranslate"><span class="pre">expire_after</span></code> and <code class="docutils literal notranslate"><span class="pre">disable_caching</span></code>.</p></li>
 </ul>
 </section>
-<section id="id16">
-<h3>Internal Changes<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<section id="id17">
+<h3>Internal Changes<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add all the missing types so <code class="docutils literal notranslate"><span class="pre">mypy</span> <span class="pre">--strict</span></code> passes.</p></li>
 </ul>
 </section>
 </section>
-<section id="id17">
-<h2>0.11.4 (2021-11-12)<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
 <section id="id18">
-<h3>Internal Changes<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<h2>0.11.4 (2021-11-12)<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
+<section id="id19">
+<h3>Internal Changes<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">importlib-metadata</span></code> for getting the version instead of <code class="docutils literal notranslate"><span class="pre">pkg_resources</span></code>
 to decrease import time as discussed in this
@@ -1441,10 +1477,10 @@ to decrease import time as discussed in this
 </ul>
 </section>
 </section>
-<section id="id19">
-<h2>0.11.3 (2021-10-07)<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h2>
 <section id="id20">
-<h3>Bug Fixes<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<h2>0.11.3 (2021-10-07)<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
+<section id="id21">
+<h3>Bug Fixes<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>There was an issue in the PET computation due to <code class="docutils literal notranslate"><span class="pre">dayofyear</span></code> being added as a new dimension.
 This version fixes it and even further simplifies the code by using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>’s <code class="docutils literal notranslate"><span class="pre">dt</span></code> accessor
@@ -1452,16 +1488,16 @@ to gain access to the <code class="docutils literal notranslate"><span class="pr
 </ul>
 </section>
 </section>
-<section id="id21">
-<h2>0.11.2 (2021-10-07)<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h2>
 <section id="id22">
-<h3>New Features<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<h2>0.11.2 (2021-10-07)<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h2>
+<section id="id23">
+<h3>New Features<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">hargreaves_samani</span></code> and <code class="docutils literal notranslate"><span class="pre">priestley_taylor</span></code> methods for computing PET.</p></li>
 </ul>
 </section>
-<section id="id23">
-<h3>Breaking Changes<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<section id="id24">
+<h3>Breaking Changes<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Rewrite the command-line interface using <code class="docutils literal notranslate"><span class="pre">click.group</span></code> to improve UX.
 The command is now <code class="docutils literal notranslate"><span class="pre">pydaymet</span> <span class="pre">[command]</span> <span class="pre">[args]</span> <span class="pre">[options]</span></code>. The two supported
@@ -1473,8 +1509,8 @@ Each sub-command now has a separate help message and example.</p></li>
 accepts <code class="docutils literal notranslate"><span class="pre">hargreaves_samani</span></code>, <code class="docutils literal notranslate"><span class="pre">penman_monteith</span></code>, <code class="docutils literal notranslate"><span class="pre">priestley_taylor</span></code>, and <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 </ul>
 </section>
-<section id="id24">
-<h3>Internal Changes<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
+<section id="id25">
+<h3>Internal Changes<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Refactor the <code class="docutils literal notranslate"><span class="pre">pet</span></code> module for reducing duplicate code and improving readability and
 maintainability. The code is smaller now and the functions for computing physical properties
@@ -1482,12 +1518,12 @@ include references to equations from the respective original paper.</p></li>
 </ul>
 </section>
 </section>
-<section id="id25">
-<h2>0.11.1 (2021-07-31)<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h2>
+<section id="id26">
+<h2>0.11.1 (2021-07-31)<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h2>
 <p>The highlight of this release is a major refactor of <code class="docutils literal notranslate"><span class="pre">Daymet</span></code> to allow for
 extending PET computation function for using methods other than FAO-56.</p>
-<section id="id26">
-<h3>New Features<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
+<section id="id27">
+<h3>New Features<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Refactor <code class="docutils literal notranslate"><span class="pre">Daymet</span></code> class by removing <code class="docutils literal notranslate"><span class="pre">pet_bycoords</span></code> and <code class="docutils literal notranslate"><span class="pre">pet_bygrid</span></code> methods and
 creating a new public function called <code class="docutils literal notranslate"><span class="pre">potential_et</span></code>. This function computes potential
@@ -1497,10 +1533,10 @@ other than FAO 56 for computing PET.</p></li>
 </ul>
 </section>
 </section>
-<section id="id27">
-<h2>0.11.0 (2021-06-19)<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h2>
 <section id="id28">
-<h3>New Features<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h3>
+<h2>0.11.0 (2021-06-19)<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h2>
+<section id="id29">
+<h3>New Features<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Add command-line interface (<a class="reference external" href="https://github.com/cheginit/pydaymet/issues/7">GH7</a>).</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">AsyncRetriever</span></code> for sending requests asynchronously with persistent caching.
@@ -1512,8 +1548,8 @@ starts from 1950 while North America and Hawaii start from 1980.</p></li>
 an equation in Allen et al. 1998.</p></li>
 </ul>
 </section>
-<section id="id29">
-<h3>Breaking Changes<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
+<section id="id30">
+<h3>Breaking Changes<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Drop support for Python 3.6 since many of the dependencies such as <code class="docutils literal notranslate"><span class="pre">xarray</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>
 have done so.</p></li>
@@ -1527,31 +1563,31 @@ have done so.</p></li>
 <li><p>Add more notes regarding the underlying assumptions for <code class="docutils literal notranslate"><span class="pre">pet_bycoords</span></code> and <code class="docutils literal notranslate"><span class="pre">pet_bygrid</span></code>.</p></li>
 </ul>
 </section>
-<section id="id30">
-<h3>Internal Changes<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h3>
+<section id="id31">
+<h3>Internal Changes<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Refactor <code class="docutils literal notranslate"><span class="pre">Daymet</span></code> class to use <code class="docutils literal notranslate"><span class="pre">pydantic</span></code> for validating the inputs.</p></li>
 <li><p>Increase test coverage.</p></li>
 </ul>
 </section>
 </section>
-<section id="id31">
-<h2>0.10.2 (2021-03-27)<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h2>
+<section id="id32">
+<h2>0.10.2 (2021-03-27)<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Add announcement regarding the new name for the software stack, HyRiver.</p></li>
 <li><p>Improve <code class="docutils literal notranslate"><span class="pre">pip</span></code> installation and release workflow.</p></li>
 </ul>
 </section>
-<section id="id32">
-<h2>0.10.0 (2021-03-06)<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h2>
+<section id="id33">
+<h2>0.10.0 (2021-03-06)<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The first release after renaming hydrodata to PyGeoHydro.</p></li>
 <li><p>Make <code class="docutils literal notranslate"><span class="pre">mypy</span></code> checks more strict and fix all the errors and prevent possible bugs.</p></li>
 <li><p>Speed up CI testing by using <code class="docutils literal notranslate"><span class="pre">mamba</span></code> and caching.</p></li>
 </ul>
 </section>
-<section id="id33">
-<h2>0.9.0 (2021-02-14)<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h2>
+<section id="id34">
+<h2>0.9.0 (2021-02-14)<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Bump version to the same version as PyGeoHydro.</p></li>
 <li><p>Update to version 4 of Daymet database. You can check the release information
@@ -1572,8 +1608,8 @@ to <code class="docutils literal notranslate"><span class="pre">get_bygeom</span
 CONUS, <code class="docutils literal notranslate"><span class="pre">hi</span></code> for Hawaii, and <code class="docutils literal notranslate"><span class="pre">pr</span></code> for Puerto Rico.</p></li>
 </ul>
 </section>
-<section id="id34">
-<h2>0.2.0 (2020-12-06)<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h2>
+<section id="id35">
+<h2>0.2.0 (2020-12-06)<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Add support for multipolygon.</p></li>
 <li><p>Remove the <code class="docutils literal notranslate"><span class="pre">fill_hole</span></code> argument.</p></li>
@@ -1582,20 +1618,20 @@ CONUS, <code class="docutils literal notranslate"><span class="pre">hi</span></c
 Daymet data to increase the performance (almost 2x faster)</p></li>
 </ul>
 </section>
-<section id="id35">
-<h2>0.1.3 (2020-08-18)<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h2>
+<section id="id36">
+<h2>0.1.3 (2020-08-18)<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Replaced <code class="docutils literal notranslate"><span class="pre">simplejson</span></code> with <code class="docutils literal notranslate"><span class="pre">orjson</span></code> to speed-up JSON operations.</p></li>
 </ul>
 </section>
-<section id="id36">
-<h2>0.1.2 (2020-08-11)<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h2>
+<section id="id37">
+<h2>0.1.2 (2020-08-11)<a class="headerlink" href="#id37" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Add <code class="docutils literal notranslate"><span class="pre">show_versions</span></code> for showing versions of the installed deps.</p></li>
 </ul>
 </section>
-<section id="id37">
-<h2>0.1.1 (2020-08-03)<a class="headerlink" href="#id37" title="Permalink to this headline">#</a></h2>
+<section id="id38">
+<h2>0.1.1 (2020-08-03)<a class="headerlink" href="#id38" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Retained the compatibility with <code class="docutils literal notranslate"><span class="pre">xarray</span></code> 0.15 by removing the <code class="docutils literal notranslate"><span class="pre">attrs</span></code> flag.</p></li>
 <li><p>Replaced <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> with <code class="docutils literal notranslate"><span class="pre">load_dataset</span></code> for automatic handling of closing
@@ -1604,8 +1640,8 @@ the input after reading the content.</p></li>
 argument now accepts both a tuple of start and end dates and a list of years.</p></li>
 </ul>
 </section>
-<section id="id38">
-<h2>0.1.0 (2020-07-27)<a class="headerlink" href="#id38" title="Permalink to this headline">#</a></h2>
+<section id="id39">
+<h2>0.1.0 (2020-07-27)<a class="headerlink" href="#id39" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Initial release on PyPI.</p></li>
 </ul>
@@ -1644,7 +1680,7 @@ argument now accepts both a tuple of start and end dates and a list of years.</p
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

@@ -39,13 +39,13 @@
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -983,7 +983,7 @@ title="Edit this page"
 <dd><p>Access NWIS web service.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.NWIS.get_info">
-<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expanded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.get_info" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expanded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.get_info" title="Permalink to this definition">#</a></dt>
 <dd><p>Send multiple queries to USGS Site Web Service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1003,7 +1003,7 @@ defaults to <code class="docutils literal notranslate"><span class="pre">True</s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.NWIS.get_parameter_codes">
-<span class="sig-name descname"><span class="pre">get_parameter_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.get_parameter_codes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_parameter_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.get_parameter_codes" title="Permalink to this definition">#</a></dt>
 <dd><p>Search for parameter codes by name or number.</p>
 <p class="rubric">Notes</p>
 <p>NWIS guideline for keywords is as follows:</p>
@@ -1034,7 +1034,7 @@ enter %discharge% in the field. % will match any number of characters
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.NWIS.get_streamflow">
-<span class="sig-name descname"><span class="pre">get_streamflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_xarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.get_streamflow" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_streamflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_xarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.get_streamflow" title="Permalink to this definition">#</a></dt>
 <dd><p>Get mean daily streamflow observations from USGS.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1050,7 +1050,7 @@ Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – Streamflow data observations in cubic meter per second (cms). The stations that
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – Streamflow data observations in cubic meter per second (cms). The stations that
 don’t provide the requested discharge data in the target period will be dropped.
 Note that when frequency is set to <code class="docutils literal notranslate"><span class="pre">iv</span></code> the time zone is converted to UTC.</p>
 </dd>
@@ -1059,7 +1059,7 @@ Note that when frequency is set to <code class="docutils literal notranslate"><s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.NWIS.retrieve_rdb">
-<span class="sig-name descname"><span class="pre">retrieve_rdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payloads</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.retrieve_rdb" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve_rdb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payloads</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.NWIS.retrieve_rdb" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve and process requests with RDB format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1094,7 +1094,7 @@ consult the
 <a class="reference external" href="https://www.waterqualitydata.us/webservices_documentation">Water Quality Data documentation</a>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.WaterQuality.data_bystation">
-<span class="sig-name descname"><span class="pre">data_bystation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">station_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wq_kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.data_bystation" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">data_bystation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">station_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wq_kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.data_bystation" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve data for a single station.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1111,7 +1111,7 @@ consult the
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.WaterQuality.get_csv">
-<span class="sig-name descname"><span class="pre">get_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.get_csv" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.get_csv" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the CSV response from the Water Quality Web Service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1129,7 +1129,7 @@ consult the
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.WaterQuality.get_json">
-<span class="sig-name descname"><span class="pre">get_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.get_json" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.get_json" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the JSON response from the Water Quality Web Service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1147,19 +1147,19 @@ consult the
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.WaterQuality.get_param_table">
-<span class="sig-name descname"><span class="pre">get_param_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.get_param_table" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_param_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.get_param_table" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the parameter table from the USGS Water Quality Web Service.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.WaterQuality.lookup_domain_values">
-<span class="sig-name descname"><span class="pre">lookup_domain_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.lookup_domain_values" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">lookup_domain_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.lookup_domain_values" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the domain values for the target endpoint.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.WaterQuality.station_bybbox">
-<span class="sig-name descname"><span class="pre">station_bybbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wq_kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.station_bybbox" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">station_bybbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wq_kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.station_bybbox" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve station info within bounding box.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1176,7 +1176,7 @@ consult the
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.waterdata.WaterQuality.station_bydistance">
-<span class="sig-name descname"><span class="pre">station_bydistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wq_kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.station_bydistance" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">station_bydistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wq_kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.waterdata.WaterQuality.station_bydistance" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve station within a radius (decimal miles) of a point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1259,7 +1259,7 @@ Default to None.</p></li>
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

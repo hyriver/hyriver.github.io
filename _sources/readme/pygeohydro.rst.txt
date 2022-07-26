@@ -9,8 +9,8 @@ PyGeoHydro: Retrieve Geospatial Hydrology Data
     :target: https://anaconda.org/conda-forge/pygeohydro
     :alt: Conda Version
 
-.. image:: https://codecov.io/gh/cheginit/pygeohydro/graph/badge.svg
-    :target: https://codecov.io/gh/cheginit/pygeohydro
+.. image:: https://codecov.io/gh/hyriver/pygeohydro/graph/badge.svg
+    :target: https://codecov.io/gh/hyriver/pygeohydro
     :alt: CodeCov
 
 .. image:: https://img.shields.io/pypi/pyversions/pygeohydro.svg
@@ -23,8 +23,8 @@ PyGeoHydro: Retrieve Geospatial Hydrology Data
 
 |
 
-.. image:: https://www.codefactor.io/repository/github/cheginit/pygeohydro/badge/main
-    :target: https://www.codefactor.io/repository/github/cheginit/pygeohydro/overview/main
+.. image:: https://www.codefactor.io/repository/github/hyriver/pygeohydro/badge/main
+    :target: https://www.codefactor.io/repository/github/hyriver/pygeohydro/overview/main
     :alt: CodeFactor
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -36,7 +36,7 @@ PyGeoHydro: Retrieve Geospatial Hydrology Data
     :alt: pre-commit
 
 .. image:: https://mybinder.org/badge_logo.svg
-    :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
+    :target: https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks
     :alt: Binder
 
 |
@@ -45,7 +45,7 @@ Features
 --------
 
 PyGeoHydro (formerly named `hydrodata <https://pypi.org/project/hydrodata>`__) is a part of
-`HyRiver <https://github.com/cheginit/HyRiver>`__ software stack that
+`HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
 is designed to aid in hydroclimate analysis through web services. This package provides
 access to some public web services that offer geospatial hydrology data. It has three
 main modules: ``pygeohydro``, ``plot``, and ``helpers``.
@@ -87,10 +87,10 @@ The ``helpers`` module includes:
   descriptor type which is useful for overland flow routing among other applications.
 * ``nwis_error``: A dataframe for finding information about NWIS requests' errors.
 
-You can find some example notebooks `here <https://github.com/cheginit/HyRiver-examples>`__.
+You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 Moreover, under the hood, PyGeoHydro uses
-`AsyncRetriever <https://github.com/cheginit/async_retriever>`__
+`AsyncRetriever <https://github.com/hyriver/async_retriever>`__
 for making requests asynchronously with persistent caching. This improves the
 reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
 pairs and upon making an already cached request, it will retrieve the responses from the cache
@@ -125,7 +125,7 @@ functionalities should be stable, changes in APIs are possible in new releases. 
 appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
 
 Moreover, requests for additional functionalities can be submitted via
-`issue tracker <https://github.com/cheginit/pygeohydro/issues>`__.
+`issue tracker <https://github.com/hyriver/pygeohydro/issues>`__.
 
 Installation
 ------------
@@ -162,8 +162,8 @@ important properties of stations are shown.
     bbox = (-69.5, 45, -69, 45.5)
     gh.interactive_map(bbox)
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/interactive_map.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nwis.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/interactive_map.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/nwis.ipynb
     :alt: Interactive Map
 
 We can select all the stations within this boundary box that have daily mean streamflow data from
@@ -223,8 +223,8 @@ observations between 1980-2014 as a ``xarray.Dataset``, like so:
 
     attrs, qobs = gh.get_camels()
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/camels.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/camels.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/camels.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/camels.ipynb
     :alt: CAMELS
 
 The ``WaterQuality`` has a number of convenience methods to retrieve data from the
@@ -259,8 +259,8 @@ Then we can get the data for all these stations the data like this:
     sids = stations.MonitoringLocationIdentifier.tolist()
     caff = wq.data_bystation(sids, kwds)
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/water_quality.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/water_quality.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/water_quality.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/water_quality.ipynb
     :alt: Water Quality
 
 Moreover, we can get land use/land cove data using ``nlcd_bygeom`` or ``nlcd_bycoods`` functions,
@@ -279,8 +279,8 @@ as the input.
     stats = gh.cover_statistics(lulc["01318500"].cover_2016)
     roughness = gh.overland_roughness(lulc["01318500"].cover_2019)
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/lulc.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nlcd.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/lulc.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/nlcd.ipynb
     :alt: Land Use/Land Cover
 
 Next, let's use ``ssebopeta_bygeom`` to get actual ET data for a basin. Note that there's a
@@ -291,8 +291,8 @@ Next, let's use ``ssebopeta_bygeom`` to get actual ET data for a basin. Note tha
     geometry = NLDI().get_basins("01315500").geometry[0]
     eta = gh.ssebopeta_bygeom(geometry, dates=("2005-10-01", "2005-10-05"))
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/eta.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/ssebop.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/eta.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/ssebop.ipynb
     :alt: Actual ET
 
 Additionally, we can pull all the US dams data using ``NID``. Let's get dams that are within this
@@ -318,8 +318,8 @@ We can get also all dams within CONUS in NID with maximum storage larger than 20
     dams = dam_list[0][dam_list[0].is_valid]
     dams = dams[dams.within(conus)]
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/dams.png
-    :target: https://github.com/cheginit/HyRiver-examples/blob/main/notebooks/nid.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/dams.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/nid.ipynb
     :alt: Dams
 
 

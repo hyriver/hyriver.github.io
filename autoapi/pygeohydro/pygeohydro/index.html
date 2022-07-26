@@ -39,13 +39,13 @@
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -979,7 +979,7 @@ title="Edit this page"
 <dd><p>Retrieve data from the National Inventory of Dams web service.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.pygeohydro.NID.get_byfilter">
-<span class="sig-name descname"><span class="pre">get_byfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.get_byfilter" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_byfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.get_byfilter" title="Permalink to this definition">#</a></dt>
 <dd><p>Query dams by filters from the National Inventory of Dams web service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1001,15 +1001,15 @@ For such filters, the min/max values should be passed like so:
 <span class="gp">... </span>   <span class="p">{</span><span class="s2">&quot;nidId&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CA01222&quot;</span><span class="p">]},</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dam_dfs</span> <span class="o">=</span> <span class="n">nid</span><span class="o">.</span><span class="n">get_byfilter</span><span class="p">(</span><span class="n">query_list</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dam_dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">Prairie Portage</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dam_dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dam_dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Prairie Portage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+<span class="go">496613</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.pygeohydro.NID.get_bygeom">
-<span class="sig-name descname"><span class="pre">get_bygeom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo_crs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.get_bygeom" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_bygeom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo_crs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.get_bygeom" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieve NID data within a geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1034,7 +1034,7 @@ For such filters, the min/max values should be passed like so:
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.pygeohydro.NID.get_suggestions">
-<span class="sig-name descname"><span class="pre">get_suggestions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.get_suggestions" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_suggestions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.get_suggestions" title="Permalink to this definition">#</a></dt>
 <dd><p>Get suggestions from the National Inventory of Dams web service.</p>
 <p class="rubric">Notes</p>
 <p>This function is useful for exploring and/or narrowing down the filter fields
@@ -1065,7 +1065,7 @@ second, those found in the query fields such as states, huc6, etc.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pygeohydro.pygeohydro.NID.inventory_byid">
-<span class="sig-name descname"><span class="pre">inventory_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dam_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.inventory_byid" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">inventory_byid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dam_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeohydro.pygeohydro.NID.inventory_byid" title="Permalink to this definition">#</a></dt>
 <dd><p>Get extra attributes for dams based on their dam ID.</p>
 <p class="rubric">Notes</p>
 <p>This function is meant to be used for getting extra attributes for dams.
@@ -1132,7 +1132,7 @@ For more info visit: <a class="reference external" href="https://hydro.nationalm
 <dd><p>Percentages of the categorical NLCD cover data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cover_da</strong> (<a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – Land cover DataArray from a LULC Dataset from the <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> function.</p>
+<dd class="field-odd"><p><strong>cover_da</strong> (<a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – Land cover DataArray from a LULC Dataset from the <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> function.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Stats</span></code> – A named tuple with the percentages of the cover classes and categories.</p>
@@ -1148,7 +1148,7 @@ For more info visit: <a class="reference external" href="https://hydro.nationalm
 <p>For more info on CAMELS visit: <a class="reference external" href="https://ral.ucar.edu/solutions/products/camels">https://ral.ucar.edu/solutions/products/camels</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> and <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – The first is basin attributes as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> and the second
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html#geopandas.GeoDataFrame" title="(in GeoPandas v0.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code></a> and <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – The first is basin attributes as a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> and the second
 is streamflow data and basin attributes as an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>.</p>
 </dd>
 </dl>
@@ -1204,7 +1204,7 @@ SSL certification verification.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – A single or a <code class="docutils literal notranslate"><span class="pre">dict</span></code> of NLCD datasets. If dict, the keys are indices
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – A single or a <code class="docutils literal notranslate"><span class="pre">dict</span></code> of NLCD datasets. If dict, the keys are indices
 of the input <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code>.</p>
 </dd>
 </dl>
@@ -1216,10 +1216,10 @@ of the input <code class="docutils literal notranslate"><span class="pre">GeoDat
 <dd><p>Estimate overland roughness from land cover data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cover_da</strong> (<a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – Land cover DataArray from a LULC Dataset from the <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> function.</p>
+<dd class="field-odd"><p><strong>cover_da</strong> (<a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – Land cover DataArray from a LULC Dataset from the <code class="docutils literal notranslate"><span class="pre">nlcd_bygeom</span></code> function.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> – Overland roughness</p>
+<dd class="field-even"><p><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> – Overland roughness</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1237,7 +1237,7 @@ of the input <code class="docutils literal notranslate"><span class="pre">GeoDat
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – Daily actual ET in mm/day as a dataset with <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">location_id</span></code> dimensions.
+<dd class="field-even"><p><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – Daily actual ET in mm/day as a dataset with <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">location_id</span></code> dimensions.
 The <code class="docutils literal notranslate"><span class="pre">location_id</span></code> dimension is the same as the <code class="docutils literal notranslate"><span class="pre">id</span></code> column in the input dataframe.</p>
 </dd>
 </dl>
@@ -1262,7 +1262,7 @@ the order should be (west, south, east, north).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> – Daily actual ET within a geometry in mm/day at 1 km resolution</p>
+<dd class="field-even"><p><a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> – Daily actual ET within a geometry in mm/day at 1 km resolution</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1326,7 +1326,7 @@ containing coordinates.</p>
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

@@ -39,13 +39,13 @@
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -811,6 +811,11 @@ title="Edit this page"
      retrieve_text
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#async_retriever.async_retriever.stream_write">
+     stream_write
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -862,6 +867,11 @@ title="Edit this page"
      retrieve_text
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#async_retriever.async_retriever.stream_write">
+     stream_write
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -898,13 +908,13 @@ title="Edit this page"
 
 <dl class="py function">
 <dt class="sig sig-object py" id="async_retriever.async_retriever.retrieve">
-<span class="sig-prename descclassname"><span class="pre">async_retriever.async_retriever.</span></span><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">read</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_kwds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expire_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">EXPIRE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#async_retriever.async_retriever.retrieve" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">async_retriever.async_retriever.</span></span><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">read_method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_kwds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expire_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">EXPIRE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#async_retriever.async_retriever.retrieve" title="Permalink to this definition">#</a></dt>
 <dd><p>Send async requests.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>urls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – List of URLs.</p></li>
-<li><p><strong>read</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Method for returning the request; <code class="docutils literal notranslate"><span class="pre">binary</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, and <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
+<li><p><strong>read_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Method for returning the request; <code class="docutils literal notranslate"><span class="pre">binary</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, and <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p></li>
 <li><p><strong>request_kwds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <em>optional</em>) – List of requests keywords corresponding to input URLs (1 on 1 mapping),
 defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">[{&quot;params&quot;:</span> <span class="pre">{...},</span> <span class="pre">&quot;headers&quot;:</span> <span class="pre">{...}},</span> <span class="pre">...]</span></code>.</p></li>
 <li><p><strong>request_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Request type; <code class="docutils literal notranslate"><span class="pre">GET</span></code> (<code class="docutils literal notranslate"><span class="pre">get</span></code>) or <code class="docutils literal notranslate"><span class="pre">POST</span></code> (<code class="docutils literal notranslate"><span class="pre">post</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">GET</span></code>.</p></li>
@@ -1051,6 +1061,34 @@ from the server, defaults to False.</p></li>
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="async_retriever.async_retriever.stream_write">
+<span class="sig-prename descclassname"><span class="pre">async_retriever.async_retriever.</span></span><span class="sig-name descname"><span class="pre">stream_write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_kwds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GET'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#async_retriever.async_retriever.stream_write" title="Permalink to this definition">#</a></dt>
+<dd><p>Send async requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>urls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – List of URLs.</p></li>
+<li><p><strong>file_paths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>) – List of file paths to write the response to.</p></li>
+<li><p><strong>request_kwds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <em>optional</em>) – List of requests keywords corresponding to input URLs (1 on 1 mapping),
+defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">[{&quot;params&quot;:</span> <span class="pre">{...},</span> <span class="pre">&quot;headers&quot;:</span> <span class="pre">{...}},</span> <span class="pre">...]</span></code>.</p></li>
+<li><p><strong>request_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Request type; <code class="docutils literal notranslate"><span class="pre">GET</span></code> (<code class="docutils literal notranslate"><span class="pre">get</span></code>) or <code class="docutils literal notranslate"><span class="pre">POST</span></code> (<code class="docutils literal notranslate"><span class="pre">post</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">GET</span></code>.</p></li>
+<li><p><strong>max_workers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – Maximum number of async processes, defaults to 8.</p></li>
+<li><p><strong>ssl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code>, <em>optional</em>) – SSLContext to use for the connection, defaults to None. Set to False to disable
+SSL certification verification.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">async_retriever</span> <span class="k">as</span> <span class="nn">ar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_500KB_CSV-1.csv&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span> <span class="k">as</span> <span class="n">temp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">ar</span><span class="o">.</span><span class="n">stream_write</span><span class="p">([</span><span class="n">url</span><span class="p">],</span> <span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 </section>
 
@@ -1086,7 +1124,7 @@ from the server, defaults to False.</p></li>
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>

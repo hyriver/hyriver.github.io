@@ -39,13 +39,13 @@
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -57,7 +57,7 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -207,7 +207,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../../notebooks/dam_impact.html">
-     Dam Impact on streamflow
+     Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
@@ -957,13 +957,13 @@ or annual (annual summaries). Defaults to daily.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pydaymet.core.Daymet.dates_todict">
-<span class="sig-name descname"><span class="pre">dates_todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.dates_todict" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">dates_todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.dates_todict" title="Permalink to this definition">#</a></dt>
 <dd><p>Set dates by start and end dates as a tuple, (start, end).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pydaymet.core.Daymet.dates_tolist">
-<span class="sig-name descname"><span class="pre">dates_tolist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.dates_tolist" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">dates_tolist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.dates_tolist" title="Permalink to this definition">#</a></dt>
 <dd><p>Correct dates for Daymet accounting for leap years.</p>
 <p>Daymet doesn’t account for leap years and removes Dec 31 when
 it’s leap year.</p>
@@ -979,18 +979,18 @@ it’s leap year.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pydaymet.core.Daymet.separate_snow">
-<span class="sig-name descname"><span class="pre">separate_snow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_rain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">T_RAIN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_snow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">T_SNOW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.separate_snow" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">separate_snow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_rain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">T_RAIN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_snow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">T_SNOW</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.separate_snow" title="Permalink to this definition">#</a></dt>
 <dd><p>Separate snow based on Martinez and Gupta<a class="footnote-reference brackets" href="#footcite-martinez-2010" id="id5">4</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>clm</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – Climate data that should include <code class="docutils literal notranslate"><span class="pre">prcp</span></code> and <code class="docutils literal notranslate"><span class="pre">tmin</span></code>.</p></li>
+<li><p><strong>clm</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – Climate data that should include <code class="docutils literal notranslate"><span class="pre">prcp</span></code> and <code class="docutils literal notranslate"><span class="pre">tmin</span></code>.</p></li>
 <li><p><strong>t_rain</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – Threshold for temperature for considering rain, defaults to 2.5 degrees C.</p></li>
 <li><p><strong>t_snow</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – Threshold for temperature for considering snow, defaults to 0.6 degrees C.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – Input data with <code class="docutils literal notranslate"><span class="pre">snow</span> <span class="pre">(mm/day)</span></code> column if input is a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>,
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.6.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a> – Input data with <code class="docutils literal notranslate"><span class="pre">snow</span> <span class="pre">(mm/day)</span></code> column if input is a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>,
 or <code class="docutils literal notranslate"><span class="pre">snow</span></code> variable if input is an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>.</p>
 </dd>
 </dl>
@@ -1006,13 +1006,13 @@ or <code class="docutils literal notranslate"><span class="pre">snow</span></cod
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pydaymet.core.Daymet.years_todict">
-<span class="sig-name descname"><span class="pre">years_todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.years_todict" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">years_todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.years_todict" title="Permalink to this definition">#</a></dt>
 <dd><p>Set date by list of year(s).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pydaymet.core.Daymet.years_tolist">
-<span class="sig-name descname"><span class="pre">years_tolist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.years_tolist" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">years_tolist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pydaymet.core.Daymet.years_tolist" title="Permalink to this definition">#</a></dt>
 <dd><p>Correct dates for Daymet accounting for leap years.</p>
 <p>Daymet doesn’t account for leap years and removes Dec 31 when
 it’s leap year.</p>
@@ -1063,7 +1063,7 @@ it’s leap year.</p>
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-16.<br/>
+    Last updated on 2022-07-26.<br/>
 </p>
         </footer>
     </div>
