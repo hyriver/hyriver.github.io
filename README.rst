@@ -1,73 +1,73 @@
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/hyriver_logo_text.png
-    :target: https://github.com/cheginit/HyRiver-examples
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/hyriver_logo_text.png
+    :target: https://github.com/hyriver/HyRiver-examples
 
 |
 
-.. |pygeohydro| image:: https://github.com/cheginit/pygeohydro/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeohydro/actions/workflows/test.yml
+.. |pygeohydro| image:: https://github.com/hyriver/pygeohydro/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/pygeohydro/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |pygeoogc| image:: https://github.com/cheginit/pygeoogc/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeoogc/actions/workflows/test.yml
+.. |pygeoogc| image:: https://github.com/hyriver/pygeoogc/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/pygeoogc/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |pygeoutils| image:: https://github.com/cheginit/pygeoutils/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pygeoutils/actions/workflows/test.yml
+.. |pygeoutils| image:: https://github.com/hyriver/pygeoutils/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/pygeoutils/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |pynhd| image:: https://github.com/cheginit/pynhd/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pynhd/actions/workflows/test.yml
+.. |pynhd| image:: https://github.com/hyriver/pynhd/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/pynhd/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |py3dep| image:: https://github.com/cheginit/py3dep/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/py3dep/actions/workflows/test.yml
+.. |py3dep| image:: https://github.com/hyriver/py3dep/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/py3dep/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |pydaymet| image:: https://github.com/cheginit/pydaymet/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/pydaymet/actions/workflows/test.yml
+.. |pydaymet| image:: https://github.com/hyriver/pydaymet/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/pydaymet/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |async| image:: https://github.com/cheginit/async_retriever/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/cheginit/async_retriever/actions/workflows/test.yml
+.. |async| image:: https://github.com/hyriver/async_retriever/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/async_retriever/actions/workflows/test.yml
     :alt: Github Actions
 
 .. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/hydrodata?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
-    :target: https://github.com/cheginit/pygeohydro
+    :target: https://github.com/hyriver/pygeohydro
     :alt: Download Stat
 
 .. |ogc_stat| image:: https://static.pepy.tech/personalized-badge/pygeoogc?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoOGC
-    :target: https://github.com/cheginit/pygeoogc
+    :target: https://github.com/hyriver/pygeoogc
     :alt: Download Stat
 
 .. |utils_stat| image:: https://static.pepy.tech/personalized-badge/pygeoutils?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoUtils
-    :target: https://github.com/cheginit/pygeoutils
+    :target: https://github.com/hyriver/pygeoutils
     :alt: Download Stat
 
 .. |nhd_stat| image:: https://static.pepy.tech/personalized-badge/pynhd?period=total&left_color=blue&right_color=yellowgreen&left_text=PyNHD
-    :target: https://github.com/cheginit/pynhd
+    :target: https://github.com/hyriver/pynhd
     :alt: Download Stat
 
 .. |3dep_stat| image:: https://static.pepy.tech/personalized-badge/py3dep?period=total&left_color=blue&right_color=yellowgreen&left_text=Py3DEP
-    :target: https://github.com/cheginit/py3dep
+    :target: https://github.com/hyriver/py3dep
     :alt: Download Stat
 
 .. |day_stat| image:: https://static.pepy.tech/personalized-badge/pydaymet?period=total&left_color=blue&right_color=yellowgreen&left_text=PyDaymet
-    :target: https://github.com/cheginit/pydaymet
+    :target: https://github.com/hyriver/pydaymet
     :alt: Download Stat
 
 .. |async_stat| image:: https://static.pepy.tech/personalized-badge/async_retriever?period=total&left_color=blue&right_color=yellowgreen&left_text=AsyncRetriever
-    :target: https://github.com/cheginit/async_retriever
+    :target: https://github.com/hyriver/async_retriever
     :alt: Download Stat
 
-.. _PyGeoHydro: https://github.com/cheginit/pygeohydro
-.. _PyGeoOGC: https://github.com/cheginit/pygeoogc
-.. _PyGeoUtils: https://github.com/cheginit/pygeoutils
-.. _PyNHD: https://github.com/cheginit/pynhd
-.. _Py3DEP: https://github.com/cheginit/py3dep
-.. _PyDaymet: https://github.com/cheginit/pydaymet
+.. _PyGeoHydro: https://github.com/hyriver/pygeohydro
+.. _PyGeoOGC: https://github.com/hyriver/pygeoogc
+.. _PyGeoUtils: https://github.com/hyriver/pygeoutils
+.. _PyNHD: https://github.com/hyriver/pynhd
+.. _Py3DEP: https://github.com/hyriver/py3dep
+.. _PyDaymet: https://github.com/hyriver/pydaymet
 
 .. image:: https://mybinder.org/badge_logo.svg
-    :target: https://mybinder.org/v2/gh/cheginit/HyRiver-examples/main?urlpath=lab/tree/notebooks
+    :target: https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks
     :alt: Binder
 
 .. image:: https://readthedocs.org/projects/hyriver/badge/?version=latest
@@ -92,7 +92,7 @@ Package         Description                                                     
 
 
 HyRiver: Hydroclimate Data Retriever
-=====================================
+====================================
 
 Features
 --------
@@ -100,7 +100,7 @@ Features
 `HyRiver <https://hyriver.readthedocs.io>`__ is a software stack consisting of seven
 Python libraries that are designed to aid in hydroclimate analysis through web services.
 Currently, this project only includes hydrology and climatology data
-within the US. Some of the major capabilities of HyRiver are as follows:
+within the US. Some major capabilities of HyRiver are:
 
 * Easy access to many web services for subsetting data on server-side and returning the requests
   as masked Datasets or GeoDataFrames.
@@ -110,14 +110,14 @@ within the US. Some of the major capabilities of HyRiver are as follows:
 * Navigating and subsetting NHDPlus database (both medium- and high-resolution) using web services.
 * Cleaning up the vector NHDPlus data, fixing some common issues, and computing vector-based
   accumulation through a river network.
-* A URL inventory for some of the popular (and tested) web services.
+* A URL inventory for many popular (and tested) web services.
 * Some utilities for manipulating the obtained data and their visualization.
 
 Please visit `examples <https://hyriver.readthedocs.io/en/latest/examples.html>`__
 webpage to see some example notebooks. You can also try this project without installing
-it on you system by clicking on the binder badge. A Jupyter Lab
-instance with the HyRiver software stack pre-installed will be launched in your web browser
-and you can start coding!
+it on your system by clicking on the binder badge. A Jupyter Lab
+instance with the HyRiver software stack pre-installed will be launched in your web
+browser, and you can start coding!
 
 Please note that this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
@@ -126,8 +126,8 @@ appreciate it if you give this project a try and provide feedback. Contributions
 Moreover, requests for additional databases and functionalities can be submitted via issue trackers
 of packages.
 
-.. image:: https://raw.githubusercontent.com/cheginit/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
-    :target: https://github.com/cheginit/HyRiver-examples
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
+    :target: https://github.com/hyriver/HyRiver-examples
 
 Installation
 ------------
