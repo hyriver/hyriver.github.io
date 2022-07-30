@@ -26,7 +26,7 @@ Module Contents
    >>> c.points.x.tolist()
    [100.0, -30.0]
 
-   .. py:method:: points(self)
+   .. py:method:: points()
       :property:
 
       Get validate coordinate as a ``geopandas.GeoSeries``.
@@ -65,7 +65,7 @@ Module Contents
    (-97.06128, 32.83434),
    (-97.06127, 32.83319)]
 
-   .. py:method:: spline(self)
+   .. py:method:: spline()
       :property:
 
       Get the spline as a ``Spline`` object.

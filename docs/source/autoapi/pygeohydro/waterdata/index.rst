@@ -16,7 +16,7 @@ Module Contents
 
    Access NWIS web service.
 
-   .. py:method:: get_info(self, queries, expanded = False, fix_names = True)
+   .. py:method:: get_info(queries, expanded = False, fix_names = True)
 
       Send multiple queries to USGS Site Web Service.
 
@@ -29,7 +29,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- A correctly typed ``GeoDataFrame`` containing site(s) information.
 
 
-   .. py:method:: get_parameter_codes(self, keyword)
+   .. py:method:: get_parameter_codes(keyword)
 
       Search for parameter codes by name or number.
 
@@ -56,7 +56,7 @@ Module Contents
       'Discharge, cubic feet per second'
 
 
-   .. py:method:: get_streamflow(self, station_ids, dates, freq = 'dv', mmd = False, to_xarray = False)
+   .. py:method:: get_streamflow(station_ids, dates, freq = 'dv', mmd = False, to_xarray = False)
 
       Get mean daily streamflow observations from USGS.
 
@@ -104,7 +104,7 @@ Module Contents
    consult the
    `Water Quality Data documentation <https://www.waterqualitydata.us/webservices_documentation>`__.
 
-   .. py:method:: data_bystation(self, station_ids, wq_kwds)
+   .. py:method:: data_bystation(station_ids, wq_kwds)
 
       Retrieve data for a single station.
 
@@ -114,7 +114,7 @@ Module Contents
       :returns: :class:`pandas.DataFrame` -- DataFrame of data for the stations.
 
 
-   .. py:method:: get_csv(self, endpoint, kwds, request_method = 'GET')
+   .. py:method:: get_csv(endpoint, kwds, request_method = 'GET')
 
       Get the CSV response from the Water Quality Web Service.
 
@@ -125,7 +125,7 @@ Module Contents
       :returns: :class:`pandas.DataFrame` -- The web service response as a DataFrame.
 
 
-   .. py:method:: get_json(self, endpoint, kwds, request_method = 'GET')
+   .. py:method:: get_json(endpoint, kwds, request_method = 'GET')
 
       Get the JSON response from the Water Quality Web Service.
 
@@ -136,17 +136,17 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The web service response as a GeoDataFrame.
 
 
-   .. py:method:: get_param_table(self)
+   .. py:method:: get_param_table()
 
       Get the parameter table from the USGS Water Quality Web Service.
 
 
-   .. py:method:: lookup_domain_values(self, endpoint)
+   .. py:method:: lookup_domain_values(endpoint)
 
       Get the domain values for the target endpoint.
 
 
-   .. py:method:: station_bybbox(self, bbox, wq_kwds)
+   .. py:method:: station_bybbox(bbox, wq_kwds)
 
       Retrieve station info within bounding box.
 
@@ -156,7 +156,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of station info within the bounding box.
 
 
-   .. py:method:: station_bydistance(self, lon, lat, radius, wq_kwds)
+   .. py:method:: station_bydistance(lon, lat, radius, wq_kwds)
 
       Retrieve station within a radius (decimal miles) of a point.
 

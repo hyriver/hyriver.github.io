@@ -23,27 +23,27 @@ Module Contents
                   `ArcGIS <https://developers.arcgis.com/rest/services-reference/geographic-coordinate-systems.htm>`__
                   for reference.
 
-   .. py:method:: bbox(self)
+   .. py:method:: bbox()
 
       Query for a bbox.
 
 
-   .. py:method:: multipoint(self)
+   .. py:method:: multipoint()
 
       Query for a multi-point.
 
 
-   .. py:method:: point(self)
+   .. py:method:: point()
 
       Query for a point.
 
 
-   .. py:method:: polygon(self)
+   .. py:method:: polygon()
 
       Query for a polygon.
 
 
-   .. py:method:: polyline(self)
+   .. py:method:: polyline()
 
       Query for a polyline.
 
@@ -67,12 +67,12 @@ Module Contents
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to ``False``.
 
-   .. py:method:: get(self, url, payload = None, headers = None)
+   .. py:method:: get(url, payload = None, headers = None)
 
       Retrieve data from a url by GET and return the Response.
 
 
-   .. py:method:: post(self, url, payload = None, headers = None)
+   .. py:method:: post(url, payload = None, headers = None)
 
       Retrieve data from a url by POST and return the Response.
 
@@ -106,17 +106,6 @@ Module Contents
 
              * Raster width of a cell,
              * Raster height of a cell.
-
-
-.. py:function:: bbox_resolution(bbox, resolution, bbox_crs = DEF_CRS)
-
-   Image size of a bounding box WGS84 for a given resolution in meters.
-
-   :Parameters: * **bbox** (:class:`tuple`) -- A bounding box in WGS84 (west, south, east, north)
-                * **resolution** (:class:`float`) -- The resolution in meters
-                * **bbox_crs** (:class:`str`, *optional*) -- The spatial reference of the input bbox, default to EPSG:4326.
-
-   :returns: :class:`tuple` -- The width and height of the image
 
 
 .. py:function:: check_bbox(bbox)

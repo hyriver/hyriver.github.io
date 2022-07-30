@@ -25,17 +25,17 @@ Module Contents
 
    Functions to Convert an ArcGIS JSON object to a GeoJSON object.
 
-   .. py:method:: attributes(self, arcgis, geojson)
+   .. py:method:: attributes(arcgis, geojson)
 
       Get the attributes from an ArcGIS JSON object.
 
 
-   .. py:method:: coords(self, arcgis, geojson)
+   .. py:method:: coords(arcgis, geojson)
 
       Get the bounds from an ArcGIS JSON object.
 
 
-   .. py:method:: features(self, arcgis, geojson)
+   .. py:method:: features(arcgis, geojson)
 
       Get the features from an ArcGIS JSON object.
 
@@ -76,12 +76,12 @@ Module Contents
       Get the points from an ArcGIS JSON object.
 
 
-   .. py:method:: rings(self, arcgis, _)
+   .. py:method:: rings(arcgis, _)
 
       Get the rings from an ArcGIS JSON object.
 
 
-   .. py:method:: xy(self, arcgis, geojson)
+   .. py:method:: xy(arcgis, geojson)
 
       Get the xy coordinates from an ArcGIS JSON object.
 

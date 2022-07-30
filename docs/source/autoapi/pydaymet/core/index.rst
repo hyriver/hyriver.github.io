@@ -47,12 +47,12 @@ Module Contents
       Check if input dates are in correct format and valid.
 
 
-   .. py:method:: dates_todict(self, dates)
+   .. py:method:: dates_todict(dates)
 
       Set dates by start and end dates as a tuple, (start, end).
 
 
-   .. py:method:: dates_tolist(self, dates)
+   .. py:method:: dates_tolist(dates)
 
       Correct dates for Daymet accounting for leap years.
 
@@ -64,7 +64,7 @@ Module Contents
       :returns: :class:`list` -- All the dates in the Daymet database within the provided date range.
 
 
-   .. py:method:: separate_snow(self, clm, t_rain = T_RAIN, t_snow = T_SNOW)
+   .. py:method:: separate_snow(clm, t_rain = T_RAIN, t_snow = T_SNOW)
 
       Separate snow based on :footcite:t:`Martinez_2010`.
 
@@ -80,12 +80,12 @@ Module Contents
       .. footbibliography::
 
 
-   .. py:method:: years_todict(self, years)
+   .. py:method:: years_todict(years)
 
       Set date by list of year(s).
 
 
-   .. py:method:: years_tolist(self, years)
+   .. py:method:: years_tolist(years)
 
       Correct dates for Daymet accounting for leap years.
 

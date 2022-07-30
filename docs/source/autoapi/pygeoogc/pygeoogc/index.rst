@@ -44,7 +44,7 @@ Module Contents
                   is done and object IDs of the failed requests is saved to a text file
                   which its path can be accessed via ``self.client.failed_path``.
 
-   .. py:method:: get_features(self, featureids, return_m = False, return_geom = True)
+   .. py:method:: get_features(featureids, return_m = False, return_geom = True)
 
       Get features based on the feature IDs.
 
@@ -56,7 +56,7 @@ Module Contents
       :returns: :class:`dict` -- (Geo)json response from the web service.
 
 
-   .. py:method:: oids_byfield(self, field, ids)
+   .. py:method:: oids_byfield(field, ids)
 
       Get Object IDs based on a list of field IDs.
 
@@ -66,7 +66,7 @@ Module Contents
       :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
-   .. py:method:: oids_bygeom(self, geom, geo_crs = DEF_CRS, spatial_relation = 'esriSpatialRelIntersects', sql_clause = None, distance = None)
+   .. py:method:: oids_bygeom(geom, geo_crs = DEF_CRS, spatial_relation = 'esriSpatialRelIntersects', sql_clause = None, distance = None)
 
       Get feature IDs within a geometry that can be combined with a SQL where clause.
 
@@ -93,7 +93,7 @@ Module Contents
       :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
-   .. py:method:: oids_bysql(self, sql_clause)
+   .. py:method:: oids_bysql(sql_clause)
 
       Get feature IDs using a valid SQL 92 WHERE clause.
 
@@ -107,7 +107,7 @@ Module Contents
       :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
-   .. py:method:: partition_oids(self, oids)
+   .. py:method:: partition_oids(oids)
 
       Partition feature IDs based on ``self.max_nrecords``.
 
@@ -165,7 +165,7 @@ Module Contents
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
-   .. py:method:: getfeature_bybox(self, bbox, box_crs = DEF_CRS, always_xy = False)
+   .. py:method:: getfeature_bybox(bbox, box_crs = DEF_CRS, always_xy = False)
 
       Get data from a WFS service within a bounding box.
 
@@ -180,7 +180,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response within a bounding box.
 
 
-   .. py:method:: getfeature_byfilter(self, cql_filter, method = 'GET')
+   .. py:method:: getfeature_byfilter(cql_filter, method = 'GET')
 
       Get features based on a valid CQL filter.
 
@@ -196,7 +196,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response
 
 
-   .. py:method:: getfeature_bygeom(self, geometry, geo_crs = DEF_CRS, always_xy = False, predicate = 'INTERSECTS')
+   .. py:method:: getfeature_bygeom(geometry, geo_crs = DEF_CRS, always_xy = False, predicate = 'INTERSECTS')
 
       Get features based on a geometry.
 
@@ -223,7 +223,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response based on the given geometry.
 
 
-   .. py:method:: getfeature_byid(self, featurename, featureids)
+   .. py:method:: getfeature_byid(featurename, featureids)
 
       Get features based on feature IDs.
 
@@ -259,12 +259,12 @@ Module Contents
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
 
-   .. py:method:: get_validlayers(self)
+   .. py:method:: get_validlayers()
 
       Get the layers supported by the WMS service.
 
 
-   .. py:method:: getmap_bybox(self, bbox, resolution, box_crs = DEF_CRS, always_xy = False, max_px = 8000000, kwargs = None)
+   .. py:method:: getmap_bybox(bbox, resolution, box_crs = DEF_CRS, always_xy = False, max_px = 8000000, kwargs = None)
 
       Get data from a WMS service within a geometry or bounding box.
 

@@ -16,7 +16,7 @@ Module Contents
 
    Retrieve data from the National Inventory of Dams web service.
 
-   .. py:method:: get_byfilter(self, query_list)
+   .. py:method:: get_byfilter(query_list)
 
       Query dams by filters from the National Inventory of Dams web service.
 
@@ -41,7 +41,7 @@ Module Contents
       496613
 
 
-   .. py:method:: get_bygeom(self, geometry, geo_crs)
+   .. py:method:: get_bygeom(geometry, geo_crs)
 
       Retrieve NID data within a geometry.
 
@@ -59,7 +59,7 @@ Module Contents
       Little Moose
 
 
-   .. py:method:: get_suggestions(self, text, context_key = '')
+   .. py:method:: get_suggestions(text, context_key = '')
 
       Get suggestions from the National Inventory of Dams web service.
 
@@ -85,7 +85,7 @@ Module Contents
       Texas City
 
 
-   .. py:method:: inventory_byid(self, dam_ids)
+   .. py:method:: inventory_byid(dam_ids)
 
       Get extra attributes for dams based on their dam ID.
 
