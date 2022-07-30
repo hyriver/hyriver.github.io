@@ -81,7 +81,7 @@ REpresentational State Transfer (RESTful), Web Feature Services (WFS), and Web M
 These packages are standalone and users can install and work with them independently.
 Furthermore, `PyGeoOGC`, `PyGeoUtils`, and `AsyncRetriever` are low-level engines of this software
 stack that the other four packages utilize for providing access to some of the most popular
-databases in the hydrology community. These two low-level packages are generic and developers can
+databases in the hydrology community. These three low-level packages are generic and developers can
 use them for connecting and sending queries to any other web services that are based on the
 protocols that `HyRiver` supports. Currently, `HyRiver` only supports hydrology and climatology
 datasets within the US.
