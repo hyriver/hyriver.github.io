@@ -114,10 +114,17 @@ within the US. Some major capabilities of HyRiver are:
 * Some utilities for manipulating the obtained data and their visualization.
 
 Please visit `examples <https://hyriver.readthedocs.io/en/latest/examples.html>`__
-webpage to see some example notebooks. You can also try this project without installing
-it on your system by clicking on the binder badge. A Jupyter Lab
-instance with the HyRiver software stack pre-installed will be launched in your web
-browser, and you can start coding!
+webpage to see some example notebooks. You can also watch these videos for a quick overview
+of ``HyRiver`` capabilities:
+
+* `Pangeo Showcase <https://discourse.pangeo.io/t/may-26-2021-accessing-hydrology-and-climatology-database-using-web-services-through-python/1521>`__
+* `ESIP IT&I <https://youtu.be/Wz8Y5G9oy-M?t=1838>`__
+* `WaterHackWeek 2020 <https://www.youtube.com/watch?v=VRQ_Tk49s5Y>`__
+* `UH Seminar <https://www.youtube.com/watch?v=RSyFv9AfUb8>`__
+
+You can also try this project without installing it on your system by clicking on the binder
+badge. A Jupyter Lab instance with the HyRiver software stack pre-installed will be launched
+in your web browser, and you can start coding!
 
 Please note that this project is in early development stages, while the provided
 functionalities should be stable, changes in APIs are possible in new releases. But we
