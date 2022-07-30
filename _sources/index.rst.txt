@@ -81,14 +81,35 @@ web services. HyRiver includes two categories of packages:
 
 - Low-level APIs for accessing any of the supported web services, i.e., ArcGIS RESTful,
   WMS, and WFS.
-- High-level APIs for accessing some of the most commonly used datasets in hyrdology and
+- High-level APIs for accessing some of the most commonly used datasets in hydrology and
   climatology studies. Currently, this project only includes hydrology and climatology data
   within the US.
 
-You can watch these videos for a quick overview of ``HyRiver``:
+You can watch these videos for a quick overview of ``HyRiver`` capabilities:
 
 * `Pangeo Showcase <https://discourse.pangeo.io/t/may-26-2021-accessing-hydrology-and-climatology-database-using-web-services-through-python/1521>`__
 * `ESIP IT&I <https://youtu.be/Wz8Y5G9oy-M?t=1838>`__
+* `WaterHackWeek 2020 <https://www.youtube.com/watch?v=VRQ_Tk49s5Y>`__
+* `UH Seminar <https://www.youtube.com/watch?v=RSyFv9AfUb8>`__
+
+Citation
+========
+
+If you use any of HyRiver packages in your research, we appreciate citations:
+
+.. code-block:: bibtex
+
+    @article{Chegini_2021,
+        author = {Chegini, Taher and Li, Hong-Yi and Leung, L. Ruby},
+        doi = {10.21105/joss.03175},
+        journal = {Journal of Open Source Software},
+        month = {10},
+        number = {66},
+        pages = {1--3},
+        title = {{HyRiver: Hydroclimate Data Retriever}},
+        volume = {6},
+        year = {2021}
+    }
 
 .. toctree::
     :maxdepth: 1

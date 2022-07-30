@@ -841,11 +841,6 @@ title="Edit this page"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pygeoogc.utils.bbox_resolution">
-     bbox_resolution
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pygeoogc.utils.check_bbox">
      check_bbox
     </a>
@@ -953,11 +948,6 @@ title="Edit this page"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pygeoogc.utils.bbox_decompose">
      bbox_decompose
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pygeoogc.utils.bbox_resolution">
-     bbox_resolution
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1132,24 +1122,6 @@ defaults to 8 million based on some trial-and-error.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pygeoogc.utils.bbox_resolution">
-<span class="sig-prename descclassname"><span class="pre">pygeoogc.utils.</span></span><span class="sig-name descname"><span class="pre">bbox_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bbox_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DEF_CRS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeoogc.utils.bbox_resolution" title="Permalink to this definition">#</a></dt>
-<dd><p>Image size of a bounding box WGS84 for a given resolution in meters.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>bbox</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>) – A bounding box in WGS84 (west, south, east, north)</p></li>
-<li><p><strong>resolution</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The resolution in meters</p></li>
-<li><p><strong>bbox_crs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – The spatial reference of the input bbox, default to EPSG:4326.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> – The width and height of the image</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pygeoogc.utils.check_bbox">
 <span class="sig-prename descclassname"><span class="pre">pygeoogc.utils.</span></span><span class="sig-name descname"><span class="pre">check_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bbox</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygeoogc.utils.check_bbox" title="Permalink to this definition">#</a></dt>
 <dd><p>Check if an input inbox is a tuple of length 4.</p>
@@ -1280,7 +1252,7 @@ geometry such as <code class="docutils literal notranslate"><span class="pre">Po
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-26.<br/>
+    Last updated on 2022-07-30.<br/>
 </p>
         </footer>
     </div>
