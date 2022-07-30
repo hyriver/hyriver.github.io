@@ -85,7 +85,7 @@ web services. HyRiver includes two categories of packages:
   climatology studies. Currently, this project only includes hydrology and climatology data
   within the US.
 
-You can watch these videos for a quick overview of ``HyRiver`` capabilities:
+You can watch these videos for a quick overview of HyRiver capabilities:
 
 * `Pangeo Showcase <https://discourse.pangeo.io/t/may-26-2021-accessing-hydrology-and-climatology-database-using-web-services-through-python/1521>`__
 * `ESIP IT&I <https://youtu.be/Wz8Y5G9oy-M?t=1838>`__
@@ -110,24 +110,6 @@ If you use any of HyRiver packages in your research, we appreciate citations:
         volume = {6},
         year = {2021}
     }
-
-.. toctree::
-    :maxdepth: 1
-    :hidden:
-
-    getting_started
-    readmes
-    examples
-
-.. toctree::
-    :maxdepth: 1
-    :hidden:
-
-    autoapi/index
-    history
-    contributing
-    authors
-    license
 
 .. panels::
     :column: col-lg-12 p-2
@@ -186,3 +168,21 @@ If you use any of HyRiver packages in your research, we appreciate citations:
         Asynchronous send/receive requests with persistent caching.
 
         |async| |async_stat|
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    getting_started
+    readmes
+    examples
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    autoapi/index
+    history
+    contributing
+    authors
+    license
