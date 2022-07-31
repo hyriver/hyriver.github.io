@@ -6,21 +6,21 @@ dependencies:
   - python>=3.10
   - ipykernel
   - ipython
+  - pygithub
   - ipywidgets
   - jupyter_client
-  - nbsphinx
-  - pygithub
-  - recommonmark
-  - sphinx
-  - sphinx-autoapi
-  - sphinx-book-theme
-  - sphinx-book-theme
-  - sphinx-copybutton
-  - sphinx-gallery
-  - sphinx-design
-  - sphinxcontrib-bibtex
   - pandoc
   - pip
   - pip:
     - sphinxext-opengraph
+    - nbsphinx
+    - recommonmark
+    - sphinx
+    - sphinx-autoapi
+    - sphinx-book-theme
+    - sphinx-book-theme
+    - sphinx-copybutton
+    - sphinx-gallery
+    - sphinx-design
+    - sphinxcontrib-bibtex
 
