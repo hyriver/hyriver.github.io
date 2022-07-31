@@ -1,11 +1,12 @@
 import datetime
+import urllib.request
+import json
 from pathlib import Path
 from textwrap import dedent, indent
 
 import yaml
 from sphinx.application import Sphinx
 from sphinx.util import logging
-from github import Github
 
 
 LOGGER = logging.getLogger("conf")
@@ -15,9 +16,9 @@ project = "HyRiver"
 author = "Taher Chegini"
 copyright = f"2019-{datetime.datetime.now().year}, {author}"
 
-repo = Github().get_repo("hyriver/pygeohydro")
-tags = repo.get_tags()
-version = f"{'.'.join(tags[0].name[1:].split('.')[:2])}.x"
+with urllib.request.urlopen('https://pypi.python.org/pypi/pygeohydro/json') as r:
+    version = json.loads(r.read().decode('utf-8'))["info"]["version"]
+version = f"{'.'.join(version.split('.')[:2])}.x"
 release = version
 
 # -- General configuration ---------------------------------------------------
@@ -99,7 +100,7 @@ autodoc_typehints_description_target = "documented"
 nbsphinx_timeout = 600
 nbsphinx_execute = "never"
 nbsphinx_prolog = """
-{% set docname = env.doc2path(env.docname, base=None).replace("nblink","ipynb") %}
+{% set docname = env.doc2path(env.docname, base=None).rsplit("/", 1)[-1] %}
 
 .. only:: html
 
@@ -110,9 +111,9 @@ nbsphinx_prolog = """
 
         This page was generated from `{{ docname }}`__.
         Interactive online version:
-        :raw-html:`<a href="https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/{{ docname }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a>`
+        :raw-html:`<a href="https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks/{{ docname }}"><img alt="Binder badge" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a>`
 
-    __ https://github.com/hyriver/HyRiver-examples/tree/main/{{ docname }}
+    __ https://github.com/hyriver/HyRiver-examples/tree/main/notebooks/{{ docname }}
 """
 
 # sphinx-copybutton configurations
@@ -290,12 +291,15 @@ def update_gallery(app: Sphinx):
 
     {items_md}
 """
-    Path(app.srcdir, "example-gallery.txt").write_text(markdown)
+    Path(app.srcdir, "examples-gallery.txt").write_text(markdown)
     LOGGER.info("Gallery page updated.")
 
 
 def update_videos(app: Sphinx):
-    """Update the videos page."""
+    """Update the videos page.
+
+    Taken from https://github.com/pydata/xarray/blob/main/doc/conf.py
+    """
 
     LOGGER.info("Updating videos page...")
 
@@ -328,6 +332,57 @@ def update_videos(app: Sphinx):
     LOGGER.info("Videos page updated.")
 
 
+def update_versions(app: Sphinx):
+    """Update the versions page."""
+
+    LOGGER.info("Updating versions page...")
+
+    versions = []
+    packages = {
+        "async_retriever": "AsyncRetriever",
+        "pygeoogc": "PyGeoOGC",
+        "pygeoutils": "PyGeoUtils",
+        "pynhd": "PyNHD",
+        "py3dep": "Py3DEP",
+        "pygeohydro": "PyGeoHydro",
+        "pydaymet": "PyDaymet",
+    }
+    for p, n in packages.items():
+        with urllib.request.urlopen(f'https://pypi.python.org/pypi/{p}/json') as r:
+            versions.append(
+                {
+                    "package": n,
+                    "path": f"{p}/index.html",
+                    "version": json.loads(r.read().decode('utf-8'))["info"]["version"],
+                }
+            )
+
+    items = [
+        f"""
+         .. grid-item-card:: {item['package']}
+            :text-align: center
+
+            .. button-link:: {item['path']}
+                :click-parent:
+                :ref-type: ref
+                :align: center
+
+                v{item['version']}
+        """
+        for item in versions
+    ]
+
+    items_md = indent(dedent("\n".join(items)), prefix="    ")
+    markdown = f"""
+.. grid::
+    :gutter: 3
+
+    {items_md}
+"""
+    Path(app.srcdir, "versions.txt").write_text(markdown)
+    LOGGER.info("Package versions page updated.")
+
+
 def html_page_context(app, pagename, templatename, context, doctree):
     # Disable edit button for docstring generated pages
     if "generated" in pagename:
@@ -338,3 +393,4 @@ def setup(app: Sphinx):
     app.connect("html-page-context", html_page_context)
     app.connect("builder-inited", update_gallery)
     app.connect("builder-inited", update_videos)
+    app.connect("builder-inited", update_versions)
