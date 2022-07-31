@@ -6,7 +6,6 @@ dependencies:
   - python>=3.10
   - ipykernel
   - ipython
-  - pygithub
   - ipywidgets
   - jupyter_client
   - pandoc
