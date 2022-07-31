@@ -5,6 +5,7 @@ jupyter_client
 nbformat
 nbsphinx
 pygithub
+recommonmark
 sphinx
 sphinx-autoapi
 sphinx-book-theme

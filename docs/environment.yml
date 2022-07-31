@@ -10,6 +10,7 @@ dependencies:
   - jupyter_client
   - nbsphinx
   - pygithub
+  - recommonmark
   - sphinx
   - sphinx-autoapi
   - sphinx-book-theme
