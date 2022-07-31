@@ -3,57 +3,71 @@ Software Stack
 
 A detailed description of each component of the HyRiver software stack.
 
-.. panels::
-    :container: container-lg pb-3
-    :body: text-center
-    :column: col-lg-3 col-md-3 col-sm-4 col-xs-6 p-2
+.. grid::
+    :gutter: 3
 
-    .. link-button:: readme/pynhd
-        :type: ref
-        :text: PyNHD
-        :classes: stretched-link
+    .. grid-item-card::
 
-    ---
+        .. button-link:: readme/pynhd.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    .. link-button:: readme/pygeohydro
-        :type: ref
-        :text: PyGeoHydro
-        :classes: stretched-link
+            PyNHD
 
-    ---
+    .. grid-item-card::
 
-    .. link-button:: readme/py3dep
-        :type: ref
-        :text: Py3DEP
-        :classes: stretched-link
+        .. button-link:: readme/pygeohydro.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    ---
+            PyGeoHydro
 
-    .. link-button:: readme/pydaymet
-        :type: ref
-        :text: PyDaymet
-        :classes: stretched-link
+    .. grid-item-card::
 
-    ---
+        .. button-link:: readme/py3dep.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    .. link-button:: readme/async_retriever
-        :type: ref
-        :text: AsyncRetriever
-        :classes: stretched-link
+            Py3DEP
 
-    ---
+    .. grid-item-card::
 
-    .. link-button:: readme/pygeoogc
-        :type: ref
-        :text: PyGeoOGC
-        :classes: stretched-link
+        .. button-link:: readme/pydaymet.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    ---
+            PyDaymet
 
-    .. link-button:: readme/pygeoutils
-        :type: ref
-        :text: PyGeoUtils
-        :classes: stretched-link
+    .. grid-item-card::
+
+        .. button-link:: readme/async_retriever.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            AsyncRetriever
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pygeoogc.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGeoOGC
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pygeoutils.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGeoUtils
 
 .. toctree::
     :maxdepth: 1

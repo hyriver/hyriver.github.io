@@ -87,10 +87,7 @@ web services. HyRiver includes two categories of packages:
 
 You can watch these videos for a quick overview of HyRiver capabilities:
 
-* `Pangeo Showcase <https://discourse.pangeo.io/t/may-26-2021-accessing-hydrology-and-climatology-database-using-web-services-through-python/1521>`__
-* `ESIP IT&I <https://youtu.be/Wz8Y5G9oy-M?t=1838>`__
-* `WaterHackWeek 2020 <https://www.youtube.com/watch?v=VRQ_Tk49s5Y>`__
-* `UH Seminar <https://www.youtube.com/watch?v=RSyFv9AfUb8>`__
+.. include:: videos-gallery.txt
 
 Citation
 ========
@@ -111,63 +108,63 @@ If you use any of HyRiver packages in your research, we appreciate citations:
         year = {2021}
     }
 
-.. panels::
-    :column: col-lg-12 p-2
+.. grid::
 
-    **High-level APIs for accessing some pre-configured web services**
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    .. grid-item-card:: High-level APIs for accessing some pre-configured web services
 
-    .. tabbed:: PyNHD
+        .. tab-set::
 
-        Navigate and subset mid- and high-res NHD, NHDPlus, and NHDPlus VAA
-        using WaterData, NLDI, ScienceBase, and The National Map web services.
+            .. tab-item:: PyNHD
 
-        |pynhd| |pynhd_stat|
+                Navigate and subset mid- and high-res NHD, NHDPlus, and NHDPlus VAA
+                using WaterData, NLDI, ScienceBase, and The National Map web services.
 
-    .. tabbed:: PyGeoHydro
+                |pynhd| |pynhd_stat|
 
-        Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases.
+            .. tab-item:: PyGeoHydro
 
-        |pygeohydro| |pygeohydro_stat|
+                Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases.
 
-    .. tabbed:: Py3DEP
+                |pygeohydro| |pygeohydro_stat|
 
-        Access topographic data through The National Map's 3DEP web service.
+            .. tab-item:: Py3DEP
 
-        |py3dep| |py3dep_stat|
+                Access topographic data through The National Map's 3DEP web service.
 
-    .. tabbed:: PyDaymet
+                |py3dep| |py3dep_stat|
 
-        Access Daymet for daily, monthly and annual summaries of climate data
-        at 1-km scale for both single pixels and gridded.
+            .. tab-item:: PyDaymet
 
-        |pydaymet| |pydaymet_stat|
+                Access Daymet for daily, monthly and annual summaries of climate data
+                at 1-km scale for both single pixels and gridded.
 
-.. panels::
-    :column: col-lg-12 p-2
+                |pydaymet| |pydaymet_stat|
 
-    **Low-level APIs for connecting to supported web service protocols**
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. grid::
 
-    .. tabbed:: PyGeoOGC
+    .. grid-item-card:: Low-level APIs for connecting to supported web service protocols
 
-        Send queries to and receive responses from any ArcGIS RESTful-, WMS-,
-        and WFS-based services.
+        .. tab-set::
 
-        |pygeoogc| |pygeoogc_stat|
+            .. tab-item:: PyGeoOGC
 
-    .. tabbed:: PyGeoUtils
+                Send queries to and receive responses from any ArcGIS RESTful-, WMS-,
+                and WFS-based services.
 
-        Convert responses from PyGeoOGC's supported web services protocols into
-        geospatial and raster datasets.
+                |pygeoogc| |pygeoogc_stat|
 
-        |pygeoutils| |pygeoutils_stat|
+            .. tab-item:: PyGeoUtils
 
-    .. tabbed:: AsyncRetriever
+                Convert responses from PyGeoOGC's supported web services protocols into
+                geospatial and raster datasets.
 
-        Asynchronous send/receive requests with persistent caching.
+                |pygeoutils| |pygeoutils_stat|
 
-        |async| |async_stat|
+            .. tab-item:: AsyncRetriever
+
+                Asynchronous send/receive requests with persistent caching.
+
+                |async| |async_stat|
 
 .. toctree::
     :maxdepth: 1

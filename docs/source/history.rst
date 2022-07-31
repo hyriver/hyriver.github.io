@@ -1,57 +1,71 @@
-Changelogs
-==========
+Release Notes
+=============
 
-.. panels::
-    :container: container-lg pb-3
-    :body: text-center
-    :column: col-lg-3 col-md-3 col-sm-4 col-xs-6 p-2
+.. grid::
+    :gutter: 3
 
-    .. link-button:: changelogs/pynhd
-        :type: ref
-        :text: PyNHD
-        :classes: stretched-link
+    .. grid-item-card::
 
-    ---
+        .. button-link:: changelogs/pynhd.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    .. link-button:: changelogs/pygeohydro
-        :type: ref
-        :text: PyGeoHydro
-        :classes: stretched-link
+            PyNHD
 
-    ---
+    .. grid-item-card::
 
-    .. link-button:: changelogs/py3dep
-        :type: ref
-        :text: Py3DEP
-        :classes: stretched-link
+        .. button-link:: changelogs/pygeohydro.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    ---
+            PyGeoHydro
 
-    .. link-button:: changelogs/pydaymet
-        :type: ref
-        :text: PyDaymet
-        :classes: stretched-link
+    .. grid-item-card::
 
-    ---
+        .. button-link:: changelogs/py3dep.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    .. link-button:: changelogs/async_retriever
-        :type: ref
-        :text: AsyncRetriever
-        :classes: stretched-link
+            Py3DEP
 
-    ---
+    .. grid-item-card::
 
-    .. link-button:: changelogs/pygeoogc
-        :type: ref
-        :text: PyGeoOGC
-        :classes: stretched-link
+        .. button-link:: changelogs/pydaymet.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
 
-    ---
+            PyDaymet
 
-    .. link-button:: changelogs/pygeoutils
-        :type: ref
-        :text: PyGeoUtils
-        :classes: stretched-link
+    .. grid-item-card::
+
+        .. button-link:: changelogs/async_retriever.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            AsyncRetriever
+
+    .. grid-item-card::
+
+        .. button-link:: changelogs/pygeoogc.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGeoOGC
+
+    .. grid-item-card::
+
+        .. button-link:: changelogs/pygeoutils.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGeoUtils
 
 .. toctree::
     :maxdepth: 1
