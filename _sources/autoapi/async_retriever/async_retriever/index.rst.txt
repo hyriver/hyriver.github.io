@@ -155,7 +155,7 @@ Module Contents
    Send async requests.
 
    :Parameters: * **urls** (:class:`list` of :class:`str`) -- List of URLs.
-                * **file_paths** (:class:`list` of :class:`str` or :class:`~~pathlib.Path`) -- List of file paths to write the response to.
+                * **file_paths** (:class:`list` of :class:`str` or :class:`~~Path`) -- List of file paths to write the response to.
                 * **request_kwds** (:class:`list` of :class:`dict`, *optional*) -- List of requests keywords corresponding to input URLs (1 on 1 mapping),
                   defaults to ``None``. For example, ``[{"params": {...}, "headers": {...}}, ...]``.
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.

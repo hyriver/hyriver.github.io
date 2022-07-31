@@ -130,7 +130,7 @@ Module Contents
 
    More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
 
-   :Parameters: **parquet_path** (:class:`str` or :class:`~~pathlib.Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
                 later use.
 
    :returns: :class:`pandas.DataFrame` -- The staged data as a DataFrame.

@@ -330,9 +330,7 @@ will be the only way to access the database. Let's compare the two, starting by
 
     pygeoapi = PyGeoAPI()
 
-    trace = pygeoapi.flow_trace(
-        (1774209.63, 856381.68), crs="ESRI:102003", direction="none"
-    )
+    trace = pygeoapi.flow_trace((1774209.63, 856381.68), crs="ESRI:102003", direction="none")
 
     split = pygeoapi.split_catchment((-73.82705, 43.29139), crs="epsg:4326", upstream=False)
 
@@ -343,9 +341,7 @@ will be the only way to access the database. Let's compare the two, starting by
         crs="epsg:4326",
     )
 
-    section = pygeoapi.cross_section(
-        (-103.80119, 40.2684), width=1000.0, numpts=101, crs="epsg:4326"
-    )
+    section = pygeoapi.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs="epsg:4326")
 
 Now, let's do the same operations using ``pygeoapi``:
 

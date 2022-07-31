@@ -12,9 +12,9 @@
   
 <meta property="og:url" content="https://hyriver.readthedocs.io/en/getting_started.html" />
   
-<meta property="og:description" content="Why HyRiver?: Some of the major capabilities of HyRiver are as follows: Easy access to many web services for subsetting data on server-side and returning the requests as masked Datasets or GeoDataF..." />
+<meta property="og:description" content="Why HyRiver?: Some major capabilities of HyRiver are as follows: Easy access to many web services for subsetting data on server-side and returning the requests as masked Datasets or GeoDataFrames.,..." />
   
-<meta property="og:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+<meta property="og:image" content="https://raw.githubusercontent.com/hyriver/hyriver.github.io/main/docs/source/_static/hydriver_logo.png" />
   
 <meta property="og:image:alt" content="Getting Started" />
   
@@ -22,7 +22,7 @@
 <meta name="twitter:site" content="@_taher_" />
 <meta name="twitter:creator" content="@_taher_" />
 <meta name="twitter:description" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cheginit/HyRiver/main/docs/source/_static/hydriver_logo.png" />
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hyriver/hyriver.github.io/main/docs/source/_static/hydriver_logo.png" />
 <meta name="twitter:image:alt" content="HyRiver is a suite of Python packages that provides a unified API for retrieving geospatial/temporal data from various web services." />
     <title>Getting Started</title>
     
@@ -42,11 +42,8 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -58,8 +55,10 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="canonical" href="https://docs.hyriver.io/getting_started.html" />
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -186,112 +185,112 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/3dep.html">
+    <a class="reference internal" href="examples/notebooks/3dep.html">
      Topographic Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/aridity.html">
+    <a class="reference internal" href="examples/notebooks/aridity.html">
      Aridity
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/columbia.html">
+    <a class="reference internal" href="examples/notebooks/columbia.html">
      Dams in Columbia River Network
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/cross_section.html">
+    <a class="reference internal" href="examples/notebooks/cross_section.html">
      River Elevation and Cross-Section
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/dam_impact.html">
+    <a class="reference internal" href="examples/notebooks/dam_impact.html">
      Working with Geospatial Hydrologic Data Using Web Services
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/daymet.html">
+    <a class="reference internal" href="examples/notebooks/daymet.html">
      Climate Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/geoconnex.html">
+    <a class="reference internal" href="examples/notebooks/geoconnex.html">
      GeoConnex
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/hymod_calibration.html">
+    <a class="reference internal" href="examples/notebooks/hymod_calibration.html">
      Hydrological Modeling
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/ndvi.html">
+    <a class="reference internal" href="examples/notebooks/ndvi.html">
      NDVI
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/nhdplus.html">
+    <a class="reference internal" href="examples/notebooks/nhdplus.html">
      River Network
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/nid.html">
+    <a class="reference internal" href="examples/notebooks/nid.html">
      National Inventory of Dams
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/nid_dib.html">
+    <a class="reference internal" href="examples/notebooks/nid_dib.html">
      Spatiotemporal Distribution of Dams
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/nlcd.html">
+    <a class="reference internal" href="examples/notebooks/nlcd.html">
      Land Use/Land Cover
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/noaa.html">
+    <a class="reference internal" href="examples/notebooks/noaa.html">
      Water Levels and Tides
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/nwis.html">
+    <a class="reference internal" href="examples/notebooks/nwis.html">
      River Discharge
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/pet_validation.html">
+    <a class="reference internal" href="examples/notebooks/pet_validation.html">
      Computing PET
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/pygeoapi.html">
+    <a class="reference internal" href="examples/notebooks/pygeoapi.html">
      Split Catchment with PyGeoAPI
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/rem.html">
+    <a class="reference internal" href="examples/notebooks/rem.html">
      Relative Elevation Model
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/ssebop.html">
+    <a class="reference internal" href="examples/notebooks/ssebop.html">
      Actual Evapotranspiration
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/us_coasts.html">
+    <a class="reference internal" href="examples/notebooks/us_coasts.html">
      CONUS Coasts
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/water_quality.html">
+    <a class="reference internal" href="examples/notebooks/water_quality.html">
      Water Quality Portal
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/webservices.html">
+    <a class="reference internal" href="examples/notebooks/webservices.html">
      Web Services Queries
     </a>
    </li>
@@ -577,7 +576,7 @@
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="history.html">
-   Changelogs
+   Release Notes
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -706,7 +705,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/cheginit/HyRiver"
+        <a href="https://github.com/hyriver/hyriver.github.io"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -723,7 +722,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/cheginit/HyRiver/issues/new?title=Issue%20on%20page%20%2Fgetting_started.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/hyriver/hyriver.github.io/issues/new?title=Issue%20on%20page%20%2Fgetting_started.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -740,7 +739,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/cheginit/HyRiver/edit/main/docs/getting_started.rst"
+        <a href="https://github.com/hyriver/hyriver.github.io/edit/main/docs/getting_started.rst"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -844,7 +843,7 @@ title="Edit this page"
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h1>
 <section id="why-hyriver">
 <h2>Why HyRiver?<a class="headerlink" href="#why-hyriver" title="Permalink to this headline">#</a></h2>
-<p>Some of the major capabilities of HyRiver are as follows:</p>
+<p>Some major capabilities of HyRiver are as follows:</p>
 <ul class="simple">
 <li><p>Easy access to many web services for subsetting data on server-side and returning the requests
 as masked Datasets or GeoDataFrames.</p></li>
@@ -854,14 +853,14 @@ is your local machine memory.</p></li>
 <li><p>Navigating and subsetting NHDPlus database (both medium- and high-resolution) using web services.</p></li>
 <li><p>Cleaning up the vector NHDPlus data, fixing some common issues, and computing vector-based
 accumulation through a river network.</p></li>
-<li><p>A URL inventory for some of the popular (and tested) web services.</p></li>
+<li><p>A URL inventory for some popular (and tested) web services.</p></li>
 <li><p>Some utilities for manipulating the obtained data and their visualization.</p></li>
 </ul>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
 <p>You can install all the packages using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 </pre></div>
 </div>
 <p>Please note that installation with <code class="docutils literal notranslate"><span class="pre">pip</span></code> fails if <code class="docutils literal notranslate"><span class="pre">libgdal</span></code> is not installed on your system.
@@ -870,163 +869,146 @@ the required package is <code class="docutils literal notranslate"><span class="
 you should be able to run <code class="docutils literal notranslate"><span class="pre">gdal-config</span> <span class="pre">--version</span></code> successfully.</p>
 <p>Alternatively, you can use <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">mamba</span></code> (recommended) to install these packages from
 the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> repository:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 </pre></div>
 </div>
 </section>
 <section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">#</a></h2>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<div class="tabbed-set docutils">
-<input checked="checked" id="2a75bb3c-0262-400f-b3be-b833372922d8" name="686b55bf-a40f-4260-8849-c02e007ee999" type="radio">
-</input><label class="tabbed-label" for="2a75bb3c-0262-400f-b3be-b833372922d8">
-PyNHD</label><div class="tabbed-content docutils">
+<div class="sd-tab-set docutils">
+<input checked="checked" id="d25c820f-89c1-4306-abec-797d27a60f9e" name="a56f86a8-5da9-42e7-95bc-bf0d2172bbf5" type="radio">
+</input><label class="sd-tab-label" for="d25c820f-89c1-4306-abec-797d27a60f9e">
+PyNHD</label><div class="sd-tab-content docutils">
 <ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">async_retriever</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">networkx</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pyarrow</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">requests</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">simplejson</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">async-retriever</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">networkx</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyarrow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requests</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">simplejson</span></code></p></li>
 </ul>
 </div>
-<input id="72250c85-16d6-4b24-b68d-0e82a39cd631" name="686b55bf-a40f-4260-8849-c02e007ee999" type="radio">
-</input><label class="tabbed-label" for="72250c85-16d6-4b24-b68d-0e82a39cd631">
-PyGeoHydro</label><div class="tabbed-content docutils">
+<input id="a6422964-50a6-49cd-a65b-83ebcd2e9731" name="a56f86a8-5da9-42e7-95bc-bf0d2172bbf5" type="radio">
+</input><label class="sd-tab-label" for="a6422964-50a6-49cd-a65b-83ebcd2e9731">
+PyGeoHydro</label><div class="sd-tab-content docutils">
 <ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">async_retriever</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">defusedxml</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">folium</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">lxml</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">openpyxl</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pynhd</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">async-retriever</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defusedxml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">folium</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h5netcdf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lxml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proplot</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pynhd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
 </ul>
 </div>
-<input id="0e25bf9f-55d4-4336-a78d-42a877075883" name="686b55bf-a40f-4260-8849-c02e007ee999" type="radio">
-</input><label class="tabbed-label" for="0e25bf9f-55d4-4336-a78d-42a877075883">
-Py3DEP</label><div class="tabbed-content docutils">
+<input id="cf570cc6-c082-4e4a-bdab-f7ac4ac9d874" name="a56f86a8-5da9-42e7-95bc-bf0d2172bbf5" type="radio">
+</input><label class="sd-tab-label" for="cf570cc6-c082-4e4a-bdab-f7ac4ac9d874">
+Py3DEP</label><div class="sd-tab-content docutils">
 <ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">async_retriever</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">click</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pydantic</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">async-retriever</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">click</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rioxarray</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
 </ul>
 </div>
-<input id="d6363186-ef6a-4dcb-9506-5647ac1e62cc" name="686b55bf-a40f-4260-8849-c02e007ee999" type="radio">
-</input><label class="tabbed-label" for="d6363186-ef6a-4dcb-9506-5647ac1e62cc">
-PyDaymet</label><div class="tabbed-content docutils">
+<input id="c65b2d5e-22c8-403e-8aa7-0f29e8f45df8" name="a56f86a8-5da9-42e7-95bc-bf0d2172bbf5" type="radio">
+</input><label class="sd-tab-label" for="c65b2d5e-22c8-403e-8aa7-0f29e8f45df8">
+PyDaymet</label><div class="sd-tab-content docutils">
 <ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">async_retriever</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">click</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">dask</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">lxml</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">py3dep</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<div class="tabbed-set docutils">
-<input checked="checked" id="fddf0f52-0754-44f1-bb6f-381cea60da23" name="579ea958-1cb9-471f-9b93-8bb3cdfac9b2" type="radio">
-</input><label class="tabbed-label" for="fddf0f52-0754-44f1-bb6f-381cea60da23">
-PyGeoOGC</label><div class="tabbed-content docutils">
-<ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">async_retriever</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">defusedxml</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">owslib</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pydantic</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pyproj</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pyyaml</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">requests</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">simplejson</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">urllib3</span></code></p></li>
-</ul>
-</div>
-<input id="f95a61f9-04f2-4c52-84ec-5816b727541f" name="579ea958-1cb9-471f-9b93-8bb3cdfac9b2" type="radio">
-</input><label class="tabbed-label" for="f95a61f9-04f2-4c52-84ec-5816b727541f">
-PyGeoUtils</label><div class="tabbed-content docutils">
-<ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">affine</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">dask</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">netcdf4</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">orjson</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">pyproj</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
-</ul>
-</div>
-<input id="0dea904b-2dc7-477a-ac7e-7ff866339922" name="579ea958-1cb9-471f-9b93-8bb3cdfac9b2" type="radio">
-</input><label class="tabbed-label" for="0dea904b-2dc7-477a-ac7e-7ff866339922">
-AsyncRetriever</label><div class="tabbed-content docutils">
-<ul class="simple">
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">aiohttp-client-cache</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">aiohttp[speedups]</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">nest-asyncio</span></code></p></li>
-<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">orjson</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">async-retriever</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">click</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dask</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lxml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">py3dep</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pydantic</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoogc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeoutils</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
 </ul>
 </div>
 </div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="490e7d95-3c95-4c4b-916d-8ee16c1e940c" name="614d856f-0fc4-44e7-907d-1e72a0f32c52" type="radio">
+</input><label class="sd-tab-label" for="490e7d95-3c95-4c4b-916d-8ee16c1e940c">
+PyGeoOGC</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">async-retriever</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defusedxml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">owslib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pydantic</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyproj</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyyaml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requests</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requests-cache</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">urllib3</span></code></p></li>
+</ul>
+</div>
+<input id="3d401963-9c63-4875-8d7e-20469f5465d1" name="614d856f-0fc4-44e7-907d-1e72a0f32c52" type="radio">
+</input><label class="sd-tab-label" for="3d401963-9c63-4875-8d7e-20469f5465d1">
+PyGeoUtils</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dask</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geopandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">netcdf4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pygeos</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyproj</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rioxarray</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shapely</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ujson</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
+</ul>
+</div>
+<input id="5981cd91-ddb8-41fe-8574-13a246e2b415" name="614d856f-0fc4-44e7-907d-1e72a0f32c52" type="radio">
+</input><label class="sd-tab-label" for="5981cd91-ddb8-41fe-8574-13a246e2b415">
+AsyncRetriever</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aiohttp-client-cache</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiohttp[speedups]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiosqlite</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cytoolz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nest-asyncio</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ujson</span></code></p></li>
+</ul>
 </div>
 </div>
-</div>
-</div>
-</div>
-<p>Additionally, you can also install <code class="docutils literal notranslate"><span class="pre">bottleneck</span></code>, <code class="docutils literal notranslate"><span class="pre">pygeos</span></code>, and <code class="docutils literal notranslate"><span class="pre">rtree</span></code> to improve
-performance of <code class="docutils literal notranslate"><span class="pre">xarray</span></code> and <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>. For handling vector and
-raster data projections, <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> and <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> are useful.</p>
+<p>Additionally, you can also install <code class="docutils literal notranslate"><span class="pre">bottleneck</span></code> to improve performance of
+<code class="docutils literal notranslate"><span class="pre">xarray</span></code>. For handling vector and raster data projections, <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> are useful.</p>
 </section>
 </section>
 
@@ -1062,7 +1044,7 @@ raster data projections, <code class="docutils literal notranslate"><span class=
     By Taher Chegini<br/>
   
       &copy; Copyright 2019-2022, Taher Chegini.<br/>
-    Last updated on 2022-07-30.<br/>
+    Last updated on 2022-07-31.<br/>
 </p>
         </footer>
     </div>

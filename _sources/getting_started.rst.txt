@@ -7,7 +7,7 @@ Getting Started
 Why HyRiver?
 ------------
 
-Some of the major capabilities of HyRiver are as follows:
+Some major capabilities of HyRiver are as follows:
 
 * Easy access to many web services for subsetting data on server-side and returning the requests
   as masked Datasets or GeoDataFrames.
@@ -17,7 +17,7 @@ Some of the major capabilities of HyRiver are as follows:
 * Navigating and subsetting NHDPlus database (both medium- and high-resolution) using web services.
 * Cleaning up the vector NHDPlus data, fixing some common issues, and computing vector-based
   accumulation through a river network.
-* A URL inventory for some of the popular (and tested) web services.
+* A URL inventory for some popular (and tested) web services.
 * Some utilities for manipulating the obtained data and their visualization.
 
 Installation
@@ -27,7 +27,7 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 
 Please note that installation with ``pip`` fails if ``libgdal`` is not installed on your system.
 You should install this package manually beforehand. For example, on Ubuntu-based distros
@@ -39,23 +39,22 @@ the ``conda-forge`` repository:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 
 or:
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 
 Dependencies
 ------------
 
-.. panels::
-    :column: col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2
+.. tab-set::
 
-    .. tabbed:: PyNHD
+    .. tab-item:: PyNHD
 
-        - ``async_retriever``
+        - ``async-retriever``
         - ``cytoolz``
         - ``geopandas``
         - ``networkx``
@@ -68,29 +67,48 @@ Dependencies
         - ``shapely``
         - ``simplejson``
 
-    .. tabbed:: PyGeoHydro
+    .. tab-item:: PyGeoHydro
 
-        - ``async_retriever``
+        - ``async-retriever``
+        - ``cytoolz``
         - ``defusedxml``
         - ``folium``
         - ``geopandas``
+        - ``h5netcdf``
         - ``lxml``
-        - ``matplotlib``
         - ``numpy``
-        - ``openpyxl``
         - ``pandas``
+        - ``proplot``
         - ``pygeoogc``
         - ``pygeoutils``
         - ``pynhd``
         - ``rasterio``
+        - ``scipy``
         - ``shapely``
 
-    .. tabbed:: Py3DEP
+    .. tab-item:: Py3DEP
 
-        - ``async_retriever``
+        - ``async-retriever``
         - ``click``
         - ``cytoolz``
         - ``numpy``
+        - ``pygeoogc``
+        - ``pygeoutils``
+        - ``rasterio``
+        - ``rioxarray``
+        - ``scipy``
+        - ``shapely``
+        - ``xarray``
+
+    .. tab-item:: PyDaymet
+
+        - ``async-retriever``
+        - ``click``
+        - ``dask``
+        - ``lxml``
+        - ``numpy``
+        - ``pandas``
+        - ``py3dep``
         - ``pydantic``
         - ``pygeoogc``
         - ``pygeoutils``
@@ -99,28 +117,11 @@ Dependencies
         - ``shapely``
         - ``xarray``
 
-    .. tabbed:: PyDaymet
+.. tab-set::
 
-        - ``async_retriever``
-        - ``click``
-        - ``dask``
-        - ``lxml``
-        - ``numpy``
-        - ``pandas``
-        - ``py3dep``
-        - ``pygeoogc``
-        - ``pygeoutils``
-        - ``rasterio``
-        - ``scipy``
-        - ``shapely``
-        - ``xarray``
+    .. tab-item:: PyGeoOGC
 
-.. panels::
-    :column: col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2
-
-    .. tabbed:: PyGeoOGC
-
-        - ``async_retriever``
+        - ``async-retriever``
         - ``cytoolz``
         - ``defusedxml``
         - ``owslib``
@@ -128,33 +129,33 @@ Dependencies
         - ``pyproj``
         - ``pyyaml``
         - ``requests``
+        - ``requests-cache``
         - ``shapely``
-        - ``simplejson``
         - ``urllib3``
 
-    .. tabbed:: PyGeoUtils
+    .. tab-item:: PyGeoUtils
 
-        - ``affine``
         - ``dask``
         - ``geopandas``
         - ``netcdf4``
         - ``numpy``
-        - ``orjson``
-        - ``pygeoogc``
+        - ``pygeos``
         - ``pyproj``
         - ``rasterio``
+        - ``rioxarray``
+        - ``scipy``
         - ``shapely``
+        - ``ujson``
         - ``xarray``
 
-    .. tabbed:: AsyncRetriever
+    .. tab-item:: AsyncRetriever
 
         - ``aiohttp-client-cache``
         - ``aiohttp[speedups]``
         - ``aiosqlite``
         - ``cytoolz``
         - ``nest-asyncio``
-        - ``orjson``
+        - ``ujson``
 
-Additionally, you can also install ``bottleneck``, ``pygeos``, and ``rtree`` to improve
-performance of ``xarray`` and ``geopandas``. For handling vector and
-raster data projections, ``cartopy`` and ``rioxarray`` are useful.
+Additionally, you can also install ``bottleneck`` to improve performance of
+``xarray``. For handling vector and raster data projections, ``cartopy`` are useful.

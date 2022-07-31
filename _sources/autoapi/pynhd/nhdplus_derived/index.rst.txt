@@ -23,7 +23,7 @@ Module Contents
    Although this dataframe does not include geometry, it can be linked to other geospatial
    NHDPlus dataframes through ComIDs.
 
-   :Parameters: **parquet_path** (:class:`str` or :class:`~~pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
                 ``./cache/enhd_attrs.parquet``.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million NHDPlus flowlines.
@@ -42,7 +42,7 @@ Module Contents
 
    :Parameters: * **name** (:class:`str`, *optional*) -- Name of the NHDPlus attribute, defaults to None which returns a dataframe containing
                   metadata of all the available attributes in the database.
-                * **parquet_path** (:class:`str` or :class:`~~pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
+                * **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
                   later use. Defaults to ``./cache/nhdplus_attrs.parquet``.
 
    :returns: :class:`pandas.DataFrame` -- Either a dataframe containing the database metadata or the requested attribute over CONUS.
@@ -59,7 +59,7 @@ Module Contents
    Although this dataframe does not include geometry, it can be linked to other geospatial
    NHDPlus dataframes through ComIDs.
 
-   :Parameters: **parquet_path** (:class:`str` or :class:`~~pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
                 ``./cache/nldplus_vaa.parquet``.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million NHDPlus flowlines.

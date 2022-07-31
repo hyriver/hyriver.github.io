@@ -1,1 +1,0 @@
-{"path": "../../../HyRiver-Examples/notebooks/pygeoapi.ipynb"}

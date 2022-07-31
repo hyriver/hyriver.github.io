@@ -85,12 +85,9 @@ web services. HyRiver includes two categories of packages:
   climatology studies. Currently, this project only includes hydrology and climatology data
   within the US.
 
-You can watch these videos for a quick overview of ``HyRiver`` capabilities:
+You can watch these videos for a quick overview of HyRiver capabilities:
 
-* `Pangeo Showcase <https://discourse.pangeo.io/t/may-26-2021-accessing-hydrology-and-climatology-database-using-web-services-through-python/1521>`__
-* `ESIP IT&I <https://youtu.be/Wz8Y5G9oy-M?t=1838>`__
-* `WaterHackWeek 2020 <https://www.youtube.com/watch?v=VRQ_Tk49s5Y>`__
-* `UH Seminar <https://www.youtube.com/watch?v=RSyFv9AfUb8>`__
+.. include:: videos-gallery.txt
 
 Citation
 ========
@@ -111,6 +108,64 @@ If you use any of HyRiver packages in your research, we appreciate citations:
         year = {2021}
     }
 
+.. grid::
+
+    .. grid-item-card:: High-level APIs for accessing some pre-configured web services
+
+        .. tab-set::
+
+            .. tab-item:: PyNHD
+
+                Navigate and subset mid- and high-res NHD, NHDPlus, and NHDPlus VAA
+                using WaterData, NLDI, ScienceBase, and The National Map web services.
+
+                |pynhd| |pynhd_stat|
+
+            .. tab-item:: PyGeoHydro
+
+                Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases.
+
+                |pygeohydro| |pygeohydro_stat|
+
+            .. tab-item:: Py3DEP
+
+                Access topographic data through The National Map's 3DEP web service.
+
+                |py3dep| |py3dep_stat|
+
+            .. tab-item:: PyDaymet
+
+                Access Daymet for daily, monthly and annual summaries of climate data
+                at 1-km scale for both single pixels and gridded.
+
+                |pydaymet| |pydaymet_stat|
+
+.. grid::
+
+    .. grid-item-card:: Low-level APIs for connecting to supported web service protocols
+
+        .. tab-set::
+
+            .. tab-item:: PyGeoOGC
+
+                Send queries to and receive responses from any ArcGIS RESTful-, WMS-,
+                and WFS-based services.
+
+                |pygeoogc| |pygeoogc_stat|
+
+            .. tab-item:: PyGeoUtils
+
+                Convert responses from PyGeoOGC's supported web services protocols into
+                geospatial and raster datasets.
+
+                |pygeoutils| |pygeoutils_stat|
+
+            .. tab-item:: AsyncRetriever
+
+                Asynchronous send/receive requests with persistent caching.
+
+                |async| |async_stat|
+
 .. toctree::
     :maxdepth: 1
     :hidden:
@@ -128,61 +183,3 @@ If you use any of HyRiver packages in your research, we appreciate citations:
     contributing
     authors
     license
-
-.. panels::
-    :column: col-lg-12 p-2
-
-    **High-level APIs for accessing some pre-configured web services**
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    .. tabbed:: PyNHD
-
-        Navigate and subset mid- and high-res NHD, NHDPlus, and NHDPlus VAA
-        using WaterData, NLDI, ScienceBase, and The National Map web services.
-
-        |pynhd| |pynhd_stat|
-
-    .. tabbed:: PyGeoHydro
-
-        Access NWIS, NID, HCDN 2009, NLCD, and SSEBop databases.
-
-        |pygeohydro| |pygeohydro_stat|
-
-    .. tabbed:: Py3DEP
-
-        Access topographic data through The National Map's 3DEP web service.
-
-        |py3dep| |py3dep_stat|
-
-    .. tabbed:: PyDaymet
-
-        Access Daymet for daily, monthly and annual summaries of climate data
-        at 1-km scale for both single pixels and gridded.
-
-        |pydaymet| |pydaymet_stat|
-
-.. panels::
-    :column: col-lg-12 p-2
-
-    **Low-level APIs for connecting to supported web service protocols**
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    .. tabbed:: PyGeoOGC
-
-        Send queries to and receive responses from any ArcGIS RESTful-, WMS-,
-        and WFS-based services.
-
-        |pygeoogc| |pygeoogc_stat|
-
-    .. tabbed:: PyGeoUtils
-
-        Convert responses from PyGeoOGC's supported web services protocols into
-        geospatial and raster datasets.
-
-        |pygeoutils| |pygeoutils_stat|
-
-    .. tabbed:: AsyncRetriever
-
-        Asynchronous send/receive requests with persistent caching.
-
-        |async| |async_stat|
