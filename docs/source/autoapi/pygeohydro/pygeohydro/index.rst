@@ -85,7 +85,7 @@ Module Contents
       Texas City
 
 
-   .. py:method:: inventory_byid(dam_ids)
+   .. py:method:: inventory_byid(dam_ids, stage_nid = False)
 
       Get extra attributes for dams based on their dam ID.
 
@@ -97,8 +97,12 @@ Module Contents
       to get extra attributes using the ``id`` column of the ``GeoDataFrame``
       that ``get_bygeom`` or ``get_byfilter`` returns.
 
-      :Parameters: **dam_ids** (:class:`list` of :class:`int` or :class:`str`) -- List of the target dam IDs (digists only). Note that the dam IDs are not the
-                   same as the NID IDs.
+      :Parameters: * **dam_ids** (:class:`list` of :class:`int` or :class:`str`) -- List of the target dam IDs (digists only). Note that the dam IDs are not the
+                     same as the NID IDs.
+                   * **stage_nid** (:class:`bool`, *optional*) -- Whether to get the entire NID and then query locally or query from the
+                     NID web service which tends to be very slow for large number of requests.
+                     Defaults to ``False``. The staged NID database is saved as a `feather` file
+                     in `./cache/nid_inventory.feather`.
 
       :returns: :class:`pandas.DataFrame` -- Dams with extra attributes in addition to the standard NID fields
                 that other ``NID`` methods return.
@@ -110,6 +114,14 @@ Module Contents
       >>> dams = nid.inventory_byid([514871, 459170, 514868, 463501, 463498])
       >>> print(dams.damHeight.max())
       120.0
+
+
+   .. py:method:: stage_nid_inventory(fname = None)
+
+      Download the entire NID inventory data and save to a feather file.
+
+      :Parameters: **fname** (:class:`str`, :class:`pathlib.Path`, *optional*) -- The path to the file to save the data to, defaults to
+                   ``./cache/nid_inventory.feather``.
 
 
 
