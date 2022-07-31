@@ -22,7 +22,7 @@
 	path = pydaymet
 	url = https://github.com/hyriver/pydaymet.git
 	branch = main
-[submodule "examples"]
+[submodule "docs/source/examples"]
 	path = docs/source/examples
 	url = https://github.com/hyriver/HyRiver-examples
 	branch = main
