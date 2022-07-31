@@ -1,32 +1,32 @@
 [submodule "pygeoogc"]
 	path = pygeoogc
-	url = https://github.com/cheginit/pygeoogc.git
+	url = https://github.com/hyriver/pygeoogc.git
 	branch = main
 [submodule "pygeoutils"]
 	path = pygeoutils
-	url = https://github.com/cheginit/pygeoutils.git
+	url = https://github.com/hyriver/pygeoutils.git
 	branch = main
 [submodule "pynhd"]
 	path = pynhd
-	url = https://github.com/cheginit/pynhd.git
+	url = https://github.com/hyriver/pynhd.git
 	branch = main
 [submodule "py3dep"]
 	path = py3dep
-	url = https://github.com/cheginit/py3dep.git
+	url = https://github.com/hyriver/py3dep.git
 	branch = main
 [submodule "pygeohydro"]
 	path = pygeohydro
-	url = https://github.com/cheginit/pygeohydro.git
+	url = https://github.com/hyriver/pygeohydro.git
 	branch = main
 [submodule "pydaymet"]
 	path = pydaymet
-	url = https://github.com/cheginit/pydaymet.git
+	url = https://github.com/hyriver/pydaymet.git
 	branch = main
-[submodule "HyRiver-Examples"]
-	path = HyRiver-Examples
-	url = https://github.com/cheginit/HyRiver-Examples
+[submodule "examples"]
+	path = docs/source/examples
+	url = https://github.com/hyriver/HyRiver-examples
 	branch = main
 [submodule "async_retriever"]
 	path = async_retriever
-	url = https://github.com/cheginit/async_retriever.git
+	url = https://github.com/hyriver/async_retriever.git
 	branch = main
