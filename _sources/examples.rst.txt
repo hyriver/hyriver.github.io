@@ -3,7 +3,7 @@ Example Gallery
 
 The following notebooks demonstrate capabilities of the HyRiver software stack.
 
-.. include:: example-gallery.txt
+.. include:: examples-gallery.txt
 
 .. toctree::
     :maxdepth: 1
