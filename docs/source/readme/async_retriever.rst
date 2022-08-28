@@ -89,10 +89,6 @@ it on your system by clicking on the binder badge. A Jupyter Lab
 instance with the HyRiver stack pre-installed will be launched in your web browser, and you
 can start coding!
 
-Please note that since this project is in the early development stages, while the provided
-functionalities should be stable, changes in APIs are possible in new releases. But we
-appreciate it if you give this project a try and provide feedback. Contributions are most welcome.
-
 Moreover, requests for additional functionalities can be submitted via
 `issue tracker <https://github.com/hyriver/async_retriever/issues>`__.
 
