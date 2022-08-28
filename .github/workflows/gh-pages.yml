@@ -38,6 +38,7 @@ jobs:
       with:
         environment-file: false
         environment-name: docs
+        channels: conda-forge,nodefaults
         extra-specs: |
           python>=3.10
           pandoc
