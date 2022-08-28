@@ -33,18 +33,15 @@ jobs:
       id: pages
       uses: actions/configure-pages@v1
 
-    - name: Set environment variables
-      run: |-
-        echo "TODAY=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-        echo "CONDA_ENV_FILE=docs/environment.yml" >> $GITHUB_ENV
-
     - name: Setup micromamba
       uses: mamba-org/provision-with-micromamba@main
       with:
-        environment-file: ${{ env.CONDA_ENV_FILE }}
-        environment-name: docs
-        cache-env: true
-        cache-env-key: "${{env.TODAY}}-${{hashFiles(env.CONDA_ENV_FILE)}}"
+        extra-specs: |
+          python>=3.10
+          pandoc
+    
+    - name: Install dependencies
+      run: pip install -r docs/requirements.txt
 
     - name: Build the website
       run: make docs-ci

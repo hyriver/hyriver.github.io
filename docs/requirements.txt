@@ -2,7 +2,7 @@ ipykernel
 ipython
 ipywidgets
 jupyter_client
-nbformat
+sphinxext-opengraph
 nbsphinx
 recommonmark
 sphinx
@@ -10,7 +10,6 @@ sphinx-autoapi
 sphinx-book-theme
 sphinx-book-theme
 sphinx-copybutton
-sphinx-design
 sphinx-gallery
+sphinx-design
 sphinxcontrib-bibtex
-sphinxext-opengraph

@@ -33,7 +33,6 @@ extensions = [
     "IPython.sphinxext.ipython_directive",
     "IPython.sphinxext.ipython_console_highlighting",
     "nbsphinx",
-    "recommonmark",
     "sphinxext.opengraph",
     "sphinx_copybutton",
     "sphinxcontrib.bibtex",
