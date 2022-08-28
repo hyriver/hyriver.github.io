@@ -39,12 +39,12 @@ jobs:
         repository: "jgm/pandoc"
         latest: true
         fileName: "pandoc-*-amd64.deb"
-    
+
     - name: Install pandoc
       run: |
         sudo dpkg -i pandoc-*-amd64.deb &&
         sudo apt install -f -y
- 
+
     - name: Setup python
       uses: actions/setup-python@v4
       with:

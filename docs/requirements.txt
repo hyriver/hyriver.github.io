@@ -2,12 +2,12 @@ ipykernel
 ipython
 ipywidgets
 jupyter_client
-sphinxext-opengraph
 nbsphinx
 sphinx
 sphinx-autoapi
 sphinx-book-theme
 sphinx-copybutton
-sphinx-gallery
 sphinx-design
+sphinx-gallery
 sphinxcontrib-bibtex
+sphinxext-opengraph
