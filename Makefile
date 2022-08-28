@@ -57,10 +57,6 @@ docs: ## generate Sphinx HTML documentation, including API docs then open in bro
 	$(BROWSER) docs/build/html/index.html
 
 docs-ci: ## generate Sphinx HTML documentation, including API docs but don't open browser
-	for f in $$(ls HyRiver-Examples/notebooks/*.ipynb);do \
-		fname=docs/source/notebooks/$$(basename $$f .ipynb).nblink; \
-		echo \{\"path\": \"../../../$$f\"\} > $$fname; \
-	done
 	for f in pynhd py3dep pygeohydro pydaymet async_retriever pygeoogc pygeoutils;do \
 		end=$$(grep -n Contributing $$f/README.rst | cut -d : -f 1); \
 		end=$$(expr $$end - 2); \
