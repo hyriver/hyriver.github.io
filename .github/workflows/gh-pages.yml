@@ -36,6 +36,7 @@ jobs:
     - name: Setup micromamba
       uses: mamba-org/provision-with-micromamba@main
       with:
+        environment-file: false
         extra-specs: |
           python>=3.10
           pandoc
