@@ -33,16 +33,23 @@ jobs:
       id: pages
       uses: actions/configure-pages@v1
 
-    - name: Setup micromamba
-      uses: mamba-org/provision-with-micromamba@main
+    - name: Download pandoc
+      uses: robinraju/release-downloader@v1.4
       with:
-        environment-file: false
-        environment-name: docs
-        channels: conda-forge,nodefaults
-        extra-specs: |
-          python>=3.10
-          pandoc
+        repository: "/jgm/pandoc"
+        latest: true
+        fileName: "pandoc-*-amd64.deb"
     
+    - name: Install pandoc
+      run: |
+        sudo dpkg -i pandoc-*-amd64.deb &&
+        sudo apt install -f -y
+ 
+    - name: Setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
     - name: Install dependencies
       run: pip install -r docs/requirements.txt
 
