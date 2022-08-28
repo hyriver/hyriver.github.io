@@ -12,25 +12,27 @@
 Module Contents
 ---------------
 
-.. py:function:: flowline_resample(flw, spacing)
+.. py:function:: flowline_resample(flw, spacing, id_col = 'comid')
 
    Resample a flowline based on a given spacing.
 
-   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``comid`` columns and CRS attribute.
+   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``id_col`` columns and CRS attribute.
                   The flowlines should be able to merged to a single ``LineString``.
                   Otherwise, you should use the :func:`network_resample` function.
                 * **spacing** (:class:`float`) -- Spacing between the sample points in meters.
+                * **id_col** (:class:`str`, *optional*) -- Name of the flowlines column containing IDs, defaults to ``comid``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Resampled flowline.
 
 
-.. py:function:: flowline_xsection(flw, distance, width)
+.. py:function:: flowline_xsection(flw, distance, width, id_col = 'comid')
 
    Get cross-section of a river network at a given spacing.
 
-   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``comid`` columns and CRS attribute.
+   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``id_col`` columns and CRS attribute.
                 * **distance** (:class:`float`) -- The distance between two consecutive cross-sections.
                 * **width** (:class:`float`) -- The width of the cross-section.
+                * **id_col** (:class:`str`, *optional*) -- Name of the flowlines column containing IDs, defaults to ``comid``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- A dataframe with two columns: ``geometry`` and ``comid``. The ``geometry``
              column contains the cross-section of the river network and the ``comid``
