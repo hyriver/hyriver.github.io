@@ -36,7 +36,7 @@ jobs:
     - name: Download pandoc
       uses: robinraju/release-downloader@v1.4
       with:
-        repository: "/jgm/pandoc"
+        repository: "jgm/pandoc"
         latest: true
         fileName: "pandoc-*-amd64.deb"
     
