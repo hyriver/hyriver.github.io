@@ -62,7 +62,7 @@ autoapi_dirs = [
     "../../pygeohydro",
     "../../py3dep",
     "../../pydaymet",
-    "../../async_retriever",
+    "../../async-retriever",
     "../../pygeoogc",
     "../../pygeoutils",
 ]
@@ -86,7 +86,7 @@ modindex_common_prefix = [
     "pygeohydro.",
     "py3dep.",
     "pydaymet.",
-    "async_retriever.",
+    "async-retriever.",
     "pygeoogc.",
     "pygeoutils.",
 ]
@@ -177,7 +177,7 @@ napoleon_type_aliases = {
 
 extlinks = {
     "issue": ("https://github.com/hyriver/hyriver.github.io/issues/%s", "GH"),
-    "issue_async": ("https://github.com/hyriver/async_retriever/issues/%s", "GH"),
+    "issue_async": ("https://github.com/hyriver/async-retriever/issues/%s", "GH"),
     "issue_ogc": ("https://github.com/hyriver/pygeoogc/issues/%s", "GH"),
     "issue_utils": ("https://github.com/hyriver/pygeoutils/issues/%s", "GH"),
     "issue_hydro": ("https://github.com/hyriver/pygeohydro/issues/%s", "GH"),
@@ -185,7 +185,7 @@ extlinks = {
     "issue_3dep": ("https://github.com/hyriver/py3dep/issues/%s", "GH"),
     "issue_day": ("https://github.com/hyriver/pydaymet/issues/%s", "GH"),
     "pull": ("https://github.com/hyriver/hyriver.github.io/pull/%s", "PR"),
-    "pull_async": ("https://github.com/hyriver/async_retriever/pull/%s", "PR"),
+    "pull_async": ("https://github.com/hyriver/async-retriever/pull/%s", "PR"),
     "pull_ogc": ("https://github.com/hyriver/pygeoogc/pull/%s", "PR"),
     "pull_utils": ("https://github.com/hyriver/pygeoutils/pull/%s", "PR"),
     "pull_hydro": ("https://github.com/hyriver/pygeohydro/pull/%s", "PR"),

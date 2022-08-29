@@ -133,8 +133,8 @@ Module Contents
 
    .. rubric:: Notes
 
-   This file contains Hydrologic Unit (HU) polygon boundaries for the United States,
-   Puerto Rico, and the U.S. Virgin Islands.
+   This web service offers Hydrologic Unit (HU) polygon boundaries for
+   the United States, Puerto Rico, and the U.S. Virgin Islands.
    For more info visit: https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer
 
    :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. Valid layers are:
@@ -253,22 +253,5 @@ Module Contents
                 * **geo_crs** (:class:`str`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
 
    :returns: :class:`xarray.DataArray` -- Daily actual ET within a geometry in mm/day at 1 km resolution
-
-
-.. py:function:: ssebopeta_byloc(coords, dates)
-
-   Daily actual ET for a location from SSEBop database in mm/day.
-
-   .. deprecated:: 0.11.5
-       Use :func:`ssebopeta_bycoords` instead. For now, this function calls
-       :func:`ssebopeta_bycoords` but retains the same functionality, i.e.,
-       returns a dataframe and accepts only a single coordinate. Whereas the
-       new function returns a ``xarray.Dataset`` and accepts a dataframe
-       containing coordinates.
-
-   :Parameters: * **coords** (:class:`tuple`) -- Longitude and latitude of a single location as a tuple (lon, lat)
-                * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
-
-   :returns: :class:`pandas.Series` -- Daily actual ET for a location
 
 

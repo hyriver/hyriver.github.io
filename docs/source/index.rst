@@ -1,5 +1,5 @@
-.. |async| image:: https://img.shields.io/pypi/v/async_retriever?label=AsyncRetriever&color=green
-    :target: https://github.com/cheginit/async_retriever
+.. |async| image:: https://img.shields.io/pypi/v/async-retriever?label=AsyncRetriever&color=green
+    :target: https://github.com/cheginit/async-retriever
     :alt: PyPi Version
 
 .. |pygeohydro| image:: https://img.shields.io/pypi/v/pygeohydro?label=PyGeoHydro&color=green
@@ -26,8 +26,8 @@
     :target: https://github.com/cheginit/pydaymet
     :alt: PyPi Version
 
-.. |async_stat| image:: https://pepy.tech/badge/async_retriever
-    :target: https://pepy.tech/project/async_retriever
+.. |async_stat| image:: https://pepy.tech/badge/async-retriever
+    :target: https://pepy.tech/project/async-retriever
 
 .. |pygeohydro_stat| image:: https://pepy.tech/badge/hydrodata
     :target: https://pepy.tech/project/hydrodata
@@ -179,7 +179,7 @@ If you use any of HyRiver packages in your research, we appreciate citations:
     :hidden:
 
     autoapi/index
-    history
+    changelogs
     contributing
     authors
     license

@@ -42,7 +42,7 @@ Release Notes
 
     .. grid-item-card::
 
-        .. button-link:: changelogs/async_retriever.html
+        .. button-link:: changelogs/async-retriever.html
             :click-parent:
             :ref-type: ref
             :align: center
@@ -75,6 +75,6 @@ Release Notes
     PyGeoHydro <changelogs/pygeohydro>
     Py3DEP <changelogs/py3dep>
     PyDaymet <changelogs/pydaymet>
-    AsyncRetriever<changelogs/async_retriever>
+    AsyncRetriever<changelogs/async-retriever>
     PyGeoOGC <changelogs/pygeoogc>
     PyGeoUtils <changelogs/pygeoutils>

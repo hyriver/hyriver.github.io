@@ -44,7 +44,7 @@ A detailed description of each component of the HyRiver software stack.
 
     .. grid-item-card::
 
-        .. button-link:: readme/async_retriever.html
+        .. button-link:: readme/async-retriever.html
             :click-parent:
             :ref-type: ref
             :align: center
@@ -77,6 +77,6 @@ A detailed description of each component of the HyRiver software stack.
     PyGeoHydro <readme/pygeohydro>
     Py3DEP <readme/py3dep>
     PyDaymet <readme/pydaymet>
-    AsyncRetriever<readme/async_retriever>
+    AsyncRetriever<readme/async-retriever>
     PyGeoOGC <readme/pygeoogc>
     PyGeoUtils <readme/pygeoutils>

@@ -78,7 +78,7 @@ Module Contents
 
    :Parameters: * **lines** (:class:`LineString` or :class:`MultiLineString`) -- Line segment(s) to be profiled. If its type is ``MultiLineString``,
                   it will be converted to a single ``LineString`` and if this operation
-                  fails, a ``InvalidInputType`` will be raised.
+                  fails, a ``InputTypeError`` will be raised.
                 * **spacing** (:class:`float`) -- Spacing between the sample points along the line in meters.
                 * **dem_res** (:class:`float`, *optional*) -- Resolution of the DEM source to use in meter, defaults to 10.
                 * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of ``lines``, defaults to ``EPSG:4326``.
