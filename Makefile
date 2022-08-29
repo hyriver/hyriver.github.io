@@ -46,7 +46,7 @@ lint: ## check style with flake8
 	pre-commit run --all-files
 
 docs: ## generate Sphinx HTML documentation, including API docs then open in browser
-	for f in pynhd py3dep pygeohydro pydaymet async_retriever pygeoogc pygeoutils;do \
+	for f in pynhd py3dep pygeohydro pydaymet async-retriever pygeoogc pygeoutils;do \
 		end=$$(grep -n Contributing $$f/README.rst | cut -d : -f 1); \
 		end=$$(expr $$end - 2); \
 		fname=docs/source/readme/$$f.rst; \
@@ -57,7 +57,7 @@ docs: ## generate Sphinx HTML documentation, including API docs then open in bro
 	$(BROWSER) docs/build/html/index.html
 
 docs-ci: ## generate Sphinx HTML documentation, including API docs but don't open browser
-	for f in pynhd py3dep pygeohydro pydaymet async_retriever pygeoogc pygeoutils;do \
+	for f in pynhd py3dep pygeohydro pydaymet async-retriever pygeoogc pygeoutils;do \
 		end=$$(grep -n Contributing $$f/README.rst | cut -d : -f 1); \
 		end=$$(expr $$end - 2); \
 		fname=docs/source/readme/$$f.rst; \

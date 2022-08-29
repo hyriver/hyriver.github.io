@@ -29,4 +29,3 @@
 [submodule "async-retriever"]
 	path = async-retriever
 	url = https://github.com/hyriver/async-retriever.git
-	branch = main
