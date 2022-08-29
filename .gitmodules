@@ -27,6 +27,6 @@
 	url = https://github.com/hyriver/HyRiver-examples
 	branch = main
 [submodule "async_retriever"]
-	path = async_retriever
-	url = https://github.com/hyriver/async_retriever.git
+	path = async-retriever
+	url = https://github.com/hyriver/async-retriever.git
 	branch = main
