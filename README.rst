@@ -27,8 +27,8 @@
     :target: https://github.com/hyriver/pydaymet/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |async| image:: https://github.com/hyriver/async_retriever/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/async_retriever/actions/workflows/test.yml
+.. |async| image:: https://github.com/hyriver/async-retriever/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/async-retriever/actions/workflows/test.yml
     :alt: Github Actions
 
 .. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/hydrodata?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
@@ -55,8 +55,8 @@
     :target: https://github.com/hyriver/pydaymet
     :alt: Download Stat
 
-.. |async_stat| image:: https://static.pepy.tech/personalized-badge/async_retriever?period=total&left_color=blue&right_color=yellowgreen&left_text=AsyncRetriever
-    :target: https://github.com/hyriver/async_retriever
+.. |async_stat| image:: https://static.pepy.tech/personalized-badge/async-retriever?period=total&left_color=blue&right_color=yellowgreen&left_text=AsyncRetriever
+    :target: https://github.com/hyriver/async-retriever
     :alt: Download Stat
 
 .. _PyGeoHydro: https://github.com/hyriver/pygeohydro
@@ -161,16 +161,16 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 
 or ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
 
 or ``mamba`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async_retriever
+    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
