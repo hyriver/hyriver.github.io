@@ -59,7 +59,7 @@ both single pixel and gridded data.
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 Moreover, under the hood, PyDaymet uses
-`AsyncRetriever <https://github.com/hyriver/async_retriever>`__
+`AsyncRetriever <https://github.com/hyriver/async-retriever>`__
 for making requests asynchronously with persistent caching. This improves the
 reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
 pairs and upon making an already cached request, it will retrieve the responses from the cache

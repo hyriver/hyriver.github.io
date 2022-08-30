@@ -29,8 +29,8 @@
 .. |async_stat| image:: https://pepy.tech/badge/async-retriever
     :target: https://pepy.tech/project/async-retriever
 
-.. |pygeohydro_stat| image:: https://pepy.tech/badge/hydrodata
-    :target: https://pepy.tech/project/hydrodata
+.. |pygeohydro_stat| image:: https://pepy.tech/badge/pygeohydro
+    :target: https://pepy.tech/project/pygeohydro
     :alt: Download Stat
 
 .. |pygeoogc_stat| image:: https://pepy.tech/badge/pygeoogc

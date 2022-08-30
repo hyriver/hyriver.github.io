@@ -59,7 +59,7 @@ object IDs for a RESTful request or 8 million pixels for a WMS request), PyGeoOG
 the large requests into smaller chunks, and then returns the merged results.
 
 Moreover, under the hood, PyGeoOGC uses
-`AsyncRetriever <https://github.com/hyriver/async_retriever>`__
+`AsyncRetriever <https://github.com/hyriver/async-retriever>`__
 for making requests asynchronously with persistent caching. This improves the
 reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
 pairs and upon making an already cached request, it will retrieve the responses from the cache

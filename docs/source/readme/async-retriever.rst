@@ -1,24 +1,24 @@
 AsyncRetriever: Asynchronous requests with persistent caching
 -------------------------------------------------------------
 
-.. image:: https://img.shields.io/pypi/v/async_retriever.svg
-    :target: https://pypi.python.org/pypi/async_retriever
+.. image:: https://img.shields.io/pypi/v/async-retriever.svg
+    :target: https://pypi.python.org/pypi/async-retriever
     :alt: PyPi
 
-.. image:: https://img.shields.io/conda/vn/conda-forge/async_retriever.svg
-    :target: https://anaconda.org/conda-forge/async_retriever
+.. image:: https://img.shields.io/conda/vn/conda-forge/async-retriever.svg
+    :target: https://anaconda.org/conda-forge/async-retriever
     :alt: Conda Version
 
-.. image:: https://codecov.io/gh/hyriver/async_retriever/branch/main/graph/badge.svg
-    :target: https://codecov.io/gh/hyriver/async_retriever
+.. image:: https://codecov.io/gh/hyriver/async-retriever/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/hyriver/async-retriever
     :alt: CodeCov
 
-.. image:: https://img.shields.io/pypi/pyversions/async_retriever.svg
-    :target: https://pypi.python.org/pypi/async_retriever
+.. image:: https://img.shields.io/pypi/pyversions/async-retriever.svg
+    :target: https://pypi.python.org/pypi/async-retriever
     :alt: Python Versions
 
-.. image:: https://github.com/hyriver/async_retriever/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/async_retriever/actions/workflows/test.yml
+.. image:: https://github.com/hyriver/async-retriever/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/async-retriever/actions/workflows/test.yml
     :alt: Github Actions
 
 |
@@ -27,8 +27,8 @@ AsyncRetriever: Asynchronous requests with persistent caching
     :target: https://github.com/PyCQA/bandit
     :alt: Security Status
 
-.. image:: https://www.codefactor.io/repository/github/hyriver/async_retriever/badge
-   :target: https://www.codefactor.io/repository/github/hyriver/async_retriever
+.. image:: https://www.codefactor.io/repository/github/hyriver/async-retriever/badge
+   :target: https://www.codefactor.io/repository/github/hyriver/async-retriever
    :alt: CodeFactor
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -61,7 +61,7 @@ use to make web calls:
 You can also use the general-purpose ``retrieve`` function to get responses as any
 of the three types. All responses are returned as a list that has the same order as the
 input list of requests. Moreover, there is another function called ``delete_url_cache``
-for removing all requests from a cache file that contains the given URL.
+for removing all requests from a cache file that contains a given URL.
 
 You can control the request/response caching behavior by setting the following
 environment variables:
@@ -90,7 +90,7 @@ instance with the HyRiver stack pre-installed will be launched in your web brows
 can start coding!
 
 Moreover, requests for additional functionalities can be submitted via
-`issue tracker <https://github.com/hyriver/async_retriever/issues>`__.
+`issue tracker <https://github.com/hyriver/async-retriever/issues>`__.
 
 Citation
 --------
@@ -113,18 +113,18 @@ If you use any of HyRiver packages in your research, we appreciate citations:
 Installation
 ------------
 
-You can install ``async_retriever`` using ``pip``:
+You can install ``async-retriever`` using ``pip``:
 
 .. code-block:: console
 
-    $ pip install async_retriever
+    $ pip install async-retriever
 
-Alternatively, ``async_retriever`` can be installed from the ``conda-forge`` repository
+Alternatively, ``async-retriever`` can be installed from the ``conda-forge`` repository
 using `Conda <https://docs.conda.io/en/latest/>`__:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge async_retriever
+    $ conda install -c conda-forge async-retriever
 
 Quick start
 -----------

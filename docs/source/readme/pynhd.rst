@@ -101,7 +101,7 @@ These utilities are developed based on an R package called
 `nhdplusTools <https://github.com/USGS-R/nhdplusTools>`__ and a Python package
 called `nldi-xstool <https://code.usgs.gov/wma/nhgf/toolsteam/nldi-xstool>`__.
 
-All functions and classes that request data from web services use ``async_retriever``
+All functions and classes that request data from web services use ``async-retriever``
 that offers response caching. By default, the expiration time is set to never expire.
 All these functions and classes have two optional parameters for controlling the cache:
 ``expire_after`` and ``disable_caching``. You can use ``expire_after`` to set the expiration
@@ -112,7 +112,7 @@ responses are stored in the ``./cache/aiohttp_cache.sqlite`` file.
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 Moreover, under the hood, PyNHD uses
-`AsyncRetriever <https://github.com/hyriver/async_retriever>`__
+`AsyncRetriever <https://github.com/hyriver/async-retriever>`__
 for making requests asynchronously with persistent caching. This improves the
 reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
 pairs and upon making an already cached request, it will retrieve the responses from the cache
