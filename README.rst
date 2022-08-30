@@ -31,7 +31,7 @@
     :target: https://github.com/hyriver/async-retriever/actions/workflows/test.yml
     :alt: Github Actions
 
-.. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/hydrodata?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
+.. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
     :target: https://github.com/hyriver/pygeohydro
     :alt: Download Stat
 
