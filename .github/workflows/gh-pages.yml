@@ -34,7 +34,7 @@ jobs:
       uses: actions/configure-pages@v2
 
     - name: Download pandoc
-      uses: robinraju/release-downloader@v1.5
+      uses: robinraju/release-downloader@v1.6
       with:
         repository: "jgm/pandoc"
         latest: true
