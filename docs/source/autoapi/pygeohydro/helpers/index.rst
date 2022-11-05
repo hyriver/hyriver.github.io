@@ -32,3 +32,15 @@ Module Contents
    Get error code lookup table for USGS sites that have daily values.
 
 
+.. py:function:: states_lookup_table()
+
+   Get codes and names of US states and their counties.
+
+   .. rubric:: Notes
+
+   This function is based on a file prepared by developers of
+   an R package called `dataRetrieval <https://github.com/USGS-R/dataRetrieval>`__.
+
+   :returns: :class:`pandas.DataFrame` -- State codes and name as a dataframe.
+
+

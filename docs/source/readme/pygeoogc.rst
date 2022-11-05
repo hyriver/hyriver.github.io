@@ -1,3 +1,9 @@
+.. _PyGeoUtils: https://github.com/hyriver/pygeoutils
+.. _PyNHD : https://github.com/hyriver/pynhd
+.. _Py3DEP: https://github.com/hyriver/py3dep
+.. _PyDaymet: https://github.com/hyriver/pydaymet
+.. _HydroSignatures: https://github.com/hyriver/hydrosignatures
+
 PyGeoOGC: Retrieve Data from RESTful, WMS, and WFS Services
 -----------------------------------------------------------
 
@@ -65,14 +71,15 @@ reliability and speed of data retrieval significantly. AsyncRetriever caches all
 pairs and upon making an already cached request, it will retrieve the responses from the cache
 if the server's response is unchanged.
 
-You can control the request/response caching behavior by setting the following
-environment variables:
+You can control the request/response caching behavior and verbosity of the package
+by setting the following environment variables:
 
 * ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
   ``./cache/aiohttp_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
   -1 (never expire).
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_VERBOSE``: Enable verbose mode. The default is false.
 
 For example, in your code before making any requests you can do:
 

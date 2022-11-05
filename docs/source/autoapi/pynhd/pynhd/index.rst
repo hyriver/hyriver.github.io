@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: NHD(layer, outfields = '*', crs = DEF_CRS)
+.. py:class:: NHD(layer, outfields = '*', crs = 4326)
 
 
 
@@ -41,10 +41,10 @@ Module Contents
                   - ``waterbody_hr_nonconus``
                   - ``waterbody_hr``
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
 
 
-.. py:class:: NHDPlusHR(layer, outfields = '*', crs = DEF_CRS)
+.. py:class:: NHDPlusHR(layer, outfields = '*', crs = 4326)
 
 
 
@@ -70,14 +70,14 @@ Module Contents
                   - ``huc12``
                   - ``catchment``
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
 
 
 .. py:class:: NLDI
 
    Access the Hydro Network-Linked Data Index (NLDI) service.
 
-   .. py:method:: comid_byloc(coords, loc_crs = DEF_CRS)
+   .. py:method:: comid_byloc(coords, loc_crs = 4326)
 
       Get the closest ComID based on coordinates.
 
@@ -90,18 +90,18 @@ Module Contents
       coordinate on the flowline as a percentage of the total flowline length.
 
       :Parameters: * **coords** (:class:`tuple` or :class:`list` of :class:`tuples`) -- A tuple of length two (x, y) or a list of them.
-                   * **loc_crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
+                   * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed ComID(s) and points in EPSG:4326. If some coords don't return
                 any ComID a list of missing coords are returned as well.
 
 
-   .. py:method:: feature_byloc(coords, loc_crs = DEF_CRS)
+   .. py:method:: feature_byloc(coords, loc_crs = 4326)
 
       Get the closest feature ID(s) based on coordinates.
 
       :Parameters: * **coords** (:class:`tuple` or :class:`list`) -- A tuple of length two (x, y) or a list of them.
-                   * **loc_crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
+                   * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed feature ID(s) and flowlines in EPSG:4326. If some coords don't
                 return any IDs a list of missing coords are returned as well.
@@ -209,7 +209,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
 
-   .. py:method:: navigate_byloc(coords, navigation = None, source = None, loc_crs = DEF_CRS, distance = 500, trim_start = False)
+   .. py:method:: navigate_byloc(coords, navigation = None, source = None, loc_crs = 4326, distance = 500, trim_start = False)
 
       Navigate the NHDPlus database from a coordinate.
 
@@ -219,7 +219,7 @@ Module Contents
                    * **source** (:class:`str`, *optional*) -- Return the data from another source after navigating
                      the features using fsource, defaults to None which throws an exception
                      if comid_only is False.
-                   * **loc_crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
+                   * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
                    * **distance** (:class:`int`, *optional*) -- Limit the search for navigation up to a distance in km,
                      defaults to 500 km. Note that this is an expensive request so you
                      have be mindful of the value that you provide. If you want to get
@@ -237,27 +237,27 @@ Module Contents
 
    Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
 
-   .. py:method:: cross_section(coord, width, numpts, crs = DEF_CRS)
+   .. py:method:: cross_section(coord, width, numpts, crs = 4326)
 
       Return a GeoDataFrame from the xsatpoint service.
 
       :Parameters: * **coord** (:class:`tuple`) -- The coordinate of the point to extract the cross-section as a tuple,e.g., (lon, lat).
                    * **width** (:class:`float`) -- The width of the cross-section in meters.
                    * **numpts** (:class:`int`) -- The number of points to extract the cross-section from the DEM.
-                   * **crs** (:class:`str`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+                   * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
 
       :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the cross-section at the requested point.
 
       .. rubric:: Examples
 
       >>> from pynhd import PyGeoAPI
-      >>> pygeoapi = PyGeoAPI()
-      >>> gdf = pygeoapi.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs=DEF_CRS)  # doctest: +SKIP
+      >>> pga = PyGeoAPI()
+      >>> gdf = pga.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs=4326)  # doctest: +SKIP
       >>> print(gdf.iloc[-1, 1])  # doctest: +SKIP
       1000.0
 
 
-   .. py:method:: elevation_profile(coords, numpts, dem_res, crs = DEF_CRS)
+   .. py:method:: elevation_profile(coords, numpts, dem_res, crs = 4326)
 
       Return a GeoDataFrame from the xsatendpts service.
 
@@ -265,22 +265,22 @@ Module Contents
                      [(lon1, lat1), (lon2, lat2)].
                    * **numpts** (:class:`int`) -- The number of points to extract the elevation profile from the DEM.
                    * **dem_res** (:class:`int`) -- The target resolution for requesting the DEM from 3DEP service.
-                   * **crs** (:class:`str`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+                   * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
 
       :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the elevation profile along the requested endpoints.
 
       .. rubric:: Examples
 
       >>> from pynhd import PyGeoAPI
-      >>> pygeoapi = PyGeoAPI()
-      >>> gdf = pygeoapi.elevation_profile(
-      ...     [(-103.801086, 40.26772), (-103.80097, 40.270568)], numpts=101, dem_res=1, crs=DEF_CRS
+      >>> pga = PyGeoAPI()
+      >>> gdf = pga.elevation_profile(
+      ...     [(-103.801086, 40.26772), (-103.80097, 40.270568)], numpts=101, dem_res=1, crs=4326
       ... )  # doctest: +SKIP
       >>> print(gdf.iloc[-1, 1])  # doctest: +SKIP
       411.5906
 
 
-   .. py:method:: flow_trace(coord, crs = DEF_CRS, direction = 'none')
+   .. py:method:: flow_trace(coord, crs = 4326, direction = 'none')
 
       Return a GeoDataFrame from the flowtrace service.
 
@@ -294,20 +294,20 @@ Module Contents
       .. rubric:: Examples
 
       >>> from pynhd import PyGeoAPI
-      >>> pygeoapi = PyGeoAPI()
-      >>> gdf = pygeoapi.flow_trace(
+      >>> pga = PyGeoAPI()
+      >>> gdf = pga.flow_trace(
       ...     (1774209.63, 856381.68), crs="ESRI:102003", direction="none"
       ... )  # doctest: +SKIP
       >>> print(gdf.comid.iloc[0])  # doctest: +SKIP
       22294818
 
 
-   .. py:method:: split_catchment(coord, crs = DEF_CRS, upstream = False)
+   .. py:method:: split_catchment(coord, crs = 4326, upstream = False)
 
       Return a GeoDataFrame from the splitcatchment service.
 
       :Parameters: * **coord** (:class:`tuple`) -- The coordinate of the point to trace as a tuple,e.g., (lon, lat).
-                   * **crs** (:class:`str`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+                   * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
                    * **upstream** (:class:`bool`, *optional*) -- If True, return all upstream catchments rather than just the local catchment,
                      defaults to False.
 
@@ -316,14 +316,14 @@ Module Contents
       .. rubric:: Examples
 
       >>> from pynhd import PyGeoAPI
-      >>> pygeoapi = PyGeoAPI()
-      >>> gdf = pygeoapi.split_catchment((-73.82705, 43.29139), crs=DEF_CRS, upstream=False)  # doctest: +SKIP
+      >>> pga = PyGeoAPI()
+      >>> gdf = pga.split_catchment((-73.82705, 43.29139), crs=4326, upstream=False)  # doctest: +SKIP
       >>> print(gdf.catchmentID.iloc[0])  # doctest: +SKIP
       22294818
 
 
 
-.. py:class:: WaterData(layer, crs = DEF_CRS, validation = True)
+.. py:class:: WaterData(layer, crs = 4326, validation = True)
 
    Access to `Water Data <https://labs.waterdata.usgs.gov/geoserver>`__ service.
 
@@ -332,15 +332,15 @@ Module Contents
                   ``gagesii``, ``huc08``, ``huc12``, ``huc12agg``, and ``huc12all``. Note that
                   the layers' worksapce for the Water Data service is ``wmadata`` which will
                   be added to the given ``layer`` argument if it is not provided.
-                * **crs** (:class:`str`, *optional*) -- The target spatial reference system, defaults to ``epsg:4326``.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The target spatial reference system, defaults to ``epsg:4326``.
                 * **validation** (:class:`bool`, *optional*) -- Whether to validate the input data, defaults to ``True``.
 
-   .. py:method:: bybox(bbox, box_crs = DEF_CRS)
+   .. py:method:: bybox(bbox, box_crs = 4326)
 
       Get features within a bounding box.
 
 
-   .. py:method:: bydistance(coords, distance, loc_crs = DEF_CRS)
+   .. py:method:: bydistance(coords, distance, loc_crs = 4326)
 
       Get features within a radius (in meters) of a point.
 
@@ -350,12 +350,12 @@ Module Contents
       Get features based on a CQL filter.
 
 
-   .. py:method:: bygeom(geometry, geo_crs = DEF_CRS, xy = True, predicate = 'INTERSECTS')
+   .. py:method:: bygeom(geometry, geo_crs = 4326, xy = True, predicate = 'INTERSECTS')
 
       Get features within a geometry.
 
       :Parameters: * **geometry** (:class:`shapely.geometry`) -- The input geometry
-                   * **geo_crs** (:class:`str`, *optional*) -- The CRS of the input geometry, default to epsg:4326.
+                   * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, default to epsg:4326.
                    * **xy** (:class:`bool`, *optional*) -- Whether axis order of the input geometry is xy or yx.
                    * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to
                      INTERSECTS. Valid predicates are:

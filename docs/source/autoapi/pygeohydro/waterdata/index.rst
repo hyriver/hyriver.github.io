@@ -169,12 +169,12 @@ Module Contents
 
 
 
-.. py:function:: interactive_map(bbox, crs = DEF_CRS, nwis_kwds = None)
+.. py:function:: interactive_map(bbox, crs = 4326, nwis_kwds = None)
 
    Generate an interactive map including all USGS stations within a bounding box.
 
    :Parameters: * **bbox** (:class:`tuple`) -- List of corners in this order (west, south, east, north)
-                * **crs** (:class:`str`, *optional*) -- CRS of the input bounding box, defaults to EPSG:4326.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- CRS of the input bounding box, defaults to EPSG:4326.
                 * **nwis_kwds** (:class:`dict`, *optional*) -- Optional keywords to include in the NWIS request as a dictionary like so:
                   ``{"hasDataTypeCd": "dv,iv", "outputDataTypeCd": "dv,iv", "parameterCd": "06000"}``.
                   Default to None.

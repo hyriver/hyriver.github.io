@@ -49,7 +49,7 @@ Module Contents
 
 
 
-.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = EXPIRE, disable = False)
+.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = -1, disable = False)
 
    Configures the passed-in session to retry on failed requests.
 
@@ -74,25 +74,30 @@ Module Contents
       Retrieve data from a url by GET and return the Response.
 
 
+   .. py:method:: head(url, data = None, params = None, headers = None)
+
+      Retrieve data from a url by POST and return the Response.
+
+
    .. py:method:: post(url, payload = None, headers = None)
 
       Retrieve data from a url by POST and return the Response.
 
 
 
-.. py:function:: bbox_decompose(bbox, resolution, box_crs = DEF_CRS, max_px = 8000000)
+.. py:function:: bbox_decompose(bbox, resolution, box_crs = 4326, max_px = 8000000)
 
    Split the bounding box vertically for WMS requests.
 
    :Parameters: * **bbox** (:class:`tuple`) -- A bounding box; (west, south, east, north)
                 * **resolution** (:class:`float`) -- The target resolution for a WMS request in meters.
-                * **box_crs** (:class:`str`, *optional*) -- The spatial reference of the input bbox, default to EPSG:4326.
+                * **box_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input bbox, default to ``epsg:4326``.
                 * **max_px** (:class:`int`, :class:`opitonal`) -- The maximum allowable number of pixels (width x height) for a WMS requests,
                   defaults to 8 million based on some trial-and-error.
 
    :returns: :class:`list` of :class:`tuples` -- Each tuple includes the following elements:
 
-             * Tuple of length 4 that represents a bounding box (west, south, east, north) of a cell,
+             * Tuple of px_tot 4 that represents a bounding box (west, south, east, north) of a cell,
              * A label that represents cell ID starting from bottom-left to top-right, for example a
                2x2 decomposition has the following labels::
 
@@ -127,8 +132,8 @@ Module Contents
    :Parameters: * **geom** (:class:`list` or :class:`tuple` or :class:`geometry`) -- Input geometry which could be a list of coordinates such as ``[(x1, y1), ...]``,
                   a bounding box like so ``(xmin, ymin, xmax, ymax)``, or any valid ``shapely``'s
                   geometry such as ``Polygon``, ``MultiPolygon``, etc..
-                * **in_crs** (:class:`str`) -- Spatial reference of the input geometry
-                * **out_crs** (:class:`str`) -- Target spatial reference
+                * **in_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`) -- Spatial reference of the input geometry
+                * **out_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`) -- Target spatial reference
 
    :returns: :class:`same type as the input geometry` -- Transformed geometry in the target CRS.
 
@@ -147,16 +152,16 @@ Module Contents
    [(-69.7636111130079, 45.44549114818127)]
 
 
-.. py:function:: traverse_json(obj, path)
+.. py:function:: traverse_json(items, ipath)
 
-   Extract an element from a JSON file along a specified path.
+   Extract an element from a JSON file along a specified ipath.
 
    This function is based on `bcmullins <https://bcmullins.github.io/parsing-json-python/>`__.
 
-   :Parameters: * **obj** (:class:`dict`) -- The input json dictionary
-                * **path** (:class:`list`) -- The path to the requested element
+   :Parameters: * **items** (:class:`dict`) -- The input json dictionary
+                * **ipath** (:class:`list`) -- The ipath to the requested element
 
-   :returns: :class:`list` -- The items founds in the JSON
+   :returns: :class:`list` -- The sub_items founds in the JSON
 
    .. rubric:: Examples
 
@@ -176,11 +181,11 @@ Module Contents
    Get valid CRSs from a WMS service version 1.3.0.
 
 
-.. py:function:: validate_crs(val)
+.. py:function:: validate_crs(crs)
 
    Validate a CRS.
 
-   :Parameters: **val** (:class:`str` or :class:`int`) -- Input CRS.
+   :Parameters: **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`) -- Input CRS.
 
    :returns: :class:`str` -- Validated CRS as a string.
 

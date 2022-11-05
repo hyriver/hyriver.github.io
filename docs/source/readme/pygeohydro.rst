@@ -1,3 +1,9 @@
+.. _PyGeoUtils: https://github.com/hyriver/pygeoutils
+.. _PyNHD: https://github.com/hyriver/pynhd
+.. _Py3DEP: https://github.com/hyriver/py3dep
+.. _PyDaymet: https://github.com/hyriver/pydaymet
+.. _HydroSignatures: https://github.com/hyriver/hydrosignatures
+
 PyGeoHydro: Retrieve Geospatial Hydrology Data
 ----------------------------------------------
 
@@ -52,6 +58,10 @@ main modules: ``pygeohydro``, ``plot``, and ``helpers``.
 
 PyGeoHydro supports the following datasets:
 
+* `gNATSGO <https://planetarycomputer.microsoft.com/dataset/gnatsgo-rasters>`__ for
+  US soil properties.
+* `Derived Soil Properties <https://www.sciencebase.gov/catalog/item/5fd7c19cd34e30b9123cb51f>`__
+  for soil porosity, available water capacity, and field capacity across the US.
 * `NWIS <https://nwis.waterdata.usgs.gov/nwis>`__ for daily mean streamflow observations
   (returned as a ``pandas.DataFrame`` or ``xarray.Dataset`` with station attributes),
 * `CAMELS <https://ral.ucar.edu/solutions/products/camels>`__ for accessing streamflow
@@ -96,14 +106,15 @@ reliability and speed of data retrieval significantly. AsyncRetriever caches all
 pairs and upon making an already cached request, it will retrieve the responses from the cache
 if the server's response is unchanged.
 
-You can control the request/response caching behavior by setting the following
-environment variables:
+You can control the request/response caching behavior and verbosity of the package
+by setting the following environment variables:
 
 * ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
   ``./cache/aiohttp_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
   -1 (never expire).
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_VERBOSE``: Enable verbose mode. The default is false.
 
 For example, in your code before making any requests you can do:
 
@@ -114,6 +125,7 @@ For example, in your code before making any requests you can do:
     os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+    os.environ["HYRIVER_VERBOSE"] = "true"
 
 You can also try using PyGeoHydro without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
@@ -189,7 +201,7 @@ We can select all the stations within this boundary box that have daily mean str
 
     nwis = NWIS()
     query = {
-        **nwis.query_bybox(bbox),
+        "bBox": ",".join(f"{b:.06f}" for b in bbox),
         "hasDataTypeCd": "dv",
         "outputDataTypeCd": "dv",
     }

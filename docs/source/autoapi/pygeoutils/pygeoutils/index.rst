@@ -18,6 +18,8 @@ Module Contents
 
    :Parameters: * **lon** (:class:`float` or :class:`list` of :class:`floats`) -- Longitude(s) in decimal degrees.
                 * **lat** (:class:`float` or :class:`list` of :class:`floats`) -- Latitude(s) in decimal degrees.
+                * **bounds** (:class:`tuple` of :class:`length 4`, *optional*) -- The bounding box to check of the input coordinates fall within.
+                  Defaults to WGS84 bounds.
 
    .. rubric:: Examples
 
@@ -26,11 +28,10 @@ Module Contents
    >>> c.points.x.tolist()
    [100.0, -30.0]
 
-   .. py:method:: points()
-      :property:
+   .. py:property:: points
+      :type: geopandas.GeoSeries
 
       Get validate coordinate as a ``geopandas.GeoSeries``.
-
 
 
 .. py:class:: GeoBSpline(points, npts_sp, degree = 3)
@@ -54,7 +55,7 @@ Module Contents
    ...         (-97.06127, 32.832),
    ...     ]
    ... )
-   >>> pts = gpd.GeoSeries(gpd.points_from_xy(xl, yl, crs="epsg:4326"))
+   >>> pts = gpd.GeoSeries(gpd.points_from_xy(xl, yl, crs=4326))
    >>> sp = GeoBSpline(pts.to_crs("epsg:3857"), 5).spline
    >>> pts_sp = gpd.GeoSeries(gpd.points_from_xy(sp.x, sp.y, crs="epsg:3857"))
    >>> pts_sp = pts_sp.to_crs("epsg:4326")
@@ -65,11 +66,10 @@ Module Contents
    (-97.06128, 32.83434),
    (-97.06127, 32.83319)]
 
-   .. py:method:: spline()
-      :property:
+   .. py:property:: spline
+      :type: Spline
 
       Get the spline as a ``Spline`` object.
-
 
 
 .. py:function:: arcgis2geojson(arcgis, id_attr = None)
@@ -106,8 +106,8 @@ Module Contents
    Convert a geometry to a Shapely's Polygon and transform to any CRS.
 
    :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple` of :class:`length 4`) -- Polygon or bounding box (west, south, east, north).
-                * **geo_crs** (:class:`str` or :class:`pyproj.CRS`) -- Spatial reference of the input geometry
-                * **crs** (:class:`str` or :class:`pyproj.CRS`) -- Target spatial reference.
+                * **geo_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- Spatial reference of the input geometry
+                * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- Target spatial reference.
 
    :returns: :class:`Polygon` -- A Polygon in the target CRS.
 
@@ -136,7 +136,7 @@ Module Contents
                   for naming each responses, and values are bytes.
                 * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple`, *optional*) -- The geometry to mask the data that should be in the same CRS as the r_dict.
                   Defaults to ``None``.
-                * **geo_crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input geometry, defaults to ``None``. This
+                * **geo_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input geometry, defaults to ``None``. This
                   argument should be given when ``geometry`` is given.
                 * **ds_dims** (:class:`tuple` of :class:`str`, *optional*) -- The names of the vertical and horizontal dimensions (in that order)
                   of the target dataset, default to None. If None, dimension names are determined
@@ -154,13 +154,13 @@ Module Contents
    :returns: :class:`xarray.Dataset` or :class:`xarray.DataAraay` -- Parallel (with dask) dataset or dataarray.
 
 
-.. py:function:: json2geodf(content, in_crs = DEF_CRS, crs = DEF_CRS)
+.. py:function:: json2geodf(content, in_crs = 4326, crs = 4326)
 
    Create GeoDataFrame from (Geo)JSON.
 
    :Parameters: * **content** (:class:`dict` or :class:`list` of :class:`dict`) -- A (Geo)JSON dictionary e.g., response.json() or a list of them.
-                * **in_crs** (:class:`str` or :class:`pyproj.CRS`) -- CRS of the content, defaults to ``epsg:4326``.
-                * **crs** (:class:`str` or :class:`pyproj.CRS`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
+                * **in_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- CRS of the content, defaults to ``epsg:4326``.
+                * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON
 
@@ -196,8 +196,8 @@ Module Contents
    Mask a ``xarray.Dataset`` based on a geometry.
 
    :Parameters: * **ds** (:class:`xarray.Dataset` or :class:`xarray.DataArray`) -- The dataset(array) to be masked
-                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`) -- The geometry to mask the data
-                * **crs** (:class:`str` or :class:`pyproj.CRS`) -- The spatial reference of the input geometry
+                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- The geometry to mask the data
+                * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- The spatial reference of the input geometry
                 * **all_touched** (:class:`bool`, *optional*) -- Include a pixel in the mask if it touches any of the shapes.
                   If False (default), include a pixel only if its center is within one
                   of the shapes, or if it is selected by Bresenham's line algorithm.

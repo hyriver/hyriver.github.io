@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = DEF_CRS, max_workers = 1, verbose = False, disable_retry = False)
+.. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, max_workers = 1, verbose = False, disable_retry = False)
 
    Access to an ArcGIS REST service.
 
@@ -21,7 +21,7 @@ Module Contents
    By default, all retrieval methods retry to get the missing feature IDs,
    if there are any. You can disable this behavior by setting ``disable_retry``
    to ``True``. If there are any missing feature IDs after the retry,
-   they are saved to a text file, path of which can be accessed by
+   they are saved to a text file, ipath of which can be accessed by
    ``self.client.failed_path``.
 
    :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
@@ -32,7 +32,7 @@ Module Contents
                   a list of available formats is shown, defaults to ``geojson``.
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
                   all the available fields which is the default behaviour.
-                * **crs** (:class:`str`, *optional*) -- The spatial reference of the output data, defaults to ``epsg:4326``.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the output data, defaults to ``epsg:4326``.
                 * **max_workers** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1, i.e., no threading. Note
                   that some services might face issues when several requests are sent
                   simultaneously and will return the requests partially. It's recommended
@@ -42,7 +42,7 @@ Module Contents
                   defaults to False.
                 * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
                   is done and object IDs of the failed requests is saved to a text file
-                  which its path can be accessed via ``self.client.failed_path``.
+                  which its ipath can be accessed via ``self.client.failed_path``.
 
    .. py:method:: get_features(featureids, return_m = False, return_geom = True)
 
@@ -66,14 +66,14 @@ Module Contents
       :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
-   .. py:method:: oids_bygeom(geom, geo_crs = DEF_CRS, spatial_relation = 'esriSpatialRelIntersects', sql_clause = None, distance = None)
+   .. py:method:: oids_bygeom(geom, geo_crs = 4326, spatial_relation = 'esriSpatialRelIntersects', sql_clause = None, distance = None)
 
       Get feature IDs within a geometry that can be combined with a SQL where clause.
 
       :Parameters: * **geom** (:class:`LineString`, :class:`Polygon`, :class:`Point`, :class:`MultiPoint`, :class:`tuple`, or :class:`list` of :class:`tuples`) -- A geometry (LineString, Polygon, Point, MultiPoint), tuple of length two
                      (``(x, y)``), a list of tuples of length 2 (``[(x, y), ...]``), or bounding box
                      (tuple of length 4 (``(xmin, ymin, xmax, ymax)``)).
-                   * **geo_crs** (:class:`str` or :class:`pyproj.CRS`) -- The spatial reference of the input geometry.
+                   * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input geometry, defaults to ``epsg:4326``.
                    * **spatial_relation** (:class:`str`, *optional*) -- The spatial relationship to be applied on the input geometry
                      while performing the query. If not correct a list of available options is shown.
                      It defaults to ``esriSpatialRelIntersects``. Valid predicates are:
@@ -138,7 +138,7 @@ Module Contents
    URLs of the supported services.
 
 
-.. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = DEF_CRS, read_method = 'json', max_nrecords = 1000, validation = True)
+.. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = 4326, read_method = 'json', max_nrecords = 1000, validation = True)
 
 
 
@@ -154,7 +154,7 @@ Module Contents
                    throws an error and includes all the available format offered by the service.
                 * **version** (:class:`str`, *optional*) -- The WFS service version which should be either 1.0.0, 1.1.0, or 2.0.0.
                   Defaults to 2.0.0.
-                * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   ``epsg:4326``.
                 * **read_method** (:class:`str`, *optional*) -- Method for reading the retrieved data, defaults to ``json``. Valid options are
                   ``json``, ``binary``, and ``text``.
@@ -165,7 +165,7 @@ Module Contents
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
-   .. py:method:: getfeature_bybox(bbox, box_crs = DEF_CRS, always_xy = False)
+   .. py:method:: getfeature_bybox(bbox, box_crs = 4326, always_xy = False)
 
       Get data from a WFS service within a bounding box.
 
@@ -196,7 +196,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response
 
 
-   .. py:method:: getfeature_bygeom(geometry, geo_crs = DEF_CRS, always_xy = False, predicate = 'INTERSECTS')
+   .. py:method:: getfeature_bygeom(geometry, geo_crs = 4326, always_xy = False, predicate = 'INTERSECTS')
 
       Get features based on a geometry.
 
@@ -241,7 +241,7 @@ Module Contents
    URLs of the supported WFS services.
 
 
-.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = DEF_CRS, validation = True, ssl = None)
+.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = 4326, validation = True, ssl = None)
 
    Get data from a WMS service within a geometry or bounding box.
 
@@ -250,7 +250,7 @@ Module Contents
                   string to get a list of available layers.
                 * **outformat** (:class:`str`) -- The data format to request for data from the service. You can pass an empty
                   string to get a list of available output formats.
-                * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   ``epsg:4326``.
                 * **version** (:class:`str`, *optional*) -- The WMS service version which should be either 1.1.1 or 1.3.0, defaults to 1.3.0.
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WMS service, defaults to True. Set this
@@ -264,14 +264,14 @@ Module Contents
       Get the layers supported by the WMS service.
 
 
-   .. py:method:: getmap_bybox(bbox, resolution, box_crs = DEF_CRS, always_xy = False, max_px = 8000000, kwargs = None)
+   .. py:method:: getmap_bybox(bbox, resolution, box_crs = 4326, always_xy = False, max_px = 8000000, kwargs = None)
 
       Get data from a WMS service within a geometry or bounding box.
 
       :Parameters: * **bbox** (:class:`tuple`) -- A bounding box for getting the data.
                    * **resolution** (:class:`float`) -- The output resolution in meters. The width and height of output are computed in pixel
                      based on the geometry bounds and the given resolution.
-                   * **box_crs** (:class:`str`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input bbox, defaults to
+                   * **box_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input bbox, defaults to
                      ``epsg:4326``.
                    * **always_xy** (:class:`bool`, *optional*) -- Whether to always use xy axis order, defaults to False. Some services change the axis
                      order from xy to yx, following the latest WFS version specifications but some don't.

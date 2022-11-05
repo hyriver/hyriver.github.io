@@ -1,3 +1,9 @@
+.. _PyGeoUtils: https://github.com/hyriver/pygeoutils
+.. _PyNHD : https://github.com/hyriver/pynhd
+.. _Py3DEP: https://github.com/hyriver/py3dep
+.. _PyDaymet: https://github.com/hyriver/pydaymet
+.. _HydroSignatures: https://github.com/hyriver/hydrosignatures
+
 AsyncRetriever: Asynchronous requests with persistent caching
 -------------------------------------------------------------
 
@@ -63,16 +69,26 @@ of the three types. All responses are returned as a list that has the same order
 input list of requests. Moreover, there is another function called ``delete_url_cache``
 for removing all requests from a cache file that contains a given URL.
 
-You can control the request/response caching behavior by setting the following
-environment variables:
+You can control the request/response caching behavior and verbosity of the package
+by setting the following environment variables:
 
 * ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
   ``./cache/aiohttp_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
   -1 (never expire).
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_VERBOSE``: Enable verbose mode. The default is false.
 
 For example, in your code before making any requests you can do:
+
+.. code-block:: python
+
+    import os
+
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
+    os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+    os.environ["HYRIVER_VERBOSE"] = "true"
 
 .. code-block:: python
 

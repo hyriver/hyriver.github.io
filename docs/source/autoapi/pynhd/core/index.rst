@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: AGRBase(base_url, layer = None, outfields = '*', crs = DEF_CRS, outformat = 'json')
+.. py:class:: AGRBase(base_url, layer = None, outfields = '*', crs = 4326, outformat = 'json')
 
    Base class for getting geospatial data from a ArcGISRESTful service.
 
@@ -21,11 +21,16 @@ Module Contents
                 * **layer** (:class:`str`, *optional*) -- A valid service layer. To see a list of available layers instantiate the class
                   without passing any argument.
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to EPSG:4326
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``json``.
 
-   .. py:method:: bygeom(geom, geo_crs = DEF_CRS, sql_clause = '', distance = None, return_m = False, return_geom = True)
+   .. py:property:: service_info
+      :type: ServiceInfo
+
+      Get the service information.
+
+   .. py:method:: bygeom(geom, geo_crs = 4326, sql_clause = '', distance = None, return_m = False, return_geom = True)
 
       Get feature within a geometry that can be combined with a SQL where clause.
 
@@ -68,18 +73,13 @@ Module Contents
 
 
    .. py:method:: get_validlayers(url)
+      :staticmethod:
 
       Get a list of valid layers.
 
       :Parameters: **url** (:class:`str`) -- The URL of the ArcGIS REST service.
 
       :returns: :class:`dict` -- A dictionary of valid layers.
-
-
-   .. py:method:: service_info()
-      :property:
-
-      Get the service information.
 
 
 
@@ -95,11 +95,10 @@ Module Contents
 
    :Parameters: **item** (:class:`str`, *optional*) -- The target endpoint to query, defaults to ``None``.
 
-   .. py:method:: item()
-      :property:
+   .. py:property:: item
+      :type: str | None
 
       Return the name of the endpoint.
-
 
    .. py:method:: query(kwds, skip_geometry = False)
 

@@ -46,7 +46,7 @@ Module Contents
       Retrieve NID data within a geometry.
 
       :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Geometry or bounding box (west, south, east, north) for extracting the data.
-                   * **geo_crs** (:class:`list` of :class:`str`) -- The CRS of the input geometry, defaults to epsg:4326.
+                   * **geo_crs** (:class:`list` of :class:`str`) -- The CRS of the input geometry, defaults to ``epsg:4326``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of NID data
 
@@ -125,7 +125,7 @@ Module Contents
 
 
 
-.. py:class:: WBD(layer, outfields = '*', crs = DEF_CRS)
+.. py:class:: WBD(layer, outfields = '*', crs = 4326)
 
 
 
@@ -149,7 +149,7 @@ Module Contents
                   - ``huc14``
                   - ``huc16``
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
 
 
 .. py:function:: cover_statistics(cover_da)
@@ -191,7 +191,7 @@ Module Contents
    :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame with the NLCD data and the coordinates.
 
 
-.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = DEF_CRS, ssl = None)
+.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = 4326, ssl = None)
 
    Get data from NLCD database (2019).
 
@@ -206,8 +206,8 @@ Module Contents
                 * **region** (:class:`str`, *optional*) -- Region in the US, defaults to ``L48``. Valid values are ``L48`` (for CONUS),
                   ``HI`` (for Hawaii), ``AK`` (for Alaska), and ``PR`` (for Puerto Rico).
                   Both lower and upper cases are acceptable.
-                * **crs** (:class:`str`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
-                  epsg:4326.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
+                  ``epsg:4326``.
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to ``False`` to disable
                   SSL certification verification.
 
@@ -224,19 +224,54 @@ Module Contents
    :returns: :class:`xarray.DataArray` -- Overland roughness
 
 
-.. py:function:: ssebopeta_bycoords(coords, dates, crs = DEF_CRS)
+.. py:function:: soil_gnatsgo(layers, geometry, crs = 4326)
+
+   Get US soil data from the gNATSGO dataset.
+
+   .. rubric:: Notes
+
+   This function uses Microsoft's Planetary Computer service to get the data.
+   The dataset's description and its suppoerted soil properties can be found at:
+   https://planetarycomputer.microsoft.com/dataset/gnatsgo-rasters
+
+   :Parameters: * **layers** (:class:`list` of :class:`str` or :class:`str`) -- Target layer(s). Available layers can be found at the dataset's website
+                  `here <https://planetarycomputer.microsoft.com/dataset/gnatsgo-rasters>`__.
+                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Geometry or bounding box of the region of interest.
+                * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- The input geometry CRS, defaults to ``epsg:4326``.
+
+   :returns: :class:`xarray.Dataset` -- Requested soil properties.
+
+
+.. py:function:: soil_properties(properties = '*', soil_dir = 'cache')
+
+   Get soil properties dataset in the United States from ScienceBase.
+
+   .. rubric:: Notes
+
+   This function downloads the source zip files from
+   `ScienceBase <https://www.sciencebase.gov/catalog/item/5fd7c19cd34e30b9123cb51f>`__
+   , extracts the included `.tif` files, and return them as an `xarray.Dataset`.
+
+   :Parameters: * **properties** (:class:`list` of :class:`str` or :class:`str`, *optional*) -- Soil properties to extract, default to "*", i.e., all the properties.
+                  Available properties are ``awc`` for available water capacity, ``fc`` for
+                  field capacity, and ``por`` for porosity.
+                * **soil_dir** (:class:`str` or :class:`pathlib.Path`) -- Directory to store zip files or if exists read from them, defaults to
+                  ``./cache``.
+
+
+.. py:function:: ssebopeta_bycoords(coords, dates, crs = 4326)
 
    Daily actual ET for a dataframe of coords from SSEBop database in mm/day.
 
    :Parameters: * **coords** (:class:`pandas.DataFrame`) -- A dataframe with ``id``, ``x``, ``y`` columns.
                 * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
-                * **crs** (:class:`str`, *optional*) -- The CRS of the input coordinates, defaults to epsg:4326.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input coordinates, defaults to ``epsg:4326``.
 
    :returns: :class:`xarray.Dataset` -- Daily actual ET in mm/day as a dataset with ``time`` and ``location_id`` dimensions.
              The ``location_id`` dimension is the same as the ``id`` column in the input dataframe.
 
 
-.. py:function:: ssebopeta_bygeom(geometry, dates, geo_crs = DEF_CRS)
+.. py:function:: ssebopeta_bygeom(geometry, dates, geo_crs = 4326)
 
    Get daily actual ET for a region from SSEBop database.
 
@@ -250,7 +285,7 @@ Module Contents
    :Parameters: * **geometry** (:class:`shapely.geometry.Polygon` or :class:`tuple`) -- The geometry for downloading clipping the data. For a tuple bbox,
                   the order should be (west, south, east, north).
                 * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
-                * **geo_crs** (:class:`str`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
+                * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, defaults to ``epsg:4326``.
 
    :returns: :class:`xarray.DataArray` -- Daily actual ET within a geometry in mm/day at 1 km resolution
 

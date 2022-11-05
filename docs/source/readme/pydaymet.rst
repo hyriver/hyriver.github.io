@@ -1,3 +1,9 @@
+.. _PyGeoUtils: https://github.com/hyriver/pygeoutils
+.. _PyNHD: https://github.com/hyriver/pynhd
+.. _Py3DEP: https://github.com/hyriver/py3dep
+.. _PyDaymet: https://github.com/hyriver/pydaymet
+.. _HydroSignatures: https://github.com/hyriver/hydrosignatures
+
 PyDaymet: Daily climate data through Daymet
 -------------------------------------------
 
@@ -41,6 +47,12 @@ PyDaymet: Daily climate data through Daymet
 
 |
 
+.. warning::
+
+    :rotating_light:Since the release of Daymet v4 R1 on November 2022, the URL of
+    Daymet's server has been changed. Therefore, only the latest version of PyDaymet
+    (v0.13.7) is going to work, and previous versions will not work anymore.:rotating_light:
+
 Features
 --------
 
@@ -65,14 +77,15 @@ reliability and speed of data retrieval significantly. AsyncRetriever caches all
 pairs and upon making an already cached request, it will retrieve the responses from the cache
 if the server's response is unchanged.
 
-You can control the request/response caching behavior by setting the following
-environment variables:
+You can control the request/response caching behavior and verbosity of the package
+by setting the following environment variables:
 
 * ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
   ``./cache/aiohttp_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
   -1 (never expire).
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_VERBOSE``: Enable verbose mode. The default is false.
 
 For example, in your code before making any requests you can do:
 
@@ -269,6 +282,16 @@ it to the functions.
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/daymet_loc.png
     :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/daymet.ipynb
+
+Additionally, the ``get_bycoords`` function accepts a list of coordinates and by setting the
+``to_xarray`` flag to ``True`` it can return the results as a ``xarray.Dataset`` instead of
+a ``pandas.DataFrame``:
+
+.. code-block:: python
+
+    coords = [(-94.986, 29.973), (-95.478, 30.134)]
+    idx = ["P1", "P2"]
+    clm_ds = daymet.get_bycoords(coords, range(2000, 2021), coords_id=idx, to_xarray=True)
 
 Also, we can use the ``potential_et`` function to compute PET by passing the daily climate data.
 We can either pass a ``pandas.DataFrame`` or a ``xarray.Dataset``. Note that, ``penman_monteith``

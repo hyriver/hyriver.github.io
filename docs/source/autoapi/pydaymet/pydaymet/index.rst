@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: get_bycoords(coords, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = None)
+.. py:function:: get_bycoords(coords, dates, coords_id = None, crs = 4326, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = None, to_xarray = False)
 
    Get point-data from the Daymet database at 1-km resolution.
 
@@ -20,9 +20,11 @@ Module Contents
    and supports getting monthly and annual summaries of the climate
    data directly from the server.
 
-   :Parameters: * **coords** (:class:`tuple`) -- Coordinates of the location of interest as a tuple (lon, lat)
+   :Parameters: * **coords** (:class:`tuple` or :class:`list` of :class:`tuples`) -- Coordinates of the location(s) of interest as a tuple (x, y)
                 * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years ``[2001, 2010, ...]``.
-                * **crs** (:class:`str`, *optional*) -- The CRS of the input geometry, defaults to ``"epsg:4326"``.
+                * **coords_id** (:class:`list` of :class:`int` or :class:`str`, *optional*) -- A list of identifiers for the coordinates. This option only applies when ``to_xarray``
+                  is set to ``True``. If not provided, the coordinates will be enumerated.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input coordinates, defaults to ``EPSG:4326``.
                 * **variables** (:class:`str` or :class:`list`) -- List of variables to be downloaded. The acceptable variables are:
                   ``tmin``, ``tmax``, ``prcp``, ``srad``, ``vp``, ``swe``, ``dayl``
                   Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.
@@ -52,8 +54,9 @@ Module Contents
                   https://doi.org/10.5194/gmd-11-1077-2018.
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
+                * **to_xarray** (:class:`bool`, *optional*) -- Return the data as an ``xarray.Dataset``. Defaults to ``False``.
 
-   :returns: :class:`pandas.DataFrame` -- Daily climate data for a location.
+   :returns: :class:`pandas.DataFrame` or :class:`xarray.Dataset` -- Daily climate data for a single or list of locations.
 
    .. rubric:: Examples
 
@@ -75,13 +78,13 @@ Module Contents
    .. footbibliography::
 
 
-.. py:function:: get_bygeom(geometry, dates, crs = DEF_CRS, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = None)
+.. py:function:: get_bygeom(geometry, dates, crs = 4326, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = None)
 
    Get gridded data from the Daymet database at 1-km resolution.
 
    :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`bbox`) -- The geometry of the region of interest.
                 * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
-                * **crs** (:class:`str`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
                 * **variables** (:class:`str` or :class:`list`) -- List of variables to be downloaded. The acceptable variables are:
                   ``tmin``, ``tmax``, ``prcp``, ``srad``, ``vp``, ``swe``, ``dayl``
                   Descriptions can be found `here <https://daymet.ornl.gov/overview>`__.

@@ -23,7 +23,7 @@ Module Contents
                 * **kwargs** (:class:`dict`, *optional*) -- Keywords to pass to the ``cache.delete_url()``.
 
 
-.. py:function:: retrieve(urls, read_method, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve(urls, read_method, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
 
    Send async requests.
 
@@ -59,7 +59,7 @@ Module Contents
    '01646500'
 
 
-.. py:function:: retrieve_binary(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve_binary(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
 
    Send async requests and get the response as ``bytes``.
 
@@ -79,7 +79,7 @@ Module Contents
    :returns: :class:`bytes` -- List of responses in the order of input URLs.
 
 
-.. py:function:: retrieve_json(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve_json(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
 
    Send async requests and get the response as ``json``.
 
@@ -115,7 +115,7 @@ Module Contents
    2675320
 
 
-.. py:function:: retrieve_text(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = EXPIRE, ssl = None, disable = False)
+.. py:function:: retrieve_text(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
 
    Send async requests and get the response as ``text``.
 

@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: potential_et(clm, coords = None, crs = DEF_CRS, method = 'hargreaves_samani', params = None)
+.. py:function:: potential_et(clm, coords = None, crs = 4326, method = 'hargreaves_samani', params = None)
 
    Compute Potential EvapoTranspiration for both gridded and a single location.
 
@@ -35,7 +35,7 @@ Module Contents
                   ``srad (W/m2)``      ``srad``
                   ``dayl (s)``         ``dayl``
                   ``rh (-)``           ``rh``
-                  ``u2 (m/s)``         ``u2``
+                  ``u2m (m/s)``        ``u2``
                   ==================== ========
 
                   If relative humidity and wind speed at 2-m level are not available,
@@ -43,7 +43,7 @@ Module Contents
                   temperature and 2-m wind speed is considered to be 2 m/s.
                 * **coords** (:class:`tuple` of :class:`floats`, *optional*) -- Coordinates of the daymet data location as a tuple, (x, y). This is required when ``clm``
                   is a ``DataFrame``.
-                * **crs** (:class:`str`, *optional*) -- The spatial reference of the input coordinate, defaults to ``epsg:4326``. This is only used
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to ``epsg:4326``. This is only used
                   when ``clm`` is a ``DataFrame``.
                 * **method** (:class:`str`, *optional*) -- Method for computing PET. Supported methods are
                   ``penman_monteith``, ``priestley_taylor``, ``hargreaves_samani``, and
