@@ -31,6 +31,10 @@
     :target: https://github.com/hyriver/async-retriever/actions/workflows/test.yml
     :alt: Github Actions
 
+.. |signatures| image:: https://github.com/hyriver/hydrosignatures/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/hydrosignatures/actions/workflows/test.yml
+    :alt: Github Actions
+
 .. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
     :target: https://github.com/hyriver/pygeohydro
     :alt: Download Stat
@@ -59,12 +63,17 @@
     :target: https://github.com/hyriver/async-retriever
     :alt: Download Stat
 
+.. |sig_stat| image:: https://static.pepy.tech/personalized-badge/hydrosignatures?period=total&left_color=blue&right_color=yellowgreen&left_text=HydroSignatures
+    :target: https://github.com/hyriver/hydrosignatures
+    :alt: Download Stat
+
 .. _PyGeoHydro: https://github.com/hyriver/pygeohydro
 .. _PyGeoOGC: https://github.com/hyriver/pygeoogc
 .. _PyGeoUtils: https://github.com/hyriver/pygeoutils
 .. _PyNHD: https://github.com/hyriver/pynhd
 .. _Py3DEP: https://github.com/hyriver/py3dep
 .. _PyDaymet: https://github.com/hyriver/pydaymet
+.. _HydroSignatures: https://github.com/hyriver/hydrosignatures
 
 .. image:: https://mybinder.org/badge_logo.svg
     :target: https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks
@@ -85,6 +94,7 @@ Package         Description                                                     
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
 |geoh_stat|     Access NWIS, NID, WQP, HCDN 2009, NLCD, CAMELS, and SSEBop databases |pygeohydro|
 |day_stat|      Access daily, monthly, and annual climate data via Daymet            |pydaymet|
+|sig_stat|      A collection of tools for computing hydrological signatures          |signatures|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
 |utils_stat|    Utilities for manipulating geospatial, (Geo)JSON, and (Geo)TIFF data |pygeoutils|
@@ -161,16 +171,16 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
 
 or ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
 
 or ``mamba`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet pygeoogc pygeoutils async-retriever
+    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever

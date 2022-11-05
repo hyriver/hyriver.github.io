@@ -62,6 +62,7 @@ autoapi_dirs = [
     "../../pygeohydro",
     "../../py3dep",
     "../../pydaymet",
+    "../../hydrosignatures",
     "../../async-retriever",
     "../../pygeoogc",
     "../../pygeoutils",
@@ -86,6 +87,7 @@ modindex_common_prefix = [
     "pygeohydro.",
     "py3dep.",
     "pydaymet.",
+    "hydrosignatures.",
     "async-retriever.",
     "pygeoogc.",
     "pygeoutils.",
@@ -184,6 +186,7 @@ extlinks = {
     "issue_nhd": ("https://github.com/hyriver/pynhd/issues/%s", "GH"),
     "issue_3dep": ("https://github.com/hyriver/py3dep/issues/%s", "GH"),
     "issue_day": ("https://github.com/hyriver/pydaymet/issues/%s", "GH"),
+    "issue_sig": ("https://github.com/hyriver/hydrosinatures/issues/%s", "GH"),
     "pull": ("https://github.com/hyriver/hyriver.github.io/pull/%s", "PR"),
     "pull_async": ("https://github.com/hyriver/async-retriever/pull/%s", "PR"),
     "pull_ogc": ("https://github.com/hyriver/pygeoogc/pull/%s", "PR"),
@@ -192,6 +195,7 @@ extlinks = {
     "pull_nhd": ("https://github.com/hyriver/pynhd/pull/%s", "PR"),
     "pull_3dep": ("https://github.com/hyriver/py3dep/pull/%s", "PR"),
     "pull_day": ("https://github.com/hyriver/pydaymet/pull/%s", "PR"),
+    "pull_sig": ("https://github.com/hyriver/hydrosinatures/pull/%s", "PR"),
 }
 
 # -- Options for HTML output -------------------------------------------------
@@ -345,6 +349,7 @@ def update_versions(app: Sphinx):
         "py3dep": "Py3DEP",
         "pygeohydro": "PyGeoHydro",
         "pydaymet": "PyDaymet",
+        "hydrosignatures": "HydroSignatures",
     }
     for p, n in packages.items():
         with urllib.request.urlopen(f'https://pypi.python.org/pypi/{p}/json') as r:

@@ -26,6 +26,10 @@
     :target: https://github.com/cheginit/pydaymet
     :alt: PyPi Version
 
+.. |signatures| image:: https://img.shields.io/pypi/v/hydrosignatures?label=HydroSignatures&color=green
+    :target: https://github.com/cheginit/hydrosignatures
+    :alt: PyPi Version
+
 .. |async_stat| image:: https://pepy.tech/badge/async-retriever
     :target: https://pepy.tech/project/async-retriever
 
@@ -51,6 +55,10 @@
 
 .. |pydaymet_stat| image:: https://pepy.tech/badge/pydaymet
     :target: https://pepy.tech/project/pydaymet
+    :alt: Download Stat
+
+.. |sig_stat| image:: https://static.pepy.tech/personalized-badge/hydrosignatures?period=total&left_color=blue&right_color=yellowgreen&left_text=HydroSignatures
+    :target: https://github.com/hyriver/hydrosignatures
     :alt: Download Stat
 
 Hydroclimate Data Retriever
@@ -139,6 +147,12 @@ If you use any of HyRiver packages in your research, we appreciate citations:
                 at 1-km scale for both single pixels and gridded.
 
                 |pydaymet| |pydaymet_stat|
+
+            .. tab-item:: HydroSignatures
+
+                A collection of tools for computing hydrological signatures
+
+                |signatures| |sig_stat|
 
 .. grid::
 

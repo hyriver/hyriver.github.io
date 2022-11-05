@@ -42,6 +42,15 @@ Release Notes
 
     .. grid-item-card::
 
+        .. button-link:: changelogs/hydrosignatures.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            HydroSignatures
+
+    .. grid-item-card::
+
         .. button-link:: changelogs/async-retriever.html
             :click-parent:
             :ref-type: ref
@@ -75,6 +84,7 @@ Release Notes
     PyGeoHydro <changelogs/pygeohydro>
     Py3DEP <changelogs/py3dep>
     PyDaymet <changelogs/pydaymet>
+    HydroSignatures <changelogs/hydrosignatures>
     AsyncRetriever<changelogs/async-retriever>
     PyGeoOGC <changelogs/pygeoogc>
     PyGeoUtils <changelogs/pygeoutils>
