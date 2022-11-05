@@ -10,6 +10,10 @@
   thumbnail: examples/notebooks/_static/dam_impact.png
   title: Working with Geospatial Hydrologic Data Using Web Services
 
+- path: examples/notebooks/soil.html
+  thumbnail: examples/notebooks/_static/soil_storage.png
+  title: Soil Storage Capacity
+
 - path: examples/notebooks/nid_dib.html
   thumbnail: examples/notebooks/_static/nid_2022.png
   title: Spatiotemporal Distribution of Dams
