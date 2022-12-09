@@ -59,7 +59,7 @@ Module Contents
       Little Moose
 
 
-   .. py:method:: get_suggestions(text, context_key = '')
+   .. py:method:: get_suggestions(text, context_key = None)
 
       Get suggestions from the National Inventory of Dams web service.
 
@@ -123,33 +123,6 @@ Module Contents
       :Parameters: **fname** (:class:`str`, :class:`pathlib.Path`, *optional*) -- The path to the file to save the data to, defaults to
                    ``./cache/nid_inventory.feather``.
 
-
-
-.. py:class:: WBD(layer, outfields = '*', crs = 4326)
-
-
-
-   Access Watershed Boundary Dataset (WBD).
-
-   .. rubric:: Notes
-
-   This web service offers Hydrologic Unit (HU) polygon boundaries for
-   the United States, Puerto Rico, and the U.S. Virgin Islands.
-   For more info visit: https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer
-
-   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. Valid layers are:
-
-                  - ``wbdline``
-                  - ``huc2``
-                  - ``huc4``
-                  - ``huc6``
-                  - ``huc8``
-                  - ``huc10``
-                  - ``huc12``
-                  - ``huc14``
-                  - ``huc16``
-                * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
 
 
 .. py:function:: cover_statistics(cover_da)

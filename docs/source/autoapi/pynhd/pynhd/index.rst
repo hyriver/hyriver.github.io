@@ -52,23 +52,23 @@ Module Contents
 
    .. rubric:: Notes
 
-   For more info visit: https://edits.nationalmap.gov/arcgis/rest/services/nhd/MapServer
+   For more info visit: https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer
 
    :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. Valid layers are:
 
-                  - ``point``
-                  - ``sink``
-                  - ``flowline``
-                  - ``non_network_flowline``
-                  - ``flow_direction``
-                  - ``line``
-                  - ``wall``
-                  - ``burn_line``
-                  - ``burn_waterbody``
-                  - ``area``
-                  - ``waterbody``
-                  - ``huc12``
-                  - ``catchment``
+                  - ``gage`` for NHDPlusGage layer
+                  - ``sink`` for NHDPlusSink layer
+                  - ``point`` for NHDPoint layer
+                  - ``flowline`` for NetworkNHDFlowline layer
+                  - ``non_network_flowline`` for NonNetworkNHDFlowline layer
+                  - ``flow_direction`` for FlowDirection layer
+                  - ``wall`` for NHDPlusWall layer
+                  - ``line`` for NHDLine layer
+                  - ``area`` for NHDArea layer
+                  - ``waterbody`` for NHDWaterbody layer
+                  - ``catchment`` for NHDPlusCatchment layer
+                  - ``boundary_unit`` for NHDPlusBoundaryUnit layer
+                  - ``huc12`` for WBDHU12 layer
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
 
@@ -79,7 +79,7 @@ Module Contents
 
    .. py:method:: comid_byloc(coords, loc_crs = 4326)
 
-      Get the closest ComID based on coordinates.
+      Get the closest ComID based on coordinates using ``hydrolocation`` endpoint.
 
       .. rubric:: Notes
 
@@ -98,7 +98,7 @@ Module Contents
 
    .. py:method:: feature_byloc(coords, loc_crs = 4326)
 
-      Get the closest feature ID(s) based on coordinates.
+      Get the closest feature ID(s) based on coordinates using ``postion`` endpoint.
 
       :Parameters: * **coords** (:class:`tuple` or :class:`list`) -- A tuple of length two (x, y) or a list of them.
                    * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
@@ -213,12 +213,18 @@ Module Contents
 
       Navigate the NHDPlus database from a coordinate.
 
+      .. rubric:: Notes
+
+      This function first calls the ``feature_byloc`` function to get the
+      comid of the nearest flowline and then calls the ``navigate_byid``
+      function to get the features from the obtained ``comid``.
+
       :Parameters: * **coords** (:class:`tuple`) -- A tuple of length two (x, y).
                    * **navigation** (:class:`str`, *optional*) -- The navigation method, defaults to None which throws an exception
-                     if comid_only is False.
+                     if ``comid_only`` is False.
                    * **source** (:class:`str`, *optional*) -- Return the data from another source after navigating
-                     the features using fsource, defaults to None which throws an exception
-                     if comid_only is False.
+                     the features based on ``comid``, defaults to None which throws an exception
+                     if ``comid_only`` is False.
                    * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
                    * **distance** (:class:`int`, *optional*) -- Limit the search for navigation up to a distance in km,
                      defaults to 500 km. Note that this is an expensive request so you
@@ -325,32 +331,68 @@ Module Contents
 
 .. py:class:: WaterData(layer, crs = 4326, validation = True)
 
-   Access to `Water Data <https://labs.waterdata.usgs.gov/geoserver>`__ service.
+   Access to `WaterData <https://labs.waterdata.usgs.gov/geoserver>`__ service.
 
    :Parameters: * **layer** (:class:`str`) -- A valid layer from the WaterData service. Valid layers are:
-                  ``nhdarea``, ``nhdwaterbody``, ``catchmentsp``, ``nhdflowline_network``
-                  ``gagesii``, ``huc08``, ``huc12``, ``huc12agg``, and ``huc12all``. Note that
-                  the layers' worksapce for the Water Data service is ``wmadata`` which will
-                  be added to the given ``layer`` argument if it is not provided.
+
+                  - ``catchmentsp``
+                  - ``gagesii``
+                  - ``gagesii_basins``
+                  - ``nhdarea``
+                  - ``nhdflowline_network``
+                  - ``nhdflowline_nonnetwork``
+                  - ``nhdwaterbody``
+                  - ``wbd02``
+                  - ``wbd04``
+                  - ``wbd06``
+                  - ``wbd08``
+                  - ``wbd10``
+                  - ``wbd12``
+
+                  Note that the layers' namespace for the WaterData service is
+                  ``wmadata`` and will be added to the given ``layer`` argument
+                  if it is not provided.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The target spatial reference system, defaults to ``epsg:4326``.
                 * **validation** (:class:`bool`, *optional*) -- Whether to validate the input data, defaults to ``True``.
 
-   .. py:method:: bybox(bbox, box_crs = 4326)
+   .. py:method:: bybox(bbox, box_crs = 4326, sort_attr = None)
 
       Get features within a bounding box.
 
+      :Parameters: * **bbox** (:class:`tuple` of :class:`floats`) -- A bounding box in the form of (minx, miny, maxx, maxy).
+                   * **box_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the bounding box, defaults to ``epsg:4326``.
+                   * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
+                     to the first attribute in the schema that contains ``id`` in its name.
 
-   .. py:method:: bydistance(coords, distance, loc_crs = 4326)
+      :returns: :class:`geopandas.GeoDataFrame` -- The requested features in a GeoDataFrames.
+
+
+   .. py:method:: bydistance(coords, distance, loc_crs = 4326, sort_attr = None)
 
       Get features within a radius (in meters) of a point.
 
+      :Parameters: * **coords** (:class:`tuple` of :class:`float`) -- The x, y coordinates of the point.
+                   * **distance** (:class:`int`) -- The radius (in meters) to search within.
+                   * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input coordinates, default to epsg:4326.
+                   * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
+                     to the first attribute in the schema that contains ``id`` in its name.
 
-   .. py:method:: byfilter(cql_filter, method = 'GET')
+      :returns: :class:`geopandas.GeoDataFrame` -- Requested features as a GeoDataFrame.
+
+
+   .. py:method:: byfilter(cql_filter, method = 'GET', sort_attr = None)
 
       Get features based on a CQL filter.
 
+      :Parameters: * **cql_filter** (:class:`str`) -- The CQL filter to use for requesting the data.
+                   * **method** (:class:`str`, *optional*) -- The HTTP method to use for requesting the data, defaults to GET.
+                   * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
+                     to the first attribute in the schema that contains ``id`` in its name.
 
-   .. py:method:: bygeom(geometry, geo_crs = 4326, xy = True, predicate = 'INTERSECTS')
+      :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrames.
+
+
+   .. py:method:: bygeom(geometry, geo_crs = 4326, xy = True, predicate = 'INTERSECTS', sort_attr = None)
 
       Get features within a geometry.
 
@@ -359,8 +401,19 @@ Module Contents
                    * **xy** (:class:`bool`, *optional*) -- Whether axis order of the input geometry is xy or yx.
                    * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to
                      INTERSECTS. Valid predicates are:
-                     ``EQUALS``, ``DISJOINT``, ``INTERSECTS``, ``TOUCHES``, ``CROSSES``, ``WITHIN``
-                     ``CONTAINS``, ``OVERLAPS``, ``RELATE``, ``BEYOND``
+
+                     - ``EQUALS``
+                     - ``DISJOINT``
+                     - ``INTERSECTS``
+                     - ``TOUCHES``
+                     - ``CROSSES``
+                     - ``WITHIN``
+                     - ``CONTAINS``
+                     - ``OVERLAPS``
+                     - ``RELATE``
+                     - ``BEYOND``
+                   * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
+                     to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features in the given geometry.
 

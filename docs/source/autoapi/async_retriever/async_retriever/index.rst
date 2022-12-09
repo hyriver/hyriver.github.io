@@ -150,7 +150,7 @@ Module Contents
    '01646500'
 
 
-.. py:function:: stream_write(urls, file_paths, request_kwds = None, request_method = 'GET', max_workers = 8, ssl = None)
+.. py:function:: stream_write(urls, file_paths, request_kwds = None, request_method = 'GET', max_workers = 8, ssl = None, chunk_size = None)
 
    Send async requests.
 
@@ -162,6 +162,9 @@ Module Contents
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
+                * **chunk_size** (:class:`int`, *optional*) -- The size of the chunks in bytes to be written to the file, defaults to ``None``,
+                  which will iterates over data chunks and write them as received from
+                  the server.
 
    .. rubric:: Examples
 

@@ -16,10 +16,10 @@ Module Contents
 
    Get US states as a GeoDataFrame from Census' TIGERLine 2022 database.
 
-   :Parameters: **subset_key** (:class:`str`, *optional*) -- Key to subset the geometries instead of returning all states, by default
+   :Parameters: **subset_key** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Key to subset the geometries instead of returning all states, by default
                 all states are returned. Valid keys are:
 
-                - ``contiguous``
+                - ``contiguous`` or ``conus``
                 - ``continental``
                 - ``commonwealths``
                 - ``territories``

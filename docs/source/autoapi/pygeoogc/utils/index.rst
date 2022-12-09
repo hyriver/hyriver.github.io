@@ -12,44 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: ESRIGeomQuery
-
-   Generate input geometry query for ArcGIS RESTful services.
-
-   :Parameters: * **geometry** (:class:`tuple` or :class:`sgeom.Polygon` or :class:`sgeom.Point` or :class:`sgeom.LineString`) -- The input geometry which can be a point (x, y), a list of points [(x, y), ...],
-                  bbox (xmin, ymin, xmax, ymax), or a Shapely's sgeom.Polygon.
-                * **wkid** (:class:`int`) -- The Well-known ID (WKID) of the geometry's spatial reference e.g., for EPSG:4326,
-                  4326 should be passed. Check
-                  `ArcGIS <https://developers.arcgis.com/rest/services-reference/geographic-coordinate-systems.htm>`__
-                  for reference.
-
-   .. py:method:: bbox()
-
-      Query for a bbox.
-
-
-   .. py:method:: multipoint()
-
-      Query for a multi-point.
-
-
-   .. py:method:: point()
-
-      Query for a point.
-
-
-   .. py:method:: polygon()
-
-      Query for a polygon.
-
-
-   .. py:method:: polyline()
-
-      Query for a polyline.
-
-
-
-.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = -1, disable = False)
+.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = -1, disable = False, ssl = True)
 
    Configures the passed-in session to retry on failed requests.
 
@@ -66,63 +29,28 @@ Module Contents
                 * **cache_name** (:class:`str`, *optional*) -- Path to a folder for caching the session, default to None which uses
                   system's temp directory.
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for the cache in seconds, defaults to -1 (never expire).
-                * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
-                  from the server, defaults to ``False``.
+                * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching request/responses, defaults to ``False``.
+                * **ssl** (:class:`bool`, *optional*) -- If ``True`` verify SSL certificates, defaults to ``True``.
 
-   .. py:method:: get(url, payload = None, headers = None)
+   .. py:method:: close()
+
+      Close the session.
+
+
+   .. py:method:: get(url, payload = None, params = None, headers = None, stream = None)
 
       Retrieve data from a url by GET and return the Response.
 
 
-   .. py:method:: head(url, data = None, params = None, headers = None)
+   .. py:method:: head(url, params = None, data = None, json = None, headers = None)
 
       Retrieve data from a url by POST and return the Response.
 
 
-   .. py:method:: post(url, payload = None, headers = None)
+   .. py:method:: post(url, payload = None, data = None, json = None, headers = None, stream = None)
 
       Retrieve data from a url by POST and return the Response.
 
-
-
-.. py:function:: bbox_decompose(bbox, resolution, box_crs = 4326, max_px = 8000000)
-
-   Split the bounding box vertically for WMS requests.
-
-   :Parameters: * **bbox** (:class:`tuple`) -- A bounding box; (west, south, east, north)
-                * **resolution** (:class:`float`) -- The target resolution for a WMS request in meters.
-                * **box_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input bbox, default to ``epsg:4326``.
-                * **max_px** (:class:`int`, :class:`opitonal`) -- The maximum allowable number of pixels (width x height) for a WMS requests,
-                  defaults to 8 million based on some trial-and-error.
-
-   :returns: :class:`list` of :class:`tuples` -- Each tuple includes the following elements:
-
-             * Tuple of px_tot 4 that represents a bounding box (west, south, east, north) of a cell,
-             * A label that represents cell ID starting from bottom-left to top-right, for example a
-               2x2 decomposition has the following labels::
-
-               |---------|---------|
-               |         |         |
-               |   0_1   |   1_1   |
-               |         |         |
-               |---------|---------|
-               |         |         |
-               |   0_0   |   1_0   |
-               |         |         |
-               |---------|---------|
-
-             * Raster width of a cell,
-             * Raster height of a cell.
-
-
-.. py:function:: check_bbox(bbox)
-
-   Check if an input inbox is a tuple of length 4.
-
-
-.. py:function:: check_response(resp)
-
-   Extract error message from a response, if any.
 
 
 .. py:function:: match_crs(geom, in_crs, out_crs)
@@ -152,6 +80,36 @@ Module Contents
    [(-69.7636111130079, 45.44549114818127)]
 
 
+.. py:function:: streaming_download(urls, kwds = None, fnames = None, file_prefix = '', file_extention = '', method = 'GET', ssl = True, chunk_size = CHUNK_SIZE, n_jobs = MAX_CONN)
+
+   Download and store files in parallel from a list of URLs/Keywords.
+
+   .. rubric:: Notes
+
+   This function uses ``joblib`` with ``loky`` backend.
+
+   :Parameters: * **urls** (:class:`tuple` or :class:`list`) -- A list of URLs to download.
+                * **kwds** (:class:`tuple` or :class:`list`, *optional*) -- A list of keywords associated with each URL, e.g.,
+                  ({"params": ..., "headers": ...}, ...). Defaults to ``None``.
+                * **fnames** (:class:`tuple` or :class:`list`, *optional*) -- A list of filenames associated with each URL, e.g.,
+                  ("file1.zip", ...). Defaults to ``None``. If not provided,
+                  random unique filenames will be generated based on
+                  URL and keyword pairs.
+                * **file_prefix** (:class:`str`, *optional*) -- Prefix to add to filenames when storing the files, defaults
+                  to ``None``, i.e., no prefix. This argument will be only be
+                  used if ``fnames`` is not passed.
+                * **file_extention** (:class:`str`, *optional*) -- Extension to use for storing the files, defaults to ``None``,
+                  i.e., no extension if ``fnames`` is not provided otherwise. This
+                  argument will be only be used if ``fnames`` is not passed.
+                * **method** (:class:`str`, *optional*) -- HTTP method to use, i.e, ``GET`` or ``POST``, by default "GET".
+                * **ssl** (:class:`bool`, *optional*) -- Whether to use SSL verification, by default ``True``.
+                * **chunk_size** (:class:`int`, *optional*) -- Chunk size to use when downloading, by default 100 MB is used.
+                * **n_jobs** (:class:`int`, *optional*) -- The maximum number of concurrent downloads, defaults to 10.
+
+   :returns: :class:`list` -- A list of ``pathlib.Path`` objects associated with URLs in the
+             same order.
+
+
 .. py:function:: traverse_json(items, ipath)
 
    Extract an element from a JSON file along a specified ipath.
@@ -174,11 +132,6 @@ Module Contents
    ... },]
    >>> traverse_json(data, ["employees", "name"])
    [['Alice', 'Bob']]
-
-
-.. py:function:: valid_wms_crs(url)
-
-   Get valid CRSs from a WMS service version 1.3.0.
 
 
 .. py:function:: validate_crs(crs)

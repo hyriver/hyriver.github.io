@@ -108,7 +108,7 @@ Module Contents
 
 .. py:class:: ScienceBase
 
-   Access and explore files on ScienceBase.
+   Access and explore items on USGS's ScienceBase.
 
    .. py:method:: get_children(item)
       :staticmethod:
@@ -121,17 +121,5 @@ Module Contents
 
       Get download and meta URLs of all the available files for an item.
 
-
-
-.. py:function:: stage_nhdplus_attrs(parquet_path = None)
-
-   Stage the NHDPlus Attributes database and save to nhdplus_attrs.parquet.
-
-   More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
-
-   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`) -- Path to a file with ``.parquet`` extension for saving the processed to disk for
-                later use.
-
-   :returns: :class:`pandas.DataFrame` -- The staged data as a DataFrame.
 
 

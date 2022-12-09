@@ -57,24 +57,30 @@ database which is a part of the
 `National Map services <https://viewer.nationalmap.gov/services/>`__.
 The 3DEP service has multi-resolution sources and depending on the user-provided resolution,
 the data is resampled on the server-side based on all the available data sources. Py3DEP returns
-the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset. The main function is
-``get_map`` which supports the following layers:
+the requests as `xarray <https://xarray.pydata.org/en/stable>`__ dataset.
 
-- DEM
-- Hillshade Gray
-- Aspect Degrees
-- Aspect Map
-- GreyHillshade Elevation Fill
-- Hillshade Multidirectional
-- Slope Degrees
-- Slope Map
-- Hillshade Elevation Tinted
-- Height Ellipsoidal
-- Contour 25
-- Contour Smoothed 25
+The following functionalities are currently available:
 
-Moreover, Py3DEP offers some additional utilities:
+- ``get_map``: Get topographic data the dynamic 3DEP service that supports the following
+  layers:
 
+    - DEM
+    - Hillshade Gray
+    - Aspect Degrees
+    - Aspect Map
+    - GreyHillshade Elevation Fill
+    - Hillshade Multidirectional
+    - Slope Degrees
+    - Slope Map
+    - Hillshade Elevation Tinted
+    - Height Ellipsoidal
+    - Contour 25
+    - Contour Smoothed 25
+- ``static_3dep_dem``: Get DEM data at 10 m, 30 m, or 60 m resolution from the staged 3DEP
+  data. Since this function only returns DEM, for computing other terrain attributes you
+  can use `xarray-spatial <https://xarray-spatial.org/>`__. Just note that you should
+  reproject the output ``DataArray`` to a projected CRS like 5070 before passing it to
+  ``xarray-spatial`` like so: ``dem = dem.rio.reproject(5070)``.
 - ``elevation_bygrid``: For retrieving elevations of all the grid points in a 2D grid.
 - ``elevation_bycoords``: For retrieving elevation of a list of ``x`` and ``y`` coordinates.
 - ``elevation_profile``: For retrieving elevation profile along a line at a given spacing.
@@ -268,6 +274,16 @@ these spatial references.
     geom = NLDI().get_basins("01031500").geometry[0]
     dem = py3dep.get_map("DEM", geom, resolution=30, geo_crs="epsg:4326", crs="epsg:3857")
     slope = py3dep.get_map("Slope Degrees", geom, resolution=30)
+    slope = py3dep.deg2mpm(slope)
+
+We can also use ``static_3dep_dem`` function to get the same DEM:
+
+.. code-block:: python
+
+    import xrspatial
+
+    dem = py3dep.static_3dep_dem(geom, 4326, 30)
+    slope = xrspatial.slope(dem.rio.reproject(5070))
     slope = py3dep.deg2mpm(slope)
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/dem_slope.png

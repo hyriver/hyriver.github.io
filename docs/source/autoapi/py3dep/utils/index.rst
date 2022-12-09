@@ -26,7 +26,7 @@ Module Contents
 
    Fill depressions and adjust flat areas in a DEM using `RichDEM <https://richdem.readthedocs.io>`__.
 
-   :Parameters: **dem** (:class:`xarray.DataArray` or :class:`numpy.ndarray`) -- Digital Elevation Model.
+   :Parameters: **dem_da** (:class:`xarray.DataArray` or :class:`numpy.ndarray`) -- Digital Elevation Model.
 
    :returns: :class:`xarray.DataArray` -- Conditioned DEM after applying
              `depression filling <https://richdem.readthedocs.io/en/latest/depression_filling.html>`__

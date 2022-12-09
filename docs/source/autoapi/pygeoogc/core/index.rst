@@ -106,9 +106,9 @@ Module Contents
       Validate input arguments with the WFS service.
 
 
-   .. py:method:: get_validnames()
+   .. py:method:: sort_params(sort_attr, nfeatures, start_index)
 
-      Get valid column names for a layer.
+      Get the sort parameters for the WFS request.
 
 
    .. py:method:: validate_wfs()

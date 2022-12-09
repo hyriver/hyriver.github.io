@@ -49,9 +49,9 @@ PyDaymet: Daily climate data through Daymet
 
 .. warning::
 
-    :rotating_light:Since the release of Daymet v4 R1 on November 2022, the URL of
-    Daymet's server has been changed. Therefore, only the latest version of PyDaymet
-    (v0.13.7) is going to work, and previous versions will not work anymore.:rotating_light:
+    Since the release of Daymet v4 R1 on November 2022, the URL of
+    Daymet's server has been changed. Therefore, only PyDaymet v0.13.7+
+    is going to work, and previous versions will not work anymore.
 
 Features
 --------
@@ -59,7 +59,7 @@ Features
 PyDaymet is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
 is designed to aid in hydroclimate analysis through web services. This package provides
 access to climate data from
-`Daymet V4 <https://daac.ornl.gov/DAYMET/guides/Daymet_Daily_V4.html>`__ database using NetCDF
+`Daymet V4 R1 <https://daymet.ornl.gov/overview>`__ database using NetCDF
 Subset Service (NCSS). Both single pixel (using ``get_bycoords`` function) and gridded data (using
 ``get_bygeom``) are supported which are returned as
 ``pandas.DataFrame`` and ``xarray.Dataset``, respectively. Climate data is available for North
@@ -71,31 +71,9 @@ both single pixel and gridded data.
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 Moreover, under the hood, PyDaymet uses
-`AsyncRetriever <https://github.com/hyriver/async-retriever>`__
-for making requests asynchronously with persistent caching. This improves the
-reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
-pairs and upon making an already cached request, it will retrieve the responses from the cache
-if the server's response is unchanged.
-
-You can control the request/response caching behavior and verbosity of the package
-by setting the following environment variables:
-
-* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
-  ``./cache/aiohttp_cache.sqlite``
-* ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
-  -1 (never expire).
-* ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
-* ``HYRIVER_VERBOSE``: Enable verbose mode. The default is false.
-
-For example, in your code before making any requests you can do:
-
-.. code-block:: python
-
-    import os
-
-    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
-    os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
-    os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+`PyGeoOGC <https://github.com/hyriver/pygeoogc>`__
+for making requests in parallel and storing responses in chunks. This improves the
+reliability and speed of data retrieval significantly.
 
 You can also try using PyDaymet without installing
 it on your system by clicking on the binder badge. A Jupyter Lab

@@ -87,7 +87,8 @@ For example, in your code before making any requests you can do:
 
     import os
 
-    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/aiohttp_cache.sqlite"
+    os.environ["HYRIVER_CACHE_NAME_HTTP"] = "path/to/http_cache.sqlite"
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
 
@@ -112,7 +113,7 @@ PyGeoOGC has three main classes:
   the target object IDs using ``oids_bygeom`` (within a geometry), ``oids_byfield`` (specific
   field IDs), or ``oids_bysql`` (any valid SQL 92 WHERE clause) class methods. Then, we can get
   the target features using ``get_features`` class method. The returned response can be converted
-  into a GeoDataFrame using ``json2geodf`` function from
+  into a ``geopandas.GeoDataFrame`` using ``json2geodf`` function from
   `PyGeoUtils <https://github.com/hyriver/pygeoutils>`__.
 
 * ``WMS``: Instantiation of this class requires at least 3 arguments: service URL, layer
@@ -134,6 +135,12 @@ PyGeoOGC has three main classes:
 
   You can convert the returned response of this function to a ``GeoDataFrame`` using ``json2geodf``
   function from PyGeoUtils package.
+
+PyGeoOGC also includes several utilities:
+
+- ``streaming_download`` for downloading large files in parallel and in chunks, efficiently.
+- ``traverse_json`` for traversing a nested JSON object.
+- ``match_crs`` for reprojecting a geometry or bounding box to any valid CRS.
 
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 

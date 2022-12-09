@@ -55,13 +55,17 @@ is designed to aid in hydroclimate analysis through web services. This package p
 utilities for manipulating (Geo)JSON and (Geo)TIFF responses from web services.
 These utilities are:
 
-- ``json2geodf``: For converting (Geo)JSON objects to GeoPandas dataframe.
-- ``arcgis2geojson``: For converting ESRIGeoJSON to the standard GeoJSON format.
-- ``gtiff2xarray``: For converting (Geo)TIFF objects to `xarray <https://xarray.pydata.org/>`__
-  datasets.
-- ``xarray2geodf``: For converting ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``, i.e.,
-  vectorization.
-- ``xarray_geomask``: For masking a ``xarray.Dataset`` or ``xarray.DataArray`` using a polygon.
+- ``Coordinates``: Generate validated and normalized coordinates in WGS84.
+- ``GeoBSpline``: Create B-spline from a ``geopandas.GeoDataFrame`` of points.
+- ``arcgis2geojson``: Convert ESRIGeoJSON format to GeoJSON.
+- ``break_lines``: Break lines at specified points in a given direction.
+- ``gtiff2xarray``: Convert (Geo)Tiff byte responses to ``xarray.Dataset``.
+- ``json2geodf``: Create ``geopandas.GeoDataFrame`` from (Geo)JSON responses
+- ``snap2nearest``: Find the nearest points on a line to a set of points.
+- ``xarray2geodf``: Vectorize a ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``.
+- ``geodf2xarray``: Rasterize a ``geopandas.GeoDataFrame`` to a ``xarray.DataArray``.
+- ``xarray_geomask``: Mask a ``xarray.Dataset`` based on a geometry.
+- ``nested_polygons``: Determining nested (multi)polygons in a ``geopandas.GeoDataFrame``.
 
 All these functions handle all necessary CRS transformations.
 

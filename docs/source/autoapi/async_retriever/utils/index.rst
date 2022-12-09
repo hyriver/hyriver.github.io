@@ -56,7 +56,7 @@ Module Contents
    :returns: :class:`bytes` -- The retrieved response as binary.
 
 
-.. py:function:: stream_session(url, s_kwds, session, filepath)
+.. py:function:: stream_session(url, s_kwds, session, filepath, chunk_size = None)
    :async:
 
    Stream the response to a file.

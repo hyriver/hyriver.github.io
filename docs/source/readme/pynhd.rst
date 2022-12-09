@@ -63,33 +63,39 @@ and `GeoConnex <https://geoconnex.internetofwater.dev/>`__.
 
 These web services can be used to navigate and extract vector data from NHDPlus V2 (both mid-
 and high-resolution) database such as catchments, HUC8, HUC12, GagesII, flowlines, and water
-bodies. Moreover, PyNHD gives access to an item on `ScienceBase <https://sciencebase.usgs.gov>`__
-called Select Attributes for NHDPlus Version 2.1 Reach Catchments and Modified Network Routed
-Upstream Watersheds for the Conterminous United States that is located
-`here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
-This item provides over 30 attributes at catchment-scale based on NHDPlus ComIDs.
-These attributes are available in three categories:
-
-1. Local (`local`): For individual reach catchments,
-2. Total (`upstream_acc`): For network-accumulated values using total cumulative drainage area,
-3. Divergence (`div_routing`): For network-accumulated values using divergence-routed.
-
-A list of these attributes for each characteristic type can be accessed using ``nhdplus_attrs``
-function.
+bodies.
 
 Moreover, the PyGeoAPI service provides four functionalities:
 
 1. ``flow_trace``: Trace flow from a starting point to up/downstream direction.
-2. ``split_catchment``: Split the local catchment of a point of interest at the point's location.
+2. ``split_catchment``: Split the local catchment of a point of interest at the point's
+   location.
 3. ``elevation_profile``: Extract elevation profile along a flow path between two points.
 4. ``cross_section``: Extract cross-section at a point of interest along a flow line.
 
-Similarly, PyNHD provides access to ComID-linked NHDPlus Value Added Attributes on
-`Hydroshare <https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726/>`__.
-This dataset includes slope and roughness, among other attributes, for all the flowlines.
-You can use ``nhdplus_vaa`` function to get this dataset.
+PyNHD also provides access to the entire NHDPlus dataset for CONUS (L48) via
+``nhdplus_l48`` function. You can get any of the 31 layers that are available in the
+NHDPlus dataset. You can also get NHDPlus Value Added Attributes on
+`Hydroshare <https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726/>`__
+and `ENHD <https://www.sciencebase.gov/catalog/item/60c92503d34e86b9389df1c9>`__.
+These datasets that do not have geometries, include slope and roughness, among other
+attributes, for all NHD flowlines. You can use ``nhdplus_vaa`` and ``enhd_attrs``
+functions to get these datasets.
 
-Additionally, PyNHD offers some extra utilities for processing the flowlines:
+Additionally, you can get many more derived attributes at NHD catchment-level
+through two sources:
+
+- Select Attributes for NHDPlus Version 2.1 Reach Catchments from an item on
+  `ScienceBase <https://sciencebase.usgs.gov>`__
+- EPA's `StreamCat <https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset>`__
+  dataset from an HMS endpoints ``WSCatchment``
+
+They both include hundreds of attributes such as hydroclimate properties, water quality,
+urbanization, and population. In addition to NHD catchment summaries, they also have
+their network-accumulated values (both upstream and divergence-routed). You can use
+``nhdplus_attrs`` and ``epa_nhd_catchments`` functions to get these datasets.
+
+Additionally, PyNHD offers some extra utilities for processing the NHD flowlines:
 
 - ``flowline_xsection`` and ``network_xsection``: Get cross-section lines along a flowline
   at a given spacing or a network of flowlines at a given spacing.

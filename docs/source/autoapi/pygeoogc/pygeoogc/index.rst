@@ -165,7 +165,7 @@ Module Contents
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
-   .. py:method:: getfeature_bybox(bbox, box_crs = 4326, always_xy = False)
+   .. py:method:: getfeature_bybox(bbox, box_crs = 4326, always_xy = False, sort_attr = None)
 
       Get data from a WFS service within a bounding box.
 
@@ -176,11 +176,13 @@ Module Contents
                      order from xy to yx, following the latest WFS version specifications but some don't.
                      If the returned value does not have any geometry, it indicates that most probably the
                      axis order does not match. You can set this to True in that case.
+                   * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
+                     to the first attribute in the schema that contains ``id`` in its name.
 
-      :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response within a bounding box.
+      :returns: :class:`list` of :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response within a bounding box.
 
 
-   .. py:method:: getfeature_byfilter(cql_filter, method = 'GET')
+   .. py:method:: getfeature_byfilter(cql_filter, method = 'GET', sort_attr = None)
 
       Get features based on a valid CQL filter.
 
@@ -192,11 +194,13 @@ Module Contents
 
       :Parameters: * **cql_filter** (:class:`str`) -- A valid CQL filter expression.
                    * **method** (:class:`str`) -- The request method, could be GET or POST (for long filters).
+                   * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
+                     to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response
 
 
-   .. py:method:: getfeature_bygeom(geometry, geo_crs = 4326, always_xy = False, predicate = 'INTERSECTS')
+   .. py:method:: getfeature_bygeom(geometry, geo_crs = 4326, always_xy = False, predicate = 'INTERSECTS', sort_attr = None)
 
       Get features based on a geometry.
 
@@ -219,6 +223,8 @@ Module Contents
                      * ``OVERLAPS``
                      * ``RELATE``
                      * ``BEYOND``
+                   * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
+                     to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response based on the given geometry.
 
@@ -228,7 +234,7 @@ Module Contents
       Get features based on feature IDs.
 
       :Parameters: * **featurename** (:class:`str`) -- The name of the column for searching for feature IDs.
-                   * **featureids** (:class:`str` or :class:`list`) -- The feature ID(s).
+                   * **featureids** (:class:`int`, :class:`str`, or :class:`list` of :class:`them`) -- The feature ID(s).
 
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WMS query response.
 

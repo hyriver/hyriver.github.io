@@ -12,6 +12,21 @@
 Module Contents
 ---------------
 
+.. py:function:: enhd_flowlines_nx()
+
+   Get a ``networkx.DiGraph`` of the entire NHD flowlines.
+
+   .. rubric:: Notes
+
+   The graph is directed and has the all the attributes of the flowlines
+   in `ENHD <https://www.sciencebase.gov/catalog/item/60c92503d34e86b9389df1c9>`__.
+   Note that COMIDs are based on the 2020 snapshot of the NHDPlusV2.1.
+
+   :returns: :class:`tuple` of :class:`networkx.DiGraph`, :class:`dict`, and :class:`list` -- The first element is the graph, the second element is a dictionary
+             mapping the COMIDs to the node IDs in the graph, and the third element
+             is a topologically sorted list of the COMIDs.
+
+
 .. py:function:: flowline_resample(flw, spacing, id_col = 'comid')
 
    Resample a flowline based on a given spacing.
@@ -39,6 +54,23 @@ Module Contents
              column contains the corresponding ``comid`` from the input dataframe.
              Note that each ``comid`` can have multiple cross-sections depending on
              the given spacing distance.
+
+
+.. py:function:: mainstem_huc12_nx()
+
+   Get a ``networkx.DiGraph`` of the entire mainstem HUC12s.
+
+   .. rubric:: Notes
+
+   The directed graph is generated from the ``nhdplusv2wbd.csv`` file with all
+   attributes that can be found in
+   `Mainstem <https://www.sciencebase.gov/catalog/item/60cb5edfd34e86b938a373f4>`__.
+   Note that HUC12s are based on the 2020 snapshot of the NHDPlusV2.1.
+
+   :returns: * :class:`tuple` of :class:`networkx.DiGraph` and :class:`dict`
+             * :class:`tuple` of :class:`networkx.DiGraph`, :class:`dict`, and :class:`list` -- The first element is the graph, the second element is a dictionary
+               mapping the HUC12s to the node IDs in the graph, and the third element
+               is a topologically sorted list of the HUC12s which strings of length 12.
 
 
 .. py:function:: network_resample(flw, spacing)
@@ -79,6 +111,63 @@ Module Contents
    :returns: :class:`nx.DiGraph` -- Networkx directed graph of the NHDPlus flowlines.
 
 
+.. py:function:: nhdplus_l48(layer, data_dire = 'cache', **kwargs)
+
+   Get the entire NHDPlus dataset.
+
+   .. rubric:: Notes
+
+   The entire NHDPlus dataset for CONUS (Lower 48) is downloaded from
+   `here <https://www.epa.gov/waterdata/nhdplus-national-data>`__.
+   This 7.3 GB file will take a while to download, depending on your internet
+   connection. The first time you run this function, the file will be downloaded
+   and stored in the ``./cache`` directory. Subsequent calls will use the cached
+   file. Moreover, there are two additional dependencies required to read the
+   file: ``pyogrio`` and ``py7zr``. These dependencies can be installed using
+   ``pip install pyogrio py7zr`` or ``conda install -c conda-forge pyogrio py7zr``.
+
+   :Parameters: * **layer** (:class:`str`) -- The layer name to be returned. The available layers are:
+
+                  - ``Gage``
+                  - ``BurnAddLine``
+                  - ``BurnAddWaterbody``
+                  - ``LandSea``
+                  - ``Sink``
+                  - ``Wall``
+                  - ``Catchment``
+                  - ``CatchmentSP``
+                  - ``NHDArea``
+                  - ``NHDWaterbody``
+                  - ``HUC12``
+                  - ``NHDPlusComponentVersions``
+                  - ``PlusARPointEvent``
+                  - ``PlusFlowAR``
+                  - ``NHDFCode``
+                  - ``DivFracMP``
+                  - ``BurnLineEvent``
+                  - ``NHDFlowline_Network``
+                  - ``NHDFlowline_NonNetwork``
+                  - ``GeoNetwork_Junctions``
+                  - ``PlusFlow``
+                  - ``N_1_Desc``
+                  - ``N_1_EDesc``
+                  - ``N_1_EStatus``
+                  - ``N_1_ETopo``
+                  - ``N_1_FloDir``
+                  - ``N_1_JDesc``
+                  - ``N_1_JStatus``
+                  - ``N_1_JTopo``
+                  - ``N_1_JTopo2``
+                  - ``N_1_Props``
+                * **data_dire** (:class:`str` or :class:`pathlib.Path`) -- Directory to store the downloaded file and use in subsequent calls,
+                  defaults to ``./cache``.
+                * **\*\*kwargs** -- Keyword arguments are passed to ``pyogrio.read_dataframe``.
+                  For more information, visit
+                  `pyogrio <https://pyogrio.readthedocs.io/en/latest/introduction.html>`__.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- A dataframe with all the NHDPlus data.
+
+
 .. py:function:: prepare_nhdplus(flowlines, min_network_size, min_path_length, min_path_size = 0, purge_non_dendritic = False, remove_isolated = False, use_enhd_attrs = False, terminal2nan = True)
 
    Clean up and fix common issues of NHDPlus flowline database.
@@ -107,12 +196,13 @@ Module Contents
    :returns: :class:`geopandas.GeoDataFrame` -- Cleaned up flowlines. Note that all column names are converted to lower case.
 
 
-.. py:function:: topoogical_sort(flowlines, edge_attr = None)
+.. py:function:: topoogical_sort(flowlines, edge_attr = None, largest_only = False)
 
    Topological sorting of a river network.
 
    :Parameters: * **flowlines** (:class:`pandas.DataFrame`) -- A dataframe with columns ID and toID
                 * **edge_attr** (:class:`str` or :class:`list`, *optional*) -- Names of the columns in the dataframe to be used as edge attributes, defaults to None.
+                * **largest_only** (:class:`bool`, *optional*) -- Whether to return only the largest network, defaults to ``False``.
 
    :returns: :class:`(list`, dict , :class:`networkx.DiGraph)` -- A list of topologically sorted IDs, a dictionary
              with keys as IDs and values as its upstream nodes,

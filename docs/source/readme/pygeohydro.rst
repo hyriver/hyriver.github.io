@@ -78,6 +78,8 @@ PyGeoHydro supports the following datasets:
   Hydrologic Unit (HU) polygon boundaries within the US (all HUC levels).
 * `SSEBop <https://earlywarning.usgs.gov/ssebop/modis/daily>`__ for daily actual
   evapotranspiration, for both single pixel and gridded data.
+* `Irrigation Withdrawals <https://doi.org/10.5066/P9FDLY8P>`__ for estimated
+  monthly water use for irrigation by 12-digit hydrologic unit in the CONUS for 2015
 
 Also, it has two other functions:
 
@@ -241,6 +243,12 @@ that the input dates are in UTC time zone and returns the data in UTC time zone 
     date = ("2005-01-01 12:00", "2005-01-12 15:00")
     qobs = nwis.get_streamflow("01646500", date, freq="iv")
 
+Irrigation withdrawals data can be obtained as follows:
+
+.. code-block:: python
+
+    irr = gh.irrigation_withdrawals()
+
 We can get the CAMELS dataset as a ``geopandas.GeoDataFrame`` that includes geometry and
 basin-level attributes of 671 natural watersheds within CONUS and their streamflow
 observations between 1980-2014 as a ``xarray.Dataset``, like so:
@@ -331,18 +339,16 @@ bounding box and have a maximum storage larger than 200 acre-feet.
     dams = nid.inventory_byid(dams.id.to_list())
     dams = dams[dams.maxStorage > 200]
 
-We can get also all dams within CONUS in NID with maximum storage larger than 200 acre-feet:
+We can get also all dams within CONUS with maximum storage larger than 2500 acre-feet:
 
 .. code-block:: python
 
-    import geopandas as gpd
+    conus_geom = gh.get_us_states("contiguous")
 
-    world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
-    conus = world[world.name == "United States of America"].geometry.iloc[0].geoms[0]
+    dam_list = nid.get_byfilter([{"maxStorage": ["[2500 +inf]"]}])
+    dams = nid.inventory_byid(dam_list[0].id.to_list(), stage_nid=True)
 
-    dam_list = nid.get_byfilter([{"maxStorage": ["[200 5000]"]}])
-    dams = dam_list[0][dam_list[0].is_valid]
-    dams = dams[dams.within(conus)]
+    conus_dams = dams[dams.stateKey.isin(conus_geom.STUSPS)].reset_index(drop=True)
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/dams.png
     :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/nid.ipynb

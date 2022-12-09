@@ -112,6 +112,26 @@ Module Contents
    :returns: :class:`Polygon` -- A Polygon in the target CRS.
 
 
+.. py:function:: geodf2xarray(geodf, resolution, attr_col = None, fill = 0, projected_crs = 5070)
+
+   Rasterize a ``geopandas.GeoDataFrame`` to ``xarray.DataArray``.
+
+   :Parameters: * **geodf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- GeoDataFrame or GeoSeries to rasterize.
+                * **resolution** (:class:`float`) -- Target resolution of the output raster in the ``projected_crs`` unit. Since
+                  the default ``projected_crs`` is ``EPSG:5070``, the default unit for the
+                  resolution is meters.
+                * **attr_col** (:class:`str`, *optional*) -- Column name of the attribute to use as variable., defaults to ``None``,
+                  i.e., the variable will be a boolean mask where 1 indicates the presence of
+                  a geometry. Also, note that the attribute must be numeric and have one of the
+                  following ``numpy`` types: ``int16``, ``int32``, ``uint8``, ``uint16``,
+                  ``uint32``, ``float32``, and ``float64``.
+                * **fill** (:class:`int` or :class:`float`, *optional*) -- Value to use for filling the missing values (mask) of the output raster,
+                  defaults to ``0``.
+                * **projected_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- A projected CRS to use for the output raster, defaults to ``EPSG:5070``.
+
+   :returns: :class:`xarray.Dataset` -- The xarray Dataset with a single variable.
+
+
 .. py:function:: geometry_list(geometry)
 
    Get a list of polygons, points, and lines from a geometry.
@@ -163,6 +183,17 @@ Module Contents
                 * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON
+
+
+.. py:function:: nested_polygons(gdf)
+
+   Get nested polygons in a GeoDataFrame.
+
+   :Parameters: **gdf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with (multi)polygons.
+
+   :returns: :class:`dict` -- A dictionary where keys are indices of larger ploygons and
+             values are a list of indices of smaller polygons that are
+             contained within the larger polygons.
 
 
 .. py:function:: snap2nearest(lines, points, tol)

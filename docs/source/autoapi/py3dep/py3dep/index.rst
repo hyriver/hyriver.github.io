@@ -149,3 +149,24 @@ Module Contents
    {'1m': 4}
 
 
+.. py:function:: static_3dep_dem(geometry, crs, resolution = 10)
+
+   Get DEM data at specific resolution from 3DEP.
+
+   .. rubric:: Notes
+
+   In contrast to ``get_map`` function, this function only gets DEM data at
+   specific resolution, namely 10 m, 30 m, and 60 m. However, this function
+   is faster. This function is intended for cases where only need DEM at a
+   specific resolution is required and for the other requests ``get_map``
+   should be used.
+
+   :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Geometry to get DEM within. It can be a polygon or a boundong box
+                  of form (xmin, ymin, xmax, ymax).
+                * **crs** (:class:`int`, :class:`str`, :class:`of pyproj.CRS`) -- CRS of the input geometry.
+                * **resolution** (:class:`int`, *optional*) -- Target DEM source resolution in meters, defaults to 10 m which is the highest
+                  resolution available over the US. Available options are 10, 30, and 60.
+
+   :returns: :class:`xarray.DataArray` -- The request DEM at the specified resolution.
+
+
