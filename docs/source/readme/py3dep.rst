@@ -118,6 +118,7 @@ For example, in your code before making any requests you can do:
     os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+    os.environ["HYRIVER_VERBOSE"] = "true"
 
 You can also try using Py3DEP without installing
 it on your system by clicking on the binder badge. A Jupyter Lab

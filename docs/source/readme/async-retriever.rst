@@ -90,14 +90,6 @@ For example, in your code before making any requests you can do:
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
     os.environ["HYRIVER_VERBOSE"] = "true"
 
-.. code-block:: python
-
-    import os
-
-    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
-    os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
-    os.environ["HYRIVER_CACHE_DISABLE"] = "true"
-
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 You can also try using AsyncRetriever without installing
