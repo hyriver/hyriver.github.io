@@ -27,6 +27,10 @@
     :target: https://github.com/hyriver/pydaymet/actions/workflows/test.yml
     :alt: Github Actions
 
+.. |pynldas2| image:: https://github.com/hyriver/pynldas2/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/pynldas2/actions/workflows/test.yml
+    :alt: Github Actions
+
 .. |async| image:: https://github.com/hyriver/async-retriever/actions/workflows/test.yml/badge.svg
     :target: https://github.com/hyriver/async-retriever/actions/workflows/test.yml
     :alt: Github Actions
@@ -59,6 +63,10 @@
     :target: https://github.com/hyriver/pydaymet
     :alt: Download Stat
 
+.. |nldas_stat| image:: https://static.pepy.tech/personalized-badge/pynldas2?period=total&left_color=blue&right_color=yellowgreen&left_text=PyDaymet
+    :target: https://github.com/hyriver/pynldas2
+    :alt: Download Stat
+
 .. |async_stat| image:: https://static.pepy.tech/personalized-badge/async-retriever?period=total&left_color=blue&right_color=yellowgreen&left_text=AsyncRetriever
     :target: https://github.com/hyriver/async-retriever
     :alt: Download Stat
@@ -73,6 +81,7 @@
 .. _PyNHD: https://github.com/hyriver/pynhd
 .. _Py3DEP: https://github.com/hyriver/py3dep
 .. _PyDaymet: https://github.com/hyriver/pydaymet
+.. _PyNLDAS2: https://github.com/hyriver/pynldas2
 .. _HydroSignatures: https://github.com/hyriver/hydrosignatures
 
 .. image:: https://mybinder.org/badge_logo.svg
@@ -94,6 +103,7 @@ Package         Description                                                     
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
 |geoh_stat|     Access NWIS, NID, WQP, HCDN 2009, NLCD, CAMELS, and SSEBop databases |pygeohydro|
 |day_stat|      Access daily, monthly, and annual climate data via Daymet            |pydaymet|
+|nldas_stat|    Access hourly NLDAS-2 data via web services                         |pynldas2|
 |sig_stat|      A collection of tools for computing hydrological signatures          |signatures|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
@@ -143,9 +153,6 @@ appreciate it if you give this project a try and provide feedback. Contributions
 Moreover, requests for additional databases and functionalities can be submitted via issue trackers
 of packages.
 
-.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
-    :target: https://github.com/hyriver/HyRiver-examples
-
 Citation
 --------
 If you use any of HyRiver packages in your research, we appreciate citations:
@@ -171,16 +178,32 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
-or ``conda``:
+Please note that installation with ``pip`` fails if ``libgdal`` is not installed on your system.
+You should install this package manually beforehand. For example, on Ubuntu-based distros
+the required package is ``libgdal-dev``. If this package is installed on your system
+you should be able to run ``gdal-config --version`` successfully.
+
+Alternatively, you can install them using ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
-or ``mamba`` (recommended):
+or ``mambaforge`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
+    $ mamba install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+
+Additionally, you can create a new environment, named ``hyriver`` with all the packages
+and optional dependencies installed with ``mambaforge`` using the provided
+``environment.yml`` file:
+
+.. code-block:: console
+
+    $ mamba env create -f ./environment.yml
+
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/flow_accumulation.png
+    :target: https://github.com/hyriver/HyRiver-examples
