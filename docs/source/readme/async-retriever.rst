@@ -1,8 +1,3 @@
-.. _PyGeoUtils: https://github.com/hyriver/pygeoutils
-.. _PyNHD : https://github.com/hyriver/pynhd
-.. _Py3DEP: https://github.com/hyriver/py3dep
-.. _PyDaymet: https://github.com/hyriver/pydaymet
-.. _HydroSignatures: https://github.com/hyriver/hydrosignatures
 
 AsyncRetriever: Asynchronous requests with persistent caching
 -------------------------------------------------------------
@@ -193,7 +188,7 @@ We can remove these requests and their responses from the cache like so:
     ar.delete_url_cache(base_url)
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/ndvi.png
-    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipunb
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipynb
 
 For a ``json`` response example, let's get water level recordings of an NOAA's water level station,
 8534720 (Atlantic City, NJ), during 2012, using CO-OPS API. Note that this CO-OPS product has a
@@ -249,7 +244,7 @@ For a ``json`` response example, let's get water level recordings of an NOAA's w
     water_level.attrs = rjson["metadata"]
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/water_level.png
-    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipunb
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipynb
 
 Now, let's see an example without any payload or headers. Here's how we can retrieve
 harmonic constituents of several NOAA stations from CO-OPS:
@@ -285,4 +280,4 @@ harmonic constituents of several NOAA stations from CO-OPS:
     phs = pd.concat(phs_list, axis=1)
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/tides.png
-    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipunb
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/async.ipynb

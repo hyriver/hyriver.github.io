@@ -26,6 +26,10 @@
     :target: https://github.com/cheginit/pydaymet
     :alt: PyPi Version
 
+.. |pynldas2| image:: https://img.shields.io/pypi/v/pynldas2?label=PyDaymet&color=green
+    :target: https://github.com/cheginit/pynldas2
+    :alt: PyPi Version
+
 .. |signatures| image:: https://img.shields.io/pypi/v/hydrosignatures?label=HydroSignatures&color=green
     :target: https://github.com/cheginit/hydrosignatures
     :alt: PyPi Version
@@ -55,6 +59,10 @@
 
 .. |pydaymet_stat| image:: https://pepy.tech/badge/pydaymet
     :target: https://pepy.tech/project/pydaymet
+    :alt: Download Stat
+
+.. |pynldas2_stat| image:: https://pepy.tech/badge/pynldas2
+    :target: https://pepy.tech/project/pynldas2
     :alt: Download Stat
 
 .. |sig_stat| image:: https://static.pepy.tech/personalized-badge/hydrosignatures?period=total&left_color=blue&right_color=yellowgreen&left_text=HydroSignatures
@@ -147,6 +155,12 @@ If you use any of HyRiver packages in your research, we appreciate citations:
                 at 1-km scale for both single pixels and gridded.
 
                 |pydaymet| |pydaymet_stat|
+
+            .. tab-item:: PyNLDAS2
+
+                Access hourly NLDAS-2 forcing data.
+
+                |pynldas2| |pynldas2_stat|
 
             .. tab-item:: HydroSignatures
 

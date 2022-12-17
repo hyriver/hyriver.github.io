@@ -1,8 +1,3 @@
-.. _PyGeoUtils: https://github.com/hyriver/pygeoutils
-.. _PyNHD: https://github.com/hyriver/pynhd
-.. _Py3DEP: https://github.com/hyriver/py3dep
-.. _PyDaymet: https://github.com/hyriver/pydaymet
-.. _HydroSignatures: https://github.com/hyriver/hydrosignatures
 
 PyNHD: Navigate and subset NHDPlus database
 -------------------------------------------

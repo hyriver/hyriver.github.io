@@ -27,25 +27,32 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 Please note that installation with ``pip`` fails if ``libgdal`` is not installed on your system.
 You should install this package manually beforehand. For example, on Ubuntu-based distros
 the required package is ``libgdal-dev``. If this package is installed on your system
 you should be able to run ``gdal-config --version`` successfully.
 
-Alternatively, you can use ``conda`` or ``mamba`` (recommended) to install these packages from
-the ``conda-forge`` repository:
+Alternatively, you can install them using ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
-or:
+or ``mambaforge`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install -c conda-forge --strict-channel-priority py3dep pynhd pygeohydro pydaymet hydrosignatures pygeoogc pygeoutils async-retriever
+    $ mamba install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+
+Additionally, you can create a new environment, named ``hyriver`` with all the packages
+and optional dependencies installed with ``mambaforge`` using the provided
+``environment.yml`` file:
+
+.. code-block:: console
+
+    $ mamba env create -f ./environment.yml
 
 Dependencies
 ------------
@@ -115,6 +122,17 @@ Dependencies
         - ``rasterio``
         - ``scipy``
         - ``shapely``
+        - ``xarray``
+
+    .. tab-item:: PyNLDAS2
+
+        - ``async-retriever``
+        - ``h5netcdf``
+        - ``numpy``
+        - ``pandas``
+        - ``pygeoutils``
+        - ``pyproj``
+        - ``rioxarray``
         - ``xarray``
 
     .. tab-item:: HydroSignatures

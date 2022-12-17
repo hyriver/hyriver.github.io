@@ -62,6 +62,7 @@ autoapi_dirs = [
     "../../pygeohydro",
     "../../py3dep",
     "../../pydaymet",
+    "../../pynldas2",
     "../../hydrosignatures",
     "../../async-retriever",
     "../../pygeoogc",
@@ -87,6 +88,7 @@ modindex_common_prefix = [
     "pygeohydro.",
     "py3dep.",
     "pydaymet.",
+    "pynldas2.",
     "hydrosignatures.",
     "async-retriever.",
     "pygeoogc.",
@@ -186,6 +188,7 @@ extlinks = {
     "issue_nhd": ("https://github.com/hyriver/pynhd/issues/%s", "GH"),
     "issue_3dep": ("https://github.com/hyriver/py3dep/issues/%s", "GH"),
     "issue_day": ("https://github.com/hyriver/pydaymet/issues/%s", "GH"),
+    "issue_nldas": ("https://github.com/hyriver/pynldas2/issues/%s", "GH"),
     "issue_sig": ("https://github.com/hyriver/hydrosinatures/issues/%s", "GH"),
     "pull": ("https://github.com/hyriver/hyriver.github.io/pull/%s", "PR"),
     "pull_async": ("https://github.com/hyriver/async-retriever/pull/%s", "PR"),
@@ -195,6 +198,7 @@ extlinks = {
     "pull_nhd": ("https://github.com/hyriver/pynhd/pull/%s", "PR"),
     "pull_3dep": ("https://github.com/hyriver/py3dep/pull/%s", "PR"),
     "pull_day": ("https://github.com/hyriver/pydaymet/pull/%s", "PR"),
+    "pull_ndlas": ("https://github.com/hyriver/pynldas2/pull/%s", "PR"),
     "pull_sig": ("https://github.com/hyriver/hydrosinatures/pull/%s", "PR"),
 }
 
@@ -349,6 +353,7 @@ def update_versions(app: Sphinx):
         "py3dep": "Py3DEP",
         "pygeohydro": "PyGeoHydro",
         "pydaymet": "PyDaymet",
+        "pynldas2": "PyNLDAS2",
         "hydrosignatures": "HydroSignatures",
     }
     for p, n in packages.items():

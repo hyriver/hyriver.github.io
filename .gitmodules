@@ -32,3 +32,6 @@
 [submodule "hydrosignatures"]
 	path = hydrosignatures
 	url = https://github.com/hyriver/hydrosignatures
+[submodule "pynldas2"]
+	path = pynldas2
+	url = https://github.com/hyriver/pynldas2

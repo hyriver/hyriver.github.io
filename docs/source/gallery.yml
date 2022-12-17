@@ -20,7 +20,11 @@
 
 - path: examples/notebooks/daymet.html
   thumbnail: examples/notebooks/_static/daymet_grid.png
-  title: Climate Data
+  title: Daymet Climate Data
+
+- path: examples/notebooks/nldas.html
+  thumbnail: examples/notebooks/_static/nldas_humidity.png
+  title: NLDAS2 Climate Data
 
 - path: examples/notebooks/pygeoapi.html
   thumbnail: examples/notebooks/_static/split_catchment.png
