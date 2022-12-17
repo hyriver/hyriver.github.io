@@ -1,86 +1,26 @@
-name: binder
+name: hyriver
 channels:
+  - numba
   - conda-forge
   - nodefaults
 dependencies:
-  - python>=3.8
+  - python >=3.10
 
-  # async_retriever
-  - aiodns
-  - aiohttp
-  - aiohttp-client-cache
-  - aiosqlite
-  - brotlipy
-  - cchardet
-  - cytoolz
-  - nest-asyncio
-  - orjson
+  # HyRiver packages
+  - async-retriever >=0.3.8
+  - pygeoogc >=0.13.10
+  - pygeoutils >=0.13.10
+  - py3dep >=0.13.10
+  - pynhd >=0.13.8
+  - hydrosignatures >=0.1.1
+  - pygeohydro >=0.13.8
+  - pydaymet >=0.13.8
+  - pynldas2 >=0.1.1
 
-  # pygeoogc deps
-  - defusedxml
-  - owslib
-  - pyyaml
-  - pyproj
-  - requests
-  - requests-cache
-  - setuptools
-  - shapely
-  - simplejson
-  - urllib3
-
-  # pygeoutils deps
-  - affine
-  - geopandas
-  - numpy
-  - netcdf4
-  - orjson
-  - rasterio
-  - xarray
-
-  # py3dep
-  - click
-
-  # pynhd deps
-  - networkx
-  - pandas
-  - pyarrow
-
-  # pygeohydro deps
-  - folium
-  - lxml
-  - matplotlib-base
-  - openpyxl
-
-  # pydaymet deps
-  - dask-core
-  - scipy
-
-  # optional deps to speed up xarray and geopandas
+  # optional deps
   - bottleneck
-  - rtree
-  - pygeos
-
-  # Other third-party deps
-  - cartopy
-  - cmocean
-  - mapclassify
-  - contextily
-  - colorcet
-  - geoviews
-  - hvplot
-  - osmnx
-  - tqdm
-  - pytables
-  - ffmpeg
-  - jupyterlab_widgets
-  - ipywidgets
-
-  - pip
-  - pip:
-    - git+https://github.com/cheginit/async_retriever.git
-    - git+https://github.com/cheginit/pygeoogc.git
-    - git+https://github.com/cheginit/pygeoutils.git
-    - git+https://github.com/cheginit/pynhd.git
-    - git+https://github.com/cheginit/py3dep.git
-    - git+https://github.com/cheginit/pydaymet.git
-    - git+https://github.com/cheginit/pygeohydro.git
+  - numba
+  - planetary-computer
+  - pyogrio
+  - pystac-client
+  - richdem >=0.3.4
