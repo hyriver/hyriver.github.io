@@ -58,10 +58,10 @@ Currently, only hourly data is supported. There are three main functions:
   `land/water grid mask <https://ldas.gsfc.nasa.gov/nldas/specifications>`__
   as a ``xarray.Dataset``.
 
-PyNLDAS2 only provides access to the daily NLDAS2 dataset, so if you need to access
+PyNLDAS2 only provides access to the hourly NLDAS2 dataset, so if you need to access
 other NASA climate datasets you can check out
 `tsgettoolbox <https://pypi.org/project/tsgettoolbox/>`__ developed by
-`Time Cera <https://github.com/timcera>`__.
+`Tim Cera <https://github.com/timcera>`__.
 
 PyNLDAS2 uses AsyncRetriever for requesting data from the NLDAS web service efficiently
 and reliably. You can control the request/response caching behavior and its verbosity
@@ -165,5 +165,5 @@ Road Map
 --------
 
 - [ ] Add PET calculation functions similar to
-  `PyDaymet <https://github.com/hyriver/pydaymet>`__ but at daily timescale.
+  `PyDaymet <https://github.com/hyriver/pydaymet>`__ but at hourly timescale.
 - [ ] Add a command line interfaces.
