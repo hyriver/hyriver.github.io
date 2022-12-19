@@ -63,7 +63,7 @@
     :target: https://github.com/hyriver/pydaymet
     :alt: Download Stat
 
-.. |nldas_stat| image:: https://static.pepy.tech/personalized-badge/pynldas2?period=total&left_color=blue&right_color=yellowgreen&left_text=PyDaymet
+.. |nldas_stat| image:: https://static.pepy.tech/personalized-badge/pynldas2?period=total&left_color=blue&right_color=yellowgreen&left_text=PyNLDAS2
     :target: https://github.com/hyriver/pynldas2
     :alt: Download Stat
 
@@ -103,7 +103,7 @@ Package         Description                                                     
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
 |geoh_stat|     Access NWIS, NID, WQP, HCDN 2009, NLCD, CAMELS, and SSEBop databases |pygeohydro|
 |day_stat|      Access daily, monthly, and annual climate data via Daymet            |pydaymet|
-|nldas_stat|    Access hourly NLDAS-2 data via web services                         |pynldas2|
+|nldas_stat|    Access hourly NLDAS-2 data via web services                          |pynldas2|
 |sig_stat|      A collection of tools for computing hydrological signatures          |signatures|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
 |ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
