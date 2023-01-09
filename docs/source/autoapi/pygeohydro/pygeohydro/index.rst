@@ -85,7 +85,7 @@ Module Contents
       Texas City
 
 
-   .. py:method:: inventory_byid(dam_ids, stage_nid = False)
+   .. py:method:: inventory_byid(federal_ids, stage_nid = False)
 
       Get extra attributes for dams based on their dam ID.
 
@@ -97,8 +97,7 @@ Module Contents
       to get extra attributes using the ``id`` column of the ``GeoDataFrame``
       that ``get_bygeom`` or ``get_byfilter`` returns.
 
-      :Parameters: * **dam_ids** (:class:`list` of :class:`int` or :class:`str`) -- List of the target dam IDs (digists only). Note that the dam IDs are not the
-                     same as the NID IDs.
+      :Parameters: * **federal_ids** (:class:`list` of :class:`str`) -- List of the target dam Federal IDs.
                    * **stage_nid** (:class:`bool`, *optional*) -- Whether to get the entire NID and then query locally or query from the
                      NID web service which tends to be very slow for large number of requests.
                      Defaults to ``False``. The staged NID database is saved as a `feather` file
@@ -111,9 +110,9 @@ Module Contents
 
       >>> from pygeohydro import NID
       >>> nid = NID()
-      >>> dams = nid.inventory_byid([514871, 459170, 514868, 463501, 463498])
+      >>> dams = nid.inventory_byid(['KY01232', 'GA02400', 'NE04081', 'IL55070', 'TN05345'])
       >>> print(dams.damHeight.max())
-      120.0
+      39.0
 
 
    .. py:method:: stage_nid_inventory(fname = None)

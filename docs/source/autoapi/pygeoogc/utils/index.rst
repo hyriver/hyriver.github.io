@@ -102,8 +102,9 @@ Module Contents
                   i.e., no extension if ``fnames`` is not provided otherwise. This
                   argument will be only be used if ``fnames`` is not passed.
                 * **method** (:class:`str`, *optional*) -- HTTP method to use, i.e, ``GET`` or ``POST``, by default "GET".
-                * **ssl** (:class:`bool`, *optional*) -- Whether to use SSL verification, by default ``True``.
-                * **chunk_size** (:class:`int`, *optional*) -- Chunk size to use when downloading, by default 100 MB is used.
+                * **ssl** (:class:`bool`, *optional*) -- Whether to use SSL verification, defaults to ``True``.
+                * **chunk_size** (:class:`int`, *optional*) -- Chunk size to use when downloading, defaults to 100 * 1024 * 1024
+                  i.e., 100 MB.
                 * **n_jobs** (:class:`int`, *optional*) -- The maximum number of concurrent downloads, defaults to 10.
 
    :returns: :class:`list` -- A list of ``pathlib.Path`` objects associated with URLs in the

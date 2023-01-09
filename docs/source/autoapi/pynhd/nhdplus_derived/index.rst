@@ -12,6 +12,11 @@
 Module Contents
 ---------------
 
+.. py:class:: StreamCat
+
+   Get StreamCat API's properties.
+
+
 .. py:function:: enhd_attrs(parquet_path = None)
 
    Get updated NHDPlus attributes from ENHD.
@@ -114,5 +119,50 @@ Module Contents
    >>> vaa = nhdplus_vaa() # doctest: +SKIP
    >>> print(vaa.slope.max()) # doctest: +SKIP
    4.6
+
+
+.. py:function:: streamcat(metric_names, metric_areas = None, comids = None, regions = None, states = None, counties = None, conus = False, percent_full = False, area_sqkm = False)
+
+   Get various metrics for NHDPlusV2 catchments from EPA's StreamCat.
+
+   .. rubric:: Notes
+
+   For more information about the service check its webpage
+   at https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset.
+
+   :Parameters: * **metric_names** (:class:`str` or :class:`list` of :class:`str`) -- Metric name(s) to retrieve. There are 567 metrics available.
+                  to get a full list instantiate the ``StreamCat`` class and check its
+                  ``valid_names`` attribute.
+                * **metric_areas** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Areas to return the metrics for, defaults to ``None``, i.e. all areas.
+                  Valid options are: ``catchment``, ``watershed``, ``riparian_catchment``,
+                  ``riparian_watershed``, ``other``.
+                * **comids** (:class:`int` or :class:`list` of :class:`int`, *optional*) -- NHDPlus COMID(s), defaults to ``None``. Either ``comids``, ``regions``,
+                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
+                  exclusive.
+                * **regions** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Hydro region(s) to retrieve metrics for, defaults to ``None``. For a full list
+                  of valid regions, instantiate the ``StreamCat`` class and check its
+                  ``valid_regions`` attribute. Either ``comids``, ``regions``,
+                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
+                  exclusive.
+                * **states** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Two letter state abbreviation(s) to retrieve metrics for, defaults to ``None``.
+                  For a full list of valid states, instantiate the ``StreamCat`` class and check
+                  its ``valid_states`` attribute. Either ``comids``, ``regions``,
+                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
+                  exclusive.
+                * **counties** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- County FIPS codes(s) to retrieve metrics for, defaults to ``None``. For a full
+                  list of valid county codes, instantiate the ``StreamCat`` class and check its
+                  ``valid_counties`` attribute. Either ``comids``, ``regions``,
+                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
+                  exclusive.
+                * **conus** (:class:`bool`, *optional*) -- If ``True``, ``metric_names`` of all NHDPlus COMIDs are retrieved,
+                  defaults ``False``. Either ``comids``, ``regions``,
+                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
+                  exclusive.
+                * **percent_full** (:class:`bool`, *optional*) -- If ``True``, return the percent of each area of interest covered by
+                  the metric.
+                * **area_sqkm** (:class:`bool`, *optional*) -- If ``True``, return the Returns the area in square kilometers of a given
+                  area of interest.
+
+   :returns: :class:`pandas.DataFrame` -- A dataframe with the requested metrics.
 
 

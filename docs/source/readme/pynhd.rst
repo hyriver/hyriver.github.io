@@ -49,6 +49,7 @@ PyNHD is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software sta
 is designed to aid in hydroclimate analysis through web services.
 
 This package provides access to several hydro-linked datasets including
+`StreamCat <https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset>`__,
 `WaterData <https://labs.waterdata.usgs.gov/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage?1>`__,
 The National Map's `NHDPlus MR <https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer>`__,
 and `NHDPlus HR <https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer>`__,

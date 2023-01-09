@@ -58,6 +58,7 @@ use to make web calls:
 * ``retrieve_text``: Get responses as ``text`` objects.
 * ``retrieve_binary``: Get responses as ``binary`` objects.
 * ``retrieve_json``: Get responses as ``json`` objects.
+* ``stream_write``: Stream responses and write them to disk in chunks.
 
 You can also use the general-purpose ``retrieve`` function to get responses as any
 of the three types. All responses are returned as a list that has the same order as the

@@ -3,7 +3,7 @@ ipython
 ipywidgets
 jupyter_client
 nbsphinx
-sphinx
+sphinx<6
 sphinx-autoapi
 sphinx-book-theme
 sphinx-copybutton

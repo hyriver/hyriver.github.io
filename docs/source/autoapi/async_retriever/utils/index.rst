@@ -28,7 +28,7 @@ Module Contents
    Create a cache folder in the current working directory.
 
 
-.. py:function:: delete_url(url, method = 'GET', cache_name = None, **kwargs)
+.. py:function:: delete_url(url, method, cache_name, **kwargs)
    :async:
 
    Delete cached response associated with ``url``.
