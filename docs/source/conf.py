@@ -204,7 +204,7 @@ extlinks = {
 
 # -- Options for HTML output -------------------------------------------------
 html_static_path = ["_static"]
-html_css_files = ["style.css"]
+# html_css_files = ["style.css"]
 today_fmt = "%Y-%m-%d"
 pygments_style = "sphinx"
 
@@ -234,8 +234,8 @@ html_theme_options = {
     "use_download_button": False,
     "use_issues_button": True,
     "home_page_in_toc": True,
-    "extra_navbar": "",
-    "navbar_footer_text": "",
+    # "extra_navbar": "",
+    # "navbar_footer_text": "",
 }
 
 # logo
