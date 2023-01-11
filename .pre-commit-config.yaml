@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
     - id: trailing-whitespace
     - id: check-executables-have-shebangs
@@ -28,8 +28,8 @@ repos:
       args: [-t, py38, -l, "100"]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.1.0
+    rev: v2.2.2
     hooks:
     - id: codespell
-      name: Checks for common misspellings in text files.
+      name: Check common misspellings in text files with codespell.
 
