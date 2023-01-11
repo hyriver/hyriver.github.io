@@ -7,8 +7,8 @@
 
    Functions for creating unique keys based on web request parameters.
 
-   This module is based on the `aiohttp-client-cache` package, which is
-   licensed under the MIT license. See the `LICENSE` file for more details.
+   This module is based on the ``aiohttp-client-cache`` package, which is
+   licensed under the MIT license. See the ``LICENSE`` file for more details.
 
 
 
