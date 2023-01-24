@@ -98,7 +98,7 @@ Module Contents
 
    .. py:method:: feature_byloc(coords, loc_crs = 4326)
 
-      Get the closest feature ID(s) based on coordinates using ``postion`` endpoint.
+      Get the closest feature ID(s) based on coordinates using ``position`` endpoint.
 
       :Parameters: * **coords** (:class:`tuple` or :class:`list`) -- A tuple of length two (x, y) or a list of them.
                    * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
@@ -268,7 +268,7 @@ Module Contents
       Return a GeoDataFrame from the xsatendpts service.
 
       :Parameters: * **coords** (:class:`list`) -- A list of two coordinates to trace as a list of tuples, e.g.,
-                     [(lon1, lat1), (lon2, lat2)].
+                     [(x1, y1), (x2, y2)].
                    * **numpts** (:class:`int`) -- The number of points to extract the elevation profile from the DEM.
                    * **dem_res** (:class:`int`) -- The target resolution for requesting the DEM from 3DEP service.
                    * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
@@ -474,7 +474,7 @@ Module Contents
    ...             "none",
    ...         ]
    ...     },
-   ...     geometry=[sgeom.Point((1774209.63, 856381.68))],
+   ...     geometry=[Point((1774209.63, 856381.68))],
    ...     crs="ESRI:102003",
    ... )
    >>> trace = nhd.pygeoapi(gdf, "flow_trace")

@@ -108,7 +108,10 @@ Module Contents
                 * **edge_attr** (:class:`str`, *optional*) -- Name of the column containing the edge attributes, defaults to ``None``.
                   If ``True``, all remaining columns will be used as edge attributes.
 
-   :returns: :class:`nx.DiGraph` -- Networkx directed graph of the NHDPlus flowlines.
+   :returns: :class:`nx.DiGraph` -- Networkx directed graph of the NHDPlus flowlines. Note that all elements of
+             the ``toid_col`` are replaced with negative values of their corresponding
+             ``id_cl`` values if they are ``NaN`` or 0. This is to ensure that the generated
+             nodes in the graph are unique.
 
 
 .. py:function:: nhdplus_l48(layer, data_dire = 'cache', **kwargs)
@@ -170,7 +173,7 @@ Module Contents
 
 .. py:function:: prepare_nhdplus(flowlines, min_network_size, min_path_length, min_path_size = 0, purge_non_dendritic = False, remove_isolated = False, use_enhd_attrs = False, terminal2nan = True)
 
-   Clean up and fix common issues of NHDPlus flowline database.
+   Clean up and fix common issues of NHDPlus MR and HR flowlines.
 
    Ported from `nhdplusTools <https://github.com/USGS-R/nhdplusTools>`__.
 
@@ -183,26 +186,30 @@ Module Contents
                 * **min_path_size** (:class:`float`, *optional*) -- Minimum size of outlet level path of a drainage basin in km.
                   Drainage basins with an outlet drainage area smaller than
                   this value will be removed. Defaults to 0.
-                * **purge_non_dendritic** (:class:`bool`, *optional*) -- Whether to remove non dendritic paths, defaults to False.
-                * **remove_isolated** (:class:`bool`, *optional*) -- Whether to remove isolated flowlines, defaults to False. If True,
-                  ``terminal2nan`` will be set to False.
-                * **use_enhd_attrs** (:class:`bool`, *optional*) -- Whether to replace the attributes with the ENHD attributes, defaults to False.
-                  For more information, see
+                * **purge_non_dendritic** (:class:`bool`, *optional*) -- Whether to remove non dendritic paths, defaults to ``False``.
+                * **remove_isolated** (:class:`bool`, *optional*) -- Whether to remove isolated flowlines, i.e., keep only the largest
+                  connected component of the flowlines. Defaults to ``False``.
+                * **use_enhd_attrs** (:class:`bool`, *optional*) -- Whether to replace the attributes with the ENHD attributes, defaults
+                  to ``False``. Note that this only works for NHDPlus mid-resolution (MR) and
+                  does not work for NHDPlus high-resolution (HR). For more information, see
                   `this <https://www.sciencebase.gov/catalog/item/60c92503d34e86b9389df1c9>`__.
                 * **terminal2nan** (:class:`bool`, *optional*) -- Whether to replace the COMID of the terminal flowline of the network with NaN,
-                  defaults to True. If False, the terminal COMID will be set from the
-                  ENHD attributes i.e. use_enhd_attrs will be set to True.
+                  defaults to ``True``. If ``False``, the terminal COMID will be set from the
+                  ENHD attributes i.e. ``use_enhd_attrs`` will be set to ``True`` which is only
+                  applicable to NHDPlus mid-resolution (MR).
 
    :returns: :class:`geopandas.GeoDataFrame` -- Cleaned up flowlines. Note that all column names are converted to lower case.
 
 
-.. py:function:: topoogical_sort(flowlines, edge_attr = None, largest_only = False)
+.. py:function:: topoogical_sort(flowlines, edge_attr = None, largest_only = False, id_col = 'ID', toid_col = 'toID')
 
    Topological sorting of a river network.
 
    :Parameters: * **flowlines** (:class:`pandas.DataFrame`) -- A dataframe with columns ID and toID
                 * **edge_attr** (:class:`str` or :class:`list`, *optional*) -- Names of the columns in the dataframe to be used as edge attributes, defaults to None.
                 * **largest_only** (:class:`bool`, *optional*) -- Whether to return only the largest network, defaults to ``False``.
+                * **id_col** (:class:`str`, *optional*) -- Name of the column containing the node ID, defaults to "ID".
+                * **toid_col** (:class:`str`, *optional*) -- Name of the column containing the downstream node ID, defaults to "toID".
 
    :returns: :class:`(list`, dict , :class:`networkx.DiGraph)` -- A list of topologically sorted IDs, a dictionary
              with keys as IDs and values as its upstream nodes,

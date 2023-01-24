@@ -1,7 +1,9 @@
-:py:mod:`async_retriever.utils`
-===============================
+:orphan:
 
-.. py:module:: async_retriever.utils
+:py:mod:`async_retriever._utils`
+================================
+
+.. py:module:: async_retriever._utils
 
 .. autoapi-nested-parse::
 

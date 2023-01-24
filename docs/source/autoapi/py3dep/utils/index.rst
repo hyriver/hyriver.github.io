@@ -22,7 +22,7 @@ Module Contents
              is set to ``m/m``.
 
 
-.. py:function:: fill_depressions(dem_da)
+.. py:function:: fill_depressions(dem)
 
    Fill depressions and adjust flat areas in a DEM using `RichDEM <https://richdem.readthedocs.io>`__.
 

@@ -16,6 +16,16 @@ Module Contents
 
    Get StreamCat API's properties.
 
+   .. py:method:: id_kwds(comids = None, regions = None, states = None, counties = None, conus = False)
+
+      Get the keyword arguments for the API's ID parameters.
+
+
+   .. py:method:: validate(name = None, region = None, state = None, county = None, aoi = None)
+
+      Validate input parameters.
+
+
 
 .. py:function:: enhd_attrs(parquet_path = None)
 
