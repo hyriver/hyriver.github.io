@@ -48,7 +48,7 @@ Module Contents
 
 
 
-   Access National Hydrography Dataset (NHD) high resolution.
+   Access National Hydrography Dataset (NHD) Plus high resolution.
 
    .. rubric:: Notes
 
