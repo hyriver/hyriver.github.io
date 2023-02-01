@@ -88,6 +88,25 @@ Module Contents
              of the line in meters.
 
 
+.. py:function:: get_dem(geometry, resolution, crs = 4326)
+
+   Get DEM data at any resolution from 3DEP.
+
+   .. rubric:: Notes
+
+   This function is a wrapper of ``static_3dep_dem`` and ``get_map`` functions.
+   Since ``static_3dep_dem`` is much faster, if the requested resolution is 10 m,
+   30 m, or 60 m, ``static_3dep_dem`` will be used. Otherwise, ``get_map``
+   will be used.
+
+   :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Geometry to get DEM within. It can be a polygon or a boundong box
+                  of form (xmin, ymin, xmax, ymax).
+                * **resolution** (:class:`int`) -- Target DEM source resolution in meters.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input geometry, defaults to ``EPSG:4326``.
+
+   :returns: :class:`xarray.DataArray` -- DEM at the specified resolution in meters and 4326 CRS.
+
+
 .. py:function:: get_map(layers, geometry, resolution, geo_crs = 4326, crs = 4326)
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.

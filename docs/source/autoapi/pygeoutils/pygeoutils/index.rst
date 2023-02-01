@@ -101,15 +101,15 @@ Module Contents
              points.
 
 
-.. py:function:: geo2polygon(geometry, geo_crs, crs)
+.. py:function:: geo2polygon(geometry, geo_crs = None, crs = None)
 
    Convert a geometry to a Shapely's Polygon and transform to any CRS.
 
    :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple` of :class:`length 4`) -- Polygon or bounding box (west, south, east, north).
-                * **geo_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- Spatial reference of the input geometry
-                * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- Target spatial reference.
+                * **geo_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- Spatial reference of the input geometry, defaults to ``None``.
+                * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- Target spatial reference, defaults to ``None``.
 
-   :returns: :class:`Polygon` -- A Polygon in the target CRS.
+   :returns: :class:`shapely.Polygon` or :class:`shapely.MultiPolygon` -- A (Multi)Polygon in the target CRS, if different from the input CRS.
 
 
 .. py:function:: geodf2xarray(geodf, resolution, attr_col = None, fill = 0, projected_crs = 5070)

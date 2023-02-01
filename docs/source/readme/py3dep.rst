@@ -76,6 +76,10 @@ The following functionalities are currently available:
   can use `xarray-spatial <https://xarray-spatial.org/>`__. Just note that you should
   reproject the output ``DataArray`` to a projected CRS like 5070 before passing it to
   ``xarray-spatial`` like so: ``dem = dem.rio.reproject(5070)``.
+- ``get_dem``: Get DEM data from either the dynamic or static 3DEP service. Considering
+  that the static service is much faster, if the target DEM resolution is 10 m, 30 m, or
+  60 m, then the static service is used (``static_3dep_dem``). Otherwise, the dynamic
+  service is used (``get_map`` using ``DEM`` layer).
 - ``elevation_bygrid``: For retrieving elevations of all the grid points in a 2D grid.
 - ``elevation_bycoords``: For retrieving elevation of a list of ``x`` and ``y`` coordinates.
 - ``elevation_profile``: For retrieving elevation profile along a line at a given spacing.
@@ -272,13 +276,13 @@ these spatial references.
     slope = py3dep.get_map("Slope Degrees", geom, resolution=30)
     slope = py3dep.deg2mpm(slope)
 
-We can also use ``static_3dep_dem`` function to get the same DEM:
+We can also use ``static_dem`` function to get the same DEM:
 
 .. code-block:: python
 
     import xrspatial
 
-    dem = py3dep.static_3dep_dem(geom, 4326, 30)
+    dem = py3dep.get_dem(geom, 30)
     slope = xrspatial.slope(dem.rio.reproject(5070))
     slope = py3dep.deg2mpm(slope)
 
