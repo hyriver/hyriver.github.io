@@ -59,6 +59,8 @@ PyGeoHydro supports the following datasets:
   for soil porosity, available water capacity, and field capacity across the US.
 * `NWIS <https://nwis.waterdata.usgs.gov/nwis>`__ for daily mean streamflow observations
   (returned as a ``pandas.DataFrame`` or ``xarray.Dataset`` with station attributes),
+* `SensorThings API <https://labs.waterdata.usgs.gov/api-docs/about-sensorthings-api/index.html>`__
+  for accessing real-time data of USGS sensors.
 * `CAMELS <https://ral.ucar.edu/solutions/products/camels>`__ for accessing streamflow
   observations (1980-2014) and basin-level attributes of 671 stations within CONUS.
 * `Water Quality Portal <https://www.waterqualitydata.us/>`__ for accessing current and
@@ -237,6 +239,16 @@ that the input dates are in UTC time zone and returns the data in UTC time zone 
 
     date = ("2005-01-01 12:00", "2005-01-12 15:00")
     qobs = nwis.get_streamflow("01646500", date, freq="iv")
+
+We can query USGS stations of type "stream" in Arizona using SensorThings API
+as follows:
+
+.. code-block:: python
+
+    odata = {
+        "filter": "properties/monitoringLocationType eq 'Stream' and properties/stateFIPS eq 'US:04'",
+    }
+    df = sensor.query_byodata(odata)
 
 Irrigation withdrawals data can be obtained as follows:
 

@@ -60,6 +60,11 @@ These utilities are:
 - ``xarray2geodf``: Vectorize a ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``.
 - ``geodf2xarray``: Rasterize a ``geopandas.GeoDataFrame`` to a ``xarray.DataArray``.
 - ``xarray_geomask``: Mask a ``xarray.Dataset`` based on a geometry.
+- ``query_indices``: a wrapper around
+  ``geopandas.sindex.query_bulk``. However, instead of returning an array of
+  positional indices, it returns a dictionary of indices where keys are the
+  indices of the input geometry and values are a list of indices of the
+  tree geometries that intersect with the input geometry.
 - ``nested_polygons``: Determining nested (multi)polygons in a ``geopandas.GeoDataFrame``.
 
 All these functions handle all necessary CRS transformations.

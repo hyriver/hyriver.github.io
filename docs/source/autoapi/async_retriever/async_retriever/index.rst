@@ -24,6 +24,8 @@ Module Contents
 
 
 .. py:function:: retrieve(urls, read_method, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
+              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[ujson], request_kwds: Sequence[dict[str, Any]] | None = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Path | str | None = None, timeout: float = 5.0, expire_after: float = -1, ssl: SSLContext | bool | None = None, disable: bool = False) -> list[dict[str, Any]] | list[list[dict[str, Any]]]
+              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[binary], request_kwds: Sequence[dict[str, Any]] | None = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Path | str | None = None, timeout: float = 5.0, expire_after: float = -1, ssl: SSLContext | bool | None = None, disable: bool = False) -> list[bytes]
 
    Send async requests.
 

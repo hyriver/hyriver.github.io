@@ -81,12 +81,13 @@ Module Contents
 
 
 .. py:function:: streaming_download(urls, kwds = None, fnames = None, file_prefix = '', file_extention = '', method = 'GET', ssl = True, chunk_size = CHUNK_SIZE, n_jobs = MAX_CONN)
+              streaming_download(urls: list[str], kwds: list[dict[str, dict[Any, Any]]] | None = None, fnames: Sequence[str | Path] | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> list[pathlib.Path]
 
    Download and store files in parallel from a list of URLs/Keywords.
 
    .. rubric:: Notes
 
-   This function uses ``joblib`` with ``loky`` backend.
+   This function runs asynchronously in parallel using ``n_jobs`` threads.
 
    :Parameters: * **urls** (:class:`tuple` or :class:`list`) -- A list of URLs to download.
                 * **kwds** (:class:`tuple` or :class:`list`, *optional*) -- A list of keywords associated with each URL, e.g.,

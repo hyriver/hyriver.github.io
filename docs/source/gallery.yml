@@ -30,6 +30,10 @@
   thumbnail: examples/notebooks/_static/split_catchment.png
   title: Split Catchment with PyGeoAPI
 
+- path: examples/notebooks/things.html
+  thumbnail: examples/notebooks/_static/sensorthings.png
+  title: Real-time data with SensorThings API
+
 - path: examples/notebooks/cross_section.html
   thumbnail: examples/notebooks/_static/cross_section.png
   title: River Elevation and Cross-Section

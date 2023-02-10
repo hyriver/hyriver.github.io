@@ -108,6 +108,7 @@ Module Contents
 
 
 .. py:function:: get_map(layers, geometry, resolution, geo_crs = 4326, crs = 4326)
+              get_map(layers: list[str], geometry: Polygon | MultiPolygon | tuple[float, float, float, float], resolution: float, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.Dataset
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
 

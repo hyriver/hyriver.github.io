@@ -38,10 +38,11 @@ Module Contents
    Although this dataframe does not include geometry, it can be
    linked to other geospatial NHDPlus dataframes through ComIDs.
 
-   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
-                ``./cache/enhd_attrs.parquet``.
+   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file,
+                defaults to ``./cache/enhd_attrs.parquet``.
 
-   :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million NHDPlus flowlines.
+   :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for
+             2.7 million NHDPlus flowlines.
 
 
 .. py:function:: epa_nhd_catchments(comids, feature)
@@ -110,25 +111,20 @@ Module Contents
 
 .. py:function:: nhdplus_vaa(parquet_path = None)
 
-   Get NHDPlus Value Added Attributes with ComID-level roughness and slope values.
+   Get NHDPlus Value Added Attributes including roughness.
 
    .. rubric:: Notes
 
    This function downloads a 245 MB ``parquet`` file from
    `here <https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726>`__ .
-   Although this dataframe does not include geometry, it can be linked to other geospatial
-   NHDPlus dataframes through ComIDs.
+   Although this dataframe does not include geometry, it can be linked
+   to other geospatial NHDPlus dataframes through ComIDs.
 
    :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
                 ``./cache/nldplus_vaa.parquet``.
 
-   :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million NHDPlus flowlines.
-
-   .. rubric:: Examples
-
-   >>> vaa = nhdplus_vaa() # doctest: +SKIP
-   >>> print(vaa.slope.max()) # doctest: +SKIP
-   4.6
+   :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million
+             NHDPlus flowlines.
 
 
 .. py:function:: streamcat(metric_names, metric_areas = None, comids = None, regions = None, states = None, counties = None, conus = False, percent_full = False, area_sqkm = False)

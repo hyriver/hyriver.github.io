@@ -196,6 +196,19 @@ Module Contents
              contained within the larger polygons.
 
 
+.. py:function:: query_indices(tree_gdf, input_gdf, predicate = 'intersects')
+
+   Find the indices of the input_geo that intersect with the tree_geo.
+
+   :Parameters: * **tree_gdf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- The tree geodataframe.
+                * **input_gdf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- The input geodataframe.
+                * **predicate** (:class:`str`, *optional*) -- The predicate to use for the query operation, defaults to ``intesects``.
+
+   :returns: :class:`dict` -- A dictionary of the indices of the ``input_gdf`` that intersect with the
+             ``tree_gdf``. Keys are the index of ``input_gdf`` and values are a list
+             of indices of the intersecting ``tree_gdf``.
+
+
 .. py:function:: snap2nearest(lines, points, tol)
 
    Find the nearest points on a line to a set of points.

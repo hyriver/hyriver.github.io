@@ -108,7 +108,7 @@ Module Contents
 
    .. py:method:: sort_params(sort_attr, nfeatures, start_index)
 
-      Get the sort parameters for the WFS request.
+      Get sort parameters for a WFS request.
 
 
    .. py:method:: validate_wfs()
