@@ -74,7 +74,6 @@ by setting the following environment variables:
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
   -1 (never expire).
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
-* ``HYRIVER_VERBOSE``: Enable verbose mode. The default is false.
 
 For example, in your code before making any requests you can do:
 
