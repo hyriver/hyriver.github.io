@@ -23,7 +23,7 @@
   title: Daymet Climate Data
 
 - path: examples/notebooks/nldas.html
-  thumbnail: examples/notebooks/_static/nldas_humidity.png
+  thumbnail: examples/notebooks/_static/nldas_snow.png
   title: NLDAS2 Climate Data
 
 - path: examples/notebooks/pygeoapi.html
