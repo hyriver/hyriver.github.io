@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:function:: get_bycoords(coords, start_date, end_date, crs = 4326, variables = None, to_xarray = False, n_conn = 4)
+.. py:function:: get_bycoords(coords, start_date, end_date, coords_id = None, crs = 4326, variables = None, to_xarray = False, n_conn = 4, snow = False, snow_params = None)
 
    Get NLDAS climate forcing data for a list of coordinates.
 
@@ -27,11 +27,18 @@ Module Contents
                 * **n_conn** (:class:`int`, *optional*) -- Number of parallel connections to use for retrieving data, defaults to 4.
                   The maximum number of connections is 4, if more than 4 are requested, 4
                   connections will be used.
+                * **snow** (:class:`bool`, *optional*) -- Compute snowfall from precipitation and temperature. Defaults to ``False``.
+                * **snow_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the snowfall function.
+                  These parameters are only used if ``snow`` is ``True``. Two parameters are required:
+                  ``t_rain`` (deg C) which is the threshold for temperature for considering rain and
+                  ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
+                  The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
+                  https://doi.org/10.5194/gmd-11-1077-2018.
 
    :returns: :class:`pandas.DataFrame` -- The requested data as a dataframe.
 
 
-.. py:function:: get_bygeom(geometry, start_date, end_date, geo_crs, variables = None, n_conn = 4)
+.. py:function:: get_bygeom(geometry, start_date, end_date, geo_crs, variables = None, n_conn = 4, snow = False, snow_params = None)
 
    Get hourly NLDAS climate forcing within a geometry at 0.125 resolution.
 
@@ -44,6 +51,13 @@ Module Contents
                   ``rlds``, ``rsds``, and ``humidity``.
                 * **n_conn** (:class:`int`, *optional*) -- Number of parallel connections to use for retrieving data, defaults to 4.
                   It should be less than 4.
+                * **snow** (:class:`bool`, *optional*) -- Compute snowfall from precipitation and temperature. Defaults to ``False``.
+                * **snow_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the snowfall function.
+                  These parameters are only used if ``snow`` is ``True``. Two parameters are required:
+                  ``t_rain`` (deg C) which is the threshold for temperature for considering rain and
+                  ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
+                  The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
+                  https://doi.org/10.5194/gmd-11-1077-2018.
 
    :returns: :class:`xarray.Dataset` -- The requested forcing data.
 

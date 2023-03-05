@@ -83,7 +83,7 @@ Module Contents
 
 
 
-.. py:class:: GeoConnex(item = None)
+.. py:class:: GeoConnex(item = None, dev = False, max_nfeatures = 10000)
 
    Access to the GeoConnex API.
 
@@ -93,14 +93,88 @@ Module Contents
    or tuple/list of length 4 (bbox) in ``EPSG:4326`` CRS. They should
    be within the extent of the GeoConnex endpoint.
 
-   :Parameters: **item** (:class:`str`, *optional*) -- The target endpoint to query, defaults to ``None``.
+   :Parameters: * **The item (service endpoint) to query. Valid endpoints are** --
+
+                  - ``hu02`` for Two-digit Hydrologic Regions
+                  - ``hu04`` for Four-digit Hydrologic Subregion
+                  - ``hu06`` for Six-digit Hydrologic Basins
+                  - ``hu08`` for Eight-digit Hydrologic Subbasins
+                  - ``hu10`` for Ten-digit Watersheds
+                  - ``nat_aq`` for National Aquifers of the United States from
+                      USGS National Water Information System National Aquifer code list.
+                  - ``principal_aq`` for Principal Aquifers of the United States from
+                      2003 USGS data release
+                  - ``sec_hydrg_reg`` for Secondary Hydrogeologic Regions of the
+                      Conterminous United States from 2018 USGS data release
+                  - ``gages`` for US Reference Stream Gage Monitoring Locations
+                  - ``mainstems`` for US Reference Mainstem Rivers
+                  - ``states`` for U.S. States
+                  - ``counties`` for U.S. Counties
+                  - ``aiannh`` for Native American Lands
+                  - ``cbsa`` for U.S. Metropolitan and Micropolitan Statistical Areas
+                  - ``ua10`` for Urbanized Areas and Urban Clusters (2010 Census)
+                  - ``places`` for U.S. legally incororated and Census designated places
+                  - ``pws`` for U.S. Public Water Systems
+                  - ``dams`` for US Reference Dams
+                * **dev** (:class:`bool`, *optional*) -- Whether to use the development endpoint, defaults to ``False``.
+                * **max_nfeatures** (:class:`int`, *optional*) -- The maximum number of features to request from the service,
+                  defaults to 10000.
+
+   .. py:property:: dev
+      :type: bool
+
+      Return the name of the endpoint.
 
    .. py:property:: item
       :type: str | None
 
       Return the name of the endpoint.
 
-   .. py:method:: query(kwds, skip_geometry = False)
+   .. py:method:: bycql(cql_dict, skip_geometry = False)
+               bycql(cql_dict: dict[str, Any], skip_geometry: Literal[True]) -> pandas.DataFrame
+
+      Query the GeoConnex endpoint.
+
+      .. rubric:: Notes
+
+      GeoConnex only supports simple CQL queries. For more information
+      and examples visit https://portal.ogc.org/files/96288#simple-cql-JSON.
+      Use this for non-spatial queries, since there's a dedicated method
+      for spatial queries, :meth:`.bygeometry`.
+
+      :Parameters: * **cql_dict** (:class:`dict`) -- A valid CQL dictionary (non-spatial queries).
+                   * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, no geometry will not be returned, by default ``False``.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
+
+
+   .. py:method:: bygeometry(geometry1, geometry2 = None, predicate = 'intersects', crs = 4326, skip_geometry = False)
+               bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = None, predicate: str = 'intersects', crs: CRSTYPE | None = 4326, skip_geometry: Literal[True] = True) -> pandas.DataFrame
+
+      Query the GeoConnex endpoint by geometry.
+
+      :Parameters: * **geometry1** (:class:`Polygon` or :class:`tuple` of :class:`float`) -- The first geometry or bounding boxes to query. A bounding box is
+                     a tuple of length 4 in the form of ``(xmin, ymin, xmax, ymax)``.
+                     For example, an spatial query for a single geometry would be
+                     ``INTERSECTS(geom, geometry1)``.
+                   * **geometry2** (:class:`Polygon` or :class:`tuple` of :class:`float`, *optional*) -- The second geometry or bounding boxes to query. A bounding box is
+                     a tuple of length 4 in the form of ``(xmin, ymin, xmax, ymax)``.
+                     Default is ``None``. For example, an spatial query for a two
+                     geometries would be ``CROSSES(geometry1, geometry2)``.
+                   * **predicate** (:class:`str`, *optional*) -- The predicate to use, by default ``intersects``. Supported
+                     predicates are ``intersects``, ``within``, ``contains``,
+                     ``overlaps``, ``crosses``, ``disjoint``, ``touches``, and
+                     ``equals``.
+                   * **crs** (:class:`int` or :class:`str` or :class:`pyproj.CRS`, *optional*) -- The CRS of the polygon, by default ``EPSG:4326``. If the input
+                     is a ``geopandas.GeoDataFrame`` or ``geopandas.GeoSeries``,
+                     this argument will be ignored.
+                   * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, no geometry will not be returned.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
+
+
+   .. py:method:: byid(feature_name, feature_ids, skip_geometry = False)
+               byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[True]) -> pandas.DataFrame
 
       Query the GeoConnex endpoint.
 

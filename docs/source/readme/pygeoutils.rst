@@ -65,7 +65,10 @@ These utilities are:
   positional indices, it returns a dictionary of indices where keys are the
   indices of the input geometry and values are a list of indices of the
   tree geometries that intersect with the input geometry.
-- ``nested_polygons``: Determining nested (multi)polygons in a ``geopandas.GeoDataFrame``.
+- ``nested_polygons``: Determining nested (multi)polygons in a
+  ``geopandas.GeoDataFrame``.
+- ``multi2poly``, for converting a ``MultiPolygon`` to a ``Polygon``
+  in a ``geopandas.GeoDataFrame``.
 
 All these functions handle all necessary CRS transformations.
 

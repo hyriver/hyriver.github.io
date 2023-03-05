@@ -83,6 +83,8 @@ Also, it has two other functions:
 * ``interactive_map``: Interactive map for exploring NWIS stations within a bounding box.
 * ``cover_statistics``: Categorical statistics of land use/land cover data.
 * ``overland_roughness``: Estimate overland roughness from land use/land cover data.
+* ``streamflow_fillna``: Fill missing daily streamflow values with day-of-year averages.
+  Streamflow observations must be at least for 10-year long.
 
 The ``plot`` module includes two main functions:
 

@@ -58,11 +58,12 @@ Module Contents
       >>> from pygeohydro import NWIS
       >>> nwis = NWIS()
       >>> codes = nwis.get_parameter_codes("%discharge%")
-      >>> codes.loc[codes.parameter_cd == "00060", "parm_nm"][0]
+      >>> codes.loc[codes.parameter_cd == "00060", "parm_nm"].iloc[0]
       'Discharge, cubic feet per second'
 
 
-   .. py:method:: get_streamflow(station_ids, dates, freq = 'dv', mmd = False, to_xarray = False)
+   .. py:method:: get_streamflow(station_ids, dates, freq = 'dv', mmd = False, to_xarray = ...)
+               get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[True] = ...) -> xarray.Dataset
 
       Get mean daily streamflow observations from USGS.
 
@@ -92,5 +93,21 @@ Module Contents
 
       :returns: :class:`pandas.DataFrame` -- Requested features as a pandas's DataFrame.
 
+
+
+.. py:function:: streamflow_fillna(streamflow, missing_max = 5)
+
+   Fill missing data (NAN) in daily streamflow observations.
+
+   It drops stations with more than ``missing_max`` days missing data
+   per year. Missing data in the remaining stations, are filled with
+   day-of-year average over the entire dataset.
+
+   :Parameters: * **discharge** (:class:`xarray.DataArray` or :class:`pandas.DataFrame` or :class:`pandas.Series`) -- Streamflow observations with at least 10 years of daily data.
+                * **missing_max** (:class:`int`) -- Maximum allowed number of missing daily data per year for filling,
+                  defaults to 5.
+
+   :returns: :class:`xarray.DataArray` or :class:`pandas.DataFrame` or :class:`pandas.Series` -- Streamflow observations with missing data filled for stations with
+             less than ``missing_max`` days of missing data.
 
 

@@ -12,6 +12,16 @@
 Module Contents
 ---------------
 
+.. py:function:: add_elevation(ds, ds_dims = None)
+
+   Add elevation data to a dataset  as a new variable.
+
+   :Parameters: **ds** (:class:`xarray.DataArray` or :class:`xarray.Dataset`) -- The dataset to add elevation data to. It must contain
+                CRS information.
+
+   :returns: :class:`xarray.Dataset` -- The dataset with ``elevation``.
+
+
 .. py:function:: check_3dep_availability(bbox, crs = 4326)
 
    Query 3DEP's resolution availability within a bounding box.
@@ -30,14 +40,15 @@ Module Contents
    >>> import py3dep
    >>> bbox = (-69.77, 45.07, -69.31, 45.45)
    >>> py3dep.check_3dep_availability(bbox)
-   {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False, 'topobathy': False}
+   {'1m': True, '3m': False, '5m': False, '10m': True, '30m': False, '60m': False, 'topobathy': False}
 
 
-.. py:function:: elevation_bycoords(coords, crs = 4326, source = 'tep')
+.. py:function:: elevation_bycoords(coords, crs = ..., source = ...)
+              elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: str = ...) -> list[float]
 
    Get elevation for a list of coordinates.
 
-   :Parameters: * **coords** (:class:`list` of :class:`tuple`) -- Coordinates of target location as list of tuples ``[(x, y), ...]``.
+   :Parameters: * **coords** (:class:`tuple` or :class:`list` of :class:`tuple`) -- Coordinates of target location(s), e.g., ``[(x, y), ...]``.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of coords, defaults to ``EPSG:4326``.
                 * **source** (:class:`str`, *optional*) -- Data source to be used, default to ``airmap``. Supported sources are
                   ``airmap`` (30 m resolution), ``tnm`` (using The National Map's Bulk Point
@@ -48,7 +59,7 @@ Module Contents
                   It's recommended to use ``tep`` unless 10-m resolution accuracy is not necessary which
                   in that case ``airmap`` is more appropriate.
 
-   :returns: :class:`list` of :class:`float` -- Elevation in meter.
+   :returns: :class:`float` or :class:`list` of :class:`float` -- Elevation in meter.
 
 
 .. py:function:: elevation_bygrid(xcoords, ycoords, crs, resolution, depression_filling = False)
@@ -59,12 +70,14 @@ Module Contents
 
    :Parameters: * **xcoords** (:class:`list`) -- List of x-coordinates of a grid.
                 * **ycoords** (:class:`list`) -- List of y-coordinates of a grid.
-                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`) -- The spatial reference system of the input grid, defaults to ``EPSG:4326``.
-                * **resolution** (:class:`float`) -- The accuracy of the output, defaults to 10 m which is the highest
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`) -- The spatial reference system of the input grid,
+                  defaults to ``EPSG:4326``.
+                * **resolution** (:class:`int`) -- The accuracy of the output, defaults to 10 m which is the highest
                   available resolution that covers CONUS. Note that higher resolution
                   increases computation time so chose this value with caution.
                 * **depression_filling** (:class:`bool`, *optional*) -- Fill depressions before sampling using
-                  `RichDEM <https://richdem.readthedocs.io/en/latest/>`__ package, defaults to False.
+                  `pyflwdir <https://deltares.github.io/pyflwdir>`__ package,
+                  defaults to ``False``.
 
    :returns: :class:`xarray.DataArray` -- Elevations of the input coordinates as a ``xarray.DataArray``.
 
@@ -108,7 +121,7 @@ Module Contents
 
 
 .. py:function:: get_map(layers, geometry, resolution, geo_crs = 4326, crs = 4326)
-              get_map(layers: list[str], geometry: Polygon | MultiPolygon | tuple[float, float, float, float], resolution: float, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.Dataset
+              get_map(layers: list[str], geometry: Polygon | MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.Dataset
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
 
@@ -131,7 +144,7 @@ Module Contents
 
    :Parameters: * **layers** (:class:`str` or :class:`list` of :class:`str`) -- A valid 3DEP layer or a list of them.
                 * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple`) -- A shapely Polygon or a bounding box of the form ``(west, south, east, north)``.
-                * **resolution** (:class:`float`) -- The target resolution in meters. The width and height of the output are computed in
+                * **resolution** (:class:`int`) -- The target resolution in meters. The width and height of the output are computed in
                   pixels based on the geometry bounds and the given resolution.
                 * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input geometry, defaults to ``EPSG:4326``.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
@@ -163,7 +176,7 @@ Module Contents
    >>> bbox = (-69.77, 45.07, -69.31, 45.45)
    >>> src = py3dep.query_3dep_sources(bbox)
    >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
-   {'10m': 8, '1m': 3, '30m': 8}
+   {'10m': 1, '1m': 3}
    >>> src = py3dep.query_3dep_sources(bbox, res="1m")
    >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
    {'1m': 3}

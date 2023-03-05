@@ -16,15 +16,59 @@ Module Contents
 
    Get StreamCat API's properties.
 
-   .. py:method:: id_kwds(comids = None, regions = None, states = None, counties = None, conus = False)
+   .. attribute:: base_url
 
-      Get the keyword arguments for the API's ID parameters.
+      The base URL of the API.
 
+      :type: :class:`str`
 
-   .. py:method:: validate(name = None, region = None, state = None, county = None, aoi = None)
+   .. attribute:: valid_names
 
-      Validate input parameters.
+      The valid names of the metrics.
 
+      :type: :class:`list` of :class:`str`
+
+   .. attribute:: alt_names
+
+      The alternative names of some metrics.
+
+      :type: :class:`dict` of :class:`str`
+
+   .. attribute:: valid_regions
+
+      The valid hydro regions.
+
+      :type: :class:`list` of :class:`str`
+
+   .. attribute:: valid_states
+
+      The valid two letter states' abbreviations.
+
+      :type: :class:`pandas.DataFrame`
+
+   .. attribute:: valid_counties
+
+      The valid counties' FIPS codes.
+
+      :type: :class:`pandas.DataFrame`
+
+   .. attribute:: valid_aois
+
+      The valid types of areas of interest.
+
+      :type: :class:`list` of :class:`str`
+
+   .. attribute:: metrics_df
+
+      The metrics' metadata such as description and units.
+
+      :type: :class:`pandas.DataFrame`
+
+   .. attribute:: valid_years
+
+      A dictionary of the valid years for annual metrics.
+
+      :type: :class:`dict`
 
 
 .. py:function:: enhd_attrs(parquet_path = None)
@@ -33,7 +77,7 @@ Module Contents
 
    .. rubric:: Notes
 
-   This downloads a 160 MB ``parquet`` file from
+   This function downloads a 160 MB ``parquet`` file from
    `here <https://doi.org/10.5066/P976XCVT>`__.
    Although this dataframe does not include geometry, it can be
    linked to other geospatial NHDPlus dataframes through ComIDs.
@@ -137,37 +181,39 @@ Module Contents
    at https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset.
 
    :Parameters: * **metric_names** (:class:`str` or :class:`list` of :class:`str`) -- Metric name(s) to retrieve. There are 567 metrics available.
-                  to get a full list instantiate the ``StreamCat`` class and check its
-                  ``valid_names`` attribute.
+                  to get a full list check out :meth:`StreamCat.valid_names`.
+                  To get a description of each metric, check out
+                  :meth:`StreamCat.metrics_df`. Some metrics require year and/or slope
+                  to be specified, which have ``[Year]`` and/or ``[Slope]`` in their name.
+                  For convenience all these variables and their years/slopes are converted
+                  to a dict that can be accessed via :meth:`StreamCat.valid_years` and
+                  :meth:`StreamCat.valid_slopes`.
                 * **metric_areas** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Areas to return the metrics for, defaults to ``None``, i.e. all areas.
                   Valid options are: ``catchment``, ``watershed``, ``riparian_catchment``,
                   ``riparian_watershed``, ``other``.
                 * **comids** (:class:`int` or :class:`list` of :class:`int`, *optional*) -- NHDPlus COMID(s), defaults to ``None``. Either ``comids``, ``regions``,
-                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
-                  exclusive.
-                * **regions** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Hydro region(s) to retrieve metrics for, defaults to ``None``. For a full list
-                  of valid regions, instantiate the ``StreamCat`` class and check its
-                  ``valid_regions`` attribute. Either ``comids``, ``regions``,
-                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
-                  exclusive.
-                * **states** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Two letter state abbreviation(s) to retrieve metrics for, defaults to ``None``.
-                  For a full list of valid states, instantiate the ``StreamCat`` class and check
-                  its ``valid_states`` attribute. Either ``comids``, ``regions``,
-                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
-                  exclusive.
-                * **counties** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- County FIPS codes(s) to retrieve metrics for, defaults to ``None``. For a full
-                  list of valid county codes, instantiate the ``StreamCat`` class and check its
-                  ``valid_counties`` attribute. Either ``comids``, ``regions``,
-                  ``states``, ``counties``, or ``conus`` must be passed. They are mutually
-                  exclusive.
+                  ``states``, ``counties``, or ``conus`` must be passed. They are
+                  mutually exclusive.
+                * **regions** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Hydro region(s) to retrieve metrics for, defaults to ``None``. For a
+                  full list of valid regions check out :meth:`StreamCat.valid_regions`
+                  Either ``comids``, ``regions``, ``states``, ``counties``, or ``conus``
+                  must be passed. They are mutually exclusive.
+                * **states** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Two letter state abbreviation(s) to retrieve metrics for, defaults to
+                  ``None``. For a full list of valid states check out
+                  :meth:`StreamCat.valid_states` Either ``comids``, ``regions``,
+                  ``states``, ``counties``, or ``conus`` must be passed. They are
+                  mutually exclusive.
+                * **counties** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- County FIPS codes(s) to retrieve metrics for, defaults to ``None``. For
+                  a full list of valid county codes check out :meth:`StreamCat.valid_counties`
+                  Either ``comids``, ``regions``, ``states``, ``counties``, or ``conus`` must
+                  be passed. They are mutually exclusive.
                 * **conus** (:class:`bool`, *optional*) -- If ``True``, ``metric_names`` of all NHDPlus COMIDs are retrieved,
                   defaults ``False``. Either ``comids``, ``regions``,
                   ``states``, ``counties``, or ``conus`` must be passed. They are mutually
                   exclusive.
                 * **percent_full** (:class:`bool`, *optional*) -- If ``True``, return the percent of each area of interest covered by
                   the metric.
-                * **area_sqkm** (:class:`bool`, *optional*) -- If ``True``, return the Returns the area in square kilometers of a given
-                  area of interest.
+                * **area_sqkm** (:class:`bool`, *optional*) -- If ``True``, return the area in square kilometers.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe with the requested metrics.
 

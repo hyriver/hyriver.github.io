@@ -114,7 +114,7 @@ Module Contents
              nodes in the graph are unique.
 
 
-.. py:function:: nhdplus_l48(layer, data_dire = 'cache', **kwargs)
+.. py:function:: nhdplus_l48(layer, data_dir = 'cache', **kwargs)
 
    Get the entire NHDPlus dataset.
 
@@ -208,13 +208,16 @@ Module Contents
    :Parameters: * **flowlines** (:class:`pandas.DataFrame`) -- A dataframe with columns ID and toID
                 * **edge_attr** (:class:`str` or :class:`list`, *optional*) -- Names of the columns in the dataframe to be used as edge attributes, defaults to None.
                 * **largest_only** (:class:`bool`, *optional*) -- Whether to return only the largest network, defaults to ``False``.
-                * **id_col** (:class:`str`, *optional*) -- Name of the column containing the node ID, defaults to "ID".
-                * **toid_col** (:class:`str`, *optional*) -- Name of the column containing the downstream node ID, defaults to "toID".
+                * **id_col** (:class:`str`, *optional*) -- Name of the column containing the node ID, defaults to ``ID``.
+                * **toid_col** (:class:`str`, *optional*) -- Name of the column containing the downstream node ID, defaults to ``toID``.
 
    :returns: :class:`(list`, dict , :class:`networkx.DiGraph)` -- A list of topologically sorted IDs, a dictionary
-             with keys as IDs and values as its upstream nodes,
-             and the generated networkx object. Note that the
-             terminal node ID is set to pd.NA.
+             with keys as IDs and values as a list of its upstream nodes,
+             and the generated ``networkx.DiGraph`` object. Note that node
+             IDs are associated with the input flow line IDs, but there might
+             be some negative IDs in the output garph that are not present in
+             the input flow line IDs. These "artificial" nodes are used to represent the
+             graph outlet (the most downstream nodes) in the graph.
 
 
 .. py:function:: vector_accumulation(flowlines, func, attr_col, arg_cols, id_col = 'comid', toid_col = 'tocomid')

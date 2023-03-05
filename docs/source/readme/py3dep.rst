@@ -81,6 +81,8 @@ The following functionalities are currently available:
   60 m, then the static service is used (``static_3dep_dem``). Otherwise, the dynamic
   service is used (``get_map`` using ``DEM`` layer).
 - ``elevation_bygrid``: For retrieving elevations of all the grid points in a 2D grid.
+- ``add_elevation``: For adding elevation data as a new variable to an input
+  ``xarray.DataArray`` or ``xarray.Dataset``.
 - ``elevation_bycoords``: For retrieving elevation of a list of ``x`` and ``y`` coordinates.
 - ``elevation_profile``: For retrieving elevation profile along a line at a given spacing.
   This function converts the line to a B-spline and then calculates the elevation along

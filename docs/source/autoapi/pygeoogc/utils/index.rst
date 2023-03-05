@@ -68,15 +68,15 @@ Module Contents
    .. rubric:: Examples
 
    >>> from pygeoogc.utils import match_crs
-   >>> from shapely.geometry import Point
+   >>> from shapely import Point
    >>> point = Point(-7766049.665, 5691929.739)
-   >>> match_crs(point, "epsg:3857", "epsg:4326").xy
+   >>> match_crs(point, "epsg:3857", 4326).xy
    (array('d', [-69.7636111130079]), array('d', [45.44549114818127]))
    >>> bbox = (-7766049.665, 5691929.739, -7763049.665, 5696929.739)
-   >>> match_crs(bbox, "epsg:3857", "epsg:4326")
+   >>> match_crs(bbox, "epsg:3857", 4326)
    (-69.7636111130079, 45.44549114818127, -69.73666165448431, 45.47699468552394)
    >>> coords = [(-7766049.665, 5691929.739)]
-   >>> match_crs(coords, "epsg:3857", "epsg:4326")
+   >>> match_crs(coords, "epsg:3857", 4326)
    [(-69.7636111130079, 45.44549114818127)]
 
 

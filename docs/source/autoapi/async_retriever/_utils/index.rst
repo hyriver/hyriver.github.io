@@ -41,7 +41,7 @@ Module Contents
    Create an event loop.
 
 
-.. py:function:: retriever(uid, url, s_kwds, session, read_type, r_kwds)
+.. py:function:: retriever(uid, url, s_kwds, session, read_type, r_kwds, raise_status)
    :async:
 
    Create an async request and return the response as binary.
@@ -50,10 +50,12 @@ Module Contents
                 * **url** (:class:`str`) -- URL to be retrieved
                 * **s_kwds** (:class:`dict`) -- Arguments to be passed to requests
                 * **session** (:class:`ClientSession`) -- A ClientSession for sending the request
-                * **read_type** (:class:`str`) -- Return response as text, bytes, or json.
+                * **read_type** (:class:`str`) -- Return response as ``text``, ``bytes``, or ``json``.
                 * **r_kwds** (:class:`dict`) -- Keywords to pass to the response read function.
                   It is ``{"content_type": None}`` if ``read`` is ``json``
                   else an empty ``dict``.
+                * **raise_status** (:class:`bool`) -- Raise an exception if the response status is not 200. If
+                  ``False`` return ``None``.
 
    :returns: :class:`bytes` -- The retrieved response as binary.
 

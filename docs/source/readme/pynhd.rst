@@ -48,14 +48,15 @@ Features
 PyNHD is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
 is designed to aid in hydroclimate analysis through web services.
 
-This package provides access to several hydro-linked datasets including
-`StreamCat <https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset>`__,
-`WaterData <https://labs.waterdata.usgs.gov/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage?1>`__,
-The National Map's `NHDPlus MR <https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer>`__,
-and `NHDPlus HR <https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer>`__,
-`NLDI <https://labs.waterdata.usgs.gov/about-nldi/>`__,
-`PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__,
-and `GeoConnex <https://geoconnex.internetofwater.dev/>`__.
+This package provides access to several hydro-linked datasets:
+
+- `StreamCat <https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset>`__
+- `WaterData <https://labs.waterdata.usgs.gov/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage?1>`__
+- `NHDPlus MR <https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer>`__
+- `NHDPlus HR <https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer>`__
+- `NLDI <https://labs.waterdata.usgs.gov/about-nldi/>`__
+- `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__
+- `GeoConnex <https://geoconnex.internetofwater.dev/>`__
 
 These web services can be used to navigate and extract vector data from NHDPlus V2 (both mid-
 and high-resolution) database such as catchments, HUC8, HUC12, GagesII, flowlines, and water
@@ -84,19 +85,19 @@ through two sources:
 - Select Attributes for NHDPlus Version 2.1 Reach Catchments from an item on
   `ScienceBase <https://sciencebase.usgs.gov>`__
 - EPA's `StreamCat <https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset>`__
-  dataset from an HMS endpoints ``WSCatchment``
+  dataset.
 
 They both include hundreds of attributes such as hydroclimate properties, water quality,
 urbanization, and population. In addition to NHD catchment summaries, they also have
 their network-accumulated values (both upstream and divergence-routed). You can use
-``nhdplus_attrs`` and ``epa_nhd_catchments`` functions to get these datasets.
+``nhdplus_attrs``, ``epa_nhd_catchments``, ``streamcat`` functions to get these datasets.
 
 Additionally, PyNHD offers some extra utilities for processing the NHD flowlines:
 
 - ``flowline_xsection`` and ``network_xsection``: Get cross-section lines along a flowline
   at a given spacing or a network of flowlines at a given spacing.
 - ``flowline_resample`` and ``network_resample``:
-  Resampe a flowline or network of flowlines based on a given spacing. This is
+  Resample a flowline or network of flowlines based on a given spacing. This is
   useful for smoothing jagged flowlines similar to those in the NHDPlus database.
 - ``prepare_nhdplus``: For cleaning up the data frame by, for example, removing tiny networks,
   adding a ``to_comid`` column, and finding terminal flowlines if it doesn't exist.

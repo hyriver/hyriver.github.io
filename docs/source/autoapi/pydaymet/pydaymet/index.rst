@@ -43,8 +43,16 @@ Module Contents
                   :footcite:t:`Priestley_1972` assuming that soil heat flux density is zero.
                   The ``hargreaves_samani`` method is based on :footcite:t:`Hargreaves_1982`.
                   Defaults to ``None``.
-                * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
-                  Defaults to ``None``.
+                * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary, defaults to ``None``. An important
+                  parameter for ``priestley_taylor`` and ``penman_monteith`` methods is
+                  ``arid_correction`` which is used to correct the actual vapor pressure
+                  for arid regions. Since relative humidity is not provided by Daymet, the actual
+                  vapor pressure is computed assuming that the dewpoint temperature is equal to
+                  the minimum temperature. However, for arid regions, FAO 56 suggests to subtract
+                  minimum temperature by 2-3 °C to account for the fact that in arid regions,
+                  the air might not be saturated when its temperature is at its minimum. For such
+                  areas, you can pass ``{"arid_correction": True, ...}`` to subtract 2°C from the
+                  minimum temperature for computing the actual vapor pressure.
                 * **snow** (:class:`bool`, *optional*) -- Compute snowfall from precipitation and minimum temperature. Defaults to ``False``.
                 * **snow_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the snowfall function.
                   These parameters are only used if ``snow`` is ``True``. Two parameters are required:
@@ -101,8 +109,25 @@ Module Contents
                   :footcite:t:`Priestley_1972` assuming that soil heat flux density is zero.
                   The ``hargreaves_samani`` method is based on :footcite:t:`Hargreaves_1982`.
                   Defaults to ``None``.
-                * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the PET function.
-                  Defaults to ``None``.
+                * **pet_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary, defaults to ``None``. Valid
+                  parameters are:
+
+                  * ``penman_monteith``: ``soil_heat_flux``, ``albedo``, ``alpha``,
+                    and ``arid_correction``.
+                  * ``priestley_taylor``: ``soil_heat_flux``, ``albedo``, and ``arid_correction``.
+                  * ``hargreaves_samani``: None.
+
+                  Default values for the parameters are: ``soil_heat_flux`` = 0, ``albedo`` = 0.23,
+                  ``alpha`` = 1.26, and ``arid_correction`` = False.
+                  An important parameter for ``priestley_taylor`` and ``penman_monteith`` methods
+                  is ``arid_correction`` which is used to correct the actual vapor pressure
+                  for arid regions. Since relative humidity is not provided by Daymet, the actual
+                  vapor pressure is computed assuming that the dewpoint temperature is equal to
+                  the minimum temperature. However, for arid regions, FAO 56 suggests to subtract
+                  minimum temperature by 2-3 °C to account for the fact that in arid regions,
+                  the air might not be saturated when its temperature is at its minimum. For such
+                  areas, you can pass ``{"arid_correction": True, ...}`` to subtract 2 °C from the
+                  minimum temperature for computing the actual vapor pressure.
                 * **snow** (:class:`bool`, *optional*) -- Compute snowfall from precipitation and minimum temperature. Defaults to ``False``.
                 * **snow_params** (:class:`dict`, *optional*) -- Model-specific parameters as a dictionary that is passed to the snowfall function.
                   These parameters are only used if ``snow`` is ``True``. Two parameters are required:
@@ -116,7 +141,7 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from shapely.geometry import Polygon
+   >>> from shapely import Polygon
    >>> import pydaymet as daymet
    >>> geometry = Polygon(
    ...     [[-69.77, 45.07], [-69.31, 45.07], [-69.31, 45.45], [-69.77, 45.45], [-69.77, 45.07]]

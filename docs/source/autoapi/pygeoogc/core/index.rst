@@ -38,11 +38,6 @@ Module Contents
                   is done and object IDs of the failed requests is saved to a text file
                   which its ipath can be accessed via ``self.failed_path``.
 
-   .. py:method:: esri_query(geom, geo_crs = 4326)
-
-      Generate geometry queries based on ESRI template.
-
-
    .. py:method:: get_features(featureids, return_m = False, return_geom = True)
 
       Get features based on the feature IDs.
@@ -147,20 +142,5 @@ Module Contents
 
       Validate input arguments with the WMS service.
 
-
-
-.. py:function:: split_url(url, layer)
-
-   Check if layer is included in url, if so separate and return them.
-
-
-.. py:function:: validate_version(val, valid_versions)
-
-   Validate version from a list of valid versions.
-
-   :Parameters: * **val** (:class:`str`) -- Input version value.
-                * **valid_versions** (:class:`list` of :class:`str`) -- List of valid versions.
-
-   :returns: :class:`str` -- Validated version value.
 
 

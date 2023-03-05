@@ -133,20 +133,30 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. py:method:: get_validchars(char_type)
-
-      Get all the available characteristics IDs for a given characteristics type.
-
-
-   .. py:method:: getcharacteristic_byid(comids, char_type, char_ids = 'all', values_only = True)
+   .. py:method:: getcharacteristic_byid(feature_ids, char_type, fsource = ..., char_ids = ..., values_only = ...)
+               getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[False] = ...) -> tuple[pandas.DataFrame, pandas.DataFrame]
 
       Get characteristics using a list ComIDs.
 
-      :Parameters: * **comids** (:class:`str` or :class:`list`) -- The NHDPlus Common Identifier(s).
+      :Parameters: * **feature_ids** (:class:`str` or :class:`list`) -- Target feature ID(s).
                    * **char_type** (:class:`str`) -- Type of the characteristic. Valid values are ``local`` for
                      individual reach catchments, ``tot`` for network-accumulated values
                      using total cumulative drainage area and ``div`` for network-accumulated values
                      using divergence-routed.
+                   * **fsource** (:class:`str`, *optional*) -- The name of feature(s) source, defaults to ``comid``.
+                     The valid sources are:
+
+                     * 'comid' for NHDPlus comid.
+                     * 'ca_gages' for Streamgage catalog for CA SB19
+                     * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
+                     * 'huc12pp' for HUC12 Pour Points
+                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nwisgw' for NWIS Groundwater Sites
+                     * 'nwissite' for NWIS Surface Water Sites
+                     * 'ref_gage' for geoconnex.us reference gages
+                     * 'vigil' for Vigil Network Data
+                     * 'wade' for Water Data Exchange 2.0 Sites
+                     * 'WQP' for Water Quality Portal
                    * **char_ids** (:class:`str` or :class:`list`, *optional*) -- Name(s) of the target characteristics, default to all.
                    * **values_only** (:class:`bool`, *optional*) -- Whether to return only ``characteristic_value`` as a series, default to True.
                      If is set to False, ``percent_nodata`` is returned as well.
@@ -155,7 +165,7 @@ Module Contents
                 or if ``values_only`` is Fale return ``percent_nodata`` as well.
 
 
-   .. py:method:: getfeature_byid(fsource, fid)
+   .. py:method:: getfeature_byid(fsource, fids)
 
       Get feature(s) based ID(s).
 
@@ -178,7 +188,7 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. py:method:: navigate_byid(fsource, fid, navigation, source, distance = 500, trim_start = False)
+   .. py:method:: navigate_byid(fsource, fid, navigation, source, distance = 500, trim_start = False, stop_comid = None)
 
       Navigate the NHDPlus database from a single feature id up to a distance.
 
@@ -195,7 +205,7 @@ Module Contents
                      * 'vigil' for Vigil Network Data
                      * 'wade' for Water Data Exchange 2.0 Sites
                      * 'WQP' for Water Quality Portal
-                   * **fid** (:class:`str`) -- The ID of the feature.
+                   * **fid** (:class:`str` or :class:`int`) -- The ID of the feature.
                    * **navigation** (:class:`str`) -- The navigation method.
                    * **source** (:class:`str`, *optional*) -- Return the data from another source after navigating
                      the features using fsource, defaults to None.
@@ -205,11 +215,12 @@ Module Contents
                      between 1 to 9999 km.
                    * **trim_start** (:class:`bool`, *optional*) -- If ``True``, trim the starting flowline at the source feature,
                      defaults to ``False``.
+                   * **stop_comid** (:class:`str` or :class:`int`, *optional*) -- The ComID to stop the navigationation, defaults to ``None``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
 
-   .. py:method:: navigate_byloc(coords, navigation = None, source = None, loc_crs = 4326, distance = 500, trim_start = False)
+   .. py:method:: navigate_byloc(coords, navigation = None, source = None, loc_crs = 4326, distance = 500, trim_start = False, stop_comid = None)
 
       Navigate the NHDPlus database from a coordinate.
 
@@ -232,6 +243,7 @@ Module Contents
                      all the available features you can pass a large distance like 9999999.
                    * **trim_start** (:class:`bool`, *optional*) -- If ``True``, trim the starting flowline at the source feature,
                      defaults to ``False``.
+                   * **stop_comid** (:class:`str` or :class:`int`, *optional*) -- The ComID to stop the navigationation, defaults to ``None``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
@@ -373,7 +385,7 @@ Module Contents
 
       :Parameters: * **coords** (:class:`tuple` of :class:`float`) -- The x, y coordinates of the point.
                    * **distance** (:class:`int`) -- The radius (in meters) to search within.
-                   * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input coordinates, default to epsg:4326.
+                   * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input coordinates, default to ``epsg:4326``.
                    * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
                      to the first attribute in the schema that contains ``id`` in its name.
 
@@ -424,25 +436,6 @@ Module Contents
 
 
 
-.. py:function:: geoconnex(item = None, query = None, skip_geometry = False)
-
-   Query the GeoConnex API.
-
-   .. rubric:: Notes
-
-   If you run the function without any arguments, it will print out a list
-   of available endpoints. If you run the function with ``item`` but no ``query``,
-   it will print out the description, queryable fields, and extent of the
-   selected endpoint (``item``).
-
-   :Parameters: * **item** (:class:`str`, *optional*) -- The item to query.
-                * **query** (:class:`dict`, *optional*) -- Query parameters. The ``geometry`` field can be a Polygon, MultiPolygon,
-                  or tuple/list of length 4 (bbox) in ``EPSG:4326`` CRS.
-                * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, the geometry will not be returned.
-
-   :returns: :class:`geopandas.GeoDataFrame` -- The data.
-
-
 .. py:function:: pygeoapi(coords, service)
 
    Return a GeoDataFrame from the flowtrace service.
@@ -467,7 +460,7 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from shapely.geometry import Point
+   >>> from shapely import Point
    >>> gdf = gpd.GeoDataFrame(
    ...     {
    ...         "direction": [

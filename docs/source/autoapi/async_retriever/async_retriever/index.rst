@@ -23,9 +23,9 @@ Module Contents
                 * **kwargs** (:class:`dict`, *optional*) -- Keywords to pass to the ``cache.delete_url()``.
 
 
-.. py:function:: retrieve(urls, read_method, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
-              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[ujson], request_kwds: Sequence[dict[str, Any]] | None = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Path | str | None = None, timeout: float = 5.0, expire_after: float = -1, ssl: SSLContext | bool | None = None, disable: bool = False) -> list[dict[str, Any]] | list[list[dict[str, Any]]]
-              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[binary], request_kwds: Sequence[dict[str, Any]] | None = None, request_method: str = 'GET', max_workers: int = 8, cache_name: Path | str | None = None, timeout: float = 5.0, expire_after: float = -1, ssl: SSLContext | bool | None = None, disable: bool = False) -> list[bytes]
+.. py:function:: retrieve(urls, read_method, request_kwds = ..., request_method = ..., max_workers = ..., cache_name = ..., timeout = ..., expire_after = ..., ssl = ..., disable = ..., raise_status = ...)
+              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[ujson], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[dict[str, Any]] | list[list[dict[str, Any]]]
+              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[binary], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[bytes]
 
    Send async requests.
 
@@ -36,12 +36,14 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **timeout** (:class:`int`, *optional*) -- Requests timeout in seconds, defaults to 5.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to 2592000 (one week).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
+                * **raise_status** (:class:`bool`, *optional*) -- Raise an exception if the response status is not 200. If
+                  ``False`` return ``None``. Defaults to ``True``.
 
    :returns: :class:`list` -- List of responses in the order of input URLs.
 
@@ -61,7 +63,7 @@ Module Contents
    '01646500'
 
 
-.. py:function:: retrieve_binary(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
+.. py:function:: retrieve_binary(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5, expire_after = EXPIRE_AFTER, ssl = None, disable = False, raise_status = True)
 
    Send async requests and get the response as ``bytes``.
 
@@ -71,17 +73,19 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **timeout** (:class:`int`, *optional*) -- Requests timeout in seconds, defaults to 5.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to 2592000 (one week).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
+                * **raise_status** (:class:`bool`, *optional*) -- Raise an exception if the response status is not 200. If
+                  ``False`` return ``None``. Defaults to ``True``.
 
    :returns: :class:`bytes` -- List of responses in the order of input URLs.
 
 
-.. py:function:: retrieve_json(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
+.. py:function:: retrieve_json(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5, expire_after = EXPIRE_AFTER, ssl = None, disable = False, raise_status = True)
 
    Send async requests and get the response as ``json``.
 
@@ -91,12 +95,14 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **timeout** (:class:`float`, *optional*) -- Timeout for the request, defaults to 5.0.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **timeout** (:class:`int`, *optional*) -- Requests timeout in seconds, defaults to 5.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to 2592000 (one week).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
+                * **raise_status** (:class:`bool`, *optional*) -- Raise an exception if the response status is not 200. If
+                  ``False`` return ``None``. Defaults to ``True``.
 
    :returns: :class:`dict` -- List of responses in the order of input URLs.
 
@@ -117,7 +123,7 @@ Module Contents
    2675320
 
 
-.. py:function:: retrieve_text(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5.0, expire_after = -1, ssl = None, disable = False)
+.. py:function:: retrieve_text(urls, request_kwds = None, request_method = 'GET', max_workers = 8, cache_name = None, timeout = 5, expire_after = EXPIRE_AFTER, ssl = None, disable = False, raise_status = True)
 
    Send async requests and get the response as ``text``.
 
@@ -127,12 +133,14 @@ Module Contents
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.
                 * **max_workers** (:class:`int`, *optional*) -- Maximum number of async processes, defaults to 8.
                 * **cache_name** (:class:`str`, *optional*) -- Path to a file for caching the session, defaults to ``./cache/aiohttp_cache.sqlite``.
-                * **timeout** (:class:`float`, *optional*) -- Timeout for the request in seconds, defaults to 5.0.
-                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to -1 (never expire).
+                * **timeout** (:class:`int`, *optional*) -- Requests timeout in seconds in seconds, defaults to 5.
+                * **expire_after** (:class:`int`, *optional*) -- Expiration time for response caching in seconds, defaults to 2592000 (one week).
                 * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
                   SSL certification verification.
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching requests and get new responses
                   from the server, defaults to False.
+                * **raise_status** (:class:`bool`, *optional*) -- Raise an exception if the response status is not 200. If
+                  ``False`` return ``None``. Defaults to ``True``.
 
    :returns: :class:`list` -- List of responses in the order of input URLs.
 

@@ -71,7 +71,7 @@ by setting the following environment variables:
 * ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
   ``./cache/aiohttp_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
-  -1 (never expire).
+  one week.
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
 
 For example, in your code before making any requests you can do:

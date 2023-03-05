@@ -96,15 +96,19 @@ Module Contents
 
 
 .. py:function:: compute_ai(pet, prcp)
+              compute_ai(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series
+              compute_ai(pet: xarray.DataArray, prcp: xarray.DataArray) -> xarray.DataArray
 
-   Compute the aridity index.
+   Compute (Budyko) aridity index (PET/Prcp).
 
-   :Parameters: * **pet** (:class:`numpy.ndarray` or :class:`pandas.DataFrame` or :class:`pandas.Series` or :class:`xarray.DataArray`) -- Potential evapotranspiration time series that must not have any missing
-                  values. It can also be a 2D array where each row is a time series.
-                * **prcp** (:class:`numpy.ndarray` or :class:`pandas.DataFrame` or :class:`pandas.Series` or :class:`xarray.DataArray`) -- Precipitation time series that must not have any missing
-                  values. It can also be a 2D array where each row is a time series.
+   :Parameters: * **pet** (:class:`pandas.DataFrame` or :class:`pandas.Series` or :class:`xarray.DataArray`) -- Potential evapotranspiration time series. Each column can
+                  correspond to PET a different location. Note that ``pet`` and ``prcp``
+                  must have the same shape.
+                * **prcp** (:class:`pandas.DataFrame` or :class:`pandas.Series` or :class:`xarray.DataArray`) -- Precipitation time series. Each column can
+                  correspond to PET a different location. Note that ``pet`` and ``prcp``
+                  must have the same shape.
 
-   :returns: :class:`numpy.float64` or :class:`numpy.ndarray` -- The aridity index.
+   :returns: :class:`float` or :class:`pandas.Series` or :class:`xarray.DataArray` -- The aridity index.
 
 
 .. py:function:: compute_baseflow(discharge, alpha = 0.925, n_passes = 3, pad_width = 10)
@@ -147,7 +151,7 @@ Module Contents
 
    Compute FDC slopes between the given lower and upper percentiles.
 
-   :Parameters: * **discharge** (:class:`pandas.Series`) -- The discharge data to be processed.
+   :Parameters: * **discharge** (:class:`pandas.Series` or :class:`pandas.DataFrame` or :class:`numpy.ndarray` or :class:`xarray.DataArray`) -- The discharge data to be processed.
                 * **bins** (:class:`tuple` of :class:`int`) -- Percentile bins for computing FDC slopes between., e.g., (33, 67)
                   returns the slope between the 33rd and 67th percentiles.
                 * **log** (:class:`bool`) -- Whether to use log-transformed data.
