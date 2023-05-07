@@ -141,7 +141,7 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from shapely import Polygon
+   >>> from shapely.geometry import Polygon
    >>> import pydaymet as daymet
    >>> geometry = Polygon(
    ...     [[-69.77, 45.07], [-69.31, 45.07], [-69.31, 45.45], [-69.77, 45.45], [-69.77, 45.07]]

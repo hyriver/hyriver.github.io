@@ -12,6 +12,75 @@
 Module Contents
 ---------------
 
+.. py:class:: NHDTools(flowlines)
+
+   Prepare NHDPlus data for downstream analysis.
+
+   .. rubric:: Notes
+
+   Some of these tools are ported from
+   `nhdplusTools <https://github.com/USGS-R/nhdplusTools>`__.
+
+   :Parameters: **flowlines** (:class:`geopandas.GeoDataFrame`) -- NHDPlus flowlines with at least the following columns:
+                ``comid``, ``lengthkm``, ``ftype``, ``terminalfl``, ``fromnode``, ``tonode``,
+                ``totdasqkm``, ``startflag``, ``streamorde``, ``streamcalc``, ``terminalpa``,
+                ``pathlength``, ``divergence``, ``hydroseq``, and ``levelpathi``.
+
+   .. py:method:: add_tocomid()
+
+      Find the downstream comid(s) of each comid in NHDPlus flowline database.
+
+      .. rubric:: Notes
+
+      This functions requires the following columns:
+          ``comid``, ``terminalpa``, ``fromnode``, ``tonode``
+
+
+   .. py:method:: check_requirements(reqs, cols)
+      :staticmethod:
+
+      Check for all the required data.
+
+      :Parameters: * **reqs** (:term:`iterable`) -- A list of required data names (str)
+                   * **cols** (:class:`list`) -- A list of variable names (str)
+
+
+   .. py:method:: clean_flowlines(use_enhd_attrs, terminal2nan)
+
+      Clean up flowlines.
+
+      :Parameters: * **use_enhd_attrs** (:class:`bool`) -- Use attributes from the ENHD database.
+                   * **terminal2nan** (:class:`bool`) -- Convert terminal flowlines to ``NaN``.
+
+
+   .. py:method:: remove_isolated()
+
+      Remove isolated flowlines.
+
+
+   .. py:method:: remove_tinynetworks(min_path_size, min_path_length, min_network_size)
+
+      Remove small paths in NHDPlus flowline database.
+
+      .. rubric:: Notes
+
+      This functions requires the following columns:
+      ``levelpathi``, ``hydroseq``, ``totdasqkm``, ``terminalfl``, ``startflag``,
+      ``pathlength``, and ``terminalpa``.
+
+      :Parameters: * **min_network_size** (:class:`float`) -- Minimum size of drainage network in sqkm.
+                   * **min_path_length** (:class:`float`) -- Minimum length of terminal level path of a network in km.
+                   * **min_path_size** (:class:`float`) -- Minimum size of outlet level path of a drainage basin in km.
+                     Drainage basins with an outlet drainage area smaller than
+                     this value will be removed.
+
+
+   .. py:method:: to_linestring()
+
+      Convert flowlines to shapely LineString objects.
+
+
+
 .. py:function:: enhd_flowlines_nx()
 
    Get a ``networkx.DiGraph`` of the entire NHD flowlines.
@@ -19,7 +88,7 @@ Module Contents
    .. rubric:: Notes
 
    The graph is directed and has the all the attributes of the flowlines
-   in `ENHD <https://www.sciencebase.gov/catalog/item/60c92503d34e86b9389df1c9>`__.
+   in `ENHD <https://www.sciencebase.gov/catalog/item/63cb311ed34e06fef14f40a3>`__.
    Note that COMIDs are based on the 2020 snapshot of the NHDPlusV2.1.
 
    :returns: :class:`tuple` of :class:`networkx.DiGraph`, :class:`dict`, and :class:`list` -- The first element is the graph, the second element is a dictionary
@@ -64,13 +133,13 @@ Module Contents
 
    The directed graph is generated from the ``nhdplusv2wbd.csv`` file with all
    attributes that can be found in
-   `Mainstem <https://www.sciencebase.gov/catalog/item/60cb5edfd34e86b938a373f4>`__.
+   `Mainstem <https://www.sciencebase.gov/catalog/item/63cb38b2d34e06fef14f40ad>`__.
    Note that HUC12s are based on the 2020 snapshot of the NHDPlusV2.1.
 
-   :returns: * :class:`tuple` of :class:`networkx.DiGraph` and :class:`dict`
-             * :class:`tuple` of :class:`networkx.DiGraph`, :class:`dict`, and :class:`list` -- The first element is the graph, the second element is a dictionary
-               mapping the HUC12s to the node IDs in the graph, and the third element
-               is a topologically sorted list of the HUC12s which strings of length 12.
+   :returns: * :class:`networkx.DiGraph` -- The mainstem as a ``networkx.DiGraph`` with all the attributes of the
+               mainstems.
+             * :class:`dict` -- A mapping of the HUC12s to the node IDs in the graph.
+             * :class:`list` -- A topologically sorted list of the HUC12s which strings of length 12.
 
 
 .. py:function:: network_resample(flw, spacing)
@@ -114,7 +183,7 @@ Module Contents
              nodes in the graph are unique.
 
 
-.. py:function:: nhdplus_l48(layer, data_dir = 'cache', **kwargs)
+.. py:function:: nhdplus_l48(layer = None, data_dir = 'cache', **kwargs)
 
    Get the entire NHDPlus dataset.
 
@@ -129,7 +198,9 @@ Module Contents
    file: ``pyogrio`` and ``py7zr``. These dependencies can be installed using
    ``pip install pyogrio py7zr`` or ``conda install -c conda-forge pyogrio py7zr``.
 
-   :Parameters: * **layer** (:class:`str`) -- The layer name to be returned. The available layers are:
+   :Parameters: * **layer** (:class:`str`, *optional*) -- The layer name to be returned. Either ``layer`` should be provided or
+                  ``sql``. Defaults to ``None``.
+                  The available layers are:
 
                   - ``Gage``
                   - ``BurnAddLine``

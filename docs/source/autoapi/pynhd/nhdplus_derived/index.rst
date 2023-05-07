@@ -153,6 +153,21 @@ Module Contents
    :returns: :class:`pandas.DataFrame` -- A dataframe of requested NHDPlus attributes.
 
 
+.. py:function:: nhdplus_h12pp(gpkg_path = None)
+
+   Access HUC12 Pour Points for NHDPlus V2.1 L48 (CONUS).
+
+   .. rubric:: Notes
+
+   More info can be found
+   `here <https://www.sciencebase.gov/catalog/item/60cb5edfd34e86b938a373f4>`_.
+
+   :Parameters: **gpkg_path** (:class:`~~Path` or :class:`str`, *optional*) -- Path to the geopackage file, defaults to None, i.e., download
+                the file to the cache directory as ``102020wbd_outlets.gpkg``.
+
+   :returns: :class:`geopandas.GeoDataFrame` -- A geodataframe of HUC12 pour points.
+
+
 .. py:function:: nhdplus_vaa(parquet_path = None)
 
    Get NHDPlus Value Added Attributes including roughness.

@@ -207,8 +207,8 @@ Module Contents
                      * 'WQP' for Water Quality Portal
                    * **fid** (:class:`str` or :class:`int`) -- The ID of the feature.
                    * **navigation** (:class:`str`) -- The navigation method.
-                   * **source** (:class:`str`, *optional*) -- Return the data from another source after navigating
-                     the features using fsource, defaults to None.
+                   * **source** (:class:`str`) -- Return the data from another source after navigating
+                     features from ``fsource``.
                    * **distance** (:class:`int`, *optional*) -- Limit the search for navigation up to a distance in km,
                      defaults is 500 km. Note that this is an expensive request so you
                      have be mindful of the value that you provide. The value must be
@@ -234,13 +234,12 @@ Module Contents
                    * **navigation** (:class:`str`, *optional*) -- The navigation method, defaults to None which throws an exception
                      if ``comid_only`` is False.
                    * **source** (:class:`str`, *optional*) -- Return the data from another source after navigating
-                     the features based on ``comid``, defaults to None which throws an exception
-                     if ``comid_only`` is False.
+                     the features based on ``comid``, defaults to ``None`` which throws
+                     an exception if ``comid_only`` is False.
                    * **loc_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input coordinate, defaults to EPSG:4326.
                    * **distance** (:class:`int`, *optional*) -- Limit the search for navigation up to a distance in km,
                      defaults to 500 km. Note that this is an expensive request so you
-                     have be mindful of the value that you provide. If you want to get
-                     all the available features you can pass a large distance like 9999999.
+                     have be mindful of the value that you provide.
                    * **trim_start** (:class:`bool`, *optional*) -- If ``True``, trim the starting flowline at the source feature,
                      defaults to ``False``.
                    * **stop_comid** (:class:`str` or :class:`int`, *optional*) -- The ComID to stop the navigationation, defaults to ``None``.
@@ -460,7 +459,7 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from shapely import Point
+   >>> from shapely.geometry import Point
    >>> gdf = gpd.GeoDataFrame(
    ...     {
    ...         "direction": [

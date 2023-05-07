@@ -12,14 +12,14 @@
 Module Contents
 ---------------
 
-.. py:function:: add_elevation(ds, ds_dims = None)
+.. py:function:: add_elevation(ds)
 
    Add elevation data to a dataset  as a new variable.
 
    :Parameters: **ds** (:class:`xarray.DataArray` or :class:`xarray.Dataset`) -- The dataset to add elevation data to. It must contain
                 CRS information.
 
-   :returns: :class:`xarray.Dataset` -- The dataset with ``elevation``.
+   :returns: :class:`xarray.Dataset` -- The dataset with ``elevation`` variable added.
 
 
 .. py:function:: check_3dep_availability(bbox, crs = 4326)
@@ -40,7 +40,7 @@ Module Contents
    >>> import py3dep
    >>> bbox = (-69.77, 45.07, -69.31, 45.45)
    >>> py3dep.check_3dep_availability(bbox)
-   {'1m': True, '3m': False, '5m': False, '10m': True, '30m': False, '60m': False, 'topobathy': False}
+   {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False, 'topobathy': False}
 
 
 .. py:function:: elevation_bycoords(coords, crs = ..., source = ...)
@@ -176,7 +176,7 @@ Module Contents
    >>> bbox = (-69.77, 45.07, -69.31, 45.45)
    >>> src = py3dep.query_3dep_sources(bbox)
    >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
-   {'10m': 1, '1m': 3}
+   {'10m': 8, '1m': 3, '30m': 8}
    >>> src = py3dep.query_3dep_sources(bbox, res="1m")
    >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
    {'1m': 3}

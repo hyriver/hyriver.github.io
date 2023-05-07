@@ -22,7 +22,7 @@ Module Contents
    can be found at its help
    `webpage <https://help.waterdata.usgs.gov/codes-and-parameters>`__.
 
-   .. py:method:: get_info(queries, expanded = False, fix_names = True)
+   .. py:method:: get_info(queries, expanded = False, fix_names = True, nhd_info = False)
 
       Send multiple queries to USGS Site Web Service.
 
@@ -31,6 +31,12 @@ Module Contents
                      default to False.
                    * **fix_names** (:class:`bool`, *optional*) -- If ``True``, reformat station names and some small annoyances,
                      defaults to ``True``.
+                   * **nhd_info** (:class:`bool`, *optional*) -- If ``True``, get NHD information for each site, defaults to ``False``.
+                     This will add four new columns: ``nhd_comid``, ``nhd_areasqkm``,
+                     ``nhd_reachcode``, and ``nhd_measure``. Where ``nhd_id`` is the NHD
+                     COMID of the flowline that the site is located in, ``nhd_reachcode``
+                     is the NHD Reach Code that the site is located in, and ``nhd_measure``
+                     is the measure along the flowline that the site is located at.
 
       :returns: :class:`geopandas.GeoDataFrame` -- A correctly typed ``GeoDataFrame`` containing site(s) information.
 
@@ -103,7 +109,7 @@ Module Contents
    per year. Missing data in the remaining stations, are filled with
    day-of-year average over the entire dataset.
 
-   :Parameters: * **discharge** (:class:`xarray.DataArray` or :class:`pandas.DataFrame` or :class:`pandas.Series`) -- Streamflow observations with at least 10 years of daily data.
+   :Parameters: * **discharge** (:class:`xarray.DataArray` or :class:`pandas.DataFrame` or :class:`pandas.Series`) -- Daily streamflow observations with at least 10 years of daily data.
                 * **missing_max** (:class:`int`) -- Maximum allowed number of missing daily data per year for filling,
                   defaults to 5.
 

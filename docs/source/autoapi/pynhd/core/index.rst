@@ -106,7 +106,7 @@ Module Contents
                       2003 USGS data release
                   - ``sec_hydrg_reg`` for Secondary Hydrogeologic Regions of the
                       Conterminous United States from 2018 USGS data release
-                  - ``gages`` for US Reference Stream Gage Monitoring Locations
+                  - ``gages`` for US Reference Stream Gauge Monitoring Locations
                   - ``mainstems`` for US Reference Mainstem Rivers
                   - ``states`` for U.S. States
                   - ``counties`` for U.S. Counties

@@ -16,6 +16,19 @@ Module Contents
 
    Retrieve data from the National Inventory of Dams web service.
 
+   .. py:property:: df
+
+      Entire NID inventory (``csv`` version) as a ``pandas.DataFrame``.
+
+   .. py:property:: gdf
+
+      Entire NID inventory (``gpkg`` version) as a ``geopandas.GeoDataFrame``.
+
+   .. py:property:: nid_inventory_path
+      :type: pathlib.Path
+
+      Path to the NID inventory feather file.
+
    .. py:method:: get_byfilter(query_list)
 
       Query dams by filters from the National Inventory of Dams web service.
@@ -26,7 +39,7 @@ Module Contents
                    For such filters, the min/max values should be passed like so:
                    ``{filter_key: ["[min1 max1]", "[min2 max2]"]}``.
 
-      :returns: :class:`geopandas.GeoDataFrame` -- Query results.
+      :returns: :class:`list` of :class:`geopandas.GeoDataFrame` -- Query results in the same order as the input query list.
 
       .. rubric:: Examples
 
@@ -37,8 +50,6 @@ Module Contents
       ...    {"nidId": ["CA01222"]},
       ... ]
       >>> dam_dfs = nid.get_byfilter(query_list)
-      >>> print(dam_dfs[0].loc[dam_dfs[0].name == "Prairie Portage"].id.item())
-      496613
 
 
    .. py:method:: get_bygeom(geometry, geo_crs)
@@ -46,7 +57,7 @@ Module Contents
       Retrieve NID data within a geometry.
 
       :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Geometry or bounding box (west, south, east, north) for extracting the data.
-                   * **geo_crs** (:class:`list` of :class:`str`) -- The CRS of the input geometry, defaults to ``epsg:4326``.
+                   * **geo_crs** (:class:`list` of :class:`str`) -- The CRS of the input geometry.
 
       :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of NID data
 
@@ -55,8 +66,6 @@ Module Contents
       >>> from pygeohydro import NID
       >>> nid = NID()
       >>> dams = nid.get_bygeom((-69.77, 45.07, -69.31, 45.45), 4326)
-      >>> print(dams.name.iloc[0])
-      Little Moose
 
 
    .. py:method:: get_suggestions(text, context_key = None)
@@ -81,11 +90,9 @@ Module Contents
       >>> from pygeohydro import NID
       >>> nid = NID()
       >>> dams, contexts = nid.get_suggestions("houston", "city")
-      >>> print(contexts["suggestion"].to_list())
-      ['Houston', 'Houston Lake']
 
 
-   .. py:method:: inventory_byid(federal_ids, stage_nid = False)
+   .. py:method:: inventory_byid(federal_ids)
 
       Get extra attributes for dams based on their dam ID.
 
@@ -97,11 +104,7 @@ Module Contents
       to get extra attributes using the ``id`` column of the ``GeoDataFrame``
       that ``get_bygeom`` or ``get_byfilter`` returns.
 
-      :Parameters: * **federal_ids** (:class:`list` of :class:`str`) -- List of the target dam Federal IDs.
-                   * **stage_nid** (:class:`bool`, *optional*) -- Whether to get the entire NID and then query locally or query from the
-                     NID web service which tends to be very slow for large number of requests.
-                     Defaults to ``False``. The staged NID database is saved as a `feather` file
-                     in `./cache/nid_inventory.feather`.
+      :Parameters: **federal_ids** (:class:`list` of :class:`str`) -- List of the target dam Federal IDs.
 
       :returns: :class:`pandas.DataFrame` -- Dams with extra attributes in addition to the standard NID fields
                 that other ``NID`` methods return.
@@ -111,8 +114,6 @@ Module Contents
       >>> from pygeohydro import NID
       >>> nid = NID()
       >>> dams = nid.inventory_byid(['KY01232', 'GA02400', 'NE04081', 'IL55070', 'TN05345'])
-      >>> print(dams.damHeight.max())
-      39.0
 
 
    .. py:method:: stage_nid_inventory(fname = None)

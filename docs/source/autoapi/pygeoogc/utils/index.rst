@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = -1, disable = False, ssl = True)
+.. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = EXPIRE_AFTER, disable = False, ssl = True)
 
    Configures the passed-in session to retry on failed requests.
 
@@ -31,6 +31,11 @@ Module Contents
                 * **expire_after** (:class:`int`, *optional*) -- Expiration time for the cache in seconds, defaults to -1 (never expire).
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching request/responses, defaults to ``False``.
                 * **ssl** (:class:`bool`, *optional*) -- If ``True`` verify SSL certificates, defaults to ``True``.
+
+   .. py:property:: disable
+      :type: bool
+
+      Disable caching request/responses.
 
    .. py:method:: close()
 
@@ -68,7 +73,7 @@ Module Contents
    .. rubric:: Examples
 
    >>> from pygeoogc.utils import match_crs
-   >>> from shapely import Point
+   >>> from shapely.geometry import Point
    >>> point = Point(-7766049.665, 5691929.739)
    >>> match_crs(point, "epsg:3857", 4326).xy
    (array('d', [-69.7636111130079]), array('d', [45.44549114818127]))

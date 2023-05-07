@@ -57,6 +57,8 @@ This package provides access to several hydro-linked datasets:
 - `NLDI <https://labs.waterdata.usgs.gov/about-nldi/>`__
 - `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__
 - `GeoConnex <https://geoconnex.internetofwater.dev/>`__
+- `Mainstems <https://www.sciencebase.gov/catalog/item/63cb38b2d34e06fef14f40ad>`__
+- `HUC12 Pour Points <https://www.sciencebase.gov/catalog/item/60cb5edfd34e86b938a373f4>`__
 
 These web services can be used to navigate and extract vector data from NHDPlus V2 (both mid-
 and high-resolution) database such as catchments, HUC8, HUC12, GagesII, flowlines, and water
@@ -257,9 +259,9 @@ We can get more information about these stations using GeoConnex:
 
 .. code:: python
 
-    gcx = GeoConnex("gages")
+    gcx = GeoConnex("gauges")
     stations = st_all.identifier.str.split("-").str[1].unique()
-    gages = gpd.GeoDataFrame(
+    gauges = gpd.GeoDataFrame(
         pd.concat(gcx.query({"provider_id": sid}) for sid in stations),
         crs="epsg:4326",
     )
@@ -268,8 +270,8 @@ Instead, we can carry out a spatial query within the basin of interest:
 
 .. code:: python
 
-    gages = pynhd.geoconnex(
-        item="gages",
+    gauges = pynhd.geoconnex(
+        item="gauges",
         query={"geometry": basin.geometry.iloc[0]},
     )
 
