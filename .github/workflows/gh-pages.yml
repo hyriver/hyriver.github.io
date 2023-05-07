@@ -34,7 +34,7 @@ jobs:
       uses: actions/configure-pages@v3
 
     - name: Download pandoc
-      uses: robinraju/release-downloader@v1.7
+      uses: robinraju/release-downloader@v1.8
       with:
         repository: "jgm/pandoc"
         latest: true
@@ -70,4 +70,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
