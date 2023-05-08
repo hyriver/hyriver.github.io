@@ -88,9 +88,9 @@
     :target: https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks
     :alt: Binder
 
-.. image:: https://readthedocs.org/projects/hyriver/badge/?version=latest
-    :target: https://hyriver.readthedocs.io/en/latest/?badge=latest
-    :alt: ReadTheDocs
+.. image:: https://github.com/hyriver/hyriver.github.io/actions/workflows/gh-pages.yml/badge.svg
+    :target: https://github.com/hyriver/hyriver.github.io/actions/workflows/gh-pages.yml
+    :alt: Build Website
 
 .. image:: https://joss.theoj.org/papers/b0df2f6192f0a18b9e622a3edff52e77/status.svg
     :target: https://joss.theoj.org/papers/b0df2f6192f0a18b9e622a3edff52e77
