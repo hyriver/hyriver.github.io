@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: Daymet(variables = None, pet = None, snow = False, time_scale = 'daily', region = 'na')
 
+
    Base class for Daymet requests.
 
    :Parameters: * **variables** (:class:`str` or :class:`list` or :class:`tuple`, *optional*) -- List of variables to be downloaded. The acceptable variables are:

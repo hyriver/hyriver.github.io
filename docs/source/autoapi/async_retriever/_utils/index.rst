@@ -16,6 +16,7 @@ Module Contents
 
 .. py:class:: BaseRetriever(urls, file_paths = None, read_method = None, request_kwds = None, request_method = 'GET', cache_name = None)
 
+
    Base class for async retriever.
 
    .. py:method:: generate_requests(urls, request_kwds, file_paths)

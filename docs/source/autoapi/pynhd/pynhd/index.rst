@@ -16,6 +16,7 @@ Module Contents
 
 
 
+
    Access National Hydrography Dataset (NHD), both meduim and high resolution.
 
    .. rubric:: Notes
@@ -48,6 +49,7 @@ Module Contents
 
 
 
+
    Access National Hydrography Dataset (NHD) Plus high resolution.
 
    .. rubric:: Notes
@@ -74,6 +76,7 @@ Module Contents
 
 
 .. py:class:: NLDI
+
 
    Access the Hydro Network-Linked Data Index (NLDI) service.
 
@@ -134,7 +137,7 @@ Module Contents
 
 
    .. py:method:: getcharacteristic_byid(feature_ids, char_type, fsource = ..., char_ids = ..., values_only = ...)
-               getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[False] = ...) -> tuple[pandas.DataFrame, pandas.DataFrame]
+                  getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[False] = ...) -> tuple[pandas.DataFrame, pandas.DataFrame]
 
       Get characteristics using a list ComIDs.
 
@@ -252,6 +255,7 @@ Module Contents
 
 
 
+
    Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
 
    .. py:method:: cross_section(coord, width, numpts, crs = 4326)
@@ -341,6 +345,7 @@ Module Contents
 
 
 .. py:class:: WaterData(layer, crs = 4326, validation = True)
+
 
    Access to `WaterData <https://labs.waterdata.usgs.gov/geoserver>`__ service.
 

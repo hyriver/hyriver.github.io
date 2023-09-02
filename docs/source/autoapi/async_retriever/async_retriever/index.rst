@@ -24,8 +24,8 @@ Module Contents
 
 
 .. py:function:: retrieve(urls, read_method, request_kwds = ..., request_method = ..., max_workers = ..., cache_name = ..., timeout = ..., expire_after = ..., ssl = ..., disable = ..., raise_status = ...)
-              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[ujson], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[dict[str, Any]] | list[list[dict[str, Any]]]
-              retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[binary], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[bytes]
+                 retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[ujson], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: pathlib.Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: ssl.SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[dict[str, Any]] | list[list[dict[str, Any]]]
+                 retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[binary], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: pathlib.Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: ssl.SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[bytes]
 
    Send async requests.
 
@@ -165,7 +165,7 @@ Module Contents
    Send async requests.
 
    :Parameters: * **urls** (:class:`list` of :class:`str`) -- List of URLs.
-                * **file_paths** (:class:`list` of :class:`str` or :class:`~~Path`) -- List of file paths to write the response to.
+                * **file_paths** (:class:`list` of :class:`str` or :class:`pathlib.Path`) -- List of file paths to write the response to.
                 * **request_kwds** (:class:`list` of :class:`dict`, *optional*) -- List of requests keywords corresponding to input URLs (1 on 1 mapping),
                   defaults to ``None``. For example, ``[{"params": {...}, "headers": {...}}, ...]``.
                 * **request_method** (:class:`str`, *optional*) -- Request type; ``GET`` (``get``) or ``POST`` (``post``). Defaults to ``GET``.

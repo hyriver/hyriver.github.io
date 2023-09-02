@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: Coordinates
 
+
    Generate validated and normalized coordinates in WGS84.
 
    :Parameters: * **lon** (:class:`float` or :class:`list` of :class:`floats`) -- Longitude(s) in decimal degrees.
@@ -35,6 +36,7 @@ Module Contents
 
 
 .. py:class:: GeoBSpline(points, npts_sp, degree = 3)
+
 
    Create B-spline from a geo-dataframe of points.
 

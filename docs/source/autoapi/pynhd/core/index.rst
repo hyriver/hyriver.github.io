@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: AGRBase(base_url, layer = None, outfields = '*', crs = 4326, outformat = 'json')
 
+
    Base class for getting geospatial data from a ArcGISRESTful service.
 
    :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
@@ -85,6 +86,7 @@ Module Contents
 
 .. py:class:: GeoConnex(item = None, dev = False, max_nfeatures = 10000)
 
+
    Access to the GeoConnex API.
 
    .. rubric:: Notes
@@ -131,7 +133,7 @@ Module Contents
       Return the name of the endpoint.
 
    .. py:method:: bycql(cql_dict, skip_geometry = False)
-               bycql(cql_dict: dict[str, Any], skip_geometry: Literal[True]) -> pandas.DataFrame
+                  bycql(cql_dict: dict[str, Any], skip_geometry: Literal[True]) -> pandas.DataFrame
 
       Query the GeoConnex endpoint.
 
@@ -149,7 +151,7 @@ Module Contents
 
 
    .. py:method:: bygeometry(geometry1, geometry2 = None, predicate = 'intersects', crs = 4326, skip_geometry = False)
-               bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = None, predicate: str = 'intersects', crs: CRSTYPE | None = 4326, skip_geometry: Literal[True] = True) -> pandas.DataFrame
+                  bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = None, predicate: str = 'intersects', crs: CRSTYPE | None = 4326, skip_geometry: Literal[True] = True) -> pandas.DataFrame
 
       Query the GeoConnex endpoint by geometry.
 
@@ -174,13 +176,14 @@ Module Contents
 
 
    .. py:method:: byid(feature_name, feature_ids, skip_geometry = False)
-               byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[True]) -> pandas.DataFrame
+                  byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[True]) -> pandas.DataFrame
 
       Query the GeoConnex endpoint.
 
 
 
 .. py:class:: ScienceBase
+
 
    Access and explore items on USGS's ScienceBase.
 

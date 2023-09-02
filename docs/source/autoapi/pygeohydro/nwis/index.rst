@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: NWIS
 
+
    Access NWIS web service.
 
    .. rubric:: Notes
@@ -69,7 +70,7 @@ Module Contents
 
 
    .. py:method:: get_streamflow(station_ids, dates, freq = 'dv', mmd = False, to_xarray = ...)
-               get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[True] = ...) -> xarray.Dataset
+                  get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[True] = ...) -> xarray.Dataset
 
       Get mean daily streamflow observations from USGS.
 

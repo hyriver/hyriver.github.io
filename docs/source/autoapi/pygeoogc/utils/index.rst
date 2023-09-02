@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = EXPIRE_AFTER, disable = False, ssl = True)
 
+
    Configures the passed-in session to retry on failed requests.
 
    .. rubric:: Notes
@@ -86,7 +87,7 @@ Module Contents
 
 
 .. py:function:: streaming_download(urls, kwds = None, fnames = None, file_prefix = '', file_extention = '', method = 'GET', ssl = True, chunk_size = CHUNK_SIZE, n_jobs = MAX_CONN)
-              streaming_download(urls: list[str], kwds: list[dict[str, dict[Any, Any]]] | None = None, fnames: Sequence[str | Path] | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> list[pathlib.Path]
+                 streaming_download(urls: list[str], kwds: list[dict[str, dict[Any, Any]]] | None = None, fnames: Sequence[str | pathlib.Path] | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> list[pathlib.Path]
 
    Download and store files in parallel from a list of URLs/Keywords.
 

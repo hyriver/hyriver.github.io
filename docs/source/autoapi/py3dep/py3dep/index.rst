@@ -44,7 +44,7 @@ Module Contents
 
 
 .. py:function:: elevation_bycoords(coords, crs = ..., source = ...)
-              elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: str = ...) -> list[float]
+                 elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: str = ...) -> list[float]
 
    Get elevation for a list of coordinates.
 
@@ -121,7 +121,7 @@ Module Contents
 
 
 .. py:function:: get_map(layers, geometry, resolution, geo_crs = 4326, crs = 4326)
-              get_map(layers: list[str], geometry: Polygon | MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.Dataset
+                 get_map(layers: list[str], geometry: shapely.geometry.Polygon | shapely.geometry.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.Dataset
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
 

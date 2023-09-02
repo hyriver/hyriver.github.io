@@ -13,7 +13,7 @@ Module Contents
 ---------------
 
 .. py:function:: potential_et(clm, coords, crs, method = ..., params = ...)
-              potential_et(clm: xarray.Dataset, coords: None = None, crs: None = None, method: str = ..., params: dict[str, float] | None = ...) -> xarray.Dataset
+                 potential_et(clm: xarray.Dataset, coords: None = None, crs: None = None, method: str = ..., params: dict[str, float] | None = ...) -> xarray.Dataset
 
    Compute Potential EvapoTranspiration for both gridded and a single location.
 

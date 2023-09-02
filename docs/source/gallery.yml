@@ -10,6 +10,10 @@
   thumbnail: examples/notebooks/_static/dam_impact.png
   title: Working with Geospatial Hydrologic Data Using Web Services
 
+- path: examples/notebooks/hwms.html
+  thumbnail: examples/notebooks/_static/hwms.png
+  title: High Water Marks using STN
+
 - path: examples/notebooks/soil.html
   thumbnail: examples/notebooks/_static/soil_storage.png
   title: Soil Storage Capacity

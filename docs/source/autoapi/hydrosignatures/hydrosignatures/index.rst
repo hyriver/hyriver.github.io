@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: HydroSignatures
 
+
    Hydrological signatures.
 
    :Parameters: * **q_mmpt** (:class:`pandas.Series`) -- Discharge in mm per unit time (the same timescale as precipitation).
@@ -96,8 +97,8 @@ Module Contents
 
 
 .. py:function:: compute_ai(pet, prcp)
-              compute_ai(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series
-              compute_ai(pet: xarray.DataArray, prcp: xarray.DataArray) -> xarray.DataArray
+                 compute_ai(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series
+                 compute_ai(pet: xarray.DataArray, prcp: xarray.DataArray) -> xarray.DataArray
 
    Compute (Budyko) aridity index (PET/Prcp).
 
@@ -169,13 +170,17 @@ Module Contents
              of variation (CV), and coefficient of skewness (CS).
 
 
-.. py:function:: compute_mean_monthly(daily, index_abbr = False)
+.. py:function:: compute_mean_monthly(daily, index_abbr = False, cms = False)
 
    Compute mean monthly summary from daily data.
 
    :Parameters: * **daily** (:class:`pandas.Series` or :class:`pandas.DataFrame`) -- The data to be processed
                 * **index_abbr** (:class:`bool`, *optional*) -- Whether to use abbreviated month names as index instead of
                   numbers, defaults to False.
+                * **cms** (:class:`bool`, *optional*) -- Whether the input data is in cubic meters per second (cms),
+                  defaults to False. If True, the mean monthly summary will be
+                  computed by taking the mean of the daily data, otherwise the
+                  sum of the daily data will be used.
 
    :returns: :class:`pandas.Series` or :class:`pandas.DataFrame` -- Mean monthly summary.
 

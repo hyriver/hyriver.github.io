@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: SensorThings
 
+
    Class for interacting with SensorThings API.
 
    .. py:method:: odata_helper(columns = None, conditionals = None, expand = None, max_count = None, extra_params = None)
@@ -71,6 +72,7 @@ Module Contents
 
 
 .. py:class:: WaterQuality
+
 
    Water Quality Web Service https://www.waterqualitydata.us.
 

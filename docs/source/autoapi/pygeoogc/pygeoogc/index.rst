@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, max_workers = 1, verbose = False, disable_retry = False)
 
+
    Access to an ArcGIS REST service.
 
    .. rubric:: Notes
@@ -121,10 +122,12 @@ Module Contents
 
 
 
+
    URLs of the supported HTTP services.
 
 
 .. py:class:: RESTfulURLs
+
 
 
 
@@ -135,10 +138,12 @@ Module Contents
 
 
 
+
    URLs of the supported services.
 
 
 .. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = 4326, read_method = 'json', max_nrecords = 1000, validation = True)
+
 
 
 
@@ -244,10 +249,12 @@ Module Contents
 
 
 
+
    URLs of the supported WFS services.
 
 
 .. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = 4326, validation = True, ssl = None)
+
 
    Get data from a WMS service within a geometry or bounding box.
 
@@ -294,6 +301,7 @@ Module Contents
 
 
 .. py:class:: WMSURLs
+
 
 
 

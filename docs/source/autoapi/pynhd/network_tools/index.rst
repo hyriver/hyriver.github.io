@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: NHDTools(flowlines)
 
+
    Prepare NHDPlus data for downstream analysis.
 
    .. rubric:: Notes
@@ -233,7 +234,7 @@ Module Contents
                   - ``N_1_JTopo``
                   - ``N_1_JTopo2``
                   - ``N_1_Props``
-                * **data_dire** (:class:`str` or :class:`pathlib.Path`) -- Directory to store the downloaded file and use in subsequent calls,
+                * **data_dire** (:class:`str` or :class:`pathlib.Pathlib.Path`) -- Directory to store the downloaded file and use in subsequent calls,
                   defaults to ``./cache``.
                 * **\*\*kwargs** -- Keyword arguments are passed to ``pyogrio.read_dataframe``.
                   For more information, visit

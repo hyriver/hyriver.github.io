@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, max_workers = 1, verbose = False, disable_retry = False)
 
+
    Access to an ArcGIS REST service.
 
    :Parameters: * **base_url** (:class:`str`, *optional*) -- The ArcGIS RESTful service url. The URL must either include a layer number
@@ -73,6 +74,7 @@ Module Contents
 
 .. py:class:: WFSBase
 
+
    Base class for WFS service.
 
    :Parameters: * **url** (:class:`str`) -- The base url for the WFS service, for examples:
@@ -113,6 +115,7 @@ Module Contents
 
 
 .. py:class:: WMSBase
+
 
    Base class for accessing a WMS service.
 

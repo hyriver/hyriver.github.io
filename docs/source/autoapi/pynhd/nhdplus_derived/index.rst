@@ -14,6 +14,7 @@ Module Contents
 
 .. py:class:: StreamCat
 
+
    Get StreamCat API's properties.
 
    .. attribute:: base_url
@@ -82,7 +83,7 @@ Module Contents
    Although this dataframe does not include geometry, it can be
    linked to other geospatial NHDPlus dataframes through ComIDs.
 
-   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file,
+   :Parameters: **parquet_path** (:class:`str` or :class:`pathlib.Pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file,
                 defaults to ``./cache/enhd_attrs.parquet``.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for
@@ -128,7 +129,7 @@ Module Contents
 
    .. rubric:: Notes
 
-   More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
+   More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`__.
 
    :Parameters: **attr_names** (*str , *optional**) -- Name of NHDPlus attribute to return, defaults to None, i.e.,
                 only return a metadata dataframe that includes the attribute names
@@ -143,7 +144,7 @@ Module Contents
 
    .. rubric:: Notes
 
-   More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`_.
+   More info can be found `here <https://www.sciencebase.gov/catalog/item/5669a79ee4b08895842a1d47>`__.
 
    :Parameters: * **attr_names** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Names of NHDPlus attribute(s) to return, defaults to None, i.e.,
                   only return a metadata dataframe that includes the attribute names
@@ -160,9 +161,9 @@ Module Contents
    .. rubric:: Notes
 
    More info can be found
-   `here <https://www.sciencebase.gov/catalog/item/60cb5edfd34e86b938a373f4>`_.
+   `here <https://www.sciencebase.gov/catalog/item/60cb5edfd34e86b938a373f4>`__.
 
-   :Parameters: **gpkg_path** (:class:`~~Path` or :class:`str`, *optional*) -- Path to the geopackage file, defaults to None, i.e., download
+   :Parameters: **gpkg_path** (:class:`str` or :class:`pathlib.Pathlib.Path`, *optional*) -- Path to the geopackage file, defaults to None, i.e., download
                 the file to the cache directory as ``102020wbd_outlets.gpkg``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- A geodataframe of HUC12 pour points.
@@ -175,11 +176,11 @@ Module Contents
    .. rubric:: Notes
 
    This function downloads a 245 MB ``parquet`` file from
-   `here <https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726>`__ .
+   `here <https://www.hydroshare.org/resource/6092c8a62fac45be97a09bfd0b0bf726>`__.
    Although this dataframe does not include geometry, it can be linked
    to other geospatial NHDPlus dataframes through ComIDs.
 
-   :Parameters: **parquet_path** (:class:`str` or :class:`~~Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
+   :Parameters: **parquet_path** (:class:`str` or :class:`pathlib.Pathlib.Path`, *optional*) -- Path to a file with ``.parquet`` extension for storing the file, defaults to
                 ``./cache/nldplus_vaa.parquet``.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe that includes ComID-level attributes for 2.7 million

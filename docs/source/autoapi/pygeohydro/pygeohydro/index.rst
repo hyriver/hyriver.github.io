@@ -12,7 +12,20 @@
 Module Contents
 ---------------
 
+.. py:class:: EHydro
+
+
+
+
+   Access USACE Hydrographic Surveys (eHydro).
+
+   .. rubric:: Notes
+
+   For more info visit: https://navigation.usace.army.mil/Survey/Hydro
+
+
 .. py:class:: NID
+
 
    Retrieve data from the National Inventory of Dams web service.
 
@@ -161,8 +174,8 @@ Module Contents
 
    :Parameters: * **geometry** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with the geometry to query. The indices are used
                   as keys in the output dictionary.
-                * **year** (:class:`int`, *optional*) -- Year of the NLCD data, defaults to 2019. Available years are 2019, 2016, 2013,
-                  2011, 2008, 2006, 2004, and 2001.
+                * **year** (:class:`int`, *optional*) -- Year of the NLCD data, defaults to 2019. Available years are 2021, 2019, 2016,
+                  2013, 2011, 2008, 2006, 2004, and 2001.
                 * **region** (:class:`str`, *optional*) -- Region in the US that the input geometries are located, defaults to ``L48``.
                   Valid values are ``L48`` (for CONUS), ``HI`` (for Hawaii), ``AK`` (for Alaska),
                   and ``PR`` (for Puerto Rico). Both lower and upper cases are acceptable.
@@ -256,7 +269,7 @@ Module Contents
    :Parameters: * **properties** (:class:`list` of :class:`str` or :class:`str`, *optional*) -- Soil properties to extract, default to "*", i.e., all the properties.
                   Available properties are ``awc`` for available water capacity, ``fc`` for
                   field capacity, and ``por`` for porosity.
-                * **soil_dir** (:class:`str` or :class:`pathlib.Path`) -- Directory to store zip files or if exists read from them, defaults to
+                * **soil_dir** (:class:`str` or :class:`pathlib.Pathlib.Path`) -- Directory to store zip files or if exists read from them, defaults to
                   ``./cache``.
 
 
