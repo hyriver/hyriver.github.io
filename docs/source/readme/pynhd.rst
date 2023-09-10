@@ -18,7 +18,7 @@ PyNHD: Navigate and subset NHDPlus database
     :target: https://pypi.python.org/pypi/pynhd
     :alt: Python Versions
 
-.. image:: https://pepy.tech/badge/pynhd
+.. image:: https://static.pepy.tech/badge/pynhd
     :target: https://pepy.tech/project/pynhd
     :alt: Downloads
 

@@ -73,7 +73,6 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from pygeoogc.utils import match_crs
    >>> from shapely.geometry import Point
    >>> point = Point(-7766049.665, 5691929.739)
    >>> match_crs(point, "epsg:3857", 4326).xy
@@ -118,28 +117,28 @@ Module Contents
              same order.
 
 
-.. py:function:: traverse_json(items, ipath)
+.. py:function:: traverse_json(json_data, ipath)
 
-   Extract an element from a JSON file along a specified ipath.
+   Extract an element from a JSON-like object along a specified ipath.
 
    This function is based on `bcmullins <https://bcmullins.github.io/parsing-json-python/>`__.
 
-   :Parameters: * **items** (:class:`dict`) -- The input json dictionary
+   :Parameters: * **json_data** (:class:`dict` or :class:`list` of :class:`dicts`) -- The input json dictionary
                 * **ipath** (:class:`list`) -- The ipath to the requested element
 
-   :returns: :class:`list` -- The sub_items founds in the JSON
+   :returns: :class:`list` -- The sub-items founds in the JSON
 
    .. rubric:: Examples
 
-   >>> from pygeoogc.utils import traverse_json
-   >>> data = [{
-   ...     "employees": [
+   >>> data = [
+   ...     {"employees": [
    ...         {"name": "Alice", "role": "dev", "nbr": 1},
-   ...         {"name": "Bob", "role": "dev", "nbr": 2}],
-   ...     "firm": {"name": "Charlie's Waffle Emporium", "location": "CA"},
-   ... },]
+   ...         {"name": "Bob", "role": "dev", "nbr": 2},
+   ...         ],},
+   ...     {"firm": {"name": "Charlie's Waffle Emporium", "location": "CA"}},
+   ... ]
    >>> traverse_json(data, ["employees", "name"])
-   [['Alice', 'Bob']]
+   [['Alice', 'Bob'], [None]]
 
 
 .. py:function:: validate_crs(crs)

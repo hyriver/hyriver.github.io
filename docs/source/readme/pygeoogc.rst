@@ -18,7 +18,7 @@ PyGeoOGC: Retrieve Data from RESTful, WMS, and WFS Services
     :target: https://pypi.python.org/pypi/pygeoogc
     :alt: Python Versions
 
-.. image:: https://pepy.tech/badge/pygeoogc
+.. image:: https://static.pepy.tech/badge/pygeoogc
     :target: https://pepy.tech/project/pygeoogc
     :alt: Downloads
 

@@ -18,7 +18,7 @@ HydroSignatures: Tools for computing hydrological signatures
     :target: https://pypi.python.org/pypi/hydrosignatures
     :alt: Python Versions
 
-.. image:: https://pepy.tech/badge/hydrosignatures
+.. image:: https://static.pepy.tech/badge/hydrosignatures
     :target: https://pepy.tech/project/hydrosignatures
     :alt: Downloads
 

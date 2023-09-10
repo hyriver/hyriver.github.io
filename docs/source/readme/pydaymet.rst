@@ -18,7 +18,7 @@ PyDaymet: Daily climate data through Daymet
     :target: https://pypi.python.org/pypi/pydaymet
     :alt: Python Versions
 
-.. image:: https://pepy.tech/badge/pydaymet
+.. image:: https://static.pepy.tech/badge/pydaymet
     :target: https://pepy.tech/project/pydaymet
     :alt: Downloads
 

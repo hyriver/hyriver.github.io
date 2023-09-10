@@ -18,7 +18,7 @@ PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
     :target: https://pypi.python.org/pypi/pygeoutils
     :alt: Python Versions
 
-.. image:: https://pepy.tech/badge/pygeoutils
+.. image:: https://static.pepy.tech/badge/pygeoutils
     :target: https://pepy.tech/project/pygeoutils
     :alt: Downloads
 

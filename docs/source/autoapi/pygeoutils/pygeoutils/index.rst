@@ -69,7 +69,7 @@ Module Contents
                   Otherwise, it will return the same raster with the data masked.
                   Default is True.
 
-   :returns: :class:`xarray.Dataset` or :class:`xarray.DataAraay` -- Parallel (with dask) dataset or dataarray.
+   :returns: :class:`xarray.Dataset` or :class:`xarray.DataAraay` -- Requested dataset or dataarray.
 
 
 .. py:function:: json2geodf(content, in_crs = 4326, crs = 4326)

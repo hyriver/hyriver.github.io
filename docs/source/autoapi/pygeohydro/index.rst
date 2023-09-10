@@ -16,6 +16,7 @@ Submodules
    :maxdepth: 1
 
    helpers/index.rst
+   nlcd/index.rst
    nwis/index.rst
    plot/index.rst
    pygeohydro/index.rst

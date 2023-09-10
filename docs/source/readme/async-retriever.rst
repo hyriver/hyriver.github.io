@@ -18,9 +18,9 @@ AsyncRetriever: Asynchronous requests with persistent caching
     :target: https://pypi.python.org/pypi/async-retriever
     :alt: Python Versions
 
-.. image:: https://github.com/hyriver/async-retriever/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/async-retriever/actions/workflows/test.yml
-    :alt: Github Actions
+.. image:: https://static.pepy.tech/badge/async-retriever
+    :target: https://pepy.tech/project/pyasync-retriever3dep
+    :alt: Downloads
 
 |
 

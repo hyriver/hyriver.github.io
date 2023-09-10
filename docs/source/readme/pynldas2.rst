@@ -18,7 +18,7 @@ PyNLDAS2: Hourly NLDAS-2 Forcing Data
     :target: https://pypi.python.org/pypi/pynldas2
     :alt: Python Versions
 
-.. image:: https://pepy.tech/badge/pynldas2
+.. image:: https://static.pepy.tech/badge/pynldas2
     :target: https://pepy.tech/project/pynldas2
     :alt: Downloads
 
