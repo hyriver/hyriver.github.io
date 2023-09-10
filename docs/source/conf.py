@@ -1,6 +1,7 @@
 import datetime
 import urllib.request
 import json
+import tomllib as tomli
 from pathlib import Path
 from textwrap import dedent, indent
 
@@ -20,6 +21,18 @@ with urllib.request.urlopen('https://pypi.python.org/pypi/pygeohydro/json') as r
     version = json.loads(r.read().decode('utf-8'))["info"]["version"]
 version = f"{'.'.join(version.split('.')[:2])}.x"
 release = version
+
+packages = {
+    "async-retriever": "AsyncRetriever",
+    "pygeoogc": "PyGeoOGC",
+    "pygeoutils": "PyGeoUtils",
+    "pynhd": "PyNHD",
+    "py3dep": "Py3DEP",
+    "pygeohydro": "PyGeoHydro",
+    "pydaymet": "PyDaymet",
+    "pynldas2": "PyNLDAS2",
+    "hydrosignatures": "HydroSignatures",
+}
 
 # -- General configuration ---------------------------------------------------
 
@@ -53,7 +66,7 @@ intersphinx_mapping = {
     "scipy": ("https://docs.scipy.org/doc/scipy", None),
     "networkx": ("https://networkx.org/documentation/stable/", None),
     "matplotlib": ("https://matplotlib.org/", None),
-    "folium": ("https://python-visualization.github.io/folium/", None),
+    "folium": ("https://python-visualization.github.io/folium/latest", None),
 }
 
 # autoapi configurations
@@ -345,17 +358,6 @@ def update_versions(app: Sphinx):
     LOGGER.info("Updating versions page...")
 
     versions = []
-    packages = {
-        "async_retriever": "AsyncRetriever",
-        "pygeoogc": "PyGeoOGC",
-        "pygeoutils": "PyGeoUtils",
-        "pynhd": "PyNHD",
-        "py3dep": "Py3DEP",
-        "pygeohydro": "PyGeoHydro",
-        "pydaymet": "PyDaymet",
-        "pynldas2": "PyNLDAS2",
-        "hydrosignatures": "HydroSignatures",
-    }
     for p, n in packages.items():
         with urllib.request.urlopen(f'https://pypi.python.org/pypi/{p}/json') as r:
             versions.append(
@@ -392,6 +394,35 @@ def update_versions(app: Sphinx):
     LOGGER.info("Package versions page updated.")
 
 
+def update_deps(app: Sphinx) -> list[str]:
+    """Get the dependencies of the package."""
+
+    LOGGER.info("Updating dependencies page...")
+
+    deps = {}
+    for p, n in packages.items():
+        with Path(app.srcdir, "..", "..", p, "pyproject.toml").open("rb") as f:
+            deps[n] = "\n".join(f"        - ``{d}``" for d in tomli.load(f)["project"]["dependencies"])
+
+    items = [
+        f"""
+   .. tab-item:: {name}
+
+{dep_list}
+        """
+        for name, dep_list in deps.items()
+    ]
+
+    items_md = indent(dedent("\n".join(items)), prefix="    ")
+    markdown = f"""
+.. tab-set::
+
+   {items_md}
+"""
+    Path(app.srcdir, "dependencies.txt").write_text(markdown)
+    LOGGER.info("Package dependencies updated.")
+
+
 def html_page_context(app, pagename, templatename, context, doctree):
     # Disable edit button for docstring generated pages
     if "generated" in pagename:
@@ -403,3 +434,4 @@ def setup(app: Sphinx):
     app.connect("builder-inited", update_gallery)
     app.connect("builder-inited", update_videos)
     app.connect("builder-inited", update_versions)
+    app.connect("builder-inited", update_deps)
