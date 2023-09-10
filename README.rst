@@ -101,7 +101,7 @@ Package         Description                                                     
 =============== ==================================================================== ============
 |nhd_stat|      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
-|geoh_stat|     Access NWIS, NID, WQP, HCDN 2009, NLCD, CAMELS, and SSEBop databases |pygeohydro|
+|geoh_stat|     Access NWIS, NID, WQP, eHydro, NLCD, CAMELS, and SSEBop databases    |pygeohydro|
 |day_stat|      Access daily, monthly, and annual climate data via Daymet            |pydaymet|
 |nldas_stat|    Access hourly NLDAS-2 data via web services                          |pynldas2|
 |sig_stat|      A collection of tools for computing hydrological signatures          |signatures|
