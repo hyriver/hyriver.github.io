@@ -23,7 +23,7 @@ Module Contents
                 * **kwargs** (:class:`dict`, *optional*) -- Keywords to pass to the ``cache.delete_url()``.
 
 
-.. py:function:: retrieve(urls, read_method, request_kwds = ..., request_method = ..., max_workers = ..., cache_name = ..., timeout = ..., expire_after = ..., ssl = ..., disable = ..., raise_status = ...)
+.. py:function:: retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[text], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: pathlib.Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: ssl.SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[str]
                  retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[ujson], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: pathlib.Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: ssl.SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[dict[str, Any]] | list[list[dict[str, Any]]]
                  retrieve(urls: Sequence[aiohttp.typedefs.StrOrURL], read_method: Literal[binary], request_kwds: Sequence[dict[str, Any]] | None = ..., request_method: Literal[get, GET, post, POST] = ..., max_workers: int = ..., cache_name: pathlib.Path | str | None = ..., timeout: int = ..., expire_after: int = ..., ssl: ssl.SSLContext | bool | None = ..., disable: bool = ..., raise_status: bool = ...) -> list[bytes]
 

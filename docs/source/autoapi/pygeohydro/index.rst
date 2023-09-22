@@ -16,6 +16,7 @@ Submodules
    :maxdepth: 1
 
    helpers/index.rst
+   nfhl/index.rst
    nlcd/index.rst
    nwis/index.rst
    plot/index.rst
@@ -28,6 +29,7 @@ Submodules
 
 Package Contents
 ----------------
+
 
 
 

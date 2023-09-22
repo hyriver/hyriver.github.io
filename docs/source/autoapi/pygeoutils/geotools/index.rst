@@ -24,7 +24,6 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from pygeoutils import Coordinates
    >>> c = Coordinates([460, 20, -30], [80, 200, 10])
    >>> c.points.x.tolist()
    [100.0, -30.0]
@@ -35,19 +34,19 @@ Module Contents
       Get validate coordinate as a ``geopandas.GeoSeries``.
 
 
-.. py:class:: GeoBSpline(points, npts_sp, degree = 3)
+.. py:class:: GeoBSpline(points, n_pts, degree = 3)
 
 
-   Create B-spline from a geo-dataframe of points.
+   Create B-spline from a GeoDataFrame of points.
 
-   :Parameters: * **points** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Input points as a ``GeoDataFrame`` or ``GeoSeries`` in a projected CRS.
+   :Parameters: * **points** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Input points as a ``GeoDataFrame`` or ``GeoSeries``. The results
+                  will be more accurate if the CRS is projected.
                 * **npts_sp** (:class:`int`) -- Number of points in the output spline curve.
                 * **degree** (:class:`int`, *optional*) -- Degree of the spline. Should be less than the number of points and
                   greater than 1. Default is 3.
 
    .. rubric:: Examples
 
-   >>> from pygeoutils import GeoBSpline
    >>> import geopandas as gpd
    >>> xl, yl = zip(
    ...     *[
@@ -58,15 +57,15 @@ Module Contents
    ...     ]
    ... )
    >>> pts = gpd.GeoSeries(gpd.points_from_xy(xl, yl, crs=4326))
-   >>> sp = GeoBSpline(pts.to_crs("epsg:3857"), 5).spline
-   >>> pts_sp = gpd.GeoSeries(gpd.points_from_xy(sp.x, sp.y, crs="epsg:3857"))
+   >>> sp = GeoBSpline(pts.to_crs(3857), 5).spline
+   >>> pts_sp = gpd.GeoSeries(gpd.points_from_xy(sp.x, sp.y, crs=3857))
    >>> pts_sp = pts_sp.to_crs(4326)
    >>> list(zip(pts_sp.x, pts_sp.y))
    [(-97.06138, 32.837),
-   (-97.06135, 32.83629),
-   (-97.06131, 32.83538),
-   (-97.06128, 32.83434),
-   (-97.06127, 32.83319)]
+   (-97.06132, 32.83575),
+   (-97.06126, 32.83450),
+   (-97.06123, 32.83325),
+   (-97.06127, 32.83200)]
 
    .. py:property:: spline
       :type: Spline
@@ -87,6 +86,34 @@ Module Contents
 
    :returns: :class:`geopandas.GeoDataFrame` -- Original lines except for the parts that have been broken at the specified
              points.
+
+
+.. py:function:: bspline_curvature(bspline, konts)
+
+   Compute the curvature of a B-spline curve.
+
+   .. rubric:: Notes
+
+   The formula for the curvature of a B-spline curve is:
+
+   .. math::
+
+       \kappa = \frac{\dot{x}\ddot{y} - \ddot{x}\dot{y}}{(\dot{x}^2 + \dot{y}^2)^{3/2}}
+
+   where :math:`\dot{x}` and :math:`\dot{y}` are the first derivatives of the
+   B-spline curve and :math:`\ddot{x}` and :math:`\ddot{y}` are the second
+   derivatives of the B-spline curve. Also, the radius of curvature is:
+
+   .. math::
+
+       \rho = \frac{1}{|\kappa|}
+
+   :Parameters: * **bspline** (:class:`scipy.interpolate.BSpline`) -- B-spline curve.
+                * **konts** (:class:`float`) -- Knots of the B-spline curve to compute the curvature at.
+
+   :returns: * **phi** (:class:`numpy.ndarray`) -- Angle of the tangent of the B-spline curve.
+             * **curvature** (:class:`numpy.ndarray`) -- Curvature of the B-spline curve.
+             * **radius** (:class:`numpy.ndarray`) -- Radius of curvature of the B-spline curve.
 
 
 .. py:function:: coords_list(coords)
@@ -111,7 +138,48 @@ Module Contents
 
 .. py:function:: geometry_list(geometry)
 
-   Get a list of polygons, points, and lines from a geometry.
+   Convert input geometry to a list of polygons, points, or lines.
+
+
+.. py:function:: geometry_reproject(geom, in_crs, out_crs)
+
+   Reproject a geometry to another CRS.
+
+   :Parameters: * **geom** (:class:`list` or :class:`tuple` or :class:`any shapely.geometry`) -- Input geometry could be a list of coordinates such as ``[(x1, y1), ...]``,
+                  a bounding box like so ``(xmin, ymin, xmax, ymax)``, or any valid ``shapely``'s
+                  geometry such as ``Polygon``, ``MultiPolygon``, etc..
+                * **in_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`) -- Spatial reference of the input geometry
+                * **out_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`) -- Target spatial reference
+
+   :returns: :class:`same type as the input geometry` -- Transformed geometry in the target CRS.
+
+   .. rubric:: Examples
+
+   >>> from shapely.geometry import Point
+   >>> point = Point(-7766049.665, 5691929.739)
+   >>> geometry_reproject(point, 3857, 4326).xy
+   (array('d', [-69.7636111130079]), array('d', [45.44549114818127]))
+   >>> bbox = (-7766049.665, 5691929.739, -7763049.665, 5696929.739)
+   >>> geometry_reproject(bbox, 3857, 4326)
+   (-69.7636111130079, 45.44549114818127, -69.73666165448431, 45.47699468552394)
+   >>> coords = [(-7766049.665, 5691929.739)]
+   >>> geometry_reproject(coords, 3857, 4326)
+   [(-69.7636111130079, 45.44549114818127)]
+
+
+.. py:function:: make_bspline(x, y, n_pts, k = 3)
+
+   Create a B-spline curve from a set of points.
+
+   :Parameters: * **x** (:class:`numpy.ndarray`) -- x-coordinates of the points.
+                * **y** (:class:`numpy.ndarray`) -- y-coordinates of the points.
+                * **n_pts** (:class:`int`) -- Number of points in the output spline curve.
+                * **k** (:class:`int`, *optional*) -- Degree of the spline. Should be an odd number less than the number of
+                  points and greater than 1. Default is 3.
+
+   :returns: :class:`Spline` -- A Spline object with ``x``, ``y``, ``phi``, ``radius``, ``distance``,
+             and ``line`` attributes. The ``line`` attribute returns the B-spline
+             as a shapely.LineString.
 
 
 .. py:function:: multi2poly(gdf)
@@ -122,15 +190,15 @@ Module Contents
 
    This function tries to convert multipolygons to polygons by
    first checking if multiploygons can be directly converted using
-   their exterior boundaries. If not, will try to remove those small
+   their exterior boundaries. If not, will try to remove very small
    sub-polygons that their area is less than 1% of the total area
    of the multipolygon. If this fails, the original multipolygon will
    be returned.
 
-   :Parameters: **gdf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with (multi)polygons in a projected
-                coordinate system.
+   :Parameters: **gdf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with (multi)polygons. This will be
+                more accurate if the CRS is projected.
 
-   :returns: :class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries` -- A GeoDataFrame or GeoSeries with polygons.
+   :returns: :class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries` -- A GeoDataFrame or GeoSeries with polygons (and multipolygons).
 
 
 .. py:function:: nested_polygons(gdf)
@@ -155,6 +223,44 @@ Module Contents
    :returns: :class:`dict` -- A dictionary of the indices of the ``input_gdf`` that intersect with the
              ``tree_gdf``. Keys are the index of ``input_gdf`` and values are a list
              of indices of the intersecting ``tree_gdf``.
+
+
+.. py:function:: smooth_linestring(line, crs, n_pts, degree = 3)
+
+   Smooth a line using B-spline interpolation.
+
+   :Parameters: * **line** (:class:`shapely.LineString`) -- Line to smooth. Note that ``MultiLineString`` is not supported.
+                * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- CRS of the input line. It must be a projected CRS.
+                * **n_pts** (:class:`int`) -- Number of points in the output spline curve.
+                * **degree** (:class:`int`, *optional*) -- Degree of the spline. Should be less than the number of points and
+                  greater than 1. Default is 3.
+
+   :returns: :class:`Spline` -- A Spline object with ``x``, ``y``, ``phi``, ``radius``, ``distance``,
+             and ``line`` attributes. The ``line`` attribute returns the B-spline
+             as a shapely.LineString.
+
+   .. rubric:: Examples
+
+   >>> import pygeoutils as pgu
+   >>> import geopandas as gpd
+   >>> import shapely
+   >>> line = shapely.geometry.LineString(
+   ...     [
+   ...         (-97.06138, 32.837),
+   ...         (-97.06133, 32.836),
+   ...         (-97.06124, 32.834),
+   ...         (-97.06127, 32.832),
+   ...     ]
+   ... )
+   >>> line = pgu.geometry_reproject(line, 4326, 5070)
+   >>> sp = pgu.smooth_linestring(line, 5070, 5)
+   >>> line_sp = pgu.geometry_reproject(sp.line, 5070, 4326)
+   >>> list(zip(*line_sp.xy))
+   [(-97.06138, 32.837),
+   (-97.06132, 32.83575),
+   (-97.06126, 32.83450),
+   (-97.06123, 32.83325),
+   (-97.06127, 32.83200)]
 
 
 .. py:function:: snap2nearest(lines, points, tol)

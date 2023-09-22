@@ -85,7 +85,7 @@ Module Contents
    [(-69.7636111130079, 45.44549114818127)]
 
 
-.. py:function:: streaming_download(urls, kwds = None, fnames = None, file_prefix = '', file_extention = '', method = 'GET', ssl = True, chunk_size = CHUNK_SIZE, n_jobs = MAX_CONN)
+.. py:function:: streaming_download(urls: str, kwds: dict[str, dict[Any, Any]] | None = None, fnames: str | pathlib.Path | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> pathlib.Path
                  streaming_download(urls: list[str], kwds: list[dict[str, dict[Any, Any]]] | None = None, fnames: Sequence[str | pathlib.Path] | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> list[pathlib.Path]
 
    Download and store files in parallel from a list of URLs/Keywords.

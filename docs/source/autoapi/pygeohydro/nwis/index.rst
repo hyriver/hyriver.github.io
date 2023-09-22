@@ -69,7 +69,7 @@ Module Contents
       'Discharge, cubic feet per second'
 
 
-   .. py:method:: get_streamflow(station_ids, dates, freq = 'dv', mmd = False, to_xarray = ...)
+   .. py:method:: get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[False] = ...) -> pandas.DataFrame
                   get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[True] = ...) -> xarray.Dataset
 
       Get mean daily streamflow observations from USGS.

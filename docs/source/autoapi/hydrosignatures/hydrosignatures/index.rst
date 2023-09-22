@@ -96,7 +96,7 @@ Module Contents
 
 
 
-.. py:function:: compute_ai(pet, prcp)
+.. py:function:: compute_ai(pet: pandas.Series, prcp: pandas.Series) -> numpy.float64
                  compute_ai(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series
                  compute_ai(pet: xarray.DataArray, prcp: xarray.DataArray) -> xarray.DataArray
 

@@ -42,7 +42,20 @@ Module Contents
                   - ``waterbody_hr_nonconus``
                   - ``waterbody_hr``
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
+
+   .. method:: bygeom(geom, geo_crs=4326, sql_clause="", distance=None, return_m=False, return_geom=True)
+
+      Get features within a geometry that can be combined with a SQL where clause.
+
+   .. method:: byids(field, fids, return_m=False, return_geom=True)
+
+      Get features by object IDs.
+
+   .. method:: bysql(sql_clause, return_m=False, return_geom=True)
+
+      Get features using a valid SQL 92 WHERE clause.
+      
 
 
 .. py:class:: NHDPlusHR(layer, outfields = '*', crs = 4326)
@@ -72,7 +85,20 @@ Module Contents
                   - ``boundary_unit`` for NHDPlusBoundaryUnit layer
                   - ``huc12`` for WBDHU12 layer
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
-                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
+
+   .. method:: bygeom(geom, geo_crs=4326, sql_clause="", distance=None, return_m=False, return_geom=True)
+
+      Get features within a geometry that can be combined with a SQL where clause.
+
+   .. method:: byids(field, fids, return_m=False, return_geom=True)
+
+      Get features by object IDs.
+
+   .. method:: bysql(sql_clause, return_m=False, return_geom=True)
+
+      Get features using a valid SQL 92 WHERE clause.
+      
 
 
 .. py:class:: NLDI
@@ -136,7 +162,7 @@ Module Contents
                 a list of missing ID(s) are returned as well.
 
 
-   .. py:method:: getcharacteristic_byid(feature_ids, char_type, fsource = ..., char_ids = ..., values_only = ...)
+   .. py:method:: getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[True] = ...) -> pandas.DataFrame
                   getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[False] = ...) -> tuple[pandas.DataFrame, pandas.DataFrame]
 
       Get characteristics using a list ComIDs.

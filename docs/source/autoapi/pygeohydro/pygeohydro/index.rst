@@ -12,7 +12,7 @@
 Module Contents
 ---------------
 
-.. py:class:: EHydro
+.. py:class:: EHydro(data_type = 'points')
 
 
 
@@ -35,6 +35,19 @@ Module Contents
 
       Get features using a valid SQL 92 WHERE clause.
       
+
+   :Parameters: **data_type** (:class:`str`, *optional*) -- Type of the survey data to retrieve, defaults to ``points``.
+                Note that the ``points`` data type gets the best available point
+                cloud data, i.e., if ``SurveyPointHD`` is available, it will be
+                returned, otherwise ``SurveyPoint`` will be returned.
+                Available types are:
+
+                - ``points``: Point clouds
+                - ``outlines``: Polygons of survey outlines
+                - ``contours``: Depth contours
+                - ``bathymetry``: Bathymetry data
+
+                Note that point clouds are not available for all surveys.
 
    .. py:property:: survey_grid
       :type: geopandas.GeoDataFrame

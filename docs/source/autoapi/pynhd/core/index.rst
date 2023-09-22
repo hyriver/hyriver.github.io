@@ -132,7 +132,7 @@ Module Contents
 
       Return the name of the endpoint.
 
-   .. py:method:: bycql(cql_dict, skip_geometry = False)
+   .. py:method:: bycql(cql_dict: dict[str, Any], skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
                   bycql(cql_dict: dict[str, Any], skip_geometry: Literal[True]) -> pandas.DataFrame
 
       Query the GeoConnex endpoint.
@@ -150,7 +150,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
 
 
-   .. py:method:: bygeometry(geometry1, geometry2 = None, predicate = 'intersects', crs = 4326, skip_geometry = False)
+   .. py:method:: bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = None, predicate: str = 'intersects', crs: CRSTYPE | None = 4326, skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
                   bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = None, predicate: str = 'intersects', crs: CRSTYPE | None = 4326, skip_geometry: Literal[True] = True) -> pandas.DataFrame
 
       Query the GeoConnex endpoint by geometry.
@@ -175,7 +175,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
 
 
-   .. py:method:: byid(feature_name, feature_ids, skip_geometry = False)
+   .. py:method:: byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
                   byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[True]) -> pandas.DataFrame
 
       Query the GeoConnex endpoint.

@@ -136,8 +136,6 @@ nbsphinx_prolog = """
 copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
 copybutton_prompt_is_regexp = True
 
-autodoc_typehints = "none"
-
 # Napoleon configurations
 napoleon_google_docstring = False
 napoleon_numpy_docstring = True
@@ -264,7 +262,7 @@ description = " ".join(
         "unified API for retrieving geospatial/temporal data from various web services."
     ]
 )
-ogp_site_url = "https://hyriver.readthedocs.io/en/latest"
+ogp_site_url = "https://docs.hyriver.io"
 ogp_image = "https://raw.githubusercontent.com/hyriver/hyriver.github.io/main/docs/source/_static/hydriver_logo.png"
 ogp_custom_meta_tags = [
     '<meta name="twitter:card" content="summary" />',

@@ -43,7 +43,7 @@ Module Contents
    {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False, 'topobathy': False}
 
 
-.. py:function:: elevation_bycoords(coords, crs = ..., source = ...)
+.. py:function:: elevation_bycoords(coords: tuple[float, float], crs: CRSTYPE = ..., source: str = ...) -> float
                  elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: str = ...) -> list[float]
 
    Get elevation for a list of coordinates.
@@ -120,7 +120,7 @@ Module Contents
    :returns: :class:`xarray.DataArray` -- DEM at the specified resolution in meters and 4326 CRS.
 
 
-.. py:function:: get_map(layers, geometry, resolution, geo_crs = 4326, crs = 4326)
+.. py:function:: get_map(layers: str, geometry: shapely.geometry.Polygon | shapely.geometry.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.DataArray
                  get_map(layers: list[str], geometry: shapely.geometry.Polygon | shapely.geometry.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.Dataset
 
    Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
