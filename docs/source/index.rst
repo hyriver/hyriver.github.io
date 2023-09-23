@@ -101,7 +101,13 @@ web services. HyRiver includes two categories of packages:
   climatology studies. Currently, this project only includes hydrology and climatology data
   within the US.
 
-You can watch these videos for a quick overview of HyRiver capabilities:
+.. image:: _static/hyriver_deps.png
+    :alt: Low- and high-level APIs
+
+|
+
+Video Gallery
+=============
 
 .. include:: videos-gallery.txt
 

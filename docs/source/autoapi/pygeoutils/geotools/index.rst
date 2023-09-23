@@ -109,7 +109,8 @@ Module Contents
        \rho = \frac{1}{|\kappa|}
 
    :Parameters: * **bspline** (:class:`scipy.interpolate.BSpline`) -- B-spline curve.
-                * **konts** (:class:`float`) -- Knots of the B-spline curve to compute the curvature at.
+                * **konts** (:class:`numpy.ndarray`) -- Knots along the B-spline curve to compute the curvature at. The knots
+                  must be strictly increasing.
 
    :returns: * **phi** (:class:`numpy.ndarray`) -- Angle of the tangent of the B-spline curve.
              * **curvature** (:class:`numpy.ndarray`) -- Curvature of the B-spline curve.
@@ -235,9 +236,9 @@ Module Contents
                 * **degree** (:class:`int`, *optional*) -- Degree of the spline. Should be less than the number of points and
                   greater than 1. Default is 3.
 
-   :returns: :class:`Spline` -- A Spline object with ``x``, ``y``, ``phi``, ``radius``, ``distance``,
-             and ``line`` attributes. The ``line`` attribute returns the B-spline
-             as a shapely.LineString.
+   :returns: :class:`Spline` -- A :class:`Spline` object with ``x``, ``y``, ``phi``, ``radius``,
+             ``distance``, and ``line`` attributes. The ``line`` attribute
+             returns the B-spline as a shapely.LineString.
 
    .. rubric:: Examples
 

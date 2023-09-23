@@ -161,33 +161,11 @@ napoleon_type_aliases = {
     "array_like": ":term:`array_like`",
     "array-like": ":term:`array-like <array_like>`",
     "scalar": ":term:`scalar`",
-    "array": ":term:`array`",
-    "hashable": ":term:`hashable <name>`",
-    # matplotlib terms
-    "color-like": ":py:func:`color-like <matplotlib.colors.is_color_like>`",
-    "matplotlib colormap name": ":doc:matplotlib colormap name <Colormap reference>",
-    "matplotlib axes object": ":py:class:`matplotlib axes object <matplotlib.axes.Axes>`",
-    "colormap": ":py:class:`colormap <matplotlib.colors.Colormap>`",
     # objects without namespace
     "DataArray": "~xarray.DataArray",
     "Dataset": "~xarray.Dataset",
     "Variable": "~xarray.Variable",
     "ndarray": "~numpy.ndarray",
-    "MaskedArray": "~numpy.ma.MaskedArray",
-    "dtype": "~numpy.dtype",
-    "ComplexWarning": "~numpy.ComplexWarning",
-    "Index": "~pandas.Index",
-    "MultiIndex": "~pandas.MultiIndex",
-    "CategoricalIndex": "~pandas.CategoricalIndex",
-    "TimedeltaIndex": "~pandas.TimedeltaIndex",
-    "DatetimeIndex": "~pandas.DatetimeIndex",
-    "Series": "~pandas.Series",
-    "DataFrame": "~pandas.DataFrame",
-    "Categorical": "~pandas.Categorical",
-    "Path": "~~Path",
-    # objects with abbreviated namespace (from pandas)
-    "pd.Index": "~pandas.Index",
-    "pd.NaT": "~pandas.NaT",
 }
 
 extlinks = {
@@ -245,8 +223,6 @@ html_theme_options = {
     "use_download_button": False,
     "use_issues_button": True,
     "home_page_in_toc": True,
-    # "extra_navbar": "",
-    # "navbar_footer_text": "",
 }
 
 # logo
