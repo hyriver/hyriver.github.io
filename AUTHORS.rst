@@ -1,13 +1,15 @@
-=======
-Credits
-=======
+================
+Development Team
+================
 
-Development Lead
-----------------
+Lead
+----
 
-* Taher Chegini <cheginit@gmail.com>
+* `Taher Cheginil <https://github.com/cheginit>`__
 
 Contributors
 ------------
 
-* Luc Rébillout <rebillout.luc@gmail.com>
+* `Fernando Aristizabal <https://github.com/fernando-aristizabal>`__
+* `Luc Rébillout <https://github.com/LucRSquared/>`__
+* `Tim Cera <https://github.com/timcera>`__
