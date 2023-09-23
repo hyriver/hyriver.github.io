@@ -117,7 +117,7 @@ HyRiver: Hydroclimate Data Retriever
 Features
 --------
 
-`HyRiver <https://hyriver.readthedocs.io>`__ is a software stack consisting of eight
+`HyRiver <https://docs.hyriver.io>`__ is a software stack consisting of eight
 Python libraries that are designed to aid in hydroclimate analysis through web services.
 Currently, this project only includes hydrology and climatology data
 within the US. Some major capabilities of HyRiver are:
@@ -133,7 +133,10 @@ within the US. Some major capabilities of HyRiver are:
 * A URL inventory for many popular (and tested) web services.
 * Some utilities for manipulating the obtained data and their visualization.
 
-Please visit `examples <https://hyriver.readthedocs.io/en/latest/examples.html>`__
+.. image:: https://docs.hyriver.io/_images/hyriver_deps.png
+    :target: https://docs.hyriver.io
+
+Please visit `examples <https://docs.hyriver.io/examples.html>`__
 webpage to see some example notebooks. You can also watch these videos for a quick overview
 of ``HyRiver`` capabilities:
 
