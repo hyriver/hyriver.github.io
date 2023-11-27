@@ -27,6 +27,10 @@
     :target: https://github.com/hyriver/pydaymet/actions/workflows/test.yml
     :alt: Github Actions
 
+.. |pygridmet| image:: https://github.com/hyriver/pygridmet/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/hyriver/pygridmet/actions/workflows/test.yml
+    :alt: Github Actions
+
 .. |pynldas2| image:: https://github.com/hyriver/pynldas2/actions/workflows/test.yml/badge.svg
     :target: https://github.com/hyriver/pynldas2/actions/workflows/test.yml
     :alt: Github Actions
@@ -63,6 +67,10 @@
     :target: https://github.com/hyriver/pydaymet
     :alt: Download Stat
 
+.. |grid_stat| image:: https://static.pepy.tech/personalized-badge/pygridmet?period=total&left_color=blue&right_color=yellowgreen&left_text=PyDaymet
+    :target: https://github.com/hyriver/pygridmet
+    :alt: Download Stat
+
 .. |nldas_stat| image:: https://static.pepy.tech/personalized-badge/pynldas2?period=total&left_color=blue&right_color=yellowgreen&left_text=PyNLDAS2
     :target: https://github.com/hyriver/pynldas2
     :alt: Download Stat
@@ -81,6 +89,7 @@
 .. _PyNHD: https://github.com/hyriver/pynhd
 .. _Py3DEP: https://github.com/hyriver/py3dep
 .. _PyDaymet: https://github.com/hyriver/pydaymet
+.. _PyGridMET: https://github.com/hyriver/pygridmet
 .. _PyNLDAS2: https://github.com/hyriver/pynldas2
 .. _HydroSignatures: https://github.com/hyriver/hydrosignatures
 
@@ -103,6 +112,7 @@ Package         Description                                                     
 |3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
 |geoh_stat|     Access NWIS, NID, WQP, eHydro, NLCD, CAMELS, and SSEBop databases    |pygeohydro|
 |day_stat|      Access daily, monthly, and annual climate data via Daymet            |pydaymet|
+|grid_stat|     Access daily climate data via GridMet                                |pygridmet|
 |nldas_stat|    Access hourly NLDAS-2 data via web services                          |pynldas2|
 |sig_stat|      A collection of tools for computing hydrological signatures          |signatures|
 |async_stat|    High-level API for asynchronous requests with persistent caching     |async|
@@ -181,7 +191,7 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 Please note that installation with ``pip`` fails if ``libgdal`` is not installed on your system.
 You should install this package manually beforehand. For example, on Ubuntu-based distros
@@ -192,13 +202,13 @@ Alternatively, you can install them using ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 or ``mambaforge`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+    $ mamba install py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 Additionally, you can create a new environment, named ``hyriver`` with all the packages
 and optional dependencies installed with ``mambaforge`` using the provided
