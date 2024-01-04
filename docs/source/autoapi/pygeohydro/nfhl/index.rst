@@ -94,13 +94,7 @@ Module Contents
 
    .. rubric:: References
 
-   * `National Flood Hazard Layer GIS Web Services <https://hazards.fema.gov/femaportal/wps/portal/NFHLWMS>`__
-
-   .. attribute:: valid_services
-
-      A dictionary of valid services and their URLs.
-
-      :type: :class:`Dict`
+   * `National Flood Hazard Layer <https://hazards.fema.gov/femaportal/wps/portal/NFHLWMS>`__
 
    .. method:: bygeom(geom, geo_crs=4326, sql_clause="", distance=None, return_m=False, return_geom=True)
 
@@ -113,6 +107,11 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-      
+
+
+   .. py:property:: valid_services
+      :type: dict[str, str]
+
+      A dictionary of valid services and their URLs.
 
 

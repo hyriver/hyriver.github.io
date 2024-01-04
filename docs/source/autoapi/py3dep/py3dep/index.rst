@@ -12,12 +12,17 @@
 Module Contents
 ---------------
 
-.. py:function:: add_elevation(ds)
+.. py:function:: add_elevation(ds, resolution = None, x_dim = 'x', y_dim = 'y', mask = None)
 
-   Add elevation data to a dataset  as a new variable.
+   Add elevation data to a dataset as a new variable.
 
-   :Parameters: **ds** (:class:`xarray.DataArray` or :class:`xarray.Dataset`) -- The dataset to add elevation data to. It must contain
-                CRS information.
+   :Parameters: * **ds** (:class:`xarray.DataArray` or :class:`xarray.Dataset`) -- The dataset to add elevation data to. It must contain
+                  CRS information.
+                * **resolution** (:class:`float`, *optional*) -- Target DEM source resolution in meters, defaults ``None``, i.e.,
+                  the resolution of the input ``ds`` will be used.
+                * **x_dim** (:class:`str`, *optional*) -- Name of the x-coordinate dimension in ``ds``, defaults to ``x``.
+                * **y_dim** (:class:`str`, *optional*) -- Name of the y-coordinate dimension in ``ds``, defaults to ``y``.
+                * **mask** (:class:`xarray.DataArray`, *optional*) -- A mask to apply to the elevation data, defaults to ``None``.
 
    :returns: :class:`xarray.Dataset` -- The dataset with ``elevation`` variable added.
 
@@ -30,10 +35,12 @@ Module Contents
    1 m, 3 m, 5 m, 10 m, 30 m, 60 m, and topobathy (integrated topobathymetry).
 
    :Parameters: * **bbox** (:class:`tuple`) -- Bounding box as tuple of ``(min_x, min_y, max_x, max_y)``.
-                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of bbox, defaults to ``EPSG:4326``.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of ``bbox``, defaults to ``EPSG:4326``.
 
-   :returns: :class:`dict` -- True if bbox intersects 3DEP elevation for each available resolution.
+   :returns: :class:`dict` -- ``True`` if bbox intersects 3DEP elevation for each available resolution.
              Keys are the supported resolutions and values are their availability.
+             If the query fails due to any reason, the value will be ``Failed``.
+             If necessary, you can try again later until there is no ``Failed`` value.
 
    .. rubric:: Examples
 
@@ -50,14 +57,13 @@ Module Contents
 
    :Parameters: * **coords** (:class:`tuple` or :class:`list` of :class:`tuple`) -- Coordinates of target location(s), e.g., ``[(x, y), ...]``.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of coords, defaults to ``EPSG:4326``.
-                * **source** (:class:`str`, *optional*) -- Data source to be used, default to ``airmap``. Supported sources are
+                * **source** (:class:`str`, *optional*) -- Data source to be used, default to ``tep``. Supported sources are
                   ``airmap`` (30 m resolution), ``tnm`` (using The National Map's Bulk Point
-                  Query Service with 10 m resolution) and ``tep`` (using 3DEP's WMS service
+                  Query Service with 10 m resolution) and ``tep`` (using 3DEP's static DEM VRTs
                   at 10 m resolution). The ``tnm`` and ``tep`` sources are more accurate since they
                   use the 1/3 arc-second DEM layer from 3DEP service but it is limited to the US.
-                  They both tend to be slower than the Airmap service. Note that ``tnm`` is bit unstable.
-                  It's recommended to use ``tep`` unless 10-m resolution accuracy is not necessary which
-                  in that case ``airmap`` is more appropriate.
+                  Note that ``tnm`` is bit unstable. It's recommended to use ``tep`` unless 10-m
+                  resolution accuracy is not necessary which in that case ``airmap`` is more appropriate.
 
    :returns: :class:`float` or :class:`list` of :class:`float` -- Elevation in meter.
 
@@ -82,19 +88,20 @@ Module Contents
    :returns: :class:`xarray.DataArray` -- Elevations of the input coordinates as a ``xarray.DataArray``.
 
 
-.. py:function:: elevation_profile(lines, spacing, dem_res = 10, crs = 4326)
+.. py:function:: elevation_profile(lines, spacing, crs = 4326)
 
    Get the elevation profile along a line at a given uniform spacing.
 
-   This function converts the line to a B-spline and then calculates the elevation
-   along the spline at a given uniform spacing.
+   .. note::
+
+       This function converts the line to a spline and then calculates the elevation
+       along the spline at a given uniform spacing using 10-m resolution DEM from 3DEP.
 
    :Parameters: * **lines** (:class:`LineString` or :class:`MultiLineString`) -- Line segment(s) to be profiled. If its type is ``MultiLineString``,
                   it will be converted to a single ``LineString`` and if this operation
-                  fails, a ``InputTypeError`` will be raised.
+                  fails, an ``InputTypeError`` will be raised.
                 * **spacing** (:class:`float`) -- Spacing between the sample points along the line in meters.
-                * **dem_res** (:class:`float`, *optional*) -- Resolution of the DEM source to use in meter, defaults to 10.
-                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of ``lines``, defaults to ``EPSG:4326``.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Spatial reference System (CRS) of ``lines``, defaults to ``EPSG:4326``.
 
    :returns: :class:`xarray.DataArray` -- Elevation profile with dimension ``z`` and three coordinates: ``x``, ``y``,
              and ``distance``. The ``distance`` coordinate is the distance from the start
@@ -120,10 +127,22 @@ Module Contents
    :returns: :class:`xarray.DataArray` -- DEM at the specified resolution in meters and 4326 CRS.
 
 
-.. py:function:: get_map(layers: str, geometry: shapely.geometry.Polygon | shapely.geometry.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.DataArray
-                 get_map(layers: list[str], geometry: shapely.geometry.Polygon | shapely.geometry.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = 4326, crs: CRSTYPE = 4326) -> xarray.Dataset
+.. py:function:: get_dem_vrt(bbox, resolution, vrt_path, tiff_dir = 'cache', crs = 4326)
 
-   Access to `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__ service.
+   Get DEM data at any resolution from 3DEP and save it as a VRT file.
+
+   :Parameters: * **bbox** (:class:`tuple` of :class:`length 4`) -- The boundong box of form (xmin, ymin, xmax, ymax).
+                * **resolution** (:class:`int`) -- Target DEM source resolution in meters.
+                * **vrt_path** (:class:`str` or :class:`pathlib.Path`) -- Path to the output VRT file.
+                * **tiff_dir** (:class:`str` or :class:`pathlib.Path`, *optional*) -- Path to the directory to save the downloaded TIFF file, defaults
+                  to ``./cache``.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of ``bbox``, defaults to ``EPSG:4326``.
+
+
+.. py:function:: get_map(layers: str, geometry: shapely.Polygon | shapely.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = ..., crs: CRSTYPE = ...) -> xarray.DataArray
+                 get_map(layers: list[str], geometry: shapely.Polygon | shapely.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = ..., crs: CRSTYPE = ...) -> xarray.Dataset
+
+   Access dynamic layer of `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__.
 
    The 3DEP service has multi-resolution sources, so depending on the user
    provided resolution the data is resampled on server-side based
@@ -165,7 +184,9 @@ Module Contents
 
    :Parameters: * **bbox** (:class:`tuple`) -- Bounding box as tuple of ``(min_x, min_y, max_x, max_y)``.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of bbox, defaults to ``EPSG:4326``.
-                * **res** (:class:`str`, *optional*) -- Resolution to query, defaults to ``None``, i.e., all resolutions.
+                * **res** (:class:`str`, :class:`list` of :class:`str`, *optional*) -- Resolution to query, defaults to ``None``, i.e., all resolutions.
+                  Available resolutions are: ``1m``, ``3m``, ``5m``, ``10m``, ``30m``,
+                  ``60m``, and ``topobathy``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Polygon(s) representing the 3DEP data sources at each resolution.
              Resolutions are given in the ``dem_res`` column.

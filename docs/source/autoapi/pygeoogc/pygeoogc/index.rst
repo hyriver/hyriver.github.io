@@ -253,7 +253,7 @@ Module Contents
    URLs of the supported WFS services.
 
 
-.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = 4326, validation = True, ssl = None)
+.. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = 4326, validation = True, ssl = True)
 
 
    Get data from a WMS service within a geometry or bounding box.
@@ -269,15 +269,15 @@ Module Contents
                 * **validation** (:class:`bool`, *optional*) -- Validate the input arguments from the WMS service, defaults to True. Set this
                   to False if you are sure all the WMS settings such as layer and crs are correct
                   to avoid sending extra requests.
-                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to False to disable
-                  SSL certification verification.
+                * **ssl** (:class:`bool`, *optional*) -- Whether to use SSL for the connection, defaults to ``True``.
 
    .. py:method:: get_validlayers()
 
       Get the layers supported by the WMS service.
 
 
-   .. py:method:: getmap_bybox(bbox, resolution, box_crs = 4326, always_xy = False, max_px = 8000000, kwargs = None)
+   .. py:method:: getmap_bybox(bbox: tuple[float, float, float, float], resolution: float, box_crs: CRSTYPE = ..., always_xy: bool = ..., max_px: int = ..., kwargs: dict[str, Any] | None = ..., tiff_dir: Literal[None] = None) -> dict[str, bytes]
+                  getmap_bybox(bbox: tuple[float, float, float, float], resolution: float, box_crs: CRSTYPE = ..., always_xy: bool = ..., max_px: int = ..., kwargs: dict[str, Any] | None = ..., tiff_dir: str | pathlib.Path = ...) -> list[pathlib.Path]
 
       Get data from a WMS service within a geometry or bounding box.
 
@@ -290,13 +290,17 @@ Module Contents
                      order from xy to yx, following the latest WFS version specifications but some don't.
                      If the returned value does not have any geometry, it indicates that most probably the
                      axis order does not match. You can set this to True in that case.
-                   * **max_px** (:class:`int`, :class:`opitonal`) -- The maximum allowable number of pixels (width x height) for a WMS requests,
+                   * **max_px** (:class:`int`, *optional*) -- The maximum allowable number of pixels (width x height) for a WMS requests,
                      defaults to 8 million based on some trial-and-error.
                    * **kwargs** (:class:`dict`, *optional*) -- Optional additional keywords passed as payload, defaults to None.
                      For example, ``{"styles": "default"}``.
+                   * **tiff_dir** (:class:`str` or :class:`pathlib.Path`, *optional*) -- If given, the retrieved data will be stored on disk instead of
+                     returning it, defaults to ``None``, i.e., saving to memory
+                     and returning the data.
 
-      :returns: :class:`dict` -- A dict where the keys are the layer name and values are the returned response
-                from the WMS service as bytes.
+      :returns: :class:`dict` of :class:`bytes` or :class:`list` of :class:`pathlib.Path` -- If ``to_disk=False``, a dict where the keys are the layer name and
+                values are the returned response from the WMS service as bytes.
+                If ``to_disk=True``, a list of pathlib.Path objects to the saved files.
 
 
 

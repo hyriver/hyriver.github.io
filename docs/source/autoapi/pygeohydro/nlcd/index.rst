@@ -49,7 +49,7 @@ Module Contents
              percentages.
 
 
-.. py:function:: nlcd_bycoords(coords, years = None, region = 'L48', ssl = None)
+.. py:function:: nlcd_bycoords(coords, years = None, region = 'L48', ssl = True)
 
    Get data from NLCD database (2019).
 
@@ -61,20 +61,20 @@ Module Contents
                 * **region** (:class:`str`, *optional*) -- Region in the US that the input geometries are located, defaults to ``L48``.
                   Valid values are ``L48`` (for CONUS), ``HI`` (for Hawaii), ``AK`` (for Alaska),
                   and ``PR`` (for Puerto Rico). Both lower and upper cases are acceptable.
-                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to ``False`` to disable
-                  SSL certification verification.
+                * **ssl** (:class:`bool`, *optional*) -- Whether to use SSL for the connection, defaults to ``True``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame with the NLCD data and the coordinates.
 
 
-.. py:function:: nlcd_bygeom(geometry, resolution, years = None, region = 'L48', crs = 4326, ssl = None)
+.. py:function:: nlcd_bygeom(geometry, resolution = 30, years = None, region = 'L48', crs = 4326, ssl = True)
 
    Get data from NLCD database (2019).
 
    :Parameters: * **geometry** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with the geometry to query. The indices are used
                   as keys in the output dictionary.
-                * **resolution** (:class:`float`) -- The data resolution in meters. The width and height of the output are computed in pixel
-                  based on the geometry bounds and the given resolution.
+                * **resolution** (:class:`float`, *optional*) -- The data resolution in meters. The width and height of the output are computed in pixel
+                  based on the geometry bounds and the given resolution. The default is 30 m which is the
+                  native resolution of NLCD data.
                 * **years** (:class:`dict`, *optional*) -- The years for NLCD layers as a dictionary, defaults to
                   ``{'impervious': [2019], 'cover': [2019], 'canopy': [2019], "descriptor": [2019]}``.
                   Layers that are not in years are ignored, e.g., ``{'cover': [2016, 2019]}`` returns
@@ -84,8 +84,7 @@ Module Contents
                   and ``PR`` (for Puerto Rico). Both lower and upper cases are acceptable.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
                   ``epsg:4326``.
-                * **ssl** (:class:`bool` or :class:`SSLContext`, *optional*) -- SSLContext to use for the connection, defaults to None. Set to ``False`` to disable
-                  SSL certification verification.
+                * **ssl** (:class:`bool`, *optional*) -- Whether to use SSL for the connection, defaults to ``True``.
 
    :returns: :class:`dict` of :class:`xarray.Dataset` or :class:`xarray.Dataset` -- A single or a ``dict`` of NLCD datasets. If dict, the keys are indices
              of the input ``GeoDataFrame``.

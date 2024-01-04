@@ -2,11 +2,11 @@
 PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
 ------------------------------------------------------------
 
-.. image:: https://img.shields.io/pypi/v/pypgu.svg
+.. image:: https://img.shields.io/pypi/v/pygeoutils.svg
     :target: https://pypi.python.org/pypi/pygeoutils
     :alt: PyPi
 
-.. image:: https://img.shields.io/conda/vn/conda-forge/pypgu.svg
+.. image:: https://img.shields.io/conda/vn/conda-forge/pygeoutils.svg
     :target: https://anaconda.org/conda-forge/pygeoutils
     :alt: Conda Version
 
@@ -14,7 +14,7 @@ PyGeoUtils: Utilities for (Geo)JSON and (Geo)TIFF Conversion
     :target: https://codecov.io/gh/hyriver/pygeoutils
     :alt: CodeCov
 
-.. image:: https://img.shields.io/pypi/pyversions/pypgu.svg
+.. image:: https://img.shields.io/pypi/pyversions/pygeoutils.svg
     :target: https://pypi.python.org/pypi/pygeoutils
     :alt: Python Versions
 
@@ -75,6 +75,7 @@ These utilities are:
 - ``geometry_reproject``: For reprojecting a geometry
   (bounding box, list of coordinates, or any ``shapely.geometry``) to
   a new CRS.
+- ``gtiff2vrt``: For converting a list of GeoTIFF files to a VRT file.
 
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
@@ -187,7 +188,7 @@ via WFS, then convert the output to ``xarray.Dataset`` and ``GeoDataFrame``, res
         url_wfs,
         layer="public_NFHL:Base_Flood_Elevations",
         outformat="esrigeojson",
-        crs="epsg:4269",
+        crs=4269,
     )
     r = wfs.getfeature_bybox(geometry.bounds, box_crs=crs)
-    flood = pgu.json2geodf(r.json(), "epsg:4269", crs)
+    flood = pgu.json2geodf(r.json(), 4269, crs)

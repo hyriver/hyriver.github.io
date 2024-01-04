@@ -73,20 +73,20 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from shapely.geometry import Point
+   >>> from shapely import Point
    >>> point = Point(-7766049.665, 5691929.739)
-   >>> match_crs(point, "epsg:3857", 4326).xy
+   >>> match_crs(point, 3857, 4326).xy
    (array('d', [-69.7636111130079]), array('d', [45.44549114818127]))
    >>> bbox = (-7766049.665, 5691929.739, -7763049.665, 5696929.739)
-   >>> match_crs(bbox, "epsg:3857", 4326)
+   >>> match_crs(bbox, 3857, 4326)
    (-69.7636111130079, 45.44549114818127, -69.73666165448431, 45.47699468552394)
    >>> coords = [(-7766049.665, 5691929.739)]
-   >>> match_crs(coords, "epsg:3857", 4326)
+   >>> match_crs(coords, 3857, 4326)
    [(-69.7636111130079, 45.44549114818127)]
 
 
-.. py:function:: streaming_download(urls: str, kwds: dict[str, dict[Any, Any]] | None = None, fnames: str | pathlib.Path | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> pathlib.Path
-                 streaming_download(urls: list[str], kwds: list[dict[str, dict[Any, Any]]] | None = None, fnames: Sequence[str | pathlib.Path] | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> list[pathlib.Path]
+.. py:function:: streaming_download(urls: str, kwds: dict[str, dict[Any, Any]] | None = None, fnames: str | pathlib.Path | None = None, root_dir: str | pathlib.Path | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> pathlib.Path
+                 streaming_download(urls: list[str], kwds: list[dict[str, dict[Any, Any]]] | None = None, fnames: Sequence[str | pathlib.Path] | None = None, root_dir: str | pathlib.Path | None = None, file_prefix: str = '', file_extention: str = '', method: str = 'GET', ssl: bool = True, chunk_size: int = CHUNK_SIZE, n_jobs: int = MAX_CONN) -> list[pathlib.Path]
 
    Download and store files in parallel from a list of URLs/Keywords.
 
@@ -101,6 +101,10 @@ Module Contents
                   ("file1.zip", ...). Defaults to ``None``. If not provided,
                   random unique filenames will be generated based on
                   URL and keyword pairs.
+                * **root_dir** (:class:`str` or :class:`Path`, *optional*) -- Root directory to store the files, defaults to ``None`` which
+                  uses HyRiver's cache directory. Note that you should either
+                  provide ``root_dir`` or ``fnames``. If both are provided,
+                  ``root_dir`` will be ignored.
                 * **file_prefix** (:class:`str`, *optional*) -- Prefix to add to filenames when storing the files, defaults
                   to ``None``, i.e., no prefix. This argument will be only be
                   used if ``fnames`` is not passed.
@@ -121,12 +125,13 @@ Module Contents
 
    Extract an element from a JSON-like object along a specified ipath.
 
-   This function is based on `bcmullins <https://bcmullins.github.io/parsing-json-python/>`__.
+   This function is based on
+   `bcmullins <https://bcmullins.github.io/parsing-json-python/>`__.
 
-   :Parameters: * **json_data** (:class:`dict` or :class:`list` of :class:`dicts`) -- The input json dictionary
-                * **ipath** (:class:`list`) -- The ipath to the requested element
+   :Parameters: * **json_data** (:class:`dict` or :class:`list` of :class:`dicts`) -- The input json dictionary.
+                * **ipath** (:class:`list`) -- The ipath to the requested element.
 
-   :returns: :class:`list` -- The sub-items founds in the JSON
+   :returns: :class:`list` -- The sub-items founds in the JSON.
 
    .. rubric:: Examples
 

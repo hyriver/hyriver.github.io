@@ -34,7 +34,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-      
+
 
    :Parameters: **data_type** (:class:`str`, *optional*) -- Type of the survey data to retrieve, defaults to ``points``.
                 Note that the ``points`` data type gets the best available point
@@ -188,7 +188,7 @@ Module Contents
    .. rubric:: Notes
 
    This function uses Microsoft's Planetary Computer service to get the data.
-   The dataset's description and its suppoerted soil properties can be found at:
+   The dataset's description and its supported soil properties can be found at:
    https://planetarycomputer.microsoft.com/dataset/gnatsgo-rasters
 
    :Parameters: * **layers** (:class:`list` of :class:`str` or :class:`str`) -- Target layer(s). Available layers can be found at the dataset's website

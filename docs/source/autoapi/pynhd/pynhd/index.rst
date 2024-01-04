@@ -12,6 +12,44 @@
 Module Contents
 ---------------
 
+.. py:class:: HP3D(layer, outfields = '*', crs = 4326)
+
+
+
+
+   Access USGS 3D Hydrography Program (3DHP) service.
+
+   .. rubric:: Notes
+
+   For more info visit: https://hydro.nationalmap.gov/arcgis/rest/services/3DHP_all/MapServer
+
+   :Parameters: * **layer** (:class:`str`, *optional*) -- A valid service layer. Layer names with ``_hr`` are high resolution and
+                  ``_mr`` are medium resolution. Also, layer names with ``_nonconus`` are for
+                  non-conus areas, i.e., Alaska, Hawaii, Puerto Rico, the Virgin Islands , and
+                  the Pacific Islands. Valid layers are:
+
+                  - ``hydrolocation``
+                  - ``flowline``
+                  - ``waterbody``
+                  - ``drainage_area``
+                  - ``catchment``
+                * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
+
+   .. method:: bygeom(geom, geo_crs=4326, sql_clause="", distance=None, return_m=False, return_geom=True)
+
+      Get features within a geometry that can be combined with a SQL where clause.
+
+   .. method:: byids(field, fids, return_m=False, return_geom=True)
+
+      Get features by object IDs.
+
+   .. method:: bysql(sql_clause, return_m=False, return_geom=True)
+
+      Get features using a valid SQL 92 WHERE clause.
+
+
+
 .. py:class:: NHD(layer, outfields = '*', crs = 4326)
 
 
@@ -55,7 +93,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-      
+
 
 
 .. py:class:: NHDPlusHR(layer, outfields = '*', crs = 4326)
@@ -98,7 +136,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-      
+
 
 
 .. py:class:: NLDI
@@ -148,7 +186,7 @@ Module Contents
                      * 'ca_gages' for Streamgage catalog for CA SB19
                      * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
                      * 'huc12pp' for HUC12 Pour Points
-                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nmwdi-st' for New Mexico Water Data Initiative Sites
                      * 'nwisgw' for NWIS Groundwater Sites
                      * 'nwissite' for NWIS Surface Water Sites
                      * 'ref_gage' for geoconnex.us reference gages
@@ -179,7 +217,7 @@ Module Contents
                      * 'ca_gages' for Streamgage catalog for CA SB19
                      * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
                      * 'huc12pp' for HUC12 Pour Points
-                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nmwdi-st' for New Mexico Water Data Initiative Sites
                      * 'nwisgw' for NWIS Groundwater Sites
                      * 'nwissite' for NWIS Surface Water Sites
                      * 'ref_gage' for geoconnex.us reference gages
@@ -204,7 +242,7 @@ Module Contents
                      * 'ca_gages' for Streamgage catalog for CA SB19
                      * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
                      * 'huc12pp' for HUC12 Pour Points
-                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nmwdi-st' for New Mexico Water Data Initiative Sites
                      * 'nwisgw' for NWIS Groundwater Sites
                      * 'nwissite' for NWIS Surface Water Sites
                      * 'ref_gage' for geoconnex.us reference gages
@@ -227,7 +265,7 @@ Module Contents
                      * 'ca_gages' for Streamgage catalog for CA SB19
                      * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
                      * 'huc12pp' for HUC12 Pour Points
-                     * 'nmwdi-st' for New Mexico Water Data Initative Sites
+                     * 'nmwdi-st' for New Mexico Water Data Initiative Sites
                      * 'nwisgw' for NWIS Groundwater Sites
                      * 'nwissite' for NWIS Surface Water Sites
                      * 'ref_gage' for geoconnex.us reference gages
@@ -304,7 +342,29 @@ Module Contents
       1000.0
 
 
-   .. py:method:: elevation_profile(coords, numpts, dem_res, crs = 4326)
+   .. py:method:: elevation_profile(line, numpts, dem_res, crs = 4326)
+
+      Return a GeoDataFrame from the xsatpathpts service.
+
+      :Parameters: * **line** (:class:`shapely.LineString` or :class:`shapely.MultiLineString`) -- The line to extract the elevation profile for.
+                   * **numpts** (:class:`int`) -- The number of points to extract the elevation profile from the DEM.
+                   * **dem_res** (:class:`int`) -- The target resolution for requesting the DEM from 3DEP service.
+                   * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The coordinate reference system of the coordinates, defaults to EPSG:4326.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the elevation profile along the requested endpoints.
+
+      .. rubric:: Examples
+
+      >>> from pynhd import PyGeoAPI
+      >>> from shapely import LineString
+      >>> pga = PyGeoAPI()
+      >>> line = LineString([(-103.801086, 40.26772), (-103.80097, 40.270568)])
+      >>> gdf = pga.elevation_profile(line, 101, 1, 4326)  # doctest: +SKIP
+      >>> print(gdf.iloc[-1, 2])  # doctest: +SKIP
+      1299.8727
+
+
+   .. py:method:: endpoints_profile(coords, numpts, dem_res, crs = 4326)
 
       Return a GeoDataFrame from the xsatendpts service.
 
@@ -320,7 +380,7 @@ Module Contents
 
       >>> from pynhd import PyGeoAPI
       >>> pga = PyGeoAPI()
-      >>> gdf = pga.elevation_profile(
+      >>> gdf = pga.endpoints_profile(
       ...     [(-103.801086, 40.26772), (-103.80097, 40.270568)], numpts=101, dem_res=1, crs=4326
       ... )  # doctest: +SKIP
       >>> print(gdf.iloc[-1, 1])  # doctest: +SKIP
@@ -370,7 +430,7 @@ Module Contents
 
 
 
-.. py:class:: WaterData(layer, crs = 4326, validation = True)
+.. py:class:: WaterData(layer, crs = 4326)
 
 
    Access to `WaterData <https://labs.waterdata.usgs.gov/geoserver>`__ service.
@@ -428,13 +488,14 @@ Module Contents
 
       :Parameters: * **cql_filter** (:class:`str`) -- The CQL filter to use for requesting the data.
                    * **method** (:class:`str`, *optional*) -- The HTTP method to use for requesting the data, defaults to GET.
+                     Allowed methods are GET and POST.
                    * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
                      to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrames.
 
 
-   .. py:method:: bygeom(geometry, geo_crs = 4326, xy = True, predicate = 'INTERSECTS', sort_attr = None)
+   .. py:method:: bygeom(geometry, geo_crs = 4326, xy = True, predicate = 'intersects', sort_attr = None)
 
       Get features within a geometry.
 
@@ -444,16 +505,16 @@ Module Contents
                    * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to
                      INTERSECTS. Valid predicates are:
 
-                     - ``EQUALS``
-                     - ``DISJOINT``
-                     - ``INTERSECTS``
-                     - ``TOUCHES``
-                     - ``CROSSES``
-                     - ``WITHIN``
-                     - ``CONTAINS``
-                     - ``OVERLAPS``
-                     - ``RELATE``
-                     - ``BEYOND``
+                     - ``equals``
+                     - ``disjoint``
+                     - ``intersects``
+                     - ``touches``
+                     - ``crosses``
+                     - ``within``
+                     - ``contains``
+                     - ``overlaps``
+                     - ``relate``
+                     - ``beyond``
                    * **sort_attr** (:class:`str`, *optional*) -- The column name in the database to sort request by, defaults
                      to the first attribute in the schema that contains ``id`` in its name.
 
@@ -466,31 +527,35 @@ Module Contents
 
 
 
-.. py:function:: pygeoapi(coords, service)
+.. py:function:: pygeoapi(geodf, service)
 
    Return a GeoDataFrame from the flowtrace service.
 
-   :Parameters: * **coords** (:class:`geopandas.GeoDataFrame`) -- A GeoDataFrame containing the coordinates to query.
-                  The required columns services are:
+   :Parameters: * **geodf** (:class:`geopandas.GeoDataFrame`) -- A GeoDataFrame containing geometries to query.
+                  The required columns for each service are:
 
                   * ``flow_trace``: ``direction`` that indicates the direction of the flow trace.
-                    It can be ``up``, ``down``, or ``none``.
+                    It can be ``up``, ``down``, or ``none`` (both directions).
                   * ``split_catchment``: ``upstream`` that indicates whether to return all upstream
                     catchments or just the local catchment.
                   * ``elevation_profile``: ``numpts`` that indicates the number of points to extract
+                    along the flowpath and ``3dep_res`` that indicates the target resolution for
+                    requesting the DEM from 3DEP service.
+                  * ``endpoints_profile``: ``numpts`` that indicates the number of points to extract
                     along the flowpath and ``3dep_res`` that indicates the target resolution for
                     requesting the DEM from 3DEP service.
                   * ``cross_section``: ``numpts`` that indicates the number of points to extract
                     along the flowpath and ``width`` that indicates the width of the cross-section
                     in meters.
                 * **service** (:class:`str`) -- The service to query, can be ``flow_trace``, ``split_catchment``, ``elevation_profile``,
-                  or ``cross_section``.
+                  ``endpoints_profile``, or ``cross_section``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- A GeoDataFrame containing the results of requested service.
 
    .. rubric:: Examples
 
-   >>> from shapely.geometry import Point
+   >>> from shapely import Point
+   >>> import geopandas as gpd
    >>> gdf = gpd.GeoDataFrame(
    ...     {
    ...         "direction": [

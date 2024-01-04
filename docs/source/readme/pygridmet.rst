@@ -1,31 +1,31 @@
 
-PyDaymet: Daily climate data through Daymet
--------------------------------------------
+PyGridMET: Daily climate data through GridMET
+---------------------------------------------
 
-.. image:: https://img.shields.io/pypi/v/pydaymet.svg
-    :target: https://pypi.python.org/pypi/pydaymet
+.. image:: https://img.shields.io/pypi/v/pygridmet.svg
+    :target: https://pypi.python.org/pypi/pygridmet
     :alt: PyPi
 
-.. image:: https://img.shields.io/conda/vn/conda-forge/pydaymet.svg
-    :target: https://anaconda.org/conda-forge/pydaymet
+.. image:: https://img.shields.io/conda/vn/conda-forge/pygridmet.svg
+    :target: https://anaconda.org/conda-forge/pygridmet
     :alt: Conda Version
 
-.. image:: https://codecov.io/gh/hyriver/pydaymet/branch/main/graph/badge.svg
-    :target: https://codecov.io/gh/hyriver/pydaymet
+.. image:: https://codecov.io/gh/hyriver/pygridmet/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/hyriver/pygridmet
     :alt: CodeCov
 
-.. image:: https://img.shields.io/pypi/pyversions/pydaymet.svg
-    :target: https://pypi.python.org/pypi/pydaymet
+.. image:: https://img.shields.io/pypi/pyversions/pygridmet.svg
+    :target: https://pypi.python.org/pypi/pygridmet
     :alt: Python Versions
 
-.. image:: https://static.pepy.tech/badge/pydaymet
-    :target: https://pepy.tech/project/pydaymet
+.. image:: https://static.pepy.tech/badge/pygridmet
+    :target: https://pepy.tech/project/pygridmet
     :alt: Downloads
 
 |
 
-.. image:: https://www.codefactor.io/repository/github/hyriver/pydaymet/badge
-   :target: https://www.codefactor.io/repository/github/hyriver/pydaymet
+.. image:: https://www.codefactor.io/repository/github/hyriver/pygridmet/badge
+   :target: https://www.codefactor.io/repository/github/hyriver/pygridmet
    :alt: CodeFactor
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -42,49 +42,20 @@ PyDaymet: Daily climate data through Daymet
 
 |
 
-.. warning::
-
-    Since the release of Daymet v4 R1 on November 2022, the URL of
-    Daymet's server has been changed. Therefore, only PyDaymet v0.13.7+
-    is going to work, and previous versions will not work anymore.
-
 Features
 --------
 
-PyDaymet is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
+PyGridMET is a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack that
 is designed to aid in hydroclimate analysis through web services. This package provides
-access to climate data from
-`Daymet V4 R1 <https://daymet.ornl.gov/overview>`__ database using NetCDF
+access to daily climate data over contermonious US (CONUS) from
+`GridMET <https://www.climatologylab.org/gridmet.html>`__ database using NetCDF
 Subset Service (NCSS). Both single pixel (using ``get_bycoords`` function) and gridded data (using
 ``get_bygeom``) are supported which are returned as
-``pandas.DataFrame`` and ``xarray.Dataset``, respectively. Climate data is available for North
-America, Hawaii from 1980, and Puerto Rico from 1950 at three time scales: daily, monthly,
-and annual. Additionally, PyDaymet can compute Potential EvapoTranspiration (PET)
-using three methods: ``penman_monteith``, ``priestley_taylor``, and ``hargreaves_samani`` for
-both single pixel and gridded data.
-
-For PET computations, PyDaymet accepts four additional user-defined parameters:
-
-* ``penman_monteith``: ``soil_heat_flux``, ``albedo``, ``alpha``,
-    and ``arid_correction``.
-* ``priestley_taylor``: ``soil_heat_flux``, ``albedo``, and ``arid_correction``.
-* ``hargreaves_samani``: None.
-
-Default values for the parameters are: ``soil_heat_flux`` = 0, ``albedo`` = 0.23,
-``alpha`` = 1.26, and ``arid_correction`` = False.
-An important parameter for ``priestley_taylor`` and ``penman_monteith`` methods
-is ``arid_correction`` which is used to correct the actual vapor pressure
-for arid regions. Since relative humidity is not provided by Daymet, the actual
-vapor pressure is computed assuming that the dew point temperature is equal to
-the minimum temperature. However, for arid regions, FAO 56 suggests subtracting
-minimum temperature by 2-3 °C to account for the fact that in arid regions,
-the air might not be saturated when its temperature is at its minimum. For such
-areas, you can pass ``{"arid_correction": True, ...}`` to subtract 2 °C from the
-minimum temperature for computing the actual vapor pressure.
+``pandas.DataFrame`` and ``xarray.Dataset``, respectively.
 
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
-Moreover, under the hood, PyDaymet uses
+Moreover, under the hood, PyGridMET uses
 `PyGeoOGC <https://github.com/hyriver/pygeoogc>`__ and
 `AsyncRetriever <https://github.com/hyriver/async-retriever>`__ packages
 for making requests in parallel and storing responses in chunks. This improves the
@@ -114,13 +85,13 @@ For example, in your code before making any requests you can do:
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
     os.environ["HYRIVER_SSL_CERT"] = "path/to/cert.pem"
 
-You can also try using PyDaymet without installing
+You can also try using PyGridMET without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
 instance with the HyRiver stack pre-installed will be launched in your web browser, and you
 can start coding!
 
 Moreover, requests for additional functionalities can be submitted via
-`issue tracker <https://github.com/hyriver/pydaymet/issues>`__.
+`issue tracker <https://github.com/hyriver/pygridmet/issues>`__.
 
 Citation
 --------
@@ -143,24 +114,23 @@ If you use any of HyRiver packages in your research, we appreciate citations:
 Installation
 ------------
 
-You can install PyDaymet using ``pip`` after installing ``libgdal`` on your system
-(for example, in Ubuntu run ``sudo apt install libgdal-dev``):
+You can install PyGridMET using ``pip`` as follows:
 
 .. code-block:: console
 
-    $ pip install pydaymet
+    $ pip install pygridmet
 
-Alternatively, PyDaymet can be installed from the ``conda-forge`` repository
+Alternatively, PyGridMET can be installed from the ``conda-forge`` repository
 using `Conda <https://docs.conda.io/en/latest/>`__:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge pydaymet
+    $ conda install -c conda-forge pygridmet
 
 Quick start
 -----------
 
-You can use PyDaymet using command-line or as a Python library. The commanda-line
+You can use PyGridMET using command-line or as a Python library. The commanda-line
 provides access to two functionality:
 
 - Getting gridded climate data: You must create a ``geopandas.GeoDataFrame`` that contains
@@ -179,10 +149,10 @@ provides access to two functionality:
 
 .. code-block:: console
 
-    $ pydaymet -h
-    Usage: pydaymet [OPTIONS] COMMAND [ARGS]...
+    $ pygridmet -h
+    Usage: pygridmet [OPTIONS] COMMAND [ARGS]...
 
-    Command-line interface for PyDaymet.
+    Command-line interface for PyGridMET.
 
     Options:
     -h, --help  Show this message and exit.
@@ -195,27 +165,24 @@ The ``coords`` sub-command is as follows:
 
 .. code-block:: console
 
-    $ pydaymet coords -h
-    Usage: pydaymet coords [OPTIONS] FPATH
+    $ pygridmet coords -h
+    Usage: pygridmet coords [OPTIONS] FPATH
 
     Retrieve climate data for a list of coordinates.
 
     FPATH: Path to a csv file with four columns:
-        - ``id``: Feature identifiers that daymet uses as the output netcdf filenames.
+        - ``id``: Feature identifiers that gridmet uses as the output netcdf filenames.
         - ``start``: Start time.
         - ``end``: End time.
         - ``lon``: Longitude of the points of interest.
         - ``lat``: Latitude of the points of interest.
-        - ``time_scale``: (optional) Time scale, either ``daily`` (default), ``monthly`` or ``annual``.
-        - ``pet``: (optional) Method to compute PET. Supported methods are:
-                    ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
         - ``snow``: (optional) Separate snowfall from precipitation, default is ``False``.
 
     Examples:
         $ cat coords.csv
-        id,lon,lat,start,end,pet
-        california,-122.2493328,37.8122894,2012-01-01,2014-12-31,hargreaves_samani
-        $ pydaymet coords coords.csv -v prcp -v tmin
+        id,lon,lat,start,end
+        california,-122.2493328,37.8122894,2012-01-01,2014-12-31
+        $ pygridmet coords coords.csv -v pr -v tmmn
 
     Options:
     -v, --variables TEXT  Target variables. You can pass this flag multiple
@@ -230,24 +197,21 @@ And, the ``geometry`` sub-command is as follows:
 
 .. code-block:: console
 
-    $ pydaymet geometry -h
-    Usage: pydaymet geometry [OPTIONS] FPATH
+    $ pygridmet geometry -h
+    Usage: pygridmet geometry [OPTIONS] FPATH
 
     Retrieve climate data for a dataframe of geometries.
 
     FPATH: Path to a shapefile (.shp) or geopackage (.gpkg) file.
     This file must have four columns and contain a ``crs`` attribute:
-        - ``id``: Feature identifiers that daymet uses as the output netcdf filenames.
+        - ``id``: Feature identifiers that gridmet uses as the output netcdf filenames.
         - ``start``: Start time.
         - ``end``: End time.
         - ``geometry``: Target geometries.
-        - ``time_scale``: (optional) Time scale, either ``daily`` (default), ``monthly`` or ``annual``.
-        - ``pet``: (optional) Method to compute PET. Supported methods are:
-                    ``penman_monteith``, ``hargreaves_samani``, ``priestley_taylor``, and ``none`` (default).
         - ``snow``: (optional) Separate snowfall from precipitation, default is ``False``.
 
     Examples:
-        $ pydaymet geometry geo.gpkg -v prcp -v tmin
+        $ pygridmet geometry geo.gpkg -v pr -v tmmn
 
     Options:
     -v, --variables TEXT  Target variables. You can pass this flag multiple
@@ -258,34 +222,70 @@ And, the ``geometry`` sub-command is as follows:
     --disable_ssl         Pass to disable SSL certification verification.
     -h, --help            Show this message and exit.
 
-Now, let's see how we can use PyDaymet as a library.
+Now, let's see how we can use PyGridMET as a library.
 
-PyDaymet offers two functions for getting climate data; ``get_bycoords`` and ``get_bygeom``.
+PyGridMET offers two functions for getting climate data; ``get_bycoords`` and ``get_bygeom``.
 The arguments of these functions are identical except the first argument where the latter
 should be polygon and the former should be a coordinate (a tuple of length two as in (x, y)).
 The input geometry or coordinate can be in any valid CRS (defaults to ``EPSG:4326``). The
 ``dates`` argument can be either a tuple of length two like ``(start_str, end_str)`` or a list of
-years like ``[2000, 2005]``. It is noted that both functions have a ``pet`` flag for computing PET
-and a ``snow`` flag for separating snow from precipitation using
+years like ``[2000, 2005]``. It is noted that both functions have a ``snow`` flag for separating
+snow from precipitation using
 `Martinez and Gupta (2010) <https://doi.org/10.1029/2009WR008294>`__ method.
-Additionally, we can pass ``time_scale`` to get daily, monthly or annual summaries. This flag
-by default is set to daily.
+
+We can get a dataframe of available variables and their info by calling
+``GridMET().gridmet_table``:
+
++----------------------------------------+------------+------------------------------+
+| Variable                               | Abbr       | Unit                         |
++========================================+============+==============================+
+| Precipitation                          | ``pr``     | mm                           |
++----------------------------------------+------------+------------------------------+
+| Maximum Relative Humidity              | ``rmax``   | %                            |
++----------------------------------------+------------+------------------------------+
+| Minimum Relative Humidity              | ``rmin``   | %                            |
++----------------------------------------+------------+------------------------------+
+| Specific Humidity                      | ``sph``    | kg/kg                        |
++----------------------------------------+------------+------------------------------+
+| Surface Radiation                      | ``srad``   | W/m2                         |
++----------------------------------------+------------+------------------------------+
+| Wind Direction                         | ``th``     | Degrees Clockwise from north |
++----------------------------------------+------------+------------------------------+
+| Minimum Air Temperature                | ``tmmn``   | K                            |
++----------------------------------------+------------+------------------------------+
+| Maximum Air Temperature                | ``tmmx``   | K                            |
++----------------------------------------+------------+------------------------------+
+| Wind Speed                             | ``vs``     | m/s                          |
++----------------------------------------+------------+------------------------------+
+| Burning Index                          | ``bi``     | Dimensionless                |
++----------------------------------------+------------+------------------------------+
+| Fuel Moisture (100-hr)                 | ``fm100``  | %                            |
++----------------------------------------+------------+------------------------------+
+| Fuel Moisture (1000-hr)                | ``fm1000`` | %                            |
++----------------------------------------+------------+------------------------------+
+| Energy Release Component               | ``erc``    | Dimensionless                |
++----------------------------------------+------------+------------------------------+
+| Reference Evapotranspiration (Alfalfa) | ``etr``    | mm                           |
++----------------------------------------+------------+------------------------------+
+| Reference Evapotranspiration (Grass)   | ``pet``    | mm                           |
++----------------------------------------+------------+------------------------------+
+| Vapor Pressure Deficit                 | ``vpd``    | kPa                          |
++----------------------------------------+------------+------------------------------+
 
 .. code-block:: python
 
     from pynhd import NLDI
-    import pydaymet as daymet
+    import pygridmet as gridmet
 
     geometry = NLDI().get_basins("01031500").geometry[0]
 
-    var = ["prcp", "tmin"]
+    var = ["pr", "tmmn"]
     dates = ("2000-01-01", "2000-06-30")
 
-    daily = daymet.get_bygeom(geometry, dates, variables=var, pet="priestley_taylor", snow=True)
-    monthly = daymet.get_bygeom(geometry, dates, variables=var, time_scale="monthly")
+    daily = gridmet.get_bygeom(geometry, dates, variables=var, snow=True)
 
-.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/daymet_grid.png
-    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/daymet.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/gridmet_grid.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/gridmet.ipynb
 
 If the input geometry (or coordinate) is in a CRS other than ``EPSG:4326``, we should pass
 it to the functions.
@@ -295,10 +295,10 @@ it to the functions.
     coords = (-1431147.7928, 318483.4618)
     crs = 3542
     dates = ("2000-01-01", "2006-12-31")
-    annual = daymet.get_bycoords(coords, dates, variables=var, loc_crs=crs, time_scale="annual")
+    data = gridmet.get_bycoords(coords, dates, variables=var, loc_crs=crs)
 
-.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/daymet_loc.png
-    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/daymet.ipynb
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/gridmet_loc.png
+    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/gridmet.ipynb
 
 Additionally, the ``get_bycoords`` function accepts a list of coordinates and by setting the
 ``to_xarray`` flag to ``True`` it can return the results as a ``xarray.Dataset`` instead of
@@ -308,32 +308,4 @@ a ``pandas.DataFrame``:
 
     coords = [(-94.986, 29.973), (-95.478, 30.134)]
     idx = ["P1", "P2"]
-    clm_ds = daymet.get_bycoords(coords, range(2000, 2021), coords_id=idx, to_xarray=True)
-
-Also, we can use the ``potential_et`` function to compute PET by passing the daily climate data.
-We can either pass a ``pandas.DataFrame`` or a ``xarray.Dataset``. Note that, ``penman_monteith``
-and ``priestley_taylor`` methods have parameters that can be passed via the ``params`` argument,
-if any value other than the default values are needed. For example, default value of ``alpha``
-for ``priestley_taylor`` method is 1.26 (humid regions), we can set it to 1.74 (arid regions)
-as follows:
-
-.. code-block:: python
-
-    pet_hs = daymet.potential_et(daily, methods="priestley_taylor", params={"alpha": 1.74})
-
-Next, let's get annual total precipitation for Hawaii and Puerto Rico for 2010.
-
-.. code-block:: python
-
-    hi_ext = (-160.3055, 17.9539, -154.7715, 23.5186)
-    pr_ext = (-67.9927, 16.8443, -64.1195, 19.9381)
-    hi = daymet.get_bygeom(hi_ext, 2010, variables="prcp", region="hi", time_scale="annual")
-    pr = daymet.get_bygeom(pr_ext, 2010, variables="prcp", region="pr", time_scale="annual")
-
-Some example plots are shown below:
-
-.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/hi.png
-    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/daymet.ipynb
-
-.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/pr.png
-    :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/daymet.ipynb
+    clm_ds = gridmet.get_bycoords(coords, range(2000, 2021), coords_id=idx, to_xarray=True)

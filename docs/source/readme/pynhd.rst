@@ -123,20 +123,22 @@ responses are stored in the ``./cache/aiohttp_cache.sqlite`` file.
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 Moreover, under the hood, PyNHD uses
-`AsyncRetriever <https://github.com/hyriver/async-retriever>`__
-for making requests asynchronously with persistent caching. This improves the
-reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
-pairs and upon making an already cached request, it will retrieve the responses from the cache
-if the server's response is unchanged.
+`PyGeoOGC <https://github.com/hyriver/pygeoogc>`__ and
+`AsyncRetriever <https://github.com/hyriver/async-retriever>`__ packages
+for making requests in parallel and storing responses in chunks. This improves the
+reliability and speed of data retrieval significantly.
 
 You can control the request/response caching behavior and verbosity of the package
 by setting the following environment variables:
 
-* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
-  ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database for asynchronous HTTP
+  requests. It defaults to ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_NAME_HTTP``: Path to the caching SQLite database for HTTP requests.
+  It defaults to ``./cache/http_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
-  -1 (never expire).
+  one week.
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_SSL_CERT``: Path to a SSL certificate file.
 
 For example, in your code before making any requests you can do:
 
@@ -144,9 +146,11 @@ For example, in your code before making any requests you can do:
 
     import os
 
-    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/aiohttp_cache.sqlite"
+    os.environ["HYRIVER_CACHE_NAME_HTTP"] = "path/to/http_cache.sqlite"
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+    os.environ["HYRIVER_SSL_CERT"] = "path/to/cert.pem"
 
 You can also try using PyNHD without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
@@ -263,7 +267,7 @@ We can get more information about these stations using GeoConnex:
     stations = st_all.identifier.str.split("-").str[1].unique()
     gauges = gpd.GeoDataFrame(
         pd.concat(gcx.query({"provider_id": sid}) for sid in stations),
-        crs="epsg:4326",
+        crs=4326,
     )
 
 Instead, we can carry out a spatial query within the basin of interest:
@@ -339,16 +343,16 @@ will be the only way to access the database. Let's compare the two, starting by
 
     trace = pygeoapi.flow_trace((1774209.63, 856381.68), crs="ESRI:102003", direction="none")
 
-    split = pygeoapi.split_catchment((-73.82705, 43.29139), crs="epsg:4326", upstream=False)
+    split = pygeoapi.split_catchment((-73.82705, 43.29139), crs=4326, upstream=False)
 
     profile = pygeoapi.elevation_profile(
         [(-103.801086, 40.26772), (-103.80097, 40.270568)],
         numpts=101,
         dem_res=1,
-        crs="epsg:4326",
+        crs=4326,
     )
 
-    section = pygeoapi.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs="epsg:4326")
+    section = pygeoapi.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs=4326)
 
 Now, let's do the same operations using ``pygeoapi``:
 
@@ -369,7 +373,7 @@ Now, let's do the same operations using ``pygeoapi``:
             sgeom.Point(-73.82705, 43.29139),
             sgeom.Point(-103.801086, 40.26772),
         ],
-        crs="epsg:4326",
+        crs=4326,
     )
     trace = nhd.pygeoapi(coords, "flow_trace")
     split = nhd.pygeoapi(coords, "split_catchment")
@@ -387,7 +391,7 @@ Now, let's do the same operations using ``pygeoapi``:
             sgeom.MultiPoint([(-103.801086, 40.26772), (-103.80097, 40.270568)]),
             sgeom.MultiPoint([(-102.801086, 39.26772), (-102.80097, 39.270568)]),
         ],
-        crs="epsg:4326",
+        crs=4326,
     )
     profile = nhd.pygeoapi(coords, "elevation_profile")
 

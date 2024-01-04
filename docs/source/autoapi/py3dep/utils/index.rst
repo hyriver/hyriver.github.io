@@ -22,16 +22,19 @@ Module Contents
              is set to ``m/m``.
 
 
-.. py:function:: fill_depressions(dem)
+.. py:function:: fill_depressions(dem, outlets = 'min')
 
-   Fill depressions and adjust flat areas in a DEM using `RichDEM <https://richdem.readthedocs.io>`__.
+   Hydrocondition the DEM.
 
-   :Parameters: **dem_da** (:class:`xarray.DataArray` or :class:`numpy.ndarray`) -- Digital Elevation Model.
+   This function uses `pyflwdir <https://deltares.github.io/pyflwdir/latest/>`__.
+   It can be installed using ``pip install pyflwdir`` or
+   ``conda install -c conda-forge pyflwdir``.
 
-   :returns: :class:`xarray.DataArray` -- Conditioned DEM after applying
-             `depression filling <https://richdem.readthedocs.io/en/latest/depression_filling.html>`__
-             and
-             `flat area resolution <https://richdem.readthedocs.io/en/latest/flat_resolution.html>`__
-             operations.
+   :Parameters: * **dem_da** (:class:`xarray.DataArray` or :class:`numpy.ndarray`) -- Digital Elevation Model.
+                * **outlets** (:class:`str`, *optional*) -- Initial basin outlet(s) at the edge of all cells
+                  (``edge``) or only the minimum elevation edge cell (``min``; default).
+
+   :returns: :class:`xarray.DataArray` -- Conditioned DEM after applying ``fill_depressions`` function from
+             `pyflwdir <https://deltares.github.io/pyflwdir/latest/>`__.
 
 

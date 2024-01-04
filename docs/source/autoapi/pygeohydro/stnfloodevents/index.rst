@@ -40,44 +40,43 @@ Module Contents
 
    .. attribute:: service_crs
 
-      The coordinate reference system of the data from the service, defaults
-      to ``EPSG:4326``.
+      The CRS of the data from the service which is ``EPSG:4326``.
 
-      :type: :class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*
+      :type: :class:`int`
 
    .. attribute:: instruments_query_params
 
-      The accepted query parameters for the instruments data type:
-      ``SensorType``, ``CurrentStatus``, ``States``, ``Event``,
-      ``County``, ``DeploymentType``, ``EventType``, ``EventStatus``,
-      and ``CollectionCondition``.
+      The accepted query parameters for the instruments data type.
+      Accepted values are ``SensorType``, ``CurrentStatus``, ``States``,
+      ``Event``, ``County``, ``DeploymentType``, ``EventType``,
+      ``EventStatus``, and ``CollectionCondition``.
 
-      :type: :class:`set` of :class:`str`
+      :type: :class:`set`
 
    .. attribute:: peaks_query_params
 
-      The accepted query parameters for the peaks data type:
-      ``EndDate``, ``States``, ``Event``, ``StartDate``, ``County``,
-      ``EventType``, and ``EventStatus``.
+      The accepted query parameters for the peaks data type.
+      Accepted values are ``EndDate``, ``States``, ``Event``, ``StartDate``,
+      ``County``, ``EventType``, and ``EventStatus``.
 
-      :type: :class:`set` of :class:`str`
+      :type: :class:`set`
 
    .. attribute:: hwms_query_params
 
-      The accepted query parameters for the hwms data type:
-      ``EndDate``, ``States``, ``Event``, ``StartDate``, ``County``,
-      ``EventType``, and ``EventStatus``.
+      The accepted query parameters for the hwms data type.
+      Accepted values are ``EndDate``, ``States``, ``Event``, ``StartDate``,
+      ``County``, ``EventType``, and ``EventStatus``.
 
-      :type: :class:`set` of :class:`str`
+      :type: :class:`set`
 
    .. attribute:: sites_query_params
 
-      The accepted query parameters for the sites data type:
-      ``OPDefined``, ``HousingTypeOne``, ``NetworkName``,
+      The accepted query parameters for the sites data type.
+      Accepted values are ``OPDefined``, ``HousingTypeOne``, ``NetworkName``,
       ``HousingTypeSeven``, ``RDGOnly``, ``HWMOnly``, ``Event``,
       ``SensorOnly``, ``State``, ``SensorType``, and ``HWMSurveyed``.
 
-      :type: :class:`set` of :class:`str`
+      :type: :class:`set`
 
    .. rubric:: Notes
 
@@ -96,7 +95,8 @@ Module Contents
    * `High-Water Marks and Flooding <https://www.usgs.gov/special-topics/water-science-school/science/high-water-marks-and-flooding>`__
    * `Identifying and preserving high-water mark data <https://doi.org/10.3133/tm3A24>`__
 
-   .. py:method:: data_dictionary(data_type, as_dict = False, async_retriever_kwargs = None)
+   .. py:method:: data_dictionary(data_type: str, as_dict: Literal[False] = False, async_retriever_kwargs: dict[str, Any] | None = ...) -> pandas.DataFrame
+                  data_dictionary(data_type: str, as_dict: Literal[True] = True, async_retriever_kwargs: dict[str, Any] | None = ...) -> dict[str, Any]
       :classmethod:
 
       Retrieve data dictionaries from the STN Flood Event Data API.
@@ -115,7 +115,7 @@ Module Contents
 
          :meth:`~get_all_data`
              Retrieves all data for a given data type.
-         
+
          :meth:`~get_filtered_data`
              Retrieves filtered data for a given data type.
 
@@ -129,7 +129,8 @@ Module Contents
       Index(['Field', 'Definition'], dtype='object')
 
 
-   .. py:method:: get_all_data(data_type, as_list = False, crs = service_crs, async_retriever_kwargs = None)
+   .. py:method:: get_all_data(data_type: str, as_list: Literal[False] = False, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> geopandas.GeoDataFrame | pandas.DataFrame
+                  get_all_data(data_type: str, as_list: Literal[True] = True, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> list[dict[str, Any]]
       :classmethod:
 
       Retrieve all data from the STN Flood Event Data API.
@@ -152,7 +153,7 @@ Module Contents
 
          :meth:`~get_filtered_data`
              Retrieves filtered data for a given data type.
-         
+
          :meth:`~data_dictionary`
              Retrieves the data dictionary for a given data type.
 
@@ -177,7 +178,8 @@ Module Contents
              dtype='object')
 
 
-   .. py:method:: get_filtered_data(data_type, query_params = None, as_list = False, crs = service_crs, async_retriever_kwargs = None)
+   .. py:method:: get_filtered_data(data_type: str, query_params: dict[str, Any] | None = ..., as_list: Literal[False] = False, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> geopandas.GeoDataFrame | pandas.DataFrame
+                  get_filtered_data(data_type: str, query_params: dict[str, Any] | None = ..., as_list: Literal[True] = True, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> list[dict[str, Any]]
       :classmethod:
 
       Retrieve filtered data from the STN Flood Event Data API.
@@ -215,7 +217,7 @@ Module Contents
 
          :meth:`~get_all_data`
              Retrieves all data for a given data type.
-         
+
          :meth:`~data_dictionary`
              Retrieves the data dictionary for a given data type.
 

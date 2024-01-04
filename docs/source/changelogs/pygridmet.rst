@@ -1,0 +1,1 @@
+.. include:: ../../../pygridmet/HISTORY.rst

@@ -69,11 +69,14 @@ if the server's response is unchanged.
 You can control the request/response caching behavior and verbosity of the package
 by setting the following environment variables:
 
-* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
-  ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database for asynchronous HTTP
+  requests. It defaults to ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_NAME_HTTP``: Path to the caching SQLite database for HTTP requests.
+  It defaults to ``./cache/http_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
-  -1 (never expire).
+  one week.
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_SSL_CERT``: Path to a SSL certificate file.
 
 For example, in your code before making any requests you can do:
 
@@ -85,6 +88,7 @@ For example, in your code before making any requests you can do:
     os.environ["HYRIVER_CACHE_NAME_HTTP"] = "path/to/http_cache.sqlite"
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+    os.environ["HYRIVER_SSL_CERT"] = "path/to/cert.pem"
 
 There is also an inventory of URLs for some of these web services in form of a class called
 ``ServiceURL``. These URLs are in four categories: ``ServiceURL().restful``,
@@ -206,7 +210,7 @@ within a geometry as follows:
 
     hr = ArcGISRESTful(ServiceURL().restful.nhdplushr, 2, outformat="json")
 
-    resp = hr.get_features(hr.oids_bygeom(basin_geom, "epsg:4326"))
+    resp = hr.get_features(hr.oids_bygeom(basin_geom, 4326))
     flowlines = geoutils.json2geodf(resp)
 
 Note ``oids_bygeom`` has three additional arguments: ``sql_clause``, ``spatial_relation``,
@@ -232,7 +236,7 @@ areas larger than 0.5 sqkm.
 
 .. code-block:: python
 
-    oids = hr.oids_bygeom(basin_geom, geo_crs="epsg:4326", sql_clause="AREASQKM > 0.5")
+    oids = hr.oids_bygeom(basin_geom, geo_crs=4326, sql_clause="AREASQKM > 0.5")
     resp = hr.get_features(oids)
     catchments = geoutils.json2geodf(resp)
 
@@ -244,14 +248,14 @@ A WMS-based example is shown below:
         ServiceURL().wms.fws,
         layers="0",
         outformat="image/tiff",
-        crs="epsg:3857",
+        crs=3857,
     )
     r_dict = wms.getmap_bybox(
         basin_geom.bounds,
         1e3,
-        box_crs="epsg:4326",
+        box_crs=4326,
     )
-    wetlands = geoutils.gtiff2xarray(r_dict, basin_geom, "epsg:4326")
+    wetlands = geoutils.gtiff2xarray(r_dict, basin_geom, 4326)
 
 Query from a WFS-based web service can be done either within a bounding box or using
 any valid `CQL filter <https://docs.geoserver.org/stable/en/user/tutorials/cql/cql_tutorial.html>`__.
@@ -262,10 +266,10 @@ any valid `CQL filter <https://docs.geoserver.org/stable/en/user/tutorials/cql/c
         ServiceURL().wfs.fema,
         layer="public_NFHL:Base_Flood_Elevations",
         outformat="esrigeojson",
-        crs="epsg:4269",
+        crs=4269,
     )
-    r = wfs.getfeature_bybox(basin_geom.bounds, box_crs="epsg:4326")
-    flood = geoutils.json2geodf(r.json(), "epsg:4269", "epsg:4326")
+    r = wfs.getfeature_bybox(basin_geom.bounds, box_crs=4326)
+    flood = geoutils.json2geodf(r.json(), 4269, 4326)
 
     layer = "wmadata:huc08"
     wfs = WFS(
@@ -273,10 +277,10 @@ any valid `CQL filter <https://docs.geoserver.org/stable/en/user/tutorials/cql/c
         layer=layer,
         outformat="application/json",
         version="2.0.0",
-        crs="epsg:4269",
+        crs=4269,
     )
     r = wfs.getfeature_byfilter(f"huc8 LIKE '13030%'")
-    huc8 = geoutils.json2geodf(r.json(), "epsg:4269", "epsg:4326")
+    huc8 = geoutils.json2geodf(r.json(), 4269, 4326)
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/sql_clause.png
     :target: https://github.com/hyriver/HyRiver-examples/blob/main/notebooks/webservices.ipynb

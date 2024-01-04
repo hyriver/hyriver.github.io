@@ -73,6 +73,7 @@ by setting the following environment variables:
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
   one week.
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_SSL_CERT``: Path to a SSL certificate file.
 
 For example, in your code before making any requests you can do:
 
@@ -83,6 +84,7 @@ For example, in your code before making any requests you can do:
     os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+    os.environ["HYRIVER_SSL_CERT"] = "path/to/cert.pem"
 
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 

@@ -17,7 +17,7 @@ Module Contents
 
 .. py:function:: prepare_plot_data(daily)
 
-   Generae a structured data for plotting hydrologic signatures.
+   Generate a structured data for plotting hydrologic signatures.
 
    :Parameters: **daily** (:class:`pandas.Series` or :class:`pandas.DataFrame`) -- The data to be processed
 
@@ -27,7 +27,7 @@ Module Contents
 
 .. py:function:: signatures(discharge, precipitation = None, title = None, figsize = None, output = None, close = False)
 
-   Plot hydrological signatures with w/ or w/o precipitation.
+   Plot hydrological signatures w/ or w/o precipitation.
 
    Plots includes daily hydrograph, regime curve (mean monthly) and
    flow duration curve. The input discharges are converted from cms

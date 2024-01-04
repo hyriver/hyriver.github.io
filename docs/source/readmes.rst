@@ -44,6 +44,15 @@ A detailed description of each component of the HyRiver software stack.
 
     .. grid-item-card::
 
+        .. button-link:: readme/pygridmet.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGridMET
+
+    .. grid-item-card::
+
         .. button-link:: readme/pynldas2.html
             :click-parent:
             :ref-type: ref
@@ -95,6 +104,7 @@ A detailed description of each component of the HyRiver software stack.
     PyGeoHydro <readme/pygeohydro>
     Py3DEP <readme/py3dep>
     PyDaymet <readme/pydaymet>
+    PyGridMET <readme/pygridmet>
     PyNLDAS2 <readme/pynldas2>
     HydroSignatures <readme/hydrosignatures>
     AsyncRetriever<readme/async-retriever>

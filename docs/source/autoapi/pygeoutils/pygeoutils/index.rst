@@ -46,25 +46,39 @@ Module Contents
    :returns: :class:`xarray.Dataset` -- The xarray Dataset with a single variable.
 
 
+.. py:function:: gtiff2vrt(file_list, vrt_path)
+
+   Create a VRT file from a list of (Geo)Tiff files.
+
+   .. note::
+
+       This function requires ``gdal`` to be installed.
+
+   :Parameters: * **file_list** (:class:`list`) -- List of paths to the GeoTiff files.
+                * **vrt_path** (:class:`str` or :class:`Path`) -- Path to the output VRT file.
+
+
 .. py:function:: gtiff2xarray(r_dict, geometry = None, geo_crs = None, ds_dims = None, driver = None, all_touched = False, nodata = None, drop = True)
 
    Convert (Geo)Tiff byte responses to ``xarray.Dataset``.
 
-   :Parameters: * **r_dict** (:class:`dict`) -- Dictionary of (Geo)Tiff byte responses where keys are some names that are used
-                  for naming each responses, and values are bytes.
-                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple`, *optional*) -- The geometry to mask the data that should be in the same CRS as the r_dict.
-                  Defaults to ``None``.
-                * **geo_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input geometry, defaults to ``None``. This
-                  argument should be given when ``geometry`` is given.
+   :Parameters: * **r_dict** (:class:`dict`) -- Dictionary of (Geo)Tiff byte responses where keys are some names
+                  that are used for naming each responses, and values are bytes.
+                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple`, *optional*) -- The geometry to mask the data that should be in the same CRS
+                  as the ``r_dict``. Defaults to ``None``.
+                * **geo_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the input geometry, defaults to ``None``.
+                  This argument should be given when ``geometry`` is given.
                 * **ds_dims** (:class:`tuple` of :class:`str`, *optional*) -- The names of the vertical and horizontal dimensions (in that order)
-                  of the target dataset, default to None. If None, dimension names are determined
-                  from a list of common names.
-                * **driver** (:class:`str`, *optional*) -- A GDAL driver for reading the content, defaults to automatic detection. A list of
-                  the drivers can be found here: https://gdal.org/drivers/raster/index.html
+                  of the target dataset, default to None. If None, dimension names are
+                  determined from a list of common names.
+                * **driver** (:class:`str`, *optional*) -- A GDAL driver for reading the content, defaults to automatic
+                  detection. A list of the drivers can be found
+                  `here <https://gdal.org/drivers/raster/index.html>`__.
                 * **all_touched** (:class:`bool`, *optional*) -- Include a pixel in the mask if it touches any of the shapes.
                   If False (default), include a pixel only if its center is within one
                   of the shapes, or if it is selected by Bresenham's line algorithm.
-                * **nodata** (:class:`float` or :class:`int`, *optional*) -- The nodata value of the raster, defaults to None, i.e., is determined from the raster.
+                * **nodata** (:class:`float` or :class:`int`, *optional*) -- The nodata value of the raster, defaults to ``None``, i.e., it is
+                  determined from the raster.
                 * **drop** (:class:`bool`, *optional*) -- If True, drop the data outside of the extent of the mask geometries.
                   Otherwise, it will return the same raster with the data masked.
                   Default is True.

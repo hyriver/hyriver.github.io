@@ -11,6 +11,7 @@ API References
    PyGeoHydro <pygeohydro/index>
    Py3DEP <py3dep/index>
    PyDaymet <pydaymet/index>
+   PyGridMET <pygridmet/index>
    PyNLDAS2 <pynldas2/index>
    HydroSignatures <hydrosignatures/index>
    AsyncRetriever <async_retriever/index>

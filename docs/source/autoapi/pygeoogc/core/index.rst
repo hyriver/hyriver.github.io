@@ -72,7 +72,7 @@ Module Contents
 
 
 
-.. py:class:: WFSBase
+.. py:class:: WFSBase(url, layer = None, outformat = None, version = '2.0.0', crs = 4326, read_method = 'json', max_nrecords = 1000, validation = True)
 
 
    Base class for WFS service.
@@ -114,7 +114,7 @@ Module Contents
 
 
 
-.. py:class:: WMSBase
+.. py:class:: WMSBase(url, layers = '', outformat = '', version = '1.3.0', crs = 4326, validation = True)
 
 
    Base class for accessing a WMS service.

@@ -150,8 +150,8 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
 
 
-   .. py:method:: bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = None, predicate: str = 'intersects', crs: CRSTYPE | None = 4326, skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
-                  bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = None, predicate: str = 'intersects', crs: CRSTYPE | None = 4326, skip_geometry: Literal[True] = True) -> pandas.DataFrame
+   .. py:method:: bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = ..., predicate: str = ..., crs: CRSTYPE = ..., skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
+                  bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = ..., predicate: str = ..., crs: CRSTYPE = ..., skip_geometry: Literal[True] = True) -> pandas.DataFrame
 
       Query the GeoConnex endpoint by geometry.
 

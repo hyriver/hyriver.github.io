@@ -97,7 +97,7 @@ Module Contents
              is a topologically sorted list of the COMIDs.
 
 
-.. py:function:: flowline_resample(flw, spacing, id_col = 'comid')
+.. py:function:: flowline_resample(flw, spacing, id_col = 'comid', smoothing = None)
 
    Resample a flowline based on a given spacing.
 
@@ -106,18 +106,29 @@ Module Contents
                   Otherwise, you should use the :func:`network_resample` function.
                 * **spacing** (:class:`float`) -- Spacing between the sample points in meters.
                 * **id_col** (:class:`str`, *optional*) -- Name of the flowlines column containing IDs, defaults to ``comid``.
+                * **smoothing** (:class:`float` or :obj:`None`, *optional*) -- Smoothing factor is used for determining the number of knots.
+                  This arg controls the tradeoff between closeness and smoothness of fit.
+                  Larger ``smoothing`` means more smoothing while smaller values of
+                  ``smoothing`` indicates less smoothing. If None (default), smoothing
+                  is done with all points.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Resampled flowline.
 
 
-.. py:function:: flowline_xsection(flw, distance, width, id_col = 'comid')
+.. py:function:: flowline_xsection(flw, distance, width, id_col = 'comid', smoothing = None)
 
    Get cross-section of a river network at a given spacing.
 
-   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``id_col`` columns and CRS attribute.
+   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and, ``id_col``, and ``levelpathi``
+                  columns and a projected CRS attribute.
                 * **distance** (:class:`float`) -- The distance between two consecutive cross-sections.
                 * **width** (:class:`float`) -- The width of the cross-section.
                 * **id_col** (:class:`str`, *optional*) -- Name of the flowlines column containing IDs, defaults to ``comid``.
+                * **smoothing** (:class:`float` or :obj:`None`, *optional*) -- Smoothing factor is used for determining the number of knots.
+                  This arg controls the tradeoff between closeness and smoothness of fit.
+                  Larger ``smoothing`` means more smoothing while smaller values of
+                  ``smoothing`` indicates less smoothing. If None (default), smoothing
+                  is done with all points.
 
    :returns: :class:`geopandas.GeoDataFrame` -- A dataframe with two columns: ``geometry`` and ``comid``. The ``geometry``
              column contains the cross-section of the river network and the ``comid``
@@ -143,23 +154,37 @@ Module Contents
              * :class:`list` -- A topologically sorted list of the HUC12s which strings of length 12.
 
 
-.. py:function:: network_resample(flw, spacing)
+.. py:function:: network_resample(flw, spacing, id_col = 'comid', smoothing = None)
 
-   Get cross-section of a river network at a given spacing.
+   Resample a network flowline based on a given spacing.
 
-   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``comid`` columns and CRS attribute.
-                * **spacing** (:class:`float`) -- The spacing between the points.
+   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and, ``id_col``, and ``levelpathi``
+                  columns and a projected CRS attribute.
+                * **spacing** (:class:`float`) -- Target spacing between the sample points in the length unit of the ``flw``'s CRS.
+                * **id_col** (:class:`str`, *optional*) -- Name of the flowlines column containing IDs, defaults to ``comid``.
+                * **smoothing** (:class:`float` or :obj:`None`, *optional*) -- Smoothing factor is used for determining the number of knots.
+                  This arg controls the tradeoff between closeness and smoothness of fit.
+                  Larger ``smoothing`` means more smoothing while smaller values of
+                  ``smoothing`` indicates less smoothing. If None (default), smoothing
+                  is done with all points.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Resampled flowlines.
 
 
-.. py:function:: network_xsection(flw, distance, width)
+.. py:function:: network_xsection(flw, distance, width, id_col = 'comid', smoothing = None)
 
    Get cross-section of a river network at a given spacing.
 
-   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and ``comid`` columns and CRS attribute.
+   :Parameters: * **flw** (:class:`geopandas.GeoDataFrame`) -- A dataframe with ``geometry`` and, ``id_col``, and ``levelpathi``
+                  columns and a projected CRS attribute.
                 * **distance** (:class:`float`) -- The distance between two consecutive cross-sections.
                 * **width** (:class:`float`) -- The width of the cross-section.
+                * **id_col** (:class:`str`, *optional*) -- Name of the flowlines column containing IDs, defaults to ``comid``.
+                * **smoothing** (:class:`float` or :obj:`None`, *optional*) -- Smoothing factor is used for determining the number of knots.
+                  This arg controls the tradeoff between closeness and smoothness of fit.
+                  Larger ``smoothing`` means more smoothing while smaller values of
+                  ``smoothing`` indicates less smoothing. If None (default), smoothing
+                  is done with all points.
 
    :returns: :class:`geopandas.GeoDataFrame` -- A dataframe with two columns: ``geometry`` and ``comid``. The ``geometry``
              column contains the cross-section of the river network and the ``comid``

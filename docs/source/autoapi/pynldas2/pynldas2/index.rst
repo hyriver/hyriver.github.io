@@ -14,7 +14,7 @@ Module Contents
 
 .. py:function:: get_bycoords(coords, start_date, end_date, coords_id = None, crs = 4326, variables = None, to_xarray = False, n_conn = 4, snow = False, snow_params = None, source = 'grib')
 
-   Get NLDAS climate forcing data for a list of coordinates.
+   Get NLDAS-2 climate forcing data for a list of coordinates.
 
    :Parameters: * **coords** (:class:`list` of :class:`tuples`) -- List of (lon, lat) coordinates.
                 * **start_date** (:class:`str`) -- Start date of the data.
@@ -34,14 +34,14 @@ Module Contents
                   ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
                   The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
                   https://doi.org/10.5194/gmd-11-1077-2018.
-                * **source** (:class:`str`, *optional*) -- Source to pull data rods from. Valid sources are: ``grib`` and ``netcdf``
+                * **source** (``{"grib", "netcdf"}``, *optional*) -- Source to pull data rods from. Valid sources are: ``grib`` and ``netcdf``.
 
    :returns: :class:`pandas.DataFrame` -- The requested data as a dataframe.
 
 
 .. py:function:: get_bygeom(geometry, start_date, end_date, geo_crs, variables = None, n_conn = 4, snow = False, snow_params = None, source = 'grib')
 
-   Get hourly NLDAS climate forcing within a geometry at 0.125 resolution.
+   Get hourly NLDAS-2 climate forcing within a geometry at 0.125 resolution.
 
    :Parameters: * **geometry** (:class:`shapely.Polygon`, :class:`shapely.MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Input polygon or a bounding box like so (xmin, ymin, xmax, ymax).
                 * **start_date** (:class:`str`) -- Start date of the data.
@@ -59,14 +59,14 @@ Module Contents
                   ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
                   The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
                   https://doi.org/10.5194/gmd-11-1077-2018.
-                * **source** (:class:`str`, *optional*) -- Source to pull data rods from. Valid sources are: ``grib`` and ``netcdf``.
+                * **source** (``{"grib", "netcdf"}``, *optional*) -- Source to pull data rods from. Valid sources are: ``grib`` and ``netcdf``.
 
    :returns: :class:`xarray.Dataset` -- The requested forcing data.
 
 
 .. py:function:: get_grid_mask()
 
-   Get the NLDAS2 grid that contains the land/water/soil/vegetation mask.
+   Get the NLDAS-2 grid that contains the land/water/soil/vegetation mask.
 
    :returns: :class:`xarray.Dataset` -- The grid mask.
 

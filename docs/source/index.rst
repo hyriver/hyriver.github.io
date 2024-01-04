@@ -26,6 +26,10 @@
     :target: https://github.com/cheginit/pydaymet
     :alt: PyPi Version
 
+.. |pygridmet| image:: https://img.shields.io/pypi/v/pygridmet?label=PyDaymet&color=green
+    :target: https://github.com/cheginit/pygridmet
+    :alt: PyPi Version
+
 .. |pynldas2| image:: https://img.shields.io/pypi/v/pynldas2?label=PyDaymet&color=green
     :target: https://github.com/cheginit/pynldas2
     :alt: PyPi Version
@@ -59,6 +63,10 @@
 
 .. |pydaymet_stat| image:: https://pepy.tech/badge/pydaymet
     :target: https://pepy.tech/project/pydaymet
+    :alt: Download Stat
+
+.. |pygridmet_stat| image:: https://pepy.tech/badge/pygridmet
+    :target: https://pepy.tech/project/pygridmet
     :alt: Download Stat
 
 .. |pynldas2_stat| image:: https://pepy.tech/badge/pynldas2
@@ -158,9 +166,17 @@ If you use any of HyRiver packages in your research, we appreciate citations:
             .. tab-item:: PyDaymet
 
                 Access Daymet for daily, monthly and annual summaries of climate data
-                at 1-km scale for both single pixels and gridded.
+                at 1-km scale for both single pixels and gridded, over the North America,
+                Hawaii, and Puerto Rico.
 
                 |pydaymet| |pydaymet_stat|
+
+            .. tab-item:: PyGridMET
+
+                Access GridMet for daily climate data at 4-km scale for both single
+                pixels and gridded data, over the conterminous United States.
+
+                |pygridmet| |pygridmet_stat|
 
             .. tab-item:: PyNLDAS2
 

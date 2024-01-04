@@ -14,6 +14,10 @@
   thumbnail: examples/notebooks/_static/hwms.png
   title: High Water Marks using STN
 
+- path: examples/notebooks/3dhp.html
+  thumbnail: examples/notebooks/_static/hydrolocation.png
+  title: USGS 3DHP
+
 - path: examples/notebooks/soil.html
   thumbnail: examples/notebooks/_static/soil_storage.png
   title: Soil Storage Capacity
@@ -25,6 +29,10 @@
 - path: examples/notebooks/daymet.html
   thumbnail: examples/notebooks/_static/daymet_grid.png
   title: Daymet Climate Data
+
+- path: examples/notebooks/gridmet.html
+  thumbnail: examples/notebooks/_static/gridmet_grid.png
+  title: GridMET Climate Data
 
 - path: examples/notebooks/nldas.html
   thumbnail: examples/notebooks/_static/nldas_snow.png

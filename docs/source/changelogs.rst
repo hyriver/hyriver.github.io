@@ -42,6 +42,15 @@ Release Notes
 
     .. grid-item-card::
 
+        .. button-link:: changelogs/pygridmet.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGridMET
+
+    .. grid-item-card::
+
         .. button-link:: changelogs/pynldas2.html
             :click-parent:
             :ref-type: ref
@@ -93,6 +102,7 @@ Release Notes
     PyGeoHydro <changelogs/pygeohydro>
     Py3DEP <changelogs/py3dep>
     PyDaymet <changelogs/pydaymet>
+    PyGridMET <changelogs/pygridmet>
     PyNLDAS2 <changelogs/pynldas2>
     HydroSignatures <changelogs/hydrosignatures>
     AsyncRetriever<changelogs/async-retriever>

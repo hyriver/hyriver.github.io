@@ -49,18 +49,20 @@ HydroSignatures is a suite of tools for computing hydrological signatures
 and a part of `HyRiver <https://github.com/hyriver/HyRiver>`__ software stack.
 This package includes the following functions:
 
-- ``compute_exceedance``: Exceedance probability that can be used plotting flow
+- ``exceedance``: Exceedance probability that can be used plotting flow
   duration curves;
-- ``compute_mean_monthly``: Mean monthly summary of a time series that can be used
+- ``flow_duration_curve_slope``: Slope of flow duration curve;
+- ``flashiness_index``: Flashiness index;
+- ``mean_monthly``: Mean monthly summary of a time series that can be used
   for plotting regime curves;
-- ``compute_rolling_mean_monthly``: Rolling mean monthly summary of a time series
+- ``rolling_mean_monthly``: Rolling mean monthly summary of a time series
   that can be used for plotting smoothed regime curves;
-- ``compute_baseflow``: Extracting baseflow from a streamflow time series using the
+- ``baseflow``: Extracting baseflow from a streamflow time series using the
   Lyne and Hollick digital filter (Ladson et al., 2013);
-- ``compute_bfi``: Baseflow index;
-- ``compute_ai``: Aridity index;
-- ``compute_si_walsh``: Seasonality index (Walsh and Lawler, 1981);
-- ``compute_si_markham``: Seasonality index (Markham, 1970);
+- ``baseflow_index``: Baseflow index;
+- ``aridity_index``: Aridity index;
+- ``seasonality_index_walsh``: Seasonality index (Walsh and Lawler, 1981);
+- ``seasonality_index_markham``: Seasonality index (Markham, 1970);
 - ``extract_extrema``: Determining the location of local maxima and minima in a
   time series;
 
@@ -71,8 +73,9 @@ and inequality operators, which can be used to compare two ``HydroSignatures`` o
 You can serialize the class to a JSON object using the ``to_json`` method or convert it
 to a dictionary using the ``to_dict`` method.
 
-Moreover, ``numba`` is an optional dependency for the ``compute_baseflow`` function.
+Moreover, ``numba`` is an optional dependency for the ``baseflow`` function.
 Installing ``numba`` will speed up the computation of baseflow significantly.
+For more efficient handling of NaN values, you can also install ``numbagg``.
 
 You can also try using HydroSignatures without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
@@ -197,13 +200,12 @@ various filter parameters and compare them:
 
     q = nwis.get_streamflow("12304500", ("2019-01-01", "2019-12-31"))
     alpha = np.arange(0.9, 1, 0.01)
-    qb = pd.DataFrame({a: hs.compute_baseflow(q.squeeze(), alpha=a) for a in alpha})
+    qb = pd.DataFrame({a: hs.baseflow(q.squeeze(), alpha=a) for a in alpha})
 
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/signatures_bf.png
     :target: https://docs.hyriver.io/examples/notebooks/signatures.ipynb
     :align: center
-
 
 Lastly, let's compute Markham's seasonality index for all streamflow time series of
 the stations in the CAMELS dataset. We retrieve the CAMELS dataset using PyGeoHydro:
@@ -215,6 +217,6 @@ the stations in the CAMELS dataset. We retrieve the CAMELS dataset using PyGeoHy
     _, camels_qobs = gh.get_camels()
     discharge = camels_qobs.discharge.dropna("station_id")
     discharge = xr.where(discharge < 0, 0, discharge)
-    si = hs.compute_si_markham(discharge.to_pandas())
+    si = hs.seasonality_index_markham(discharge.to_pandas())
 
 More examples can be found `here <https://docs.hyriver.io/examples.html>`__.

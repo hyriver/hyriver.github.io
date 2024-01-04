@@ -96,9 +96,9 @@ Module Contents
 
 
 
-.. py:function:: compute_ai(pet: pandas.Series, prcp: pandas.Series) -> numpy.float64
-                 compute_ai(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series
-                 compute_ai(pet: xarray.DataArray, prcp: xarray.DataArray) -> xarray.DataArray
+.. py:function:: aridity_index(pet: pandas.Series, prcp: pandas.Series) -> numpy.float64
+                 aridity_index(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series[float]
+                 aridity_index(pet: xarray.DataArray, prcp: xarray.DataArray) -> xarray.DataArray
 
    Compute (Budyko) aridity index (PET/Prcp).
 
@@ -112,7 +112,7 @@ Module Contents
    :returns: :class:`float` or :class:`pandas.Series` or :class:`xarray.DataArray` -- The aridity index.
 
 
-.. py:function:: compute_baseflow(discharge, alpha = 0.925, n_passes = 3, pad_width = 10)
+.. py:function:: baseflow(discharge, alpha = 0.925, n_passes = 3, pad_width = 10)
 
    Extract baseflow using the Lyne and Hollick filter (Ladson et al., 2013).
 
@@ -125,7 +125,7 @@ Module Contents
    :returns: :class:`numpy.ndarray` or :class:`pandas.DataFrame` or :class:`pandas.Series` or :class:`xarray.DataArray` -- Same discharge input array-like but values replaced with computed baseflow values.
 
 
-.. py:function:: compute_bfi(discharge, alpha = 0.925, n_passes = 3, pad_width = 10)
+.. py:function:: baseflow_index(discharge, alpha = 0.925, n_passes = 3, pad_width = 10)
 
    Compute the baseflow index using the Lyne and Hollick filter (Ladson et al., 2013).
 
@@ -138,7 +138,7 @@ Module Contents
    :returns: :class:`numpy.float64` -- The baseflow index.
 
 
-.. py:function:: compute_exceedance(daily, threshold = 0.001)
+.. py:function:: exceedance(daily, threshold = 0.001)
 
    Compute exceedance probability from daily data.
 
@@ -148,7 +148,46 @@ Module Contents
    :returns: :class:`pandas.Series` or :class:`pandas.DataFrame` -- Exceedance probability.
 
 
-.. py:function:: compute_fdc_slope(discharge, bins, log)
+.. py:function:: extract_extrema(ts, var_name, n_pts)
+
+   Get local extrema in a time series.
+
+   :Parameters: * **ts** (:class:`pandas.Series`) -- Variable time series.
+                * **var_name** (:class:`str`) -- Variable name.
+                * **n_pts** (:class:`int`) -- Number of points to consider for detecting local extrema on both
+                  sides of each point.
+
+   :returns: :class:`pandas.DataFrame` -- A dataframe with three columns: ``var_name``, ``peak`` (bool)
+             and ``trough`` (bool).
+
+
+.. py:function:: flashiness_index(daily)
+
+   Compute flashiness index from daily data following Baker et al. (2004).
+
+   :Parameters: **daily** (:class:`pandas.Series` or :class:`pandas.DataFrame` or :class:`numpy.ndarray` or :class:`xarray.DataArray`) -- The data to be processed
+
+   :returns: :class:`numpy.ndarray` -- Flashiness index.
+
+   .. rubric:: References
+
+   Baker, D.B., Richards, R.P., Loftus, T.T. and Kramer, J.W., 2004. A new
+   flashiness index: Characteristics and applications to midwestern rivers
+   and streams 1. JAWRA Journal of the American Water Resources
+   Association, 40(2), pp.503-522.
+
+
+.. py:function:: flood_moments(streamflow)
+
+   Compute flood moments (MAF, CV, CS) from streamflow.
+
+   :Parameters: **streamflow** (:class:`pandas.DataFrame`) -- The streamflow data to be processed
+
+   :returns: :class:`pandas.DataFrame` -- Flood moments; mean annual flood (MAF), coefficient
+             of variation (CV), and coefficient of skewness (CS).
+
+
+.. py:function:: flow_duration_curve_slope(discharge, bins, log)
 
    Compute FDC slopes between the given lower and upper percentiles.
 
@@ -160,17 +199,7 @@ Module Contents
    :returns: :class:`numpy.ndarray` -- The slopes between the given percentiles.
 
 
-.. py:function:: compute_flood_moments(streamflow)
-
-   Compute flood moments (MAF, CV, CS) from streamflow.
-
-   :Parameters: **streamflow** (:class:`pandas.DataFrame`) -- The streamflow data to be processed
-
-   :returns: :class:`pandas.DataFrame` -- Flood moments; mean annual flood (MAF), coefficient
-             of variation (CV), and coefficient of skewness (CS).
-
-
-.. py:function:: compute_mean_monthly(daily, index_abbr = False, cms = False)
+.. py:function:: mean_monthly(daily, index_abbr = False, cms = False)
 
    Compute mean monthly summary from daily data.
 
@@ -185,31 +214,18 @@ Module Contents
    :returns: :class:`pandas.Series` or :class:`pandas.DataFrame` -- Mean monthly summary.
 
 
-.. py:function:: compute_rolling_mean_monthly(daily)
+.. py:function:: rolling_mean_monthly(daily)
 
    Compute rolling mean monthly.
 
 
-.. py:function:: compute_si_markham(data)
+.. py:function:: seasonality_index_markham(data)
 
    Compute seasonality index based on Markham, 1970.
 
 
-.. py:function:: compute_si_walsh(data)
+.. py:function:: seasonality_index_walsh(data)
 
    Compute seasonality index based on Walsh and Lawler, 1981 method.
-
-
-.. py:function:: extract_extrema(ts, var_name, n_pts)
-
-   Get local extrema in a time series.
-
-   :Parameters: * **ts** (:class:`pandas.Series`) -- Variable time series.
-                * **var_name** (:class:`str`) -- Variable name.
-                * **n_pts** (:class:`int`) -- Number of points to consider for detecting local extrema on both
-                  sides of each point.
-
-   :returns: :class:`pandas.DataFrame` -- A dataframe with three columns: ``var_name``, ``peak`` (bool)
-             and ``trough`` (bool).
 
 

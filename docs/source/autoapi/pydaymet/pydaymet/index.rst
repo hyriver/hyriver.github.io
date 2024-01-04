@@ -73,7 +73,7 @@ Module Contents
    >>> clm = daymet.get_bycoords(
    ...     coords,
    ...     dates,
-   ...     crs="epsg:3542",
+   ...     crs=3542,
    ...     pet="hargreaves_samani",
    ... )
    >>> clm["pet (mm/day)"].mean()
@@ -141,7 +141,7 @@ Module Contents
 
    .. rubric:: Examples
 
-   >>> from shapely.geometry import Polygon
+   >>> from shapely import Polygon
    >>> import pydaymet as daymet
    >>> geometry = Polygon(
    ...     [[-69.77, 45.07], [-69.31, 45.07], [-69.31, 45.45], [-69.77, 45.45], [-69.77, 45.07]]

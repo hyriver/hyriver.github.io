@@ -27,7 +27,7 @@ You can install all the packages using ``pip``:
 
 .. code-block:: console
 
-    $ pip install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+    $ pip install py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 Please note that installation with ``pip`` fails if ``libgdal`` is not installed on your system.
 You should install this package manually beforehand. For example, on Ubuntu-based distros
@@ -38,13 +38,13 @@ Alternatively, you can install them using ``conda``:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+    $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 or ``mambaforge`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install py3dep pynhd pygeohydro pydaymet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+    $ mamba install py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 Additionally, you can create a new environment, named ``hyriver`` with all the packages
 and optional dependencies installed with ``mambaforge`` using the provided

@@ -80,6 +80,11 @@ The following functionalities are currently available:
   that the static service is much faster, if the target DEM resolution is 10 m, 30 m, or
   60 m, then the static service is used (``static_3dep_dem``). Otherwise, the dynamic
   service is used (``get_map`` using ``DEM`` layer).
+- ``get_map_vrt``: Get DEM data and store it as a GDAL VRT file from the dynamic 3DEP
+  service. This function is mainly provided for large requests due to its low memory
+  footprint. Moreover, due to lazy loading of the data this function can be much
+  faster than ``get_map`` or ``get_dem``, even for small requests at the cost of
+  higher disk usage.
 - ``elevation_bygrid``: For retrieving elevations of all the grid points in a 2D grid.
 - ``add_elevation``: For adding elevation data as a new variable to an input
   ``xarray.DataArray`` or ``xarray.Dataset``.
@@ -94,20 +99,22 @@ The following functionalities are currently available:
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 
 Moreover, under the hood, Py3DEP uses
-`AsyncRetriever <https://github.com/hyriver/async-retriever>`__
-for making requests asynchronously with persistent caching. This improves the
-reliability and speed of data retrieval significantly. AsyncRetriever caches all request/response
-pairs and upon making an already cached request, it will retrieve the responses from the cache
-if the server's response is unchanged.
+`PyGeoOGC <https://github.com/hyriver/pygeoogc>`__ and
+`AsyncRetriever <https://github.com/hyriver/async-retriever>`__ packages
+for making requests in parallel and storing responses in chunks. This improves the
+reliability and speed of data retrieval significantly.
 
 You can control the request/response caching behavior and verbosity of the package
 by setting the following environment variables:
 
-* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database. It defaults to
-  ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_NAME``: Path to the caching SQLite database for asynchronous HTTP
+  requests. It defaults to ``./cache/aiohttp_cache.sqlite``
+* ``HYRIVER_CACHE_NAME_HTTP``: Path to the caching SQLite database for HTTP requests.
+  It defaults to ``./cache/http_cache.sqlite``
 * ``HYRIVER_CACHE_EXPIRE``: Expiration time for cached requests in seconds. It defaults to
-  -1 (never expire).
+  one week.
 * ``HYRIVER_CACHE_DISABLE``: Disable reading/writing from/to the cache. The default is false.
+* ``HYRIVER_SSL_CERT``: Path to a SSL certificate file.
 
 For example, in your code before making any requests you can do:
 
@@ -115,9 +122,11 @@ For example, in your code before making any requests you can do:
 
     import os
 
-    os.environ["HYRIVER_CACHE_NAME"] = "path/to/file.sqlite"
+    os.environ["HYRIVER_CACHE_NAME"] = "path/to/aiohttp_cache.sqlite"
+    os.environ["HYRIVER_CACHE_NAME_HTTP"] = "path/to/http_cache.sqlite"
     os.environ["HYRIVER_CACHE_EXPIRE"] = "3600"
     os.environ["HYRIVER_CACHE_DISABLE"] = "true"
+    os.environ["HYRIVER_SSL_CERT"] = "path/to/cert.pem"
 
 You can also try using Py3DEP without installing
 it on your system by clicking on the binder badge. A Jupyter Lab
@@ -272,7 +281,7 @@ these spatial references.
     from pynhd import NLDI
 
     geom = NLDI().get_basins("01031500").geometry[0]
-    dem = py3dep.get_map("DEM", geom, resolution=30, geo_crs="epsg:4326", crs="epsg:3857")
+    dem = py3dep.get_map("DEM", geom, resolution=30, geo_crs=4326, crs=3857)
     slope = py3dep.get_map("Slope Degrees", geom, resolution=30)
     slope = py3dep.deg2mpm(slope)
 
@@ -325,7 +334,7 @@ and add elevation data for its nodes using ``elevation_bycoords`` function.
 
     G = ox.graph_from_place("Piedmont, California, USA", network_type="drive")
     x, y = nx.get_node_attributes(G, "x").values(), nx.get_node_attributes(G, "y").values()
-    elevation = py3dep.elevation_bycoords(zip(x, y), crs="epsg:4326")
+    elevation = py3dep.elevation_bycoords(zip(x, y), crs=4326)
     nx.set_node_attributes(G, dict(zip(G.nodes(), elevation)), "elevation")
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/street_elev.png

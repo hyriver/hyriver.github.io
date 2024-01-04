@@ -15,7 +15,7 @@
 Module Contents
 ---------------
 
-.. py:function:: create_key(method, url, params = None, data = None, json = None)
+.. py:function:: create_request_key(method, url, params = None, data = None, json = None)
 
    Create a unique cache key based on request details.
 
