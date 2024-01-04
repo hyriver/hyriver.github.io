@@ -67,7 +67,7 @@
     :target: https://github.com/hyriver/pydaymet
     :alt: Download Stat
 
-.. |grid_stat| image:: https://static.pepy.tech/personalized-badge/pygridmet?period=total&left_color=blue&right_color=yellowgreen&left_text=PyDaymet
+.. |grid_stat| image:: https://static.pepy.tech/personalized-badge/pygridmet?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGridMET
     :target: https://github.com/hyriver/pygridmet
     :alt: Download Stat
 
