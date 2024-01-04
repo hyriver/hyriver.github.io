@@ -34,7 +34,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-
+      
 
    :Parameters: **data_type** (:class:`str`, *optional*) -- Type of the survey data to retrieve, defaults to ``points``.
                 Note that the ``points`` data type gets the best available point
