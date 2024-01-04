@@ -29,12 +29,16 @@
 [submodule "async-retriever"]
 	path = async-retriever
 	url = https://github.com/hyriver/async-retriever.git
+	branch = main
 [submodule "hydrosignatures"]
 	path = hydrosignatures
 	url = https://github.com/hyriver/hydrosignatures
+	branch = main
 [submodule "pynldas2"]
 	path = pynldas2
 	url = https://github.com/hyriver/pynldas2
+	branch = main
 [submodule "pygridmet"]
 	path = pygridmet
-	url = git@github.com:hyriver/pygridmet
+	url = https://github.com/hyriver/pygridmet
+	branch = main
