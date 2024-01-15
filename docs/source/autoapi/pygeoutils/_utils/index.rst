@@ -54,9 +54,9 @@ Module Contents
 
    Write geo reference info into a dataset or dataarray.
 
-   :Parameters: * **ds** (:class:`xarray.Dataset` or :class:`xarray.DataArray`) -- The dataset(array) to be written
-                * **crs** (:class:`pyproj.CRS` or :class:`str` or :class:`int`, *optional*) -- The CRS to be written, defaults to ``ds.rio.crs``
-                * **grid_mapping_name** (:class:`str`, *optional*) -- The name of the grid mapping variable, defaults to ``ds.rio.grid_mapping``
+   :Parameters: * **ds** (:class:`xarray.Dataset` or :class:`xarray.DataArray`) -- Input dataset(array)
+                * **crs** (:class:`pyproj.CRS` or :class:`str` or :class:`int`, *optional*) -- Target CRS to be written, defaults to ``ds.rio.crs``
+                * **grid_mapping_name** (:class:`str`, *optional*) -- Target grid mapping, defaults to ``ds.rio.grid_mapping``
 
    :returns: :class:`xarray.Dataset` or :class:`xarray.DataArray` -- The dataset(array) with CRS info written.
 

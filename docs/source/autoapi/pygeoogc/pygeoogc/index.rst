@@ -121,22 +121,16 @@ Module Contents
 .. py:class:: HttpURLs
 
 
-
-
    URLs of the supported HTTP services.
 
 
 .. py:class:: RESTfulURLs
 
 
-
-
    URLs of the supported RESTful services.
 
 
 .. py:class:: ServiceURL
-
-
 
 
    URLs of the supported services.
@@ -248,8 +242,6 @@ Module Contents
 .. py:class:: WFSURLs
 
 
-
-
    URLs of the supported WFS services.
 
 
@@ -305,8 +297,6 @@ Module Contents
 
 
 .. py:class:: WMSURLs
-
-
 
 
    URLs of the supported WMS services.

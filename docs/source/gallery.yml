@@ -1,115 +1,119 @@
 - path: examples/notebooks/rem.html
-  thumbnail: examples/notebooks/_static/rem.png
+  thumbnail: _static/thumbnails/rem.png
   title: Relative Elevation Model
 
+- path: examples/notebooks/nhd_navigation.html
+  thumbnail: _static/thumbnails/nhd_nav.png
+  title: Navigate NHD Network
+
 - path: examples/notebooks/flood_peak.html
-  thumbnail: examples/notebooks/_static/flood_peak.png
+  thumbnail: _static/thumbnails/flood_peak.png
   title: Flood Moments for CAMELS
 
 - path: examples/notebooks/dam_impact.html
-  thumbnail: examples/notebooks/_static/dam_impact.png
-  title: Working with Geospatial Hydrologic Data Using Web Services
+  thumbnail: _static/thumbnails/dam_impact.png
+  title: Geospatial Hydrologic Data with Web Services
 
 - path: examples/notebooks/hwms.html
-  thumbnail: examples/notebooks/_static/hwms.png
+  thumbnail: _static/thumbnails/hwms.png
   title: High Water Marks using STN
 
 - path: examples/notebooks/3dhp.html
-  thumbnail: examples/notebooks/_static/hydrolocation.png
+  thumbnail: _static/thumbnails/hydrolocation.png
   title: USGS 3DHP
 
 - path: examples/notebooks/soil.html
-  thumbnail: examples/notebooks/_static/soil_storage.png
+  thumbnail: _static/thumbnails/soil_storage.png
   title: Soil Storage Capacity
 
 - path: examples/notebooks/nid_dib.html
-  thumbnail: examples/notebooks/_static/nid_2022.png
+  thumbnail: _static/thumbnails/nid_2022.png
   title: Spatiotemporal Distribution of Dams
 
 - path: examples/notebooks/daymet.html
-  thumbnail: examples/notebooks/_static/daymet_grid.png
+  thumbnail: _static/thumbnails/daymet_grid.png
   title: Daymet Climate Data
 
 - path: examples/notebooks/gridmet.html
-  thumbnail: examples/notebooks/_static/gridmet_grid.png
+  thumbnail: _static/thumbnails/gridmet_grid.png
   title: GridMET Climate Data
 
 - path: examples/notebooks/nldas.html
-  thumbnail: examples/notebooks/_static/nldas_snow.png
+  thumbnail: _static/thumbnails/nldas_snow.png
   title: NLDAS2 Climate Data
 
 - path: examples/notebooks/pygeoapi.html
-  thumbnail: examples/notebooks/_static/split_catchment.png
+  thumbnail: _static/thumbnails/split_catchment.png
   title: Split Catchment with PyGeoAPI
 
 - path: examples/notebooks/things.html
-  thumbnail: examples/notebooks/_static/sensorthings.png
+  thumbnail: _static/thumbnails/sensorthings.png
   title: Real-time data with SensorThings API
 
 - path: examples/notebooks/cross_section.html
-  thumbnail: examples/notebooks/_static/cross_section.png
+  thumbnail: _static/thumbnails/cross_section.png
   title: River Elevation and Cross-Section
 
 - path: examples/notebooks/us_coasts.html
-  thumbnail: examples/notebooks/_static/us_coasts.png
+  thumbnail: _static/thumbnails/us_coasts.png
   title: CONUS Coasts
 
 - path: examples/notebooks/nid.html
-  thumbnail: examples/notebooks/_static/dams.png
+  thumbnail: _static/thumbnails/dams.png
   title: National Inventory of Dams
 
 - path: examples/notebooks/columbia.html
-  thumbnail: examples/notebooks/_static/columbia.png
+  thumbnail: _static/thumbnails/columbia.png
   title: Dams in Columbia River Network
 
 - path: examples/notebooks/nlcd.html
-  thumbnail: examples/notebooks/_static/lulc.png
+  thumbnail: _static/thumbnails/lulc.png
   title: Land Use/Land Cover
 
 - path: examples/notebooks/pet_validation.html
-  thumbnail: examples/notebooks/_static/pet_validation.png
+  thumbnail: _static/thumbnails/pet_validation.png
   title: Computing PET
 
 - path: examples/notebooks/hymod_calibration.html
-  thumbnail: examples/notebooks/_static/hymod.png
+  thumbnail: _static/thumbnails/hymod.png
   title: Hydrological Modeling
 
 - path: examples/notebooks/ssebop.html
-  thumbnail: examples/notebooks/_static/ssebop.png
+  thumbnail: _static/thumbnails/ssebop.png
   title: Actual Evapotranspiration
 
 - path: examples/notebooks/3dep.html
-  thumbnail: examples/notebooks/_static/dem_slope.png
+  thumbnail: _static/thumbnails/dem_slope.png
   title: Topographic Data
 
 - path: examples/notebooks/aridity.html
-  thumbnail: examples/notebooks/_static/aridity.png
+  thumbnail: _static/thumbnails/aridity.png
   title: Aridity
 
 - path: examples/notebooks/water_quality.html
-  thumbnail: examples/notebooks/_static/water_quality.png
+  thumbnail: _static/thumbnails/water_quality.png
   title: Water Quality Portal
 
 - path: examples/notebooks/nwis.html
-  thumbnail: examples/notebooks/_static/nwis.png
+  thumbnail: _static/thumbnails/nwis.png
   title: River Discharge
 
 - path: examples/notebooks/nhdplus.html
-  thumbnail: examples/notebooks/_static/flow_accumulation.png
+  thumbnail: _static/thumbnails/flow_accumulation.png
   title: River Network
 
 - path: examples/notebooks/ndvi.html
-  thumbnail: examples/notebooks/_static/ndvi.png
+  thumbnail: _static/thumbnails/ndvi.png
   title: NDVI
 
 - path: examples/notebooks/noaa.html
-  thumbnail: examples/notebooks/_static/tides.png
+  thumbnail: _static/thumbnails/tides.png
   title: Water Levels and Tides
 
 - path: examples/notebooks/geoconnex.html
-  thumbnail: examples/notebooks/_static/geoconnex.png
+  thumbnail: _static/thumbnails/geoconnex.png
   title: GeoConnex
 
 - path: examples/notebooks/webservices.html
-  thumbnail: examples/notebooks/_static/sql_clause.png
+  thumbnail: _static/thumbnails/sql_clause.png
   title: Web Services Queries
