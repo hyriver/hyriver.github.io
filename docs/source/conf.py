@@ -6,6 +6,7 @@ from pathlib import Path
 from textwrap import dedent, indent
 
 import yaml
+from PIL import Image, ImageChops
 from sphinx.application import Sphinx
 from sphinx.util import logging
 
@@ -228,6 +229,7 @@ html_theme_options = {
     "use_download_button": False,
     "use_issues_button": True,
     "home_page_in_toc": True,
+    "navigation_with_keys": False,
 }
 
 # logo
@@ -255,13 +257,13 @@ ogp_custom_meta_tags = [
 ]
 
 # -- Generating Gallery -------------------------------------------------------
-def update_gallery(app: Sphinx):
+def update_gallery(app: Sphinx)-> None:
     """Update the gallery page.
 
     Taken from https://github.com/pydata/xarray/blob/main/doc/conf.py
     """
 
-    LOGGER.info("Updating gallery page...")
+    LOGGER.info("Updating gallery page ...")
 
     gallery = yaml.safe_load(Path(app.srcdir, "gallery.yml").read_bytes())
     for item in gallery:
@@ -294,13 +296,13 @@ def update_gallery(app: Sphinx):
     LOGGER.info("Gallery page updated.")
 
 
-def update_videos(app: Sphinx):
+def update_videos(app: Sphinx)-> None:
     """Update the videos page.
 
     Taken from https://github.com/pydata/xarray/blob/main/doc/conf.py
     """
 
-    LOGGER.info("Updating videos page...")
+    LOGGER.info("Updating videos page ...")
 
     videos = yaml.safe_load(Path(app.srcdir, "videos.yml").read_bytes())
 
@@ -331,10 +333,10 @@ def update_videos(app: Sphinx):
     LOGGER.info("Videos page updated.")
 
 
-def update_versions(app: Sphinx):
+def update_versions(app: Sphinx)-> None:
     """Update the versions page."""
 
-    LOGGER.info("Updating versions page...")
+    LOGGER.info("Updating versions page ...")
 
     versions = []
     for p, n in packages.items():
@@ -373,10 +375,10 @@ def update_versions(app: Sphinx):
     LOGGER.info("Package versions page updated.")
 
 
-def update_deps(app: Sphinx) -> list[str]:
+def update_deps(app: Sphinx) -> None:
     """Get the dependencies of the package."""
 
-    LOGGER.info("Updating dependencies page...")
+    LOGGER.info("Updating dependencies page ...")
 
     deps = {}
     for p, n in packages.items():
@@ -402,6 +404,44 @@ def update_deps(app: Sphinx) -> list[str]:
     LOGGER.info("Package dependencies updated.")
 
 
+def resize_thumbnails(app: Sphinx)-> None:
+    """Resize thumbnails to the same width and height as the second item's thumbnail."""
+    LOGGER.info("Resizing gallery thumbnails ...")
+    thumb_dir = Path("source/_static/thumbnails")
+    src = Path("source/examples/notebooks/_static")
+    thumb_dir.mkdir(exist_ok=True, parents=True)
+    try:
+        with Path('source/gallery.yml').open() as file:
+            docs = yaml.safe_load(file)
+
+
+        second_thumbnail_path = Path(docs[1]['thumbnail'])
+        with Image.open(Path(src, second_thumbnail_path.name)) as img:
+            target_size = img.size
+
+        for doc in docs:
+            thumbnail_path = Path(doc['thumbnail'])
+            with Image.open(Path(src, thumbnail_path.name)) as img:
+                # Calculate the new size, maintaining aspect ratio
+                ratio = min(target_size[0] / img.width, target_size[1] / img.height)
+                new_size = (int(img.width * ratio), int(img.height * ratio))
+                
+                # Resize the image with the new size
+                img = img.resize(new_size, Image.Resampling.LANCZOS)
+
+                # Create a new image with a white background
+                new_img = Image.new('RGB', target_size, (255, 255, 255))
+                # Calculate the position to paste the resized image on the canvas
+                position = ((target_size[0] - new_size[0]) // 2, (target_size[1] - new_size[1]) // 2)
+                # Paste the resized image onto the canvas
+                new_img.paste(img, position)
+                # Save the final thumbnail
+                new_img.save(Path(thumb_dir,  thumbnail_path.name))
+    except Exception as e:
+        LOGGER.exception(f"An error occurred: {e}")
+    LOGGER.info("Gallery thumbnails resized.")
+
+
 def html_page_context(app, pagename, templatename, context, doctree):
     # Disable edit button for docstring generated pages
     if "generated" in pagename:
@@ -411,6 +451,7 @@ def html_page_context(app, pagename, templatename, context, doctree):
 def setup(app: Sphinx):
     app.connect("html-page-context", html_page_context)
     app.connect("builder-inited", update_gallery)
+    app.connect("builder-inited", resize_thumbnails)
     app.connect("builder-inited", update_videos)
     app.connect("builder-inited", update_versions)
     app.connect("builder-inited", update_deps)
