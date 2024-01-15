@@ -3,6 +3,7 @@ ipython
 ipywidgets
 jupyter_client
 nbsphinx
+Pillow
 sphinx
 sphinx-autoapi
 sphinx-book-theme
