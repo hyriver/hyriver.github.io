@@ -86,15 +86,24 @@ Module Contents
 
    Get a ``networkx.DiGraph`` of the entire NHD flowlines.
 
+   .. versionchanged:: 0.16.2
+
+       The function now replaces all 0 values in the ``tocomid`` column of ENHD
+       with the negative of their corresponding ``comid`` values. This ensures
+       all sinks are unique and treated accordingly for topological sorting
+       and other network analysis. The difference are in the returned
+       ``label2comid`` dictionary and ``onnetwork_sorted`` which will contain
+       the negative values for the sinks.
+
    .. rubric:: Notes
 
    The graph is directed and has the all the attributes of the flowlines
    in `ENHD <https://www.sciencebase.gov/catalog/item/63cb311ed34e06fef14f40a3>`__.
    Note that COMIDs are based on the 2020 snapshot of the NHDPlusV2.1.
 
-   :returns: :class:`tuple` of :class:`networkx.DiGraph`, :class:`dict`, and :class:`list` -- The first element is the graph, the second element is a dictionary
-             mapping the COMIDs to the node IDs in the graph, and the third element
-             is a topologically sorted list of the COMIDs.
+   :returns: * **graph** (:class:`networkx.DiGraph`) -- The generated directed graph
+             * **label2comid** (:class:`dict`) -- A mapping of COMIDs to the node IDs in the graph
+             * **onnetwork_sorted** (:class:`list`) -- A topologically sorted list of the COMIDs.
 
 
 .. py:function:: flowline_resample(flw, spacing, id_col = 'comid', smoothing = None)

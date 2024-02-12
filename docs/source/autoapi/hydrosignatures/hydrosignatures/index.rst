@@ -97,7 +97,7 @@ Module Contents
 
 
 .. py:function:: aridity_index(pet: pandas.Series, prcp: pandas.Series) -> numpy.float64
-                 aridity_index(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series[float]
+                 aridity_index(pet: pandas.DataFrame, prcp: pandas.DataFrame) -> pandas.Series
                  aridity_index(pet: xarray.DataArray, prcp: xarray.DataArray) -> xarray.DataArray
 
    Compute (Budyko) aridity index (PET/Prcp).

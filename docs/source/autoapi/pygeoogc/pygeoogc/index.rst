@@ -203,7 +203,7 @@ Module Contents
 
       Get features based on a geometry.
 
-      :Parameters: * **geometry** (:class:`shapely.geometry`) -- The input geometry
+      :Parameters: * **geometry** (:class:`shapely.Polygon` or :class:`shapely.MultiPolygon`) -- The input geometry
                    * **geo_crs** (:class:`str`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, default to ``epsg:4326``.
                    * **always_xy** (:class:`bool`, *optional*) -- Whether to always use xy axis order, defaults to False. Some services change the axis
                      order from xy to yx, following the latest WFS version specifications but some don't.

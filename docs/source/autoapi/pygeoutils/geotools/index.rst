@@ -128,7 +128,7 @@ Module Contents
 
    Reproject a geometry to another CRS.
 
-   :Parameters: * **geom** (:class:`list` or :class:`tuple` or :class:`any shapely.geometry`) -- Input geometry could be a list of coordinates such as ``[(x1, y1), ...]``,
+   :Parameters: * **geom** (:class:`list` or :class:`tuple` or :class:`any shapely.GeometryType`) -- Input geometry could be a list of coordinates such as ``[(x1, y1), ...]``,
                   a bounding box like so ``(xmin, ymin, xmax, ymax)``, or any valid ``shapely``'s
                   geometry such as ``Polygon``, ``MultiPolygon``, etc..
                 * **in_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`) -- Spatial reference of the input geometry

@@ -24,6 +24,7 @@ Module Contents
    `webpage <https://help.waterdata.usgs.gov/codes-and-parameters>`__.
 
    .. py:method:: get_info(queries, expanded = False, fix_names = True, nhd_info = False)
+      :classmethod:
 
       Send multiple queries to USGS Site Web Service.
 
@@ -43,6 +44,7 @@ Module Contents
 
 
    .. py:method:: get_parameter_codes(keyword)
+      :classmethod:
 
       Search for parameter codes by name or number.
 
@@ -71,6 +73,7 @@ Module Contents
 
    .. py:method:: get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[False] = ...) -> pandas.DataFrame
                   get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[True] = ...) -> xarray.Dataset
+      :classmethod:
 
       Get mean daily streamflow observations from USGS.
 

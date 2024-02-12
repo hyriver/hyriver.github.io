@@ -499,7 +499,7 @@ Module Contents
 
       Get features within a geometry.
 
-      :Parameters: * **geometry** (:class:`shapely.geometry`) -- The input geometry
+      :Parameters: * **geometry** (:class:`shapely.Polygon` or :class:`shapely.MultiPolygon`) -- The input (multi)polygon to request the data.
                    * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, default to epsg:4326.
                    * **xy** (:class:`bool`, *optional*) -- Whether axis order of the input geometry is xy or yx.
                    * **predicate** (:class:`str`, *optional*) -- The geometric prediacte to use for requesting the data, defaults to

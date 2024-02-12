@@ -50,20 +50,20 @@ Module Contents
    {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False, 'topobathy': False}
 
 
-.. py:function:: elevation_bycoords(coords: tuple[float, float], crs: CRSTYPE = ..., source: str = ...) -> float
-                 elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: str = ...) -> list[float]
+.. py:function:: elevation_bycoords(coords: tuple[float, float], crs: CRSTYPE = ..., source: Literal[tep, tnm] = ...) -> float
+                 elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: Literal[tep, tnm] = ...) -> list[float]
 
    Get elevation for a list of coordinates.
 
    :Parameters: * **coords** (:class:`tuple` or :class:`list` of :class:`tuple`) -- Coordinates of target location(s), e.g., ``[(x, y), ...]``.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS` or :class:`pyproj.CRS`, *optional*) -- Spatial reference (CRS) of coords, defaults to ``EPSG:4326``.
                 * **source** (:class:`str`, *optional*) -- Data source to be used, default to ``tep``. Supported sources are
-                  ``airmap`` (30 m resolution), ``tnm`` (using The National Map's Bulk Point
+                  ``tnm`` (using The National Map's Bulk Point
                   Query Service with 10 m resolution) and ``tep`` (using 3DEP's static DEM VRTs
                   at 10 m resolution). The ``tnm`` and ``tep`` sources are more accurate since they
                   use the 1/3 arc-second DEM layer from 3DEP service but it is limited to the US.
                   Note that ``tnm`` is bit unstable. It's recommended to use ``tep`` unless 10-m
-                  resolution accuracy is not necessary which in that case ``airmap`` is more appropriate.
+                  resolution accuracy is not necessary.
 
    :returns: :class:`float` or :class:`list` of :class:`float` -- Elevation in meter.
 

@@ -59,7 +59,7 @@ Module Contents
    ...     ]
    ... )
    >>> resp = ar.retrieve(urls, "text", request_kwds=kwds)
-   >>> resp[0].split('\n')[-2].split('\t')[1]
+   >>> resp[0].split("\n")[-2].split("\t")[1]
    '01646500'
 
 
@@ -156,7 +156,7 @@ Module Contents
    ...     ]
    ... )
    >>> resp = ar.retrieve_text(urls, kwds)
-   >>> resp[0].split('\n')[-2].split('\t')[1]
+   >>> resp[0].split("\n")[-2].split("\t")[1]
    '01646500'
 
 

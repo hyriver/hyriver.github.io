@@ -14,7 +14,7 @@ Module Contents
 
 .. py:function:: get_us_states(subset_key = None)
 
-   Get US states as a GeoDataFrame from Census' TIGERLine 2022 database.
+   Get US states as a GeoDataFrame from Census' TIGERLine 2023 database.
 
    :Parameters: **subset_key** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Key to subset the geometries instead of returning all states, by default
                 all states are returned. Valid keys are:

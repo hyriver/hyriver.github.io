@@ -239,7 +239,7 @@ Module Contents
    region of interest locally. Therefore, it's not as fast as other functions and
    the bottleneck could be the download speed.
 
-   :Parameters: * **geometry** (:class:`shapely.geometry.Polygon` or :class:`tuple`) -- The geometry for downloading clipping the data. For a tuple bbox,
+   :Parameters: * **geometry** (:class:`shapely.Polygon` or :class:`tuple`) -- The geometry for downloading clipping the data. For a tuple bbox,
                   the order should be (west, south, east, north).
                 * **dates** (:class:`tuple` or :class:`list`, *optional*) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
                 * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, defaults to ``epsg:4326``.
