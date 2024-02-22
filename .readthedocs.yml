@@ -1,6 +1,10 @@
 version: 2
+
 formats:
 - htmlzip
+
+submodules:
+  include: all
 
 build:
   os: ubuntu-22.04
