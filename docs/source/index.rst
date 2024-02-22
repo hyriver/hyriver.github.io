@@ -221,7 +221,6 @@ If you use any of HyRiver packages in your research, we appreciate citations:
     :hidden:
 
     getting_started
-    readmes
     examples
 
 .. toctree::

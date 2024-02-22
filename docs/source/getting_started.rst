@@ -20,6 +20,103 @@ Some major capabilities of HyRiver are as follows:
 * A URL inventory for some popular (and tested) web services.
 * Some utilities for manipulating the obtained data and their visualization.
 
+
+Software Stack
+--------------
+
+.. grid::
+    :gutter: 3
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pynhd.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyNHD
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pygeohydro.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGeoHydro
+
+    .. grid-item-card::
+
+        .. button-link:: readme/py3dep.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            Py3DEP
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pydaymet.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyDaymet
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pygridmet.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGridMET
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pynldas2.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyNLDAS2
+
+    .. grid-item-card::
+
+        .. button-link:: readme/hydrosignatures.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            HydroSignatures
+
+    .. grid-item-card::
+
+        .. button-link:: readme/async-retriever.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            AsyncRetriever
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pygeoogc.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGeoOGC
+
+    .. grid-item-card::
+
+        .. button-link:: readme/pygeoutils.html
+            :click-parent:
+            :ref-type: ref
+            :align: center
+
+            PyGeoUtils
+
 Installation
 ------------
 
@@ -64,3 +161,18 @@ the performance of some computations. Installing ``pyogrio`` is highly recommend
 for improving the performance of working with vector data. For NHDPlus, ``py7zr``
 and ``pyogrio`` are required dependencies. For retrieving soil
 data, you should install ``planetary-computer`` and ``pystac-client``.
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    PyNHD <readme/pynhd>
+    PyGeoHydro <readme/pygeohydro>
+    Py3DEP <readme/py3dep>
+    PyDaymet <readme/pydaymet>
+    PyGridMET <readme/pygridmet>
+    PyNLDAS2 <readme/pynldas2>
+    HydroSignatures <readme/hydrosignatures>
+    AsyncRetriever<readme/async-retriever>
+    PyGeoOGC <readme/pygeoogc>
+    PyGeoUtils <readme/pygeoutils>

@@ -1,4 +1,5 @@
 import datetime
+import os
 import urllib.request
 import json
 import tomllib as tomli
@@ -52,6 +53,8 @@ extensions = [
     "sphinx_copybutton",
     "sphinxcontrib.bibtex",
     "sphinx_design",
+    "sphinx_togglebutton",
+    "sphinx_favicon",
 ]
 
 bibtex_bibfiles = ['refs.bib']
@@ -60,7 +63,6 @@ bibtex_bibfiles = ['refs.bib']
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
     "xarray": ("https://xarray.pydata.org/en/stable/", None),
-    "dask": ("https://docs.dask.org/en/latest/", None),
     "geopandas": ("https://geopandas.org/", None),
     "pandas": ("https://pandas.pydata.org/pandas-docs/stable/", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
@@ -206,8 +208,14 @@ pygments_style = "sphinx"
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "tests", ".ipynb_checkpoints", "**.github", "**examples/README.md"]
 
 # sphinx_book_theme configurations
-html_theme = "sphinx_book_theme"
+html_theme = "pydata_sphinx_theme"
+# html_theme = "sphinx_book_theme"
 html_title = ""
+
+# logo
+html_last_updated_fmt = today_fmt
+html_logo = "_static/hyriver_logo_text.svg"
+html_favicon = "_static/favicon.ico"
 
 html_context = {
     "github_user": "cheginit",
@@ -216,27 +224,117 @@ html_context = {
     "doc_path": "docs",
 }
 html_baseurl = "https://docs.hyriver.io"
+# html_theme_options = {
+#     "repository_url": "https://github.com/hyriver/hyriver.github.io",
+#     "repository_branch": "main",
+#     "path_to_docs": "docs",
+#     "launch_buttons": {
+#         "binderhub_url": "https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks",
+#         "notebook_interface": "jupyterlab",
+#     },
+#     "use_edit_page_button": True,
+#     "use_repository_button": True,
+#     "use_download_button": False,
+#     "use_issues_button": True,
+#     "home_page_in_toc": True,
+#     "navigation_with_keys": False,
+# }
+
+json_url = "https://docs.hyriver.io/_static/switcher.json"
+# Define the version we use for matching in the version switcher.
+version_match = os.environ.get("READTHEDOCS_VERSION")
+# If READTHEDOCS_VERSION doesn't exist, we're not on RTD
+# If it is an integer, we're in a PR build and the version isn't correct.
+# If it's "latest" → change to "dev" (that's what we want the switcher to call it)
+if not version_match or version_match.isdigit() or version_match == "latest":
+    # For local development, infer the version to match from the package.
+    if "dev" in release or "rc" in release:
+        version_match = "dev"
+        # We want to keep the relative reference if we are in dev mode
+        # but we want the whole url if we are effectively in a released version
+        json_url = "_static/switcher.json"
+    else:
+        version_match = f"v{release}"
+elif version_match == "stable":
+    version_match = f"v{release}"
 html_theme_options = {
-    "repository_url": "https://github.com/hyriver/hyriver.github.io",
-    "repository_branch": "main",
-    "path_to_docs": "docs",
-    "launch_buttons": {
-        "binderhub_url": "https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks",
-        "notebook_interface": "jupyterlab",
+    "header_links_before_dropdown": 4,
+    "icon_links": [
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/ContactHyRiver",
+            "icon": "fa-brands fa-twitter",
+        },
+        {
+            "name": "GitHub",
+            "url": "https://github.com/hyriver/hyriver.github.io",
+            "icon": "fa-brands fa-github",
+        },
+    ],
+    # alternative way to set twitter and github header icons
+    # "github_url": "https://github.com/pydata/pydata-sphinx-theme",
+    # "twitter_url": "https://twitter.com/PyData",
+    "logo": {
+        "text": "",
+        "image_dark": "_static/hyriver_logo_text.svg",
     },
     "use_edit_page_button": True,
-    "use_repository_button": True,
-    "use_download_button": False,
-    "use_issues_button": True,
-    "home_page_in_toc": True,
+    "show_toc_level": 1,
+    "navbar_align": "left",  # [left, content, right] For testing that the navbar items align properly
+    # "show_nav_level": 2,
+    # "announcement": "https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html",
+    "show_version_warning_banner": True,
+    "navbar_center": ["version-switcher", "navbar-nav"],
+    # "navbar_start": ["navbar-logo"],
+    # "navbar_end": ["theme-switcher", "navbar-icon-links"],
+    # "navbar_persistent": ["search-button"],
+    # "primary_sidebar_end": ["custom-template", "sidebar-ethical-ads"],
+    # "article_footer_items": ["test", "test"],
+    # "content_footer_items": ["test", "test"],
+    "footer_start": ["copyright"],
+    "footer_center": ["sphinx-version"],
+    "secondary_sidebar_items": {
+        "**/*": ["page-toc", "edit-this-page", "sourcelink"],
+        "examples/no-sidebar": [],
+    },
+    "switcher": {
+        "json_url": json_url,
+        "version_match": version_match,
+    },
+    # "back_to_top_button": False,
     "navigation_with_keys": False,
 }
 
-# logo
-html_last_updated_fmt = today_fmt
-html_logo = "_static/hyriver_logo_text.svg"
-html_favicon = "_static/favicon.ico"
+html_sidebars = {
+    "contributing": [],
+    "authors": [],
+    "license": [],
+    "readme/*": [],
+}
+
 htmlhelp_basename = "HyRiverdoc"
+html_sourcelink_suffix = ""
+html_last_updated_fmt = ""  # to reveal the build date in the pages meta
+
+# -- favicon options ---------------------------------------------------------
+
+# see https://sphinx-favicon.readthedocs.io for more information about the
+# sphinx-favicon extension
+favicons = [
+    # generic icons compatible with most browsers
+    # "favicon-32x32.png",
+    # "favicon-16x16.png",
+    {"rel": "shortcut icon", "sizes": "any", "href": "favicon.ico"},
+    # # chrome specific
+    # "android-chrome-192x192.png",
+    # # apple icons
+    # {"rel": "mask-icon", "color": "#459db9", "href": "safari-pinned-tab.svg"},
+    # {"rel": "apple-touch-icon", "href": "apple-touch-icon.png"},
+    # # msapplications
+    # {"name": "msapplication-TileColor", "content": "#459db9"},
+    # {"name": "theme-color", "content": "#ffffff"},
+    # {"name": "msapplication-TileImage", "content": "mstile-150x150.png"},
+]
 
 # configuration for opengraph
 description = " ".join(
@@ -425,7 +523,7 @@ def resize_thumbnails(app: Sphinx)-> None:
                 # Calculate the new size, maintaining aspect ratio
                 ratio = min(target_size[0] / img.width, target_size[1] / img.height)
                 new_size = (int(img.width * ratio), int(img.height * ratio))
-                
+
                 # Resize the image with the new size
                 img = img.resize(new_size, Image.Resampling.LANCZOS)
 

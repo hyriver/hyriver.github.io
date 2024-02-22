@@ -47,7 +47,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-      
+
 
 
 .. py:class:: NHD(layer, outfields = '*', crs = 4326)
@@ -93,7 +93,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-      
+
 
 
 .. py:class:: NHDPlusHR(layer, outfields = '*', crs = 4326)
@@ -136,7 +136,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-      
+
 
 
 .. py:class:: NLDI

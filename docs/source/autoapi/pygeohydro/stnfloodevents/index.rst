@@ -115,7 +115,7 @@ Module Contents
 
          :meth:`~get_all_data`
              Retrieves all data for a given data type.
-         
+
          :meth:`~get_filtered_data`
              Retrieves filtered data for a given data type.
 
@@ -153,7 +153,7 @@ Module Contents
 
          :meth:`~get_filtered_data`
              Retrieves filtered data for a given data type.
-         
+
          :meth:`~data_dictionary`
              Retrieves the data dictionary for a given data type.
 
@@ -217,7 +217,7 @@ Module Contents
 
          :meth:`~get_all_data`
              Retrieves all data for a given data type.
-         
+
          :meth:`~data_dictionary`
              Retrieves the data dictionary for a given data type.
 
