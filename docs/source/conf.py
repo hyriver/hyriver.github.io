@@ -6,7 +6,7 @@ from pathlib import Path
 from textwrap import dedent, indent
 
 import yaml
-from PIL import Image, ImageChops
+from PIL import Image
 from sphinx.application import Sphinx
 from sphinx.util import logging
 
