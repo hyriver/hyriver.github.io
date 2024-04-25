@@ -107,7 +107,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-
+      
 
    .. py:property:: valid_services
       :type: dict[str, str]

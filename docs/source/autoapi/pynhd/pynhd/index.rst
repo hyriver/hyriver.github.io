@@ -28,11 +28,13 @@ Module Contents
                   non-conus areas, i.e., Alaska, Hawaii, Puerto Rico, the Virgin Islands , and
                   the Pacific Islands. Valid layers are:
 
-                  - ``hydrolocation``
-                  - ``flowline``
-                  - ``waterbody``
-                  - ``drainage_area``
-                  - ``catchment``
+                  - ``hydrolocation_waterbody`` for Sink, Spring, Waterbody Outlet
+                  - ``hydrolocation_flowline`` for Headwater, Terminus, Divergence, Confluence, Catchment Outlet
+                  - ``hydrolocation_reach`` for Reach Code, External Connection
+                  - ``flowline`` for river flowlines
+                  - ``waterbody`` for waterbodies
+                  - ``drainage_area`` for drainage areas
+                  - ``catchment`` for catchments
                 * **outfields** (:class:`str` or :class:`list`, *optional*) -- Target field name(s), default to "*" i.e., all the fields.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- Target spatial reference, default to ``EPSG:4326``.
 
@@ -47,7 +49,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-
+      
 
 
 .. py:class:: NHD(layer, outfields = '*', crs = 4326)
@@ -93,7 +95,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-
+      
 
 
 .. py:class:: NHDPlusHR(layer, outfields = '*', crs = 4326)
@@ -136,7 +138,7 @@ Module Contents
    .. method:: bysql(sql_clause, return_m=False, return_geom=True)
 
       Get features using a valid SQL 92 WHERE clause.
-
+      
 
 
 .. py:class:: NLDI

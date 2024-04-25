@@ -34,7 +34,7 @@ Module Contents
    and impervious areas. So, ``urban = developed + impervious`` and always
    ``natural + urban = natural + developed + impervious = 100``.
 
-   :Parameters: * **geometry** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with the geometry to query. The indices are used
+   :Parameters: * **geo_df** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- A GeoDataFrame or GeoSeries with the geometry to query. The indices are used
                   as keys in the output dictionary.
                 * **year** (:class:`int`, *optional*) -- Year of the NLCD data, defaults to 2019. Available years are 2021, 2019, 2016,
                   2013, 2011, 2008, 2006, 2004, and 2001.
@@ -45,7 +45,7 @@ Module Contents
    :returns: :class:`pandas.DataFrame` -- A dataframe with the same index as input ``geo_df`` and columns are the area
              percentages of the natural, developed, impervious, and urban
              (sum of developed and impervious) areas. Sum of urban and natural percentages
-             is always 100, as well as the sume of natural, developed, and impervious
+             is always 100, as well as the sum of natural, developed, and impervious
              percentages.
 
 

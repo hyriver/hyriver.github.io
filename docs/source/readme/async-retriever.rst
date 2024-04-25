@@ -19,7 +19,7 @@ AsyncRetriever: Asynchronous requests with persistent caching
     :alt: Python Versions
 
 .. image:: https://static.pepy.tech/badge/async-retriever
-    :target: https://pepy.tech/project/pyasync-retriever3dep
+    :target: https://pepy.tech/project/async-retriever
     :alt: Downloads
 
 |

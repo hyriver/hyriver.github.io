@@ -113,7 +113,7 @@ Module Contents
    per year. Missing data in the remaining stations, are filled with
    day-of-year average over the entire dataset.
 
-   :Parameters: * **discharge** (:class:`xarray.DataArray` or :class:`pandas.DataFrame` or :class:`pandas.Series`) -- Daily streamflow observations with at least 10 years of daily data.
+   :Parameters: * **streamflow** (:class:`xarray.DataArray` or :class:`pandas.DataFrame` or :class:`pandas.Series`) -- Daily streamflow observations with at least 10 years of daily data.
                 * **missing_max** (:class:`int`) -- Maximum allowed number of missing daily data per year for filling,
                   defaults to 5.
 
