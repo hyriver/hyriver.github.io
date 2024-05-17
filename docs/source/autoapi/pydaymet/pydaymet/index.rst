@@ -236,7 +236,7 @@ Module Contents
    >>> clm = daymet.get_bystac(
    ...     geometry,
    ...     ("2010-01-01", "2010-01-02"),
-   ...     variables="tmin",
+   ...     variables="prcp",
    ...     res_km=4,
    ...     snow=True,
    ...     pet="hargreaves_samani",

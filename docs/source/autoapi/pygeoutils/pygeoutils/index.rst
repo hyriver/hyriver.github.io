@@ -90,8 +90,9 @@ Module Contents
 
    Create GeoDataFrame from (Geo)JSON.
 
-   :Parameters: * **content** (:class:`dict` or :class:`list` of :class:`dict`) -- A (Geo)JSON dictionary e.g., response.json() or a list of them.
-                * **in_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- CRS of the content, defaults to ``epsg:4326``.
+   :Parameters: * **content** (:class:`dict` or :class:`list` of :class:`dict`) -- A (Geo)JSON dictionary or a list of them.
+                * **in_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- CRS of the content, defaults to ``epsg:4326``. If the content has no CRS,
+                  it will be set to this CRS, otherwise, ``in_crs`` will be ignored.
                 * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- The target CRS of the output GeoDataFrame, defaults to ``epsg:4326``.
 
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON

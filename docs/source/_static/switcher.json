@@ -1,12 +1,8 @@
 [
   {
-    "version": "dev",
-    "url": "https://docs.hyriver.io"
-  },
-  {
-    "name": "0.16 (stable)",
+    "name": "0.16 (latest)",
     "version": "v0.16",
-    "url": "https://hyriver.readthedocs.io/en/v0.16/",
+    "url": "https://docs.hyriver.io",
     "preferred": true
   },
   {

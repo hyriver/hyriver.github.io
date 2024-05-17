@@ -121,11 +121,11 @@ Module Contents
 
       .. rubric:: Examples
 
-      >>> from pygeohydro.stnfloodevents import STNFloodEventData
-      >>> data = STNFloodEventData.data_dictionary(data_type="instruments", as_dict=False)
-      >>> data.shape[1]
+      >>> from pygeohydro import STNFloodEventData
+      >>> data = STNFloodEventData.data_dictionary(data_type="instruments", as_dict=False)  # doctest: +SKIP
+      >>> data.shape[1]  # doctest: +SKIP
       2
-      >>> data.columns
+      >>> data.columns  # doctest: +SKIP
       Index(['Field', 'Definition'], dtype='object')
 
 

@@ -12,10 +12,13 @@
 Module Contents
 ---------------
 
-.. py:class:: StreamCat
+.. py:class:: StreamCat(lakes_only = False)
 
 
    Get StreamCat API's properties.
+
+   :Parameters: **lakes_only** (:class:`bool`, *optional*) -- If ``True``, only return metrics for lakes and their associated catchments
+                from the LakeCat dataset.
 
    .. attribute:: base_url
 
@@ -103,7 +106,6 @@ Module Contents
    :Parameters: * **comids** (:class:`int` or :class:`list` of :class:`int`) -- ComID(s) of NHDPlus catchments.
                 * **feature** (:class:`str`) -- The feature of interest. Available options are:
 
-                  - ``catchment_metrics``: 414 catchment-scale metrics.
                   - ``curve_number``: 16-day average Curve Number.
                   - ``comid_info``: ComID information.
 
@@ -113,9 +115,9 @@ Module Contents
    .. rubric:: Examples
 
    >>> import pynhd
-   >>> data = nhd.epa_nhd_catchments(1440291, "catchment_metrics")
-   >>> data["catchment_metrics"].loc[1440291, "AvgWetIndxCat"]
-   579.532
+   >>> data = pynhd.epa_nhd_catchments(9533477, "curve_number")
+   >>> data["curve_number"].mean(axis=1).item()
+   75.576
 
 
 .. py:function:: nhd_fcode()
@@ -187,7 +189,7 @@ Module Contents
              NHDPlus flowlines.
 
 
-.. py:function:: streamcat(metric_names, metric_areas = None, comids = None, regions = None, states = None, counties = None, conus = False, percent_full = False, area_sqkm = False)
+.. py:function:: streamcat(metric_names, metric_areas = None, comids = None, regions = None, states = None, counties = None, conus = False, percent_full = False, area_sqkm = False, lakes_only = False)
 
    Get various metrics for NHDPlusV2 catchments from EPA's StreamCat.
 
@@ -230,6 +232,8 @@ Module Contents
                 * **percent_full** (:class:`bool`, *optional*) -- If ``True``, return the percent of each area of interest covered by
                   the metric.
                 * **area_sqkm** (:class:`bool`, *optional*) -- If ``True``, return the area in square kilometers.
+                * **lakes_only** (:class:`bool`, *optional*) -- If ``True``, only return metrics for lakes and their associated catchments
+                  from the LakeCat dataset.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe with the requested metrics.
 

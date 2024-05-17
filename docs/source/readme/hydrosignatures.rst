@@ -128,7 +128,7 @@ In this example, we select West Branch Herring Run At Idlewylde, MD, as the
 watershed of interest and compute the hydrological signatures for the period
 from 2010 to 2020.
 
-.. code:: python
+.. code-block:: python
 
     import pydaymet as daymet
     import hydrosignatures as hs
@@ -144,7 +144,7 @@ from 2010 to 2020.
 First, we get the basin geometry of the watershed using ``gagesii_basins`` layer of
 the USGS's WaterData web service.
 
-.. code:: python
+.. code-block:: python
 
     wd = WaterData("gagesii_basins")
     geometry = wd.byid("gage_id", site).geometry[0]
@@ -152,7 +152,7 @@ the USGS's WaterData web service.
 Then, we obtain the station's info and streamflow data using NWIS. Note that
 we should convert the streamflow from cms to mm/day.
 
-.. code:: python
+.. code-block:: python
 
     nwis = NWIS()
     info = nwis.get_info({"site": site})
@@ -164,7 +164,7 @@ we should convert the streamflow from cms to mm/day.
 Next, we retrieve the precipitation data using PyDaymet over the whole basin
 using the basin geometry and take its mean as the basin's precipitation.
 
-.. code:: python
+.. code-block:: python
 
     prcp = daymet.get_bygeom(geometry, (start, end), variables="prcp")
     p_mmpd = prcp.prcp.mean(dim=["x", "y"]).to_pandas()
@@ -173,14 +173,14 @@ using the basin geometry and take its mean as the basin's precipitation.
 
 Now, we can pass these two to the ``HydroSignatures`` class:
 
-.. code:: python
+.. code-block:: python
 
     sig = HydroSignatures(q_mmpd, p_mmpd)
 
 The ``values`` property of this class contains the computed signatures. For example,
 let's plot the regime curves:
 
-.. code:: python
+.. code-block:: python
 
     sig.values.mean_monthly.plot()
 
@@ -193,7 +193,7 @@ Note that, you can also use the functions directly. For example, let's get
 streamflow observations for another station and separate the baseflow using
 various filter parameters and compare them:
 
-.. code:: python
+.. code-block:: python
 
     import numpy as np
     import pandas as pd
@@ -210,7 +210,7 @@ various filter parameters and compare them:
 Lastly, let's compute Markham's seasonality index for all streamflow time series of
 the stations in the CAMELS dataset. We retrieve the CAMELS dataset using PyGeoHydro:
 
-.. code:: python
+.. code-block:: python
 
     import xarray as xr
 
