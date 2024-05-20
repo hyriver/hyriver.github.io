@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro.nwis`
-=========================
+pygeohydro.nwis
+===============
 
 .. py:module:: pygeohydro.nwis
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: NWIS
-
 
    Access NWIS web service.
 
@@ -23,8 +26,10 @@ Module Contents
    can be found at its help
    `webpage <https://help.waterdata.usgs.gov/codes-and-parameters>`__.
 
+
    .. py:method:: get_info(queries, expanded = False, fix_names = True, nhd_info = False)
       :classmethod:
+
 
       Send multiple queries to USGS Site Web Service.
 
@@ -43,8 +48,10 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- A correctly typed ``GeoDataFrame`` containing site(s) information.
 
 
+
    .. py:method:: get_parameter_codes(keyword)
       :classmethod:
+
 
       Search for parameter codes by name or number.
 
@@ -71,9 +78,11 @@ Module Contents
       'Discharge, cubic feet per second'
 
 
+
    .. py:method:: get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[False] = ...) -> pandas.DataFrame
                   get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[True] = ...) -> xarray.Dataset
       :classmethod:
+
 
       Get mean daily streamflow observations from USGS.
 
@@ -91,8 +100,10 @@ Module Contents
                 Note that when frequency is set to ``iv`` the time zone is converted to UTC.
 
 
+
    .. py:method:: retrieve_rdb(url, payloads)
       :staticmethod:
+
 
       Retrieve and process requests with RDB format.
 

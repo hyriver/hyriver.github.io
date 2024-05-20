@@ -1,5 +1,5 @@
-:py:mod:`pygeoutils.geotools`
-=============================
+pygeoutils.geotools
+===================
 
 .. py:module:: pygeoutils.geotools
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: Coordinates
-
 
    Generate validated and normalized coordinates in WGS84.
 
@@ -28,6 +31,7 @@ Module Contents
    >>> c.points.x.tolist()
    [100.0, -30.0]
 
+
    .. py:property:: points
       :type: geopandas.GeoSeries
 
@@ -35,7 +39,6 @@ Module Contents
 
 
 .. py:class:: GeoSpline(points, n_pts, degree = 3, smoothing = None)
-
 
    Create a parametric spline from a GeoDataFrame of points.
 
@@ -71,6 +74,7 @@ Module Contents
    (-97.06126, 32.83450),
    (-97.06123, 32.83325),
    (-97.06127, 32.83200)]
+
 
    .. py:property:: spline
       :type: Spline

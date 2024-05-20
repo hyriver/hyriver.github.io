@@ -1,5 +1,5 @@
-:py:mod:`pygeoogc.utils`
-========================
+pygeoogc.utils
+==============
 
 .. py:module:: pygeoogc.utils
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: RetrySession(retries = 3, backoff_factor = 0.3, status_to_retry = (500, 502, 504), prefixes = ('https://', ), cache_name = None, expire_after = EXPIRE_AFTER, disable = False, ssl = True)
-
 
    Configures the passed-in session to retry on failed requests.
 
@@ -33,14 +36,11 @@ Module Contents
                 * **disable** (:class:`bool`, *optional*) -- If ``True`` temporarily disable caching request/responses, defaults to ``False``.
                 * **ssl** (:class:`bool`, *optional*) -- If ``True`` verify SSL certificates, defaults to ``True``.
 
-   .. py:property:: disable
-      :type: bool
-
-      Disable caching request/responses.
 
    .. py:method:: close()
 
       Close the session.
+
 
 
    .. py:method:: get(url, payload = None, params = None, headers = None, stream = None)
@@ -48,15 +48,23 @@ Module Contents
       Retrieve data from a url by GET and return the Response.
 
 
+
    .. py:method:: head(url, params = None, data = None, json = None, headers = None)
 
       Retrieve data from a url by POST and return the Response.
+
 
 
    .. py:method:: post(url, payload = None, data = None, json = None, headers = None, stream = None)
 
       Retrieve data from a url by POST and return the Response.
 
+
+
+   .. py:property:: disable
+      :type: bool
+
+      Disable caching request/responses.
 
 
 .. py:function:: match_crs(geom, in_crs, out_crs)

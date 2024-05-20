@@ -1,5 +1,5 @@
-:py:mod:`pynhd.network_tools`
-=============================
+pynhd.network_tools
+===================
 
 .. py:module:: pynhd.network_tools
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: NHDTools(flowlines)
-
 
    Prepare NHDPlus data for downstream analysis.
 
@@ -27,6 +30,7 @@ Module Contents
                 ``totdasqkm``, ``startflag``, ``streamorde``, ``streamcalc``, ``terminalpa``,
                 ``pathlength``, ``divergence``, ``hydroseq``, and ``levelpathi``.
 
+
    .. py:method:: add_tocomid()
 
       Find the downstream comid(s) of each comid in NHDPlus flowline database.
@@ -37,13 +41,16 @@ Module Contents
           ``comid``, ``terminalpa``, ``fromnode``, ``tonode``
 
 
+
    .. py:method:: check_requirements(reqs, cols)
       :staticmethod:
+
 
       Check for all the required data.
 
       :Parameters: * **reqs** (:term:`iterable`) -- A list of required data names (str)
                    * **cols** (:class:`list`) -- A list of variable names (str)
+
 
 
    .. py:method:: clean_flowlines(use_enhd_attrs, terminal2nan)
@@ -54,9 +61,11 @@ Module Contents
                    * **terminal2nan** (:class:`bool`) -- Convert terminal flowlines to ``NaN``.
 
 
+
    .. py:method:: remove_isolated()
 
       Remove isolated flowlines.
+
 
 
    .. py:method:: remove_tinynetworks(min_path_size, min_path_length, min_network_size)
@@ -74,6 +83,7 @@ Module Contents
                    * **min_path_size** (:class:`float`) -- Minimum size of outlet level path of a drainage basin in km.
                      Drainage basins with an outlet drainage area smaller than
                      this value will be removed.
+
 
 
    .. py:method:: to_linestring()

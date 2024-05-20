@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro`
-====================
+pygeohydro
+==========
 
 .. py:module:: pygeohydro
 
@@ -11,47 +11,19 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   helpers/index.rst
-   nfhl/index.rst
-   nlcd/index.rst
-   nwis/index.rst
-   plot/index.rst
-   pygeohydro/index.rst
-   stnfloodevents/index.rst
-   us_abbrs/index.rst
-   waterdata/index.rst
-   watershed/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   /autoapi/pygeohydro/helpers/index
+   /autoapi/pygeohydro/nfhl/index
+   /autoapi/pygeohydro/nlcd/index
+   /autoapi/pygeohydro/nwis/index
+   /autoapi/pygeohydro/plot/index
+   /autoapi/pygeohydro/pygeohydro/index
+   /autoapi/pygeohydro/stnfloodevents/index
+   /autoapi/pygeohydro/us_abbrs/index
+   /autoapi/pygeohydro/waterdata/index
+   /autoapi/pygeohydro/watershed/index
 
 

@@ -1,5 +1,5 @@
-:py:mod:`hydrosignatures`
-=========================
+hydrosignatures
+===============
 
 .. py:module:: hydrosignatures
 
@@ -11,27 +11,10 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   hydrosignatures/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
-
-
-
-
-
-
-
+   /autoapi/hydrosignatures/hydrosignatures/index
 
 

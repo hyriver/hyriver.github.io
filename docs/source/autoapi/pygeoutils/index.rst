@@ -1,5 +1,5 @@
-:py:mod:`pygeoutils`
-====================
+pygeoutils
+==========
 
 .. py:module:: pygeoutils
 
@@ -11,42 +11,11 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   geotools/index.rst
-   pygeoutils/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   /autoapi/pygeoutils/geotools/index
+   /autoapi/pygeoutils/pygeoutils/index
 
 

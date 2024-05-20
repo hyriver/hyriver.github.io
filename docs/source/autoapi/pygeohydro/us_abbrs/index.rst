@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro.us_abbrs`
-=============================
+pygeohydro.us_abbrs
+===================
 
 .. py:module:: pygeohydro.us_abbrs
 

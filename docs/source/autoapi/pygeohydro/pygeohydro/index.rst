@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro.pygeohydro`
-===============================
+pygeohydro.pygeohydro
+=====================
 
 .. py:module:: pygeohydro.pygeohydro
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: EHydro(data_type = 'points')
-
 
 
 
@@ -49,6 +52,7 @@ Module Contents
 
                 Note that point clouds are not available for all surveys.
 
+
    .. py:property:: survey_grid
       :type: geopandas.GeoDataFrame
 
@@ -57,21 +61,8 @@ Module Contents
 
 .. py:class:: NID
 
-
    Retrieve data from the National Inventory of Dams web service.
 
-   .. py:property:: df
-
-      Entire NID inventory (``csv`` version) as a ``pandas.DataFrame``.
-
-   .. py:property:: gdf
-
-      Entire NID inventory (``gpkg`` version) as a ``geopandas.GeoDataFrame``.
-
-   .. py:property:: nid_inventory_path
-      :type: pathlib.Path
-
-      Path to the NID inventory feather file.
 
    .. py:method:: get_byfilter(query_list)
 
@@ -96,6 +87,7 @@ Module Contents
       >>> dam_dfs = nid.get_byfilter(query_list)
 
 
+
    .. py:method:: get_bygeom(geometry, geo_crs)
 
       Retrieve NID data within a geometry.
@@ -110,6 +102,7 @@ Module Contents
       >>> from pygeohydro import NID
       >>> nid = NID()
       >>> dams = nid.get_bygeom((-69.77, 45.07, -69.31, 45.45), 4326)
+
 
 
    .. py:method:: get_suggestions(text, context_key = None)
@@ -136,6 +129,7 @@ Module Contents
       >>> dams, contexts = nid.get_suggestions("houston", "city")
 
 
+
    .. py:method:: inventory_byid(federal_ids)
 
       Get extra attributes for dams based on their dam ID.
@@ -160,6 +154,7 @@ Module Contents
       >>> dams = nid.inventory_byid(['KY01232', 'GA02400', 'NE04081', 'IL55070', 'TN05345'])
 
 
+
    .. py:method:: stage_nid_inventory(fname = None)
 
       Download the entire NID inventory data and save to a feather file.
@@ -167,6 +162,20 @@ Module Contents
       :Parameters: **fname** (:class:`str`, :class:`pathlib.Path`, *optional*) -- The path to the file to save the data to, defaults to
                    ``./cache/nid_inventory.feather``.
 
+
+
+   .. py:property:: df
+      Entire NID inventory (``csv`` version) as a ``pandas.DataFrame``.
+
+
+   .. py:property:: gdf
+      Entire NID inventory (``gpkg`` version) as a ``geopandas.GeoDataFrame``.
+
+
+   .. py:property:: nid_inventory_path
+      :type: pathlib.Path
+
+      Path to the NID inventory feather file.
 
 
 .. py:function:: get_camels()

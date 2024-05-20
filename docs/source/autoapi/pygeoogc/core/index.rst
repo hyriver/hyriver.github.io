@@ -1,5 +1,5 @@
-:py:mod:`pygeoogc.core`
-=======================
+pygeoogc.core
+=============
 
 .. py:module:: pygeoogc.core
 
@@ -9,11 +9,12 @@
 
 
 
+
+
 Module Contents
 ---------------
 
 .. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, max_workers = 1, verbose = False, disable_retry = False)
-
 
    Access to an ArcGIS REST service.
 
@@ -39,6 +40,7 @@ Module Contents
                   is done and object IDs of the failed requests is saved to a text file
                   which its ipath can be accessed via ``self.failed_path``.
 
+
    .. py:method:: get_features(featureids, return_m = False, return_geom = True)
 
       Get features based on the feature IDs.
@@ -51,9 +53,11 @@ Module Contents
       :returns: :class:`dict` -- (Geo)json response from the web service.
 
 
+
    .. py:method:: get_response(url, payloads, method = 'GET')
 
       Send payload and get the response.
+
 
 
    .. py:method:: initialize_service()
@@ -61,9 +65,11 @@ Module Contents
       Initialize the RESTFul service.
 
 
+
    .. py:method:: partition_oids(oids)
 
       Partition feature IDs based on ``self.max_nrecords``.
+
 
 
    .. py:method:: retry_failed_requests()
@@ -73,7 +79,6 @@ Module Contents
 
 
 .. py:class:: WFSBase(url, layer = None, outformat = None, version = '2.0.0', crs = 4326, read_method = 'json', max_nrecords = 1000, validation = True)
-
 
    Base class for WFS service.
 
@@ -98,14 +103,17 @@ Module Contents
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
+
    .. py:method:: get_service_options()
 
       Validate input arguments with the WFS service.
 
 
+
    .. py:method:: sort_params(sort_attr, nfeatures, start_index)
 
       Get sort parameters for a WFS request.
+
 
 
    .. py:method:: validate_wfs()
@@ -115,7 +123,6 @@ Module Contents
 
 
 .. py:class:: WMSBase(url, layers = '', outformat = '', version = '1.3.0', crs = 4326, validation = True)
-
 
    Base class for accessing a WMS service.
 
@@ -131,14 +138,17 @@ Module Contents
                   to False if you are sure all the WMS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
+
    .. py:method:: get_service_options()
 
       Validate input arguments with the WMS service.
 
 
+
    .. py:method:: get_validlayers()
 
       Get the layers supported by the WMS service.
+
 
 
    .. py:method:: validate_wms()

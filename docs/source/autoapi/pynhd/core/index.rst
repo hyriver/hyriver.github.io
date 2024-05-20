@@ -1,5 +1,5 @@
-:py:mod:`pynhd.core`
-====================
+pynhd.core
+==========
 
 .. py:module:: pynhd.core
 
@@ -9,11 +9,12 @@
 
 
 
+
+
 Module Contents
 ---------------
 
 .. py:class:: AGRBase(base_url, layer = None, outfields = '*', crs = 4326, outformat = 'json')
-
 
    Base class for getting geospatial data from a ArcGISRESTful service.
 
@@ -26,10 +27,6 @@ Module Contents
                 * **outformat** (:class:`str`, *optional*) -- One of the output formats offered by the selected layer. If not correct
                   a list of available formats is shown, defaults to ``json``.
 
-   .. py:property:: service_info
-      :type: ServiceInfo
-
-      Get the service information.
 
    .. py:method:: bygeom(geom, geo_crs = 4326, sql_clause = '', distance = None, return_m = False, return_geom = True)
 
@@ -45,6 +42,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
+
    .. py:method:: byids(field, fids, return_m = False, return_geom = True)
 
       Get features based on a list of field IDs.
@@ -55,6 +53,7 @@ Module Contents
                    * **return_geom** (:class:`bool`, *optional*) -- Whether to return the geometry of the feature, defaults to ``True``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
+
 
 
    .. py:method:: bysql(sql_clause, return_m = False, return_geom = True)
@@ -73,8 +72,10 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrame.
 
 
+
    .. py:method:: get_validlayers(url)
       :staticmethod:
+
 
       Get a list of valid layers.
 
@@ -84,8 +85,13 @@ Module Contents
 
 
 
-.. py:class:: GeoConnex(item = None, dev = False, max_nfeatures = 10000)
+   .. py:property:: service_info
+      :type: ServiceInfo
 
+      Get the service information.
+
+
+.. py:class:: GeoConnex(item = None, dev = False, max_nfeatures = 10000)
 
    Access to the GeoConnex API.
 
@@ -122,15 +128,6 @@ Module Contents
                 * **max_nfeatures** (:class:`int`, *optional*) -- The maximum number of features to request from the service,
                   defaults to 10000.
 
-   .. py:property:: dev
-      :type: bool
-
-      Return the name of the endpoint.
-
-   .. py:property:: item
-      :type: str | None
-
-      Return the name of the endpoint.
 
    .. py:method:: bycql(cql_dict: dict[str, Any], skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
                   bycql(cql_dict: dict[str, Any], skip_geometry: Literal[True]) -> pandas.DataFrame
@@ -148,6 +145,7 @@ Module Contents
                    * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, no geometry will not be returned, by default ``False``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
+
 
 
    .. py:method:: bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = ..., predicate: str = ..., crs: CRSTYPE = ..., skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
@@ -175,6 +173,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
 
 
+
    .. py:method:: byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
                   byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[True]) -> pandas.DataFrame
 
@@ -182,19 +181,34 @@ Module Contents
 
 
 
+   .. py:property:: dev
+      :type: bool
+
+      Return the name of the endpoint.
+
+
+   .. py:property:: item
+      :type: str | None
+
+      Return the name of the endpoint.
+
+
 .. py:class:: ScienceBase
 
-
    Access and explore items on USGS's ScienceBase.
+
 
    .. py:method:: get_children(item)
       :staticmethod:
 
+
       Get children items of an item.
+
 
 
    .. py:method:: get_file_urls(item)
       :staticmethod:
+
 
       Get download and meta URLs of all the available files for an item.
 

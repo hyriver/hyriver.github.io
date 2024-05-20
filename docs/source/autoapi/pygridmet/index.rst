@@ -1,5 +1,5 @@
-:py:mod:`pygridmet`
-===================
+pygridmet
+=========
 
 .. py:module:: pygridmet
 
@@ -11,18 +11,11 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   core/index.rst
-   pygridmet/index.rst
-
-
-Package Contents
-----------------
-
-
-
+   /autoapi/pygridmet/core/index
+   /autoapi/pygridmet/pygridmet/index
 
 

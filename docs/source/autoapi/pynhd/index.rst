@@ -1,5 +1,5 @@
-:py:mod:`pynhd`
-===============
+pynhd
+=====
 
 .. py:module:: pynhd
 
@@ -11,48 +11,13 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   core/index.rst
-   network_tools/index.rst
-   nhdplus_derived/index.rst
-   pynhd/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   /autoapi/pynhd/core/index
+   /autoapi/pynhd/network_tools/index
+   /autoapi/pynhd/nhdplus_derived/index
+   /autoapi/pynhd/pynhd/index
 
 

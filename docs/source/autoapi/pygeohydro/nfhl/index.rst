@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro.nfhl`
-=========================
+pygeohydro.nfhl
+===============
 
 .. py:module:: pygeohydro.nfhl
 
@@ -9,11 +9,12 @@
 
 
 
+
+
 Module Contents
 ---------------
 
 .. py:class:: NFHL(service, layer, outfields = '*', crs = 4326)
-
 
 
 
@@ -108,6 +109,7 @@ Module Contents
 
       Get features using a valid SQL 92 WHERE clause.
       
+
 
    .. py:property:: valid_services
       :type: dict[str, str]

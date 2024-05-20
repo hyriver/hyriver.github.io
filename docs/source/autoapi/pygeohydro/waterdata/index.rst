@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro.waterdata`
-==============================
+pygeohydro.waterdata
+====================
 
 .. py:module:: pygeohydro.waterdata
 
@@ -9,16 +9,19 @@
 
 
 
+
+
 Module Contents
 ---------------
 
 .. py:class:: SensorThings
 
-
    Class for interacting with SensorThings API.
+
 
    .. py:method:: odata_helper(columns = None, conditionals = None, expand = None, max_count = None, extra_params = None)
       :staticmethod:
+
 
       Generate Odata filters for SensorThings API.
 
@@ -38,6 +41,7 @@ Module Contents
       :returns: **odata** (:class:`dict`) -- Odata filter for the SensorThings API.
 
 
+
    .. py:method:: query_byodata(odata, outformat = 'json')
 
       Query the SensorThings API by Odata filter.
@@ -49,6 +53,7 @@ Module Contents
       :returns: :class:`pandas.DataFrame` or :class:`geopandas.GeoDataFrame` -- Requested data.
 
 
+
    .. py:method:: sensor_info(sensor_ids)
 
       Query the SensorThings API by a sensor ID.
@@ -56,6 +61,7 @@ Module Contents
       :Parameters: **sensor_ids** (:class:`str` or :class:`list` of :class:`str`) -- A single or list of sensor IDs, e.g., ``USGS-09380000``.
 
       :returns: :class:`pandas.DataFrame` -- Requested sensor data.
+
 
 
    .. py:method:: sensor_property(sensor_property, sensor_ids)
@@ -73,7 +79,6 @@ Module Contents
 
 .. py:class:: WaterQuality
 
-
    Water Quality Web Service https://www.waterqualitydata.us.
 
    .. rubric:: Notes
@@ -88,6 +93,7 @@ Module Contents
    consult the
    `Water Quality Data documentation <https://www.waterqualitydata.us/webservices_documentation>`__.
 
+
    .. py:method:: data_bystation(station_ids, wq_kwds)
 
       Retrieve data for a single station.
@@ -96,6 +102,7 @@ Module Contents
                    * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
 
       :returns: :class:`pandas.DataFrame` -- DataFrame of data for the stations.
+
 
 
    .. py:method:: get_csv(endpoint, kwds, request_method = 'GET')
@@ -109,6 +116,7 @@ Module Contents
       :returns: :class:`pandas.DataFrame` -- The web service response as a DataFrame.
 
 
+
    .. py:method:: get_json(endpoint, kwds, request_method = 'GET')
 
       Get the JSON response from the Water Quality Web Service.
@@ -120,14 +128,17 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- The web service response as a GeoDataFrame.
 
 
+
    .. py:method:: get_param_table()
 
       Get the parameter table from the USGS Water Quality Web Service.
 
 
+
    .. py:method:: lookup_domain_values(endpoint)
 
       Get the domain values for the target endpoint.
+
 
 
    .. py:method:: station_bybbox(bbox, wq_kwds)
@@ -138,6 +149,7 @@ Module Contents
                    * **wq_kwds** (:class:`dict`, *optional*) -- Water Quality Web Service keyword arguments. Default to None.
 
       :returns: :class:`geopandas.GeoDataFrame` -- GeoDataFrame of station info within the bounding box.
+
 
 
    .. py:method:: station_bydistance(lon, lat, radius, wq_kwds)

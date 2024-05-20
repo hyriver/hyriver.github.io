@@ -1,5 +1,5 @@
-:py:mod:`pynhd.pynhd`
-=====================
+pynhd.pynhd
+===========
 
 .. py:module:: pynhd.pynhd
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: HP3D(layer, outfields = '*', crs = 4326)
-
 
 
 
@@ -53,7 +56,6 @@ Module Contents
 
 
 .. py:class:: NHD(layer, outfields = '*', crs = 4326)
-
 
 
 
@@ -102,7 +104,6 @@ Module Contents
 
 
 
-
    Access National Hydrography Dataset (NHD) Plus high resolution.
 
    .. rubric:: Notes
@@ -143,8 +144,8 @@ Module Contents
 
 .. py:class:: NLDI
 
-
    Access the Hydro Network-Linked Data Index (NLDI) service.
+
 
    .. py:method:: comid_byloc(coords, loc_crs = 4326)
 
@@ -165,6 +166,7 @@ Module Contents
                 any ComID a list of missing coords are returned as well.
 
 
+
    .. py:method:: feature_byloc(coords, loc_crs = 4326)
 
       Get the closest feature ID(s) based on coordinates using ``position`` endpoint.
@@ -174,6 +176,7 @@ Module Contents
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed feature ID(s) and flowlines in EPSG:4326. If some coords don't
                 return any IDs a list of missing coords are returned as well.
+
 
 
    .. py:method:: get_basins(feature_ids, fsource = 'nwissite', split_catchment = False, simplified = True)
@@ -200,6 +203,7 @@ Module Contents
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed basins in EPSG:4326. If some IDs don't return any features
                 a list of missing ID(s) are returned as well.
+
 
 
    .. py:method:: getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[True] = ...) -> pandas.DataFrame
@@ -234,6 +238,7 @@ Module Contents
                 or if ``values_only`` is Fale return ``percent_nodata`` as well.
 
 
+
    .. py:method:: getfeature_byid(fsource, fids)
 
       Get feature(s) based ID(s).
@@ -255,6 +260,7 @@ Module Contents
 
       :returns: :class:`geopandas.GeoDataFrame` or :class:`(geopandas.GeoDataFrame`, :class:`list)` -- NLDI indexed features in EPSG:4326. If some IDs don't return any features
                 a list of missing ID(s) are returned as well.
+
 
 
    .. py:method:: navigate_byid(fsource, fid, navigation, source, distance = 500, trim_start = False, stop_comid = None)
@@ -289,6 +295,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- NLDI indexed features in EPSG:4326.
 
 
+
    .. py:method:: navigate_byloc(coords, navigation = None, source = None, loc_crs = 4326, distance = 500, trim_start = False, stop_comid = None)
 
       Navigate the NHDPlus database from a coordinate.
@@ -321,8 +328,8 @@ Module Contents
 
 
 
-
    Access `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__ service.
+
 
    .. py:method:: cross_section(coord, width, numpts, crs = 4326)
 
@@ -342,6 +349,7 @@ Module Contents
       >>> gdf = pga.cross_section((-103.80119, 40.2684), width=1000.0, numpts=101, crs=4326)  # doctest: +SKIP
       >>> print(gdf.iloc[-1, 1])  # doctest: +SKIP
       1000.0
+
 
 
    .. py:method:: elevation_profile(line, numpts, dem_res, crs = 4326)
@@ -364,6 +372,7 @@ Module Contents
       >>> gdf = pga.elevation_profile(line, 101, 1, 4326)  # doctest: +SKIP
       >>> print(gdf.iloc[-1, 2])  # doctest: +SKIP
       1299.8727
+
 
 
    .. py:method:: endpoints_profile(coords, numpts, dem_res, crs = 4326)
@@ -389,6 +398,7 @@ Module Contents
       411.5906
 
 
+
    .. py:method:: flow_trace(coord, crs = 4326, direction = 'none')
 
       Return a GeoDataFrame from the flowtrace service.
@@ -409,6 +419,7 @@ Module Contents
       ... )  # doctest: +SKIP
       >>> print(gdf.comid.iloc[0])  # doctest: +SKIP
       22294818
+
 
 
    .. py:method:: split_catchment(coord, crs = 4326, upstream = False)
@@ -434,7 +445,6 @@ Module Contents
 
 .. py:class:: WaterData(layer, crs = 4326)
 
-
    Access to `WaterData <https://labs.waterdata.usgs.gov/geoserver>`__ service.
 
    :Parameters: * **layer** (:class:`str`) -- A valid layer from the WaterData service. Valid layers are:
@@ -459,6 +469,7 @@ Module Contents
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The target spatial reference system, defaults to ``epsg:4326``.
                 * **validation** (:class:`bool`, *optional*) -- Whether to validate the input data, defaults to ``True``.
 
+
    .. py:method:: bybox(bbox, box_crs = 4326, sort_attr = None)
 
       Get features within a bounding box.
@@ -469,6 +480,7 @@ Module Contents
                      to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features in a GeoDataFrames.
+
 
 
    .. py:method:: bydistance(coords, distance, loc_crs = 4326, sort_attr = None)
@@ -484,6 +496,7 @@ Module Contents
       :returns: :class:`geopandas.GeoDataFrame` -- Requested features as a GeoDataFrame.
 
 
+
    .. py:method:: byfilter(cql_filter, method = 'GET', sort_attr = None)
 
       Get features based on a CQL filter.
@@ -495,6 +508,7 @@ Module Contents
                      to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features as a GeoDataFrames.
+
 
 
    .. py:method:: bygeom(geometry, geo_crs = 4326, xy = True, predicate = 'intersects', sort_attr = None)
@@ -521,6 +535,7 @@ Module Contents
                      to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The requested features in the given geometry.
+
 
 
    .. py:method:: byid(featurename, featureids)

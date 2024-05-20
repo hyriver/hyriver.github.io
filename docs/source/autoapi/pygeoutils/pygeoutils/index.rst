@@ -1,11 +1,13 @@
-:py:mod:`pygeoutils.pygeoutils`
-===============================
+pygeoutils.pygeoutils
+=====================
 
 .. py:module:: pygeoutils.pygeoutils
 
 .. autoapi-nested-parse::
 
    Some utilities for manipulating GeoSpatial data.
+
+
 
 
 

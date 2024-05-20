@@ -1,5 +1,5 @@
-:py:mod:`async_retriever`
-=========================
+async_retriever
+===============
 
 .. py:module:: async_retriever
 
@@ -11,20 +11,10 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   async_retriever/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
+   /autoapi/async_retriever/async_retriever/index
 
 

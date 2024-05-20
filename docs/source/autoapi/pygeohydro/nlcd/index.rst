@@ -1,11 +1,13 @@
-:py:mod:`pygeohydro.nlcd`
-=========================
+pygeohydro.nlcd
+===============
 
 .. py:module:: pygeohydro.nlcd
 
 .. autoapi-nested-parse::
 
    Accessing data from the supported databases through their APIs.
+
+
 
 
 

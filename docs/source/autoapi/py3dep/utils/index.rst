@@ -1,11 +1,13 @@
-:py:mod:`py3dep.utils`
-======================
+py3dep.utils
+============
 
 .. py:module:: py3dep.utils
 
 .. autoapi-nested-parse::
 
    Utilities for Py3DEP.
+
+
 
 
 

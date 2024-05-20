@@ -1,5 +1,5 @@
-:py:mod:`pydaymet`
-==================
+pydaymet
+========
 
 .. py:module:: pydaymet
 
@@ -11,22 +11,12 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   core/index.rst
-   pet/index.rst
-   pydaymet/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
+   /autoapi/pydaymet/core/index
+   /autoapi/pydaymet/pet/index
+   /autoapi/pydaymet/pydaymet/index
 
 

@@ -1,5 +1,5 @@
-:py:mod:`py3dep`
-================
+py3dep
+======
 
 .. py:module:: py3dep
 
@@ -11,27 +11,11 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   py3dep/index.rst
-   utils/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
-
-
-
-
-
-
+   /autoapi/py3dep/py3dep/index
+   /autoapi/py3dep/utils/index
 
 

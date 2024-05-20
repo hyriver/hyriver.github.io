@@ -1,11 +1,13 @@
-:py:mod:`py3dep.py3dep`
-=======================
+py3dep.py3dep
+=============
 
 .. py:module:: py3dep.py3dep
 
 .. autoapi-nested-parse::
 
    Get data from 3DEP database.
+
+
 
 
 
@@ -50,8 +52,8 @@ Module Contents
    {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False, 'topobathy': False}
 
 
-.. py:function:: elevation_bycoords(coords: tuple[float, float], crs: CRSTYPE = ..., source: Literal[tep, tnm] = ...) -> float
-                 elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: Literal[tep, tnm] = ...) -> list[float]
+.. py:function:: elevation_bycoords(coords: tuple[float, float], crs: CRSTYPE = ..., source: Literal['tep', 'tnm'] = ...) -> float
+                 elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: Literal['tep', 'tnm'] = ...) -> list[float]
 
    Get elevation for a list of coordinates.
 

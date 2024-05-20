@@ -1,5 +1,5 @@
-:py:mod:`pynldas2`
-==================
+pynldas2
+========
 
 .. py:module:: pynldas2
 
@@ -11,17 +11,10 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   pynldas2/index.rst
-
-
-Package Contents
-----------------
-
-
-
+   /autoapi/pynldas2/pynldas2/index
 
 

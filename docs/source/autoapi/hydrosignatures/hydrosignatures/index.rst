@@ -1,5 +1,5 @@
-:py:mod:`hydrosignatures.hydrosignatures`
-=========================================
+hydrosignatures.hydrosignatures
+===============================
 
 .. py:module:: hydrosignatures.hydrosignatures
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: HydroSignatures
-
 
    Hydrological signatures.
 
@@ -25,19 +28,11 @@ Module Contents
                 * **bfi_alpha** (:class:`float`, *optional*) -- Alpha parameter for baseflow separation filter using Lyne and Hollick method.
                   Default is ``0.925``.
 
-   .. py:property:: signature_names
-      :type: dict[str, str]
-
-      Return a dictionary with the hydrological signatures.
-
-   .. py:property:: values
-      :type: SignaturesFloat
-
-      Return a dictionary with the hydrological signatures.
 
    .. py:method:: bfi()
 
       Compute Baseflow Index.
+
 
 
    .. py:method:: diff(other)
@@ -45,9 +40,11 @@ Module Contents
       Compute absolute difference between two hydrological signatures.
 
 
+
    .. py:method:: fdc()
 
       Compute exceedance probability (for flow duration curve).
+
 
 
    .. py:method:: fdc_slope()
@@ -55,9 +52,11 @@ Module Contents
       Compute FDC slopes between a list of lower and upper percentiles.
 
 
+
    .. py:method:: isclose(other)
 
       Check if the signatures are close between with a tolerance of 1e-3.
+
 
 
    .. py:method:: mean_annual_flood()
@@ -65,9 +64,11 @@ Module Contents
       Compute mean annual flood.
 
 
+
    .. py:method:: mean_monthly()
 
       Compute mean monthly flow (for regime curve).
+
 
 
    .. py:method:: runoff_ratio()
@@ -75,9 +76,11 @@ Module Contents
       Compute total runoff ratio.
 
 
+
    .. py:method:: seasonality_index()
 
       Compute seasonality index.
+
 
 
    .. py:method:: streamflow_elasticity()
@@ -85,15 +88,29 @@ Module Contents
       Compute streamflow elasticity.
 
 
+
    .. py:method:: to_dict()
 
       Return a dictionary with the hydrological signatures.
+
 
 
    .. py:method:: to_json()
 
       Return a JSON string with the hydrological signatures.
 
+
+
+   .. py:property:: signature_names
+      :type: dict[str, str]
+
+      Return a dictionary with the hydrological signatures.
+
+
+   .. py:property:: values
+      :type: SignaturesFloat
+
+      Return a dictionary with the hydrological signatures.
 
 
 .. py:function:: aridity_index(pet: pandas.Series, prcp: pandas.Series) -> numpy.float64

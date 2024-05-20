@@ -1,5 +1,5 @@
-:py:mod:`pydaymet.core`
-=======================
+pydaymet.core
+=============
 
 .. py:module:: pydaymet.core
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: Daymet(variables = None, pet = None, snow = False, time_scale = 'daily', region = 'na')
-
 
    Base class for Daymet requests.
 
@@ -42,15 +45,19 @@ Module Contents
 
    .. footbibliography::
 
+
    .. py:method:: check_dates(dates)
       :staticmethod:
 
+
       Check if input dates are in correct format and valid.
+
 
 
    .. py:method:: dates_todict(dates)
 
       Set dates by start and end dates as a tuple, (start, end).
+
 
 
    .. py:method:: dates_tolist(dates)
@@ -65,9 +72,11 @@ Module Contents
       :returns: :class:`list` -- All the dates in the Daymet database within the provided date range.
 
 
+
    .. py:method:: years_todict(years)
 
       Set date by list of year(s).
+
 
 
    .. py:method:: years_tolist(years)

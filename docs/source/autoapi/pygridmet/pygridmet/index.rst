@@ -1,11 +1,13 @@
-:py:mod:`pygridmet.pygridmet`
-=============================
+pygridmet.pygridmet
+===================
 
 .. py:module:: pygridmet.pygridmet
 
 .. autoapi-nested-parse::
 
    Access the GridMET database for both single single pixel and gridded queries.
+
+
 
 
 

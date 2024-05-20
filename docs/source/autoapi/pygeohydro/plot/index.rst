@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro.plot`
-=========================
+pygeohydro.plot
+===============
 
 .. py:module:: pygeohydro.plot
 
@@ -9,6 +9,8 @@
 
    Plots include daily, monthly and annual hydrograph as well as regime
    curve (monthly mean) and flow duration curve.
+
+
 
 
 

@@ -1,5 +1,5 @@
-:py:mod:`pygeoogc`
-==================
+pygeoogc
+========
 
 .. py:module:: pygeoogc
 
@@ -11,27 +11,13 @@
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   cache_keys/index.rst
-   core/index.rst
-   pygeoogc/index.rst
-   utils/index.rst
-
-
-Package Contents
-----------------
-
-
-
-
-
-
-
-
-
-
+   /autoapi/pygeoogc/cache_keys/index
+   /autoapi/pygeoogc/core/index
+   /autoapi/pygeoogc/pygeoogc/index
+   /autoapi/pygeoogc/utils/index
 
 

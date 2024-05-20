@@ -1,11 +1,13 @@
-:py:mod:`pydaymet.pydaymet`
-===========================
+pydaymet.pydaymet
+=================
 
 .. py:module:: pydaymet.pydaymet
 
 .. autoapi-nested-parse::
 
    Access the Daymet database for both single single pixel and gridded queries.
+
+
 
 
 

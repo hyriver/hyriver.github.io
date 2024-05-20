@@ -1,5 +1,5 @@
-:py:mod:`pygeoogc.pygeoogc`
-===========================
+pygeoogc.pygeoogc
+=================
 
 .. py:module:: pygeoogc.pygeoogc
 
@@ -9,11 +9,12 @@
 
 
 
+
+
 Module Contents
 ---------------
 
 .. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, max_workers = 1, verbose = False, disable_retry = False)
-
 
    Access to an ArcGIS REST service.
 
@@ -45,6 +46,7 @@ Module Contents
                   is done and object IDs of the failed requests is saved to a text file
                   which its ipath can be accessed via ``self.client.failed_path``.
 
+
    .. py:method:: get_features(featureids, return_m = False, return_geom = True)
 
       Get features based on the feature IDs.
@@ -57,6 +59,7 @@ Module Contents
       :returns: :class:`dict` -- (Geo)json response from the web service.
 
 
+
    .. py:method:: oids_byfield(field, ids)
 
       Get Object IDs based on a list of field IDs.
@@ -65,6 +68,7 @@ Module Contents
                    * **ids** (:class:`str` or :class:`list`) -- A list of target ID(s).
 
       :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
+
 
 
    .. py:method:: oids_bygeom(geom, geo_crs = 4326, spatial_relation = 'esriSpatialRelIntersects', sql_clause = None, distance = None)
@@ -94,6 +98,7 @@ Module Contents
       :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
+
    .. py:method:: oids_bysql(sql_clause)
 
       Get feature IDs using a valid SQL 92 WHERE clause.
@@ -108,6 +113,7 @@ Module Contents
       :returns: :class:`list` of :class:`tuples` -- A list of feature IDs partitioned by ``self.max_nrecords``.
 
 
+
    .. py:method:: partition_oids(oids)
 
       Partition feature IDs based on ``self.max_nrecords``.
@@ -120,24 +126,20 @@ Module Contents
 
 .. py:class:: HttpURLs
 
-
    URLs of the supported HTTP services.
 
 
 .. py:class:: RESTfulURLs
-
 
    URLs of the supported RESTful services.
 
 
 .. py:class:: ServiceURL
 
-
    URLs of the supported services.
 
 
 .. py:class:: WFS(url, layer = None, outformat = None, version = '2.0.0', crs = 4326, read_method = 'json', max_nrecords = 1000, validation = True)
-
 
 
 
@@ -164,6 +166,7 @@ Module Contents
                   to False if you are sure all the WFS settings such as layer and crs are correct
                   to avoid sending extra requests.
 
+
    .. py:method:: getfeature_bybox(bbox, box_crs = 4326, always_xy = False, sort_attr = None)
 
       Get data from a WFS service within a bounding box.
@@ -179,6 +182,7 @@ Module Contents
                      to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`list` of :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response within a bounding box.
+
 
 
    .. py:method:: getfeature_byfilter(cql_filter, method = 'GET', sort_attr = None)
@@ -197,6 +201,7 @@ Module Contents
                      to the first attribute in the schema that contains ``id`` in its name.
 
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response
+
 
 
    .. py:method:: getfeature_bygeom(geometry, geo_crs = 4326, always_xy = False, predicate = 'INTERSECTS', sort_attr = None)
@@ -228,6 +233,7 @@ Module Contents
       :returns: :class:`str` or :class:`bytes` or :class:`dict` -- WFS query response based on the given geometry.
 
 
+
    .. py:method:: getfeature_byid(featurename, featureids)
 
       Get features based on feature IDs.
@@ -241,12 +247,10 @@ Module Contents
 
 .. py:class:: WFSURLs
 
-
    URLs of the supported WFS services.
 
 
 .. py:class:: WMS(url, layers, outformat, version = '1.3.0', crs = 4326, validation = True, ssl = True)
-
 
    Get data from a WMS service within a geometry or bounding box.
 
@@ -263,9 +267,11 @@ Module Contents
                   to avoid sending extra requests.
                 * **ssl** (:class:`bool`, *optional*) -- Whether to use SSL for the connection, defaults to ``True``.
 
+
    .. py:method:: get_validlayers()
 
       Get the layers supported by the WMS service.
+
 
 
    .. py:method:: getmap_bybox(bbox: tuple[float, float, float, float], resolution: float, box_crs: CRSTYPE = ..., always_xy: bool = ..., max_px: int = ..., kwargs: dict[str, Any] | None = ..., tiff_dir: Literal[None] = None) -> dict[str, bytes]
@@ -297,7 +303,6 @@ Module Contents
 
 
 .. py:class:: WMSURLs
-
 
    URLs of the supported WMS services.
 

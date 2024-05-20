@@ -1,5 +1,5 @@
-:py:mod:`pygridmet.core`
-========================
+pygridmet.core
+==============
 
 .. py:module:: pygridmet.core
 
@@ -9,11 +9,12 @@
 
 
 
+
+
 Module Contents
 ---------------
 
 .. py:class:: GridMET(dates = 2000, variables = None, snow = False)
-
 
    Base class for GridMET requests.
 
@@ -30,15 +31,19 @@ Module Contents
 
    .. footbibliography::
 
+
    .. py:method:: check_dates(dates)
       :staticmethod:
 
+
       Check if input dates are in correct format and valid.
+
 
 
    .. py:method:: dates_todict(dates)
 
       Set dates by start and end dates as a tuple, (start, end).
+
 
 
    .. py:method:: dates_tolist(dates)
@@ -51,6 +56,7 @@ Module Contents
       :Parameters: **dates** (:class:`tuple`) -- Target start and end dates.
 
       :returns: :class:`list` -- All the dates in the GridMET database within the provided date range.
+
 
 
    .. py:method:: separate_snow(clm, t_rain = T_RAIN, t_snow = T_SNOW)
@@ -69,9 +75,11 @@ Module Contents
       .. footbibliography::
 
 
+
    .. py:method:: years_todict(years)
 
       Set date by list of year(s).
+
 
 
    .. py:method:: years_tolist(years)

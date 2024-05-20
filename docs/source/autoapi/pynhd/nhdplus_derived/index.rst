@@ -1,5 +1,5 @@
-:py:mod:`pynhd.nhdplus_derived`
-===============================
+pynhd.nhdplus_derived
+=====================
 
 .. py:module:: pynhd.nhdplus_derived
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: StreamCat(lakes_only = False)
-
 
    Get StreamCat API's properties.
 

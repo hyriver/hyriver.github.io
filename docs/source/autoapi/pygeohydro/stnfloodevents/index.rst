@@ -1,5 +1,5 @@
-:py:mod:`pygeohydro.stnfloodevents`
-===================================
+pygeohydro.stnfloodevents
+=========================
 
 .. py:module:: pygeohydro.stnfloodevents
 
@@ -9,11 +9,14 @@
 
 
 
+
+
+
+
 Module Contents
 ---------------
 
 .. py:class:: STNFloodEventData
-
 
    Client for STN Flood Event Data's RESTFUL Service API.
 
@@ -95,9 +98,11 @@ Module Contents
    * `High-Water Marks and Flooding <https://www.usgs.gov/special-topics/water-science-school/science/high-water-marks-and-flooding>`__
    * `Identifying and preserving high-water mark data <https://doi.org/10.3133/tm3A24>`__
 
+
    .. py:method:: data_dictionary(data_type: str, as_dict: Literal[False] = False, async_retriever_kwargs: dict[str, Any] | None = ...) -> pandas.DataFrame
                   data_dictionary(data_type: str, as_dict: Literal[True] = True, async_retriever_kwargs: dict[str, Any] | None = ...) -> dict[str, Any]
       :classmethod:
+
 
       Retrieve data dictionaries from the STN Flood Event Data API.
 
@@ -129,9 +134,11 @@ Module Contents
       Index(['Field', 'Definition'], dtype='object')
 
 
+
    .. py:method:: get_all_data(data_type: str, as_list: Literal[False] = False, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> geopandas.GeoDataFrame | pandas.DataFrame
                   get_all_data(data_type: str, as_list: Literal[True] = True, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> list[dict[str, Any]]
       :classmethod:
+
 
       Retrieve all data from the STN Flood Event Data API.
 
@@ -178,9 +185,11 @@ Module Contents
              dtype='object')
 
 
+
    .. py:method:: get_filtered_data(data_type: str, query_params: dict[str, Any] | None = ..., as_list: Literal[False] = False, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> geopandas.GeoDataFrame | pandas.DataFrame
                   get_filtered_data(data_type: str, query_params: dict[str, Any] | None = ..., as_list: Literal[True] = True, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> list[dict[str, Any]]
       :classmethod:
+
 
       Retrieve filtered data from the STN Flood Event Data API.
 

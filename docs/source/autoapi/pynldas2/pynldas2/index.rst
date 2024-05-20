@@ -1,11 +1,13 @@
-:py:mod:`pynldas2.pynldas2`
-===========================
+pynldas2.pynldas2
+=================
 
 .. py:module:: pynldas2.pynldas2
 
 .. autoapi-nested-parse::
 
    Get hourly NLDAS2 forcing data.
+
+
 
 
 
