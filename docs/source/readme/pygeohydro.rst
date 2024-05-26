@@ -28,9 +28,9 @@ PyGeoHydro: Retrieve Geospatial Hydrology Data
     :target: https://www.codefactor.io/repository/github/hyriver/pygeohydro/overview/main
     :alt: CodeFactor
 
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/psf/black
-    :alt: black
+.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+    :target: https://github.com/astral-sh/ruff
+    :alt: Ruff
 
 .. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
     :target: https://github.com/pre-commit/pre-commit
@@ -55,6 +55,8 @@ PyGeoHydro supports the following datasets:
 
 * `gNATSGO <https://planetarycomputer.microsoft.com/dataset/gnatsgo-rasters>`__ for
   US soil properties.
+* `SoilGrids <https://www.isric.org/explore/soilgrids/faq-soilgrids#What_do_the_filename_codes_mean>`__
+  for seamless global soil properties.
 * `Derived Soil Properties <https://www.sciencebase.gov/catalog/item/5fd7c19cd34e30b9123cb51f>`__
   for soil porosity, available water capacity, and field capacity across the US.
 * `NWIS <https://nwis.waterdata.usgs.gov/nwis>`__ for daily mean streamflow observations

@@ -157,10 +157,10 @@ Module Contents
 
    .. py:method:: stage_nid_inventory(fname = None)
 
-      Download the entire NID inventory data and save to a feather file.
+      Download the entire NID inventory data and save to a parquet file.
 
       :Parameters: **fname** (:class:`str`, :class:`pathlib.Path`, *optional*) -- The path to the file to save the data to, defaults to
-                   ``./cache/nid_inventory.feather``.
+                   ``./cache/full_nid_inventory.parquet``.
 
 
 
@@ -175,7 +175,7 @@ Module Contents
    .. py:property:: nid_inventory_path
       :type: pathlib.Path
 
-      Path to the NID inventory feather file.
+      Path to the NID inventory parquet file.
 
 
 .. py:function:: get_camels()
@@ -223,6 +223,29 @@ Module Contents
                   field capacity, and ``por`` for porosity.
                 * **soil_dir** (:class:`str` or :class:`pathlib.Pathlib.Path`) -- Directory to store zip files or if exists read from them, defaults to
                   ``./cache``.
+
+
+.. py:function:: soil_soilgrids(layers, geometry, geo_crs = 4326)
+
+   Get soil data from SoilGrids for the area of interest.
+
+   .. rubric:: Notes
+
+   For more information on the SoilGrids dataset, visit
+   `ISRIC <https://www.isric.org/explore/soilgrids/faq-soilgrids#What_do_the_filename_codes_mean>`__.
+
+   :Parameters: * **layers** (:class:`list` of :class:`str`) -- SoilGrids layers to get. Available options are:
+                  ``bdod_*``, ``cec_*``, ``cfvo_*``, ``clay_*``, ``nitrogen_*``, ``ocd_*``,
+                  ``ocs_*``, ``phh2o_*``, ``sand_*``, ``silt_*``, and ``soc_*`` where ``*``
+                  is the depth in cm and can be one of ``5``, ``15``, ``30``, ``60``,
+                  ``100``, or ``200``. For example, ``bdod_5`` is the mean bulk density of
+                  the fine earth fraction at 0-5 cm depth, and ``bdod_200`` is the mean bulk
+                  density of the fine earth fraction at 100-200 cm depth.
+                * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple` of :class:`length 4`) -- Geometry to get DEM within. It can be a polygon or a boundong box
+                  of form (xmin, ymin, xmax, ymax).
+                * **geo_crs** (:class:`int`, :class:`str`, :class:`of pyproj.CRS`, *optional*) -- CRS of the input geometry, defaults to ``epsg:4326``.
+
+   :returns: :class:`xarray.DataArray` -- The request DEM at the specified resolution.
 
 
 .. py:function:: ssebopeta_bycoords(coords, dates, crs = 4326)

@@ -192,7 +192,7 @@ Module Contents
              NHDPlus flowlines.
 
 
-.. py:function:: streamcat(metric_names, metric_areas = None, comids = None, regions = None, states = None, counties = None, conus = False, percent_full = False, area_sqkm = False, lakes_only = False)
+.. py:function:: streamcat(metric_names = None, metric_areas = None, comids = None, regions = None, states = None, counties = None, conus = False, percent_full = False, area_sqkm = False, lakes_only = False)
 
    Get various metrics for NHDPlusV2 catchments from EPA's StreamCat.
 
@@ -201,14 +201,15 @@ Module Contents
    For more information about the service check its webpage
    at https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset.
 
-   :Parameters: * **metric_names** (:class:`str` or :class:`list` of :class:`str`) -- Metric name(s) to retrieve. There are 567 metrics available.
+   :Parameters: * **metric_names** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Metric name(s) to retrieve. There are 567 metrics available.
                   to get a full list check out :meth:`StreamCat.valid_names`.
                   To get a description of each metric, check out
                   :meth:`StreamCat.metrics_df`. Some metrics require year and/or slope
                   to be specified, which have ``[Year]`` and/or ``[Slope]`` in their name.
                   For convenience all these variables and their years/slopes are converted
                   to a dict that can be accessed via :meth:`StreamCat.valid_years` and
-                  :meth:`StreamCat.valid_slopes`.
+                  :meth:`StreamCat.valid_slopes`. Defaults to ``None``, which will return
+                  a dataframe of the metrics metadata.
                 * **metric_areas** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Areas to return the metrics for, defaults to ``None``, i.e. all areas.
                   Valid options are: ``catchment``, ``watershed``, ``riparian_catchment``,
                   ``riparian_watershed``, ``other``.
