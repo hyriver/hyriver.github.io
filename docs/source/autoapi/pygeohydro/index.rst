@@ -16,6 +16,7 @@ Submodules
    :maxdepth: 1
 
    /autoapi/pygeohydro/helpers/index
+   /autoapi/pygeohydro/levee/index
    /autoapi/pygeohydro/nfhl/index
    /autoapi/pygeohydro/nlcd/index
    /autoapi/pygeohydro/nwis/index

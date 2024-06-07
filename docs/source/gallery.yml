@@ -6,6 +6,10 @@
   thumbnail: _static/thumbnails/nhd_nav.png
   title: Navigate NHD Network
 
+- path: examples/notebooks/nhd_demo.html
+  thumbnail: _static/thumbnails/nhd_demo.png
+  title: NHD Data using HyRiver
+
 - path: examples/notebooks/flood_peak.html
   thumbnail: _static/thumbnails/flood_peak.png
   title: Flood Moments for CAMELS
