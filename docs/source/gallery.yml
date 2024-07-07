@@ -18,6 +18,10 @@
   thumbnail: _static/thumbnails/dam_impact.png
   title: Geospatial Hydrologic Data with Web Services
 
+- path: examples/notebooks/signatures.html
+  thumbnail: _static/thumbnails/recession.png
+  title: Hydrologic Signatures
+
 - path: examples/notebooks/ridges.html
   thumbnail: _static/thumbnails/ridge_map.png
   title: Ridge Map
