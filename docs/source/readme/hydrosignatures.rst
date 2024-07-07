@@ -59,6 +59,8 @@ This package includes the following functions:
   that can be used for plotting smoothed regime curves;
 - ``baseflow``: Extracting baseflow from a streamflow time series using the
   Lyne and Hollick digital filter (Ladson et al., 2013);
+- ``baseflow_recession``: Baseflow recession analysis using the nonparametric
+  analytic (Posavec et al., 2006) and exponential fit methods;
 - ``baseflow_index``: Baseflow index;
 - ``aridity_index``: Aridity index;
 - ``seasonality_index_walsh``: Seasonality index (Walsh and Lawler, 1981);
@@ -204,6 +206,23 @@ various filter parameters and compare them:
 
 
 .. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/signatures_bf.png
+    :target: https://docs.hyriver.io/examples/notebooks/signatures.ipynb
+    :align: center
+
+We can also carry out a baseflow recession analysis using the ``baseflow_recession``
+function. For this we need to get streamflow data for a longer period.
+
+.. code-block:: python
+
+    q = nwis.get_streamflow("12304500", ("2000-01-01", "2019-12-31"))
+    mrc_np, bfr_k_np = hs.baseflow_recession(q, fit_method="nonparametric_analytic")
+    mrc_exp, bfr_k_exp = hs.baseflow_recession(q, fit_method="exponential")
+
+According to Safeeq et al. (2013), $K$ value of $0.065$ is the threshold between groundwater
+dominated slow-draining systems and shallow subsurface flow dominated fast draining systems.
+In this example, since $K= 0.056$, the watershed is groundwater dominated.
+
+.. image:: https://raw.githubusercontent.com/hyriver/HyRiver-examples/main/notebooks/_static/recession.png
     :target: https://docs.hyriver.io/examples/notebooks/signatures.ipynb
     :align: center
 

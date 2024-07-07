@@ -199,10 +199,10 @@ Module Contents
    >>> bbox = (-69.77, 45.07, -69.31, 45.45)
    >>> src = py3dep.query_3dep_sources(bbox)
    >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
-   {'10m': 8, '1m': 2, '30m': 8}
+   {'10m': 16, '1m': 4, '30m': 8}
    >>> src = py3dep.query_3dep_sources(bbox, res="1m")
    >>> src.groupby("dem_res")["OBJECTID"].count().to_dict()
-   {'1m': 2}
+   {'1m': 4}
 
 
 .. py:function:: static_3dep_dem(geometry, crs, resolution = 10)

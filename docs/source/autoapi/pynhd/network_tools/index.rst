@@ -331,7 +331,7 @@ Module Contents
              with keys as IDs and values as a list of its upstream nodes,
              and the generated ``networkx.DiGraph`` object. Note that node
              IDs are associated with the input flow line IDs, but there might
-             be some negative IDs in the output garph that are not present in
+             be some negative IDs in the output graph that are not present in
              the input flow line IDs. These "artificial" nodes are used to represent the
              graph outlet (the most downstream nodes) in the graph.
 

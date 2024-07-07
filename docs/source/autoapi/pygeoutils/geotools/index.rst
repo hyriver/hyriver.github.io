@@ -279,12 +279,12 @@ Module Contents
    (-97.06127, 32.83200)]
 
 
-.. py:function:: snap2nearest(lines, points, tol)
+.. py:function:: snap2nearest(lines_gdf, points_gdf, tol)
 
    Find the nearest points on a line to a set of points.
 
-   :Parameters: * **lines** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Lines.
-                * **points** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Points to snap to lines.
+   :Parameters: * **lines_gdf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Lines.
+                * **points_gdf** (:class:`geopandas.GeoDataFrame` or :class:`geopandas.GeoSeries`) -- Points to snap to lines.
                 * **tol** (:class:`float`, *optional*) -- Tolerance for snapping points to the nearest lines in meters.
                   It must be greater than 0.0.
 
