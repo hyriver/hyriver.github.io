@@ -99,8 +99,8 @@ Module Contents
    * `Identifying and preserving high-water mark data <https://doi.org/10.3133/tm3A24>`__
 
 
-   .. py:method:: data_dictionary(data_type: str, as_dict: Literal[False] = False, async_retriever_kwargs: dict[str, Any] | None = ...) -> pandas.DataFrame
-                  data_dictionary(data_type: str, as_dict: Literal[True] = True, async_retriever_kwargs: dict[str, Any] | None = ...) -> dict[str, Any]
+   .. py:method:: data_dictionary(data_type: str, *, as_dict: Literal[False] = False, async_retriever_kwargs: dict[str, Any] | None = None) -> pandas.DataFrame
+                  data_dictionary(data_type: str, *, as_dict: Literal[True], async_retriever_kwargs: dict[str, Any] | None = None) -> dict[str, Any]
       :classmethod:
 
 
@@ -135,8 +135,8 @@ Module Contents
 
 
 
-   .. py:method:: get_all_data(data_type: str, as_list: Literal[False] = False, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> geopandas.GeoDataFrame | pandas.DataFrame
-                  get_all_data(data_type: str, as_list: Literal[True] = True, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> list[dict[str, Any]]
+   .. py:method:: get_all_data(data_type: str, *, as_list: Literal[False] = False, crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> geopandas.GeoDataFrame | pandas.DataFrame
+                  get_all_data(data_type: str, *, as_list: Literal[True], crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> list[dict[str, Any]]
       :classmethod:
 
 
@@ -186,8 +186,8 @@ Module Contents
 
 
 
-   .. py:method:: get_filtered_data(data_type: str, query_params: dict[str, Any] | None = ..., as_list: Literal[False] = False, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> geopandas.GeoDataFrame | pandas.DataFrame
-                  get_filtered_data(data_type: str, query_params: dict[str, Any] | None = ..., as_list: Literal[True] = True, crs: CRSTYPE = ..., async_retriever_kwargs: dict[str, Any] | None = ...) -> list[dict[str, Any]]
+   .. py:method:: get_filtered_data(data_type: str, query_params: dict[str, Any] | None = None, *, as_list: Literal[False] = False, crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> geopandas.GeoDataFrame | pandas.DataFrame
+                  get_filtered_data(data_type: str, query_params: dict[str, Any] | None = None, *, as_list: Literal[True], crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> list[dict[str, Any]]
       :classmethod:
 
 

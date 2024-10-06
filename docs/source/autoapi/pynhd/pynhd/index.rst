@@ -206,8 +206,8 @@ Module Contents
 
 
 
-   .. py:method:: getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[True] = ...) -> pandas.DataFrame
-                  getcharacteristic_byid(feature_ids: str | int | Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[False] = ...) -> tuple[pandas.DataFrame, pandas.DataFrame]
+   .. py:method:: getcharacteristic_byid(feature_ids: str | int | collections.abc.Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[True] = True) -> pandas.DataFrame
+                  getcharacteristic_byid(feature_ids: str | int | collections.abc.Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[False] = ...) -> tuple[pandas.DataFrame, pandas.DataFrame]
 
       Get characteristics using a list ComIDs.
 

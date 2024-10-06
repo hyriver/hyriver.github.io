@@ -17,5 +17,6 @@ Submodules
 
    /autoapi/pygeoutils/geotools/index
    /autoapi/pygeoutils/pygeoutils/index
+   /autoapi/pygeoutils/smoothing/index
 
 

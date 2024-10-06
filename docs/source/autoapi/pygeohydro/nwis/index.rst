@@ -79,8 +79,8 @@ Module Contents
 
 
 
-   .. py:method:: get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[False] = ...) -> pandas.DataFrame
-                  get_streamflow(station_ids: Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, to_xarray: Literal[True] = ...) -> xarray.Dataset
+   .. py:method:: get_streamflow(station_ids: collections.abc.Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, *, to_xarray: Literal[False] = False) -> pandas.DataFrame
+                  get_streamflow(station_ids: collections.abc.Sequence[str] | str, dates: tuple[str, str], freq: str = 'dv', mmd: bool = False, *, to_xarray: Literal[True]) -> xarray.Dataset
       :classmethod:
 
 

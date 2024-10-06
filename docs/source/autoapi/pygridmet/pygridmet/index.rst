@@ -89,3 +89,22 @@ Module Contents
    274.167
 
 
+.. py:function:: get_conus(years, variables = None, save_dir = 'clm_gridmet')
+
+   Get the entire CONUS data for the specified years and variables.
+
+   :Parameters: * **years** (:class:`int` or :class:`list`) -- The year(s) of interest.
+                * **variables** (:class:`str` or :class:`list`, *optional*) -- The variable(s) of interest, defaults to ``None`` which downloads
+                  all the variables.
+                * **save_dir** (:class:`str` or :class:`Path`, *optional*) -- The directory to store the downloaded data, defaults to ``./clm_gridmet``.
+                  The files are stored in the NetCDF format and the file names are based
+                  on the variable names and the years, e.g., ``tmmn_2010.nc``.
+
+   :returns: :class:`list` -- A list of the downloaded files.
+
+   .. rubric:: Examples
+
+   >>> import pygridmet as gridmet
+   >>> filenames = gridmet.get_conus(2010, "tmmn")
+
+

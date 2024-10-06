@@ -129,6 +129,18 @@ Module Contents
                   defaults to 10000.
 
 
+   .. py:method:: bybox(bbox, skip_geometry = False)
+
+      Query the GeoConnex endpoint by bounding box.
+
+      :Parameters: * **bbox** (:class:`tuple`) -- A bounding box in the form of ``(xmin, ymin, xmax, ymax)``,
+                     in ``EPSG:4326`` CRS, i.e., decimal degrees.
+                   * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, no geometry will not be returned, by default ``False``.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
+
+
+
    .. py:method:: bycql(cql_dict: dict[str, Any], skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
                   bycql(cql_dict: dict[str, Any], skip_geometry: Literal[True]) -> pandas.DataFrame
 
@@ -142,6 +154,23 @@ Module Contents
       for spatial queries, :meth:`.bygeometry`.
 
       :Parameters: * **cql_dict** (:class:`dict`) -- A valid CQL dictionary (non-spatial queries).
+                   * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, no geometry will not be returned, by default ``False``.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
+
+
+
+   .. py:method:: byfilter(filter_str, skip_geometry = False)
+
+      Query the GeoConnex endpoint.
+
+      .. rubric:: Notes
+
+      GeoConnex only supports simple CQL queries. For more information
+      and examples visit https://portal.ogc.org/files/96288
+
+      :Parameters: * **filter_str** (:class:`dict`) -- A valid filter string. The filter string shouldn't be long
+                     since a GET request is used.
                    * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, no geometry will not be returned, by default ``False``.
 
       :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
