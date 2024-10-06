@@ -1,9 +1,14 @@
 [
   {
-    "name": "0.17 (latest)",
-    "version": "v0.17",
+    "name": "0.18 (latest)",
+    "version": "v0.18",
     "url": "https://docs.hyriver.io",
     "preferred": true
+  },
+  {
+    "name": "0.17",
+    "version": "v0.17.0",
+    "url": "https://hyriver.readthedocs.io/en/v0.17.0/"
   },
   {
     "name": "0.16",
