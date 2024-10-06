@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
     - id: trailing-whitespace
     - id: check-executables-have-shebangs
@@ -21,7 +21,7 @@ repos:
     - id: rst-directive-colons
 
   - repo: https://github.com/asottile/blacken-docs
-    rev: 1.16.0
+    rev: 1.18.0
     hooks:
     - id: blacken-docs
       name: Autoformat codes in docstrings with blacken-docs
@@ -29,7 +29,7 @@ repos:
       args: [-t, py38, -l, "100"]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
     - id: codespell
       name: Check common misspellings in text files with codespell.
