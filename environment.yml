@@ -3,26 +3,39 @@ channels:
 - conda-forge
 - nodefaults
 dependencies:
-- python >=3.11
+- python >=3.12
 
 # HyRiver packages
-- async-retriever >=0.16
-- pygeoogc >=0.16
-- pygeoutils >=0.16
-- py3dep >=0.16
-- pynhd >=0.16.1
-- hydrosignatures >=0.16
-- pygeohydro >=0.16
-- pydaymet >=0.16
-- pygridmet >=0.16
-- pynldas2 >=0.16
+- async-retriever >=0.18
+- pygeoogc >=0.18
+- pygeoutils >=0.18
+- py3dep >=0.18
+- pynhd >=0.18
+- hydrosignatures >=0.18
+- pygeohydro >=0.18
+- pydaymet >=0.18
+- pygridmet >=0.18
+- pynldas2 >=0.18
 
-# optional deps
-- numba
-- numbagg
-- flox
+# optional HyRiver deps
+- numba>=0.57
 - planetary-computer
 - pystac-client
-- pyogrio
 - py7zr
-- pyflwdir
+
+# optional deps for speeding xarray
+- numbagg
+- flox
+
+# Other deps required by example notebooks
+- mapclassify
+- contextily
+- hvplot
+- osmnx
+- tqdm
+- pytables
+- ffmpeg
+- ipywidgets
+- xarray-spatial
+- dask-expr
+- datashader
