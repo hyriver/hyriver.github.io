@@ -120,15 +120,18 @@ Module Contents
 
 
    .. py:property:: df
+
       Entire NID inventory (``csv`` version) as a ``pandas.DataFrame``.
 
 
    .. py:property:: gdf
+
       Entire NID inventory (``gpkg`` version) as a ``geopandas.GeoDataFrame``.
 
 
    .. py:property:: nid_inventory_path
       :type: pathlib.Path
+
 
       Path to the NID inventory parquet file.
 

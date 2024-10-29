@@ -76,6 +76,11 @@ These utilities are:
   (bounding box, list of coordinates, or any ``shapely.geometry``) to
   a new CRS.
 - ``gtiff2vrt``: For converting a list of GeoTIFF files to a VRT file.
+- ``sample_window``: Sample a raster dataset at specified coordinates
+  using a window size and a ``rasterio`` supported resampling method.
+  This is an efficient way of sampling large raster datasets without
+  reading the entire dataset into memory. The function returns a generator
+  that yields the sampled values in the order of the input coordinates.
 
 You can find some example notebooks `here <https://github.com/hyriver/HyRiver-examples>`__.
 

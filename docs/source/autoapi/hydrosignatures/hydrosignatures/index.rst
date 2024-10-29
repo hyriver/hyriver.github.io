@@ -104,11 +104,13 @@ Module Contents
    .. py:property:: signature_names
       :type: dict[str, str]
 
+
       Return a dictionary with the hydrological signatures.
 
 
    .. py:property:: values
       :type: SignaturesFloat
+
 
       Return a dictionary with the hydrological signatures.
 

@@ -88,6 +88,7 @@ Module Contents
    .. py:property:: service_info
       :type: ServiceInfo
 
+
       Get the service information.
 
 
@@ -213,11 +214,13 @@ Module Contents
    .. py:property:: dev
       :type: bool
 
+
       Return the name of the endpoint.
 
 
    .. py:property:: item
       :type: str | None
+
 
       Return the name of the endpoint.
 

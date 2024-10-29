@@ -100,6 +100,30 @@ Module Contents
    :returns: :class:`geopandas.GeoDataFrame` -- Generated geo-data frame from a GeoJSON
 
 
+.. py:function:: sample_window(dataset, xy, window = 5, indexes = None, masked = False, resampling = 1)
+
+   Interpolate pixel values at given coordinates by interpolation.
+
+   .. note::
+
+       This function is adapted from
+       the ``rasterio.sample.sample_gen`` function of
+       `RasterIO <https://rasterio.readthedocs.io/en/latest/api/rasterio.sample.html#rasterio.sample.sample_gen>`__.
+
+   :Parameters: * **dataset** (:class:`rasterio.DatasetReader`) -- Opened in ``"r"`` mode.
+                * **xy** (:term:`iterable`) -- Pairs of x, y coordinates in the dataset's reference system.
+                * **window** (:class:`int`, *optional*) -- Size of the window to read around each point. Must be odd.
+                  Default is 5.
+                * **indexes** (:class:`int` or :class:`list` of :class:`int`, *optional*) -- Indexes of dataset bands to sample, defaults to all bands.
+                * **masked** (:class:`bool`, *optional*) -- Whether to mask samples that fall outside the extent of the dataset.
+                  Default is ``False``.
+                * **resampling** (:class:`int`, *optional*) -- Resampling method to use. See rasterio.enums.Resampling for options.
+                  Default is 1, i.e., ``Resampling.bilinear``.
+
+   :Yields: :class:`numpy.array` -- An array of length equal to the number of specified indexes
+            containing the interpolated values for the bands corresponding to those indexes.
+
+
 .. py:function:: xarray2geodf(da, dtype, mask_da = None, connectivity = 8)
 
    Vectorize a ``xarray.DataArray`` to a ``geopandas.GeoDataFrame``.

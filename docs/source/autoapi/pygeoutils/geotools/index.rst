@@ -35,6 +35,7 @@ Module Contents
    .. py:property:: points
       :type: geopandas.GeoSeries
 
+
       Get validate coordinate as a ``geopandas.GeoSeries``.
 
 

@@ -57,6 +57,7 @@ Module Contents
    .. py:property:: survey_grid
       :type: geopandas.GeoDataFrame
 
+
       Full survey availability on hexagonal grid cells of 35 km resolution.
 
 

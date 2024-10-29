@@ -84,8 +84,8 @@ Module Contents
                   available resolution that covers CONUS. Note that higher resolution
                   increases computation time so chose this value with caution.
                 * **depression_filling** (:class:`bool`, *optional*) -- Fill depressions before sampling using
-                  `pyflwdir <https://deltares.github.io/pyflwdir>`__ package,
-                  defaults to ``False``.
+                  `Wang and Liu (2006) <https://doi.org/10.1080/13658810500433453>`__
+                  method, defaults to ``False``.
 
    :returns: :class:`xarray.DataArray` -- Elevations of the input coordinates as a ``xarray.DataArray``.
 

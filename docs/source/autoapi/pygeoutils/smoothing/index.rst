@@ -57,6 +57,7 @@ Module Contents
    .. py:property:: spline
       :type: Spline
 
+
       Get the spline as a ``Spline`` object.
 
 
