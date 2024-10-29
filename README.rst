@@ -3,46 +3,6 @@
 
 |
 
-.. |pygeohydro| image:: https://github.com/hyriver/pygeohydro/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/pygeohydro/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |pygeoogc| image:: https://github.com/hyriver/pygeoogc/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/pygeoogc/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |pygeoutils| image:: https://github.com/hyriver/pygeoutils/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/pygeoutils/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |pynhd| image:: https://github.com/hyriver/pynhd/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/pynhd/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |py3dep| image:: https://github.com/hyriver/py3dep/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/py3dep/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |pydaymet| image:: https://github.com/hyriver/pydaymet/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/pydaymet/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |pygridmet| image:: https://github.com/hyriver/pygridmet/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/pygridmet/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |pynldas2| image:: https://github.com/hyriver/pynldas2/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/pynldas2/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |async| image:: https://github.com/hyriver/async-retriever/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/async-retriever/actions/workflows/test.yml
-    :alt: Github Actions
-
-.. |signatures| image:: https://github.com/hyriver/hydrosignatures/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/hyriver/hydrosignatures/actions/workflows/test.yml
-    :alt: Github Actions
-
 .. |geoh_stat| image:: https://static.pepy.tech/personalized-badge/pygeohydro?period=total&left_color=blue&right_color=yellowgreen&left_text=PyGeoHydro
     :target: https://github.com/hyriver/pygeohydro
     :alt: Download Stat
@@ -105,20 +65,20 @@
     :target: https://joss.theoj.org/papers/b0df2f6192f0a18b9e622a3edff52e77
     :alt: JOSS
 
-=============== ==================================================================== ============
-Package         Description                                                          CI
-=============== ==================================================================== ============
-|nhd_stat|      Navigate and subset NHDPlus (MR and HR) using web services           |pynhd|
-|3dep_stat|     Access topographic data through National Map's 3DEP web service      |py3dep|
-|geoh_stat|     Access NWIS, NID, WQP, eHydro, NLCD, CAMELS, and SSEBop databases    |pygeohydro|
-|day_stat|      Access daily, monthly, and annual climate data via Daymet            |pydaymet|
-|grid_stat|     Access daily climate data via GridMet                                |pygridmet|
-|nldas_stat|    Access hourly NLDAS-2 data via web services                          |pynldas2|
-|sig_stat|      A collection of tools for computing hydrological signatures          |signatures|
-|async_stat|    High-level API for asynchronous requests with persistent caching     |async|
-|ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services    |pygeoogc|
-|utils_stat|    Utilities for manipulating geospatial, (Geo)JSON, and (Geo)TIFF data |pygeoutils|
-=============== ==================================================================== ============
+=============== ====================================================================
+Package         Description
+=============== ====================================================================
+|nhd_stat|      Navigate and subset NHDPlus (MR and HR) using web services
+|3dep_stat|     Access topographic data through National Map's 3DEP web service
+|geoh_stat|     Access NWIS, NID, WQP, eHydro, NLCD, CAMELS, and SSEBop databases
+|day_stat|      Access daily, monthly, and annual climate data via Daymet
+|grid_stat|     Access daily climate data via GridMet
+|nldas_stat|    Access hourly NLDAS-2 data via web services
+|sig_stat|      A collection of tools for computing hydrological signatures
+|async_stat|    High-level API for asynchronous requests with persistent caching
+|ogc_stat|      Send queries to any ArcGIS RESTful-, WMS-, and WFS-based services
+|utils_stat|    Utilities for manipulating geospatial, (Geo)JSON, and (Geo)TIFF data
+=============== ====================================================================
 
 
 HyRiver: Hydroclimate Data Retriever
@@ -204,14 +164,14 @@ Alternatively, you can install them using ``conda``:
 
     $ conda install -c conda-forge py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
-or ``mambaforge`` (recommended):
+or ``micromamba`` (recommended):
 
 .. code-block:: console
 
-    $ mamba install py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
+    $ micromamba install py3dep pynhd pygeohydro pydaymet pygridmet pynldas2 hydrosignatures pygeoogc pygeoutils async-retriever
 
 Additionally, you can create a new environment, named ``hyriver`` with all the packages
-and optional dependencies installed with ``mambaforge`` using the provided
+and optional dependencies installed with ``micromamba`` using the provided
 ``environment.yml`` file:
 
 .. code-block:: console
