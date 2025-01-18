@@ -14,7 +14,7 @@ pydaymet.pydaymet
 Module Contents
 ---------------
 
-.. py:function:: get_bycoords(coords, dates, coords_id = None, crs = 4326, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = True, to_xarray = False)
+.. py:function:: get_bycoords(coords, dates, coords_id = None, crs = 4326, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, to_xarray = False)
 
    Get point-data from the Daymet database at 1-km resolution.
 
@@ -62,7 +62,6 @@ Module Contents
                   ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
                   The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
                   https://doi.org/10.5194/gmd-11-1077-2018.
-                * **ssl** (:class:`bool`, *optional*) -- Whether to verify SSL certification, defaults to ``True``.
                 * **to_xarray** (:class:`bool`, *optional*) -- Return the data as an ``xarray.Dataset``. Defaults to ``False``.
 
    :returns: :class:`pandas.DataFrame` or :class:`xarray.Dataset` -- Daily climate data for a single or list of locations.
@@ -86,11 +85,12 @@ Module Contents
    .. footbibliography::
 
 
-.. py:function:: get_bygeom(geometry, dates, crs = 4326, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None, ssl = True)
+.. py:function:: get_bygeom(geometry, dates, crs = 4326, variables = None, region = 'na', time_scale = 'daily', pet = None, pet_params = None, snow = False, snow_params = None)
 
    Get gridded data from the Daymet database at 1-km resolution.
 
-   :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`bbox`) -- The geometry of the region of interest.
+   :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple`) -- The geometry of the region of interest. It can be a shapely Polygon or a tuple
+                  of length 4 representing the bounding box (minx, miny, maxx, maxy).
                 * **dates** (:class:`tuple` or :class:`list`) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
                 * **variables** (:class:`str` or :class:`list`) -- List of variables to be downloaded. The acceptable variables are:
@@ -137,7 +137,6 @@ Module Contents
                   ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
                   The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
                   https://doi.org/10.5194/gmd-11-1077-2018.
-                * **ssl** (:class:`bool`, *optional*) -- Whether to verify SSL certification, defaults to ``True``.
 
    :returns: :class:`xarray.Dataset` -- Daily climate data within the target geometry.
 
@@ -176,7 +175,8 @@ Module Contents
        ``pip install fsspec dask zarr pystac-client`` or
        ``conda install fsspec dask-core zarr pystac-client``.
 
-   :Parameters: * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`bbox`) -- The geometry of the region of interest.
+   :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple`) -- The geometry of the region of interest. It can be a shapely Polygon or a tuple
+                  of length 4 representing the bounding box (minx, miny, maxx, maxy).
                 * **dates** (:class:`tuple`) -- Start and end dates as a tuple (start, end) or a list of years [2001, 2010, ...].
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The CRS of the input geometry, defaults to epsg:4326.
                 * **variables** (:class:`str` or :class:`list`) -- List of variables to be downloaded. The acceptable variables are:
@@ -225,7 +225,6 @@ Module Contents
                   ``t_snow`` (deg C) which is the threshold for temperature for considering snow.
                   The default values are ``{'t_rain': 2.5, 't_snow': 0.6}`` that are adopted from
                   https://doi.org/10.5194/gmd-11-1077-2018.
-                * **ssl** (:class:`bool`, *optional*) -- Whether to verify SSL certification, defaults to ``True``.
 
    :returns: :class:`xarray.Dataset` -- Daily climate data within the target geometry.
 

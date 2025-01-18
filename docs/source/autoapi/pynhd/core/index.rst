@@ -149,8 +149,9 @@ Module Contents
 
       .. rubric:: Notes
 
-      GeoConnex only supports simple CQL queries. For more information
-      and examples visit https://portal.ogc.org/files/96288#simple-cql-JSON.
+      GeoConnex only supports Basinc CQL2 queries. For more information
+      and examples visit this
+      `link <https://docs.ogc.org/is/21-065r2/21-065r2.html#cql2-core>`__.
       Use this for non-spatial queries, since there's a dedicated method
       for spatial queries, :meth:`.bygeometry`.
 
@@ -178,8 +179,8 @@ Module Contents
 
 
 
-   .. py:method:: bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = ..., predicate: str = ..., crs: CRSTYPE = ..., skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
-                  bygeometry(geometry1: GTYPE, geometry2: GTYPE | None = ..., predicate: str = ..., crs: CRSTYPE = ..., skip_geometry: Literal[True] = True) -> pandas.DataFrame
+   .. py:method:: bygeometry(geometry1: GeoType, geometry2: GeoType | None = ..., predicate: str = ..., crs: CRSType = ..., skip_geometry: Literal[False] = False) -> geopandas.GeoDataFrame
+                  bygeometry(geometry1: GeoType, geometry2: GeoType | None = ..., predicate: str = ..., crs: CRSType = ..., skip_geometry: Literal[True] = True) -> pandas.DataFrame
 
       Query the GeoConnex endpoint by geometry.
 
@@ -192,9 +193,8 @@ Module Contents
                      Default is ``None``. For example, an spatial query for a two
                      geometries would be ``CROSSES(geometry1, geometry2)``.
                    * **predicate** (:class:`str`, *optional*) -- The predicate to use, by default ``intersects``. Supported
-                     predicates are ``intersects``, ``within``, ``contains``,
-                     ``overlaps``, ``crosses``, ``disjoint``, ``touches``, and
-                     ``equals``.
+                     predicates are ``intersects``, ``equals``, ``disjoint``, ``touches``,
+                     ``within``, ``overlaps``, ``crosses`` and ``contains``.
                    * **crs** (:class:`int` or :class:`str` or :class:`pyproj.CRS`, *optional*) -- The CRS of the polygon, by default ``EPSG:4326``. If the input
                      is a ``geopandas.GeoDataFrame`` or ``geopandas.GeoSeries``,
                      this argument will be ignored.
@@ -208,6 +208,25 @@ Module Contents
                   byid(feature_name: str, feature_ids: list[str] | str, skip_geometry: Literal[True]) -> pandas.DataFrame
 
       Query the GeoConnex endpoint.
+
+      :Parameters: * **feature_name** (:class:`str`) -- The name of the feature to query.
+                   * **feature_ids** (:class:`list` or :class:`str`) -- The IDs of the feature to query.
+                   * **skip_geometry** (:class:`bool`, *optional*) -- If ``True``, no geometry will not be returned, by default ``False``.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame`` or a ``pandas.DataFrame``.
+
+
+
+   .. py:method:: byitem(item_id)
+
+      Query the GeoConnex endpoint by an item ID.
+
+      :Parameters: **item_id** (:class:`str`) -- The ID of the item to query. Note that this GeoConnex's item ID which
+                   is not necessarily the same as the provider's item ID. For example,
+                   for querying gages, the item ID is not the same as the USGS gage ID
+                   but for querying HUC02, the item ID is the same as the HUC02 ID.
+
+      :returns: :class:`geopandas.GeoDataFrame` -- The query result as a ``geopandas.GeoDataFrame``.
 
 
 

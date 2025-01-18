@@ -143,7 +143,7 @@ Module Contents
    :returns: :class:`pandas.DataFrame` -- The staged data as a DataFrame.
 
 
-.. py:function:: nhdplus_attrs_s3(attr_names = None, nodata = False)
+.. py:function:: nhdplus_attrs_s3(attr_names = None, pyarrow_filter = None, nodata = False)
 
    Access NHDPlus V2.1 derived attributes over CONUS.
 
@@ -154,6 +154,9 @@ Module Contents
    :Parameters: * **attr_names** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Names of NHDPlus attribute(s) to return, defaults to None, i.e.,
                   only return a metadata dataframe that includes the attribute names
                   and their description and units.
+                * **pyarrow_filter** (:class:`pyarrow.compute.Expression`, *optional*) -- A filter expression to apply to the dataset, defaults to None. Please
+                  refer to the PyArrow documentation for more information
+                  `here <https://arrow.apache.org/docs/python/generated/pyarrow.dataset.Expression.html>`__.
                 * **nodata** (:class:`bool`) -- Whether to include NODATA percentages, default is False.
 
    :returns: :class:`pandas.DataFrame` -- A dataframe of requested NHDPlus attributes.
@@ -211,8 +214,8 @@ Module Contents
                   :meth:`StreamCat.valid_slopes`. Defaults to ``None``, which will return
                   a dataframe of the metrics metadata.
                 * **metric_areas** (:class:`str` or :class:`list` of :class:`str`, *optional*) -- Areas to return the metrics for, defaults to ``None``, i.e. all areas.
-                  Valid options are: ``catchment``, ``watershed``, ``riparian_catchment``,
-                  ``riparian_watershed``, ``other``.
+                  Valid options are: ``cat`` for catchment, ``catrp100`` for 100-m riparian
+                  catchment, ``ws`` for watershed, ``wsrp100`` for 100-m riparian watershed,
                 * **comids** (:class:`int` or :class:`list` of :class:`int`, *optional*) -- NHDPlus COMID(s), defaults to ``None``. Either ``comids``, ``regions``,
                   ``states``, ``counties``, or ``conus`` must be passed. They are
                   mutually exclusive.

@@ -48,7 +48,7 @@ Module Contents
    :returns: :class:`xarray.Dataset` -- The xarray Dataset with a single variable.
 
 
-.. py:function:: gtiff2vrt(file_list, vrt_path)
+.. py:function:: gtiff2vrt(tiff_files, vrt_path, relative = False)
 
    Create a VRT file from a list of (Geo)Tiff files.
 
@@ -56,8 +56,9 @@ Module Contents
 
        This function requires ``gdal`` to be installed.
 
-   :Parameters: * **file_list** (:class:`list`) -- List of paths to the GeoTiff files.
+   :Parameters: * **tiff_files** (:class:`list`) -- List of paths to the GeoTiff files.
                 * **vrt_path** (:class:`str` or :class:`Path`) -- Path to the output VRT file.
+                * **relative** (:class:`bool`, *optional*) -- If True, use paths relative to the VRT file (default is False).
 
 
 .. py:function:: gtiff2xarray(r_dict, geometry = None, geo_crs = None, ds_dims = None, driver = None, all_touched = False, nodata = None, drop = True)

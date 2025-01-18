@@ -206,36 +206,16 @@ Module Contents
 
 
 
-   .. py:method:: getcharacteristic_byid(feature_ids: str | int | collections.abc.Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[True] = True) -> pandas.DataFrame
-                  getcharacteristic_byid(feature_ids: str | int | collections.abc.Sequence[str | int], char_type: str, fsource: str = ..., char_ids: str | list[str] = ..., values_only: Literal[False] = ...) -> tuple[pandas.DataFrame, pandas.DataFrame]
+   .. py:method:: get_characteristics(char_list, comids = None)
+      :staticmethod:
+
 
       Get characteristics using a list ComIDs.
 
-      :Parameters: * **feature_ids** (:class:`str` or :class:`list`) -- Target feature ID(s).
-                   * **char_type** (:class:`str`) -- Type of the characteristic. Valid values are ``local`` for
-                     individual reach catchments, ``tot`` for network-accumulated values
-                     using total cumulative drainage area and ``div`` for network-accumulated values
-                     using divergence-routed.
-                   * **fsource** (:class:`str`, *optional*) -- The name of feature(s) source, defaults to ``comid``.
-                     The valid sources are:
+      :Parameters: * **char_list** (:class:`str` or :class:`list`) -- The list of characteristics to get.
+                   * **comids** (:class:`int` or :class:`list`, *optional*) -- The list of ComIDs, defaults to None, i.e., all NHDPlus ComIDs.
 
-                     * 'comid' for NHDPlus comid.
-                     * 'ca_gages' for Streamgage catalog for CA SB19
-                     * 'gfv11_pois' for USGS Geospatial Fabric V1.1 Points of Interest
-                     * 'huc12pp' for HUC12 Pour Points
-                     * 'nmwdi-st' for New Mexico Water Data Initiative Sites
-                     * 'nwisgw' for NWIS Groundwater Sites
-                     * 'nwissite' for NWIS Surface Water Sites
-                     * 'ref_gage' for geoconnex.us reference gages
-                     * 'vigil' for Vigil Network Data
-                     * 'wade' for Water Data Exchange 2.0 Sites
-                     * 'WQP' for Water Quality Portal
-                   * **char_ids** (:class:`str` or :class:`list`, *optional*) -- Name(s) of the target characteristics, default to all.
-                   * **values_only** (:class:`bool`, *optional*) -- Whether to return only ``characteristic_value`` as a series, default to True.
-                     If is set to False, ``percent_nodata`` is returned as well.
-
-      :returns: :class:`pandas.DataFrame` or :class:`tuple` of :class:`pandas.DataFrame` -- Either only ``characteristic_value`` as a dataframe or
-                or if ``values_only`` is Fale return ``percent_nodata`` as well.
+      :returns: :class:`pandas.DataFrame` -- The characteristics of the requested ComIDs.
 
 
 
@@ -445,7 +425,7 @@ Module Contents
 
 .. py:class:: WaterData(layer, crs = 4326)
 
-   Access `WaterData <https://labs.waterdata.usgs.gov/geoserver>`__ service.
+   Access `WaterData <https://api.water.usgs.gov/geoserver>`__ service.
 
    :Parameters: * **layer** (:class:`str`) -- A valid layer from the WaterData service. Valid layers are:
 

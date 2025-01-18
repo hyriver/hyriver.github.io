@@ -99,44 +99,8 @@ Module Contents
    * `Identifying and preserving high-water mark data <https://doi.org/10.3133/tm3A24>`__
 
 
-   .. py:method:: data_dictionary(data_type: str, *, as_dict: Literal[False] = False, async_retriever_kwargs: dict[str, Any] | None = None) -> pandas.DataFrame
-                  data_dictionary(data_type: str, *, as_dict: Literal[True], async_retriever_kwargs: dict[str, Any] | None = None) -> dict[str, Any]
-      :classmethod:
-
-
-      Retrieve data dictionaries from the STN Flood Event Data API.
-
-      :Parameters: * **data_type** (:class:`str`) -- The data source from STN Flood Event Data API.
-                     It can be ``instruments``, ``peaks``, ``hwms``, or ``sites``.
-                   * **as_dict** (:class:`bool`, *default* :class:`= False`) -- If True, return the data dictionary as a dictionary.
-                     Otherwise, it returns as ``pandas.DataFrame``.
-                   * **async_retriever_kwargs** (:class:`dict`, *optional*) -- Additional keyword arguments to pass to
-                     ``async_retriever.retrieve_json()``. The ``url`` and ``request_kwds``
-                     options are already set.
-
-      :returns: :class:`pandas.DataFrame` or :class:`dict` -- The retrieved data dictionary as pandas.DataFrame or dict.
-
-      .. seealso::
-
-         :meth:`~get_all_data`
-             Retrieves all data for a given data type.
-         
-         :meth:`~get_filtered_data`
-             Retrieves filtered data for a given data type.
-
-      .. rubric:: Examples
-
-      >>> from pygeohydro import STNFloodEventData
-      >>> data = STNFloodEventData.data_dictionary(data_type="instruments", as_dict=False)  # doctest: +SKIP
-      >>> data.shape[1]  # doctest: +SKIP
-      2
-      >>> data.columns  # doctest: +SKIP
-      Index(['Field', 'Definition'], dtype='object')
-
-
-
-   .. py:method:: get_all_data(data_type: str, *, as_list: Literal[False] = False, crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> geopandas.GeoDataFrame | pandas.DataFrame
-                  get_all_data(data_type: str, *, as_list: Literal[True], crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> list[dict[str, Any]]
+   .. py:method:: get_all_data(data_type: str, *, as_list: Literal[False] = False, crs: CRSType = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> geopandas.GeoDataFrame | pandas.DataFrame
+                  get_all_data(data_type: str, *, as_list: Literal[True], crs: CRSType = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> list[dict[str, Any]]
       :classmethod:
 
 
@@ -186,8 +150,8 @@ Module Contents
 
 
 
-   .. py:method:: get_filtered_data(data_type: str, query_params: dict[str, Any] | None = None, *, as_list: Literal[False] = False, crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> geopandas.GeoDataFrame | pandas.DataFrame
-                  get_filtered_data(data_type: str, query_params: dict[str, Any] | None = None, *, as_list: Literal[True], crs: CRSTYPE = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> list[dict[str, Any]]
+   .. py:method:: get_filtered_data(data_type: str, query_params: dict[str, Any] | None = None, *, as_list: Literal[False] = False, crs: CRSType = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> geopandas.GeoDataFrame | pandas.DataFrame
+                  get_filtered_data(data_type: str, query_params: dict[str, Any] | None = None, *, as_list: Literal[True], crs: CRSType = 4326, async_retriever_kwargs: dict[str, Any] | None = None) -> list[dict[str, Any]]
       :classmethod:
 
 

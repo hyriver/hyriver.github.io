@@ -1,7 +1,7 @@
-py3dep.utils
-============
+py3dep.geoops
+=============
 
-.. py:module:: py3dep.utils
+.. py:module:: py3dep.geoops
 
 .. autoapi-nested-parse::
 

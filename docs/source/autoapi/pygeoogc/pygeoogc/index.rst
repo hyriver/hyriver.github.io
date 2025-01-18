@@ -14,7 +14,7 @@ pygeoogc.pygeoogc
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, max_workers = 1, verbose = False, disable_retry = False)
+.. py:class:: ArcGISRESTful(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, verbose = False, disable_retry = False)
 
    Access to an ArcGIS REST service.
 
@@ -35,11 +35,6 @@ Module Contents
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
                   all the available fields which is the default behaviour.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the output data, defaults to ``epsg:4326``.
-                * **max_workers** (:class:`int`, *optional*) -- Number of simultaneous download, default to 1, i.e., no threading. Note
-                  that some services might face issues when several requests are sent
-                  simultaneously and will return the requests partially. It's recommended
-                  to avoid using too many workers unless you are certain the web service
-                  can handle it.
                 * **verbose** (:class:`bool`, *optional*) -- If True, prints information about the requests and responses,
                   defaults to False.
                 * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts
@@ -274,8 +269,8 @@ Module Contents
 
 
 
-   .. py:method:: getmap_bybox(bbox: tuple[float, float, float, float], resolution: float, box_crs: CRSTYPE = ..., always_xy: bool = ..., max_px: int = ..., kwargs: dict[str, Any] | None = ..., tiff_dir: Literal[None] = None) -> dict[str, bytes]
-                  getmap_bybox(bbox: tuple[float, float, float, float], resolution: float, box_crs: CRSTYPE = ..., always_xy: bool = ..., max_px: int = ..., kwargs: dict[str, Any] | None = ..., tiff_dir: str | pathlib.Path = ...) -> list[pathlib.Path]
+   .. py:method:: getmap_bybox(bbox: tuple[float, float, float, float], resolution: float, box_crs: CRSType = ..., always_xy: bool = ..., max_px: int = ..., kwargs: dict[str, Any] | None = ..., tiff_dir: Literal[None] = None) -> dict[str, bytes]
+                  getmap_bybox(bbox: tuple[float, float, float, float], resolution: float, box_crs: CRSType = ..., always_xy: bool = ..., max_px: int = ..., kwargs: dict[str, Any] | None = ..., tiff_dir: str | pathlib.Path = ...) -> list[pathlib.Path]
 
       Get data from a WMS service within a geometry or bounding box.
 

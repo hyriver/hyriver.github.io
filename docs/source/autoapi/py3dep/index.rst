@@ -15,7 +15,7 @@ Submodules
 .. toctree::
    :maxdepth: 1
 
+   /autoapi/py3dep/geoops/index
    /autoapi/py3dep/py3dep/index
-   /autoapi/py3dep/utils/index
 
 

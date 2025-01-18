@@ -14,7 +14,7 @@ pydaymet.pet
 Module Contents
 ---------------
 
-.. py:function:: potential_et(clm: pandas.DataFrame, coords: tuple[float, float], crs: CRSTYPE, method: Literal['penman_monteith', 'priestley_taylor', 'hargreaves_samani'] = ..., params: dict[str, float] | None = ...) -> pandas.DataFrame
+.. py:function:: potential_et(clm: pandas.DataFrame, coords: tuple[float, float], crs: CRSType, method: Literal['penman_monteith', 'priestley_taylor', 'hargreaves_samani'] = ..., params: dict[str, float] | None = ...) -> pandas.DataFrame
                  potential_et(clm: xarray.Dataset, coords: None = None, crs: None = None, method: Literal['penman_monteith', 'priestley_taylor', 'hargreaves_samani'] = ..., params: dict[str, float] | None = ...) -> xarray.Dataset
 
    Compute Potential EvapoTranspiration for both gridded and a single location.

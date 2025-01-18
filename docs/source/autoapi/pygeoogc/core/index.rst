@@ -14,7 +14,7 @@ pygeoogc.core
 Module Contents
 ---------------
 
-.. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, max_workers = 1, verbose = False, disable_retry = False)
+.. py:class:: ArcGISRESTfulBase(base_url, layer = None, outformat = 'geojson', outfields = '*', crs = 4326, verbose = False, disable_retry = False)
 
    Access to an ArcGIS REST service.
 
@@ -29,11 +29,6 @@ Module Contents
                 * **outfields** (:class:`str` or :class:`list`) -- The output fields to be requested. Setting ``*`` as outfields requests
                   all the available fields which is the default setting.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference of the output data, defaults to ``epsg:4326``
-                * **max_workers** (:class:`int`, *optional*) -- Max number of simultaneous requests, default to 2. Note
-                  that some services might face issues when several requests are sent
-                  simultaneously and will return the requests partially. It's recommended
-                  to avoid using too many workers unless you are certain the web service
-                  can handle it.
                 * **verbose** (:class:`bool`, *optional*) -- If True, prints information about the requests and responses,
                   defaults to False.
                 * **disable_retry** (:class:`bool`, *optional*) -- If ``True`` in case there are any failed queries, no retrying attempts

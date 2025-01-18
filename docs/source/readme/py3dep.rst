@@ -42,6 +42,21 @@ Py3DEP: Topographic data through 3DEP
 
 |
 
+Note
+----
+
+Users are encouraged to using the new HyRiver package called Seamless3DEP
+which is a lightweight and efficient package providing access to both static
+DEMs and dynamic 3DEP service. This package is a part of the HyRiver software
+stack and is the recommended package for accessing 3DEP data. For more information
+please visit its `documentation <https://seamless-3dep.readthedocs.io/en/latest/>`__.
+For the time being, Py3DEP will be maintained for bug fixes and minor updates.
+
+Also, from version 0.19, the default CRS for ``get_map`` was changed from
+``EPSG:4326`` to ``EPSG:5070``. This is due to a recent issue with the 3DEP service
+where the it returns invalid results when the requested CRS in not in a projected
+coordinate system.
+
 Features
 --------
 

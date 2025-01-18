@@ -16,5 +16,6 @@ Submodules
    :maxdepth: 1
 
    /autoapi/async_retriever/async_retriever/index
+   /autoapi/async_retriever/streaming/index
 
 

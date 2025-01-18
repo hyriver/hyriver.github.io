@@ -52,8 +52,8 @@ Module Contents
    {'1m': True, '3m': False, '5m': False, '10m': True, '30m': True, '60m': False, 'topobathy': False}
 
 
-.. py:function:: elevation_bycoords(coords: tuple[float, float], crs: CRSTYPE = ..., source: Literal['tep', 'tnm'] = ...) -> float
-                 elevation_bycoords(coords: list[tuple[float, float]], crs: CRSTYPE = ..., source: Literal['tep', 'tnm'] = ...) -> list[float]
+.. py:function:: elevation_bycoords(coords: tuple[float, float], crs: CRSType = ..., source: Literal['tep', 'tnm'] = ...) -> float
+                 elevation_bycoords(coords: list[tuple[float, float]], crs: CRSType = ..., source: Literal['tep', 'tnm'] = ...) -> list[float]
 
    Get elevation for a list of coordinates.
 
@@ -126,7 +126,7 @@ Module Contents
                 * **resolution** (:class:`int`) -- Target DEM source resolution in meters.
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input geometry, defaults to ``EPSG:4326``.
 
-   :returns: :class:`xarray.DataArray` -- DEM at the specified resolution in meters and 4326 CRS.
+   :returns: :class:`xarray.DataArray` -- DEM at the specified resolution in meters and 5070 CRS.
 
 
 .. py:function:: get_dem_vrt(bbox, resolution, vrt_path, tiff_dir = 'cache', crs = 4326)
@@ -141,8 +141,8 @@ Module Contents
                 * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of ``bbox``, defaults to ``EPSG:4326``.
 
 
-.. py:function:: get_map(layers: str, geometry: shapely.Polygon | shapely.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = ..., crs: CRSTYPE = ...) -> xarray.DataArray
-                 get_map(layers: list[str], geometry: shapely.Polygon | shapely.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSTYPE = ..., crs: CRSTYPE = ...) -> xarray.Dataset
+.. py:function:: get_map(layers: str, geometry: shapely.Polygon | shapely.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSType = ..., crs: CRSType = ...) -> xarray.DataArray
+                 get_map(layers: list[str], geometry: shapely.Polygon | shapely.MultiPolygon | tuple[float, float, float, float], resolution: int, geo_crs: CRSType = ..., crs: CRSType = ...) -> xarray.Dataset
 
    Access dynamic layer of `3DEP <https://www.usgs.gov/core-science-systems/ngp/3dep>`__.
 
@@ -167,11 +167,13 @@ Module Contents
                 * **geometry** (:class:`Polygon`, :class:`MultiPolygon`, or :class:`tuple`) -- A shapely Polygon or a bounding box of the form ``(west, south, east, north)``.
                 * **resolution** (:class:`int`) -- The target resolution in meters. The width and height of the output are computed in
                   pixels based on the geometry bounds and the given resolution.
-                * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input geometry, defaults to ``EPSG:4326``.
-                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system to be used for requesting the data, defaults to
-                  ``EPSG:4326``. Valid values are ``EPSG:4326``, ``EPSG:3576``, ``EPSG:3571``,
-                  ``EPSG:3575``, ``EPSG:3857``, ``EPSG:3572``, ``CRS:84``, ``EPSG:3573``,
-                  and ``EPSG:3574``.
+                * **geo_crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system of the input geometry, defaults to 4326.
+                * **crs** (:class:`str`, :class:`int`, or :class:`pyproj.CRS`, *optional*) -- The spatial reference system to be used for requesting the data,
+                  defaults to 5070. Valid values are 4326, 3857, 3338, 3571, 3572,
+                  3573, 3574, 3575, 3576, and 5070. Note that at the moment due to
+                  an issue on the server-side (USGS's 3DEP web service), when passing
+                  4326, the server returns invalid data. So it's recommended to use
+                  5070 for the time being.
 
    :returns: :class:`xarray.DataArray` or :class:`xarray.Dataset` -- The requested topographic data as an ``xarray.DataArray`` or ``xarray.Dataset``.
 

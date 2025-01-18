@@ -65,13 +65,26 @@ Module Contents
 
 .. py:function:: geo2polygon(geometry, geo_crs = None, crs = None)
 
-   Convert a geometry to a Shapely's Polygon and transform to any CRS.
+   Return a Shapely geometry and optionally transform to a new CRS.
 
-   :Parameters: * **geometry** (:class:`Polygon` or :class:`tuple` of :class:`length 4`) -- Polygon or bounding box (west, south, east, north).
+   :Parameters: * **geometry** (:class:`shaple.Geometry` or :class:`tuple` of :class:`length 4`) -- Any shapely geometry object or a bounding box (minx, miny, maxx, maxy).
                 * **geo_crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`, *optional*) -- Spatial reference of the input geometry, defaults to ``None``.
                 * **crs** (:class:`int`, :class:`str`, or :class:`pyproj.CRS`) -- Target spatial reference, defaults to ``None``.
 
-   :returns: :class:`shapely.Polygon` or :class:`shapely.MultiPolygon` -- A (Multi)Polygon in the target CRS, if different from the input CRS.
+   :returns: :class:`shapely.geometry.base.BaseGeometry` -- A shapely geometry object.
+
+
+.. py:function:: geo_transform(geometry: shapely.geometry.base.BaseGeometry, in_crs: CRSType, out_crs: CRSType, include_z: bool = False) -> shapely.geometry.base.BaseGeometry
+                 geo_transform(geometry: numpy.typing.NDArray[shapely.geometry.base.BaseGeometry], in_crs: CRSType, out_crs: CRSType, include_z: bool = False) -> numpy.typing.NDArray[shapely.geometry.base.BaseGeometry]
+
+   Transform a geometry from one CRS to another.
+
+   :Parameters: * **geometry** (:class:`shapely.geometry.base.BaseGeometry`) -- The geometry or an array of geometries to transform.
+                * **in_crs** (:class:`int`) -- The CRS of the input geometry.
+                * **out_crs** (:class:`int`) -- The CRS to which the input geometry will be transformed.
+                * **include_z** (:class:`bool`, *optional*) -- Whether to include the Z coordinate in the transformation, by default False.
+
+   :returns: :class:`shapely.geometry.base.BaseGeometry` or :class:`numpy.ndarray` -- The transformed geometry or an array of transformed geometries.
 
 
 .. py:function:: geometry_list(geometry)
