@@ -227,7 +227,7 @@ If you use any of HyRiver packages in your research, we appreciate citations:
     :maxdepth: 1
     :hidden:
 
-    autoapi/index
+    apis
     changelogs
     contributing
     authors

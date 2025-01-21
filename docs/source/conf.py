@@ -105,7 +105,7 @@ autoapi_ignore = [
 ]
 autoapi_options = ["members"]
 autoapi_member_order = "groupwise"
-autoapi_keep_files = True
+autoapi_keep_files = False
 autoapi_add_toctree_entry = False
 modindex_common_prefix = [
     "pynhd.",
@@ -207,7 +207,6 @@ extlinks = {
 
 # -- Options for HTML output -------------------------------------------------
 html_static_path = ["_static"]
-# html_css_files = ["style.css"]
 today_fmt = "%Y-%m-%d"
 pygments_style = "sphinx"
 
@@ -215,7 +214,6 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "tests", ".ipynb_checkpo
 
 # sphinx_book_theme configurations
 html_theme = "pydata_sphinx_theme"
-# html_theme = "sphinx_book_theme"
 html_title = ""
 
 # logo
@@ -230,21 +228,6 @@ html_context = {
     "doc_path": "docs",
 }
 html_baseurl = "https://docs.hyriver.io"
-# html_theme_options = {
-#     "repository_url": "https://github.com/hyriver/hyriver.github.io",
-#     "repository_branch": "main",
-#     "path_to_docs": "docs",
-#     "launch_buttons": {
-#         "binderhub_url": "https://mybinder.org/v2/gh/hyriver/HyRiver-examples/main?urlpath=lab/tree/notebooks",
-#         "notebook_interface": "jupyterlab",
-#     },
-#     "use_edit_page_button": True,
-#     "use_repository_button": True,
-#     "use_download_button": False,
-#     "use_issues_button": True,
-#     "home_page_in_toc": True,
-#     "navigation_with_keys": False,
-# }
 
 html_theme_options = {
     "header_links_before_dropdown": 4,
@@ -260,26 +243,14 @@ html_theme_options = {
             "icon": "fa-brands fa-github",
         },
     ],
-    # alternative way to set twitter and github header icons
-    # "github_url": "https://github.com/pydata/pydata-sphinx-theme",
-    # "twitter_url": "https://twitter.com/PyData",
     "logo": {
         "text": "",
         "image_dark": "_static/hyriver_logo_text.svg",
     },
     "use_edit_page_button": True,
     "show_toc_level": 1,
-    "navbar_align": "left",  # [left, content, right] For testing that the navbar items align properly
-    # "show_nav_level": 2,
-    # "announcement": "https://raw.githubusercontent.com/pydata/pydata-sphinx-theme/main/docs/_templates/custom-template.html",
-    # "show_version_warning_banner": True,
+    "navbar_align": "left",
     "navbar_center": ["version-switcher", "navbar-nav"],
-    # "navbar_start": ["navbar-logo"],
-    # "navbar_end": ["theme-switcher", "navbar-icon-links"],
-    # "navbar_persistent": ["search-button"],
-    # "primary_sidebar_end": ["custom-template", "sidebar-ethical-ads"],
-    # "article_footer_items": ["test", "test"],
-    # "content_footer_items": ["test", "test"],
     "footer_start": ["copyright"],
     "footer_center": ["sphinx-version"],
     "secondary_sidebar_items": {
@@ -290,7 +261,6 @@ html_theme_options = {
         "json_url": "https://docs.hyriver.io/_static/switcher.json",
         "version_match": version,
     },
-    # "back_to_top_button": False,
     "navigation_with_keys": False,
 }
 
@@ -432,7 +402,7 @@ def update_versions(app: Sphinx)-> None:
             versions.append(
                 {
                     "package": n,
-                    "path": f"{p}/index.html",
+                    "path": f"autoapi/{p.replace('-', '_')}/index.html",
                     "version": json.loads(r.read().decode('utf-8'))["info"]["version"],
                 }
             )
