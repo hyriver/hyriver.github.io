@@ -51,11 +51,11 @@ is designed to aid in hydroclimate analysis through web services.
 This package provides access to several hydro-linked datasets:
 
 - `StreamCat <https://www.epa.gov/national-aquatic-resource-surveys/streamcat-dataset>`__
-- `WaterData <https://labs.waterdata.usgs.gov/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage?1>`__
+- `WaterData <https://api.water.usgs.gov/>`__
 - `NHDPlus MR <https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer>`__
 - `NHDPlus HR <https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer>`__
-- `NLDI <https://labs.waterdata.usgs.gov/about-nldi/>`__
-- `PyGeoAPI <https://labs.waterdata.usgs.gov/api/nldi/pygeoapi>`__
+- `NLDI <https://api.water.usgs.gov/>`__
+- `PyGeoAPI <https://api.water.usgs.gov/>`__
 - `GeoConnex <https://geoconnex.internetofwater.dev/>`__
 - `Mainstems <https://www.sciencebase.gov/catalog/item/63cb38b2d34e06fef14f40ad>`__
 - `HUC12 Pour Points <https://www.sciencebase.gov/catalog/item/60cb5edfd34e86b938a373f4>`__
