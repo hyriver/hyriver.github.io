@@ -313,6 +313,15 @@ ogp_custom_meta_tags = [
     f'<meta name="twitter:image:alt" content="{description}" />',
 ]
 
+
+# add visitor tracking
+html_js_files = [
+    ('https://app.rybbit.io/api/script.js', {
+        'data-site-id': '303',
+        'defer': None
+    })
+]
+
 # -- Generating Gallery -------------------------------------------------------
 def update_gallery(app: Sphinx)-> None:
     """Update the gallery page.
