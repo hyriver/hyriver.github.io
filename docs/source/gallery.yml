@@ -6,6 +6,10 @@
   thumbnail: _static/thumbnails/nhd_nav.png
   title: Navigate NHD Network
 
+- path: examples/notebooks/nwis_catchments.html
+  thumbnail: _static/thumbnails/gages_catchments_bias.png
+  title: Drainage Area Delineation
+
 - path: examples/notebooks/nhd_demo.html
   thumbnail: _static/thumbnails/nhd_demo.png
   title: NHD Data using HyRiver
